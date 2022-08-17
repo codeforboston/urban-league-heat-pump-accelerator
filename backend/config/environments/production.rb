@@ -55,7 +55,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "__skip_turbolinks_production"
+  # config.active_job.queue_name_prefix = "urban_league_heat_pump_accelerator_production"
 
   config.action_mailer.perform_caching = false
 
