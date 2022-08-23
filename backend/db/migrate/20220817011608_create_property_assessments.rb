@@ -8,7 +8,7 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.string :heat_fuel
       t.string :ac_type
       t.integer :fire_place
-      t.string :oriention
+      t.string :orientation
       t.integer :num_parking
       t.string :prop_view
       t.string :corner_unit
