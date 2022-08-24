@@ -3,7 +3,14 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
     create_table :property_assessments do |t|
 
       t.timestamps
-
+      t.string :heat_type
+      t.string :heat_fuel
+      t.string :ac_type
+      t.integer :fire_place
+      t.string :orientation
+      t.integer :num_parking
+      t.string :prop_view
+      t.string :corner_unit
       t.integer :com_units
       t.integer :rc_units
       t.integer :land_sf
@@ -38,7 +45,6 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.float :res_floor
       t.integer :cd_floor
       t.integer :res_units
-
     end
   end
 end
