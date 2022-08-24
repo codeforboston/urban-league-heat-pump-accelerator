@@ -3,7 +3,6 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
     create_table :property_assessments do |t|
 
       t.timestamps
-
       t.string :heat_type
       t.string :heat_fuel
       t.string :ac_type
@@ -12,6 +11,40 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.integer :num_parking
       t.string :prop_view
       t.string :corner_unit
+      t.integer :com_units
+      t.integer :rc_units
+      t.integer :land_sf
+      t.integer :gross_area
+      t.integer :living_area
+      t.integer :land_value
+      t.integer :bldg_value
+      t.integer :total_value
+
+      t.integer :pid
+      t.integer :cm_id
+      t.integer :gis_id
+      t.string :st_num
+      t.string :st_name
+      t.integer :unit_num
+      t.string :city
+      t.integer :zipcode
+
+      t.integer :bldg_seq
+      t.integer :num_bldgs
+      t.integer :luc
+      t.string :luc_desc
+      t.string :bldg_type
+      t.string :own_occ # no char datatype?
+
+      t.string :owner      
+      t.string :mail_addressee
+      t.string :mail_address
+      t.string :mail_city
+      t.string :mail_state, :limit => 2
+      t.string :mail_zipcode # these can be 5 or zip+4 format
+      t.float :res_floor
+      t.integer :cd_floor
+      t.integer :res_units
     end
   end
 end
