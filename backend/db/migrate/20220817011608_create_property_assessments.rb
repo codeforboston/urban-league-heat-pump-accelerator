@@ -3,12 +3,12 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
     create_table :property_assessments do |t|
       t.integer :com_units
       t.integer :rc_units
-      t.float :land_sf
-      t.float :gross_area
-      t.float :living_area
-      t.decimal :land_value
-      t.decimal :bldg_value
-      t.decimal :total_value
+      t.integer :land_sf
+      t.integer :gross_area
+      t.integer :living_area
+      t.integer :land_value
+      t.integer :bldg_value
+      t.integer :total_value
 
       t.timestamps
     end
