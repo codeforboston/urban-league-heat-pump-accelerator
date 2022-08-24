@@ -2,7 +2,7 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
   def change
     create_table :property_assessments do |t|
 
-    t.timestamps
+
     t.string:bdrm_cond
     t.string:bthrm_style1
     t.string:bthrm_style2
