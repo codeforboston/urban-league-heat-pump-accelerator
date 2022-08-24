@@ -45,16 +45,6 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.float :res_floor
       t.integer :cd_floor
       t.integer :res_units
-      
-      t.string :bdrm_cond
-      t.string :bthrm_style1
-      t.string :bthrm_style2
-      t.string :bthrm_style3
-      t.string :kitchen_type
-      t.string :kitchen_style1
-      t.string :kitchen_style
-      t.string :kitchen_style3
-
     end
   end
 end
