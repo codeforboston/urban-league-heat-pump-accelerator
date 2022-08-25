@@ -10,11 +10,8 @@ jobs:
   test:
     env:
       RAILS_ENV: test
-      # The hostname used to communicate with the PostgreSQL service container (set as name of service below)
-      POSTGRES_HOST: postgres
-      # The default PostgreSQL port
-      POSTGRES_PORT: 5432
       BUNDLE_GEMFILE: ${{ github.workspace }}/backend/Gemfile
+      DATABASE_URL: postgres://postgres:urbanleague@localhost:5432/test
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -29,13 +26,14 @@ jobs:
         image: postgres:alpine
         # Provide the password for postgres
         env:
-          POSTGRES_PASSWORD: urbanleague-heatpump-test
+          POSTGRES_PASSWORD: urbanleague
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+        ports: ["5432:5432"]
 
     steps:
       - name: Git checkout
@@ -55,6 +53,7 @@ jobs:
       - name: Create Test Database
         run: |
           bundle exec rails db:create
+          bundle exec rails db:migrate
           bundle exec rails db:schema:load
       - name: Run tests
         run: bundle exec rspec
