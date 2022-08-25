@@ -1,3 +1,3 @@
 class PropertyAssessment < ActiveRecord::Base
-    enum :condition, not_set: 0, poor: 1, fair: 2, average: 3, good: 4, excellent: 5
+    enum :condition, {cond_not_set: 0, cond_poor: 1, cond_fair: 2, cond_average: 3, cond_good: 4, cond_excellent: 5}
 end
