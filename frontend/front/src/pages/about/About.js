@@ -26,7 +26,7 @@ const About = () => {
         >
           <Box
             width={200}
-            height={200}
+            height={100}
             display='flex'
             justifyContent='center'
             alignItems='center'
@@ -45,7 +45,7 @@ const About = () => {
         >
           <Box
             width={200}
-            height={200}
+            height={100}
             display='flex'
             justifyContent='center'
             alignItems='center'
@@ -64,7 +64,7 @@ const About = () => {
         >
           <Box
             width={200}
-            height={200}
+            height={100}
             display='flex'
             justifyContent='center'
             alignItems='center'
@@ -84,13 +84,13 @@ const About = () => {
         >
           <Box
             width={200}
-            height={200}
+            height={100}
             display='flex'
             justifyContent='center'
             alignItems='center'
             sx={{
               backgroundColor: "HoneyDew",
-              display: { xs: "none",  md: "flex" },
+              display: { xs: "none", md: "flex" },
             }}
           >
             FOUR
@@ -106,13 +106,35 @@ const About = () => {
         >
           <Box
             width={200}
-            height={200}
+            height={100}
             display='flex'
             justifyContent='center'
             alignItems='center'
             sx={{ backgroundColor: "SeaShell" }}
           >
             FIVE
+          </Box>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          display='flex'
+          justifyContent='center'
+          alignItems='center'
+        >
+          <Box
+            width={200}
+            height={100}
+            display='flex'
+            justifyContent='center'
+            alignItems='center'
+            sx={{
+              backgroundColor: "Thistle",
+              display: { xs: "flex", md: "none" },
+            }}
+          >
+            SIX
           </Box>
         </Grid>
       </Grid>

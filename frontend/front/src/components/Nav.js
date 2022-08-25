@@ -25,7 +25,7 @@ const nav = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            News
+            URBAN LEAGUE HEAT PUMP
           </Typography>
           <Button color='inherit' component={Link} to='/'>
             <Typography variant='h5'>HOME</Typography>
