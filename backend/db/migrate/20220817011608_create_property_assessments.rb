@@ -54,14 +54,14 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.string :kitchen_style
       t.string :kitchen_style3
 
-      condition : "internal_condition"
-      condition : "external_condition"
-      condition : "overall_condition"
-      t.integer : "bedrooms_count"
-      t.integer : "baths_full_count"
-      t.integer : "baths_half_count"
-      t.integer : "kitchens_count"
-      t.integer : "rooms_total_count"
+      condition :internal_condition
+      condition :external_condition
+      condition :overall_condition
+      t.integer :bedrooms_count
+      t.integer :baths_full_count
+      t.integer :baths_half_count
+      t.integer :kitchens_count
+      t.integer :rooms_total_count
 
     end
   end
