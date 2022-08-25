@@ -33,6 +33,9 @@ const nav = () => {
           <Button color='inherit' component={Link} to='/about'>
             <Typography variant='h5'>ABOUT</Typography>
           </Button>
+          <Button color='inherit' component={Link} to='/contact'>
+            <Typography variant='h5'>Contact</Typography>
+          </Button>
           <Button color='inherit'>Login</Button>
         </Toolbar>
       </AppBar>
