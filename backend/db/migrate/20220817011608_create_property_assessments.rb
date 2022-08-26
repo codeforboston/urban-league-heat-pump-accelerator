@@ -64,7 +64,6 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.integer :baths_half_count
       t.integer :kitchens_count
       t.integer :rooms_total_count
-
     end
   end
 end
