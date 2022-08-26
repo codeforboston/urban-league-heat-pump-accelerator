@@ -1,3 +1,35 @@
+Start Guide By Dat Nguyen email: datguy7@gmail.com
+
+To run this Front-End only react application, you need VSCode IDE.
+  download here: https://code.visualstudio.com/
+
+Clone main github repo from the main branch.
+  download here: https://github.com/codeforboston/urban-league-heat-pump-accelerator
+
+Afer downloading the main github repo, you need to switch from the #main branch to the #frontend_dat to see the frontend file.
+
+To keep formatting the same on all the files, you must download the #prettier plugin (Prettier - Code formatter
+) before you can submit code to the frontend branch. Keep the default prettier plugin settings.
+
+Now that you're in the #frontend_dat repo, navigate into the #frontend file and then naviate to the #front file. Inside the #front file, open a terminal (CLI) inside the #front file. 
+
+If this is your first time downloading the frontend_dat repo, you will not have a node_modules with all the necessary packages. To download the packages listed in package.json, you need to type this command into the terminal (currently at your #front file): "yarn install".
+
+After yarn install all the packages listed in package.json, you can now run the create-react-app program. Type: yarn start. You can access the react browser view at http://localhost:3000/. 
+
+If you already previously download all the node_modules, open terminal in the #front file and type "yarn start" to run the create-react-app program. Type
+
+We're using yarn instead of npm for package download and a few other functions. These are the common npm commands and their yarn equivalents. 
+
+  npm run = yarn start
+  npm install "package"  = yarn add "package"
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
