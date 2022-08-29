@@ -11,6 +11,4 @@ const homeSlice = createSlice({
   initialState: initialState,
 });
 
-console.log(homeSlice);
-
 export default homeSlice.reducer;

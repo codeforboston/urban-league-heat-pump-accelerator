@@ -1,14 +1,92 @@
-import React from "react";
-import { Typography, Box, Grid } from "@mui/material";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { Typography, Box, Grid, Button } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import AboutUnit from "./AboutUnit";
+import {
+  addNumber,
+  clearNumber,
+  subNumber,
+  fetchData,
+  clearData,
+  restoreData,
+  calcTotal,
+} from "../../features/about/aboutSlice";
 
 const About = () => {
-  const { title } = useSelector((state) => state.about);
+  const dispatch = useDispatch();
+  const { title, array, number, totalNum } = useSelector(
+    (state) => state.about
+  );
 
-  console.log(title);
+  useEffect(() => {
+    dispatch(fetchData());
+    console.log("fetchData");
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(calcTotal());
+  }, [dispatch, array]);
+  const arrayAbout = array.map((item) => {
+    return <AboutUnit item={item} key={item.name} />;
+  });
+
+  let numberDisplay;
+
+  if (number === 0) {
+    numberDisplay = <Typography variant='h3'>Empty number</Typography>;
+  } else {
+    numberDisplay = <Typography variant='h3'>Number:{number} </Typography>;
+  }
+
   return (
     <Box p={1} m={1}>
       <Typography variant='h2'>{title} </Typography>
+      <Box p={1} m={1}>
+        {numberDisplay}
+      </Box>
+      <Box>
+        <Button
+          variant='outlined'
+          sx={{ margin: 1 }}
+          onClick={() => dispatch(clearNumber())}
+        >
+          Clear number
+        </Button>
+        <Button
+          variant='outlined'
+          sx={{ margin: 1 }}
+          onClick={() => dispatch(addNumber())}
+        >
+          Add number
+        </Button>
+        <Button
+          variant='outlined'
+          sx={{ margin: 1 }}
+          onClick={() => dispatch(subNumber())}
+        >
+          Subtract number
+        </Button>
+      </Box>
+      <Box>
+        <Typography variant='h3'>Total Number: {totalNum}</Typography>
+      </Box>
+      <Box>
+        <Button
+          variant='outlined'
+          sx={{ margin: 1 }}
+          onClick={() => dispatch(clearData())}
+        >
+          Clear Data
+        </Button>
+
+        <Button
+          variant='outlined'
+          sx={{ margin: 1 }}
+          onClick={() => dispatch(restoreData())}
+        >
+          Restore Data
+        </Button>
+      </Box>
 
       <Grid
         container
@@ -16,127 +94,7 @@ const About = () => {
         justifyContent='center'
         alignItems='center'
       >
-        <Grid
-          item
-          xs={12}
-          md={6}
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
-        >
-          <Box
-            width={200}
-            height={100}
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            sx={{ backgroundColor: "LavenderBlush" }}
-          >
-            ONE
-          </Box>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
-        >
-          <Box
-            width={200}
-            height={100}
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            sx={{ backgroundColor: "Beige" }}
-          >
-            TWO
-          </Box>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
-        >
-          <Box
-            width={200}
-            height={100}
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            sx={{ backgroundColor: "AliceBlue" }}
-          >
-            THREE
-          </Box>
-        </Grid>
-
-        <Grid
-          item
-          xs={12}
-          md={6}
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
-        >
-          <Box
-            width={200}
-            height={100}
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            sx={{
-              backgroundColor: "HoneyDew",
-              display: { xs: "none", md: "flex" },
-            }}
-          >
-            FOUR
-          </Box>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
-        >
-          <Box
-            width={200}
-            height={100}
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            sx={{ backgroundColor: "SeaShell" }}
-          >
-            FIVE
-          </Box>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
-        >
-          <Box
-            width={200}
-            height={100}
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            sx={{
-              backgroundColor: "Thistle",
-              display: { xs: "flex", md: "none" },
-            }}
-          >
-            SIX
-          </Box>
-        </Grid>
+        {arrayAbout}
       </Grid>
     </Box>
   );

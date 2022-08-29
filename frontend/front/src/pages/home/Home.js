@@ -3,7 +3,10 @@ import { Typography, Box } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const { title } = useSelector((state) => state.home);
+  const { title } = useSelector((state) => {
+    console.log(state);
+    return state.home;
+  });
 
   return (
     <Box>

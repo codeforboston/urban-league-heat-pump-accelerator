@@ -9,8 +9,11 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const nav = () => {
+const Nav = () => {
+  const { title } = useSelector((state) => state.nav);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
@@ -25,7 +28,7 @@ const nav = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            URBAN LEAGUE HEAT PUMP
+            {title}
           </Typography>
           <Button color='inherit' component={Link} to='/'>
             <Typography variant='h5'>HOME</Typography>
@@ -43,4 +46,4 @@ const nav = () => {
   );
 };
 
-export default nav;
+export default Nav;
