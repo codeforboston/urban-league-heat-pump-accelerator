@@ -4,15 +4,21 @@ import { useSelector } from "react-redux";
 
 const Contact = () => {
 
+  const title = useSelector((state) => state.contact.title);
+  const Ulem = useSelector((state) => state.contact.Ulem);
+  const Cfb = useSelector((state) => state.contact.Cfb);
+  
+  console.log(title)
+  
   return (
     <Box>
       <Box p={1} m={1}>
         <Typography 
         variant='h2'
-        display='flex'
+        display='flex'r
         justifyContent='center'
         alignItems='center'
-        >Contact Us!
+        >{title} Us!
         </Typography>
       </Box>
       <Grid
@@ -38,19 +44,19 @@ const Contact = () => {
           >
           <Typography 
           variant='h5'
-          >Urban League Eastern Massachusettes
+          >{Ulem.name}
           </Typography>
             
             <Box mt={5}>
-              Phone: (617) 442-4519
+              Phone: {Ulem.phone}
             </Box>
             <Box mt={5}>
-              Email: info@ulem.org
+              Email: {Ulem.email}
 
             </Box>
             <Link 
             mt={5} 
-            href="https://www.ulem.org/"
+            href= {Ulem.website}
             color="inherit"
             underline="hover"
             target="_blank"
@@ -59,7 +65,7 @@ const Contact = () => {
               Website
             </Link>
             <Box mt={5}>
-              Address: 88 Warren Street, Roxbury, MA 02119
+              Address: {Ulem.address}
             </Box>
           </Box>
         </Grid>
@@ -68,6 +74,7 @@ const Contact = () => {
           xs={12}
           md={6}
           mt={5}
+          pb={5}
           display='flex'
           justifyContent='center'
           alignItems='center'
@@ -81,18 +88,18 @@ const Contact = () => {
           >
           <Typography 
           variant='h5'
-          >Code for Boston
+          >{Cfb.name}
           </Typography>
             <Box mt={5}>
-              Phone: N/A
+              Phone: {Cfb.phone}
             </Box>
             <Box mt={5}>
-              Email: hello@codeforboston.org
+              Email: {Cfb.email}
 
             </Box>
             <Link 
             mt={5} 
-            href="https://www.codeforboston.org/"
+            href= {Cfb.website}
             color="inherit"
             underline="hover"
             target="_blank"
@@ -101,7 +108,7 @@ const Contact = () => {
               Website
             </Link>
             <Box mt={5}>
-              Address: 1 Broadway, Cambridge, MA 02142
+              Address: {Cfb.address}
             </Box>
           </Box>
         </Grid>
