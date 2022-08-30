@@ -27,7 +27,7 @@ const Contact = () => {
         justifyContent='center'
         alignItems='center'
       >
-      <Grid
+        <Grid
           item
           xs={12}
           md={6}
@@ -47,29 +47,22 @@ const Contact = () => {
           >{Ulem.name}
           </Typography>
             
-            <Box mt={5}>
-              Phone: {Ulem.phone}
-            </Box>
-            <Box mt={5}>
-              Email: {Ulem.email}
-
-            </Box>
+            <Box mt={5}> Phone: {Ulem.phone} </Box>
+            <Box mt={5}> Email: {Ulem.email} </Box>
             <Link 
-            mt={5} 
-            href= {Ulem.website}
-            color="inherit"
-            underline="hover"
-            target="_blank"
-            rel="noopener"
+              mt={5} 
+              href= {Ulem.website}
+              color="inherit"
+              underline="hover"
+              target="_blank"
+              rel="noopener"
             >
               Website
             </Link>
-            <Box mt={5}>
-              Address: {Ulem.address}
-            </Box>
+            <Box mt={5}>Address: {Ulem.address} </Box>
           </Box>
         </Grid>
-      <Grid
+        <Grid
           item
           xs={12}
           md={6}
@@ -90,26 +83,19 @@ const Contact = () => {
           variant='h5'
           >{Cfb.name}
           </Typography>
-            <Box mt={5}>
-              Phone: {Cfb.phone}
-            </Box>
-            <Box mt={5}>
-              Email: {Cfb.email}
-
-            </Box>
+            <Box mt={5}> Phone: {Cfb.phone} </Box>
+            <Box mt={5}> Email: {Cfb.email} </Box>
             <Link 
-            mt={5} 
-            href= {Cfb.website}
-            color="inherit"
-            underline="hover"
-            target="_blank"
-            rel="noopener"
+              mt={5} 
+              href= {Cfb.website}
+              color="inherit"
+              underline="hover"
+              target="_blank"
+              rel="noopener"
             >
               Website
             </Link>
-            <Box mt={5}>
-              Address: {Cfb.address}
-            </Box>
+            <Box mt={5}> Address: {Cfb.address}</Box>
           </Box>
         </Grid>
       </Grid>

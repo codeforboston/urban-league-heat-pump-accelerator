@@ -3,10 +3,22 @@ import { Typography, Box } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const { title } = useSelector((state) => state.home);
+  const { title } = useSelector((state) => {
+    console.log(state);
+    return state.home;
+  });
 
   return (
     <Box>
+      <Box
+        p={3}
+        m={3}
+        display='flex'
+        justifyContent='center'
+        alignItems='center'
+      >
+        <Typography variant='h1'>URBAN LEAGE HEAT PUMP</Typography>
+      </Box>
       <Box p={1} m={1}>
         <Typography variant='h2'>{title} </Typography>
       </Box>
@@ -19,7 +31,6 @@ const Home = () => {
       <Box p={1} m={1}>
         <Typography variant='h4'>React-Router Enabled</Typography>
       </Box>
-   
     </Box>
   );
 };
