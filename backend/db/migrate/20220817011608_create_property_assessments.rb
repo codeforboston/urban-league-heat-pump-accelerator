@@ -18,8 +18,6 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.integer :land_value
       t.integer :bldg_value
       t.integer :total_value
-      
-     
 
       t.integer :pid
       t.integer :cm_id
@@ -64,6 +62,16 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.integer :baths_half_count
       t.integer :kitchens_count
       t.integer :rooms_total_count
+
+      # I noticed these fields were missing from the table.
+      t.integer :gross_tax
+      t.integer :yr_built
+      t.integer :yr_remodel
+      t.string :structure_class
+      t.string :roof_structure
+      t.string :roof_cover
+      t.string :int_wall
+      t.string :ext_finished
 
     end
   end
