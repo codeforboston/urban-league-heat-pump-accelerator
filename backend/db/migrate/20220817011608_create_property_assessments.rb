@@ -63,6 +63,7 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.integer :kitchens_count
       t.integer :rooms_total_count
 
+    
       # I noticed these fields were missing from the table.
       t.integer :gross_tax
       t.integer :yr_built
