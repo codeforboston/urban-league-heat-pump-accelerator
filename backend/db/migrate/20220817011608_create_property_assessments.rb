@@ -18,6 +18,8 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.integer :land_value
       t.integer :bldg_value
       t.integer :total_value
+      
+     
 
       t.integer :pid
       t.integer :cm_id
@@ -51,7 +53,7 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.string :bthrm_style3
       t.string :kitchen_type
       t.string :kitchen_style1
-      t.string :kitchen_style
+      t.string :kitchen_style  # is this kitchen_style2?
       t.string :kitchen_style3
 
       t.integer :internal_condition
