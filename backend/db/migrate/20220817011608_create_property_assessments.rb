@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# rubocop:disable Metrics/AbcSize, Metrics/BlockLength, Metrics/MethodLength
 class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
   def change
     # Schema for Boston Property Assessment Data.
@@ -18,7 +21,7 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.string  :lu, limit: 2
       t.string  :luc_desc
       t.string  :bldg_type
-      t.boolean :own_occ  # Boolean represented as Y or N
+      t.boolean :own_occ # Boolean represented as Y or N
       t.string  :owner
       t.string  :mail_addressee
       t.string  :mail_address
@@ -67,7 +70,8 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.string  :orientation
       t.integer :num_parking
       t.string  :prop_view
-      t.boolean :corner_unit  # Boolean represented as Y or N
+      t.boolean :corner_unit # Boolean represented as Y or N
     end
   end
 end
+# rubocop:enable Metrics/AbcSize, Metrics/BlockLength, Metrics/MethodLength
