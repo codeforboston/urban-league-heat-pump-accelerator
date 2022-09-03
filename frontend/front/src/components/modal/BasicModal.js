@@ -43,10 +43,15 @@ export default function BasicModal(props) {
           <Typography id='modal-modal-description' sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography>
-        </Box>
-        <Box center>
-          <Button>YES</Button>
-          <Button>NO</Button>
+          <Box
+            p={3}
+            display='flex'
+            justifyContent='space-evenly'
+            alignItems='center'
+          >
+            <Button onClick={handleClose}>YES</Button>
+            <Button onClick={handleClose}>NO</Button>
+          </Box>
         </Box>
       </Modal>
     </div>

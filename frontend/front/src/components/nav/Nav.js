@@ -41,7 +41,6 @@ const Nav = () => {
             <Typography variant='h5'>Contact</Typography>
           </Button>
           <BasicModal title='Login' />
-          {/* <Button color='inherit'>Login</Button> */}
         </Toolbar>
       </AppBar>
     </Box>
