@@ -3,16 +3,22 @@ import { Typography, Box, Grid, Link } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const Contact = () => {
+
+  const title = useSelector((state) => state.contact.title);
+  const Ulem = useSelector((state) => state.contact.Ulem);
+  const Cfb = useSelector((state) => state.contact.Cfb);
+  
+  console.log(title)
+  
   return (
     <Box>
       <Box p={1} m={1}>
-        <Typography
-          variant='h2'
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
-        >
-          Contact Us!
+        <Typography 
+        variant='h2'
+        display='flex'r
+        justifyContent='center'
+        alignItems='center'
+        >{title} Us!
         </Typography>
       </Box>
       <Grid
@@ -36,23 +42,24 @@ const Contact = () => {
             justifyContent='center'
             alignItems='center'
           >
-            <Typography variant='h5'>
-              Urban League Eastern Massachusettes
-            </Typography>
-
-            <Box mt={5}>Phone: (617) 442-4519</Box>
-            <Box mt={5}>Email: info@ulem.org</Box>
-            <Link
-              mt={5}
-              href='https://www.ulem.org/'
-              color='inherit'
-              underline='hover'
-              target='_blank'
-              rel='noopener'
+          <Typography 
+          variant='h5'
+          >{Ulem.name}
+          </Typography>
+            
+            <Box mt={5}> Phone: {Ulem.phone} </Box>
+            <Box mt={5}> Email: {Ulem.email} </Box>
+            <Link 
+              mt={5} 
+              href= {Ulem.website}
+              color="inherit"
+              underline="hover"
+              target="_blank"
+              rel="noopener"
             >
               Website
             </Link>
-            <Box mt={5}>Address: 88 Warren Street, Roxbury, MA 02119</Box>
+            <Box mt={5}>Address: {Ulem.address} </Box>
           </Box>
         </Grid>
         <Grid
@@ -60,6 +67,7 @@ const Contact = () => {
           xs={12}
           md={6}
           mt={5}
+          pb={5}
           display='flex'
           justifyContent='center'
           alignItems='center'
@@ -71,20 +79,23 @@ const Contact = () => {
             alignItems='center'
             variant='h2'
           >
-            <Typography variant='h5'>Code for Boston</Typography>
-            <Box mt={5}>Phone: N/A</Box>
-            <Box mt={5}>Email: hello@codeforboston.org</Box>
-            <Link
-              mt={5}
-              href='https://www.codeforboston.org/'
-              color='inherit'
-              underline='hover'
-              target='_blank'
-              rel='noopener'
+          <Typography 
+          variant='h5'
+          >{Cfb.name}
+          </Typography>
+            <Box mt={5}> Phone: {Cfb.phone} </Box>
+            <Box mt={5}> Email: {Cfb.email} </Box>
+            <Link 
+              mt={5} 
+              href= {Cfb.website}
+              color="inherit"
+              underline="hover"
+              target="_blank"
+              rel="noopener"
             >
               Website
             </Link>
-            <Box mt={5}>Address: 1 Broadway, Cambridge, MA 02142</Box>
+            <Box mt={5}> Address: {Cfb.address}</Box>
           </Box>
         </Grid>
       </Grid>
