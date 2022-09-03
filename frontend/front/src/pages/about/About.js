@@ -11,6 +11,7 @@ import {
   restoreData,
   calcTotal,
 } from "../../features/about/aboutSlice";
+import BasicModal from "../../components/modal/BasicModal";
 
 const About = () => {
   const dispatch = useDispatch();
@@ -78,6 +79,8 @@ const About = () => {
         >
           Clear Data
         </Button>
+
+        <BasicModal />
 
         <Button
           variant='outlined'
