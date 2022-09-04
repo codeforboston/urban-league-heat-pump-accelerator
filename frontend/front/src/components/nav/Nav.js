@@ -9,11 +9,15 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import BasicModal from "../modal/BasicModal";
+import { closeModal } from "../../features/modal/basicModalSlice";
 
 const Nav = () => {
   const { title } = useSelector((state) => state.nav);
+  const dispatch = useDispatch();
+
+  const handleClose = () => dispatch(closeModal());
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -40,7 +44,21 @@ const Nav = () => {
           <Button color='inherit' component={Link} to='/contact'>
             <Typography variant='h5'>Contact</Typography>
           </Button>
-          <BasicModal title='Login' />
+          <BasicModal title='Login'>
+            <Box
+              p={3}
+              display='flex'
+              justifyContent='space-evenly'
+              alignItems='center'
+            >
+              <Button variant='contained' onClick={handleClose}>
+                YES
+              </Button>
+              <Button variant='contained' onClick={handleClose}>
+                NO
+              </Button>
+            </Box>
+          </BasicModal>
         </Toolbar>
       </AppBar>
     </Box>
