@@ -27,6 +27,7 @@ const About = () => {
   useEffect(() => {
     dispatch(calcTotal());
   }, [dispatch, array]);
+  
   const arrayAbout = array.map((item) => {
     return <AboutUnit item={item} key={item.name} />;
   });
@@ -79,8 +80,6 @@ const About = () => {
         >
           Clear Data
         </Button>
-
-        <BasicModal />
 
         <Button
           variant='outlined'

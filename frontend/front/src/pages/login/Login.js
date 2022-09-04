@@ -16,7 +16,7 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal(props) {
+const Login = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => setIsOpen(true);
@@ -24,8 +24,8 @@ export default function BasicModal(props) {
 
   return (
     <div>
-      <Button sx={{ color: "white" }} onClick={handleOpen}>
-        LOGIN
+      <Button color='inherit' onClick={handleOpen}>
+        <Typography variant='h5'>LOGIN</Typography>
       </Button>
       <Modal
         open={isOpen}
@@ -33,8 +33,30 @@ export default function BasicModal(props) {
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >
-        <Box sx={style}>{props.children}</Box>
+        <Box sx={style}>
+          <Box>
+            <Box>
+              <Typography variant='h1'>Login23</Typography>
+            </Box>
+
+            <Box
+              p={3}
+              display='flex'
+              justifyContent='space-evenly'
+              alignItems='center'
+            >
+              <Button variant='contained' onClick={handleClose}>
+                YES
+              </Button>
+              <Button variant='contained' onClick={handleClose}>
+                NO
+              </Button>
+            </Box>
+          </Box>
+        </Box>
       </Modal>
     </div>
   );
-}
+};
+
+export default Login;
