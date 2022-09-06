@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, Box } from "@mui/material";
 import { useSelector } from "react-redux";
+import Heatpump from "./Heatpump";
 
 const Home = () => {
   const { title } = useSelector((state) => {
@@ -31,6 +32,7 @@ const Home = () => {
       <Box p={1} m={1}>
         <Typography variant='h4'>React-Router Enabled</Typography>
       </Box>
+      <Heatpump />
     </Box>
   );
 };

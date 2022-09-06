@@ -7,17 +7,42 @@ import {
   clearNumber,
   subNumber,
   fetchData,
-  clearData,
-  restoreData,
   calcTotal,
+  restoreData,
+  clearData,
 } from "../../features/about/aboutSlice";
-import BasicModal from "../../components/modal/BasicModal";
+import ConfirmationModal from "../../components/confirmationModal/ConfirmationModal";
+import useModal from "../../hooks/useModal";
 
 const About = () => {
   const dispatch = useDispatch();
+
+  // useModal for confirm clear data
+  const {
+    handleOpen: handleOpenClear,
+    handleClose: handleCloseClear,
+    isOpen: isOpenClear,
+  } = useModal();
+
+  const handleConfirmClear = () => {
+    handleCloseClear();
+    dispatch(clearData());
+  };
+
+  // useModal for confirm restore data
+  const {
+    handleOpen: handleOpenRestore,
+    handleClose: handleCloseRestore,
+    isOpen: isOpenRestore,
+  } = useModal();
   const { title, array, number, totalNum } = useSelector(
     (state) => state.about
   );
+
+  const handleConfirmRestore = () => {
+    handleCloseRestore();
+    dispatch(restoreData());
+  };
 
   useEffect(() => {
     dispatch(fetchData());
@@ -27,7 +52,7 @@ const About = () => {
   useEffect(() => {
     dispatch(calcTotal());
   }, [dispatch, array]);
-  
+
   const arrayAbout = array.map((item) => {
     return <AboutUnit item={item} key={item.name} />;
   });
@@ -72,22 +97,43 @@ const About = () => {
       <Box>
         <Typography variant='h3'>Total Number: {totalNum}</Typography>
       </Box>
-      <Box>
-        <Button
-          variant='outlined'
-          sx={{ margin: 1 }}
-          onClick={() => dispatch(clearData())}
-        >
-          Clear Data
-        </Button>
 
-        <Button
-          variant='outlined'
-          sx={{ margin: 1 }}
-          onClick={() => dispatch(restoreData())}
+      <Box
+        display='flex'
+        justifyContent='space-evenly'
+        alignItems='center'
+        width={400}
+      >
+        {/* Clear Data modal */}
+
+        <ConfirmationModal
+          title={"Clear Data"}
+          message={"Do you want to clear all data?"}
+          handleOpen={handleOpenClear}
+          handleClose={handleCloseClear}
+          isOpen={isOpenClear}
+          handleConfirm={handleConfirmClear}
+          handleCancel={handleCloseClear}
         >
-          Restore Data
-        </Button>
+          <Button variant='outlined' onClick={handleOpenClear}>
+            <Typography>Clear Data</Typography>
+          </Button>
+        </ConfirmationModal>
+
+        {/* Restore Data modal */}
+        <ConfirmationModal
+          title={"Restore Data"}
+          message={"Do you want to restore data?"}
+          handleOpen={handleOpenRestore}
+          handleClose={handleCloseRestore}
+          isOpen={isOpenRestore}
+          handleConfirm={handleConfirmRestore}
+          handleCancel={handleCloseRestore}
+        >
+          <Button variant='outlined' onClick={handleOpenRestore}>
+            <Typography>Restore Data</Typography>
+          </Button>
+        </ConfirmationModal>
       </Box>
 
       <Grid
