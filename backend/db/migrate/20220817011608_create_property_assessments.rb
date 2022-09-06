@@ -19,7 +19,7 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.integer :num_bldgs
       t.integer :luc
       t.string  :lu, limit: 2
-      t.string  :luc_desc
+      t.string  :lu_desc
       t.string  :bldg_type
       t.boolean :own_occ # Boolean represented as Y or N
       t.string  :owner
