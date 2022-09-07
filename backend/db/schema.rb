@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_17_011608) do
     t.integer "overall_cond"
     t.integer "bed_rms"
     t.integer "full_bth"
-    t.integer "hlf_bath"
+    t.integer "hlf_bth"
     t.integer "kitchen"
     t.integer "tt_rms"
     t.string "bdrm_cond"

@@ -52,7 +52,7 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.integer :overall_cond
       t.integer :bed_rms
       t.integer :full_bth
-      t.integer :hlf_bath
+      t.integer :hlf_bth
       t.integer :kitchen
       t.integer :tt_rms
       t.string  :bdrm_cond
