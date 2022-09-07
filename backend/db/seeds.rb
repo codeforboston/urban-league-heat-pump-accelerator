@@ -11,7 +11,6 @@
 require 'smarter_csv'
 
 options = { verbose: true, downcase_header: true }
-# key_mapping: { id: :cm_id, sam: :st_num, PID: :pid },
 
 SmarterCSV.process('tmp/fy2022pa-4.csv', options) do |chunk|
   chunk.each do |data_hash|
