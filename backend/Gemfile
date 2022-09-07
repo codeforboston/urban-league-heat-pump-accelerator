@@ -60,6 +60,9 @@ group :development do
   # linting
   gem 'rubocop'
   gem 'rubocop-rails'
+  
+  # data import for seeds
+  gem 'smarter_csv'
 
   # tests
   gem 'rspec'
