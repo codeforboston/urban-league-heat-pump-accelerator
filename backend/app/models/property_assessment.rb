@@ -56,7 +56,11 @@ class PropertyAssessment < ActiveRecord::Base
             bedrooms_count: bedrooms_count,
             bathrooms_full_count: baths_full_count,
             bathrooms_half_count: baths_half_count,
+<<<<<<< HEAD
             kitchens_count: kitchens_count,
+=======
+            kitchens_count: kitchens_count
+>>>>>>> 35cb748773cd34d3a93b709b5b2792ae7ec0e2ba
             rooms_total_count: rooms_total_count
 
         }
