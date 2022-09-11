@@ -13,7 +13,7 @@ This backend is not built with production code and security. You can run the ser
 3. You will see two folder in the folder #frontend: #back and #front
 4. Open the terminal in the #back folder and type:"npm install" to download all the packages that is listed in the package.json file.
 5. You will now see the #node_modules folder with all your packages installed.
-6. The #index.js file has the code to start the express server. Just type:"npm node ." to run the index.js file and start the server.
+6. The #index.js file has the code to start the express server. Just type:"npm node index.js" to run the index.js file and start the server.
 7. You should see a console log of "Server is available at: http://localhost:8080" on your terminal. 
 8. Your server is up and running and you can start sending RESTful api request to the server.
 

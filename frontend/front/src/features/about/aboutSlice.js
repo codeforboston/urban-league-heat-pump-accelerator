@@ -59,7 +59,6 @@ const aboutSlice = createSlice({
   },
 });
 
-console.log(aboutSlice);
 export const {
   clearNumber,
   addNumber,
