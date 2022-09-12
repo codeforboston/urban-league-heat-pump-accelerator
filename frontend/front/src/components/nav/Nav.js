@@ -10,7 +10,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import BasicModal from "../modal/BasicModal";
+import Login from "../../pages/login/Login";
 
 const Nav = () => {
   const { title } = useSelector((state) => state.nav);
@@ -40,7 +40,8 @@ const Nav = () => {
           <Button color='inherit' component={Link} to='/contact'>
             <Typography variant='h5'>Contact</Typography>
           </Button>
-          <BasicModal title='Login' />
+
+          <Login />
         </Toolbar>
       </AppBar>
     </Box>
