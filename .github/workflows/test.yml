@@ -1,0 +1,59 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    env:
+      RAILS_ENV: test
+      BUNDLE_GEMFILE: ${{ github.workspace }}/backend/Gemfile
+      DATABASE_URL: postgres://postgres:urbanleague@localhost:5432/test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        # alpine is a small linux distro- runs faster than default rhel image
+        image: postgres:alpine
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: urbanleague
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports: ["5432:5432"]
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Update bundler-audit
+        run: bundle exec bundle-audit update
+      - name: Run security checks
+        run: |
+          bundle exec bundler-audit
+          bundle exec brakeman -q -w2
+      - name: Run linters
+        run: bundle exec rubocop --parallel
+      - name: Create Test Database
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+          bundle exec rails db:schema:load
+      - name: Run tests
+        run: bundle exec rspec
