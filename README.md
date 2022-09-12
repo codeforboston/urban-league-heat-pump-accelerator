@@ -7,7 +7,7 @@ Back folder is a mock node server for the frontend to do some testing.
 # Front folder 
 Front folder is the frontend folder created by create react app.
 
-
+# Contact
 If you would like to commit or ask question about this frontend branch 
 please contact datguy7@gmail.com or on the front_end slack channel
 
