@@ -46,21 +46,20 @@ const Login = (props) => {
     lineHeight: "1.25rem",
   };
 
-  async function LoginForms(values) {}
-
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
+  async function LoginForms(values) {
+    setIsOpen(false);
+  }
 
   return (
     <div>
-      <Button color="inherit" onClick={handleOpen}>
+      <Button color="inherit" onClick={() => setIsOpen(true)}>
         <Typography variant="h5">LOGIN</Typography>
       </Button>
       <Modal
         open={isOpen}
-        onClose={handleClose}
+        onClose={() => setIsOpen(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -121,6 +120,7 @@ const Login = (props) => {
                       type="submit"
                       color="primary"
                       variant="contained"
+                      onClick={() => LoginForms}
                       style={{
                         btnstyle,
                         borderRadius: "20px",
@@ -134,20 +134,6 @@ const Login = (props) => {
                 </Paper>
               </Grid>
             </Box>
-
-            <Box
-              p={3}
-              display="flex"
-              justifyContent="space-evenly"
-              alignItems="center"
-            >
-              <Button variant="contained" onClick={handleClose}>
-                YES
-              </Button>
-              <Button variant="contained" onClick={handleClose}>
-                NO
-              </Button>
-            </Box>
           </Box>
         </Box>
       </Modal>
@@ -156,6 +142,3 @@ const Login = (props) => {
 };
 
 export default Login;
-{
-  /* test 3 */
-}
