@@ -10,9 +10,9 @@
 
 require 'smarter_csv'
 
-options = { verbose: true, downcase_header: true }
+options = { downcase_header: true }
 
-SmarterCSV.process('tmp/fy2022pa-4.csv', options) do |chunk|
+SmarterCSV.process('lib/seeds/test_seeds.csv', options) do |chunk|
   chunk.each do |data_hash|
     PropertyAssessment.create!(data_hash)
   end
