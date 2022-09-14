@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Container } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Heatpump from "./Heatpump";
 import { fetchHomeData } from "../../features/home/homeSlice";
+import SurveyorsLoginButton from "./SurveyorsLoginButton";
 const Home = () => {
   const { title } = useSelector((state) => {
     console.log(state);
@@ -16,19 +17,22 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <Box>
-      <Box
-        p={3}
-        m={3}
-        display='flex'
-        justifyContent='center'
-        alignItems='center'
-      >
-        <Typography variant='h2'>{title}</Typography>
+    <Container>
+      <Box>
+        <Box
+          p={3}
+          m={3}
+          display='flex'
+          justifyContent='center'
+          alignItems='center'
+        >
+          <Typography variant='h2'>{title}</Typography>
+        </Box>
+        Hello
+        <Heatpump />
+        <SurveyorsLoginButton />
       </Box>
-      Hello
-      <Heatpump />
-    </Box>
+    </Container>
   );
 };
 
