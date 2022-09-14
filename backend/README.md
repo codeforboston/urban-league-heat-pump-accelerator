@@ -1,24 +1,20 @@
-# README
+# Urban League Heat Pump Accelerator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## General Information
 
-Things you may want to cover:
+Urban League Heat Pump Accelerator provides information on [heat pump](https://www.energy.gov/energysaver/heat-pump-systems) programs in Massachusetts to spur faster adoption.
+Heat pumps consume less power than HVAC, reducing power bills and carbon emissions.
 
-* Ruby version
+# Installation Overview
 
-* System dependencies
+For details on setup, see [Installation](./docs/installation.md)
 
-* Configuration
+# Contributing
 
-* Database creation
+See [Contributing](./docs/contributing.md) for how to commit and submit code to the project!
 
-* Database initialization
+# Technologies Used
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+| Server:             | Database: |
+|---------------------| --------- |
+| Rails (Ruby 3.1.2)  | Postgres  |
