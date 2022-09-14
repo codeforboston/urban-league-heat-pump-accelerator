@@ -9,11 +9,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require 'smarter_csv'
+require_relative 'seed_importer'
 
-options = { downcase_header: true }
+# rubocop:disable Style/MixinUsage
+include SeedImporter
+# rubocop:enable Style/MixinUsage
 
-SmarterCSV.process('lib/seeds/test_seeds.csv', options) do |chunk|
-  chunk.each do |data_hash|
-    PropertyAssessment.create!(data_hash)
-  end
-end
+SeedImporter.import_seed_data(Rails.configuration.seed_data_path)
