@@ -7,6 +7,8 @@ import { Grid, Paper, Avatar, TextField, Checkbox } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { setLogin } from "../../features/login/loginSlice";
 
 const style = {
   position: "absolute",
@@ -21,10 +23,13 @@ const style = {
 };
 
 const Login = (props) => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   // Login Styless
@@ -50,6 +55,12 @@ const Login = (props) => {
 
   async function LoginForms(values) {
     setIsOpen(false);
+
+    dispatch(
+      setLogin({ userName: values.userName, password: values.password })
+    );
+
+    reset();
   }
 
   return (
