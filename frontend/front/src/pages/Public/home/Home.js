@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { Typography, Box, Container } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Heatpump from "./Heatpump";
-import { fetchHomeData } from "../../features/home/homeSlice";
-import SurveyorsLoginButton from "./SurveyorsLoginButton";
+import { fetchHomeData } from "../../../features/home/homeSlice";
 const Home = () => {
   const { title } = useSelector((state) => {
     console.log(state);
@@ -30,7 +29,6 @@ const Home = () => {
         </Box>
         Hello
         <Heatpump />
-        <SurveyorsLoginButton />
       </Box>
     </Container>
   );

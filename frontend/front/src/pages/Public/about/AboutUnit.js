@@ -7,7 +7,7 @@ import {
   deleteDataByName,
   increaseByName,
   removeItems,
-} from "../../features/about/aboutSlice";
+} from "../../../features/about/aboutSlice";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";

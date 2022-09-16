@@ -10,9 +10,9 @@ import {
   calcTotal,
   restoreData,
   clearData,
-} from "../../features/about/aboutSlice";
-import ConfirmationModal from "../../components/confirmationModal/ConfirmationModal";
-import useModal from "../../hooks/useModal";
+} from "../../../features/about/aboutSlice";
+import ConfirmationModal from "../../../components/confirmationModal/ConfirmationModal";
+import useModal from "../../../hooks/useModal";
 
 const About = () => {
   const dispatch = useDispatch();

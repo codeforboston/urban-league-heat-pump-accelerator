@@ -5,7 +5,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { setLogin } from "../../features/login/loginSlice";
+import { setLogin } from "../../../features/login/loginSlice";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -51,7 +51,7 @@ const Login = () => {
 
   return (
     <Paper elevation={5} style={paperStyle}>
-      <Grid align="center">
+      <Grid align='center'>
         <Avatar style={avatarStyle}>
           <LockOutlinedIcon />
         </Avatar>
@@ -60,14 +60,14 @@ const Login = () => {
 
       <form onSubmit={handleSubmit(LoginForms)}>
         <TextField
-          id="standard-basic"
-          placeholder="Enter UserName"
-          type="text"
+          id='standard-basic'
+          placeholder='Enter UserName'
+          type='text'
           style={btnstyle}
-          name="userName"
+          name='userName'
           fullWidth
-          label="UserName"
-          variant="standard"
+          label='UserName'
+          variant='standard'
           {...register("userName", {
             required: {
               value: true,
@@ -77,14 +77,14 @@ const Login = () => {
         />
         <span style={errorStyles}>{errors?.userName?.message}</span>
         <TextField
-          id="standard-basic"
-          placeholder="Enter password"
-          type="password"
+          id='standard-basic'
+          placeholder='Enter password'
+          type='password'
           style={btnstyle}
-          name="password"
+          name='password'
           fullWidth
-          label="Password"
-          variant="standard"
+          label='Password'
+          variant='standard'
           {...register("password", {
             required: {
               value: true,
@@ -95,14 +95,14 @@ const Login = () => {
         <span style={errorStyles}>{errors?.password?.message}</span>
         <div style={{ marginTop: "5px" }}>
           <FormControlLabel
-            control={<Checkbox name="checkedB" color="primary" />}
-            label="Remember me"
+            control={<Checkbox name='checkedB' color='primary' />}
+            label='Remember me'
           />
         </div>
         <Button
-          type="submit"
-          color="primary"
-          variant="contained"
+          type='submit'
+          color='primary'
+          variant='contained'
           onClick={() => LoginForms}
           style={{
             btnstyle,

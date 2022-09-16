@@ -3,9 +3,9 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { clearData, restoreData } from "../../features/about/aboutSlice";
+import { clearData, restoreData } from "../../../features/about/aboutSlice";
 import { useDispatch } from "react-redux";
-import useModal from "../../hooks/useModal";
+import useModal from "../../../hooks/useModal";
 
 const style = {
   position: "absolute",
@@ -23,13 +23,10 @@ const ClearCartModal = (props) => {
   const dispatch = useDispatch();
   const { handleOpen, handleClose, isOpen } = useModal();
 
-
-
   const handleRestoreData = () => {
     handleClose();
     dispatch(restoreData());
   };
-
 
   return (
     <Box>

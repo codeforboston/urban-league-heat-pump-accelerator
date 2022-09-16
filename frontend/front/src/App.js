@@ -1,23 +1,29 @@
 import "./App.css";
 import Box from "@mui/material/Box";
 
-import Home from "./pages/home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import About from "./pages/about/About";
-import Nav from "./components/nav/Nav";
-import Contact from "./pages/contact/Contact";
-import Login from "./pages/login/Login";
+import Contact from "./pages/Public/contact/Contact";
+import ViewMenu from "./pages/viewMenu/ViewMenu";
+import Home from "./pages/Public/home/Home";
+import About from "./pages/Public/about/About";
+import Login from "./pages/Surveyor/login/Login";
 
 function App() {
   return (
     <Box>
       <BrowserRouter>
-        <Nav />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
+          <Route index element={<ViewMenu />} />
+
+          <Route path='surveyor' element={<Login />}>
+            <Route path='dashboard' />
+            <Route path='houseProfile' />
+          </Route>
+          <Route path='public' element={<Home />}>
+            {/* <Nav /> */}
+            <Route path='about' element={<About />} />
+            <Route path='contact' element={<Contact />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Box>
