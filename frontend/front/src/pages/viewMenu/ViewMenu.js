@@ -3,6 +3,7 @@ import { Container } from "@mui/system";
 import React from "react";
 import { Link } from "react-router-dom";
 import AdminView from "./AdminView";
+import DeveloperView from "./DeveloperView";
 import PublicView from "./PublicView";
 import SurveyorsView from "./SurveyorView";
 
@@ -30,13 +31,10 @@ const ViewMenu = () => {
               <Typography variant='h3'>Selection Menu</Typography>
             </Box>
             <Box mt={4}>
-              <Link to='surveyor'>
-                <SurveyorsView />
-              </Link>
-              <Link to='public'>
-                <PublicView />
-              </Link>
-              <AdminView />
+              <SurveyorsView link='surveyor' />
+              <PublicView link='public' />
+              <DeveloperView link='dev' />
+              <AdminView link='admin' />
             </Box>
           </Box>
         </Box>
