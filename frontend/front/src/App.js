@@ -22,11 +22,7 @@ function App() {
           </Route>
           <Route path='public/*' element={<PublicContainer />} />
 
-          <Route path='dev/*' element={<DevContainer />}>
-            {/* <Nav /> */}
-            <Route path='about' element={<About />} />
-            <Route path='contact' element={<Contact />} />
-          </Route>
+          <Route path='dev/*' element={<DevContainer />} />
         </Routes>
       </BrowserRouter>
     </Box>
