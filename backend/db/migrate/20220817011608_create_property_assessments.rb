@@ -14,7 +14,7 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.string  :st_name
       t.integer :unit_num
       t.string  :city
-      t.integer :zipcode
+      t.string  :zipcode
       t.integer :bldg_seq
       t.integer :num_bldgs
       t.integer :luc
