@@ -9,15 +9,12 @@ import Nav from "./nav/Nav";
 const PublicContainer = () => {
   return (
     <Box>
-      <Typography>Naviagation Wrapper</Typography>
       <Nav />
-      <Container>
-        <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='contact' element={<Contact />}></Route>
-          <Route path='about' element={<About />}></Route>
-        </Routes>
-      </Container>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="contact" element={<Contact />}></Route>
+        <Route path="about" element={<About />}></Route>
+      </Routes>
     </Box>
   );
 };
