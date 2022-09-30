@@ -192,7 +192,7 @@ const Home = () => {
         </Grid>
       </Container>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
