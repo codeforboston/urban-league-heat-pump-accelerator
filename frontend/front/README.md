@@ -13,7 +13,11 @@ To keep formatting the same for the front-end files, you must download the #pret
 
 Now that you're in the #frontend_dat repo, navigate into the #frontend file and then naviate to the #front file. Inside the #front file, open a terminal (CLI) inside the #front file. 
 
-If this is your first time downloading the frontend_dat repo, you will not have a node_modules with all the necessary packages. To download the packages listed in package.json, you need to type this command into the terminal (currently at your #front file): "yarn install".
+If this is your first time downloading the frontend_dat repo, you will not have a node_modules with all the necessary packages. 
+
+We're using yarn instead of npm. Install yarn by typing this command in the terminal: npm install --global yarn
+
+Now that you have yarn installed, to download the packages listed in package.json, you need to type this command into the terminal (currently at your #front file): "yarn install".
 
 After yarn install all the packages listed in package.json, you can now run the create-react-app program. Type: "yarn start". You can access the react browser view at http://localhost:3000/. 
 
