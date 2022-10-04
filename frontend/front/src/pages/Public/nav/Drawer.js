@@ -23,12 +23,12 @@ const DrawerComp = () => {
                     </ListItemButton> 
                     <ListItemButton onClick={()=> setOpenDrawer(false)} component={Link} to='contact'>
                             <ListItemIcon>
-                                <ListItemText>Contact</ListItemText>
+                                <ListItemText>CONTACT</ListItemText>
                             </ListItemIcon>
                     </ListItemButton> 
                     <ListItemButton onClick={()=> setOpenDrawer(false)} component={Link} to='cta'>
                             <ListItemIcon>
-                                <ListItemText>Learn More</ListItemText>
+                                <ListItemText>LEARN MORE</ListItemText>
                             </ListItemIcon>
                     </ListItemButton> 
                 </List>

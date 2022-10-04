@@ -6,7 +6,7 @@ import {
   Toolbar,
   Typography,
   useMediaQuery,
-  useTheme
+  useTheme,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -22,27 +22,31 @@ const Nav = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
         <Toolbar>
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            {title}
-          </Typography>
+
             {
               isMatch ? (
                 <>
+                  <Typography fontWeight='medium' textSize='20' component='div' sx={{ flexGrow: 1 }}>
+                    {title}
+                  </Typography>
                   <DrawerComp/>
                 </>
               ) : (
                 <>
+                  <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+                    {title}
+                  </Typography>
                   <Button color='inherit' component={Link} to=''>
-                    <Typography variant='h5'>HOME</Typography>
+                    <Typography variant='h6'>HOME</Typography>
                   </Button>
                   <Button color='inherit' component={Link} to='about'>
-                    <Typography variant='h5'>ABOUT</Typography>
+                    <Typography variant='h6'>ABOUT</Typography>
                   </Button>
                   <Button color='inherit' component={Link} to='contact'>
-                    <Typography variant='h5'>Contact</Typography>
+                    <Typography variant='h6'>CONTACT</Typography>
                   </Button>
-                  <Button color='inherit' component={Link} to='cta'>
-                    <Typography variant='h5'>Learn More</Typography>
+                  <Button variant="contained" color="success" component={Link} to='cta'>
+                    <Typography variant='h6' component='div'>LEARN MORE</Typography>
                   </Button>
                 </>
               )
