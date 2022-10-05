@@ -6,6 +6,7 @@ import Contact from "./pages/Public/contact/Contact";
 import ViewMenu from "./pages/viewMenu/ViewMenu";
 import About from "./pages/Public/about/About";
 import Login from "./pages/Surveyor/login/Login";
+import Map from "./pages/Surveyor/Map";
 import DevContainer from "./pages/Developer/DevContainer";
 import PublicContainer from "./pages/Public/PublicContainer";
 
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route index element={<ViewMenu />} />
 
+          <Route path='map' element={<Map />} />
           <Route path='surveyor' element={<Login />}>
             <Route path='dashboard' />
             <Route path='houseProfile' />
