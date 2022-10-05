@@ -5,7 +5,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { setLogin } from "../../../features/login/loginSlice";
+import { setAuthenticated, setLogin } from "../../../features/login/loginSlice";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -44,9 +44,10 @@ const Login = () => {
       setLogin({ userName: values.userName, password: values.password })
     );
 
+    dispatch(setAuthenticated(true));
     reset();
 
-    navigate("/");
+    navigate("dashboard");
   }
 
   return (

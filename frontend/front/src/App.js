@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route index element={<ViewMenu />} />
 
-          <Route path='surveyor' element={<SurveyorContainer />} />
+          <Route path='surveyor/*' element={<SurveyorContainer />} />
 
           <Route path='public/*' element={<PublicContainer />} />
 
