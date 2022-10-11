@@ -12,16 +12,30 @@ import LeftDrawer from "./LeftDrawer";
 const Nav = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position='static'>
         <Toolbar>
-          <LeftDrawer />
+          <Box sx={{ display: { xs: "block", sm: "none" } }}>
+            <LeftDrawer />
+          </Box>
 
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            DASHBOARD
-          </Typography>
-          <Button color="inherit" component={Link} to="account">
-            <Typography variant="h6">ACCOUNT</Typography>
-          </Button>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
+            <Button color='inherit' component={Link} to='dashboard'>
+              <Typography variant='h6' component='div'>
+                DASHBOARD
+              </Typography>
+            </Button>
+          </Box>
+
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Button color='inherit' component={Link} to='account'>
+              <Typography variant='h6'>ACCOUNT</Typography>
+            </Button>
+          </Box>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Button color='inherit' component={Link} to=''>
+              <Typography variant='h6'>LOGOUT</Typography>
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>
