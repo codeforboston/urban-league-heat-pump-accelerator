@@ -1,3 +1,6 @@
 # ignore IDE settings
 .idea
 .vscode/
+
+# ignore python files
+._pycache_/

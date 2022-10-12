@@ -1,10 +1,13 @@
 from htmltools import css
-from shiny import App, reactive, render, ui
-from shinywidgets import output_widget, reactive_read, register_widget
+from shiny import App, ui
+from shinywidgets import output_widget, register_widget
+from branca.colormap import linear
 
 import pandas as pd
 import geopandas as gp
 import ipyleaflet as L
+import pathlib
+import json
 
 app_ui = ui.page_fluid(
 
@@ -20,18 +23,26 @@ app_ui = ui.page_fluid(
 
 def server(input, output, session):
     
-    parcels = gp.read_file("https://bostonopendata-boston.opendata.arcgis.com/datasets/boston::parcels-2021.geojson?outSR=%7B%22latestWkid%22%3A2249%2C%22wkid%22%3A102686%7D")
+    dir = pathlib.Path(__file__).parent
 
-    parcels = parcels[parcels['MAP_PAR_ID'] == 'ISLAND']
+    property = gp.read_file(dir / 'data/2021_parcels_property-assessment.geojson')
 
-    geo_data = L.GeoData(geo_dataframe=parcels,
-    style={'stroke': False, 'fillColor': '#FF0000', 'fillOpacity': 0.5},
-    name = 'Parcels')
+    def load_data(filename, file_type):
+        with open(filename, 'r') as f:
+            return file_type(f)
+    
+    age = L.Choropleth(
+        geo_data = load_data(dir / 'data/2021_parcels_property-assessment.geojson', json.load),
+        choro_data = dict(zip(property['GIS_ID'], property['YR_BUILT'].astype(float))),
+        key_on = "properties['GIS_ID']",
+        colormap = linear.YlOrRd_04,
+        style={'fillOpacity': .7}
+        )
     
     # Initialize and display when the session starts (1)
     map = L.Map(basemap=L.basemaps.Stamen.Toner, zoom=12, scroll_wheel_zoom=True, center=(42.34558, -70.89395))
-    # Add parcel layers
-    map.add_layer(geo_data)
+    # Add parcel layers; will grow more lines as needed
+    map.add_layer(age)
     # Add layer control
     map.add_control(L.LayersControl(position="topright"))
     register_widget("map", map)
