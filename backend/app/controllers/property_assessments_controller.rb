@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+# Property Assessments from the City of Boston
 class PropertyAssessmentsController < ApplicationController
   def index
     @property_assessments = PropertyAssessment.all

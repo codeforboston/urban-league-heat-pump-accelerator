@@ -5,13 +5,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
-gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
-gem 'sprockets-rails'
+gem 'bootsnap', require: false
+gem 'jbuilder'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
-gem 'jbuilder'
+gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
+gem 'sprockets-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
@@ -20,10 +20,10 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console'
   gem 'brakeman'
   gem 'bundle-audit'
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'smarter_csv'
+  gem 'web-console'
 end
