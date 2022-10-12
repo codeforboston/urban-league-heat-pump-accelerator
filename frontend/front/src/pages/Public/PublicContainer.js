@@ -6,17 +6,29 @@ import Contact from "./contact/Contact";
 import About from "./about/About";
 import Nav from "./nav/Nav";
 import Footer from "./footer/Footer";
+import { ClassNames } from "@emotion/react";
 
 const PublicContainer = () => {
   return (
-    <Box>
+    <Box
+      style={{
+        display: 'flex',
+        minHeight: '100vh',
+        flexDirection: 'column'
+      }}
+    >
       <Nav />
-      <Routes>
+      <Routes
+        style={{
+          flex: 1
+        }}
+      >
         <Route path='/' element={<Home />}></Route>
         <Route path='contact' element={<Contact />}></Route>
         <Route path='about' element={<About />}></Route>
       </Routes>
-      <Footer />
+      
+      <Footer/>
     </Box>
   );
 };
