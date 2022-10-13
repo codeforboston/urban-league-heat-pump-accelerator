@@ -18,13 +18,9 @@ const PublicContainer = () => {
       }}
     >
       <Nav />
-      <Routes
-        style={{
-          flex: 1
-        }}
-      >
+      <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='contact' element={<Contact />}></Route>
+        <Route path='contact' element={<Contact />} ></Route>
         <Route path='about' element={<About />}></Route>
       </Routes>
       
