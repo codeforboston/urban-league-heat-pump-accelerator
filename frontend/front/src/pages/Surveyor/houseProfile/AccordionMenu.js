@@ -23,7 +23,7 @@ export default function AccordionWrap() {
         sx={{ bgcolor: "whitesmoke" }}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
           aria-controls='panel1bh-content'
           id='panel1bh-header'
           sx={{ backgroundColor: "#1976d2", color: "white" }}
@@ -43,7 +43,7 @@ export default function AccordionWrap() {
         sx={{ mt: 2, bgcolor: "whitesmoke" }}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
           aria-controls='panel2bh-content'
           id='panel2bh-header'
           sx={{ backgroundColor: "#1976d2", color: "white" }}
@@ -63,7 +63,7 @@ export default function AccordionWrap() {
         sx={{ mt: 2, bgcolor: "whitesmoke" }}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
           aria-controls='panel3bh-content'
           id='panel3bh-header'
           sx={{ backgroundColor: "#1976d2", color: "white" }}

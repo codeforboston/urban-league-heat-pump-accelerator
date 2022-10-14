@@ -1,39 +1,43 @@
 import React from "react";
-import { Box, Button, Radio, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import RadioGroup, { useRadioGroup } from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import QuestionUnit from "./question/QuestionUnit";
+import { Box, Button } from "@mui/material";
 
-// const StyledFormControlLabel = styled((props) => (
-//   <FormControlLabel {...props} />
-// ))(({ theme, checked }) => ({
-//   ".MuiFormControlLabel-label": checked && {
-//     color: theme.palette.primary.main,
-//   },
-// }));
-
-// function MyFormControlLabel(props) {
-//   const radioGroup = useRadioGroup();
-
-//   let checked = false;
-
-//   if (radioGroup) {
-//     checked = radioGroup.value === props.value;
-//   }
-
-//   return <StyledFormControlLabel checked={checked} {...props} />;
-// }
+import QuestionUnit from "./question/QRadio";
 
 const AssessmentPanel = () => {
   return (
     <>
       <Box>
-        <QuestionUnit />
-        <QuestionUnit />
-        <QuestionUnit />
-        <QuestionUnit />
+        <QuestionUnit
+          question='Visited?'
+          label1='Yes'
+          label2='No'
+          label3='NA'
+        />
+        <QuestionUnit
+          question='Talked with Owner?'
+          label1='Yes'
+          label2='No'
+          label3='NA'
+        />
+        <QuestionUnit
+          question='Was Home?'
+          label1='Yes'
+          label2='No'
+          label3='NA'
+        />
+        <QuestionUnit
+          question='Interested?'
+          label1='Yes'
+          label2='No'
+          label3='NA'
+        />
 
+        <QuestionUnit
+          question='What is the primary spoken language??'
+          label1='English'
+          label2='Spanish'
+          label3='Mandarin'
+        />
         <Box textAlign='center' my={2}>
           <Button variant='contained' size='large'>
             Save

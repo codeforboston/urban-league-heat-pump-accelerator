@@ -27,9 +27,9 @@ const HouseProfile = () => {
           <AccordionMenu />
         </Grid>
         <Grid item xs={12}>
-          <Box textAlign='center' mb={4}>
-            <Button variant='contained' size='large'>
-              Save All
+          <Box textAlign='center' my={4}>
+            <Button variant='contained' size='large' color='success'>
+              Sumbit Survey
             </Button>
           </Box>
         </Grid>
