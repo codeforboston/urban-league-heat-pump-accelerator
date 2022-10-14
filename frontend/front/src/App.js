@@ -1,15 +1,15 @@
-import './App.css'
-import Box from '@mui/material/Box'
+import "./App.css";
+import Box from "@mui/material/Box";
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Contact from './pages/Public/contact/Contact'
-import ViewMenu from './pages/viewMenu/ViewMenu'
-import About from './pages/Public/about/About'
-import Login from './pages/Surveyor/login/Login'
-import DevContainer from './pages/Developer/DevContainer'
-import PublicContainer from './pages/Public/PublicContainer'
-import SurveyorContainer from './pages/Surveyor/SurveyorContainer'
-import AdminContainer from './pages/AdminView/AdminContainer'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Contact from "./pages/Public/contact/Contact";
+import ViewMenu from "./pages/viewMenu/ViewMenu";
+import About from "./pages/Public/about/About";
+import Login from "./pages/Surveyor/login/Login";
+import DevContainer from "./pages/Developer/DevContainer";
+import PublicContainer from "./pages/Public/PublicContainer";
+import SurveyorContainer from "./pages/Surveyor/SurveyorContainer";
+import AdminContainer from "./pages/Admin/AdminContainer";
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </Box>
-  )
+  );
 }
 
-export default App
+export default App;

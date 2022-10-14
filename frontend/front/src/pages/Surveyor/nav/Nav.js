@@ -14,7 +14,7 @@ const Nav = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
         <Toolbar>
-          <Box sx={{ display: { xs: "block", sm: "none" } }}>
+          <Box ml='auto' sx={{ display: { xs: "block", sm: "none" } }}>
             <LeftDrawer />
           </Box>
 

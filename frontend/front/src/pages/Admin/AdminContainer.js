@@ -1,10 +1,10 @@
-import React from 'react'
-import { Route, Routes, Link } from 'react-router-dom'
-import { Box, Button, Typography } from '@mui/material'
+import React from "react";
+import { Route, Routes, Link } from "react-router-dom";
+import { Box, Button, Typography } from "@mui/material";
 
-import Dashboard from './dashboard/Dashboard'
-import House from './house/House'
-import Nav from './nav/Nav'
+import Dashboard from "./dashboard/Dashboard";
+import House from "./house/House";
+import Nav from "./nav/Nav";
 
 const AdminContainer = () => {
   return (
@@ -21,7 +21,7 @@ const AdminContainer = () => {
         {/* <Footer /> */}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default AdminContainer
+export default AdminContainer;
