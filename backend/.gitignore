@@ -18,6 +18,9 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
+# Ignore downloaded seed data
+/lib/seeds/download/**
+
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
@@ -29,3 +32,4 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
