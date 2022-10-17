@@ -6,6 +6,7 @@ import Nav from "./nav/Nav";
 import Login from "./login/Login";
 import Dashboard from "./dashboard/Dashboard";
 import Account from "./account/Account";
+import HouseProfile from "./houseProfile/HouseProfile";
 
 const SurveyorContainer = () => {
   const { authenticated } = useSelector((state) => state.login);
@@ -13,11 +14,12 @@ const SurveyorContainer = () => {
   return (
     <Box>
       {authenticated ? <Nav /> : ""}
-      <Box sx={{ maxWidth: "800px" }} m="auto">
+      <Box sx={{ maxWidth: "800px" }} m='auto'>
         <Routes>
-          <Route path="/" element={<Login />}></Route>
-          <Route path="dashboard" element={<Dashboard />}></Route>
-          <Route path="account" element={<Account />}></Route>
+          <Route path='/' element={<Login />}></Route>
+          <Route path='dashboard' element={<Dashboard />}></Route>
+          <Route path='account' element={<Account />}></Route>
+          <Route path='house' element={<HouseProfile />}></Route>
         </Routes>
       </Box>
     </Box>

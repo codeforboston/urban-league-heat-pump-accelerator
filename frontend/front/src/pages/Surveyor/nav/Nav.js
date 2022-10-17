@@ -14,7 +14,7 @@ const Nav = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
         <Toolbar>
-          <Box sx={{ display: { xs: "block", sm: "none" } }}>
+          <Box ml='auto' sx={{ display: { xs: "block", sm: "none" } }}>
             <LeftDrawer />
           </Box>
 
@@ -29,6 +29,11 @@ const Nav = () => {
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Button color='inherit' component={Link} to='account'>
               <Typography variant='h6'>ACCOUNT</Typography>
+            </Button>
+          </Box>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Button color='inherit' component={Link} to='house'>
+              <Typography variant='h6'>HOUSE PROFILE</Typography>
             </Button>
           </Box>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>

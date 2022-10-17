@@ -9,6 +9,7 @@ import Login from "./pages/Surveyor/login/Login";
 import DevContainer from "./pages/Developer/DevContainer";
 import PublicContainer from "./pages/Public/PublicContainer";
 import SurveyorContainer from "./pages/Surveyor/SurveyorContainer";
+import AdminContainer from "./pages/Admin/AdminContainer";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Route path='public/*' element={<PublicContainer />} />
 
           <Route path='dev/*' element={<DevContainer />} />
+
+          <Route path='admin/*' element={<AdminContainer />} />
         </Routes>
       </BrowserRouter>
     </Box>

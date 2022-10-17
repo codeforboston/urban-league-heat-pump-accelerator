@@ -7,26 +7,26 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
     # Data key: https://data.boston.gov/dataset/property-assessment/resource/db9d1e04-080b-4477-96e0-c440f3ff29f1
     create_table :property_assessments do |t|
       t.timestamps
-      t.integer :pid
-      t.integer :cm_id
-      t.integer :gis_id
+      t.bigint  :pid
+      t.bigint  :cm_id
+      t.bigint  :gis_id
       t.string  :st_num
       t.string  :st_name
       t.integer :unit_num
       t.string  :city
-      t.integer :zipcode
+      t.string  :zipcode
       t.integer :bldg_seq
       t.integer :num_bldgs
       t.integer :luc
       t.string  :lu, limit: 2
       t.string  :lu_desc
       t.string  :bldg_type
-      t.boolean :own_occ # Boolean represented as Y or N
+      t.string  :own_occ # ought to be boolean
       t.string  :owner
       t.string  :mail_addressee
       t.string  :mail_address
       t.string  :mail_city
-      t.string  :mail_state, limit: 2
+      t.string  :mail_state # , limit: 2 ("Canada" record tripped it up)
       t.string  :mail_zipcode
       t.float   :res_floor
       t.integer :cd_floor
@@ -42,9 +42,9 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.integer :gross_tax
       t.integer :yr_built
       t.integer :yr_remodel
-      t.string  :structure_class, limit: 1
-      t.string  :roof_structure, limit: 1
-      t.string  :roof_cover, limit: 1
+      t.string  :structure_class # , limit: 1
+      t.string  :roof_structure # , limit: 1
+      t.string  :roof_cover # , limit: 1
       t.string  :int_wall
       t.string  :ext_finished
       t.integer :int_cond
@@ -52,7 +52,7 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.integer :overall_cond
       t.integer :bed_rms
       t.integer :full_bth
-      t.integer :hlf_bath
+      t.integer :hlf_bth
       t.integer :kitchen
       t.integer :tt_rms
       t.string  :bdrm_cond
@@ -70,7 +70,7 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
       t.string  :orientation
       t.integer :num_parking
       t.string  :prop_view
-      t.boolean :corner_unit # Boolean represented as Y or N
+      t.string  :corner_unit # ought to be boolean
     end
   end
 end
