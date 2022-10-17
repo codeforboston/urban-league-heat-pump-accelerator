@@ -19,7 +19,7 @@ const Nav = () => {
     const isMatch = useMediaQuery(theme.breakpoints.down('sm'));
     console.log(isMatch);
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position='static'>
         <Toolbar>
 

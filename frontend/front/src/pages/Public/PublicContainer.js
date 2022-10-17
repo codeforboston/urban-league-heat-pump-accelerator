@@ -9,14 +9,21 @@ import Footer from './footer/Footer'
 
 const PublicContainer = () => {
   return (
-    <Box>
+    <Box
+      style={{
+        display: 'flex',
+        minHeight: '100vh',
+        flexDirection: 'column'
+      }}
+    >
       <Nav />
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='contact' element={<Contact />}></Route>
+        <Route path='contact' element={<Contact />} ></Route>
         <Route path='about' element={<About />}></Route>
       </Routes>
-      <Footer />
+      
+      <Footer/>
     </Box>
   )
 }
