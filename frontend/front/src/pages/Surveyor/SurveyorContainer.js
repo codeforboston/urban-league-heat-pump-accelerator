@@ -7,6 +7,7 @@ import Login from "./login/Login";
 import Dashboard from "./dashboard/Dashboard";
 import Account from "./account/Account";
 import HouseProfile from "./houseProfile/HouseProfile";
+import EditAccount from "./account/edit/EditAccount";
 
 const SurveyorContainer = () => {
   const { authenticated } = useSelector((state) => state.login);
@@ -19,6 +20,7 @@ const SurveyorContainer = () => {
           <Route path='/' element={<Login />}></Route>
           <Route path='dashboard' element={<Dashboard />}></Route>
           <Route path='account' element={<Account />}></Route>
+          <Route path='account/edit' element={<EditAccount />}></Route>
           <Route path='house' element={<HouseProfile />}></Route>
         </Routes>
       </Box>
