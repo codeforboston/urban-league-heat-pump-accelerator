@@ -10,7 +10,7 @@ const Contact = () => {
   console.log(title);
 
   return (
-    <Box>
+    <Box sx={{ flexGrow: 1 }}>
       <Box p={1} m={1}>
         <Typography
           variant="h2"
@@ -49,7 +49,6 @@ const Contact = () => {
             <Box mt={5}> Phone: {Ulem.phone} </Box>
             <Box mt={5}> Email: {Ulem.email} </Box>
             <Box mt={5}>
-              {" "}
               Website:
               <Link
                 mt={5}
