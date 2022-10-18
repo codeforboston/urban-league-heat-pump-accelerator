@@ -5,22 +5,22 @@ import React from "react";
 }
 const data = [
   "listview1",
-  "listview1",
-  "listview1",
-  "listview1",
-  "listview1",
-  "listview1",
-  "listview1",
-  "listview1",
-  "listview1",
-  "listview1",
-  "listview1",
+  "listview2",
+  "listview3",
+  "listview4",
+  "listview5",
+  "listview6",
+  "listview7",
+  "listview8",
+  "listview9",
+  "listview10",
+  "listview11",
 ];
 
 const ListView = () => {
   const itemMap = data.map((item) => {
     return (
-      <Grid item xs={12}>
+      <Grid item xs={12} key={item}>
         <ButtonBase sx={{ width: "100%" }}>
           <Box pt={2} borderTop={1} px={2} sx={{ width: "100%" }}>
             <Box textAlign='left'>

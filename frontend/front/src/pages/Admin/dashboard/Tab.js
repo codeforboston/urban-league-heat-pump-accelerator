@@ -2,11 +2,10 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import House from "../house/House";
+import House from "./houseTab/House";
 import { Tabs } from "@mui/material";
-import User from "../user/User";
+import User from "./userTab/User";
 
 export default function LabTabs() {
   const [value, setValue] = React.useState("1");

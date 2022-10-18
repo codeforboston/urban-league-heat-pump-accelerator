@@ -49,7 +49,6 @@ const Contact = () => {
             <Box mt={5}> Phone: {Ulem.phone} </Box>
             <Box mt={5}> Email: {Ulem.email} </Box>
             <Box mt={5}>
-              {" "}
               Website:
               <Link
                 mt={5}
