@@ -45,7 +45,7 @@ const Nav = () => {
                   <Button color='inherit' component={Link} to='contact'>
                     <Typography variant='h6'>CONTACT</Typography>
                   </Button>
-                  <Button variant="contained" color="success" component={Link} to='cta'>
+                  <Button variant="contained" color="success" component={Link} to='info'>
                     <Typography variant='h6' component='div'>LEARN MORE</Typography>
                   </Button>
                 </>
