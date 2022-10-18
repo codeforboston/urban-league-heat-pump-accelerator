@@ -13,13 +13,13 @@ import { useNavigate } from "react-router-dom";
 const columns = [
   { id: "hid", label: "HouseID", minWidth: 50 },
   { id: "address", label: "Address", minWidth: 200 },
+  { id: "city", label: "City", minWidth: 200 },
   { id: "zipcode", label: "Zipcode", minWidth: 50 },
   {
-    id: "status",
-    label: "Status",
+    id: "completed",
+    label: "Completed",
     minWidth: 170,
     align: "right",
-    format: (value) => value.toLocaleString("en-US"),
   },
   {
     id: "surveyor",

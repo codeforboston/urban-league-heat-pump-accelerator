@@ -1,5 +1,6 @@
 import { Box, Grid, Typography, Stack, ButtonBase } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 {
 }
@@ -18,10 +19,15 @@ const data = [
 ];
 
 const ListView = () => {
+  const navigate = useNavigate();
+
+  const OnclickFx = () => {
+    navigate("/surveyor/house");
+  };
   const itemMap = data.map((item) => {
     return (
       <Grid item xs={12} key={item}>
-        <ButtonBase sx={{ width: "100%" }}>
+        <ButtonBase sx={{ width: "100%" }} onClick={() => OnclickFx()}>
           <Box pt={2} borderTop={1} px={2} sx={{ width: "100%" }}>
             <Box textAlign='left'>
               <Typography>12345 John Smith Way</Typography>
