@@ -3,8 +3,8 @@ lock '~> 3.17.1'
 
 set :application, 'heatpumpapp'
 set :repo_url, 'https://github.com/codeforboston/urban-league-heat-pump-accelerator.git'
-set :branch, "capistrano-deploy"
-set :deploy_to, /var/www/#{fetch :application}
+set :branch, 'capistrano-deploy'
+set :deploy_to, '/var/www/heatpumpapp'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
