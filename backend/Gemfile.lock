@@ -148,9 +148,11 @@ GEM
       timeout
     net-ssh (7.0.1)
     nio4r (2.5.8)
-    nokogiri (1.13.8-arm64-darwin)
+    nokogiri (1.13.9-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.8-x86_64-linux)
+    nokogiri (1.13.9-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     parallel (1.22.1)
     parser (3.1.2.1)
@@ -273,6 +275,7 @@ DEPENDENCIES
   ed25519
   factory_bot_rails
   jbuilder
+  nokogiri (>= 1.13.9)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)

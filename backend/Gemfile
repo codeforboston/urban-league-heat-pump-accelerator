@@ -28,6 +28,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'ed25519'
+  gem 'nokogiri', '>=1.13.9'
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'smarter_csv'
