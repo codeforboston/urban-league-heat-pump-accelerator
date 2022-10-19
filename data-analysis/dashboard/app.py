@@ -25,16 +25,15 @@ def server(input, output, session):
     
     dir = pathlib.Path(__file__).parent
 
-    property = gp.read_file(dir / 'data/2021_parcels_property-assessment.geojson')
+    prop_assess = pd.read_csv(dir / 'data/2021_prop-assess.csv')
 
     def load_data(filename, file_type):
         with open(filename, 'r') as f:
             return file_type(f)
     
     age = L.Choropleth(
-        geo_data = load_data(dir / 'data/2021_parcels_property-assessment.geojson', json.load),
-        choro_data = dict(zip(property['GIS_ID'], property['YR_BUILT'].astype(float))),
-        key_on = "properties['GIS_ID']",
+        geo_data = load_data(dir / 'data/2021_parcels.geojson', json.load),
+        choro_data = dict(zip(prop_assess['GIS_ID'], prop_assess['YR_BUILT'].astype(float))),
         colormap = linear.YlOrRd_04,
         style={'fillOpacity': .7}
         )
