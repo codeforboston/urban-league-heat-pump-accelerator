@@ -4,3 +4,7 @@
 
 # ignore python files
 ._pycache_/
+
+#ignore data files
+*.csv
+*.geojson
