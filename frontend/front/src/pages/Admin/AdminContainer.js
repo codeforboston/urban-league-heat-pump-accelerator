@@ -3,8 +3,8 @@ import { Route, Routes, Link } from "react-router-dom";
 import { Box, Button, Typography } from "@mui/material";
 import Dashboard from "./dashboard/Dashboard";
 import Nav from "./nav/Nav";
-import UserProfile from "./userProfile/UserProfile";
 import HouseProfile from "./houseProfile/HouseProfile";
+import UserProfile from "./userProfile/UserProfile";
 
 const AdminContainer = () => {
   return (
@@ -21,7 +21,7 @@ const AdminContainer = () => {
             element={<HouseProfile />}
           ></Route> */}
           <Route path='houseprofile/:hid' element={<HouseProfile />}></Route>
-          <Route path='userprofile' element={<UserProfile />}></Route>
+          <Route path='userprofile/:uid' element={<UserProfile />}></Route>
         </Routes>
         {/* <Footer /> */}
       </Box>

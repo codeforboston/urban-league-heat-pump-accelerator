@@ -1,0 +1,20 @@
+[
+  {
+    "uid": 1,
+    "firstName": "James",
+    "lastName": "Murphy",
+    "address": "4824 Fremont Center",
+    "city": "Qingdao",
+    "zipcode": "375519",
+    "accountType": "User"
+  },
+  {
+    "uid": 2,
+    "firstName": "Peng",
+    "lastName": "Wu",
+    "address": "1234 MLK Blvd",
+    "city": "Compton",
+    "zipcode": "90222",
+    "accountType": "User"
+  }
+]
