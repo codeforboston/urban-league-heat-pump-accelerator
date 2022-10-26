@@ -1,6 +1,17 @@
 services:
   server:
+    environment:
+      DATABASE_URL: "postgres://postgres:password123@db"
     build: .
     ports:
       - "3000:3000"
-  # TODO: Add Postgres Database for Rails App to connect.
+    links:
+      - db
+    depends_on:
+      - db
+  db:
+    environment:
+      POSTGRES_PASSWORD: password123
+    image: postgres:14
+    expose:
+      - 5432

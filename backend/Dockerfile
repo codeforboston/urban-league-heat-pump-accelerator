@@ -7,5 +7,6 @@ RUN bundle install
 
 COPY . .
 EXPOSE 3000
+RUN chmod +x start.sh
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["./start.sh"]
