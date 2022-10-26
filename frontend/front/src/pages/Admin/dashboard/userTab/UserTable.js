@@ -38,7 +38,7 @@ const UserTable = () => {
   };
 
   const onRowClick = (row) => {
-    navigate(`houseprofile/${row.hid}`);
+    navigate(`userprofile/${row.uid}`);
   };
 
   return (

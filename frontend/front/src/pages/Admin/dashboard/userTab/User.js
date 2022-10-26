@@ -11,9 +11,9 @@ const User = () => {
         <Box m={3} display='flex' alignItems='center'>
           <TextField
             id='standard-basic'
-            label='Filter'
+            label='Search'
             variant='standard'
-            helperText='Filter by Address, ZipCode, Surevyor, Status'
+            helperText='Search by Address, ZipCode, Surevyor, Status'
           />
           <IconButton color='inherit'>
             <SearchIcon sx={{ fontSize: 30 }} />

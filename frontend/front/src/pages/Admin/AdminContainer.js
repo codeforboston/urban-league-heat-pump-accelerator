@@ -21,7 +21,7 @@ const AdminContainer = () => {
             element={<HouseProfile />}
           ></Route> */}
           <Route path='houseprofile/:hid' element={<HouseProfile />}></Route>
-          <Route path='userprofile' element={<UserProfile />}></Route>
+          <Route path='userprofile/:uid' element={<UserProfile />}></Route>
         </Routes>
         {/* <Footer /> */}
       </Box>
