@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userName: null,
   password: null,
+  authenticated: false,
 };
 
 const loginSlice = createSlice({
@@ -17,10 +18,13 @@ const loginSlice = createSlice({
       state.userName = null;
       state.password = null;
     },
+    setAuthenticated: (state, action) => {
+      state.authenticated = action.payload;
+    },
   },
 });
 
-export const { setLogin, setLogOut } = loginSlice.actions;
+export const { setLogin, setLogOut, setAuthenticated } = loginSlice.actions;
 
 export const selectuserName = (state) => state.login.userName;
 

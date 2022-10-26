@@ -8,6 +8,8 @@ import About from "./pages/Public/about/About";
 import Login from "./pages/Surveyor/login/Login";
 import DevContainer from "./pages/Developer/DevContainer";
 import PublicContainer from "./pages/Public/PublicContainer";
+import SurveyorContainer from "./pages/Surveyor/SurveyorContainer";
+import AdminContainer from "./pages/Admin/AdminContainer";
 
 function App() {
   return (
@@ -16,13 +18,13 @@ function App() {
         <Routes>
           <Route index element={<ViewMenu />} />
 
-          <Route path='surveyor' element={<Login />}>
-            <Route path='dashboard' />
-            <Route path='houseProfile' />
-          </Route>
+          <Route path='surveyor/*' element={<SurveyorContainer />} />
+
           <Route path='public/*' element={<PublicContainer />} />
 
           <Route path='dev/*' element={<DevContainer />} />
+
+          <Route path='admin/*' element={<AdminContainer />} />
         </Routes>
       </BrowserRouter>
     </Box>
