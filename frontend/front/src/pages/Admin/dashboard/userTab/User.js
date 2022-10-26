@@ -2,6 +2,7 @@ import { Box, Button, IconButton, TextField } from "@mui/material";
 import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
+import UserTable from "./UserTable";
 
 const User = () => {
   return (
@@ -24,6 +25,7 @@ const User = () => {
           </Button>
         </Box>
       </Box>
+      <UserTable />
     </Box>
   );
 };

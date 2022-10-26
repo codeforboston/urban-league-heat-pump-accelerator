@@ -7,30 +7,22 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import HouseData from "../../../../dummyData/houseTable.json";
+import UserData from "../../../../dummyData/userTable.json";
 import { useNavigate } from "react-router-dom";
 
 const columns = [
-  { id: "hid", label: "HouseID", minWidth: 50 },
-  {
-    id: "surveyor",
-    label: "Surveyor",
-    minWidth: 170,
-  },
-  { id: "address", label: "Address", minWidth: 200 },
-  { id: "city", label: "City", minWidth: 200 },
-  { id: "zipcode", label: "Zipcode", minWidth: 50 },
-  {
-    id: "completed",
-    label: "Completed",
-    minWidth: 170,
-    align: "right",
-  },
+  { id: "uid", label: "UserID", minWidth: 50 },
+  { id: "firstName", label: "First Name", minWidth: 50 },
+  { id: "lastName", label: "Last Name", minWidth: 50 },
+  { id: "email", label: "Email", minWidth: 50 },
+  { id: "phone", label: "Phone", minWidth: 50 },
+  { id: "role", label: "Role", minWidth: 50 },
+  { id: "status", label: "Status", minWidth: 50 },
 ];
 
-const rows = HouseData;
+const rows = UserData;
 
-const HouseTable = () => {
+const UserTable = () => {
   const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
@@ -106,4 +98,4 @@ const HouseTable = () => {
   );
 };
 
-export default HouseTable;
+export default UserTable;
