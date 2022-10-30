@@ -3,6 +3,7 @@ import { Typography, Box, Container } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Heatpump from "./Heatpump";
 import { fetchHomeData } from "../../../features/home/homeSlice";
+
 const Home = () => {
   const { title } = useSelector((state) => {
     console.log(state);

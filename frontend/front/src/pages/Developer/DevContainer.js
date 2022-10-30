@@ -5,6 +5,7 @@ import Home from "./home/Home";
 import Nav from "./nav/Nav";
 import About from "./about/About";
 import Contact from "./contact/Contact";
+import { ReduxTKQuery } from "./rtkq/ReduxTKQuery";
 
 const DevContainer = () => {
   return (
@@ -18,6 +19,7 @@ const DevContainer = () => {
           <Route path='/' element={<Home />}></Route>
           <Route path='about' element={<About />}></Route>
           <Route path='contact' element={<Contact />}></Route>
+          <Route path='rtkq' element={<ReduxTKQuery />}></Route>
         </Routes>
       </Container>
     </Box>
