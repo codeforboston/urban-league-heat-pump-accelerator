@@ -1,2 +1,5 @@
 # ignore IDE settings
 .idea
+
+# misc
+.dccache

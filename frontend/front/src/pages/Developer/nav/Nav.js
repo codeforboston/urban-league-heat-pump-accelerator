@@ -39,6 +39,9 @@ const Nav = () => {
           <Button color='inherit' component={Link} to='contact'>
             <Typography variant='h5'>Contact</Typography>
           </Button>
+          <Button color='inherit' component={Link} to='rtkq'>
+          <Typography variant='h5'>RTKQuery</Typography>
+        </Button>
         </Toolbar>
       </AppBar>
     </Box>
