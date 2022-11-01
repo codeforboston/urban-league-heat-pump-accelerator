@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { Typography, Box, Container } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Heatpump from "./Heatpump";
-import { fetchHomeData } from "../../../features/home/homeSlice";
+import RtkTesting from "../rtkDat/RtkTesting";
+
+// import { fetchHomeData } from "../../../features/home/homeSlice";
 
 const Home = () => {
   const { title } = useSelector((state) => {
@@ -13,7 +15,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchHomeData());
+    // dispatch(fetchHomeData());
   }, [dispatch]);
 
   return (
@@ -22,14 +24,13 @@ const Home = () => {
         <Box
           p={3}
           m={3}
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
         >
-          <Typography variant='h2'>{title}</Typography>
+          <Typography variant="h2">{title}</Typography>
         </Box>
-        Hello
-        <Heatpump />
+        <RtkTesting />
       </Box>
     </Container>
   );
