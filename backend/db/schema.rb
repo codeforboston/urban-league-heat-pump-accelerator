@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_083732) do
     t.string "st_name"
     t.integer "unit_num"
     t.string "city"
-    t.integer "zipcode"
+    t.string "zipcode"
     t.integer "bldg_seq"
     t.integer "num_bldgs"
     t.integer "luc"
