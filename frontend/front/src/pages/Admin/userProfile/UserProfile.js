@@ -12,12 +12,12 @@ const UserProfile = () => {
       <Box m={3}>
         <Typography variant='h2'>User Profile Page</Typography>
         <Typography variant='h3'>House ID: {uid}</Typography>
-        <Typography variant='h2'>First Name: {user.firstName}</Typography>
-        <Typography variant='h2'>Last Name: {user.lastName}</Typography>
-        <Typography variant='h2'>Address: {user.address}</Typography>
-        <Typography variant='h2'>City: {user.city}</Typography>
-        <Typography variant='h2'>Zipcode: {user.zipcode}</Typography>
-        <Typography variant='h2'>Account Type: {user.accountType}</Typography>
+        <Typography variant='h5'>First Name: {user.firstName}</Typography>
+        <Typography variant='h5'>Last Name: {user.lastName}</Typography>
+        <Typography variant='h5'>Address: {user.address}</Typography>
+        <Typography variant='h5'>City: {user.city}</Typography>
+        <Typography variant='h5'>Zipcode: {user.zipcode}</Typography>
+        <Typography variant='h5'>Account Type: {user.accountType}</Typography>
       </Box>
       <Box>
         <Button>Edit Profile</Button>
