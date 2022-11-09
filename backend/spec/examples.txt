@@ -1,3 +1,0 @@
-example_id                                          | status | run_time        |
---------------------------------------------------- | ------ | --------------- |
-./spec/requests/property_assessments_spec.rb[1:1:1] | passed | 0.25582 seconds |
