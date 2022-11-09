@@ -13,7 +13,14 @@
     "customizations": {
         "codespaces": {
             "openFiles": ["README.md"]
-        }
+		},
+		"vscode": {
+			"extensions": [
+				"ms-vsliveshare.vsliveshare",
+				"dbaeumer.vscode-eslint",
+				"rebornix.ruby"
+			]
+		}
     },
     "onCreateCommand": "backend/bin/setup",
 
