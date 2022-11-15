@@ -1,29 +1,33 @@
 import { Box, Button } from "@mui/material";
 import {
-  useCreateHomeDataMutation,
-  useDeleteHomeDataMutation,
-  useGetHomeDataQuery,
-  useUpdateHomeDataMutation,
+  useCreateUserDataMutation,
+  useDeleteUserDataMutation,
+  useGetUserDataQuery,
+  useUpdateUserDataMutation,
 } from "../../../api/apiSlice";
-import HomeItem from "./HomeItem";
+import UserItem from "./UserItem";
 
 const UserTab = () => {
-  const { data, isLoading, isSuccess, isError, error } = useGetHomeDataQuery();
+  const { data, isLoading, isSuccess, isError, error } = useGetUserDataQuery();
 
-  const [createHomeData] = useCreateHomeDataMutation();
-  const [updateHomeData] = useUpdateHomeDataMutation();
-  const [deleteHomeData] = useDeleteHomeDataMutation();
+  const [createUserData] = useCreateUserDataMutation();
+  const [updateUserData] = useUpdateUserDataMutation();
+  const [deleteUserData] = useDeleteUserDataMutation();
 
   let content;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createHomeData({
-      address: "New test address",
-      zipcode: "34754",
-      completed: false,
-      surveyor: "Novas Saratu",
-      city: "Boston",
+    createUserData({
+      firstName: "Zero",
+      lastName: "Forst",
+      email: "Gimlyoper@t.co",
+      phone: "794-209-4012",
+      streetNumber: "033",
+      streetName: "Elmside",
+      city: "Uničov",
+      role: "active",
+      status: "admin",
     });
   };
 
@@ -33,27 +37,20 @@ const UserTab = () => {
     content = data.map((item) => {
       return (
         <Box key={item.id} border={1}>
-          <HomeItem data={item} />
+          <UserItem data={item} />
 
-          <Button
-            onClick={() =>
-              updateHomeData({ ...item, completed: !item.completed })
-            }
-          >
-            Toggle Completed
-          </Button>
-          <Button onClick={() => deleteHomeData(item)}>delete</Button>
+          <Button onClick={() => deleteUserData(item)}>delete</Button>
         </Box>
       );
     });
   } else if (isError) {
-    content = <Box>{error}</Box>;
+    content = <Box>{error.error}</Box>;
   }
 
   return (
     <Box>
       <Box>
-        <Button onClick={handleSubmit}>Add New Home </Button>
+        <Button onClick={handleSubmit}>Add New User </Button>
       </Box>
       <Box>{content}</Box>
     </Box>

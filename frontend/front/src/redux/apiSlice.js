@@ -5,6 +5,10 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3500",
   }),
+  // prepareHeaders: (headers) => {
+  //   headers.set("apiKey", "TOKEN");
+  //   return headers;
+  // },
   tagTypes: ["Home"],
   endpoints: (builder) => ({
     //Home section of the slice
@@ -71,11 +75,13 @@ export const apiSlice = createApi({
 });
 
 export const {
+  //user
   useDeleteUserDataMutation,
   useUpdateUserDataMutation,
   useCreateUserDataMutation,
   useGetUserDataQuery,
 
+  //Home
   useDeleteHomeDataMutation,
   useUpdateHomeDataMutation,
   useCreateHomeDataMutation,

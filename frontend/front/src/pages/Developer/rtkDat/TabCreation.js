@@ -5,6 +5,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import HomeTab from "./HomeTab";
+import UserTab from "./UserTab";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -19,7 +20,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Box>{children}</Box>
         </Box>
       )}
     </div>
@@ -39,7 +40,7 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
+export default function TabCreation() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -62,7 +63,7 @@ export default function BasicTabs() {
         <HomeTab />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <UserTab />
       </TabPanel>
     </Box>
   );

@@ -75,7 +75,7 @@
   ],
   "user": [
     {
-      "uid": 1,
+      "id": 1,
       "firstName": "Flory",
       "lastName": "Kenforth",
       "email": "fkenforth0@t.co",
@@ -87,7 +87,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 2,
+      "id": 2,
       "firstName": "Magda",
       "lastName": "Bendix",
       "email": "mbendix1@intel.com",
@@ -99,7 +99,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 3,
+      "id": 3,
       "firstName": "Zonnya",
       "lastName": "Dibnah",
       "email": "zdibnah2@surveymonkey.com",
@@ -111,7 +111,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 4,
+      "id": 4,
       "firstName": "Cecelia",
       "lastName": "Jansen",
       "email": "cjansen3@mail.ru",
@@ -123,7 +123,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 5,
+      "id": 5,
       "firstName": "Maxie",
       "lastName": "Dugdale",
       "email": "mdugdale4@github.com",
@@ -135,7 +135,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 6,
+      "id": 6,
       "firstName": "Kerrill",
       "lastName": "Cokly",
       "email": "kcokly5@bbb.org",
@@ -147,7 +147,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 7,
+      "id": 7,
       "firstName": "Rennie",
       "lastName": "Hockell",
       "email": "rhockell6@gizmodo.com",
@@ -159,7 +159,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 8,
+      "id": 8,
       "firstName": "Tillie",
       "lastName": "Mowlam",
       "email": "tmowlam7@wufoo.com",
@@ -171,7 +171,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 9,
+      "id": 9,
       "firstName": "Dorrie",
       "lastName": "Tripney",
       "email": "dtripney8@1688.com",
@@ -183,7 +183,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 10,
+      "id": 10,
       "firstName": "Sharona",
       "lastName": "Buney",
       "email": "sbuney9@marriott.com",
@@ -195,7 +195,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 11,
+      "id": 11,
       "firstName": "Welbie",
       "lastName": "Moncrefe",
       "email": "wmoncrefea@cyberchimps.com",
@@ -207,7 +207,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 12,
+      "id": 12,
       "firstName": "Kris",
       "lastName": "Senecaut",
       "email": "ksenecautb@oracle.com",
@@ -219,7 +219,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 13,
+      "id": 13,
       "firstName": "Alena",
       "lastName": "McKinie",
       "email": "amckiniec@oaic.gov.au",
@@ -231,7 +231,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 14,
+      "id": 14,
       "firstName": "Ambrose",
       "lastName": "Aitchinson",
       "email": "aaitchinsond@nature.com",
@@ -243,7 +243,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 15,
+      "id": 15,
       "firstName": "Leilah",
       "lastName": "Lobe",
       "email": "llobee@msn.com",
@@ -255,7 +255,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 16,
+      "id": 16,
       "firstName": "Kippar",
       "lastName": "Monte",
       "email": "kmontef@archive.org",
@@ -267,7 +267,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 17,
+      "id": 17,
       "firstName": "Ginni",
       "lastName": "Orrin",
       "email": "gorring@symantec.com",
@@ -279,7 +279,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 18,
+      "id": 18,
       "firstName": "Thekla",
       "lastName": "Wibberley",
       "email": "twibberleyh@ucla.edu",
@@ -291,7 +291,7 @@
       "status": "surveyor"
     },
     {
-      "uid": 19,
+      "id": 19,
       "firstName": "Wallache",
       "lastName": "Pinder",
       "email": "wpinderi@howstuffworks.com",
@@ -299,18 +299,6 @@
       "streetNumber": "8",
       "streetName": "Dennis",
       "city": "Zhiqu",
-      "role": "active",
-      "status": "surveyor"
-    },
-    {
-      "uid": 20,
-      "firstName": "Malcolm",
-      "lastName": "Cesco",
-      "email": "mcescoj@github.io",
-      "phone": "961-428-4710",
-      "streetNumber": "5356",
-      "streetName": "Anhalt",
-      "city": "Huangqiao",
       "role": "active",
       "status": "surveyor"
     }

@@ -14,7 +14,7 @@ const HomeTab = () => {
   const [updateHomeData] = useUpdateHomeDataMutation();
   const [deleteHomeData] = useDeleteHomeDataMutation();
 
-  let content;
+  let content = "no data";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,11 +30,11 @@ const HomeTab = () => {
   if (isLoading) {
     content = <Box> Is loading</Box>;
   } else if (isSuccess) {
+    // content = <Box> Is success</Box>;
     content = data.map((item) => {
       return (
         <Box key={item.id} border={1}>
           <HomeItem data={item} />
-
           <Button
             onClick={() =>
               updateHomeData({ ...item, completed: !item.completed })
@@ -47,7 +47,7 @@ const HomeTab = () => {
       );
     });
   } else if (isError) {
-    content = <Box>{error}</Box>;
+    content = <Box>{error.error}</Box>;
   }
 
   return (

@@ -16,32 +16,32 @@ const Nav = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='static'>
+      <AppBar position="static">
         <Toolbar>
           <IconButton
-            size='large'
-            edge='start'
-            color='inherit'
-            aria-label='menu'
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
             sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {title}
           </Typography>
-          <Button color='inherit' component={Link} to=''>
-            <Typography variant='h5'>HOME</Typography>
+          <Button color="inherit" component={Link} to="">
+            <Typography variant="h5">HOME</Typography>
           </Button>
-          <Button color='inherit' component={Link} to='about'>
+          {/* <Button color='inherit' component={Link} to='about'>
             <Typography variant='h5'>ABOUT</Typography>
-          </Button>
-          <Button color='inherit' component={Link} to='contact'>
+          </Button> */}
+          {/* <Button color='inherit' component={Link} to='contact'>
             <Typography variant='h5'>Contact</Typography>
-          </Button>
-          <Button color='inherit' component={Link} to='rtkq'>
-          <Typography variant='h5'>RTKQuery</Typography>
-        </Button>
+          </Button> */}
+          {/* <Button color="inherit" component={Link} to="rtkq">
+            <Typography variant="h5">RTKQuery</Typography>
+          </Button> */}
         </Toolbar>
       </AppBar>
     </Box>
