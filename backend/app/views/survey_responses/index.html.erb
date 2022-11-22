@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Survey responses</h1>
+
+<div id="survey_responses">
+  <% @survey_responses.each do |survey_response| %>
+    <%= render survey_response %>
+    <p>
+      <%= link_to "Show this survey response", survey_response %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New survey response", new_survey_response_path %>

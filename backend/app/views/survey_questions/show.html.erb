@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @survey_question %>
+
+<div>
+  <%= link_to "Edit this survey question", edit_survey_question_path(@survey_question) %> |
+  <%= link_to "Back to survey questions", survey_questions_path %>
+
+  <%= button_to "Destroy this survey question", @survey_question, method: :delete %>
+</div>

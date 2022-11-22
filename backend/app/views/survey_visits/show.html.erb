@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @survey_visit %>
+
+<div>
+  <%= link_to "Edit this survey visit", edit_survey_visit_path(@survey_visit) %> |
+  <%= link_to "Back to survey visits", survey_visits_path %>
+
+  <%= button_to "Destroy this survey visit", @survey_visit, method: :delete %>
+</div>

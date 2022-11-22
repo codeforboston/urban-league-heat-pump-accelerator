@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Survey questions</h1>
+
+<div id="survey_questions">
+  <% @survey_questions.each do |survey_question| %>
+    <%= render survey_question %>
+    <p>
+      <%= link_to "Show this survey question", survey_question %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New survey question", new_survey_question_path %>
