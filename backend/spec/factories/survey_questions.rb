@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :survey_question do
     text { 'Do you want a heat pump?' }
