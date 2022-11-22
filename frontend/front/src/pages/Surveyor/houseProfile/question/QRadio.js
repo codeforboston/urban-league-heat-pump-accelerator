@@ -25,16 +25,16 @@ function MyFormControlLabel(props) {
 }
 
 const QuestionUnit = (props) => {
-  let label1 = "";
-  let label2 = "";
-  let label3 = "";
-  let label4 = "";
+  let choice1 = "";
+  let choice2 = "";
+  let choice3 = "";
+  let choice4 = "";
 
-  if (props.label1) {
-    label1 = (
+  if (props.choice1) {
+    choice1 = (
       <MyFormControlLabel
-        value={props.label1}
-        label={props.label1}
+        value={props.choice1}
+        label={props.choice1}
         control={<Radio />}
         sx={{
           border: 1,
@@ -46,28 +46,11 @@ const QuestionUnit = (props) => {
       />
     );
   }
-  if (props.label2) {
-    label2 = (
+  if (props.choice2) {
+    choice2 = (
       <MyFormControlLabel
-        value={props.label2}
-        label={props.label2}
-        control={<Radio />}
-        sx={{
-          border: 1,
-          mt: 1,
-          marginLeft: 0,
-          marginRight: 0,
-          bgcolor: "white",
-        }}
-      />
-    );
-  }
-
-  if (props.label3) {
-    label3 = (
-      <MyFormControlLabel
-        value={props.label3}
-        label={props.label3}
+        value={props.choice2}
+        label={props.choice2}
         control={<Radio />}
         sx={{
           border: 1,
@@ -80,11 +63,28 @@ const QuestionUnit = (props) => {
     );
   }
 
-  if (props.label4) {
-    label4 = (
+  if (props.choice3) {
+    choice3 = (
       <MyFormControlLabel
-        value={props.label4}
-        label={props.label4}
+        value={props.choice3}
+        label={props.choice3}
+        control={<Radio />}
+        sx={{
+          border: 1,
+          mt: 1,
+          marginLeft: 0,
+          marginRight: 0,
+          bgcolor: "white",
+        }}
+      />
+    );
+  }
+
+  if (props.choice4) {
+    choice4 = (
+      <MyFormControlLabel
+        value={props.choice4}
+        label={props.choice4}
         control={<Radio />}
         sx={{
           border: 1,
@@ -102,10 +102,10 @@ const QuestionUnit = (props) => {
         <Typography>{props.question}</Typography>
       </Box>
       <RadioGroup name='use-radio-group' defaultValue=''>
-        {label1}
-        {label2}
-        {label3}
-        {label4}
+        {choice1}
+        {choice2}
+        {choice3}
+        {choice4}
       </RadioGroup>
     </Box>
   );

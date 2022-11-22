@@ -23,22 +23,17 @@ app.get("/about", (req, res) => {
   res.status(200).json(aboutData);
 });
 
-const homeData = require("./data/dataHome.json");
+const homeData = require("./data/homeTable.json");
 
 app.get("/home", (req, res) => {
   res.status(200).json(homeData);
 });
 
+app.post("/home", (req, res) => {
+  const newHome = req.body;
 
+  let newArray = [...homeData, newHome];
 
-
-// app.post("/tshirt/:id", (req, res) => {
-//   const { id } = req.params;
-//   const { logo } = req.body;
-
-//   if (!logo) {
-//     res.status(418).send({ message: "need a logo" });
-//   }
-
-//   res.send({ tshirt: `shirt with your logo ${logo}` });
-// });
+  console.log(newArray);
+  res.status(200).json(newArray);
+});

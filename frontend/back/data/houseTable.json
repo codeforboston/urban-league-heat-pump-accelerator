@@ -1,0 +1,62 @@
+[
+  {
+    "address": "8 Darwin Street",
+    "zipcode": "09116",
+    "status": false,
+    "suveyor": "Ida Hoodlass"
+  },
+  {
+    "address": "45 Spohn Crossing",
+    "zipcode": null,
+    "status": false,
+    "suveyor": "Fawn Hrinchishin"
+  },
+  {
+    "address": "48583 1st Junction",
+    "zipcode": null,
+    "status": true,
+    "suveyor": "Bradan Stappard"
+  },
+  {
+    "address": "506 Lien Lane",
+    "zipcode": null,
+    "status": false,
+    "suveyor": "Jasen Reiner"
+  },
+  {
+    "address": "9 Aberg Court",
+    "zipcode": "354392",
+    "status": true,
+    "suveyor": "Farr Lelievre"
+  },
+  {
+    "address": "3502 Erie Junction",
+    "zipcode": null,
+    "status": false,
+    "suveyor": "Emelyne Summerlie"
+  },
+  {
+    "address": "9 Florence Circle",
+    "zipcode": null,
+    "status": false,
+    "suveyor": "Cherye Brameld"
+  },
+  {
+    "address": "8 Corben Drive",
+    "zipcode": null,
+    "status": false,
+    "suveyor": "Niall Bainton"
+  },
+  {
+    "address": "4777 Hagan Court",
+    "zipcode": "5040",
+    "status": false,
+    "suveyor": "Joye Kubik"
+  },
+  {
+    "address": "90497 Melby Plaza",
+    "zipcode": "2419",
+    "status": false,
+    "suveyor": "Godard McGillivray"
+  }
+]
