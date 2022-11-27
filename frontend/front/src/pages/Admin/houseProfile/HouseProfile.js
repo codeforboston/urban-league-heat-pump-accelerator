@@ -9,10 +9,10 @@ const HomeProfile = () => {
   // Conditional Buttons
   let editButton, deleteButton;
   if (!editMode) {
-    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(!editMode)}>EDIT</Button>
+    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(true)}>EDIT</Button>
     deleteButton = <Button variant="outlined" sx={{ ml: 2 }} color="error">DELETE</Button>
   } else {
-    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(!editMode)}>SAVE</Button>
+    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(false)}>SAVE</Button>
     deleteButton = <Button variant="outlined" sx={{ ml: 2 }} color="error" onClick={() => setEditMode(false)}>CANCEL</Button>
   }
 
