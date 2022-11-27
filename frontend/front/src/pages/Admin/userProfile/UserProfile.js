@@ -4,18 +4,7 @@ import { useParams } from "react-router-dom";
 
 const UserProfile = () => {
   const { uid } = useParams();
-  const [editMode, setEditMode] = useState(false);
-
-  // Conditional Buttons
-  let changePasswordButton, editButton, deleteButton;
-  if (!editMode) {
-    changePasswordButton = <Button variant="contained" sx={{ ml: 2 }}>CHANGE PASSWORD</Button>
-    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(true)}>EDIT</Button>
-    deleteButton = <Button variant="outlined" sx={{ ml: 2 }} color="error">DELETE</Button>
-  } else {
-    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(false)}>SAVE</Button>
-    deleteButton = <Button variant="outlined" sx={{ ml: 2 }} color="error" onClick={() => setEditMode(false)}>CANCEL</Button>
-  }
+  const [isDisabled, setIsDisabled] = useState(true);
 
   return (
     <Box
@@ -27,53 +16,51 @@ const UserProfile = () => {
       <Box width={500} mt={5}>
         <Box sx={{ bgcolor: "primary.main", color: "white" }} p={1}>
           <Typography variant="h5">User Profile</Typography>
-          {/* Could add user ID to header. */}
-          {/* Can't be edited, but could be helpful to display. */}
         </Box>
         <TextField
-          disabled={!editMode}
+          disabled={isDisabled}
           label="First Name"
           variant="standard"
           sx={{ width: "95%", mx: 2, mt: 3 }}
         />
         <TextField
-          disabled={!editMode}
+          disabled={isDisabled}
           label="Last Name"
           variant="standard"
           sx={{ width: "95%", mx: 2, mt: 3 }}
         />
         <TextField
-          disabled={!editMode}
+          disabled={isDisabled}
           label="Email"
           variant="standard"
           sx={{ width: "95%", mx: 2, mt: 3 }}
         />
         <TextField
-          disabled={!editMode}
+          disabled={isDisabled}
           label="Phone"
           variant="standard"
           sx={{ width: "95%", mx: 2, mt: 3 }}
         />
         <TextField
-          disabled={!editMode}
+          disabled={isDisabled}
           label="Street Address"
           variant="standard"
           sx={{ width: "95%", mx: 2, mt: 3 }}
         />{" "}
         <TextField
-          disabled={!editMode}
+          disabled={isDisabled}
           label="City"
           variant="standard"
           sx={{ width: "95%", mx: 2, mt: 3 }}
         />{" "}
         <TextField
-          disabled={!editMode}
+          disabled={isDisabled}
           label="Zip Code"
           variant="standard"
           sx={{ width: "95%", mx: 2, mt: 3 }}
         />{" "}
         <TextField
-          disabled={!editMode}
+          disabled={isDisabled}
           label="State"
           variant="standard"
           sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -82,11 +69,17 @@ const UserProfile = () => {
         {/* BUTTONS */}
         <Box sx={{ "display": "flex", "justify-content": "space-between" }}>
           <Box pt={5} textAlign="left">
-            {changePasswordButton}
+            <Button variant="contained" sx={{ ml: 2 }}>
+              CHANGE PASSWORD
+            </Button>
           </Box>
           <Box pt={5} textAlign="right">
-            {editButton}
-            {deleteButton}
+            <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setIsDisabled(!isDisabled)}>
+              EDIT
+            </Button>
+            <Button variant="outlined" sx={{ ml: 2 }} color="error">
+              DELETE
+            </Button>
           </Box>
         </Box>
       </Box>
