@@ -10,11 +10,11 @@ const UserProfile = () => {
   let changePasswordButton, editButton, deleteButton;
   if (!editMode) {
     changePasswordButton = <Button variant="contained" sx={{ ml: 2 }}>CHANGE PASSWORD</Button>
-    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(!editMode)}>EDIT</Button>
+    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(true)}>EDIT</Button>
     deleteButton = <Button variant="outlined" sx={{ ml: 2 }} color="error">DELETE</Button>
   } else {
-    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(!editMode)}>SAVE</Button>
-    deleteButton = <Button variant="outlined" sx={{ ml: 2 }} color="error">CANCEL</Button>
+    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(false)}>SAVE</Button>
+    deleteButton = <Button variant="outlined" sx={{ ml: 2 }} color="error" onClick={() => setEditMode(false)}>CANCEL</Button>
   }
 
   return (
