@@ -42,7 +42,7 @@ const Home = () => {
                 p={1}
                 sx={{ bgcolor: "AliceBlue " }}
               >
-                <Typography>confirmation Modal</Typography>
+                <Typography>Confirm Modal</Typography>
               </Box>
             </Button>
           </Box>
