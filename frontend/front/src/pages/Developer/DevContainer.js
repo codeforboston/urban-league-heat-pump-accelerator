@@ -7,7 +7,7 @@ import About from "./about/About";
 import Contact from "./contact/Contact";
 import { ReduxTKQuery } from "./rtkq/ReduxTKQuery";
 
-import ConfirmationTest from "./confirmationModal/ConfirmationTest";
+import ConfirmationTest from "./confirmModal/ConfirmationTest"
 import RtkTesting from "./rtkDat/RtkTesting";
 
 const DevContainer = () => {
