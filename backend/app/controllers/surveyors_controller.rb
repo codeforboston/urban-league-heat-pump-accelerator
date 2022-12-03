@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SurveyorsController < ApplicationController
   before_action :set_surveyor, only: %i[show edit update destroy]
 
