@@ -1,5 +1,5 @@
 class SurveyorsController < ApplicationController
-  before_action :set_surveyor, only: %i[ show edit update destroy ]
+  before_action :set_surveyor, only: %i[show edit update destroy]
 
   # GET /surveyors or /surveyors.json
   def index
@@ -7,8 +7,7 @@ class SurveyorsController < ApplicationController
   end
 
   # GET /surveyors/1 or /surveyors/1.json
-  def show
-  end
+  def show; end
 
   # GET /surveyors/new
   def new
@@ -16,8 +15,7 @@ class SurveyorsController < ApplicationController
   end
 
   # GET /surveyors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /surveyors or /surveyors.json
   def create
@@ -25,7 +23,7 @@ class SurveyorsController < ApplicationController
 
     respond_to do |format|
       if @surveyor.save
-        format.html { redirect_to surveyor_url(@surveyor), notice: "Surveyor was successfully created." }
+        format.html { redirect_to surveyor_url(@surveyor), notice: 'Surveyor was successfully created.' }
         format.json { render :show, status: :created, location: @surveyor }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class SurveyorsController < ApplicationController
   def update
     respond_to do |format|
       if @surveyor.update(surveyor_params)
-        format.html { redirect_to surveyor_url(@surveyor), notice: "Surveyor was successfully updated." }
+        format.html { redirect_to surveyor_url(@surveyor), notice: 'Surveyor was successfully updated.' }
         format.json { render :show, status: :ok, location: @surveyor }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,21 @@ class SurveyorsController < ApplicationController
     @surveyor.destroy
 
     respond_to do |format|
-      format.html { redirect_to surveyors_url, notice: "Surveyor was successfully destroyed." }
+      format.html { redirect_to surveyors_url, notice: 'Surveyor was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_surveyor
-      @surveyor = Surveyor.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def surveyor_params
-      params.require(:surveyor).permit(:user_id, :firstname, :lastname, :email, :phone, :street_address, :geocode, :city, :zipcode, :state, :role, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_surveyor
+    @surveyor = Surveyor.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def surveyor_params
+    params.require(:surveyor).permit(:user_id, :firstname, :lastname, :email, :phone, :street_address, :geocode,
+                                     :city, :zipcode, :state, :role, :status)
+  end
 end
