@@ -2,17 +2,17 @@
 
 FactoryBot.define do
   factory :surveyor do
-    user { nil }
-    firstname { 'MyString' }
-    lastname { 'MyString' }
-    email { 'MyString' }
+    user
+    firstname { 'John' }
+    lastname { 'Smith' }
+    email { 'johnsmith@example.com' }
     phone { 'MyString' }
-    street_address { 'MyString' }
+    street_address { '123 First Street' }
     geocode { 'MyString' }
-    city { 'MyString' }
-    zipcode { 'MyString' }
-    state { 'MyString' }
-    role { 'MyString' }
-    status { 'MyString' }
+    city { 'Cambridge' }
+    zipcode { '01234' }
+    state { 'MA' }
+    role { 'surveyor' }
+    status { 'active' }
   end
 end
