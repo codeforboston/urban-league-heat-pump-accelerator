@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Surveyors manages information about users of the surveying app, such as those who go door-to-door completing surveys on behalf of homeowners
 class SurveyorsController < ApplicationController
   before_action :set_surveyor, only: %i[show edit update destroy]
 
