@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Create the Surveyors table
 class CreateSurveyors < ActiveRecord::Migration[7.0]
   def change
     create_table :surveyors do |t|
