@@ -3,15 +3,15 @@
 class Surveyor < ApplicationRecord
   belongs_to :user
 
-  validates_presence_of :firstname
-  validates_presence_of :lastname
-  validates_presence_of :email
-  validates_presence_of :phone
-  validates_presence_of :street_address
-  validates_presence_of :geocode
-  validates_presence_of :city
-  validates_presence_of :zipcode
-  validates_presence_of :state
-  validates_presence_of :role
-  validates_presence_of :status
+  validates :firstname, presence: true
+  validates :lastname, presence: true
+  validates :email, presence: true
+  validates :phone, presence: true
+  validates :street_address, presence: true
+  validates :geocode, presence: true
+  validates :city, presence: true
+  validates :zipcode, presence: true
+  validates :state, presence: true
+  validates :role, presence: true
+  validates :status, presence: true
 end
