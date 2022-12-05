@@ -1,7 +1,7 @@
 ---
-name: Backend Team Issue
-about: Issue for the backend team.
+name: Frontend Team Issue
+about: Issue for the frontend team.
 title: ''
-labels: 'Role: ETL/Backend'
+labels: 'Role: App Design and Development'
 assignees: ''
 ---
