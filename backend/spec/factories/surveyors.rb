@@ -8,7 +8,7 @@ FactoryBot.define do
     email { 'johnsmith@example.com' }
     phone { 'MyString' }
     street_address { '123 First Street' }
-    geocode { 'MyString' }
+    geocode { '40.714224,-73.961452' }
     city { 'Cambridge' }
     zipcode { '01234' }
     state { 'MA' }
