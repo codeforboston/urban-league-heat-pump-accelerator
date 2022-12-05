@@ -25,10 +25,8 @@ class SurveyVisitsController < ApplicationController
 
     respond_to do |format|
       if @survey_visit.save
-        format.html { redirect_to survey_visit_url(@survey_visit), notice: 'Survey visit was successfully created.' }
         format.json { render :show, status: :created, location: @survey_visit }
       else
-        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @survey_visit.errors, status: :unprocessable_entity }
       end
     end
@@ -38,10 +36,8 @@ class SurveyVisitsController < ApplicationController
   def update
     respond_to do |format|
       if @survey_visit.update(survey_visit_params)
-        format.html { redirect_to survey_visit_url(@survey_visit), notice: 'Survey visit was successfully updated.' }
         format.json { render :show, status: :ok, location: @survey_visit }
       else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @survey_visit.errors, status: :unprocessable_entity }
       end
     end
@@ -52,7 +48,6 @@ class SurveyVisitsController < ApplicationController
     @survey_visit.destroy
 
     respond_to do |format|
-      format.html { redirect_to survey_visits_url, notice: 'Survey visit was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

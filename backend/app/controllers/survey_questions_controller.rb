@@ -30,7 +30,6 @@ class SurveyQuestionsController < ApplicationController
         end
         format.json { render :show, status: :created, location: @survey_question }
       else
-        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @survey_question.errors, status: :unprocessable_entity }
       end
     end
@@ -45,7 +44,6 @@ class SurveyQuestionsController < ApplicationController
         end
         format.json { render :show, status: :ok, location: @survey_question }
       else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @survey_question.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +54,6 @@ class SurveyQuestionsController < ApplicationController
     @survey_question.destroy
 
     respond_to do |format|
-      format.html { redirect_to survey_questions_url, notice: 'Survey question was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

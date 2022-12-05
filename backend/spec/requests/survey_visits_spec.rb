@@ -29,7 +29,7 @@ RSpec.describe '/survey_visits', type: :request do
   describe 'GET /index' do
     it 'renders a successful response' do
       SurveyVisit.create! valid_attributes
-      get survey_visits_url
+      get survey_visits_url, format: :json
       expect(response).to be_successful
     end
   end
@@ -37,14 +37,14 @@ RSpec.describe '/survey_visits', type: :request do
   describe 'GET /show' do
     it 'renders a successful response' do
       survey_visit = SurveyVisit.create! valid_attributes
-      get survey_visit_url(survey_visit)
+      get survey_visit_url(survey_visit), as: :json
       expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
     it 'renders a successful response' do
-      get new_survey_visit_url
+      get new_survey_visit_url, as: :json
       expect(response).to be_successful
     end
   end
@@ -52,7 +52,7 @@ RSpec.describe '/survey_visits', type: :request do
   describe 'GET /edit' do
     it 'renders a successful response' do
       survey_visit = SurveyVisit.create! valid_attributes
-      get edit_survey_visit_url(survey_visit)
+      get edit_survey_visit_url(survey_visit), as: :json
       expect(response).to be_successful
     end
   end
