@@ -6,7 +6,7 @@ FactoryBot.define do
     firstname { 'John' }
     lastname { 'Smith' }
     email { 'johnsmith@example.com' }
-    phone { 'MyString' }
+    phone { '1234567890' }
     street_address { '123 First Street' }
     geocode { '40.714224,-73.961452' }
     city { 'Cambridge' }
