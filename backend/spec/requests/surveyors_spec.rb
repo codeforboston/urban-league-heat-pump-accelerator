@@ -19,19 +19,21 @@ RSpec.describe '/surveyors', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Surveyor. As you add validations to Surveyor, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes)   {{
-    firstname: 'John',
-    lastname: 'Smith',
-    email: 'johnsmith@example.com',
-    phone: '1234567890',
-    street_address: '123 First Street',
-    geocode: '40.714224,-73.961452',
-    city: 'Cambridge',
-    zipcode: '01234',
-    state: 'MA',
-    role: 'surveyor',
-    status: 'active'
-    }}
+  let(:valid_attributes) do
+    {
+      firstname: 'John',
+      lastname: 'Smith',
+      email: 'johnsmith@example.com',
+      phone: '1234567890',
+      street_address: '123 First Street',
+      geocode: '40.714224,-73.961452',
+      city: 'Cambridge',
+      zipcode: '01234',
+      state: 'MA',
+      role: 'surveyor',
+      status: 'active'
+    }
+  end
 
   let(:invalid_attributes) do
     skip('Add a hash of attributes invalid for your model')
