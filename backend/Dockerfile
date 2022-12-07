@@ -9,4 +9,4 @@ COPY . .
 EXPOSE 3000
 RUN chmod +x start.sh
 
-CMD ["./start.sh"]
+ENTRYPOINT ["sh", "start.sh"]
