@@ -1,0 +1,123 @@
+import * as React from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import {
+  AppBar,
+  Box,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Toolbar,
+  Typography,
+  Button,
+  ButtonGroup,
+  Stack,
+  styled,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import strings from "../constants";
+import urbanLeagueLogo from "../../../assets/images/urbanLeagueLogo.png";
+
+const drawerWidth = "100%";
+const navItems = ["Home", "About", "Contact"];
+
+function Navbar(props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const drawer = (
+    <Box sx={{ textAlign: "center" }}>
+      <Stack direction="row" alignItems="center">
+        <Button ml={2} onClick={handleDrawerToggle}>
+          <CloseIcon />
+        </Button>
+        {/* <Typography variant="h6" sx={{ my: 2, flexGrow: 1 }}>
+          {strings.appName}
+        </Typography> */}
+        <Box sx={{ my: 2, flexGrow: 1, marginRight: "48px" }}>
+          <img src={urbanLeagueLogo} alt="" className="logo" />
+        </Box>
+      </Stack>
+      <Divider />
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item} disablePadding>
+            <ListItemButton sx={{ textAlign: "center" }}>
+              <ListItemText primary={item} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
+  return (
+    <Box sx={{ display: "flex" }}>
+      <AppBar component="nav" marginTop={2} sx={{ bgcolor: "#fff" }}>
+        <Toolbar sx={{ justifyContent: "flex-end" }}>
+          <Box sx={{ my: 2, flexGrow: 1 }}>
+            <img src={urbanLeagueLogo} alt="" className="logo" />
+          </Box>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Stack spacing={2} direction="row">
+              {navItems.map((item) => (
+                <Button key={item} sx={{ color: "navbar.button.main" }}>
+                  {item}
+                </Button>
+              ))}
+            </Stack>
+          </Box>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{
+              ml: 2,
+              display: { sm: "none" },
+              color: "#000",
+              justifyContent: "flex-start",
+            }}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+      <Box component="nav">
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          anchor="right"
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              color: "#000",
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+    </Box>
+  );
+}
+
+export default Navbar;
