@@ -11,15 +11,13 @@ import {
   ListItemButton,
   ListItemText,
   Toolbar,
-  Typography,
   Button,
-  ButtonGroup,
   Stack,
-  styled,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import strings from "../constants";
 import urbanLeagueLogo from "../../../assets/images/urbanLeagueLogo.png";
+import { Link } from "react-router-dom";
 
 const drawerWidth = "100%";
 const navItems = ["Home", "About", "Contact"];
@@ -33,9 +31,9 @@ function Navbar(props) {
   };
 
   const drawer = (
-    <Box sx={{ textAlign: "center" }}>
+    <Box sx={{ textAlign: "center" }} onClick={handleDrawerToggle}>
       <Stack direction="row" alignItems="center">
-        <Button ml={2} onClick={handleDrawerToggle}>
+        <Button ml={2}>
           <CloseIcon />
         </Button>
         {/* <Typography variant="h6" sx={{ my: 2, flexGrow: 1 }}>
@@ -49,7 +47,11 @@ function Navbar(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemButton
+              sx={{ textAlign: "center" }}
+              component={Link}
+              to={item.toLowerCase() === "home" ? "" : item.toLowerCase()}
+            >
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
@@ -71,7 +73,13 @@ function Navbar(props) {
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Stack spacing={2} direction="row">
               {navItems.map((item) => (
-                <Button key={item} sx={{ color: "navbar.button.main" }}>
+                <Button
+                  key={item}
+                  component={Link}
+                  to={item.toLowerCase() === "home" ? "" : item.toLowerCase()}
+                  sx={{ color: "navbar.button.main" }}
+                >
+                  {console.log(item.toLowerCase())}
                   {item}
                 </Button>
               ))}
