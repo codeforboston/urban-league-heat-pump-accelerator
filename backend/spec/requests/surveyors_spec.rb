@@ -21,7 +21,7 @@ RSpec.describe '/surveyors', type: :request do
   # adjust the attributes here as well.
 
   let(:user) do
-    User.create(email: "sample@test.com", password: "password")
+    User.create(email: 'sample@test.com', password: 'password')
   end
 
   let(:valid_attributes) do
@@ -43,7 +43,7 @@ RSpec.describe '/surveyors', type: :request do
 
   let(:invalid_attributes) do
     {
-      user_id: "not a valid id"
+      user_id: 'not a valid id'
     }
   end
 
@@ -122,7 +122,7 @@ RSpec.describe '/surveyors', type: :request do
         surveyor = Surveyor.create! valid_attributes
         patch surveyor_url(surveyor), params: { surveyor: new_attributes }, as: :json
         surveyor.reload
-        expect(JSON.parse(response.body,{:symbolize_names => true})).to include(new_attributes)
+        expect(JSON.parse(response.body, { symbolize_names: true })).to include(new_attributes)
       end
 
       it 'redirects to the surveyor' do
