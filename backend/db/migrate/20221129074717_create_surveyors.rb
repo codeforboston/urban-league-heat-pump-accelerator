@@ -2,7 +2,7 @@
 
 # Create the Surveyors table
 class CreateSurveyors < ActiveRecord::Migration[7.0]
-  def change
+  def change # rubocop:disable Metrics/MethodLength
     create_table :surveyors do |t|
       t.references :user, null: false, foreign_key: true
       t.string :firstname
