@@ -19,10 +19,10 @@ Technical support for the Urban League of Eastern Massachusetts ([ULEM](https://
 * Identify and solve [issues](https://github.com/codeforboston/urban-league-heat-pump-accelerator/issues) (great way to contribute now without skills in specific technologies!)
 * Join a team
 
-| Slack channel                     | technologies used  |
-|-----------------------------------|--------------------|
-| #urban-league-data-analysis       | Python, Jupyter    |
-| #urban-league-backend | Rails (Ruby 3.1.2), Postgres   |
-| #urban-league-app-design-frontend | React.js           |
-| #urban-league-partnerships        | *none (yet)*       |
-| #urban-league-marketing           | *none (yet)*       |
+| Slack channel                     | technologies used            |
+|-----------------------------------|------------------------------|
+| #urban-league-data-analysis       | Python, Jupyter              |
+| #urban-league-backend | Rails (Ruby 3.1.3), Postgres |
+| #urban-league-app-design-frontend | React.js                     |
+| #urban-league-partnerships        | *none (yet)*                 |
+| #urban-league-marketing           | *none (yet)*                 |

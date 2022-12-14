@@ -15,6 +15,6 @@ See [Contributing](./docs/contributing.md) for how to commit and submit code to 
 
 # Technologies Used
 
-| Server:             | Database: |
-|---------------------| --------- |
-| Rails (Ruby 3.1.2)  | Postgres  |
+| Server:            | Database: |
+|--------------------| --------- |
+| Rails (Ruby 3.1.3) | Postgres  |
