@@ -26,7 +26,7 @@ class SurveyorsController < ApplicationController
 
     respond_to do |format|
       if @surveyor.save
-        format.json { render :show, status: :created, location: @surveyor }
+        format.json { render json: @surveyor, status: :created }
       else
         format.json { render json: @surveyor.errors, status: :unprocessable_entity }
       end
@@ -50,6 +50,7 @@ class SurveyorsController < ApplicationController
 
     respond_to do |format|
       format.json { head :no_content }
+
     end
   end
 
