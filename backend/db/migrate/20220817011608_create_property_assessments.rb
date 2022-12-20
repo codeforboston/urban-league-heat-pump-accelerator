@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/AbcSize, Metrics/BlockLength, Metrics/MethodLength
+# rubocop:disable Metrics/AbcSize, Metrics/MethodLength
 class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
   def change
     # Schema for Boston Property Assessment Data.
@@ -74,4 +74,4 @@ class CreatePropertyAssessments < ActiveRecord::Migration[7.0]
     end
   end
 end
-# rubocop:enable Metrics/AbcSize, Metrics/BlockLength, Metrics/MethodLength
+# rubocop:enable Metrics/AbcSize, Metrics/MethodLength
