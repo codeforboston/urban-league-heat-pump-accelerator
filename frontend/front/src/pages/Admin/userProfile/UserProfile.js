@@ -7,8 +7,10 @@ const UserProfile = () => {
   const { uid } = useParams();
   const [editMode, setEditMode] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+
   const confirmDelete = () => {
     setDeleteModal(false);
+    // make api call to delete the user profile here
   };
   const cancelDelete = () => {
     setDeleteModal(false);
@@ -17,12 +19,50 @@ const UserProfile = () => {
   // Conditional Buttons
   let changePasswordButton, editButton, deleteButton;
   if (!editMode) {
-    changePasswordButton = <Button variant="contained" sx={{ ml: 2 }}>CHANGE PASSWORD</Button>
-    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(true)}>EDIT</Button>
-    deleteButton = <Button variant="outlined" sx={{ ml: 2 }} color="error" onClick={() => setDeleteModal(true)}>DELETE</Button>
+    changePasswordButton = (
+      <Button variant="contained" sx={{ ml: 2 }}>
+        CHANGE PASSWORD
+      </Button>
+    );
+    editButton = (
+      <Button
+        variant="outlined"
+        sx={{ ml: 2 }}
+        onClick={() => setEditMode(true)}
+      >
+        EDIT
+      </Button>
+    );
+    deleteButton = (
+      <Button
+        variant="outlined"
+        sx={{ ml: 2 }}
+        color="error"
+        onClick={() => setDeleteModal(true)}
+      >
+        DELETE
+      </Button>
+    );
   } else {
-    editButton = <Button variant="outlined" sx={{ ml: 2 }} onClick={() => setEditMode(false)}>SAVE</Button>
-    deleteButton = <Button variant="outlined" sx={{ ml: 2 }} color="error" onClick={() => setEditMode(false)}>CANCEL</Button>
+    editButton = (
+      <Button
+        variant="outlined"
+        sx={{ ml: 2 }}
+        onClick={() => setEditMode(false)}
+      >
+        SAVE
+      </Button>
+    );
+    deleteButton = (
+      <Button
+        variant="outlined"
+        sx={{ ml: 2 }}
+        color="error"
+        onClick={() => setEditMode(false)}
+      >
+        CANCEL
+      </Button>
+    );
   }
 
   return (
@@ -95,9 +135,8 @@ const UserProfile = () => {
           variant="standard"
           sx={{ width: "95%", mx: 2, mt: 3 }}
         />
-
         {/* BUTTONS */}
-        <Box sx={{ "display": "flex", "justify-content": "space-between" }}>
+        <Box sx={{ display: "flex", "justify-content": "space-between" }}>
           <Box pt={5} textAlign="left">
             {changePasswordButton}
           </Box>

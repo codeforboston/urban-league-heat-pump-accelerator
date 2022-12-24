@@ -6,6 +6,7 @@ import Nav from "./nav/Nav";
 import UserProfile from "./userProfile/UserProfile";
 import HouseProfile from "./houseProfile/HouseProfile";
 import CreateNewUser from "./dashboard/userTab/CreateNewUser";
+import CreateNewHome from "./dashboard/homeTab/CreateNewHome";
 
 const AdminContainer = () => {
   return (
@@ -23,10 +24,9 @@ const AdminContainer = () => {
           ></Route> */}
           <Route path="houseprofile/:hid" element={<HouseProfile />}></Route>
           <Route path="userprofile/:uid" element={<UserProfile />}></Route>
-          <Route
-            path="createuser"
-            element={<CreateNewUser />}
-          ></Route>
+          <Route path="createHome" element={<CreateNewHome />}></Route>
+
+          <Route path="createUser" element={<CreateNewUser />}></Route>
         </Routes>
         {/* <Footer /> */}
       </Box>

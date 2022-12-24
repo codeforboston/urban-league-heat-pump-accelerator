@@ -44,7 +44,7 @@ const UserTable = () => {
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 800 }}>
-        <Table stickyHeader aria-label='sticky table'>
+        <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -65,9 +65,9 @@ const UserTable = () => {
                 return (
                   <TableRow
                     hover
-                    role='checkbox'
+                    role="checkbox"
                     tabIndex={-1}
-                    key={row.code}
+                    key={row.phone + row.name}
                     onClick={() => onRowClick(row)}
                     sx={{ cursor: "pointer" }}
                   >
@@ -87,7 +87,7 @@ const UserTable = () => {
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
-        component='div'
+        component="div"
         count={rows.length}
         rowsPerPage={rowsPerPage}
         page={page}
