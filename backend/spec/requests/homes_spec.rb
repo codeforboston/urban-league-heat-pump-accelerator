@@ -66,13 +66,13 @@ RSpec.describe "/homes", type: :request do
     context "with valid parameters" do
       it "creates a new Home" do
         expect {
-          post homes_url, params: { home: valid_attributes }
+          post homes_url, params: { home: valid_attributes }, as: :json
         }.to change(Home, :count).by(1)
       end
 
-      it "redirects to the created home" do
-        post homes_url, params: { home: valid_attributes }
-        expect(response).to redirect_to(home_url(Home.last))
+      it "renders a sucessful response" do
+        post homes_url, params: { home: valid_attributes }, as: :json
+        expect(response).to be_successful
       end
     end
   end
