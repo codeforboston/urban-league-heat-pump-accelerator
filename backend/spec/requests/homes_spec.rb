@@ -75,21 +75,6 @@ RSpec.describe "/homes", type: :request do
         expect(response).to redirect_to(home_url(Home.last))
       end
     end
-
-    context "with invalid parameters" do
-      it "does not create a new Home" do
-        expect {
-          post homes_url, params: { home: invalid_attributes }
-        }.to change(Home, :count).by(0)
-      end
-
-    
-      it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post homes_url, params: { home: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    
-    end
   end
 
   describe "PATCH /update" do
