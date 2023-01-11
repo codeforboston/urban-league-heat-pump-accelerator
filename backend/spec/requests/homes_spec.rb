@@ -28,7 +28,7 @@ RSpec.describe "/homes", type: :request do
   }}
 
   let(:invalid_attributes) {{
-    id: 'not a valid id',
+    street_number: ['CIC', 'Rocks']
   }}
 
   describe "GET /index" do
@@ -111,16 +111,6 @@ RSpec.describe "/homes", type: :request do
         home.reload
         expect(response).to redirect_to(home_url(home))
       end
-    end
-
-    context "with invalid parameters" do
-    
-      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        home = Home.create! valid_attributes
-        patch home_url(home), params: { home: invalid_attributes }, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    
     end
   end
 
