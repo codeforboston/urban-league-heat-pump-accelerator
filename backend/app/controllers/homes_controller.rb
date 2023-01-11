@@ -65,4 +65,8 @@ class HomesController < ApplicationController
     def home_params
       params.require(:home).permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type)
     end
+
+    def search_params
+      params.permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type)
+    end
 end
