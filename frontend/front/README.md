@@ -6,12 +6,12 @@ download here: https://code.visualstudio.com/
 Clone main github repo from the main branch.
 download here: https://github.com/codeforboston/urban-league-heat-pump-accelerator
 
-Afer downloading the main github repo, you need to switch from the #main branch to the #frontend_main to see the latest frontend file.
+After downloading the main github repo, you need to switch from the #main branch to the #frontend_main to see the latest frontend file.
 
 To keep formatting the same for the front-end files, you must download the #prettier plugin (Prettier - Code formatter
 ) before you can submit code to the frontend branch. Keep the default prettier plugin settings.
 
-Now that you're in the #frontend_main repo, navigate into the #frontend file and then naviate to the #front file. Inside the #front file, open a terminal (CLI) inside the #front file.
+Now that you're in the #frontend_main repo, navigate into the #frontend file and then navigate to the #front file. Inside the #front file, open a terminal (CLI) inside the #front file.
 
 If this is your first time downloading the frontend_main repo, you will not have a node_modules with all the necessary packages.
 
@@ -29,27 +29,33 @@ We're using yarn instead of npm for package download and a few other functions. 
 -npm run = yarn start
 -npm install "package" = yarn add "package"
 
-
-Github Branching and naming convention
-1. Now that you have download the github repo switch to the #frontend_main
-2. Create a new branch off #Frontend_main branch
-3. Branch naming convention should be frontend-issue[number]-
-  1. The first part of the name is frontend
-  2. seperate the firstname with a - and if there's a github issue add the word issue and its number. example frontend-issue23
-  3. If there's no github issue just skip that part
-  4. Lastly a short description of what you are working, example frontend-issue23-fixing-react-bug-on-survey-page
-  5. Try to include the file name in the description 
-  6. Another example without a github issue: frontend-adding-button-on-admin-profile-page 
-4. Make sure you publish the new branch to github remote
+- Github Branching and naming convention
+  1. Now that you have download the github repo switch to the #frontend_main
+  2. Create a new branch off #Frontend_main branch. Make sure you have the latest #frontend_main branch by pulling from remote github.
+  3. Branch naming convention should be frontend-issue[#]-"description of the work"
+  4. The first part of the name is frontend
+  5. separate the firstname with a - and if there's a github issue add the word issue and its number. example frontend-issue23
+  6. If there's no github issue just skip that part
+  7. Lastly a short description of what you are working, example: frontend-issue23-fixing-react-bug-on-survey-page
+  8. Try to include the file name in the description
+  9. Another example without a github issue: frontend-adding-button-on-admin-profile-page
+  10. Make sure you publish the new branch to github remote
 
 Merging Working into #frontend_main
+
 1. Always create a branch off #frontend_main to do your work.
-2. After working on your branch make sure to sync your branch to the remote github, aka publish your latest work to github
+2. After working on your branch make sure to sync your branch to the remote github, aka push your latest work on your local branch to the your remote branch on github
 3. Go to pull request page: https://github.com/codeforboston/urban-league-heat-pump-accelerator/pulls
-4. Click New pull request button. 
-5. In the compare drop down, select the branch you are currently working on and have finished.
-6. In the base drop down, select #frontend_main. 
-7. 
+4. Click New pull request button.
+5. In the compare drop down, select the branch you are currently want to merge into #frontend_main
+6. In the base drop down, select #frontend_main.
+7. And now click button Create pull request
+8. Give the pull request an appropriate name and add #zevez as one of the reviewer.
+9. Never push to directly to #frontend_main without a pull request.
+10. Make sure to copy the pull request link and paste into the frontend slack page.
+11. You can also contact Dat through slack to get your pull request review expedited.
+12. After you pull request is approved, you can close any github issue related to the pull request.
+13. Optionally, if you don't need the branch anymore, it should be delete.
 
 # Getting Started with Create React App
 
