@@ -1,33 +1,33 @@
 import React, { useEffect } from "react";
 import { Typography, Box, Container, Grid, List, Button } from "@mui/material";
 import { grey } from "@mui/material/colors";
-import { useDispatch, useSelector } from "react-redux";
-import Goal from "../../../components/goal/Goal";
+// import { useDispatch, useSelector } from "react-redux";
+import Goal from "../../../../components/goal/Goal";
 
-import { fetchHomeData } from "../../../features/home/homeSlice";
-import HeroImage from "../../../assets/images/home-exterior.jpg";
-import HeatPumpImage from "../../../assets/images/heat-pump-outside-home.jpg";
-import SurveyorImage from "../../../assets/images/surveyor.jpg";
-import IconList from "../../../components/iconList/IconList";
+// import { fetchHomeData } from "../../../../features/home/homeSlice";
+// import HeroImage from "../../../../assets/images/home-exterior.jpg";
+import HeatPumpImage from "../../../../assets/images/heat-pump-outside-home.jpg";
+import SurveyorImage from "../../../../assets/images/surveyor.jpg";
+import IconList from "../../../../components/iconList/IconList";
 
 const Home = () => {
-  const { title } = useSelector((state) => {
-    console.log(state);
-    return state.home;
-  });
+  // const { title } = useSelector((state) => {
+  //   console.log(state);
+  //   return state.home;
+  // });
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchHomeData());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchHomeData());
+  // }, [dispatch]);
 
   const greyBG = grey[200];
 
   return (
     <Box>
       {/* Hero */}
-      <Box
+      {/* <Box
         sx={{
           width: "100%",
           height: "500px",
@@ -60,7 +60,7 @@ const Home = () => {
             </Button>
           </Grid>
         </Grid>
-      </Box>
+      </Box> */}
 
       <Container width="auto">
         <Box
@@ -71,7 +71,7 @@ const Home = () => {
           }}
         >
           {/* What are heating pumps */}
-          <Grid container my={15}>
+          {/* <Grid container my={15}>
             <Grid
               item
               xs={12}
@@ -88,18 +88,10 @@ const Home = () => {
                 customer has a good understanding of what it is and its purpose.
               </Typography>
             </Grid>
-          </Grid>
+          </Grid> */}
 
           {/* Why are heat pumps important */}
           <Grid container spacing={4} my={15}>
-            <Grid item xs={12} md={6}>
-              <Box
-                component="img"
-                sx={{ width: "100%", height: "auto" }}
-                src={HeatPumpImage}
-                alt="Heat pump"
-              />
-            </Grid>
             <Grid
               item
               xs={12}
@@ -125,6 +117,14 @@ const Home = () => {
                   description="Reduces greenhouse gas emissions"
                 />
               </List>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box
+                component="img"
+                sx={{ width: "100%", height: "auto" }}
+                src={HeatPumpImage}
+                alt="Heat pump"
+              />
             </Grid>
           </Grid>
 

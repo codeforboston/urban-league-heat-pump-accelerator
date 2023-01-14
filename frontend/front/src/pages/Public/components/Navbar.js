@@ -13,10 +13,10 @@ import {
   Toolbar,
   Button,
   Stack,
+  Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import strings from "../constants";
-import urbanLeagueLogo from "../../../assets/images/urbanLeagueLogo.png";
 import { Link } from "react-router-dom";
 
 const drawerWidth = "100%";
@@ -36,11 +36,12 @@ function Navbar(props) {
         <Button ml={2}>
           <CloseIcon />
         </Button>
-        {/* <Typography variant="h6" sx={{ my: 2, flexGrow: 1 }}>
-          {strings.appName}
-        </Typography> */}
+
         <Box sx={{ my: 2, flexGrow: 1, marginRight: "48px" }}>
-          <img src={urbanLeagueLogo} alt="" className="logo" />
+          {/* <img src={urbanLeagueLogo} alt="" className="logo" /> */}
+          <Typography variant="h6" sx={{ my: 2, flexGrow: 1 }}>
+            {strings.appName}
+          </Typography>
         </Box>
       </Stack>
       <Divider />
@@ -68,7 +69,10 @@ function Navbar(props) {
       <AppBar component="nav" marginTop={2} sx={{ bgcolor: "#fff" }}>
         <Toolbar sx={{ justifyContent: "flex-end" }}>
           <Box sx={{ my: 2, flexGrow: 1 }}>
-            <img src={urbanLeagueLogo} alt="" className="logo" />
+            {/* <img src={urbanLeagueLogo} alt="" className="logo" /> */}
+            <Typography variant="h6" sx={{ my: 2, flexGrow: 1 }}>
+              {strings.appName}
+            </Typography>
           </Box>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Stack spacing={2} direction="row">
