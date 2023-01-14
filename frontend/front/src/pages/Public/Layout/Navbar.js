@@ -18,9 +18,10 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import strings from "../Assets/constants";
 import { Link } from "react-router-dom";
+import ButtonGetPump from "../Components/ButtonGetPump";
 
 const drawerWidth = "100%";
-const navItems = ["Home", "About", "Contact"];
+const navItems = ["Home", "About", "Survey", "Contact"];
 
 function Navbar(props) {
   const { window } = props;
@@ -58,6 +59,7 @@ function Navbar(props) {
           </ListItem>
         ))}
       </List>
+      <ButtonGetPump />
     </Box>
   );
 
@@ -82,10 +84,10 @@ function Navbar(props) {
                   to={item.toLowerCase() === "home" ? "" : item.toLowerCase()}
                   sx={{ color: "navbar.button.main" }}
                 >
-                  {console.log(item.toLowerCase())}
                   {item}
                 </Button>
               ))}
+              <ButtonGetPump />
             </Stack>
           </Box>
           <IconButton
