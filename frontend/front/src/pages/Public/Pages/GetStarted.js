@@ -3,17 +3,7 @@ import { Box, Grid, Typography } from "@mui/material";
 
 const GetStarted = () => {
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: "500px",
-        backgroundSize: "cover",
-        backgroundPosition: "bottom",
-        position: "relative",
-        zIndex: "-1",
-        flexGrow: 1,
-      }}
-    >
+    <Box>
       <Grid
         container
         display="flex"

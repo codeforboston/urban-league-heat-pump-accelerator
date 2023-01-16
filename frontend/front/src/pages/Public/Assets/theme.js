@@ -5,7 +5,7 @@ const defaultTheme = createTheme();
 export const theme = createTheme({
   palette: {
     footer: {
-      main: "#1E1E1E",
+      bgColor: "#1E1E1E",
     },
   },
   components: {

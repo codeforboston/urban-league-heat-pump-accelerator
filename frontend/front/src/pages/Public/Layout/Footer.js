@@ -6,7 +6,7 @@ import ButtonGetPump from "../Components/ButtonGetPump";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <Box spacing={4} pt={4} sx={{ bgcolor: "footer.main", color: "#FFF" }}>
+    <Box spacing={4} pt={4} sx={{ bgcolor: "footer.bgColor", color: "#FFF" }}>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <ButtonGetPump />
       </Box>
