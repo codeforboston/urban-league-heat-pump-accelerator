@@ -17,86 +17,90 @@ const StyledGrid = styled(Grid)(() => ({
   textAlign: "center",
 }));
 
-const CardBenefitsReusable = ({
-  title,
-  paragraphs,
-  image,
-  buttonText,
-  buttonLink,
-  imageRight,
-}) => {
+const CardBenefitsReusable = ({ cards }) => {
   return (
-    <Grid container spacing={4} my={15}>
-      {!imageRight ? (
-        <>
-          <Grid item xs={12} md={6}>
-            <Box
-              component="img"
-              sx={{ width: "100%", height: "auto" }}
-              src={image}
-              alt={title}
-            />
-          </Grid>
-          <StyledGrid item xs={12} md={6}>
-            <Typography variant="h5" textAlign="center">
-              {title}
-            </Typography>
-            <CardContent>
-              {paragraphs.map((paragraph) => (
-                <Typography
-                  gutterBottom
-                  variant="subtitle1"
-                  color="textSecondary"
-                >
-                  {paragraph}
+    <>
+      <Typography gutterBottom variant="h4" mb={6} align="center" gutterBottom>
+        Benefits of Heat Pumps
+      </Typography>
+      {cards.map((card) => (
+        <Grid container spacing={4} mb={15} key={card.id}>
+          {!card.imageRight ? (
+            <>
+              <Grid item xs={12} md={6}>
+                <Box
+                  component="img"
+                  sx={{ width: "100%", height: "auto" }}
+                  src={card.image}
+                  alt={card.title}
+                />
+              </Grid>
+              <StyledGrid item xs={12} md={6}>
+                <Typography variant="h5" textAlign="center">
+                  {card.title}
                 </Typography>
-              ))}
-              {buttonLink !== "" && (
-                <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-                  <Button component={Link} to={buttonLink}>
-                    {buttonText}
-                  </Button>
-                </CardActions>
-              )}
-            </CardContent>
-          </StyledGrid>
-        </>
-      ) : (
-        <>
-          <StyledGrid item xs={12} md={6}>
-            <Typography variant="h5" textAlign="center">
-              {title}
-            </Typography>
-            <CardContent>
-              {paragraphs.map((paragraph) => (
-                <Typography
-                  gutterBottom
-                  variant="subtitle1"
-                  color="textSecondary"
-                >
-                  {paragraph}
+                <CardContent>
+                  {card.paragraphs.map((paragraph) => (
+                    <Typography
+                      gutterBottom
+                      variant="subtitle1"
+                      color="textSecondary"
+                    >
+                      {paragraph}
+                    </Typography>
+                  ))}
+                  {card.buttonLink !== "" && (
+                    <CardActions
+                      sx={{ display: "flex", justifyContent: "center" }}
+                    >
+                      <Button component={Link} to={card.buttonLink}>
+                        {card.buttonText}
+                      </Button>
+                    </CardActions>
+                  )}
+                </CardContent>
+              </StyledGrid>
+            </>
+          ) : (
+            <>
+              <StyledGrid item xs={12} md={6}>
+                <Typography variant="h5" textAlign="center">
+                  {card.title}
                 </Typography>
-              ))}
-              {buttonLink !== "" && (
-                <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-                  <Button component={Link} to={buttonLink}>
-                    {buttonText}
-                  </Button>
-                </CardActions>
-              )}
-            </CardContent>
-          </StyledGrid>
-          <Grid item xs={12} md={6}>
-            <Box
-              component="img"
-              sx={{ width: "100%", height: "auto" }}
-              src={image}
-              alt={title}
-            />
-          </Grid>
-        </>
-      )}
-    </Grid>
+                <CardContent>
+                  {card.paragraphs.map((paragraph) => (
+                    <Typography
+                      gutterBottom
+                      variant="subtitle1"
+                      color="textSecondary"
+                    >
+                      {paragraph}
+                    </Typography>
+                  ))}
+                  {card.buttonLink !== "" && (
+                    <CardActions
+                      sx={{ display: "flex", justifyContent: "center" }}
+                    >
+                      <Button component={Link} to={card.buttonLink}>
+                        {card.buttonText}
+                      </Button>
+                    </CardActions>
+                  )}
+                </CardContent>
+              </StyledGrid>
+              <Grid item xs={12} md={6}>
+                <Box
+                  component="img"
+                  sx={{ width: "100%", height: "auto" }}
+                  src={card.image}
+                  alt={card.title}
+                />
+              </Grid>
+            </>
+          )}
+        </Grid>
+      ))}
+    </>
   );
 };
 
