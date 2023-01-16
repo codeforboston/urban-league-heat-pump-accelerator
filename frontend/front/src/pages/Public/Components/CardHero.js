@@ -21,16 +21,17 @@ const CardHero = ({ title, paragraphs, image }) => {
         alignItems="end"
         align="center"
       >
-        <Typography width="350px" variant="h4" color="initial">
-          Boston Residents Can Benefit From Heat Pumps
+        <Typography width="400px" variant="h4" color="initial">
+          {title}
         </Typography>
         <CardContent>
-          <Typography width="350px" color="initial" variant="subtitle1">
-            Heat pumps are effective, continuous, nearly silent and extremely
-            energy efficient.
-          </Typography>
           {paragraphs.map((paragraph) => (
-            <Typography variant="subtitle1" color="textSecondary">
+            <Typography
+              gutterBottom
+              width="400px"
+              color="initial"
+              variant="subtitle1"
+            >
               {paragraph}
             </Typography>
           ))}

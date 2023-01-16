@@ -43,7 +43,11 @@ const CardBenefitsReusable = ({
             </Typography>
             <CardContent>
               {paragraphs.map((paragraph) => (
-                <Typography variant="subtitle1" color="textSecondary">
+                <Typography
+                  gutterBottom
+                  variant="subtitle1"
+                  color="textSecondary"
+                >
                   {paragraph}
                 </Typography>
               ))}
@@ -65,7 +69,11 @@ const CardBenefitsReusable = ({
             </Typography>
             <CardContent>
               {paragraphs.map((paragraph) => (
-                <Typography variant="subtitle1" color="textSecondary">
+                <Typography
+                  gutterBottom
+                  variant="subtitle1"
+                  color="textSecondary"
+                >
                   {paragraph}
                 </Typography>
               ))}
