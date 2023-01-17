@@ -47,14 +47,7 @@ RSpec.describe '/homes', type: :request do
   describe 'GET /show' do
     it 'renders a successful response' do
       home = Home.create! valid_attributes
-      get home_url(home)
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_home_url
+      get home_url(home), as: :json
       expect(response).to be_successful
     end
   end
@@ -62,7 +55,7 @@ RSpec.describe '/homes', type: :request do
   describe 'GET /edit' do
     it 'renders a successful response' do
       home = Home.create! valid_attributes
-      get edit_home_url(home)
+      get edit_home_url(home), as: :json
       expect(response).to be_successful
     end
   end
@@ -108,14 +101,14 @@ RSpec.describe '/homes', type: :request do
     it 'destroys the requested home' do
       home = Home.create! valid_attributes
       expect do
-        delete home_url(home)
+        delete home_url(home), as: :json
       end.to change(Home, :count).by(-1)
     end
 
-    it 'redirects to the homes list' do
+    it 'returns status no_content' do
       home = Home.create! valid_attributes
-      delete home_url(home)
-      expect(response).to redirect_to(homes_url)
+      delete home_url(home), as: :json
+      expect(response).to have_http_status(:no_content)
     end
   end
 end
