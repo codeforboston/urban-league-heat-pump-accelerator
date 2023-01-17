@@ -18,7 +18,6 @@ const CardLinksSection = () => {
       spacing={4}
       sx={{
         display: "flex",
-
         justifyContent: "center",
       }}
     >

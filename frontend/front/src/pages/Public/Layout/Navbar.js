@@ -70,13 +70,13 @@ function Navbar(props) {
     <Box sx={{ display: "flex" }}>
       <AppBar component="nav" marginTop={2} sx={{ bgcolor: "#fff" }}>
         <Toolbar sx={{ justifyContent: "flex-end" }}>
-          <Box sx={{ my: 2, flexGrow: 1 }}>
+          <Box sx={{ my: 2, pl: 3, flexGrow: 1 }}>
             <Typography variant="h6" sx={{ my: 2, flexGrow: 1, color: "#000" }}>
               {strings.appName}
             </Typography>
           </Box>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Stack spacing={2} direction="row">
+            <Stack pr={3} spacing={2} direction="row">
               {navItems.map((item) => (
                 <Button
                   key={item}
