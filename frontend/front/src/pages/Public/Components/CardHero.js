@@ -8,7 +8,7 @@ const CardHero = ({ title, paragraphs, image }) => {
       container
       spacing={4}
       mb={15}
-      mt={6}
+      pt={15}
       sx={{ display: "flex", justifyContent: "center" }}
     >
       <Grid

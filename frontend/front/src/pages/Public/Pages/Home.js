@@ -2,7 +2,9 @@ import React from "react";
 import { Box, Container, Typography } from "@mui/material";
 import CardHero from "../Components/CardHero";
 import Partners from "../Components/Partners";
-import CardBenefitsReusable from "../Components/CardBenefitsReusable";
+import CardBenefitsSection from "../Components/CardBenefitsSection";
+import CardLinksSection from "../Components/CardLinksSection";
+
 import surveyorImage from "../../../assets/images/surveyor.jpg";
 import imageTwo from "../../../assets/images/heat-pump-outside-home.jpg";
 import imageThree from "../../../assets/images/home-exterior.jpg";
@@ -25,6 +27,9 @@ const Home = () => {
         image={imageHero}
       />
       <Container>
+        {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
+        <CardLinksSection />
+
         {/* PARTNERS LOGO */}
         <Partners
           title="Our Partners"
@@ -62,9 +67,8 @@ const Home = () => {
             },
           ]}
         />
-
         {/* CARDS BENEFITS */}
-        <CardBenefitsReusable
+        <CardBenefitsSection
           cards={[
             {
               id: 1,

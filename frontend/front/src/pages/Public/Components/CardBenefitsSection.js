@@ -17,7 +17,7 @@ const StyledGrid = styled(Grid)(() => ({
   textAlign: "center",
 }));
 
-const CardBenefitsReusable = ({ cards }) => {
+const CardBenefitsSection = ({ cards }) => {
   return (
     <>
       <Typography gutterBottom variant="h4" mb={6} align="center" gutterBottom>
@@ -30,13 +30,13 @@ const CardBenefitsReusable = ({ cards }) => {
               <Grid item xs={12} md={6}>
                 <Box
                   component="img"
-                  sx={{ width: "100%", height: "auto" }}
+                  sx={{ width: "100%", height: "auto", borderRadius: "1%" }}
                   src={card.image}
                   alt={card.title}
                 />
               </Grid>
               <StyledGrid item xs={12} md={6}>
-                <Typography variant="h5" textAlign="center">
+                <Typography variant="h6" textAlign="center">
                   {card.title}
                 </Typography>
                 <CardContent>
@@ -64,7 +64,7 @@ const CardBenefitsReusable = ({ cards }) => {
           ) : (
             <>
               <StyledGrid item xs={12} md={6}>
-                <Typography variant="h5" textAlign="center">
+                <Typography variant="h6" textAlign="center">
                   {card.title}
                 </Typography>
                 <CardContent>
@@ -91,7 +91,7 @@ const CardBenefitsReusable = ({ cards }) => {
               <Grid item xs={12} md={6}>
                 <Box
                   component="img"
-                  sx={{ width: "100%", height: "auto" }}
+                  sx={{ width: "100%", height: "auto", borderRadius: "1%" }}
                   src={card.image}
                   alt={card.title}
                 />
@@ -104,4 +104,4 @@ const CardBenefitsReusable = ({ cards }) => {
   );
 };
 
-export default CardBenefitsReusable;
+export default CardBenefitsSection;

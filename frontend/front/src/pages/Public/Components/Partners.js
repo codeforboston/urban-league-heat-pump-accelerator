@@ -4,7 +4,7 @@ import { Grid, Typography, Box } from "@mui/material";
 const Partners = ({ title, partners, width }) => {
   return (
     <Box my={15}>
-      <Typography variant="h4" align="center" gutterBottom>
+      <Typography variant="h4" mb={6} align="center" gutterBottom>
         {title}
       </Typography>
       <Grid
