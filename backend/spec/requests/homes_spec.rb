@@ -12,85 +12,88 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/homes", type: :request do
-  
+RSpec.describe '/homes', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Home. As you add validations to Home, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {{
-    street_number: '1',
-    street_name: 'Broadway',
-    unit_number: '106',
-    city: 'Cambridge',
-    state: 'MA',
-    zip_code: '02139',
-    building_type: 'Apartment' 
-  }}
+  let(:valid_attributes) do
+    {
+      street_number: '1',
+      street_name: 'Broadway',
+      unit_number: '106',
+      city: 'Cambridge',
+      state: 'MA',
+      zip_code: '02139',
+      building_type: 'Apartment'
+    }
+  end
 
-  let(:invalid_attributes) {{
-    street_number: ['CIC', 'Rocks']
-  }}
+  let(:invalid_attributes) do
+    {
+      street_number: %w[CIC Rocks]
+    }
+  end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Home.create! valid_attributes
       get homes_url, as: :json
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       home = Home.create! valid_attributes
       get home_url(home)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
+  describe 'GET /new' do
+    it 'renders a successful response' do
       get new_home_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /edit" do
-    it "renders a successful response" do
+  describe 'GET /edit' do
+    it 'renders a successful response' do
       home = Home.create! valid_attributes
       get edit_home_url(home)
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Home" do
-        expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Home' do
+        expect do
           post homes_url, params: { home: valid_attributes }, as: :json
-        }.to change(Home, :count).by(1)
+        end.to change(Home, :count).by(1)
       end
 
-      it "renders a sucessful response" do
+      it 'renders a sucessful response' do
         post homes_url, params: { home: valid_attributes }, as: :json
         expect(response).to be_successful
       end
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
+      end
 
-      it "updates the requested home" do
+      it 'updates the requested home' do
         home = Home.create! valid_attributes
         patch home_url(home), params: { home: new_attributes }
         home.reload
-        skip("Add assertions for updated state")
+        skip('Add assertions for updated state')
       end
 
-      it "redirects to the home" do
+      it 'redirects to the home' do
         home = Home.create! valid_attributes
         patch home_url(home), params: { home: new_attributes }
         home.reload
@@ -99,15 +102,15 @@ RSpec.describe "/homes", type: :request do
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested home" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested home' do
       home = Home.create! valid_attributes
-      expect {
+      expect do
         delete home_url(home)
-      }.to change(Home, :count).by(-1)
+      end.to change(Home, :count).by(-1)
     end
 
-    it "redirects to the homes list" do
+    it 'redirects to the homes list' do
       home = Home.create! valid_attributes
       delete home_url(home)
       expect(response).to redirect_to(homes_url)
