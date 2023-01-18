@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
-import House from "./houseTab/House";
+import House from "./homeTab/Home";
 import { Tabs } from "@mui/material";
 import User from "./userTab/User";
 
@@ -22,24 +22,24 @@ export default function LabTabs() {
             value={value}
             onChange={handleChange}
             centered
-            aria-label='lab API tabs example'
+            aria-label="lab API tabs example"
           >
             <Tab
               sx={{ width: "100%", typography: "h4", mt: 2 }}
-              label='HOUSE'
-              value='1'
+              label="HOME"
+              value="1"
             />
             <Tab
               sx={{ width: "100%", typography: "h4", mt: 2 }}
-              label='USER'
-              value='2'
+              label="USER"
+              value="2"
             />
           </Tabs>
         </Box>
-        <TabPanel value='1'>
+        <TabPanel value="1">
           <House />
         </TabPanel>
-        <TabPanel value='2'>
+        <TabPanel value="2">
           <User />
         </TabPanel>
       </TabContext>

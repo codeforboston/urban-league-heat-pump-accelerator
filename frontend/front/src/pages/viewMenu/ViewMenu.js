@@ -12,29 +12,29 @@ const ViewMenu = () => {
     <Container>
       <Grid
         container
-        direction='row'
-        justifyContent='center'
-        alignItems='center'
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
       >
         <Box mt={4}>
           <Box textAlign={"center"}>
             <Box height={30} />
 
             <Box>
-              <Typography variant='h3'>URBAN LEAGUE HEAT PUMP</Typography>
+              <Typography variant="h3">URBAN LEAGUE HEAT PUMP</Typography>
             </Box>
             <Box m={2}>
-              <Typography variant='h4'>Front End Developement</Typography>
+              <Typography variant="h4">Front End Developement</Typography>
             </Box>
             <Box height={30} />
             <Box m={4}>
-              <Typography variant='h3'>Selection Menu</Typography>
+              <Typography variant="h3">Selection Menu</Typography>
             </Box>
             <Box mt={4}>
-              <SurveyorsView link='surveyor' />
-              <PublicView link='public' />
-              <DeveloperView link='dev' />
-              <AdminView link='admin' />
+              <SurveyorsView link="surveyor" />
+              <PublicView link="public" />
+              <AdminView link="admin" />
+              <DeveloperView link="dev" />
             </Box>
           </Box>
         </Box>

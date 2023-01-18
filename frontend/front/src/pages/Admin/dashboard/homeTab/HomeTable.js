@@ -30,7 +30,7 @@ const columns = [
 
 const rows = HouseData;
 
-const HouseTable = () => {
+const HomeTable = () => {
   const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
@@ -52,7 +52,7 @@ const HouseTable = () => {
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 800 }}>
-        <Table stickyHeader aria-label='sticky table'>
+        <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -73,9 +73,9 @@ const HouseTable = () => {
                 return (
                   <TableRow
                     hover
-                    role='checkbox'
+                    role="checkbox"
                     tabIndex={-1}
-                    key={row.code}
+                    key={row.zipcode + row.city}
                     onClick={() => onRowClick(row)}
                     sx={{ cursor: "pointer" }}
                   >
@@ -95,7 +95,7 @@ const HouseTable = () => {
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
-        component='div'
+        component="div"
         count={rows.length}
         rowsPerPage={rowsPerPage}
         page={page}
@@ -106,4 +106,4 @@ const HouseTable = () => {
   );
 };
 
-export default HouseTable;
+export default HomeTable;
