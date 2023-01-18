@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :homes
   resources :surveyors
   resources :survey_visits
   resources :survey_answers
