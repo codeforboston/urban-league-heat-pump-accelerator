@@ -24,7 +24,6 @@ ActiveRecord::Schema[7.0].define(version: 202211220010028) do
     t.string "building_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "survey_response_id"
   end
 
   create_table "property_assessments", force: :cascade do |t|
@@ -133,6 +132,8 @@ ActiveRecord::Schema[7.0].define(version: 202211220010028) do
     t.boolean "completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "home_id"
+    t.index ["home_id"], name: "index_survey_visits_on_home_id"
     t.index ["user_id"], name: "index_survey_visits_on_user_id"
   end
 
