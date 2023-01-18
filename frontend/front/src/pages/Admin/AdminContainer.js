@@ -4,8 +4,9 @@ import { Box, Button, Typography } from "@mui/material";
 import Dashboard from "./dashboard/Dashboard";
 import Nav from "./nav/Nav";
 import UserProfile from "./userProfile/UserProfile";
-import HouseProfile from "./houseProfile/HouseProfile";
+import HomeProfile from "./homeProfile/HomeProfile";
 import CreateNewUser from "./dashboard/userTab/CreateNewUser";
+import CreateNewHome from "./dashboard/homeTab/CreateNewHome";
 
 const AdminContainer = () => {
   return (
@@ -21,12 +22,11 @@ const AdminContainer = () => {
             path='houseprofile/:hid/'
             element={<HouseProfile />}
           ></Route> */}
-          <Route path="houseprofile/:hid" element={<HouseProfile />}></Route>
+          <Route path="homeprofile/:hid" element={<HomeProfile />}></Route>
           <Route path="userprofile/:uid" element={<UserProfile />}></Route>
-          <Route
-            path="createuser"
-            element={<CreateNewUser />}
-          ></Route>
+          <Route path="createHome" element={<CreateNewHome />}></Route>
+
+          <Route path="createUser" element={<CreateNewUser />}></Route>
         </Routes>
         {/* <Footer /> */}
       </Box>
