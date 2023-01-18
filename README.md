@@ -11,7 +11,7 @@ Technical support for the Urban League of Eastern Massachusetts ([ULEM](https://
 
 
 ## How to contribute
-
+* Watch the [Orientation Video](https://www.youtube.com/watch?v=xSDioDavOsw)
 * Join [the Slack](https://communityinviter.com/apps/cfb-public/default-badge) channel `#urban-league-heat-pump-accelerator`
 * Join [us](https://www.meetup.com/Code-for-Boston/) on Tuesdays, 7-9p Eastern Time
     + Zoom all weeks
