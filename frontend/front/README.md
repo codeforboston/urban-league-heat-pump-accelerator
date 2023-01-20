@@ -1,37 +1,61 @@
 Start Guide By Dat Nguyen email: datguy7@gmail.com
 
 To run this Front-End only react application, you need VSCode IDE.
-  download here: https://code.visualstudio.com/
+download here: https://code.visualstudio.com/
 
 Clone main github repo from the main branch.
-  download here: https://github.com/codeforboston/urban-league-heat-pump-accelerator
+download here: https://github.com/codeforboston/urban-league-heat-pump-accelerator
 
-Afer downloading the main github repo, you need to switch from the #main branch to the #frontend_dat to see the frontend file.
+After downloading the main github repo, you need to switch from the #main branch to the #frontend_main to see the latest frontend file.
 
 To keep formatting the same for the front-end files, you must download the #prettier plugin (Prettier - Code formatter
 ) before you can submit code to the frontend branch. Keep the default prettier plugin settings.
 
-Now that you're in the #frontend_dat repo, navigate into the #frontend file and then naviate to the #front file. Inside the #front file, open a terminal (CLI) inside the #front file. 
+Now that you're in the #frontend_main repo, navigate into the #frontend file and then navigate to the #front file. Inside the #front file, open a terminal (CLI) inside the #front file.
 
-If this is your first time downloading the frontend_dat repo, you will not have a node_modules with all the necessary packages. 
+If this is your first time downloading the frontend_main repo, you will not have a node_modules with all the necessary packages.
 
 We're using yarn instead of npm. Install yarn by typing this command in the terminal: npm install --global yarn
 
-Now that you have yarn installed, to download the packages listed in package.json, you need to type this command into the terminal (currently at your #front file): "yarn install".
-    
-After yarn install all the packages listed in package.json, you can now run the create-react-app program. Type: "yarn start". You can access the react browser view at http://localhost:3000/. 
+Now that you have yarn installed, to download the packages listed in package.json, you need to type this command into the terminal (make sure you're in your #front file): "yarn install".
+
+After yarn install all the packages listed in package.json, you can now run the create-react-app program.
+
+To run the create-react-app server in the #front file type this in your terminal: yarn start". You can access the react browser view at http://localhost:3000/.
 
 If you already have previously download all the node_modules, open terminal in the #front file and type "yarn start" to run the create-react-app program.
 
-We're using yarn instead of npm for package download and a few other functions. These are the common npm commands and their yarn equivalents. 
-  -npm run = yarn start
-  -npm install "package"  = yarn add "package"
+We're using yarn instead of npm for package download and a few other functions. These are the common npm commands and their yarn equivalents.
+-npm run = yarn start
+-npm install "package" = yarn add "package"
 
+- Github Branching and naming convention
+  1. Now that you have download the github repo switch to the #frontend_main
+  2. Create a new branch off #Frontend_main branch. Make sure you have the latest #frontend_main branch by pulling from remote github.
+  3. Branch naming convention should be frontend-issue[#]-"description of the work"
+  4. The first part of the name is frontend
+  5. separate the firstname with a - and if there's a github issue add the word issue and its number. example frontend-issue23
+  6. If there's no github issue just skip that part
+  7. Lastly a short description of what you are working, example: frontend-issue23-fixing-react-bug-on-survey-page
+  8. Try to include the file name in the description
+  9. Another example without a github issue: frontend-adding-button-on-admin-profile-page
+  10. Make sure you publish the new branch to github remote
 
+Merging Working into #frontend_main
 
-
-
-
+1. Always create a branch off #frontend_main to do your work.
+2. After working on your branch make sure to sync your branch to the remote github, aka push your latest work on your local branch to the your remote branch on github
+3. Go to pull request page: https://github.com/codeforboston/urban-league-heat-pump-accelerator/pulls
+4. Click New pull request button.
+5. In the compare drop down, select the branch you are currently want to merge into #frontend_main
+6. In the base drop down, select #frontend_main.
+7. And now click button Create pull request
+8. Give the pull request an appropriate name and add #zevez as one of the reviewer.
+9. Never push to directly to #frontend_main without a pull request.
+10. Make sure to copy the pull request link and paste into the frontend slack page.
+11. You can also contact Dat through slack to get your pull request review expedited.
+12. After you pull request is approved, you can close any github issue related to the pull request.
+13. Optionally, if you don't need the branch anymore, it should be delete.
 
 # Getting Started with Create React App
 
