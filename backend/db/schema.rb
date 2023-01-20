@@ -119,12 +119,10 @@ ActiveRecord::Schema[7.0].define(version: 20230118011909) do
   create_table "survey_responses", force: :cascade do |t|
     t.bigint "survey_id", null: false
     t.bigint "survey_visit_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["survey_id"], name: "index_survey_responses_on_survey_id"
     t.index ["survey_visit_id"], name: "index_survey_responses_on_survey_visit_id"
-    t.index ["user_id"], name: "index_survey_responses_on_user_id"
   end
 
   create_table "survey_visits", force: :cascade do |t|
@@ -178,7 +176,6 @@ ActiveRecord::Schema[7.0].define(version: 20230118011909) do
   add_foreign_key "survey_questions", "surveys"
   add_foreign_key "survey_responses", "survey_visits"
   add_foreign_key "survey_responses", "surveys"
-  add_foreign_key "survey_responses", "users"
   add_foreign_key "survey_visits", "users"
   add_foreign_key "surveyors", "users"
 end
