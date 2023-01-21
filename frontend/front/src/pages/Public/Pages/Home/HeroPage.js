@@ -2,21 +2,22 @@ import React from "react";
 import { styled } from "@mui/material/styles";
 import { Grid, Typography, Box } from "@mui/material";
 import { red, green, blue } from "@mui/material/colors";
+import ButtonGetPump from "../../Components/ButtonGetPump";
 
 const Root = styled("div")(({ theme }) => ({
-  // padding: theme.spacing(1),
-  // [theme.breakpoints.down("md")]: {
-  //   backgroundColor: red[500],
-  // },
-  // [theme.breakpoints.up("md")]: {
-  //   backgroundColor: blue[500],
-  // },
-  // [theme.breakpoints.up("lg")]: {
-  //   backgroundColor: green[500],
-  // },
+  padding: theme.spacing(1),
+  [theme.breakpoints.down("md")]: {
+    backgroundColor: red[500],
+  },
+  [theme.breakpoints.up("md")]: {
+    backgroundColor: blue[500],
+  },
+  [theme.breakpoints.up("lg")]: {
+    backgroundColor: green[500],
+  },
 }));
 
-const HeroPage = ({ title, text, image }) => {
+const HeroPage = ({ title, subtitle, text, image }) => {
   return (
     <Root>
       <Box
@@ -24,29 +25,47 @@ const HeroPage = ({ title, text, image }) => {
         alignItems="center"
         backgroundColor="#98C7D6"
         overflow="hidden"
-        sx={{ height: "calc(100vh - 115px)" }}
+        sx={{ height: "calc(100vh - 115px)", maxHeight: "750px" }}
       >
-        <Grid container spacing={3} sx={{ height: "calc(100vh - 115px)" }}>
+        <Grid container spacing={3} justify="center">
           <Grid
             item
-            xs={12}
+            xs={6}
             md={6}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-
-              flexDirection: "column",
-            }}
+            lg={6}
+            xl={6}
+            container
+            alignItems="center"
+            alignSelf="center"
           >
-            <Box p={5}>
-              <Typography variant="h4">{title}</Typography>
-              <Typography variant="body1">{text}</Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box
+              p={4}
+              direction="column"
+              justifyContent="center"
+              alignItems="flex-end"
+              sx={{
+                position: "relative",
+                maxWidth: "500px",
+                minWidth: "300px",
+                textAlign: "center",
+              }}
+            >
+              <Typography variant="h5" gutterBottom>
+                {title}
+              </Typography>
+              <Typography variant="body1" mb={5}>
+                {text}
+              </Typography>
+              <ButtonGetPump />
             </Box>
           </Grid>
           <Grid
             item
             xs={6}
             md={6}
+            lg={6}
+            xl={6}
             alignItems="center"
             justify="center"
             direction="column"
@@ -59,6 +78,8 @@ const HeroPage = ({ title, text, image }) => {
                 display: "flex",
                 justifyContent: "end",
                 flexDirection: "row",
+                borderRadius: "10%",
+                maxHeight: "700px",
               }}
             />
           </Grid>
