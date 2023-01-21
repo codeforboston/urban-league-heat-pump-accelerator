@@ -86,7 +86,7 @@ function Navbar(props) {
               src={logoHeatPump}
               alt="logo"
               sx={{
-                height: "75px",
+                height: "70px",
                 my: 2,
                 flexGrow: 1,
               }}

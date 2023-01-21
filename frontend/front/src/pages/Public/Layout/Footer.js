@@ -3,7 +3,6 @@ import { Typography, Stack, Box, Button, Grid, Divider } from "@mui/material";
 import strings from "../Assets/constants";
 import ButtonGetPump from "../Components/ButtonGetPump";
 import { Link } from "react-router-dom";
-import Partners from "../Components/Partners";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,9 +15,6 @@ const Footer = () => {
       }}
     >
       <Grid container spacing={4} sx={{ alignItems: "center" }}>
-        <Grid item lg={9} sx={{ pb: 6, mx: 4 }}>
-          <Partners />
-        </Grid>
         <Divider
           orientation="vertical"
           variant="fullWidth"
