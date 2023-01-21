@@ -1,26 +1,34 @@
 import React from "react";
 import { Box, Container } from "@mui/material";
-import CardHero from "../Components/CardHero";
-import Partners from "../Components/Partners";
-import CardBenefitsSection from "../Components/CardBenefitsSection";
-import CardLinksSection from "../Components/CardLinksSection";
+import CardHero from "../../Components/CardHero";
+import Partners from "./Partners";
+import CardBenefitsSection from "../../Components/CardBenefitsSection";
+import CardLinksSection from "./CardLinksSection";
 
-import surveyorImage from "../../../assets/images/surveyor.jpg";
-import imageTwo from "../../../assets/images/heat-pump-outside-home.jpg";
-import imageThree from "../../../assets/images/home-exterior.jpg";
-import imageHero from "../../../assets/images/ulemhouse.png";
+import surveyorImage from "../../../../assets/images/surveyor.jpg";
+import imageTwo from "../../../../assets/images/heat-pump-outside-home.jpg";
+import imageThree from "../../../../assets/images/home-exterior.jpg";
+import imageHero from "../../../../assets/images/ulemhouse.png";
+import imageHeroHouse from "../../../../assets/images/hero-house-heat-pump.svg";
 
+import HeroPage from "./HeroPage";
 const Home = () => {
   return (
-    <Box>
+    <Box sh={{ zIndex: "-1" }}>
       {/* HERO */}
-      <CardHero
+      <HeroPage
+        title="BOSTON RESIDENTS CAN BENEFIT FROM HEAT PUMPS"
+        text="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
+        image={imageHeroHouse}
+      />
+
+      {/* <CardHero
         title="Boston Residents Can Benefit From Heat Pumps"
         paragraphs={[
-          " Heat pumps are effective, continuous, nearly silent and extremely energy efficient.",
+          "Heat pumps are effective, continuous, nearly silent and extremely energy efficient.",
         ]}
         image={imageHero}
-      />
+      /> */}
       <Container>
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
         <Box my={15}>
@@ -50,7 +58,7 @@ const Home = () => {
               },
               {
                 id: 2,
-                title: "Improve Heating and Coolin",
+                title: "Improve Heating and Cooling",
                 paragraphs: [
                   "Heat pumps are effective, continuous, nearly silent and extremely energy efficient.",
                   "Rather than provide blasts of hot or cold air, heat pumps provide continuous, low-level operation.",

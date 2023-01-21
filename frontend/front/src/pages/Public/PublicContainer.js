@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider, Box, Stack } from "@mui/material";
 import { theme } from "./Assets/theme";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
+import Home from "./Pages/Home/Home";
 import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
 import About from "./Pages/About";
@@ -17,9 +17,8 @@ const PublicContainer = () => {
         <Box>
           <Stack
             direction="column"
-            spacing={2}
             justifyContent="space-between"
-            style={{
+            sx={{
               display: "flex",
               minHeight: "100vh",
               flexDirection: "column",

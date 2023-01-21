@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
@@ -19,13 +19,18 @@ import CloseIcon from "@mui/icons-material/Close";
 import strings from "../Assets/constants";
 import { Link } from "react-router-dom";
 import ButtonGetPump from "../Components/ButtonGetPump";
+import logoHeatPump from "../../../assets/images/logoHeatPump.svg";
 
+/**
+ * TODO:
+ * - []Correct the size of the logoHeatPump logo
+ */
 const drawerWidth = "100%";
 const navItems = ["Home", "About", "Survey", "Contact"];
 
 function Navbar(props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -68,14 +73,26 @@ function Navbar(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" marginTop={2} sx={{ bgcolor: "#fff" }}>
+      <AppBar
+        position="static"
+        marginTop={2}
+        sx={{ bgcolor: "#98C7D6", boxShadow: "border-box" }}
+      >
         <Toolbar sx={{ justifyContent: "flex-end" }}>
           <Box sx={{ my: 2, pl: 3, flexGrow: 1 }}>
-            <Typography variant="h6" sx={{ my: 2, flexGrow: 1, color: "#000" }}>
-              {strings.appName}
-            </Typography>
+            <Box
+              // FIXME: Fixed the logo with the right messures
+              component="img"
+              src={logoHeatPump}
+              alt="logo"
+              sx={{
+                height: "75px",
+                my: 2,
+                flexGrow: 1,
+              }}
+            />
           </Box>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box sx={{ display: { xs: "none", md: "block" } }}>
             <Stack pr={3} spacing={2} direction="row">
               {navItems.map((item) => (
                 <Button
@@ -97,7 +114,7 @@ function Navbar(props) {
             onClick={handleDrawerToggle}
             sx={{
               ml: 2,
-              display: { sm: "none" },
+              display: { md: "none" },
               color: "#000",
               justifyContent: "flex-start",
             }}
