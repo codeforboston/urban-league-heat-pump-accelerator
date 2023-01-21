@@ -20,7 +20,7 @@ const StyledGrid = styled(Grid)(() => ({
 const CardBenefitsSection = ({ cards }) => {
   return (
     <>
-      <Typography gutterBottom variant="h4" mb={6} align="center" gutterBottom>
+      <Typography gutterBottom variant="h4" mb={6} align="center">
         Benefits of Heat Pumps
       </Typography>
       {cards.map((card) => (
