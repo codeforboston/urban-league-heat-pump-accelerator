@@ -7,7 +7,7 @@ import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
-import Survey from "./Pages/Survey";
+import { SurveyPage } from "./Pages/SurveyPage/SurveyPage";
 import GetStarted from "./Pages/GetStarted";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
@@ -34,7 +34,7 @@ const PublicContainer = () => {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/contact" element={<Contact />}></Route>
                 <Route path="/about" element={<About />}></Route>
-                <Route path="/survey" element={<Survey />}></Route>
+                <Route path="/survey" element={<SurveyPage />} />
                 <Route path="/getstarted" element={<GetStarted />}></Route>
               </Routes>
             </Box>
