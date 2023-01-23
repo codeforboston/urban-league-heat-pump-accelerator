@@ -35,7 +35,7 @@ const HeroWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   overflow: "hidden",
-  // height: "calc(100vh - 115px)",
+  height: "calc(100vh - 115px)",
   maxHeight: "850px",
 
   "& .home-hero-container": {
@@ -65,6 +65,11 @@ const HeroWrapper = styled("div")(({ theme }) => ({
   },
   [theme.breakpoints.up("xs")]: {
     // backgroundColor: yellow[500],
+    "& .home-hero-info": {
+      position: "absolute",
+      justifyContent: "center",
+    },
+
     "& .home-hero-image": {
       height: "90%",
     },
@@ -73,13 +78,10 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     },
     "& .image-overlay": {
       position: "absolute",
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      backgroundColor: "rgba(0, 0, 0, 0.3)",
       zIndex: 1,
       height: "100%",
       width: "100%",
-    },
-    "& .home-hero-info": {
-      position: "absolute",
     },
   },
   [theme.breakpoints.up("sm")]: {
@@ -94,16 +96,20 @@ const HeroWrapper = styled("div")(({ theme }) => ({
       paddingTop: "30px",
       height: "90%",
     },
+    "& .home-hero-info": {
+      justifyContent: "flex-start",
+      marginLeft: "10%",
+    },
   },
   [theme.breakpoints.up("lg")]: {
     // backgroundColor: green[500],
 
     "& .home-hero-container": {
-      margin: "96px",
+      margin: "96px 0",
     },
-    "& .home-hero-info": {
-      justifyContent: "center",
-    },
+    // "& .home-hero-info": {
+    //   justifyContent: "center",
+    // },
     "& .image-wrapper": {
       justifyContent: "flex-start",
       "& .home-hero-image": {
@@ -115,7 +121,10 @@ const HeroWrapper = styled("div")(({ theme }) => ({
   },
   [theme.breakpoints.up("xl")]: {
     // backgroundColor: orange[500],
-    "& .home-hero-image": {},
+    "& .home-hero-info": {
+      justifyContent: "flex-end",
+      marginLeft: "0",
+    },
   },
 }));
 
@@ -124,18 +133,17 @@ const InfoWrapper = styled("div")(({ theme }) => ({
   maxWidth: "500px",
   minWidth: "310px",
   textAlign: "left",
-
   [theme.breakpoints.up("xs")]: {
     // backgroundColor: yellow[500],
     textAlign: "center",
+    padding: "16px",
   },
   [theme.breakpoints.up("sm")]: {
     // backgroundColor: yellow[500],
-
-    textAlign: "left",
   },
   [theme.breakpoints.up("md")]: {
     // backgroundColor: blue[500],
+    textAlign: "left",
   },
   [theme.breakpoints.up("lg")]: {
     // backgroundColor: green[500],
@@ -146,7 +154,7 @@ const InfoWrapper = styled("div")(({ theme }) => ({
 }));
 
 const ImageOverlay = styled("div")(({ theme }) => ({
-  [theme.breakpoints.up("sm")]: {
+  [theme.breakpoints.up("md")]: {
     display: "none",
   },
 }));
@@ -164,11 +172,16 @@ const HeroPage = ({ title, text, image }) => {
             className="home-hero-info"
             sx={{ zIndex: 3 }}
           >
-            <InfoWrapper>
+            <InfoWrapper className="info-container">
               <Box className="info-wrapper">
                 <Box>
                   <Typography variant="h1">{title}</Typography>
-                  <Box component="img" src={graphicHeroUnderline} mb={3} />
+                  <Box
+                    component="img"
+                    src={graphicHeroUnderline}
+                    mb={3}
+                    sx={{ width: "80%" }}
+                  />
                 </Box>
                 <Typography variant="body1" mb={7}>
                   {text}
