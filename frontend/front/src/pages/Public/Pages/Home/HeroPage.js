@@ -55,6 +55,7 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     },
   },
   "& .image-wrapper": {
+    width: "100%",
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "flex-end",
@@ -66,6 +67,9 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     // backgroundColor: yellow[500],
     "& .home-hero-image": {
       height: "90%",
+    },
+    "& .image-wrapper": {
+      justifyContent: "flex-end",
     },
     "& .image-overlay": {
       position: "absolute",
@@ -97,15 +101,13 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     "& .home-hero-container": {
       margin: "96px",
     },
-    "& .home-hero-container": {
-      margin: "96px",
-    },
-
-    "& .image-wrapper": {
+    "& .home-hero-info": {
       justifyContent: "center",
+    },
+    "& .image-wrapper": {
+      justifyContent: "flex-start",
       "& .home-hero-image": {
         paddingTop: "50px",
-        marginLeft: "500px",
         height: "90%",
         borderRadius: "0 0 10% 0",
       },
@@ -123,9 +125,6 @@ const InfoWrapper = styled("div")(({ theme }) => ({
   minWidth: "310px",
   textAlign: "left",
 
-  // display: "flex",
-  // justifyContent: "center",
-  // alignContent: "center",
   [theme.breakpoints.up("xs")]: {
     // backgroundColor: yellow[500],
     textAlign: "center",
@@ -136,13 +135,13 @@ const InfoWrapper = styled("div")(({ theme }) => ({
     textAlign: "left",
   },
   [theme.breakpoints.up("md")]: {
-    backgroundColor: blue[500],
+    // backgroundColor: blue[500],
   },
   [theme.breakpoints.up("lg")]: {
-    backgroundColor: green[500],
+    // backgroundColor: green[500],
   },
   [theme.breakpoints.up("xl")]: {
-    backgroundColor: orange[500],
+    // backgroundColor: orange[500],
   },
 }));
 
@@ -179,7 +178,7 @@ const HeroPage = ({ title, text, image }) => {
             </InfoWrapper>
           </Grid>
 
-          <Grid item xs={12} lg={12} className="image-wrapper">
+          <Grid item xs={6} lg={6} className="image-wrapper">
             <ImageOverlay className="image-overlay" />
             <Box
               component="img"
