@@ -29,11 +29,6 @@ const Footer = () => {
                 color="gray"
               />
             }
-            // sx={{
-            //   display: "flex",
-            //   alignItems: "center",
-            //   justifyContent: "center",
-            // }}
           >
             <Button
               component={Link}

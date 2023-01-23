@@ -1,7 +1,5 @@
 import { createTheme } from "@mui/material";
 
-// const defaultTheme = createTheme();
-
 // cardHero Background Color //
 //   background: "#98C7D6",
 //   background:
@@ -9,6 +7,9 @@ import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   palette: {
+    bgColor: {
+      default: "#E9F7FB",
+    },
     footer: {
       bgColor: "#1E1E1E",
     },

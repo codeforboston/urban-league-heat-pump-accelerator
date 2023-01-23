@@ -128,10 +128,6 @@ const InfoWrapper = styled("div")(({ theme }) => ({
     textAlign: "center",
     padding: "16px",
   },
-
-  [theme.breakpoints.up("md")]: {
-    // textAlign: "left",
-  },
 }));
 
 const ImageOverlay = styled("div")(({ theme }) => ({

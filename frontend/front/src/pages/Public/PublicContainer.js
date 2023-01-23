@@ -14,7 +14,7 @@ const PublicContainer = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box>
+        <Box sx={{ bgcolor: "bgColor.default" }}>
           <Stack
             direction="column"
             justifyContent="space-between"
