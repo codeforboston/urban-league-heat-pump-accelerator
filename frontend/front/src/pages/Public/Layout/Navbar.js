@@ -14,6 +14,7 @@ import {
   Button,
   Stack,
   Typography,
+  Grid,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import strings from "../Assets/constants";
@@ -81,51 +82,66 @@ function Navbar(props) {
           background:
             "linear-gradient(90deg, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%)",
           boxShadow: "none",
+          padding: { xl: "0 18%" },
         }}
       >
-        <Toolbar sx={{ justifyContent: "flex-end" }}>
-          <Box sx={{ my: 2, pl: 4, flexGrow: 1 }}>
-            <Box
-              // FIXME: Fixed the logo with the right messures
-              component="img"
-              src={logoHeatPump}
-              alt="logo"
-              sx={{
-                height: "60px",
-                my: 2,
-                flexGrow: 1,
-              }}
-            />
-          </Box>
-          <Box sx={{ display: { xs: "none", md: "block" } }}>
-            <Stack pr={4} spacing={2} direction="row">
-              {navItems.map((item) => (
-                <Button
-                  variant="navbar"
-                  key={item}
-                  component={Link}
-                  to={item.toLowerCase() === "home" ? "" : item.toLowerCase()}
-                >
-                  {item}
-                </Button>
-              ))}
-              <ButtonGetPump />
-            </Stack>
-          </Box>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{
-              ml: 2,
-              display: { md: "none" },
-              color: "#000",
-              justifyContent: "flex-start",
-            }}
+        <Toolbar>
+          <Grid
+            container
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
           >
-            <MenuIcon />
-          </IconButton>
+            <Grid item sx={{ my: 2 }}>
+              <Box
+                // FIXME: Fixed the logo with the right messures
+                component="img"
+                src={logoHeatPump}
+                alt="logo"
+                sx={{
+                  height: "60px",
+                  my: 2,
+                }}
+              />
+            </Grid>
+            <Grid item>
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                <Stack spacing={2} direction="row">
+                  {navItems.map((item) => (
+                    <Button
+                      variant="navbar"
+                      key={item}
+                      component={Link}
+                      to={
+                        item.toLowerCase() === "home" ? "" : item.toLowerCase()
+                      }
+                    >
+                      {item}
+                    </Button>
+                  ))}
+                </Stack>
+              </Box>
+            </Grid>
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              <Grid item>
+                <ButtonGetPump />
+              </Grid>
+            </Box>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{
+                ml: 2,
+                display: { md: "none" },
+                color: "#000",
+                justifyContent: "flex-start",
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Grid>
         </Toolbar>
       </AppBar>
 

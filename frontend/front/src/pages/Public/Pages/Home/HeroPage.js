@@ -6,22 +6,22 @@ import graphicHeroUnderline from "../../../../assets/images/graphic-hero-underli
 
 import { red, green, blue, yellow, orange } from "@mui/material/colors";
 const Root = styled("div")(({ theme }) => ({
-  padding: theme.spacing(1),
-  [theme.breakpoints.up("xs")]: {
-    backgroundColor: yellow[500],
-  },
-  [theme.breakpoints.up("sm")]: {
-    backgroundColor: red[500],
-  },
-  [theme.breakpoints.up("md")]: {
-    backgroundColor: blue[500],
-  },
-  [theme.breakpoints.up("lg")]: {
-    backgroundColor: green[500],
-  },
-  [theme.breakpoints.up("xl")]: {
-    backgroundColor: orange[500],
-  },
+  // padding: theme.spacing(1),
+  // [theme.breakpoints.up("xs")]: {
+  //   backgroundColor: yellow[500],
+  // },
+  // [theme.breakpoints.up("sm")]: {
+  //   backgroundColor: red[500],
+  // },
+  // [theme.breakpoints.up("md")]: {
+  //   backgroundColor: blue[500],
+  // },
+  // [theme.breakpoints.up("lg")]: {
+  //   backgroundColor: green[500],
+  // },
+  // [theme.breakpoints.up("xl")]: {
+  //   backgroundColor: orange[500],
+  // },
 }));
 
 const HeroWrapper = styled("div")(({ theme }) => ({
@@ -167,7 +167,13 @@ const HeroPage = ({ title, text, image }) => {
                 <Typography variant="body1" mb={7}>
                   {text}
                 </Typography>
-                <ButtonGetPump />
+                <Box
+                  sx={{
+                    display: { xs: "block", md: "none" },
+                  }}
+                >
+                  <ButtonGetPump />
+                </Box>
               </Box>
             </InfoWrapper>
           </Grid>
