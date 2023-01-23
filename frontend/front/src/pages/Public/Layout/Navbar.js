@@ -79,13 +79,12 @@ function Navbar(props) {
         sx={{
           bgcolor: "#98C7D6",
           background:
-            //   "radial-gradient(circle, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%)",
             "linear-gradient(90deg, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%)",
-          boxShadow: "border-box",
+          boxShadow: "none",
         }}
       >
         <Toolbar sx={{ justifyContent: "flex-end" }}>
-          <Box sx={{ my: 2, pl: 12, flexGrow: 1 }}>
+          <Box sx={{ my: 2, pl: 4, flexGrow: 1 }}>
             <Box
               // FIXME: Fixed the logo with the right messures
               component="img"
@@ -99,7 +98,7 @@ function Navbar(props) {
             />
           </Box>
           <Box sx={{ display: { xs: "none", md: "block" } }}>
-            <Stack pr={12} spacing={2} direction="row">
+            <Stack pr={4} spacing={2} direction="row">
               {navItems.map((item) => (
                 <Button
                   variant="navbar"
@@ -141,7 +140,7 @@ function Navbar(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: { xs: "block", md: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
