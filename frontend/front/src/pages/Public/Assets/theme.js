@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material";
 
-const defaultTheme = createTheme();
+// const defaultTheme = createTheme();
 
 // cardHero Background Color //
 //   background: "#98C7D6",
@@ -23,25 +23,37 @@ export const theme = createTheme({
     MuiButton: {
       variants: [
         {
-          props: { variant: "navbar" },
+          props: { variant: "getpump" },
           style: {
-            textTransform: "none",
-            color: "textColors.second",
-          },
-        },
-        {
-          props: { variant: "get-pump" },
-          style: {
-            color: "rgb(252, 56, 56)",
-            height: "50px",
+            color: "#041367",
+            height: "60px",
             borderRadius: "1000px",
             minWidth: 200,
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
             background: "#efed70",
+
+            boxShadow: "inset 0 0 0 2px hsl(0deg 0% 100% / 30% )",
             "&:hover": {
               boxShadow: "0px 4px 32px rgba(252, 56, 56, 0.4)",
               transform: "scale(1.1)",
               backgroundColor: "rgba(239, 237, 112, 0.7)",
+              color: "#041367",
+            },
+          },
+        },
+        {
+          props: { variant: "getpumpOutlined" },
+          style: {
+            color: "#fff",
+            height: "50px",
+            borderRadius: "1000px",
+            minWidth: 200,
+            transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+            boxShadow: "inset 0 0 0 2px hsl(0deg 0% 100% / 30%)",
+            "&:hover": {
+              boxShadow: "0px 4px 32px rgba(252, 56, 56, 0.4)",
+              boxShadow: "inset 0 0 0 2px hsl(0deg 0% 100% )",
+              transform: "scale(1.1)",
             },
           },
         },

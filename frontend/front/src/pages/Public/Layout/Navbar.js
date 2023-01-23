@@ -65,7 +65,7 @@ function Navbar(props) {
           </ListItem>
         ))}
       </List>
-      <ButtonGetPump />
+      <ButtonGetPump variant="getpump" />
     </Box>
   );
 
@@ -124,7 +124,7 @@ function Navbar(props) {
             </Grid>
             <Box sx={{ display: { xs: "none", md: "block" } }}>
               <Grid item>
-                <ButtonGetPump />
+                <ButtonGetPump variant="getpumpOutlined" />
               </Grid>
             </Box>
             <IconButton

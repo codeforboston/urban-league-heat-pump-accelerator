@@ -15,20 +15,25 @@ const Footer = () => {
       }}
     >
       <Grid container spacing={4} sx={{ alignItems: "center" }}>
-        <Divider
-          orientation="vertical"
-          variant="fullWidth"
-          sx={{ mt: 4 }}
-          color="gray"
-          flexItem
-        />
-        <Grid item lg={2} alignItems="center">
+        <Grid item lg={12} mt={4} alignItems="center">
           <Stack
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
+            direction="row"
+            spacing={6}
+            justifyContent="center"
+            alignItems="center"
+            divider={
+              <Divider
+                orientation="vertical"
+                flexItem
+                variant="fullWidth"
+                color="gray"
+              />
+            }
+            // sx={{
+            //   display: "flex",
+            //   alignItems: "center",
+            //   justifyContent: "center",
+            // }}
           >
             <Button
               component={Link}
@@ -38,6 +43,7 @@ const Footer = () => {
             >
               Take The Survey
             </Button>
+            <ButtonGetPump variant="getpumpOutlined" />
             <Button
               component={Link}
               to="about"
@@ -46,11 +52,9 @@ const Footer = () => {
             >
               Learn More About Us
             </Button>
-
-            <ButtonGetPump />
           </Stack>
         </Grid>
-        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+        <Grid item xs={12}>
           <Stack justifyContent="center" p={4} sx={{ color: "main" }}>
             <Typography align="center">
               © {currentYear} Copyrights: {strings.appName}

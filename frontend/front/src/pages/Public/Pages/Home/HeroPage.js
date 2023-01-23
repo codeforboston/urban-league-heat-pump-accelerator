@@ -130,7 +130,7 @@ const InfoWrapper = styled("div")(({ theme }) => ({
   },
 
   [theme.breakpoints.up("md")]: {
-    textAlign: "left",
+    // textAlign: "left",
   },
 }));
 
@@ -167,13 +167,13 @@ const HeroPage = ({ title, text, image }) => {
                 <Typography variant="body1" mb={7}>
                   {text}
                 </Typography>
-                <Box
+                {/* <Box
                   sx={{
                     display: { xs: "block", md: "none" },
                   }}
-                >
-                  <ButtonGetPump />
-                </Box>
+                > */}
+                <ButtonGetPump variant="getpump" />
+                {/* </Box> */}
               </Box>
             </InfoWrapper>
           </Grid>
