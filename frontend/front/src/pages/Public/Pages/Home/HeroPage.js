@@ -5,7 +5,6 @@ import ButtonGetPump from "../../Components/ButtonGetPump";
 import graphicHeroUnderline from "../../../../assets/images/graphic-hero-underline.svg";
 
 import { red, green, blue, yellow, orange } from "@mui/material/colors";
-
 const Root = styled("div")(({ theme }) => ({
   // padding: theme.spacing(1),
   // [theme.breakpoints.up("xs")]: {
@@ -26,17 +25,15 @@ const Root = styled("div")(({ theme }) => ({
 }));
 
 const HeroWrapper = styled("div")(({ theme }) => ({
-  // zIndex: 2,
-  // backgroundColor: "#98C7D6",
-  background: "rgb(152,199,214)",
+  // background: "#98C7D6",
   background:
-    //   "radial-gradient(circle, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%)",
     "linear-gradient(90deg, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%)",
   display: "flex",
   alignItems: "center",
   overflow: "hidden",
   height: "calc(100vh - 115px)",
   maxHeight: "850px",
+  position: "relative",
 
   "& .home-hero-container": {
     display: "flex",
@@ -64,7 +61,6 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     },
   },
   [theme.breakpoints.up("xs")]: {
-    // backgroundColor: yellow[500],
     "& .home-hero-info": {
       position: "absolute",
       justifyContent: "center",
@@ -78,20 +74,20 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     },
     "& .image-overlay": {
       position: "absolute",
+      top: 0,
+      left: 0,
       backgroundColor: "rgba(0, 0, 0, 0.3)",
-      zIndex: 1,
       height: "100%",
       width: "100%",
+      overflow: "hidden",
     },
   },
   [theme.breakpoints.up("sm")]: {
-    // backgroundColor: red[500],
     "& .home-hero-image": {
       height: "90%",
     },
   },
   [theme.breakpoints.up("md")]: {
-    // backgroundColor: blue[500],
     "& .home-hero-image": {
       paddingTop: "30px",
       height: "90%",
@@ -102,14 +98,10 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     },
   },
   [theme.breakpoints.up("lg")]: {
-    // backgroundColor: green[500],
-
     "& .home-hero-container": {
       margin: "96px 0",
     },
-    // "& .home-hero-info": {
-    //   justifyContent: "center",
-    // },
+
     "& .image-wrapper": {
       justifyContent: "flex-start",
       "& .home-hero-image": {
@@ -120,7 +112,6 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     },
   },
   [theme.breakpoints.up("xl")]: {
-    // backgroundColor: orange[500],
     "& .home-hero-info": {
       justifyContent: "flex-end",
       marginLeft: "0",
@@ -134,22 +125,12 @@ const InfoWrapper = styled("div")(({ theme }) => ({
   minWidth: "310px",
   textAlign: "left",
   [theme.breakpoints.up("xs")]: {
-    // backgroundColor: yellow[500],
     textAlign: "center",
     padding: "16px",
   },
-  [theme.breakpoints.up("sm")]: {
-    // backgroundColor: yellow[500],
-  },
+
   [theme.breakpoints.up("md")]: {
-    // backgroundColor: blue[500],
     textAlign: "left",
-  },
-  [theme.breakpoints.up("lg")]: {
-    // backgroundColor: green[500],
-  },
-  [theme.breakpoints.up("xl")]: {
-    // backgroundColor: orange[500],
   },
 }));
 
