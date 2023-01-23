@@ -9,7 +9,6 @@ import imageTwo from "../../../../assets/images/heat-pump-outside-home.jpg";
 import imageThree from "../../../../assets/images/home-exterior.jpg";
 import imageHeroHouse from "../../../../assets/images/hero-house-heat-pump.svg";
 import HeroPage from "./HeroPage";
-import HeroPageOld from "./HeroPageOld";
 
 const Home = () => {
   return (
@@ -20,11 +19,7 @@ const Home = () => {
         text="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
         image={imageHeroHouse}
       />
-      <HeroPageOld
-        title="AN ENERGY-EFFICIENT SOLUTION FOR BOSTON RESIDENTS"
-        text="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
-        image={imageHeroHouse}
-      />
+
       <Container>
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
         <Box my={15}>
