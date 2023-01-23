@@ -26,7 +26,7 @@ import logoHeatPump from "../../../assets/images/logoHeatPump.svg";
  * - []Correct the size of the logoHeatPump logo
  */
 const drawerWidth = "100%";
-const navItems = ["Home", "About", "Survey", "Contact"];
+const navItems = ["HOME", "ABOUT", "SURVEY", "CONTACT"];
 
 function Navbar(props) {
   const { window } = props;
@@ -72,34 +72,40 @@ function Navbar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", zIndex: 3 }}>
       <AppBar
         position="static"
         marginTop={2}
-        sx={{ bgcolor: "#98C7D6", boxShadow: "border-box" }}
+        sx={{
+          bgcolor: "#98C7D6",
+          background:
+            //   "radial-gradient(circle, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%)",
+            "linear-gradient(90deg, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%)",
+          boxShadow: "border-box",
+        }}
       >
         <Toolbar sx={{ justifyContent: "flex-end" }}>
-          <Box sx={{ my: 2, pl: 3, flexGrow: 1 }}>
+          <Box sx={{ my: 2, pl: 12, flexGrow: 1 }}>
             <Box
               // FIXME: Fixed the logo with the right messures
               component="img"
               src={logoHeatPump}
               alt="logo"
               sx={{
-                height: "65px",
+                height: "60px",
                 my: 2,
                 flexGrow: 1,
               }}
             />
           </Box>
           <Box sx={{ display: { xs: "none", md: "block" } }}>
-            <Stack pr={3} spacing={2} direction="row">
+            <Stack pr={12} spacing={2} direction="row">
               {navItems.map((item) => (
                 <Button
+                  variant="navbar"
                   key={item}
                   component={Link}
                   to={item.toLowerCase() === "home" ? "" : item.toLowerCase()}
-                  sx={{ color: "navbar.button.main" }}
                 >
                   {item}
                 </Button>
@@ -139,7 +145,8 @@ function Navbar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              color: "#000",
+              color: "textColors.second",
+              bgcolor: "#98C7D6",
             },
           }}
         >

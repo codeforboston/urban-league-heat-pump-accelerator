@@ -22,6 +22,8 @@ const PublicContainer = () => {
               display: "flex",
               minHeight: "100vh",
               flexDirection: "column",
+              color: "textColors.main",
+              fontSize: "16px",
             }}
           >
             <Navbar />

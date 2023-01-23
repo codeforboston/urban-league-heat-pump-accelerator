@@ -7,51 +7,51 @@ export const theme = createTheme({
     footer: {
       bgColor: "#1E1E1E",
     },
+    textColors: {
+      main: "#041367",
+      second: "#fff",
+      third: "rgb(252, 56, 56)",
+    },
   },
+
   components: {
     MuiButton: {
       variants: [
         {
-          props: { variant: "dashed" },
+          props: { variant: "navbar" },
           style: {
             textTransform: "none",
-            border: `2px dashed ${defaultTheme.palette.primary.main}`,
-            color: defaultTheme.palette.primary.main,
+            color: "textColors.second",
+          },
+        },
+        {
+          props: { variant: "get-pump" },
+          style: {
+            color: "rgb(252, 56, 56)",
+            height: "50px",
+            borderRadius: "1000px",
+            minWidth: 200,
+            transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+            background: "#efed70",
+            "&:hover": {
+              boxShadow: "0px 4px 32px rgba(252, 56, 56, 0.4)",
+              transform: "scale(1.1)",
+              backgroundColor: "rgba(239, 237, 112, 0.7)",
+            },
           },
         },
       ],
     },
+
     MuiPaper: {
       variants: [
         {
           props: { variant: "hero" },
-          style: {
-            backgroundColor: "purple",
-            // defaultTheme.palette.mode === "dark" ? "#1A2027" : "#fff",
-            ...defaultTheme.typography.body2,
-            padding: defaultTheme.spacing(2),
-            textAlign: "center",
-            height: "500px",
-            color: defaultTheme.palette.text.secondary,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          },
+          style: {},
         },
         {
           props: { variant: "image" },
-          style: {
-            backgroundColor: "yellow",
-            // defaultTheme.palette.mode === "dark" ? "#1A2027" : "#fff",
-            ...defaultTheme.typography.body2,
-            padding: defaultTheme.spacing(2),
-            textAlign: "center",
-            display: "flex",
-            alignItems: "center",
-            height: "500px",
-            color: defaultTheme.palette.text.secondary,
-          },
+          style: {},
         },
       ],
     },
