@@ -7,15 +7,17 @@
   /* Background colors */
   --bgColor-1: #98C7D6;
   --bgColor-2: #72bede;
-  /* --bgColor-3: #1E1E1E;  */
+  --bgColor-3: #031366; 
   --bgColor-4: #f9bdae;
   --bgColor-5: #E9F7FB;
   --bgColor-6: #303F4F;
   --bgColor-7: #273341;
+  --bgColor-8:  #efed70;
 
    /* Accent-blue colors */
    --accent-1: #fc3838;
    --accent-2: rgba(255, 255, 255, 0.3);
+   --accent-3: rgba(0, 0, 0, 0.54);
 }
 
 body {      

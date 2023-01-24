@@ -8,6 +8,7 @@ import surveyorImage from "../../../../assets/images/surveyor.jpg";
 import imageTwo from "../../../../assets/images/heat-pump-outside-home.jpg";
 import imageThree from "../../../../assets/images/home-exterior.jpg";
 import imageHeroHouse from "../../../../assets/images/hero-house-heat-pump.svg";
+import imageLearnMore from "../../../../assets/images/image-learn-more.jpeg";
 import HeroPage from "./HeroPage";
 
 const Home = () => {
@@ -78,7 +79,7 @@ const Home = () => {
                   "Heat pumps are highly efficient heating and cooling systems. They become greener/cleaner as their electric power source shifts to lower/no-carbon generation.",
                   "Learn more about how Air Source Heat Pumps can reduce carbon footprint.",
                 ],
-                image: imageTwo,
+                image: imageLearnMore,
                 imageRight: false,
                 buttonText: "CLEAN ENERGY GUIDE",
                 buttonLink: "/external-page",

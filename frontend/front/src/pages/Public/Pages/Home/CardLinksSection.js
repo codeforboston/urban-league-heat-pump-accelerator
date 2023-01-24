@@ -1,82 +1,66 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import {
-  Typography,
-  Box,
-  Grid,
-  CardContent,
-  CardActions,
-  Card,
-  Button,
-  CardMedia,
-} from "@mui/material";
-import EastIcon from "@mui/icons-material/East";
-import { Link } from "react-router-dom";
+import { Typography, Box, Grid } from "@mui/material";
 
-const CardSection = styled("div")(({ theme }) => ({
-  backgroundColor: "var(--bgColor-2)",
+import ButtonCustom from "../../Components/ButtonCustom";
+
+const CardLinks = styled("div")(({ theme }) => ({
+  maxWidth: 500,
+  width: "480px",
+  borderRadius: "25% 10%",
+  backgroundColor: "var(--bgColor-8)",
 }));
-
-// const CardSection = styled("div")(({ theme }) => ({
-//   "& .image-wrapper": {
-
-// }));
-//   media: {
-//     height: 0,
-//     paddingTop: "56.25%", // 16:9
-//   },
-//   card: {
-//     position: "relative",
-//   },
-//   overlay: {
-//     position: "absolute",
-//     top: "20px",
-//     left: "20px",
-//     color: "black",
-//     backgroundColor: "white",
-//   },
-// };
 
 const CardLinksSection = () => {
   return (
-    <Grid
-      container
-      spacing={4}
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
+    <Grid container spacing={12} justifyContent="center">
       <Grid
         item
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
         }}
       >
-        <CardSection>
-          <Box mx={6}>
-            <CardActions>
-              <Button
-                component={Link}
-                to="survey"
-                size="large"
-                endIcon={<EastIcon />}
-              >
-                Take The Survey
-              </Button>
-            </CardActions>
-
-            <CardContent>
-              <Typography variant="body2">
-                Tell us your thoughts and questions about heat pumps
+        <CardLinks
+          sx={{
+            maxWidth: 500,
+            width: "480px",
+            borderRadius: "25% 10%",
+            backgroundColor: "var(--bgColor-8)",
+          }}
+        >
+          <Box m={4}>
+            <Typography textAlign="center" variant="h4" margimGutter>
+              Take The Survey
+            </Typography>
+            <Box
+              sx={{
+                height: "140px",
+                display: "flex",
+                textAlign: "center",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Typography variant="subtitle1">
+                Tell us your thoughts and questions about heat pumps.
               </Typography>
-            </CardContent>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <ButtonCustom
+                text="Take the survey"
+                to="survey"
+                variant="customBtn"
+              />
+            </Box>
           </Box>
-        </CardSection>
+        </CardLinks>
       </Grid>
-
       <Grid
         item
         sx={{
@@ -84,40 +68,42 @@ const CardLinksSection = () => {
           flexDirection: "column",
         }}
       >
-        <CardSection>
-          <Box mx={6}>
-            <CardActions>
-              <Button
-                component={Link}
-                to="about"
-                size="large"
-                endIcon={<EastIcon />}
-              >
-                Learn More About Us
-              </Button>
-            </CardActions>
-
-            <CardContent>
-              <Typography variant="body2">
+        <CardLinks
+          sx={{
+            maxWidth: 500,
+            width: "480px",
+            borderRadius: "25% 10%",
+            backgroundColor: "var(--bgColor-8)",
+          }}
+        >
+          <Box m={4}>
+            <Typography textAlign="center" variant="h4" margimGutter>
+              Learn More About Us
+            </Typography>
+            <Box
+              sx={{
+                height: "140px",
+                display: "flex",
+                textAlign: "center",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Typography variant="subtitle1">
                 It’s our mission to bring heat pumps to Boston homes.
               </Typography>
-            </CardContent>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <ButtonCustom text="Learn more" to="about" variant="customBtn" />
+            </Box>
           </Box>
-        </CardSection>
+        </CardLinks>
       </Grid>
-      {/*   
-      <Grid
-        item
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <Card style={styles.card}>
-          <CardMedia image={this.props.preview} className="styles-media" />
-          <div style={styles.overlay}>this text should overlay the image</div>
-        </Card>
-      </Grid> */}
     </Grid>
   );
 };

@@ -23,7 +23,7 @@ export const theme = createTheme({
             borderRadius: "1000px",
             minWidth: 200,
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-            background: "#efed70",
+            background: "var(--bgColor-8)",
 
             boxShadow: "inset 0 0 0 2px hsl(0deg 0% 100% / 30% )",
             "&:hover": {
@@ -47,6 +47,23 @@ export const theme = createTheme({
               boxShadow: "0px 4px 32px rgba(252, 56, 56, 0.4)",
               boxShadow: "inset 0 0 0 2px hsl(0deg 0% 100% )",
               transform: "scale(1.1)",
+            },
+          },
+        },
+        {
+          props: { variant: "customBtn" },
+          style: {
+            color: "var(--primary-2)",
+            height: "50px",
+            borderRadius: "1000px",
+            minWidth: 200,
+            backgroundColor: "var(--bgColor-3)",
+            // transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+            // boxShadow: "inset 0 0 0 2px hsl(0deg 0% 100% / 30%)",
+            "&:hover": {
+              // boxShadow: "0px 4px 32px rgba(252, 56, 56, 0.4)",
+              transform: "scale(1.1)",
+              backgroundColor: "var(--bgColor-3)",
             },
           },
         },
