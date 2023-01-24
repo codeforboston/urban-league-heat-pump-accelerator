@@ -10,6 +10,7 @@ import Contact from "./Pages/Contact";
 import Survey from "./Pages/Survey";
 import GetStarted from "./Pages/GetStarted";
 import "./Assets/index.css";
+import "animate.css/animate.min.css";
 
 const PublicContainer = () => {
   return (
