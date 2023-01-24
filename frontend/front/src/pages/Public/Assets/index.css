@@ -1,0 +1,25 @@
+
+:root { 
+     /* Primary colors*/
+  --primary-1: #041367;
+  --primary-2: #ffffff;
+
+  /* Background colors */
+  --bgColor-1: #98C7D6;
+  --bgColor-2: #72bede;
+  /* --bgColor-3: #1E1E1E;  */
+  --bgColor-4: #f9bdae;
+  --bgColor-5: #E9F7FB;
+  --bgColor-6: #303F4F;
+  --bgColor-7: #273341;
+
+   /* Accent-blue colors */
+   --accent-1: #fc3838;
+   --accent-2: rgba(255, 255, 255, 0.3);
+}
+
+body {      
+    background-color: var(--bgColor-5);
+    color: var(--primary-1);
+}
+

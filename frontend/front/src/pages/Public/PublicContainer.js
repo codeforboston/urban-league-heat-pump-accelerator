@@ -9,6 +9,7 @@ import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Survey from "./Pages/Survey";
 import GetStarted from "./Pages/GetStarted";
+import "./Assets/index.css";
 
 const PublicContainer = () => {
   return (

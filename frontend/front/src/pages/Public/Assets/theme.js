@@ -1,15 +1,7 @@
 import { createTheme } from "@mui/material";
 
-// cardHero Background Color //
-//   background: "#98C7D6",
-//   background:
-//     "linear-gradient(90deg, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%)",
-
 export const theme = createTheme({
   palette: {
-    bgColor: {
-      default: "#E9F7FB",
-    },
     footer: {
       bgColor: "#1E1E1E",
     },
