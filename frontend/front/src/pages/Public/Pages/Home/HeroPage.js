@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import { Grid, Typography, Box } from "@mui/material";
 import ButtonGetPump from "../../Components/ButtonGetPump";
 import graphicHeroUnderline from "../../../../assets/images/graphic-hero-underline.svg";
+import AnimatedBox from "../../Components/AnimatedBox";
 
 // import { red, green, blue, yellow, orange } from "@mui/material/colors";
 const Root = styled("div")(({ theme }) => ({
@@ -134,6 +135,13 @@ const ImageOverlay = styled("div")(({ theme }) => ({
 }));
 
 const HeroPage = ({ title, text, image }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setIsMounted(true), 500);
+    return () => setIsMounted(false);
+  }, []);
+
   return (
     <Root>
       <HeroWrapper>
@@ -147,27 +155,30 @@ const HeroPage = ({ title, text, image }) => {
             sx={{ zIndex: 3 }}
           >
             <InfoWrapper className="info-container">
-              <Box className="info-wrapper">
-                <Box>
-                  <Typography variant="h1">{title}</Typography>
-                  <Box
-                    component="img"
-                    src={graphicHeroUnderline}
-                    mb={3}
-                    sx={{ width: "80%" }}
-                  />
-                </Box>
-                <Typography variant="body1" mb={7}>
-                  {text}
-                </Typography>
-                {/* <Box
+              <AnimatedBox animation="animate__fadeInUp">
+                <Box className="info-wrapper">
+                  <Box>
+                    <Typography variant="h1">{title}</Typography>
+                    <Box
+                      component="img"
+                      src={graphicHeroUnderline}
+                      mb={3}
+                      sx={{ width: "80%" }}
+                    />
+                  </Box>
+                  <Typography variant="body1" mb={7}>
+                    {text}
+                  </Typography>
+
+                  {/* <Box
                   sx={{
                     display: { xs: "block", md: "none" },
                   }}
                 > */}
-                <ButtonGetPump variant="getpump" />
-                {/* </Box> */}
-              </Box>
+                  <ButtonGetPump variant="getpump" />
+                  {/* </Box> */}
+                </Box>
+              </AnimatedBox>
             </InfoWrapper>
           </Grid>
 
