@@ -58,6 +58,8 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     alignItems: "flex-end",
     "& .home-hero-image": {
       objectFit: "cover",
+      paddingTop: "150px",
+      objectPosition: "top",
     },
   },
   [theme.breakpoints.up("xs")]: {
@@ -67,7 +69,7 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     },
 
     "& .home-hero-image": {
-      height: "90%",
+      height: "80%",
     },
     "& .image-wrapper": {
       justifyContent: "flex-end",
@@ -84,14 +86,10 @@ const HeroWrapper = styled("div")(({ theme }) => ({
   },
   [theme.breakpoints.up("sm")]: {
     "& .home-hero-image": {
-      height: "90%",
+      height: "100%",
     },
   },
   [theme.breakpoints.up("md")]: {
-    "& .home-hero-image": {
-      paddingTop: "30px",
-      height: "90%",
-    },
     "& .home-hero-info": {
       justifyContent: "flex-start",
       marginLeft: "10%",
@@ -105,9 +103,8 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     "& .image-wrapper": {
       justifyContent: "flex-start",
       "& .home-hero-image": {
-        paddingTop: "50px",
-        height: "90%",
-        borderRadius: "0 0 10% 0",
+        // height: "90%",
+        borderRadius: "0 0 20% 0",
       },
     },
   },

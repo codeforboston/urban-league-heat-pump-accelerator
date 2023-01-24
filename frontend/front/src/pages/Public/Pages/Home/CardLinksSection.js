@@ -5,8 +5,9 @@ import { Typography, Box, Grid } from "@mui/material";
 import ButtonCustom from "../../Components/ButtonCustom";
 
 const CardLinks = styled("div")(({ theme }) => ({
-  maxWidth: 500,
-  width: "480px",
+  minWidth: "350px",
+  maxWidth: "480px",
+  // width: "480px",
   borderRadius: "25% 10%",
   backgroundColor: "var(--bgColor-8)",
 }));
@@ -23,8 +24,6 @@ const CardLinksSection = () => {
       >
         <CardLinks
           sx={{
-            maxWidth: 500,
-            width: "480px",
             borderRadius: "25% 10%",
             backgroundColor: "var(--bgColor-8)",
           }}
@@ -70,8 +69,6 @@ const CardLinksSection = () => {
       >
         <CardLinks
           sx={{
-            maxWidth: 500,
-            width: "480px",
             borderRadius: "25% 10%",
             backgroundColor: "var(--bgColor-8)",
           }}
