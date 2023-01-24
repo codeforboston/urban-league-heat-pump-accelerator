@@ -5,7 +5,7 @@ import ButtonGetPump from "../../Components/ButtonGetPump";
 import graphicHeroUnderline from "../../../../assets/images/graphic-hero-underline.svg";
 import AnimatedBox from "../../Components/AnimatedBox";
 
-// import { red, green, blue, yellow, orange } from "@mui/material/colors";
+import { red, green, blue, yellow, orange } from "@mui/material/colors";
 const Root = styled("div")(({ theme }) => ({
   // padding: theme.spacing(1),
   // [theme.breakpoints.up("xs")]: {

@@ -16,18 +16,36 @@ import {
   Typography,
   Grid,
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import strings from "../Assets/constants";
 import { Link } from "react-router-dom";
 import ButtonGetPump from "../Components/ButtonGetPump";
-import logoHeatPump from "../../../assets/images/logoHeatPump.svg";
+import logoHeatPump from "../../../assets/images/logoHeatPump.png";
+import heatPumpFan from "../../../assets/images/fan-heat-pumpSM.png";
 
-/**
- * TODO:
- * - []Correct the size of the logoHeatPump logo
- */
 const drawerWidth = "100%";
 const navItems = ["HOME", "ABOUT", "SURVEY", "CONTACT"];
+
+const ImageAnimation = styled("div")(({ theme }) => ({
+  "& .home-hero-fan": {
+    left: "55px",
+    top: "62px",
+    position: "absolute",
+    transform: "translate(-50%,-50%)",
+    animation: "fanHero 1.5s infinite linear",
+  },
+  [theme.breakpoints.up("xs")]: {
+    "& .home-hero-fan": {
+      marginLeft: "-1%",
+    },
+  },
+  [theme.breakpoints.up("sm")]: {
+    "& .home-hero-fan": {
+      marginLeft: "0%",
+    },
+  },
+}));
 
 function Navbar(props) {
   const { window } = props;
@@ -93,16 +111,23 @@ function Navbar(props) {
             alignItems="center"
           >
             <Grid item sx={{ my: 2 }}>
-              <Box
-                // FIXME: Fixed the logo with the right messures
-                component="img"
-                src={logoHeatPump}
-                alt="logo"
-                sx={{
-                  height: "60px",
-                  my: 2,
-                }}
-              />
+              <ImageAnimation>
+                <Box
+                  component="img"
+                  src={logoHeatPump}
+                  className="logo"
+                  alt="logo"
+                  sx={{
+                    my: 2,
+                  }}
+                />
+                <Box
+                  component="img"
+                  src={heatPumpFan}
+                  alt="heat-pump-fan"
+                  className="home-hero-fan"
+                ></Box>
+              </ImageAnimation>
             </Grid>
             <Grid item>
               <Box sx={{ display: { xs: "none", md: "block" } }}>
