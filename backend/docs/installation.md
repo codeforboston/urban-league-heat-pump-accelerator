@@ -25,10 +25,9 @@ There are two ways to run dev containers, in browser via Github codespaces (easi
 
 ## Local Install
 
-1. Fork project on GitHub
 2. Clone project
     ```bash
-   git clone git@github.com:${YOUR_GITHUB_USER}/urban-league-heat-pump-accelerator.git
+   git clone git@github.com:codeforboston/urban-league-heat-pump-accelerator.git
    ```
 3. Install postgres libraries
    1. MacOS
