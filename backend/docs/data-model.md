@@ -6,13 +6,13 @@ This shows the current data model for the heat pump accelerator backend.
 
 ![Data model](figures/data-model.drawio.png)
 
-Survey consist of a set of survey questions.
+A survey consists of a set of survey questions.
 
 When a survey is administered, we create a survey response.
 Each question that is answered has a survey answer,
 which ties back both to the question and response object.
 
-There is a home instance for all targeted homes.
+There is a home record for each targeted home.
 
 When a surveyor goes to a home, we record a survey visit,
 regardless of whether any survey was run
