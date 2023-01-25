@@ -26,9 +26,7 @@ const Root = styled("div")(({ theme }) => ({
 }));
 
 const HeroWrapper = styled("div")(({ theme }) => ({
-  // background: "#98C7D6",
-  background:
-    "linear-gradient(90deg, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%)",
+  background: "var(--bgColor-1)",
   display: "flex",
   alignItems: "center",
   overflow: "hidden",
@@ -43,7 +41,7 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     alignContent: "flex-end",
   },
   "& .home-hero-info": {
-    color: "#fff",
+    color: "var(--color-text-2)",
     "& .info-wrapper": {
       "& h1": {
         fontSize: "2rem",
@@ -79,7 +77,7 @@ const HeroWrapper = styled("div")(({ theme }) => ({
       position: "absolute",
       top: 0,
       left: 0,
-      backgroundColor: "rgba(0, 0, 0, 0.3)",
+      backgroundColor: "var(--accent-3)",
       height: "100%",
       width: "100%",
       overflow: "hidden",
@@ -104,7 +102,6 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     "& .image-wrapper": {
       justifyContent: "flex-start",
       "& .home-hero-image": {
-        // height: "90%",
         borderRadius: "0 0 20% 0",
       },
     },

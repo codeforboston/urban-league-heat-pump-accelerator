@@ -1,51 +1,41 @@
 import { createTheme } from "@mui/material";
 
-export const theme = createTheme({
-  palette: {
-    footer: {
-      bgColor: "#1E1E1E",
-    },
-    textColors: {
-      main: "#041367",
-      second: "#fff",
-      third: "rgb(252, 56, 56)",
-    },
-  },
+/* The custom colors palette is located in the Index.css file. */
 
+export const theme = createTheme({
   components: {
     MuiButton: {
       variants: [
         {
           props: { variant: "getpump" },
           style: {
-            color: "#041367",
+            color: "var(--color-text-1)",
             height: "60px",
             borderRadius: "1000px",
             minWidth: 200,
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
             background: "var(--bgColor-8)",
 
-            boxShadow: "inset 0 0 0 2px hsl(0deg 0% 100% / 30% )",
+            boxShadow: "(--box-shadow-1)",
             "&:hover": {
-              boxShadow: "0px 4px 32px rgba(252, 56, 56, 0.4)",
+              boxShadow: "var(--box-shadow-2)",
               transform: "scale(1.1)",
-              backgroundColor: "rgba(239, 237, 112, 0.7)",
-              color: "#041367",
+              backgroundColor: "var(--bgColor-8)",
+              color: "var(--color-text-1)",
             },
           },
         },
         {
           props: { variant: "getpumpOutlined" },
           style: {
-            color: "#fff",
+            color: "var(--color-text-2)",
             height: "50px",
             borderRadius: "1000px",
             minWidth: 200,
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-            boxShadow: "inset 0 0 0 2px hsl(0deg 0% 100% / 30%)",
+            boxShadow: "var(--box-shadow-1)",
             "&:hover": {
-              boxShadow: "0px 4px 32px rgba(252, 56, 56, 0.4)",
-              boxShadow: "inset 0 0 0 2px hsl(0deg 0% 100% )",
+              boxShadow: "var(--box-shadow-hover-1)",
               transform: "scale(1.1)",
             },
           },
@@ -53,32 +43,16 @@ export const theme = createTheme({
         {
           props: { variant: "customBtn" },
           style: {
-            color: "var(--primary-2)",
+            color: "var(--color-text-2)",
             height: "50px",
             borderRadius: "1000px",
             minWidth: 200,
             backgroundColor: "var(--bgColor-3)",
-            // transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-            // boxShadow: "inset 0 0 0 2px hsl(0deg 0% 100% / 30%)",
             "&:hover": {
-              // boxShadow: "0px 4px 32px rgba(252, 56, 56, 0.4)",
               transform: "scale(1.1)",
               backgroundColor: "var(--bgColor-3)",
             },
           },
-        },
-      ],
-    },
-
-    MuiPaper: {
-      variants: [
-        {
-          props: { variant: "hero" },
-          style: {},
-        },
-        {
-          props: { variant: "image" },
-          style: {},
         },
       ],
     },

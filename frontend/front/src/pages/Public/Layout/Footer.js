@@ -27,14 +27,14 @@ const Footer = () => {
     <Box
       sx={{
         bgcolor: "var(--bgColor-7)",
-        color: "#FFF",
+        color: "var(--color-text-2)",
       }}
     >
       <FooterLinks>
         <Button
           component={Link}
           to="survey"
-          sx={{ color: "#fff", width: "200px" }}
+          sx={{ color: "var(--color-text-2)", width: "200px" }}
           size="medium"
         >
           Take The Survey
@@ -45,7 +45,7 @@ const Footer = () => {
         <Button
           component={Link}
           to="about"
-          sx={{ color: "#fff", width: "200px" }}
+          sx={{ color: "var(--color-text-2)", width: "200px" }}
           size="medium"
         >
           Learn More About Us

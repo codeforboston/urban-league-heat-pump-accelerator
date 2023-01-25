@@ -44,7 +44,7 @@ const CardBenefitsSection = ({ cards }) => {
                     <Typography
                       gutterBottom
                       variant="subtitle1"
-                      color="textSecondary"
+                      color="var(--color-text-3)"
                     >
                       {paragraph}
                     </Typography>
@@ -72,7 +72,7 @@ const CardBenefitsSection = ({ cards }) => {
                     <Typography
                       gutterBottom
                       variant="subtitle1"
-                      color="textSecondary"
+                      color="var(--color-text-3)"
                     >
                       {paragraph}
                     </Typography>

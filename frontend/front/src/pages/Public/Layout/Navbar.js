@@ -96,9 +96,8 @@ function Navbar(props) {
         position="static"
         marginTop={2}
         sx={{
-          bgcolor: "#98C7D6",
-          background:
-            "linear-gradient(90deg, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%)",
+          bgcolor: "var(--bgColor-1)",
+          background: "var(--bgColor-1)",
           boxShadow: "none",
           padding: { xl: "0 18%" },
         }}
@@ -185,8 +184,8 @@ function Navbar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              color: "textColors.second",
-              bgcolor: "#98C7D6",
+              color: "var(--color-text-primary)",
+              bgcolor: "var(bgColor-1)",
             },
           }}
         >
