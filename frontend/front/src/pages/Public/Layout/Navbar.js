@@ -184,8 +184,8 @@ function Navbar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              color: "var(--color-text-primary)",
-              bgcolor: "var(bgColor-1)",
+              color: "var(--color-text-1)",
+              background: "var(--bgColor-1)",
             },
           }}
         >
