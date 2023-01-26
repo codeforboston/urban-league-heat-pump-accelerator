@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20230118011909) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_25_031612) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 20230118011909) do
     t.string "lu", limit: 2
     t.string "lu_desc"
     t.string "bldg_type"
-    t.string "own_occ"
+    t.boolean "own_occ"
     t.string "owner"
     t.string "mail_addressee"
     t.string "mail_address"
