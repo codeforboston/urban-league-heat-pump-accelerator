@@ -1,10 +1,10 @@
 import React from "react";
 import { Grid, Typography, Box } from "@mui/material";
-import ulemLogo from "../../../assets/images/ULEM.png";
-import maCleanEnergyLogo from "../../../assets/images/MACleanEnergy.png";
-import heatSmartLogo from "../../../assets/images/HeatSmart.png";
-import codeForAmericaLogo from "../../../assets/images/CFA.png";
-import codeForBostonLogo from "../../../assets/images/CFB.png";
+import ulemLogo from "../../../../assets/images/ULEM.png";
+import maCleanEnergyLogo from "../../../../assets/images/MACleanEnergy.png";
+import heatSmartLogo from "../../../../assets/images/HeatSmart.png";
+import codeForAmericaLogo from "../../../../assets/images/CFA.png";
+import codeForBostonLogo from "../../../../assets/images/CFB.png";
 
 const Partners = () => {
   let title = "Our Partners";
