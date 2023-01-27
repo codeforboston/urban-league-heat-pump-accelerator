@@ -3,9 +3,7 @@ import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
-import House from "./homeTab/Home";
 import { Tabs } from "@mui/material";
-import User from "./userTab/User";
 
 export default function LabTabs() {
   const [value, setValue] = React.useState("1");
@@ -36,12 +34,8 @@ export default function LabTabs() {
             />
           </Tabs>
         </Box>
-        <TabPanel value="1">
-          <House />
-        </TabPanel>
-        <TabPanel value="2">
-          <User />
-        </TabPanel>
+        <TabPanel value="1"></TabPanel>
+        <TabPanel value="2"></TabPanel>
       </TabContext>
     </Box>
   );

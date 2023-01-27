@@ -5,9 +5,10 @@ import Dashboard from "./dashboard/Dashboard";
 import Nav from "./nav/Nav";
 import UserProfile from "./userProfile/UserProfile";
 import HomeProfile from "./homeProfile/HomeProfile";
-import CreateNewUser from "./dashboard/userTab/CreateNewUser";
-import CreateNewHome from "./dashboard/homeTab/CreateNewHome";
+import CreateNewUser from "./user/CreateNewUser";
+import CreateNewHome from "./home/CreateNewHome";
 import Home from "./home/Home";
+import User from "./user/User";
 
 const AdminContainer = () => {
   return (
@@ -19,12 +20,9 @@ const AdminContainer = () => {
         <Nav />
         <Routes>
           <Route path="/" element={<Dashboard />}></Route>
-          {/* <Route
-            path='houseprofile/:hid/'
-            element={<HouseProfile />}
-          ></Route> */}
 
           <Route path="/home" element={<Home />}></Route>
+          <Route path="/user" element={<User />}></Route>
 
           <Route path="homeprofile/:hid" element={<HomeProfile />}></Route>
           <Route path="userprofile/:uid" element={<UserProfile />}></Route>
