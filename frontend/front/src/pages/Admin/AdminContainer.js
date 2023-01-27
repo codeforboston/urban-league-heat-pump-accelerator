@@ -7,6 +7,7 @@ import UserProfile from "./userProfile/UserProfile";
 import HomeProfile from "./homeProfile/HomeProfile";
 import CreateNewUser from "./dashboard/userTab/CreateNewUser";
 import CreateNewHome from "./dashboard/homeTab/CreateNewHome";
+import Home from "./home/Home";
 
 const AdminContainer = () => {
   return (
@@ -22,6 +23,9 @@ const AdminContainer = () => {
             path='houseprofile/:hid/'
             element={<HouseProfile />}
           ></Route> */}
+
+          <Route path="/home" element={<Home />}></Route>
+
           <Route path="homeprofile/:hid" element={<HomeProfile />}></Route>
           <Route path="userprofile/:uid" element={<UserProfile />}></Route>
           <Route path="createHome" element={<CreateNewHome />}></Route>
