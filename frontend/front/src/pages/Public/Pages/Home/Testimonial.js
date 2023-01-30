@@ -39,7 +39,7 @@ function Testimonial() {
           width: "100%",
         }}
       >
-        <Typography gutterBottom variant="h4" mb={6} align="center">
+        <Typography gutterBottom variant="h4" mb={3} align="center">
           Testimonials
         </Typography>
         <Carousel animation="slide">
