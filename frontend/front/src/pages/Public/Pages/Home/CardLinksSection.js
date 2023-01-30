@@ -9,13 +9,23 @@ const CardLinks = styled("div")(({ theme }) => ({
   maxWidth: "480px",
   borderRadius: "25% 10%",
   backgroundColor: "var(--bgColor-8)",
-
   "& .links-wrapper": {
     "& h2": {
       fontSize: "1.5rem",
       fontWeight: "bold",
       lineHeight: "1.5",
     },
+  },
+}));
+
+const GridLinkWrapper = styled("Grid")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  flexWrap: "nowrap",
+  gap: "48px",
+  [theme.breakpoints.down("sm")]: {
+    flexWrap: "wrap",
+    gap: "30px",
   },
 }));
 
@@ -48,7 +58,7 @@ const CardLinksSection = () => {
   ];
 
   return (
-    <Grid container spacing={12} justifyContent="center">
+    <GridLinkWrapper container>
       {linkCards.map((detail) => (
         <Grid
           item
@@ -64,45 +74,43 @@ const CardLinksSection = () => {
               backgroundColor: "var(--bgColor-8)",
             }}
           >
-            <AnimatedBoxScroll
+            {/* <AnimatedBoxScroll
               animation={detail.animationCSS}
               id={detail.idCSS}
-            >
-              <Box id="survey-link-section" m={4}>
-                <Typography textAlign="center" variant="h5" margimGutter>
-                  {detail.title}
-                </Typography>
-                <Box
-                  sx={{
-                    height: "140px",
-                    display: "flex",
-                    textAlign: "center",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography variant="subtitle2">
-                    {detail.paragraph}
-                  </Typography>
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <ButtonCustom
-                    text={detail.button.text}
-                    to={detail.button.to}
-                    variant={detail.button.variant}
-                  />
-                </Box>
+            > */}
+            <Box id="survey-link-section" m={4}>
+              <Typography textAlign="center" variant="h5" margimGutter>
+                {detail.title}
+              </Typography>
+              <Box
+                sx={{
+                  height: "140px",
+                  display: "flex",
+                  textAlign: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="subtitle2">{detail.paragraph}</Typography>
               </Box>
-            </AnimatedBoxScroll>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <ButtonCustom
+                  text={detail.button.text}
+                  to={detail.button.to}
+                  variant={detail.button.variant}
+                />
+              </Box>
+            </Box>
+            {/* </AnimatedBoxScroll> */}
           </CardLinks>
         </Grid>
       ))}
-    </Grid>
+    </GridLinkWrapper>
   );
 };
 
