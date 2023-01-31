@@ -6,7 +6,7 @@ const CreateNewUser = () => {
   const navigate = useNavigate();
 
   const handleCancel = () => {
-    navigate("/admin");
+    navigate("/admin/user");
   };
   return (
     <Box

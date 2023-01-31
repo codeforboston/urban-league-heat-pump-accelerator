@@ -26,9 +26,9 @@ const AdminContainer = () => {
 
           <Route path="homeprofile/:hid" element={<HomeProfile />}></Route>
           <Route path="userprofile/:uid" element={<UserProfile />}></Route>
-          <Route path="createHome" element={<CreateNewHome />}></Route>
+          <Route path="home/createHome" element={<CreateNewHome />}></Route>
 
-          <Route path="createUser" element={<CreateNewUser />}></Route>
+          <Route path="user/createUser" element={<CreateNewUser />}></Route>
         </Routes>
         {/* <Footer /> */}
       </Box>
