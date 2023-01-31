@@ -33,10 +33,11 @@ const Dashboard = () => {
         variant="contained"
         size="large"
         sx={{ width: 200, height: 150, fontSize: "1.5em" }}
+        component={Link}
+        to={"onlinesurvey"}
       >
         Online Survey
       </Button>
-      {/* <Tab /> */}
     </Box>
   );
 };
