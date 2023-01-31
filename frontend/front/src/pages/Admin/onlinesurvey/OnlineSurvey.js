@@ -27,7 +27,7 @@ const Home = () => {
             startIcon={<AddIcon />}
             to="createHome"
           >
-            Create New Home
+            Create Online Survey
           </Button>
         </Box>
       </Box>
