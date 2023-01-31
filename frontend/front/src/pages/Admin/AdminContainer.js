@@ -3,12 +3,14 @@ import { Route, Routes, Link } from "react-router-dom";
 import { Box, Button, Typography } from "@mui/material";
 import Dashboard from "./dashboard/Dashboard";
 import Nav from "./nav/Nav";
-import UserProfile from "./userProfile/UserProfile";
-import HomeProfile from "./homeProfile/HomeProfile";
+import UserProfile from "./user/UserProfile";
+import HomeProfile from "./home/HomeProfile";
 import CreateNewUser from "./user/CreateNewUser";
 import CreateNewHome from "./home/CreateNewHome";
 import Home from "./home/Home";
 import User from "./user/User";
+import OnlineSurvey from "./onlinesurvey/OnlineSurvey";
+import OnlineSurveyProfile from "./onlinesurvey/OnlineSurveyProfile";
 
 const AdminContainer = () => {
   return (
@@ -22,13 +24,18 @@ const AdminContainer = () => {
           <Route path="/" element={<Dashboard />}></Route>
 
           <Route path="/home" element={<Home />}></Route>
-          <Route path="/user" element={<User />}></Route>
-
-          <Route path="homeprofile/:hid" element={<HomeProfile />}></Route>
-          <Route path="userprofile/:uid" element={<UserProfile />}></Route>
+          <Route path="home/homeprofile/:hid" element={<HomeProfile />}></Route>
           <Route path="home/createHome" element={<CreateNewHome />}></Route>
 
+          <Route path="/user" element={<User />}></Route>
+          <Route path="userprofile/:uid" element={<UserProfile />}></Route>
           <Route path="user/createUser" element={<CreateNewUser />}></Route>
+
+          <Route path="/onlinesurvey" element={<OnlineSurvey />}></Route>
+          <Route
+            path="onlinesurveyprofile/:uid"
+            element={<OnlineSurveyProfile />}
+          ></Route>
         </Routes>
         {/* <Footer /> */}
       </Box>

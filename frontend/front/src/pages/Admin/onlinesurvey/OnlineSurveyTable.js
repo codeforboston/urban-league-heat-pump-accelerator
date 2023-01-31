@@ -30,7 +30,7 @@ const columns = [
 
 const rows = HouseData;
 
-const HomeTable = () => {
+const OnlineSurveyTable = () => {
   const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
@@ -46,7 +46,7 @@ const HomeTable = () => {
   };
 
   const onRowClick = (row) => {
-    navigate(`homeprofile/${row.hid}`);
+    navigate(`houseprofile/${row.hid}`);
   };
 
   return (
@@ -106,4 +106,4 @@ const HomeTable = () => {
   );
 };
 
-export default HomeTable;
+export default OnlineSurveyTable;
