@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import HouseData from "../../../../dummyData/houseTable.json";
+import HouseData from "../../../dummyData/houseTable.json";
 import { useNavigate } from "react-router-dom";
 
 const columns = [
@@ -30,7 +30,7 @@ const columns = [
 
 const rows = HouseData;
 
-const HomeTable = () => {
+const OnlineSurveyTable = () => {
   const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
@@ -106,4 +106,4 @@ const HomeTable = () => {
   );
 };
 
-export default HomeTable;
+export default OnlineSurveyTable;
