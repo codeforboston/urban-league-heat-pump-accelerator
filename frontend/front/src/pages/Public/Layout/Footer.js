@@ -9,7 +9,7 @@ const FooterLinks = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: "var(--bgColor-6)",
+  background: "var(--bgColor-6)",
   padding: "32px 0",
   [theme.breakpoints.up("xs")]: {
     flexDirection: "column",
@@ -25,8 +25,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <Box
+      py={8}
       sx={{
-        bgcolor: "var(--bgColor-7)",
+        bgcolor: "var(--bgColor-6)",
         color: "var(--color-text-2)",
       }}
     >
@@ -54,8 +55,7 @@ const Footer = () => {
 
       <Stack justifyContent="center" p={4} sx={{ color: "main" }}>
         <Typography align="center">
-          © {currentYear} Copyrights:
-          {strings.appName}
+          © {currentYear} Copyrights: {strings.appName}
         </Typography>
       </Stack>
     </Box>

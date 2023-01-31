@@ -7,20 +7,15 @@ import CardLinksSection from "./CardLinksSection";
 import surveyorImage from "../../../../assets/images/surveyor.jpg";
 import imageTwo from "../../../../assets/images/heat-pump-outside-home.jpg";
 import imageThree from "../../../../assets/images/home-exterior.jpg";
-import imageHeroHouse from "../../../../assets/images/hero-house-heat-pump.svg";
 import imageLearnMore from "../../../../assets/images/image-learn-more.jpeg";
-import HeroPage from "./HeroPage";
+import CarrouselHero from "./CarrouselHero";
+import Testimonial from "./Testimonial";
 
 const Home = () => {
   return (
     <Box>
       {/* HERO */}
-      <HeroPage
-        title="AN ENERGY-EFFICIENT SOLUTION FOR BOSTON RESIDENTS"
-        text="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
-        image={imageHeroHouse}
-      />
-
+      <CarrouselHero />
       <Container>
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
         <Box my={15}>
@@ -86,6 +81,13 @@ const Home = () => {
               },
             ]}
           />
+        </Box>
+        <Box
+          py={6}
+          mb={4}
+          sx={{ background: "var(--bgColor-9)", height: "300px" }}
+        >
+          <Testimonial />
         </Box>
       </Container>
     </Box>

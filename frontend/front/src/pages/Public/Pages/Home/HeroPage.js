@@ -26,7 +26,7 @@ const Root = styled("div")(({ theme }) => ({
 }));
 
 const HeroWrapper = styled("div")(({ theme }) => ({
-  background: "var(--bgColor-1)",
+  // background: "var(--bgColor-1)",
   display: "flex",
   alignItems: "center",
   overflow: "hidden",
@@ -131,7 +131,7 @@ const ImageOverlay = styled("div")(({ theme }) => ({
   },
 }));
 
-const HeroPage = ({ title, text, image }) => {
+const HeroPage = ({ title, text, image, backColor }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -142,7 +142,7 @@ const HeroPage = ({ title, text, image }) => {
   console.log(isMounted);
   return (
     <Root>
-      <HeroWrapper>
+      <HeroWrapper sx={{ background: backColor }}>
         <Grid container className="home-hero-container">
           <Grid
             item
