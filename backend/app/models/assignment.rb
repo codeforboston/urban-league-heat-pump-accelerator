@@ -2,5 +2,5 @@
 
 class Assignment < ApplicationRecord
   belongs_to :surveyor
-  has_many :homes
+  has_many :homes, dependent: nil
 end
