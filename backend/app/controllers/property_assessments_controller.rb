@@ -3,7 +3,7 @@
 # Property Assessments from the City of Boston
 class PropertyAssessmentsController < ApplicationController
   def index
-    @property_assessments = PropertyAssessment.all
+    @property_assessments = PropertyAssessment.all.first(30)
     respond_to do |format|
       format.html
       format.json { render json: @property_assessments.first(20) }
