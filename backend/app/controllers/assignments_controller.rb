@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: %i[show edit update destroy]
 
@@ -6,7 +8,7 @@ class AssignmentsController < ApplicationController
     @assignments = if search_params[:surveyor_id]
                      Assignment.where(surveyor_id: search_params[:surveyor_id])
                    else
-                    Assignment.all
+                     Assignment.all
                    end
   end
 
