@@ -11,6 +11,8 @@ There are two ways to run dev containers, in browser via Github codespaces (easi
 1. Head over to the repo on Github: https://github.com/codeforboston/urban-league-heat-pump-accelerator
 2. Locate the Code dropdown, open the Codespaces tab
    1. Hit the + to create a new Codespace. This will open-up vscode in browser and you'll be able to start contributing!
+   
+NOTE: You need to create the codespace AFTER you get access to push to this repo. Otherwise your codespace will only have permissions to push to your own fork of this repo.
 
 ### Local Dev Containers
 
