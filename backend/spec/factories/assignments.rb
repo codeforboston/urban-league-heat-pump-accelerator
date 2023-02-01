@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :assignment do
-    group { "MyString" }
+    group { 'MyString' }
     surveyor { nil }
   end
 end

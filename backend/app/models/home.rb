@@ -2,5 +2,5 @@
 
 class Home < ApplicationRecord
   has_many :survey_visits, dependent: nil
-  belongs_to :assignment
+  belongs_to :assignment, optional: true
 end

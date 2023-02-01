@@ -1,9 +1,13 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: %i[ show edit update destroy ]
+  before_action :set_assignment, only: %i[show edit update destroy]
 
   # GET /assignments or /assignments.json
   def index
-    @assignments = Assignment.all
+    @assignments = if search_params[:surveyor_id]
+                     Assignment.where(surveyor_id: search_params[:surveyor_id])
+                   else
+                    Assignment.all
+                   end
   end
 
   # GET /assignments/1 or /assignments/1.json
@@ -51,13 +55,18 @@ class AssignmentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_assignment
-      @assignment = Assignment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def assignment_params
-      params.require(:assignment).permit(:group, :surveyor_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_assignment
+    @assignment = Assignment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def assignment_params
+    params.require(:assignment).permit(:group, :surveyor_id)
+  end
+
+  def search_params
+    params.permit(:surveyor_id)
+  end
 end
