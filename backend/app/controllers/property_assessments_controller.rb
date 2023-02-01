@@ -5,11 +5,18 @@ class PropertyAssessmentsController < ApplicationController
   
   # GET /property_assessments or /property_assessments.json
   def index
-    @property_assessments = PropertyAssessment.all.first(30)
-    respond_to do |format|
-      format.html
-      format.json { render json: @property_assessments.first(20) }
-    end
+    
+    if params.present?
+      @property_assessments = PropertyAssessment.filter(params.slice(:yearbuilt, :heattype, :heatfuel, :heattype))
+      property_assessments = @property_assessments.first(500)
+      format.json { render json: @property_assessments }
+    
+    else
+      @property_assessments = PropertyAssessment.all.first(30)
+      respond_to do |format|
+        format.html
+        format.json { render json: @property_assessments }
+      end
   end
 
   # GET /property_assessments/1 or /property_assessments/1.json
@@ -46,10 +53,6 @@ class PropertyAssessmentsController < ApplicationController
     respond_to do |format|
       format.json { head :no_content }
     end
-  end
-
-  def search_params
-    params.permit(:yearbuilt, :heattype, :heatfuel, :heattype)
   end
 
 end
