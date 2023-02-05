@@ -9,7 +9,6 @@ import { FormLabel, Grid, TextField, Stack } from "@mui/material";
 export const HeatPumpAddressField = ({ control, label }) => {
   const { formState } = useController({ name: "address", control });
 
-  console.log(formState);
   return (
     <Stack spacing={1}>
       {label && (

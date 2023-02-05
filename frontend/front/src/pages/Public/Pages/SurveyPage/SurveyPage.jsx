@@ -6,16 +6,16 @@ import { HeatPumpNameField } from "./HeatPumpNameField";
 import { HeatPumpDropdown } from "./HeatPumpDropdown";
 
 const DEFAULT_FORM = {
-  heatingSystem: null,
-  name: { first: null, last: null },
-  isHomeowner: null,
-  phoneNumber: null,
-  contactTime: null,
+  heatingSystem: "",
+  name: { first: "", last: "" },
+  isHomeowner: "",
+  phoneNumber: "",
+  contactTime: "",
   address: {
-    street: null,
-    aptNumber: null,
-    city: null,
-    zipCode: null,
+    street: "",
+    aptNumber: "",
+    city: "",
+    zipCode: "",
   },
 };
 
