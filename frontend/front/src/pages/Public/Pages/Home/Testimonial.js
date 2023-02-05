@@ -1,6 +1,5 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { styled } from "@mui/material/styles";
 import { Typography, Paper, Avatar, Box } from "@mui/material";
 
 const items = [
@@ -55,11 +54,11 @@ function Testimonial() {
 function TestimonialItem(props) {
   return (
     <Paper
+      variant="outlined"
       sx={{
         padding: 4,
         margin: "0 auto",
-
-        background: "var(--bgColor-8)",
+        // background: "var(--bgColor-8)",
       }}
     >
       <Box

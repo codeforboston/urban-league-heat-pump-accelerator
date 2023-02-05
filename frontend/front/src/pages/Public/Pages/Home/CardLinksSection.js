@@ -2,7 +2,6 @@ import React from "react";
 import { styled } from "@mui/material/styles";
 import { Typography, Box, Grid } from "@mui/material";
 import ButtonCustom from "../../Components/ButtonCustom";
-import AnimatedBoxScroll from "../../Components/AnimatedBoxScroll";
 
 const CardLinks = styled("div")(({ theme }) => ({
   minWidth: "350px",
@@ -71,13 +70,9 @@ const CardLinksSection = () => {
           <CardLinks
             sx={{
               borderRadius: "25% 10%",
-              backgroundColor: "var(--bgColor-8)",
+              backgroundColor: "#fff",
             }}
           >
-            {/* <AnimatedBoxScroll
-              animation={detail.animationCSS}
-              id={detail.idCSS}
-            > */}
             <Box id="survey-link-section" m={4}>
               <Typography textAlign="center" variant="h5" margimGutter>
                 {detail.title}
@@ -106,7 +101,6 @@ const CardLinksSection = () => {
                 />
               </Box>
             </Box>
-            {/* </AnimatedBoxScroll> */}
           </CardLinks>
         </Grid>
       ))}

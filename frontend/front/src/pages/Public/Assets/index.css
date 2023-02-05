@@ -15,6 +15,7 @@
   --bgColor-7: #273341; /* footer bgColor */
   --bgColor-8:  #efed70;
   --bgColor-9:  #FBC61C;
+  --bgColor-10:  #F5F5F7;;
 
    /* Accent colors */
    --accent-1: rgba(252, 56, 56, 0.4);
@@ -29,9 +30,13 @@
 }
 
 body {      
-    color: var(--color-text-1);
 }
 
+.container-wrapper {
+    color: var(--color-text-1);
+    background-color: var(--bgColor-10);
+
+}
 
 @keyframes fanHero{
     0% {

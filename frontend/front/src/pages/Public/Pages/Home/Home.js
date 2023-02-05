@@ -17,6 +17,16 @@ const Home = () => {
       {/* HERO */}
       <CarrouselHero />
       <Container>
+        {/* TESTIMONIALS */}
+        <Box
+          py={6}
+          mb={4}
+          sx={{ height: "300px" }}
+          // sx={{ background: "var(--bgColor-9)", height: "300px" }}
+        >
+          <Testimonial />
+        </Box>
+
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
         <Box my={15}>
           <CardLinksSection />
@@ -81,13 +91,6 @@ const Home = () => {
               },
             ]}
           />
-        </Box>
-        <Box
-          py={6}
-          mb={4}
-          sx={{ background: "var(--bgColor-9)", height: "300px" }}
-        >
-          <Testimonial />
         </Box>
       </Container>
     </Box>

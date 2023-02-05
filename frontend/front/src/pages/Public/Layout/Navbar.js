@@ -78,7 +78,13 @@ function Navbar(props) {
               to={item.toLowerCase() === "home" ? "" : item.toLowerCase()}
               focusVisible
             >
-              <ListItemText primary={item} />
+              <ListItemText
+                sx={{
+                  textShadow: "1px 1px 2px #000",
+                  color: "var(--color-text-2)",
+                }}
+                primary={item}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -139,6 +145,10 @@ function Navbar(props) {
                       to={
                         item.toLowerCase() === "home" ? "" : item.toLowerCase()
                       }
+                      sx={{
+                        textShadow: "1px 1px 2px #000",
+                        color: "var(--color-text-2)",
+                      }}
                     >
                       {item}
                     </Button>

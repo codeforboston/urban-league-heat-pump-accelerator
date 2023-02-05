@@ -22,6 +22,7 @@ export const theme = createTheme({
               transform: "scale(1.1)",
               backgroundColor: "var(--bgColor-8)",
               color: "var(--color-text-1)",
+              textShadow: "1px 1px 2px #fff",
             },
           },
         },
@@ -34,9 +35,11 @@ export const theme = createTheme({
             minWidth: 200,
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
             boxShadow: "var(--box-shadow-1)",
+
             "&:hover": {
               boxShadow: "var(--box-shadow-hover-1)",
               transform: "scale(1.1)",
+              textShadow: "1px 1px 2px #000",
             },
           },
         },
@@ -51,6 +54,7 @@ export const theme = createTheme({
             "&:hover": {
               transform: "scale(1.1)",
               backgroundColor: "var(--bgColor-3)",
+              textShadow: "1px 1px 2px #000",
             },
           },
         },
