@@ -1,23 +1,17 @@
 import { Controller, useController } from "react-hook-form";
 import {
   FormControl,
-  FormControlLabel,
-  FormHelperText,
-  FormLabel,
-  Radio,
-  RadioGroup,
   TextField,
+  Select,
+  MenuItem,
+  InputLabel,
 } from "@mui/material";
 import React, { useCallback, useMemo } from "react";
-
-const RadioGroupOption = ({ value, label }) => {
-  return <FormControlLabel value={value} label={label} control={<Radio />} />;
-};
 
 /**
  * A radio group to be used with react-hook-form
  */
-export const HeatPumpRadioGroup = ({ name, control, options, label }) => {
+export const HeatPumpDropdown = ({ name, control, options, label }) => {
   const { field: groupField, formState } = useController({ name, control });
 
   const otherFieldName = `${name}/other`;
@@ -32,31 +26,28 @@ export const HeatPumpRadioGroup = ({ name, control, options, label }) => {
   const mainFieldError = formState.errors[name];
   const otherFieldError = formState.errors[otherFieldName];
 
-  const renderRadioGroup = useCallback(
+  const renderDropdown = useCallback(
     (field) => {
       return (
-        <FormControl error={!!mainFieldError}>
-          <FormLabel id={`${name}-radio-group-label`}>{label}</FormLabel>
-          <RadioGroup
-            name={`${name}-radio-group`}
-            aria-labelledby={`${name}-radio-group-label`}
+        <FormControl fullWidth error={!!mainFieldError}>
+          <InputLabel id={`${name}-dropdown-label`}>{label}</InputLabel>
+          <Select
+            label={label}
+            name={`${name}-dropdown`}
+            aria-labelledby={`${name}-dropdown-label`}
+            variant="filled"
             {...field}
           >
             {options.map((option) => (
-              <RadioGroupOption
-                value={option.value}
-                label={option.label}
-                key={`${option.value}-key`}
-              />
+              <MenuItem value={option.value} key={`${option.value}-key`}>
+                {option.label}
+              </MenuItem>
             ))}
-          </RadioGroup>
-          {!!mainFieldError && (
-            <FormHelperText>{mainFieldError.message}</FormHelperText>
-          )}
+          </Select>
         </FormControl>
       );
     },
-    [name, options, label]
+    [name, options, label, mainFieldError]
   );
 
   return (
@@ -67,7 +58,7 @@ export const HeatPumpRadioGroup = ({ name, control, options, label }) => {
         rules={{
           required: { value: true, message: "This field is required!" },
         }}
-        render={({ field }) => renderRadioGroup(field)}
+        render={({ field }) => renderDropdown(field)}
       />
       {showOtherInput && (
         <Controller

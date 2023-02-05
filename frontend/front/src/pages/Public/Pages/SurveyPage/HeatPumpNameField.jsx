@@ -1,21 +1,22 @@
+import React from "react";
 import { Controller, useController } from "react-hook-form";
 import { FormLabel, Stack, TextField } from "@mui/material";
-
-import React from "react";
 
 export const HeatPumpNameField = ({ control, label }) => {
   const { formState } = useController({ name: "address", control });
 
   return (
     <>
-      <FormLabel
-        error={!!formState.errors.firstName || !!formState.errors.lastName}
-      >
-        {label}
-      </FormLabel>
-      <Stack spacing={2} direction="row">
+      {label && (
+        <FormLabel
+          error={!!formState.errors.firstName || !!formState.errors.lastName}
+        >
+          {label}
+        </FormLabel>
+      )}
+      <Stack direction="row" spacing={2}>
         <Controller
-          name="firstName"
+          name="name.first"
           control={control}
           rules={{
             required: {
@@ -26,6 +27,7 @@ export const HeatPumpNameField = ({ control, label }) => {
           render={({ field }) => (
             <TextField
               label="First Name"
+              fullWidth
               variant="standard"
               {...field}
               error={!!formState.errors.firstName}
@@ -38,7 +40,7 @@ export const HeatPumpNameField = ({ control, label }) => {
         />
 
         <Controller
-          name="lastName"
+          name="name.last"
           control={control}
           rules={{
             required: {
@@ -49,6 +51,7 @@ export const HeatPumpNameField = ({ control, label }) => {
           render={({ field }) => (
             <TextField
               label="Last Name"
+              fullWidth
               variant="standard"
               {...field}
               error={!!formState.errors.lastName}
