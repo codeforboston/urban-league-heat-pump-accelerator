@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box, Grid } from "@mui/material";
+import { Typography, Box, Grid, Card } from "@mui/material";
 import ButtonCustom from "../../Components/ButtonCustom";
 
 const CardLinks = styled("div")(({ theme }) => ({
@@ -67,41 +67,46 @@ const CardLinksSection = () => {
             flexDirection: "column",
           }}
         >
-          <CardLinks
-            sx={{
-              borderRadius: "25% 10%",
-              backgroundColor: "#fff",
-            }}
-          >
-            <Box id="survey-link-section" m={4}>
-              <Typography textAlign="center" variant="h5" margimGutter>
-                {detail.title}
-              </Typography>
-              <Box
-                sx={{
-                  height: "140px",
-                  display: "flex",
-                  textAlign: "center",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Typography variant="subtitle2">{detail.paragraph}</Typography>
+          {/* Remove the "Card" tag to utilize a different style.  */}
+          <Card variant="outlined">
+            <CardLinks
+              sx={{
+                borderRadius: "25% 10%",
+                backgroundColor: "#fff",
+              }}
+            >
+              <Box id="survey-link-section" m={4}>
+                <Typography textAlign="center" variant="h5" margimGutter>
+                  {detail.title}
+                </Typography>
+                <Box
+                  sx={{
+                    height: "140px",
+                    display: "flex",
+                    textAlign: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography variant="subtitle2">
+                    {detail.paragraph}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <ButtonCustom
+                    text={detail.button.text}
+                    to={detail.button.to}
+                    variant={detail.button.variant}
+                  />
+                </Box>
               </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <ButtonCustom
-                  text={detail.button.text}
-                  to={detail.button.to}
-                  variant={detail.button.variant}
-                />
-              </Box>
-            </Box>
-          </CardLinks>
+            </CardLinks>
+          </Card>
         </Grid>
       ))}
     </GridLinkWrapper>
