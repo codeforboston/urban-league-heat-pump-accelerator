@@ -26,7 +26,6 @@ const Root = styled("div")(({ theme }) => ({
 }));
 
 const HeroWrapper = styled("div")(({ theme }) => ({
-  // background: "var(--bgColor-1)",
   display: "flex",
   alignItems: "center",
   overflow: "hidden",
@@ -42,13 +41,8 @@ const HeroWrapper = styled("div")(({ theme }) => ({
   },
   "& .home-hero-info": {
     color: "var(--color-text-2)",
-    "& .info-wrapper": {
-      "& h1": {
-        fontSize: "2rem",
-        fontWeight: "bold",
-        lineHeight: "1.5",
-      },
-    },
+    position: "absolute",
+    justifyContent: "center",
   },
   "& .image-wrapper": {
     width: "100%",
@@ -62,11 +56,6 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     },
   },
   [theme.breakpoints.up("xs")]: {
-    "& .home-hero-info": {
-      position: "absolute",
-      justifyContent: "center",
-    },
-
     "& .home-hero-image": {
       height: "80%",
     },
@@ -77,9 +66,9 @@ const HeroWrapper = styled("div")(({ theme }) => ({
       position: "absolute",
       top: 0,
       left: 0,
-      backgroundColor: "var(--accent-3)",
       height: "100%",
       width: "100%",
+      backgroundColor: "var(--accent-3)",
       overflow: "hidden",
     },
   },
@@ -155,26 +144,20 @@ const HeroPage = ({ title, text, image, backColor }) => {
             <InfoWrapper className="info-container">
               <AnimatedBox animation="animate__fadeInUp">
                 <Box className="info-wrapper">
-                  <Box>
-                    <Typography variant="h1">{title}</Typography>
+                  <Box sx={{ textShadow: "1px 1px 2px #000" }}>
+                    <Typography variant="h3">{title}</Typography>
                     <Box
                       component="img"
                       src={graphicHeroUnderline}
                       mb={3}
-                      sx={{ width: "80%" }}
+                      sx={{ width: "80%", maxWidth: "500px", marginTop: "5px" }}
                     />
+                    <Typography variant="body1" mb={7}>
+                      {text}
+                    </Typography>
                   </Box>
-                  <Typography variant="body1" mb={7}>
-                    {text}
-                  </Typography>
 
-                  {/* <Box
-                  sx={{
-                    display: { xs: "block", md: "none" },
-                  }}
-                > */}
                   <ButtonGetPump variant="getpump" />
-                  {/* </Box> */}
                 </Box>
               </AnimatedBox>
             </InfoWrapper>
