@@ -28,7 +28,7 @@ const AdminContainer = () => {
           <Route path="home/createHome" element={<CreateNewHome />}></Route>
 
           <Route path="/user" element={<User />}></Route>
-          <Route path="userprofile/:uid" element={<UserProfile />}></Route>
+          <Route path="user/userprofile/:uid" element={<UserProfile />}></Route>
           <Route path="user/createUser" element={<CreateNewUser />}></Route>
 
           <Route path="/onlinesurvey" element={<OnlineSurvey />}></Route>
