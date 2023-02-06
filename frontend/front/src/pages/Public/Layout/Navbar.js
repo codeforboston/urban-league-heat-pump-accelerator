@@ -144,13 +144,8 @@ function Navbar(props) {
                       to={
                         item.toLowerCase() === "home" ? "" : item.toLowerCase()
                       }
-                      sx={{
-                        // textShadow: "1px 1px 2px #000",
-                        color: "var(--color-text-2)",
-                        letterSpacing: "-.03em",
-                      }}
                     >
-                      {item}
+                      <Typography variant="navLinks">{item}</Typography>
                     </Button>
                   ))}
                 </Stack>

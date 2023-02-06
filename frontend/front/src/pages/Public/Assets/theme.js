@@ -35,6 +35,14 @@ export const theme = createTheme({
       padding: "0.75rem 0",
       textAlign: "center",
     },
+    navLinks: {
+      fontSize: "1rem",
+      display: "block",
+      letterSpacing: "-.03em",
+      padding: "0.75rem 0",
+      textAlign: "center",
+      color: "var(--color-text-2)",
+    },
   },
   components: {
     MuiButton: {
@@ -42,6 +50,7 @@ export const theme = createTheme({
         {
           props: { variant: "getpump" },
           style: {
+            fontSize: "1rem",
             color: "var(--color-text-1)",
             height: "60px",
             borderRadius: "1000px",
@@ -61,6 +70,7 @@ export const theme = createTheme({
         {
           props: { variant: "getpumpOutlined" },
           style: {
+            fontSize: "1rem",
             color: "var(--color-text-2)",
             height: "50px",
             borderRadius: "1000px",

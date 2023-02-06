@@ -23,15 +23,24 @@ const Home = () => {
         </Box>
 
         {/* TESTIMONIALS */}
-        <Box sx={{ padding: { xs: "0", lg: "0 128px" } }} mt={16}>
+        <Box sx={{ padding: { xs: "0" } }} mt={16}>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Typography variant="title1">Testimonials</Typography>
           </Box>
           <Testimonial />
         </Box>
 
+        {/* PARTNERS LOGO */}
+        <Box
+          sx={{
+            background: "var(--bgColor-11)",
+            padding: { xs: "0", lg: "64px 128px 64px 128px" },
+          }}
+        >
+          <Partners />
+        </Box>
         {/* CARDS BENEFITS */}
-        <Box my={16}>
+        <Box mt={16}>
           <CardBenefitsSection
             cards={[
               {
@@ -84,15 +93,6 @@ const Home = () => {
               },
             ]}
           />
-        </Box>
-        {/* PARTNERS LOGO */}
-        <Box
-          sx={{
-            background: "var(--bgColor-11)",
-            padding: { xs: "0", lg: "128px" },
-          }}
-        >
-          <Partners />
         </Box>
       </Container>
     </Box>
