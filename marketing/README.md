@@ -1,6 +1,6 @@
 # Marketing
 
-Explain here the purpose of this workstream.
+To support surveyors knocking on doors and raise community awareness of the survey we are doing. Relates to web content, print content (e.g. flyers), etc.
 
 
 ## To write
