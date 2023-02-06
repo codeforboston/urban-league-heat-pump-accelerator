@@ -80,7 +80,7 @@ function Navbar(props) {
             >
               <ListItemText
                 sx={{
-                  textShadow: "1px 1px 2px #000",
+                  // textShadow: "1px 1px 2px #000",
                   color: "var(--color-text-2)",
                 }}
                 primary={item}
@@ -139,15 +139,15 @@ function Navbar(props) {
                 <Stack spacing={2} direction="row">
                   {navItems.map((item) => (
                     <Button
-                      variant="navbar"
                       key={item}
                       component={Link}
                       to={
                         item.toLowerCase() === "home" ? "" : item.toLowerCase()
                       }
                       sx={{
-                        textShadow: "1px 1px 2px #000",
+                        // textShadow: "1px 1px 2px #000",
                         color: "var(--color-text-2)",
+                        letterSpacing: "-.03em",
                       }}
                     >
                       {item}

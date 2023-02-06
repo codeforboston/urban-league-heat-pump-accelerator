@@ -29,7 +29,12 @@ function CarrouselHero(props) {
 
   return (
     <div sx={{ height: "100vh", minHeight: "100vh" }}>
-      <Carousel animation="fade" stopAutoPlayOnHover={false} interval="8000">
+      <Carousel
+        animation="fade"
+        stopAutoPlayOnHover={false}
+        interval="8000"
+        indicators={false}
+      >
         {items.map((item, i) => (
           <Item key={i} item={item} alt={item.alt} />
         ))}

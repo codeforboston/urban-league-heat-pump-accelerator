@@ -30,6 +30,7 @@ const Footer = () => {
         bgcolor: "var(--bgColor-6)",
         color: "var(--color-text-2)",
       }}
+      mt={16}
     >
       <FooterLinks>
         <Button

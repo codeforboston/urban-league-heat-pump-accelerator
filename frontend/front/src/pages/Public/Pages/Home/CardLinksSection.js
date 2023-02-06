@@ -6,8 +6,10 @@ import ButtonCustom from "../../Components/ButtonCustom";
 const CardLinks = styled("div")(({ theme }) => ({
   minWidth: "350px",
   maxWidth: "480px",
-  borderRadius: "25% 10%",
-  backgroundColor: "var(--bgColor-8)",
+  borderRadius: "2%",
+  padding: "1px 0",
+  backgroundColor: "var(--bgColor-11)",
+  border: "var(--border-card-2)",
   "& .links-wrapper": {
     "& h2": {
       fontSize: "1.5rem",
@@ -21,10 +23,9 @@ const GridLinkWrapper = styled("Grid")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   flexWrap: "nowrap",
-  gap: "48px",
+  gap: "2rem",
   [theme.breakpoints.down("sm")]: {
     flexWrap: "wrap",
-    gap: "30px",
   },
 }));
 
@@ -67,46 +68,37 @@ const CardLinksSection = () => {
             flexDirection: "column",
           }}
         >
-          {/* Remove the "Card" tag to utilize a different style.  */}
-          <Card variant="outlined">
-            <CardLinks
-              sx={{
-                borderRadius: "25% 10%",
-                backgroundColor: "#fff",
-              }}
-            >
-              <Box id="survey-link-section" m={4}>
-                <Typography textAlign="center" variant="h5" margimGutter>
-                  {detail.title}
-                </Typography>
-                <Box
-                  sx={{
-                    height: "140px",
-                    display: "flex",
-                    textAlign: "center",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography variant="subtitle2">
-                    {detail.paragraph}
-                  </Typography>
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <ButtonCustom
-                    text={detail.button.text}
-                    to={detail.button.to}
-                    variant={detail.button.variant}
-                  />
-                </Box>
+          <CardLinks>
+            <Box id="survey-link-section" m={4}>
+              <Typography textAlign="center" variant="title2">
+                {detail.title}
+              </Typography>
+              <Box
+                sx={{
+                  height: "140px",
+                  display: "flex",
+                  textAlign: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  color: "var(--color-text-3)",
+                }}
+              >
+                <Typography variant="body1">{detail.paragraph}</Typography>
               </Box>
-            </CardLinks>
-          </Card>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <ButtonCustom
+                  text={detail.button.text}
+                  to={detail.button.to}
+                  variant={detail.button.variant}
+                />
+              </Box>
+            </Box>
+          </CardLinks>
         </Grid>
       ))}
     </GridLinkWrapper>

@@ -1,5 +1,13 @@
 
+/* Global Styles */
+.container-wrapper {
+    /* background-color: var(--bgColor-10); */
+}
+
 :root { 
+/* Title - variant: h4*/
+/* Description= variant: body1 */
+
 /* Colors text*/
   --color-text-1: #041367;
   --color-text-2: #ffffff;
@@ -12,10 +20,11 @@
   --bgColor-4: #f9bdae;
   --bgColor-5: #E9F7FB;
   --bgColor-6: #303F4F; /* footer bgColor */
-  --bgColor-7: #273341; /* footer bgColor */
+  --bgColor-7: "";
   --bgColor-8:  #efed70;
   --bgColor-9:  #FBC61C;
-  --bgColor-10:  #F5F5F7;;
+  --bgColor-10:  #F5F5F7;
+  --bgColor-11:  #F9F9F9;
 
    /* Accent colors */
    --accent-1: rgba(252, 56, 56, 0.4);
@@ -27,16 +36,13 @@
    --box-shadow-1: inset 0 0 0 2px hsl(0deg 0% 100% / 30%); /* btn variant: "getpumpOutlined"*/
    --box-shadow-hover-1: 0px 4px 32px rgba(252, 56, 56, 0.4), inset 0 0 0 2px hsl(0deg 0% 100% ); /* btn variant: "getpumpOutlined"*/
    --box-shadow-2: 0px 4px 32px rgba(252, 56, 56, 0.4);
+
+   /* Border Card */
+    --border-card-1: 1px solid #E9F7FB;
+    --border-card-2: 1px solid rgba(0, 0, 0, 0.12)
 }
 
-body {      
-}
 
-.container-wrapper {
-    color: var(--color-text-1);
-    background-color: var(--bgColor-10);
-
-}
 
 @keyframes fanHero{
     0% {

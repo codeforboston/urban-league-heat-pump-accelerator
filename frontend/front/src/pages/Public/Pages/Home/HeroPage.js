@@ -145,7 +145,7 @@ const HeroPage = ({ title, text, image, backColor }) => {
               <AnimatedBox animation="animate__fadeInUp">
                 <Box className="info-wrapper">
                   <Box sx={{ textShadow: "1px 1px 2px #000" }}>
-                    <Typography variant="h3">{title}</Typography>
+                    <Typography variant="titleHero">{title}</Typography>
                     <Box
                       component="img"
                       src={graphicHeroUnderline}

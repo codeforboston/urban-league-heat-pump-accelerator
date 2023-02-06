@@ -66,7 +66,7 @@ const HeroVideo = ({ title, text }) => {
           className="text-overlay"
         >
           <Box sx={{ textShadow: "1px 1px 2px #000" }}>
-            <Typography variant="h3">{title}</Typography>
+            <Typography variant="titleHero">{title}</Typography>
             <Box
               component="img"
               src={graphicHeroUnderline}

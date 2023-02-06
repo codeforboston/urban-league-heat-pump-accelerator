@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import Partners from "./Partners";
 import CardBenefitsSection from "./CardBenefitsSection";
 import CardLinksSection from "./CardLinksSection";
@@ -17,28 +17,21 @@ const Home = () => {
       {/* HERO */}
       <CarrouselHero />
       <Container>
-        {/* TESTIMONIALS */}
-        <Box
-          py={6}
-          mb={4}
-          sx={{ height: "300px" }}
-          // sx={{ background: "var(--bgColor-9)", height: "300px" }}
-        >
-          <Testimonial />
-        </Box>
-
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
-        <Box my={15}>
+        <Box mt={16}>
           <CardLinksSection />
         </Box>
 
-        {/* PARTNERS LOGO */}
-        <Box my={15}>
-          <Partners />
+        {/* TESTIMONIALS */}
+        <Box sx={{ padding: { xs: "0", lg: "0 128px" } }} mt={16}>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Typography variant="title1">Testimonials</Typography>
+          </Box>
+          <Testimonial />
         </Box>
 
         {/* CARDS BENEFITS */}
-        <Box my={15}>
+        <Box my={16}>
           <CardBenefitsSection
             cards={[
               {
@@ -91,6 +84,15 @@ const Home = () => {
               },
             ]}
           />
+        </Box>
+        {/* PARTNERS LOGO */}
+        <Box
+          sx={{
+            background: "var(--bgColor-11)",
+            padding: { xs: "0", lg: "128px" },
+          }}
+        >
+          <Partners />
         </Box>
       </Container>
     </Box>

@@ -26,6 +26,7 @@ const items = [
 function Testimonial() {
   return (
     <Box
+      my={15}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -34,14 +35,16 @@ function Testimonial() {
       <Box
         sx={{
           maxWidth: "500px",
-          minWidth: "200px",
           width: "100%",
         }}
       >
-        <Typography gutterBottom variant="h4" mb={3} align="center">
-          Testimonials
-        </Typography>
-        <Carousel animation="slide">
+        <Carousel
+          animation="slide"
+          navButtonsAlwaysInvisible
+          // indicators={false}
+
+          // autoPlay={false}
+        >
           {items.map((item, i) => (
             <TestimonialItem key={i} item={item} />
           ))}
@@ -53,30 +56,32 @@ function Testimonial() {
 
 function TestimonialItem(props) {
   return (
-    <Paper
-      variant="outlined"
-      sx={{
-        padding: 4,
-        margin: "0 auto",
-        // background: "var(--bgColor-8)",
-      }}
-    >
+    <>
+      <Avatar
+        src={props.item.avatarSrc}
+        sx={{ width: "112px", height: "112px", margin: "0 auto", top: "27px" }}
+      />
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContet: "center",
           alignItems: "center",
+          padding: "15px",
+          background: "var(--bgColor-10)",
+          borderRadius: "10px",
+          boxShadow: "0px 0px 10px #ccc",
           color: "var(--color-text-1)",
+          margin: "0 16px",
         }}
       >
-        <Avatar src={props.item.avatarSrc} sx={{ width: 56, height: 56 }} />
-        <Typography variant="h5"> {props.item.name}</Typography>
+        <Typography variant="h6" my={2}>
+          {props.item.name}
+        </Typography>
         <Typography variant="body1" textAlign="center">
           "{props.item.text}"
         </Typography>
       </Box>
-    </Paper>
+    </>
   );
 }
 
