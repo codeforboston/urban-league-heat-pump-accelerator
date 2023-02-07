@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { Button, Container, Stack, TextField } from "@mui/material";
 import { HeatPumpAddressField } from "./HeatPumpAddressField";
 import { HeatPumpNameField } from "./HeatPumpNameField";
@@ -71,19 +71,26 @@ export const SurveyPage = () => {
             ]}
           />
 
-          <TextField
-            id="survey-phonenumber"
-            label="Phone Number"
-            variant="standard"
-            {...register("phoneNumber", {
+          <Controller
+            name="phoneNumber"
+            control={control}
+            rules={{
               required: { value: true, message: "This field is required!" },
               pattern: {
                 value: /^\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})$/,
                 message: "Invalid phone number.",
               },
-            })}
-            error={!!errors.phoneNumber}
-            helperText={!!errors.phoneNumber && errors.phoneNumber.message}
+            }}
+            render={({ field }) => (
+              <TextField
+                id="survey-phonenumber"
+                label="Phone Number"
+                variant="standard"
+                error={!!errors.phoneNumber}
+                helperText={!!errors.phoneNumber && errors.phoneNumber.message}
+                {...field}
+              />
+            )}
           />
 
           <HeatPumpDropdown

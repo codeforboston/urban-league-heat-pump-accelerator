@@ -73,6 +73,7 @@ export const HeatPumpDropdown = ({ name, control, options, label }) => {
           render={({ field }) => (
             <TextField
               label="Other..."
+              variant="standard"
               {...field}
               error={!!otherFieldError}
               helperText={!!otherFieldError && otherFieldError.message}
