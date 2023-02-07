@@ -11,6 +11,8 @@ import Home from "./home/Home";
 import User from "./user/User";
 import OnlineSurvey from "./onlinesurvey/OnlineSurvey";
 import OnlineSurveyProfile from "./onlinesurvey/OnlineSurveyProfile";
+import Assignment from "./assignment/Assignment";
+import AssignProfile from "./assignment/AssignProfile";
 
 const AdminContainer = () => {
   return (
@@ -28,13 +30,18 @@ const AdminContainer = () => {
           <Route path="home/createHome" element={<CreateNewHome />}></Route>
 
           <Route path="/user" element={<User />}></Route>
-          <Route path="userprofile/:uid" element={<UserProfile />}></Route>
+          <Route path="user/userprofile/:uid" element={<UserProfile />}></Route>
           <Route path="user/createUser" element={<CreateNewUser />}></Route>
 
           <Route path="/onlinesurvey" element={<OnlineSurvey />}></Route>
           <Route
             path="onlinesurveyprofile/:uid"
             element={<OnlineSurveyProfile />}
+          ></Route>
+          <Route path="assignment" element={<Assignment />}></Route>
+          <Route
+            path="assignment/assignProfile/:aid"
+            element={<AssignProfile />}
           ></Route>
         </Routes>
         {/* <Footer /> */}

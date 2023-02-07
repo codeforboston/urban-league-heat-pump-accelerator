@@ -38,6 +38,16 @@ const Dashboard = () => {
       >
         Online Survey
       </Button>
+
+      <Button
+        variant="contained"
+        size="large"
+        sx={{ width: 200, height: 150, fontSize: "1.5em" }}
+        component={Link}
+        to={"assignment"}
+      >
+        Assignment
+      </Button>
     </Box>
   );
 };
