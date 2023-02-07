@@ -85,7 +85,7 @@ function Navbar(props) {
               to={
                 item.replace(/\s+/g, "").toLowerCase() === "home"
                   ? ""
-                  : item.toLowerCase()
+                  : item.replace(/\s+/g, "").toLowerCase()
               }
               focusVisible
             >
