@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :surveys
 
   devise_for :users
-  resources :property_assessments, only: [:index]
+  resources :property_assessments
   root 'property_assessments#index'
 end
