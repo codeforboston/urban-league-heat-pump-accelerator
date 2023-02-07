@@ -35,6 +35,11 @@ const columns = [
     headerName: "City",
     width: 200,
   },
+  {
+    field: "completed",
+    headerName: "Completed",
+    width: 200,
+  },
 
   // {
   //   field: "fullName",

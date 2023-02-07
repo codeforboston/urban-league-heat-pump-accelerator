@@ -6,7 +6,7 @@ import AssignTable from "./AssignTable";
 const Assignment = () => {
   return (
     <Box mt={4}>
-      <Box>{/* <Typography variant="h3">Clusters</Typography> */}</Box>
+
       <AssignTable />
     </Box>
   );
