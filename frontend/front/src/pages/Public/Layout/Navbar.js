@@ -25,7 +25,14 @@ import logoHeatPump from "../../../assets/images/logoHeatPump.png";
 import heatPumpFan from "../../../assets/images/fan-heat-pumpSM.png";
 
 const drawerWidth = "100%";
-const navItems = ["HOME", "ABOUT", "SURVEY", "CONTACT"];
+const navItems = [
+  "HOME",
+  "ABOUT",
+  "SURVEY",
+  "CONTACT",
+  "SPREAD THE WORLD",
+  "FAQ",
+];
 
 const ImageAnimation = styled("div")(({ theme }) => ({
   "& .home-hero-fan": {
@@ -75,10 +82,20 @@ function Navbar(props) {
             <ListItemButton
               sx={{ textAlign: "center" }}
               component={Link}
-              to={item.toLowerCase() === "home" ? "" : item.toLowerCase()}
+              to={
+                item.replace(/\s+/g, "").toLowerCase() === "home"
+                  ? ""
+                  : item.replace(/\s+/g, "").toLowerCase()
+              }
               focusVisible
             >
-              <ListItemText primary={item} />
+              <ListItemText
+                sx={{
+                  // textShadow: "1px 1px 2px #000",
+                  color: "var(--color-text-2)",
+                }}
+                primary={item}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -133,14 +150,15 @@ function Navbar(props) {
                 <Stack spacing={2} direction="row">
                   {navItems.map((item) => (
                     <Button
-                      variant="navbar"
                       key={item}
                       component={Link}
                       to={
-                        item.toLowerCase() === "home" ? "" : item.toLowerCase()
+                        item.toLowerCase() === "home"
+                          ? ""
+                          : item.replace(/\s+/g, "").toLowerCase()
                       }
                     >
-                      {item}
+                      <Typography variant="navLinks">{item}</Typography>
                     </Button>
                   ))}
                 </Stack>

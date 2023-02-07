@@ -43,15 +43,14 @@ const Partners = () => {
 
   return (
     <Box>
-      <Typography variant="h4" mb={6} align="center" gutterBottom>
-        {title}
-      </Typography>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Typography variant="title1">{title}</Typography>
+      </Box>
       <Grid
         container
         spacing={4}
         alignItems="center"
         justifyContent="space-around"
-        // sx={{ flexWrap: "nowrap" }}
       >
         {partners.map((partner) => (
           <Grid item key={partner.id}>
@@ -59,8 +58,7 @@ const Partners = () => {
               <Box
                 component="img"
                 sx={{
-                  minWidth: "150px",
-                  maxWidth: "300px",
+                  width: "150px",
                 }}
                 src={partner.logo}
                 alt={partner.name}
