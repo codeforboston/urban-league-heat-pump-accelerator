@@ -9,7 +9,6 @@ const FooterLinks = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  background: "var(--bgColor-6)",
   padding: "32px 0",
   [theme.breakpoints.up("xs")]: {
     flexDirection: "column",
@@ -56,7 +55,7 @@ const Footer = () => {
 
       <Stack justifyContent="center" p={4} sx={{ color: "main" }}>
         <Typography align="center">
-          © {currentYear} Copyrights: {strings.appName}
+          © {currentYear} {strings.appName} | All Rights Reserved
         </Typography>
       </Stack>
     </Box>

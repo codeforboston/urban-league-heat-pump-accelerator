@@ -73,7 +73,7 @@ const HeroVideo = ({ title, text }) => {
               mb={3}
               sx={{ width: "80%", maxWidth: "500px", marginTop: "5px" }}
             />
-            <Typography variant="body1" mb={7}>
+            <Typography variant="bodyHero" mb={7}>
               {text}
             </Typography>
           </Box>

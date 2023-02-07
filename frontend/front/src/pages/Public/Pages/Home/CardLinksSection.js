@@ -33,7 +33,8 @@ const CardLinksSection = () => {
   const linkCards = [
     {
       id: 1,
-      title: "Take The Survey",
+      title: "Take ",
+      titleSticky: "the Survey",
       paragraph: "Tell us your thoughts and questions about heat pumps.",
       button: {
         text: "Take the survey",
@@ -45,7 +46,8 @@ const CardLinksSection = () => {
     },
     {
       id: 2,
-      title: "Learn More About Us",
+      title: "Learn more ",
+      titleSticky: "About us",
       paragraph: "It’s our mission to bring heat pumps to Boston homes.",
       button: {
         text: "Learn more",
@@ -72,6 +74,7 @@ const CardLinksSection = () => {
             <Box id="survey-link-section" m={4}>
               <Typography textAlign="center" variant="title2">
                 {detail.title}
+                <span className="exp-title1-span">{detail.titleSticky}</span>
               </Typography>
               <Box
                 sx={{

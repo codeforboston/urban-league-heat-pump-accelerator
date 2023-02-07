@@ -38,13 +38,7 @@ function Testimonial() {
           width: "100%",
         }}
       >
-        <Carousel
-          animation="slide"
-          navButtonsAlwaysInvisible
-          // indicators={false}
-
-          // autoPlay={false}
-        >
+        <Carousel animation="slide" navButtonsAlwaysInvisible>
           {items.map((item, i) => (
             <TestimonialItem key={i} item={item} />
           ))}
@@ -69,7 +63,7 @@ function TestimonialItem(props) {
           padding: "15px",
           background: "var(--bgColor-10)",
           borderRadius: "10px",
-          boxShadow: "0px 0px 10px #ccc",
+          boxShadow: "var(--boxShadow-3)",
           color: "var(--color-text-1)",
           margin: "0 16px",
         }}
@@ -77,7 +71,11 @@ function TestimonialItem(props) {
         <Typography variant="h6" my={2}>
           {props.item.name}
         </Typography>
-        <Typography variant="body1" textAlign="center">
+        <Typography
+          variant="body1"
+          textAlign="center"
+          sx={{ color: "var(--color-text-3)" }}
+        >
           "{props.item.text}"
         </Typography>
       </Box>

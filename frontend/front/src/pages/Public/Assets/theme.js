@@ -35,6 +35,14 @@ export const theme = createTheme({
       padding: "0.75rem 0",
       textAlign: "center",
     },
+    // h6
+    bodyHero: {
+      fontSize: "1.3rem",
+      display: "block",
+      letterSpacing: "-.03em",
+      padding: "0.75rem 0",
+      textAlign: "center",
+    },
     navLinks: {
       fontSize: "1rem",
       display: "block",

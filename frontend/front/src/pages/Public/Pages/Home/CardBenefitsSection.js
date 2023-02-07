@@ -49,10 +49,10 @@ const CardBenefitsSection = ({ cards }) => {
             sx={{ background: "var(--bgColor-10)" }}
             item
             xs={12}
-            md={6}
+            sm={6}
           >
             <Typography variant="h6" textAlign="center">
-              {card.title}
+              <span className="exp-title2-span">{card.title}</span>
             </Typography>
             <CardContent>
               {card.paragraphs.map((paragraph) => (
@@ -66,7 +66,11 @@ const CardBenefitsSection = ({ cards }) => {
               ))}
               {card.buttonLink !== "" && (
                 <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-                  <Button component={Link} to={card.buttonLink}>
+                  <Button
+                    component={Link}
+                    to={card.buttonLink}
+                    sx={{ color: "var(--color-text-4)" }}
+                  >
                     {card.buttonText}
                   </Button>
                 </CardActions>
