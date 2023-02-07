@@ -2,27 +2,30 @@ import React from "react";
 import { ThemeProvider, Box, Stack } from "@mui/material";
 import { theme } from "./Assets/theme";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
+import Home from "./Pages/Home/Home";
 import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Survey from "./Pages/Survey";
 import GetStarted from "./Pages/GetStarted";
+import "./Assets/index.css";
+import "animate.css/animate.min.css";
 
 const PublicContainer = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box>
+        <Box sx={{ bgcolor: "bgColor.default" }}>
           <Stack
             direction="column"
-            spacing={2}
             justifyContent="space-between"
-            style={{
+            sx={{
               display: "flex",
               minHeight: "100vh",
               flexDirection: "column",
+              color: "var(--color-text-1)",
+              fontSize: "16px",
             }}
           >
             <Navbar />

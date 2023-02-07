@@ -1,0 +1,43 @@
+
+:root { 
+/* Colors text*/
+  --color-text-1: #041367;
+  --color-text-2: #ffffff;
+  --color-text-3: #6e6e6e;
+
+  /* Background colors */
+  --bgColor-1:  linear-gradient(90deg, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%); /* HeroPage bgColor */;
+  --bgColor-2: #72bede;
+  --bgColor-3: #031366; 
+  --bgColor-4: #f9bdae;
+  --bgColor-5: #E9F7FB;
+  --bgColor-6: #303F4F; /* footer bgColor */
+  --bgColor-7: #273341; /* footer bgColor */
+  --bgColor-8:  #efed70;
+  --bgColor-9:  #FBC61C;
+
+   /* Accent colors */
+   --accent-1: rgba(252, 56, 56, 0.4);
+   
+   --accent-3: rgba(0, 0, 0, 0.54); /* image overlay*/
+   --accent-5:  hsl(0deg 0% 100% );
+
+   /* Box shadow */
+   --box-shadow-1: inset 0 0 0 2px hsl(0deg 0% 100% / 30%); /* btn variant: "getpumpOutlined"*/
+   --box-shadow-hover-1: 0px 4px 32px rgba(252, 56, 56, 0.4), inset 0 0 0 2px hsl(0deg 0% 100% ); /* btn variant: "getpumpOutlined"*/
+   --box-shadow-2: 0px 4px 32px rgba(252, 56, 56, 0.4);
+}
+
+body {      
+    color: var(--color-text-1);
+}
+
+
+@keyframes fanHero{
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg)
+    }
+    100%{
+        transform: translate(-50%, -50%) rotate(360deg)
+    }
+}

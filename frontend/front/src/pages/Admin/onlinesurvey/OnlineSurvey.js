@@ -1,11 +1,11 @@
 import { Box, Button, IconButton, TextField } from "@mui/material";
 import React from "react";
-import HomeTable from "./HomeTable";
+import OnlineSurveyTable from "./OnlineSurveyTable";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 
-const House = () => {
+const Home = () => {
   return (
     <Box>
       <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -27,14 +27,14 @@ const House = () => {
             startIcon={<AddIcon />}
             to="createHome"
           >
-            Create New Home
+            Create Online Survey
           </Button>
         </Box>
       </Box>
 
-      <HomeTable />
+      <OnlineSurveyTable />
     </Box>
   );
 };
 
-export default House;
+export default Home;

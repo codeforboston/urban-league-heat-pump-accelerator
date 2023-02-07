@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import UserData from "../../../../dummyData/userTable.json";
+import UserData from "../../../dummyData/userTable.json";
 import { useNavigate } from "react-router-dom";
 
 const columns = [

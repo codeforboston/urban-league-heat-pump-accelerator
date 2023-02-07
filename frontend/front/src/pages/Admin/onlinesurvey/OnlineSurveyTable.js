@@ -7,30 +7,29 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import HouseData from "../../../../dummyData/houseTable.json";
+import OnlineSurvey from "../../../dummyData/onlineSurvey.json";
 import { useNavigate } from "react-router-dom";
 
 const columns = [
-  { id: "hid", label: "HouseID", minWidth: 50 },
+  { id: "id", label: "Id", minWidth: 50 },
   {
-    id: "surveyor",
-    label: "Surveyor",
+    id: "firstName",
+    label: "First Name",
     minWidth: 170,
   },
+  { id: "lastName", label: "Last Name", minWidth: 200 },
+  { id: "phone", label: "Phone", minWidth: 200 },
+  { id: "heatType", label: "Heat", minWidth: 200 },
+  { id: "nextStep", label: "Next Steps", minWidth: 200 },
+  { id: "status", label: "Status", minWidth: 200 },
   { id: "address", label: "Address", minWidth: 200 },
   { id: "city", label: "City", minWidth: 200 },
-  { id: "zipcode", label: "Zipcode", minWidth: 50 },
-  {
-    id: "completed",
-    label: "Completed",
-    minWidth: 170,
-    align: "right",
-  },
+  { id: "zipCode", label: "Zip Code", minWidth: 100 },
 ];
 
-const rows = HouseData;
+const rows = OnlineSurvey;
 
-const HomeTable = () => {
+const OnlineSurveyTable = () => {
   const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
@@ -46,7 +45,7 @@ const HomeTable = () => {
   };
 
   const onRowClick = (row) => {
-    navigate(`houseprofile/${row.hid}`);
+    navigate(`onlinesurveyprofile/${row.id}`);
   };
 
   return (
@@ -106,4 +105,4 @@ const HomeTable = () => {
   );
 };
 
-export default HomeTable;
+export default OnlineSurveyTable;
