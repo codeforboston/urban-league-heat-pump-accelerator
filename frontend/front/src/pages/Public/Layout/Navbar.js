@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
@@ -14,18 +14,49 @@ import {
   Button,
   Stack,
   Typography,
+  Grid,
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import strings from "../Assets/constants";
 import { Link } from "react-router-dom";
 import ButtonGetPump from "../Components/ButtonGetPump";
+import logoHeatPump from "../../../assets/images/logoHeatPump.png";
+import heatPumpFan from "../../../assets/images/fan-heat-pumpSM.png";
 
 const drawerWidth = "100%";
-const navItems = ["Home", "About", "Survey", "Contact"];
+const navItems = [
+  "HOME",
+  "ABOUT",
+  "SURVEY",
+  "CONTACT",
+  "SPREAD THE WORLD",
+  "FAQ",
+];
+
+const ImageAnimation = styled("div")(({ theme }) => ({
+  "& .home-hero-fan": {
+    left: "55px",
+    top: "62px",
+    position: "absolute",
+    transform: "translate(-50%,-50%)",
+    animation: "fanHero 1.5s infinite linear",
+  },
+  [theme.breakpoints.up("xs")]: {
+    "& .home-hero-fan": {
+      marginLeft: "-1%",
+    },
+  },
+  [theme.breakpoints.up("sm")]: {
+    "& .home-hero-fan": {
+      marginLeft: "0%",
+    },
+  },
+}));
 
 function Navbar(props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -51,15 +82,25 @@ function Navbar(props) {
             <ListItemButton
               sx={{ textAlign: "center" }}
               component={Link}
-              to={item.toLowerCase() === "home" ? "" : item.toLowerCase()}
+              to={
+                item.replace(/\s+/g, "").toLowerCase() === "home"
+                  ? ""
+                  : item.replace(/\s+/g, "").toLowerCase()
+              }
               focusVisible
             >
-              <ListItemText primary={item} />
+              <ListItemText
+                sx={{
+                  // textShadow: "1px 1px 2px #000",
+                  color: "var(--color-text-2)",
+                }}
+                primary={item}
+              />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      <ButtonGetPump />
+      <ButtonGetPump variant="getpump" />
     </Box>
   );
 
@@ -67,43 +108,82 @@ function Navbar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" marginTop={2} sx={{ bgcolor: "#fff" }}>
-        <Toolbar sx={{ justifyContent: "flex-end" }}>
-          <Box sx={{ my: 2, pl: 3, flexGrow: 1 }}>
-            <Typography variant="h6" sx={{ my: 2, flexGrow: 1, color: "#000" }}>
-              {strings.appName}
-            </Typography>
-          </Box>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Stack pr={3} spacing={2} direction="row">
-              {navItems.map((item) => (
-                <Button
-                  key={item}
-                  component={Link}
-                  to={item.toLowerCase() === "home" ? "" : item.toLowerCase()}
-                  sx={{ color: "navbar.button.main" }}
-                >
-                  {item}
-                </Button>
-              ))}
-              <ButtonGetPump />
-            </Stack>
-          </Box>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{
-              ml: 2,
-              display: { sm: "none" },
-              color: "#000",
-              justifyContent: "flex-start",
-            }}
+    <Box sx={{ display: "flex", zIndex: 3 }}>
+      <AppBar
+        position="static"
+        marginTop={2}
+        sx={{
+          bgcolor: "var(--bgColor-1)",
+          background: "var(--bgColor-1)",
+          boxShadow: "none",
+          padding: { xl: "0 18%" },
+        }}
+      >
+        <Toolbar>
+          <Grid
+            container
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
           >
-            <MenuIcon />
-          </IconButton>
+            <Grid item sx={{ my: 2 }}>
+              <ImageAnimation>
+                <Box
+                  component="img"
+                  src={logoHeatPump}
+                  className="logo"
+                  alt="logo"
+                  sx={{
+                    my: 2,
+                  }}
+                />
+                <Box
+                  component="img"
+                  src={heatPumpFan}
+                  alt="heat-pump-fan"
+                  className="home-hero-fan"
+                ></Box>
+              </ImageAnimation>
+            </Grid>
+            <Grid item>
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                <Stack spacing={2} direction="row">
+                  {navItems.map((item) => (
+                    <Button
+                      key={item}
+                      component={Link}
+                      to={
+                        item.toLowerCase() === "home"
+                          ? ""
+                          : item.replace(/\s+/g, "").toLowerCase()
+                      }
+                    >
+                      <Typography variant="navLinks">{item}</Typography>
+                    </Button>
+                  ))}
+                </Stack>
+              </Box>
+            </Grid>
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              <Grid item>
+                <ButtonGetPump variant="getpumpOutlined" />
+              </Grid>
+            </Box>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{
+                ml: 2,
+                display: { md: "none" },
+                color: "#000",
+                justifyContent: "flex-start",
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Grid>
         </Toolbar>
       </AppBar>
 
@@ -118,11 +198,12 @@ function Navbar(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: { xs: "block", md: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              color: "#000",
+              color: "var(--color-text-1)",
+              background: "var(--bgColor-1)",
             },
           }}
         >

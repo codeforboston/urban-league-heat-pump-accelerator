@@ -22,12 +22,7 @@ function Contact() {
         sx={{ height: "100%" }}
       >
         <Grid item display="flex" flexDirection="column" alignItems="center">
-          <Typography
-            variant="h4"
-            mb={3}
-            textAlign="center"
-            sx={{ color: "#000" }}
-          >
+          <Typography variant="h4" mb={3} textAlign="center">
             Contact
           </Typography>
         </Grid>
