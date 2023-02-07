@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import ConfirmationModal from "../../Developer/confirmModal/ConfirmationModal";
 import { useForm } from "react-hook-form";
 
@@ -16,6 +16,7 @@ const UserProfile = () => {
     setEditMode(false);
   }
 
+  // deleteModal
   const confirmDelete = () => {
     setDeleteModal(false);
     // make api call to delete the user profile here
@@ -87,7 +88,7 @@ const UserProfile = () => {
       />
       <Box width={500} mt={5}>
         <Box sx={{ bgcolor: "primary.main", color: "white" }} p={1}>
-          <Typography variant="h5">User Profile</Typography>
+          <Typography variant="h5">User Profile: {uid}</Typography>
           {/* Could add user ID to header. */}
           {/* Can't be edited, but could be helpful to display. */}
         </Box>
