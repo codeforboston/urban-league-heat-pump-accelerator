@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_25_021012) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_26_152018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_021012) do
     t.string "lu", limit: 2
     t.string "lu_desc"
     t.string "bldg_type"
-    t.string "own_occ"
+    t.boolean "own_occ"
     t.string "owner"
     t.string "mail_addressee"
     t.string "mail_address"
@@ -102,7 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_021012) do
     t.string "orientation"
     t.integer "num_parking"
     t.string "prop_view"
-    t.string "corner_unit"
+    t.boolean "corner_unit"
   end
 
   create_table "survey_answers", force: :cascade do |t|
@@ -129,12 +129,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_021012) do
   create_table "survey_responses", force: :cascade do |t|
     t.bigint "survey_id", null: false
     t.bigint "survey_visit_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["survey_id"], name: "index_survey_responses_on_survey_id"
     t.index ["survey_visit_id"], name: "index_survey_responses_on_survey_visit_id"
-    t.index ["user_id"], name: "index_survey_responses_on_user_id"
   end
 
   create_table "survey_visits", force: :cascade do |t|
@@ -189,7 +187,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_021012) do
   add_foreign_key "survey_questions", "surveys"
   add_foreign_key "survey_responses", "survey_visits"
   add_foreign_key "survey_responses", "surveys"
-  add_foreign_key "survey_responses", "users"
   add_foreign_key "survey_visits", "users"
   add_foreign_key "surveyors", "users"
 end

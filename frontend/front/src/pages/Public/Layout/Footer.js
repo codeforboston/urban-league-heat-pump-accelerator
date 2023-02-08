@@ -1,68 +1,101 @@
 import React from "react";
-import { Typography, Stack, Box, Button, Grid, Divider } from "@mui/material";
-import strings from "../Assets/constants";
-import ButtonGetPump from "../Components/ButtonGetPump";
+import { Box, Button, Grid, Toolbar, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import Partners from "../Components/Partners";
+import ButtonGetPump from "../Components/ButtonGetPump";
+import logoHeatPump from "../../../assets/images/logoHeatPump.png";
+import { styled } from "@mui/material/styles";
+
+const FooterWrapper = styled("div")(({ theme }) => ({
+  background: "var(--bgColor-2)",
+  color: "var(--color-text-2)",
+  marginTop: "128px",
+  position: "relative",
+  "& .footer-links-wrapper": {
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+  "& .footer-links": {
+    alignItems: "baseline",
+    display: "flex",
+    flexDirection: "row",
+    gap: "34px",
+    justifyContent: "flex-end",
+  },
+  [theme.breakpoints.down("md")]: {
+    "& .footer-links-wrapper": {
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    "& .footer-links": {
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "12px",
+      marginBottom: "10px",
+    },
+  },
+}));
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <Box
-      pt={4}
-      sx={{
-        bgcolor: "footer.bgColor",
-        color: "#FFF",
-      }}
-    >
-      <Grid container spacing={4} sx={{ alignItems: "center" }}>
-        <Grid item lg={9} sx={{ pb: 6, mx: 4 }}>
-          <Partners />
-        </Grid>
-        <Divider
-          orientation="vertical"
-          variant="fullWidth"
-          sx={{ mt: 4 }}
-          color="gray"
-          flexItem
-        />
-        <Grid item lg={2} alignItems="center">
-          <Stack
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Button
-              component={Link}
-              to="survey"
-              sx={{ color: "#fff", width: "200px" }}
-              size="medium"
-            >
-              Take The Survey
-            </Button>
-            <Button
-              component={Link}
-              to="about"
-              sx={{ color: "#fff", width: "200px" }}
-              size="medium"
-            >
-              Learn More About Us
-            </Button>
-
-            <ButtonGetPump />
-          </Stack>
-        </Grid>
-        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-          <Stack justifyContent="center" p={4} sx={{ color: "main" }}>
-            <Typography align="center">
-              © {currentYear} Copyrights: {strings.appName}
+    <FooterWrapper>
+      <Toolbar>
+        <Grid
+          container
+          position="static"
+          pt={4}
+          pb={8}
+          sx={{
+            alignItems: "space-between",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            textAlign: "center",
+          }}
+        >
+          <Grid item className="footer-links-wrapper">
+            <Box className="footer-links">
+              <Button
+                component={Link}
+                size="medium"
+                sx={{ color: "var(--color-text-2)", width: "auto" }}
+                to="survey"
+              >
+                Take The Survey
+              </Button>
+              <ButtonGetPump variant="getpumpOutlined" />
+              <Button
+                component={Link}
+                size="medium"
+                sx={{ color: "var(--color-text-2)", width: "auto" }}
+                to="about"
+              >
+                Learn More About Us
+              </Button>
+            </Box>
+          </Grid>
+          <Grid item>
+            <Grid
+              component="img"
+              container
+              className="logo"
+              alt="logo"
+              src={logoHeatPump}
+              sx={{
+                margin: "0 auto",
+                mt: 6,
+                width: "auto",
+              }}
+            />
+            <Typography align="center" pt={1}>
+              © {currentYear} | All Rights Reserved.
             </Typography>
-          </Stack>
+          </Grid>
         </Grid>
-      </Grid>
-    </Box>
+      </Toolbar>
+    </FooterWrapper>
   );
 };
 
