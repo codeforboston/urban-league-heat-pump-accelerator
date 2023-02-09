@@ -396,6 +396,10 @@ Object {
         </form>
       </div>
     </div>
+    <script
+      id="RECAPTCHA_SCRIPT"
+      src="https://www.google.com/recaptcha/api.js?render=RECAPTCHA_KEY"
+    />
   </body>,
   "container": <div>
     <div
