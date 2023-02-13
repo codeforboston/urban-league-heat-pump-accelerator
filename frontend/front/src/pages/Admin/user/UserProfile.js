@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import ConfirmationModal from "../../Developer/confirmModal/ConfirmationModal";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 
 const UserProfile = () => {
   const { uid } = useParams();
@@ -10,9 +10,19 @@ const UserProfile = () => {
   const [deleteModal, setDeleteModal] = useState(false);
 
   // react-hook-forms
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { handleSubmit, reset, control } = useForm({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      streetAddress: "",
+      city: "",
+      zipCode: "",
+      state: "",
+    },
+  });
   const onSubmit = (data) => {
-    console.log("SUBMITTED");
     setEditMode(false);
   }
 
@@ -53,7 +63,6 @@ const UserProfile = () => {
         <Button
           variant="outlined"
           sx={{ ml: 2 }}
-          // onClick={() => setEditMode(false)}
           onClick={() => onSubmit()}
         >
           SAVE
@@ -94,61 +103,117 @@ const UserProfile = () => {
         </Box>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <TextField
-          disabled={!editMode}
-          label="First Name"
-          variant="standard"
-          sx={{ width: "95%", mx: 2, mt: 3 }}
-          {...register("firstName")}
+          <Controller
+            name={"firstName"}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+              disabled={!editMode}
+              onChange={onChange}
+              value={value}
+              label="First Name"
+              variant="standard"
+              sx={{ width: "95%", mx: 2, mt: 3 }}
+              />
+            )}
           />
-          <TextField
-            disabled={!editMode}
-            label="Last Name"
-            variant="standard"
-            sx={{ width: "95%", mx: 2, mt: 3 }}
-            {...register("lastName")}
+          <Controller
+            name={"lastName"}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+              disabled={!editMode}
+              onChange={onChange}
+              value={value}
+              label="Last Name"
+              variant="standard"
+              sx={{ width: "95%", mx: 2, mt: 3 }}
+              />
+            )}
           />
-          <TextField
-            disabled={!editMode}
-            label="Email"
-            variant="standard"
-            sx={{ width: "95%", mx: 2, mt: 3 }}
-            {...register("email")}
+          <Controller
+            name={"email"}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+              disabled={!editMode}
+              onChange={onChange}
+              value={value}
+              label="Email"
+              variant="standard"
+              sx={{ width: "95%", mx: 2, mt: 3 }}
+              />
+            )}
           />
-          <TextField
-            disabled={!editMode}
-            label="Phone"
-            variant="standard"
-            sx={{ width: "95%", mx: 2, mt: 3 }}
-            {...register("phoneNumber")}
+          <Controller
+            name={"phone"}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+              disabled={!editMode}
+              onChange={onChange}
+              value={value}
+              label="Phone"
+              variant="standard"
+              sx={{ width: "95%", mx: 2, mt: 3 }}
+              />
+            )}
           />
-          <TextField
-            disabled={!editMode}
-            label="Street Address"
-            variant="standard"
-            sx={{ width: "95%", mx: 2, mt: 3 }}
-            {...register("streetAddress")}
+          <Controller
+            name={"streetAddress"}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+              disabled={!editMode}
+              onChange={onChange}
+              value={value}
+              label="Street Address"
+              variant="standard"
+              sx={{ width: "95%", mx: 2, mt: 3 }}
+              />
+            )}
           />
-          <TextField
-            disabled={!editMode}
-            label="City"
-            variant="standard"
-            sx={{ width: "95%", mx: 2, mt: 3 }}
-            {...register("city")}
+          <Controller
+            name={"city"}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+              disabled={!editMode}
+              onChange={onChange}
+              value={value}
+              label="City"
+              variant="standard"
+              sx={{ width: "95%", mx: 2, mt: 3 }}
+              />
+            )}
           />
-          <TextField
-            disabled={!editMode}
-            label="Zip Code"
-            variant="standard"
-            sx={{ width: "95%", mx: 2, mt: 3 }}
-            {...register("zipCode")}
+          <Controller
+            name={"zipCode"}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+              disabled={!editMode}
+              onChange={onChange}
+              value={value}
+              label="Zip Code"
+              variant="standard"
+              sx={{ width: "95%", mx: 2, mt: 3 }}
+              />
+            )}
           />
-          <TextField
-            disabled={!editMode}
-            label="State"
-            variant="standard"
-            sx={{ width: "95%", mx: 2, mt: 3 }}
-            {...register("state")}
+          <Controller
+            name={"state"}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+              disabled={!editMode}
+              onChange={onChange}
+              value={value}
+              label="State"
+              variant="standard"
+              sx={{ width: "95%", mx: 2, mt: 3 }}
+              />
+            )}
           />
 
           {/* BUTTONS */}
