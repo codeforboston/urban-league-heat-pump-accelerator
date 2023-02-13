@@ -76,6 +76,25 @@ export const theme = createTheme({
           },
         },
         {
+          props: { variant: "getpumpMobile" },
+          style: {
+            fontSize: "1rem",
+            color: "var(--color-text-1)",
+            height: "60px",
+            borderRadius: "1000px",
+            minWidth: 200,
+            transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+            background: "var(--bgColor-5)",
+            letterSpacing: "-.03em",
+            textShadow: "1px 1px 2px #fff",
+            boxShadow: "var(--box-shadow-1)",
+            border: "var(--border-card-2)",
+            "&:hover": {
+              backgroundColor: "var(--bgColor-5)",
+            },
+          },
+        },
+        {
           props: { variant: "getpumpOutlined" },
           style: {
             fontSize: "1rem",
