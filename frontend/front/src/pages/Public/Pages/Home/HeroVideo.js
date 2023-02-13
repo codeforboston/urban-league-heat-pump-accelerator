@@ -32,11 +32,16 @@ const HeroWrapper = styled("div")(({ theme }) => ({
 }));
 
 const VideoContainer = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   top: 0,
   left: 0,
+  margin: "0 auto",
   height: "100%",
   width: "100%",
   opacity: 0.7,
+  background: "var(--bgColor-5)",
   "& .component-video": {
     width: "100%",
     height: "100%",
@@ -46,6 +51,7 @@ const VideoContainer = styled("div")({
     width: "100%",
     height: "100%",
     maxHeight: "100%",
+    objectFit: "cover",
   },
 });
 
