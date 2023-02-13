@@ -88,7 +88,13 @@ const HeroVideo = ({ title, text }) => {
       </Box>
 
       <VideoContainer className="component-video">
-        <video autoPlay loop muted src={videoBgGround} />
+        <video
+          autoPlay
+          loop
+          muted
+          src={videoBgGround}
+          poster="../../../../assets/images/videoCover.png"
+        />
       </VideoContainer>
     </HeroWrapper>
   );
