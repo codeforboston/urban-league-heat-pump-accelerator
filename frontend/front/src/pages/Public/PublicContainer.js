@@ -7,8 +7,10 @@ import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
-import Survey from "./Pages/Survey";
+import { SurveyPage } from "./Pages/SurveyPage/SurveyPage";
 import GetStarted from "./Pages/GetStarted";
+import SpreadWorld from "./Pages/SpreadWorld";
+import Faq from "./Pages/Faq";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
 
@@ -16,7 +18,7 @@ const PublicContainer = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box sx={{ bgcolor: "bgColor.default" }}>
+        <Box className="container-wrapper">
           <Stack
             direction="column"
             justifyContent="space-between"
@@ -34,8 +36,10 @@ const PublicContainer = () => {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/contact" element={<Contact />}></Route>
                 <Route path="/about" element={<About />}></Route>
-                <Route path="/survey" element={<Survey />}></Route>
+                <Route path="/survey" element={<SurveyPage />} />
                 <Route path="/getstarted" element={<GetStarted />}></Route>
+                <Route path="/spreadtheworld" element={<SpreadWorld />}></Route>
+                <Route path="/faq" element={<Faq />}></Route>
               </Routes>
             </Box>
             <Footer />

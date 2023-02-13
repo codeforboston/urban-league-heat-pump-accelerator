@@ -1,14 +1,15 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box, Grid } from "@mui/material";
+import { Typography, Box, Grid, Card } from "@mui/material";
 import ButtonCustom from "../../Components/ButtonCustom";
-import AnimatedBoxScroll from "../../Components/AnimatedBoxScroll";
 
 const CardLinks = styled("div")(({ theme }) => ({
   minWidth: "350px",
   maxWidth: "480px",
-  borderRadius: "25% 10%",
-  backgroundColor: "var(--bgColor-8)",
+  borderRadius: "2%",
+  padding: "1px 0",
+  backgroundColor: "var(--bgColor-11)",
+  border: "var(--border-card-2)",
   "& .links-wrapper": {
     "& h2": {
       fontSize: "1.5rem",
@@ -22,10 +23,9 @@ const GridLinkWrapper = styled("Grid")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   flexWrap: "nowrap",
-  gap: "48px",
+  gap: "2rem",
   [theme.breakpoints.down("sm")]: {
     flexWrap: "wrap",
-    gap: "30px",
   },
 }));
 
@@ -33,7 +33,8 @@ const CardLinksSection = () => {
   const linkCards = [
     {
       id: 1,
-      title: "Take The Survey",
+      title: "Take ",
+      titleSticky: "the Survey",
       paragraph: "Tell us your thoughts and questions about heat pumps.",
       button: {
         text: "Take the survey",
@@ -45,7 +46,8 @@ const CardLinksSection = () => {
     },
     {
       id: 2,
-      title: "Learn More About Us",
+      title: "Learn more ",
+      titleSticky: "About us",
       paragraph: "It’s our mission to bring heat pumps to Boston homes.",
       button: {
         text: "Learn more",
@@ -68,19 +70,11 @@ const CardLinksSection = () => {
             flexDirection: "column",
           }}
         >
-          <CardLinks
-            sx={{
-              borderRadius: "25% 10%",
-              backgroundColor: "var(--bgColor-8)",
-            }}
-          >
-            {/* <AnimatedBoxScroll
-              animation={detail.animationCSS}
-              id={detail.idCSS}
-            > */}
+          <CardLinks>
             <Box id="survey-link-section" m={4}>
-              <Typography textAlign="center" variant="h5" margimGutter>
+              <Typography textAlign="center" variant="title2">
                 {detail.title}
+                <span className="exp-title1-span">{detail.titleSticky}</span>
               </Typography>
               <Box
                 sx={{
@@ -89,9 +83,10 @@ const CardLinksSection = () => {
                   textAlign: "center",
                   justifyContent: "center",
                   alignItems: "center",
+                  color: "var(--color-text-3)",
                 }}
               >
-                <Typography variant="subtitle2">{detail.paragraph}</Typography>
+                <Typography variant="body1">{detail.paragraph}</Typography>
               </Box>
               <Box
                 sx={{
@@ -106,7 +101,6 @@ const CardLinksSection = () => {
                 />
               </Box>
             </Box>
-            {/* </AnimatedBoxScroll> */}
           </CardLinks>
         </Grid>
       ))}

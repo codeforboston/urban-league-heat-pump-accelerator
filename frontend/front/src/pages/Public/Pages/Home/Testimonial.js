@@ -1,6 +1,5 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { styled } from "@mui/material/styles";
 import { Typography, Paper, Avatar, Box } from "@mui/material";
 
 const items = [
@@ -27,6 +26,7 @@ const items = [
 function Testimonial() {
   return (
     <Box
+      mb={16}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -35,14 +35,10 @@ function Testimonial() {
       <Box
         sx={{
           maxWidth: "500px",
-          minWidth: "200px",
           width: "100%",
         }}
       >
-        <Typography gutterBottom variant="h4" mb={3} align="center">
-          Testimonials
-        </Typography>
-        <Carousel animation="slide">
+        <Carousel animation="slide" navButtonsAlwaysInvisible>
           {items.map((item, i) => (
             <TestimonialItem key={i} item={item} />
           ))}
@@ -54,30 +50,36 @@ function Testimonial() {
 
 function TestimonialItem(props) {
   return (
-    <Paper
-      sx={{
-        padding: 4,
-        margin: "0 auto",
-
-        background: "var(--bgColor-8)",
-      }}
-    >
+    <>
+      <Avatar
+        src={props.item.avatarSrc}
+        sx={{ width: "112px", height: "112px", margin: "0 auto", top: "27px" }}
+      />
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContet: "center",
           alignItems: "center",
+          padding: "15px",
+          background: "var(--bgColor-10)",
+          borderRadius: "10px",
+          boxShadow: "var(--boxShadow-3)",
           color: "var(--color-text-1)",
+          margin: "0 16px",
         }}
       >
-        <Avatar src={props.item.avatarSrc} sx={{ width: 56, height: 56 }} />
-        <Typography variant="h5"> {props.item.name}</Typography>
-        <Typography variant="body1" textAlign="center">
+        <Typography variant="h6" my={2}>
+          {props.item.name}
+        </Typography>
+        <Typography
+          variant="body1"
+          textAlign="center"
+          sx={{ color: "var(--color-text-3)" }}
+        >
           "{props.item.text}"
         </Typography>
       </Box>
-    </Paper>
+    </>
   );
 }
 
