@@ -48,7 +48,7 @@ function CarrouselHero(props) {
         stopAutoPlayOnHover={false}
         interval="8000"
         indicators={false}
-        autoPlay={false}
+        // autoPlay={false}
       >
         {items.map((item, i) => (
           <Item key={i} item={item} alt={item.alt} />
