@@ -3,7 +3,10 @@ import Carousel from "react-material-ui-carousel";
 import { Paper, Box } from "@mui/material";
 import HeroPage from "./HeroPage";
 import imageHeroHouse from "../../../../assets/images/hero-house-heat-pump.png";
+import imageHero from "../../../../assets/images/copywritingImages/EricRichards-volunteer-photo-4.jpg";
 import HeroVideo from "./HeroVideo";
+import videoBgGround from "../../../../assets/images/productionID_4791180.mp4";
+import HeroPageBgGroundCenter from "./HeroPageBgGroundCenter";
 
 function CarrouselHero(props) {
   const items = [
@@ -19,9 +22,20 @@ function CarrouselHero(props) {
     },
     {
       component: (
-        <HeroVideo
-          title="AN ENERGY-EFFICIENT SOLUTION FOR BOSTON RESIDENTS"
+        <HeroPageBgGroundCenter
+          title="BOSTON RESIDENTS CAN BENEFIT FROM HEAT PUMPS"
           text="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
+          image={imageHero}
+          backColor="var(--bgColor-1)"
+        />
+      ),
+    },
+    {
+      component: (
+        <HeroVideo
+          title="Boston Residents Can Save Money with Heat Pumps"
+          // text=""
+          videoBgGround={videoBgGround}
         />
       ),
     },
@@ -34,6 +48,7 @@ function CarrouselHero(props) {
         stopAutoPlayOnHover={false}
         interval="8000"
         indicators={false}
+        autoPlay={false}
       >
         {items.map((item, i) => (
           <Item key={i} item={item} alt={item.alt} />

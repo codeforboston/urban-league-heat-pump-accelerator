@@ -8,6 +8,7 @@ export const theme = createTheme({
     titleHero: {
       fontSize: "3rem",
       display: "block",
+      fontWeight: 800,
       "@media (max-width:600px)": {
         fontSize: "2rem",
       },
@@ -17,7 +18,6 @@ export const theme = createTheme({
       display: "block",
       width: "100%",
       fontSize: "2rem",
-      display: "block",
       letterSpacing: "-.03em",
       background: "var(--bgColor-5)",
       padding: "0.75rem 0",
@@ -37,15 +37,18 @@ export const theme = createTheme({
     },
     // h6
     bodyHero: {
+      color: "var(--color-text-2)",
       fontSize: "1.3rem",
       display: "block",
       letterSpacing: "-.03em",
       padding: "0.75rem 0",
       textAlign: "center",
+      fontWeight: "500",
     },
     navLinks: {
       fontSize: "1rem",
       display: "block",
+      fontWeight: 800,
       letterSpacing: "-.03em",
       padding: "0.75rem 0",
       textAlign: "center",

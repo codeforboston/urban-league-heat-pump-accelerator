@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box } from "@mui/material";
-
-import videoBgGround from "../../../../assets/images/productionID_4791180.mp4";
+import { Typography, Box, Link } from "@mui/material";
 
 import ButtonGetPump from "../../Components/ButtonGetPump";
-import graphicHeroUnderline from "../../../../assets/images/graphic-hero-underline.svg";
 import AnimatedBox from "../../Components/AnimatedBox";
 
 const HeroWrapper = styled("div")(({ theme }) => ({
@@ -55,7 +52,7 @@ const VideoContainer = styled("div")({
   },
 });
 
-const HeroVideo = ({ title, text }) => {
+const HeroVideo = ({ title, videoBgGround }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -72,15 +69,19 @@ const HeroVideo = ({ title, text }) => {
           className="text-overlay"
         >
           <Box sx={{ textShadow: "1px 1px 2px #000" }}>
-            <Typography variant="titleHero">{title}</Typography>
-            <Box
-              component="img"
-              src={graphicHeroUnderline}
-              mb={3}
-              sx={{ width: "80%", maxWidth: "500px", marginTop: "5px" }}
-            />
+            <Typography variant="titleHero">{title.toUpperCase()}</Typography>
+
             <Typography variant="bodyHero" mb={7}>
-              {text}
+              Heat pumps can help you{" "}
+              <Link
+                href="https://www.masssave.com/residential/programs-and-services/income-based-offers/income-eligible-programs"
+                target="_blank"
+                rel="noopener"
+                sx={{ color: "var(--color-text-5)", fontWeight: "800" }}
+              >
+                save money
+              </Link>{" "}
+              on your home heating and cooling costs.
             </Typography>
           </Box>
           <ButtonGetPump variant="getpump" />
