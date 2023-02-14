@@ -10,7 +10,6 @@ const HeroWrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   height: "100vh",
-  maxHeight: "850px",
   position: "relative",
   backgroundImage: `url(${imageHero})`,
   backgroundSize: "cover",
@@ -30,7 +29,7 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     color: "var(--color-text-2)",
     textShadow: "1px 1px 2px #000",
     margin: "0 auto",
-    maxWidth: "600px",
+    maxWidth: "1000px",
     background: "var(--accent-3)",
   },
 }));

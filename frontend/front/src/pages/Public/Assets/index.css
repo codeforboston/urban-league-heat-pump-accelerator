@@ -94,3 +94,9 @@
     background-size: 100%;
     background-repeat: no-repeat;
 }
+
+.video-background  {
+    width: 100vw;
+    height: 100vw;
+    object-fit: cover;
+}

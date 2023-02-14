@@ -29,9 +29,7 @@ const HeroWrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   overflow: "hidden",
   height: "calc(100vh - 115px)",
-  maxHeight: "850px",
   position: "relative",
-
   "& .home-hero-container": {
     display: "flex",
     flexDirection: "column",

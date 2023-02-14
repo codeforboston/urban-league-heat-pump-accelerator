@@ -10,7 +10,6 @@ const HeroWrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   overflow: "hidden",
   height: "calc(100vh - 115px)",
-  maxHeight: "850px",
   position: "relative",
   "& .text-wrapper": {
     width: "100vw",
@@ -95,6 +94,7 @@ const HeroVideo = ({ title, videoBgGround }) => {
           muted
           src={videoBgGround}
           poster="../../../../assets/images/videoCover.png"
+          className="video-background"
         />
       </VideoContainer>
     </HeroWrapper>
