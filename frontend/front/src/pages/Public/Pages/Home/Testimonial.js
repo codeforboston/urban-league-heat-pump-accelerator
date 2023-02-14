@@ -38,7 +38,7 @@ function Testimonial() {
           width: "100%",
         }}
       >
-        <Carousel animation="slide" navButtonsAlwaysInvisible>
+        <Carousel animation="slide" height="380px">
           {items.map((item, i) => (
             <TestimonialItem key={i} item={item} />
           ))}
@@ -53,7 +53,7 @@ function TestimonialItem(props) {
     <>
       <Avatar
         src={props.item.avatarSrc}
-        sx={{ width: "112px", height: "112px", margin: "0 auto", top: "27px" }}
+        sx={{ width: "112px", height: "112px", margin: "0 auto", top: "67px" }}
       />
       <Box
         sx={{
@@ -66,18 +66,28 @@ function TestimonialItem(props) {
           boxShadow: "var(--boxShadow-3)",
           color: "var(--color-text-1)",
           margin: "0 16px",
+          height: "220px",
         }}
       >
-        <Typography variant="h6" my={2}>
+        <Typography variant="h6" mt={8}>
           {props.item.name}
         </Typography>
-        <Typography
-          variant="body1"
-          textAlign="center"
-          sx={{ color: "var(--color-text-3)" }}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            height: "100%",
+          }}
         >
-          "{props.item.text}"
-        </Typography>
+          <Typography
+            variant="body1"
+            textAlign="center"
+            sx={{ color: "var(--color-text-3)" }}
+          >
+            "{props.item.text}"
+          </Typography>
+        </Box>
       </Box>
     </>
   );
