@@ -100,3 +100,8 @@
     height: 100vw;
     object-fit: cover;
 }
+
+.hero-title-bold {
+    font-weight: 900;
+    color: var(--color-text-2);
+}

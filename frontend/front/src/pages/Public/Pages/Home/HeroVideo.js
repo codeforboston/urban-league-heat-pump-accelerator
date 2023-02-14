@@ -21,7 +21,6 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     boxSizing: "border-box",
   },
   "& .text-overlay": {
-    color: "var(--color-text-2)",
     textAlign: "center",
     zIndex: 1,
   },
@@ -51,7 +50,14 @@ const VideoContainer = styled("div")({
   },
 });
 
-const HeroVideo = ({ title, videoBgGround }) => {
+const HeroVideo = ({
+  title,
+  titleBold,
+  text1,
+  texBold,
+  text2,
+  videoBgGround,
+}) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -68,19 +74,22 @@ const HeroVideo = ({ title, videoBgGround }) => {
           className="text-overlay"
         >
           <Box sx={{ textShadow: "1px 1px 2px #000" }}>
-            <Typography variant="titleHero">{title.toUpperCase()}</Typography>
+            <Typography variant="titleHero">
+              {title.toUpperCase()}
+              <span className="hero-title-bold">{titleBold.toUpperCase()}</span>
+            </Typography>
 
-            <Typography variant="bodyHero" mb={7}>
-              Heat pumps can help you{" "}
+            <Typography variant="bodyHero" mb={8} mt={2}>
+              {text1}
               <Link
                 href="https://www.masssave.com/residential/programs-and-services/income-based-offers/income-eligible-programs"
                 target="_blank"
                 rel="noopener"
                 sx={{ color: "var(--color-text-5)", fontWeight: "800" }}
               >
-                save money
-              </Link>{" "}
-              on your home heating and cooling costs.
+                {texBold}
+              </Link>
+              {text2}
             </Typography>
           </Box>
           <ButtonGetPump variant="getpump" />

@@ -111,7 +111,7 @@ const InfoWrapper = styled("div")(({ theme }) => ({
   },
 }));
 
-const HeroPage = ({ title, text, image, backColor }) => {
+const HeroPage = ({ title, titleBold, text, image, backColor }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -136,9 +136,14 @@ const HeroPage = ({ title, text, image, backColor }) => {
               <AnimatedBox animation="animate__fadeInUp">
                 <Box className="info-wrapper">
                   <Box sx={{ textShadow: "1px 1px 2px #000" }}>
-                    <Typography variant="titleHero">{title}</Typography>
+                    <Typography variant="titleHero">
+                      {title.toUpperCase()}
+                      <span className="hero-title-bold">
+                        {titleBold.toUpperCase()}
+                      </span>
+                    </Typography>
 
-                    <Typography variant="bodyHero" mb={7}>
+                    <Typography variant="bodyHero" mb={8} mt={2}>
                       {text}
                     </Typography>
                   </Box>

@@ -13,7 +13,8 @@ function CarrouselHero(props) {
     {
       component: (
         <HeroPage
-          title="BOSTON RESIDENTS CAN BENEFIT FROM HEAT PUMPS"
+          title="BOSTON RESIDENTS CAN "
+          titleBold="BENEFIT FROM HEAT PUMPS"
           text="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
           image={imageHeroHouse}
           backColor="var(--bgColor-1)"
@@ -23,7 +24,8 @@ function CarrouselHero(props) {
     {
       component: (
         <HeroPageBgGroundCenter
-          title="BOSTON RESIDENTS CAN BENEFIT FROM HEAT PUMPS"
+          title="BOSTON RESIDENTS CAN "
+          titleBold="BENEFIT FROM HEAT PUMPS"
           text="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
           image={imageHero}
           backColor="var(--bgColor-1)"
@@ -33,8 +35,11 @@ function CarrouselHero(props) {
     {
       component: (
         <HeroVideo
-          title="Boston Residents Can Save Money with Heat Pumps"
-          // text=""
+          title="Boston Residents Can "
+          titleBold="Save Money with Heat Pumps"
+          text1="Heat pumps can help you "
+          textBold="save money"
+          text2=" on your home heating and cooling costs."
           videoBgGround={videoBgGround}
         />
       ),
@@ -48,7 +53,7 @@ function CarrouselHero(props) {
         stopAutoPlayOnHover={false}
         interval="8000"
         indicators={false}
-        // autoPlay={false}
+        autoPlay={false}
       >
         {items.map((item, i) => (
           <Item key={i} item={item} alt={item.alt} />

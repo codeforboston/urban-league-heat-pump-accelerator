@@ -6,9 +6,10 @@ export const theme = createTheme({
   typography: {
     // h3
     titleHero: {
+      color: "var(--color-text-5)",
       fontSize: "3rem",
       display: "block",
-      fontWeight: 800,
+      fontWeight: 600,
       "@media (max-width:600px)": {
         fontSize: "2rem",
       },

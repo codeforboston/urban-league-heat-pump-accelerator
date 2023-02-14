@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography, Box, Link } from "@mui/material";
 import ulemLogo from "../../../../assets/images/ULEM.png";
 import maCleanEnergyLogo from "../../../../assets/images/MACleanEnergy.png";
 import heatSmartLogo from "../../../../assets/images/HeatSmart.png";
@@ -66,6 +66,21 @@ const Partners = () => {
             </a>
           </Grid>
         ))}
+        <Grid item>
+          <Typography variant="body2">
+            This initiative is a collaboration of Massachusetts government and
+            nonprofit organizations working together to help{" "}
+            <Link
+              href="https://www.masssave.com/residential/programs-and-services/income-based-offers/income-eligible-programs"
+              target="_blank"
+              rel="noopener"
+              sx={{ color: "var(--color-text-4)" }}
+            >
+              make heat pumps more available to low-income residents
+            </Link>
+            .
+          </Typography>
+        </Grid>
       </Grid>
     </Box>
   );

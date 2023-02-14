@@ -34,7 +34,7 @@ const HeroWrapper = styled("div")(({ theme }) => ({
   },
 }));
 
-const HeroPageBgGroundCenter = ({ title, text, image }) => {
+const HeroPageBgGroundCenter = ({ title, titleBold, text, image }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -51,9 +51,12 @@ const HeroPageBgGroundCenter = ({ title, text, image }) => {
           className="text-overlay"
           p={2}
         >
-          <Typography variant="titleHero">{title.toUpperCase()}</Typography>
+          <Typography variant="titleHero">
+            {title.toUpperCase()}
+            <span className="hero-title-bold">{titleBold.toUpperCase()}</span>
+          </Typography>
 
-          <Typography variant="bodyHero" mb={7}>
+          <Typography variant="bodyHero" mb={8} mt={2}>
             {text}
           </Typography>
 
