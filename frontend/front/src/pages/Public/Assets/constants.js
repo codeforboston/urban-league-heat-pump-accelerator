@@ -1,5 +1,5 @@
 const strings = {
-  appName: "BHPA - Boston Heat Pump Accelerator",
+  appName: "Boston Heat Pump Accelerator",
 };
 
 export default strings;

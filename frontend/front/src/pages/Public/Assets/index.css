@@ -16,7 +16,7 @@
     --color-text-5: #E9F7FB;
 
     /* Background colors */
-    --bgColor-1:  linear-gradient(90deg, rgba(152,199,214,1) 50%, rgba(114,190,222,1) 100%); /* HeroPage bgColor */;
+    --bgColor-1:  linear-gradient(90deg, #98c7d6 50%, #72bede 100%); /* HeroPage bgColor */;
     --bgColor-2: #72bede;
     --bgColor-3: #031366; 
     --bgColor-4: #f9bdae;
@@ -27,6 +27,7 @@
     --bgColor-9:  #FBC61C;
     --bgColor-10:  #F5F5F7;
     --bgColor-11:  #F9F9F9;
+    --bgColor-12: rgba(157, 210, 225, 1);
 
     /* Accent colors */
     --accent-1: rgba(252, 56, 56, 0.4);
