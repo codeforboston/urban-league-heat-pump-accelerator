@@ -34,15 +34,16 @@ const drawerWidth = "100%";
 
 const ImageAnimation = styled("div")(({ theme }) => ({
   "& .home-hero-fan": {
-    left: "55px",
-    top: "62px",
+    left: "66px",
+    top: "72px",
+    width: "58px",
     position: "absolute",
     transform: "translate(-50%,-50%)",
     animation: "fanHero 1.5s infinite linear",
   },
   [theme.breakpoints.up("xs")]: {
     "& .home-hero-fan": {
-      marginLeft: "-1%",
+      marginLeft: "-1.5%",
     },
   },
   [theme.breakpoints.up("sm")]: {
