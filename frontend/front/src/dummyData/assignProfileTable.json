@@ -3,47 +3,52 @@
     "id": 13,
     "address": "357 Sage Pass",
     "zipcode": "702324",
-    "completed": "yes",
+    "completed": true,
     "surveyor": "Deanne Sherewood",
-    "city": "Mulong"
+    "city": "Mulong",
+    "surveyId": 1
   },
   {
     "id": 2,
     "address": "7 Lillian Lane",
     "zipcode": "938577",
-    "completed": "no",
+    "completed": false,
     "surveyor": "Alana Ceschini",
-    "city": "Banjar Baleagung"
+    "city": "Banjar Baleagung",
+    "surveyId": 2
   },
   {
     "id": 3,
     "address": "357 Sage Pass",
     "zipcode": "702324",
-    "completed": "yes",
+    "completed": true,
     "surveyor": "Deanne Sherewood",
-    "city": "Mulong"
+    "city": "Mulong",
+    "surveyId": 3
   },
   {
     "id": 4,
     "address": "60 Spaight Circle",
     "zipcode": "804512",
-    "completed": "yes",
+    "completed": true,
     "surveyor": "Christye Borthe",
-    "city": "Kawalimukti"
+    "city": "Kawalimukti",
+    "surveyId": 4
   },
   {
     "id": 5,
     "address": "575 Barnett Way",
     "zipcode": "355821",
-    "completed": "no",
+    "completed": false,
     "surveyor": "Nixie Gregorowicz",
-    "city": "Libušín"
+    "city": "Libušín",
+    "surveyId": 5
   },
   {
     "id": 6,
     "address": "3 Lindbergh Park",
     "zipcode": "692908",
-    "completed": "no",
+    "completed": false,
     "surveyor": "Frank Pittford",
     "city": "Sumberbatas"
   },
@@ -51,32 +56,36 @@
     "id": 7,
     "address": "679 Eagle Crest Drive",
     "zipcode": "909169",
-    "completed": "no",
+    "completed": false,
     "surveyor": "Jemima Lane",
-    "city": "Forécariah"
+    "city": "Forécariah",
+    "surveyId": 6
   },
   {
     "id": 8,
     "address": "22514 Riverside Park",
     "zipcode": "822803",
-    "completed": "yes",
+    "completed": true,
     "surveyor": "Haleigh Death",
-    "city": "Gŭlŭbovo"
+    "city": "Gŭlŭbovo",
+    "surveyId": 7
   },
   {
     "id": 9,
     "address": "95782 Carberry Way",
     "zipcode": "627343",
-    "completed": "no",
+    "completed": false,
     "surveyor": "Ruben Wickmann",
-    "city": "Huangjia"
+    "city": "Huangjia",
+    "surveyId": 8
   },
   {
     "id": 10,
     "address": "68599 American Crossing",
     "zipcode": "651138",
-    "completed": "no",
+    "completed": false,
     "surveyor": "Bunnie Macourek",
-    "city": "Eišiškės"
+    "city": "Eišiškės",
+    "surveyId": 9
   }
 ]
