@@ -76,14 +76,20 @@ function Navbar(props) {
   const drawer = (
     <Box sx={{ textAlign: "center" }}>
       <Stack direction="row" alignItems="center">
-        <Button ml={2} onClick={handleDrawerToggle}>
+        <Button onClick={handleDrawerToggle}>
           <CloseIcon />
         </Button>
 
-        <Box sx={{ my: 2, flexGrow: 1, marginRight: "48px" }}>
-          <Typography variant="h6" sx={{ my: 2, flexGrow: 1 }}>
-            {strings.appName}
-          </Typography>
+        <Box sx={{ flexGrow: 1, marginRight: "48px" }}>
+          <Box
+            component="img"
+            src={logoHeatPump}
+            className="logo"
+            alt="logo"
+            sx={{
+              my: 2,
+            }}
+          />
         </Box>
       </Stack>
       <Divider />
@@ -409,7 +415,6 @@ function Navbar(props) {
               edge="start"
               onClick={handleDrawerToggle}
               sx={{
-                ml: 2,
                 display: { lg: "none" },
                 color: "#000",
                 justifyContent: "flex-start",
