@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { Typography, Paper, Avatar, Box } from "@mui/material";
+import { Typography, Avatar, Box } from "@mui/material";
 
 const items = [
   {
@@ -83,7 +83,7 @@ function TestimonialItem(props) {
           <Typography
             variant="body1"
             textAlign="center"
-            sx={{ color: "var(--color-text-3)" }}
+            sx={{ color: "var(--color-text-3)", mb: 3 }}
           >
             "{props.item.text}"
           </Typography>

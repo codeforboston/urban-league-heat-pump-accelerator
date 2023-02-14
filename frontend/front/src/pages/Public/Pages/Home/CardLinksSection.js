@@ -45,7 +45,7 @@ const CardLinksSection = () => {
     },
     {
       id: 2,
-      title: "About us",
+      title: "About Us",
       paragraph: "It’s our mission to bring heat pumps to Boston homes.",
       button: {
         text: "Learn more",
