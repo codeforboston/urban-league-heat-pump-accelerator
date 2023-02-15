@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { styled } from "@mui/material/styles";
 import { Typography, Box, Link } from "@mui/material";
-// import imageHero from "../../../../assets/images/copywritingImages/EricRichards-volunteer-photo-4.jpg";
 import ButtonGetPump from "../../Components/ButtonGetPump";
 import AnimatedBox from "../../Components/AnimatedBox";
 
@@ -43,43 +42,33 @@ const HeroPageBgGroundCenter = ({
   text2,
   image,
 }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setIsMounted(true), 500);
-  }, []);
-
   return (
     <HeroWrapper image={image}>
       <Box className="text-wrapper" px={4}>
-        <AnimatedBox
-          isMounted={isMounted}
-          delay={400}
-          animation="fadeInUp"
-          className="text-overlay"
-          p={2}
-        >
-          <Typography variant="titleHero">
-            {title.toUpperCase()}
-            <span className="hero-title-bold">{titleBold.toUpperCase()}</span>
-          </Typography>
+        <AnimatedBox>
+          <Box className="text-overlay" p={2}>
+            <Typography variant="titleHero">
+              {title.toUpperCase()}
+              <span className="hero-title-bold">{titleBold.toUpperCase()}</span>
+            </Typography>
 
-          <Typography variant="bodyHero" mb={8} mt={2}>
-            {text1}
-            {link !== "" && (
-              <Link
-                href={link} // fix: use {link} variable, not the string "link"
-                target="_blank"
-                rel="noopener"
-                sx={{ color: "var(--color-text-5)", fontWeight: "800" }}
-              >
-                {textBold}
-              </Link>
-            )}
-            {text2}
-          </Typography>
+            <Typography variant="bodyHero" mb={8} mt={2}>
+              {text1}
+              {link !== "" && (
+                <Link
+                  href={link} // fix: use {link} variable, not the string "link"
+                  target="_blank"
+                  rel="noopener"
+                  sx={{ color: "var(--color-text-5)", fontWeight: "800" }}
+                >
+                  {textBold}
+                </Link>
+              )}
+              {text2}
+            </Typography>
 
-          <ButtonGetPump variant="getpump" />
+            <ButtonGetPump variant="getpump" />
+          </Box>
         </AnimatedBox>
       </Box>
     </HeroWrapper>

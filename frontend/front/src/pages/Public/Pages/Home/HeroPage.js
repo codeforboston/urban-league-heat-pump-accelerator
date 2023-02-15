@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import { Grid, Typography, Box } from "@mui/material";
 import ButtonGetPump from "../../Components/ButtonGetPump";
-import AnimatedBox from "../../Components/AnimatedBox";
 
 // import { red, green, blue, yellow, orange } from "@mui/material/colors";
 const Root = styled("div")(({ theme }) => ({
@@ -133,24 +132,22 @@ const HeroPage = ({ title, titleBold, text, image, backColor }) => {
             sx={{ zIndex: 3 }}
           >
             <InfoWrapper className="info-container">
-              <AnimatedBox animation="animate__fadeInUp">
-                <Box className="info-wrapper">
-                  <Box sx={{ textShadow: "1px 1px 2px #000" }}>
-                    <Typography variant="titleHero">
-                      {title.toUpperCase()}
-                      <span className="hero-title-bold">
-                        {titleBold.toUpperCase()}
-                      </span>
-                    </Typography>
+              <Box className="info-wrapper">
+                <Box sx={{ textShadow: "1px 1px 2px #000" }}>
+                  <Typography variant="titleHero">
+                    {title.toUpperCase()}
+                    <span className="hero-title-bold">
+                      {titleBold.toUpperCase()}
+                    </span>
+                  </Typography>
 
-                    <Typography variant="bodyHero" mb={8} mt={2}>
-                      {text}
-                    </Typography>
-                  </Box>
-
-                  <ButtonGetPump variant="getpump" />
+                  <Typography variant="bodyHero" mb={8} mt={2}>
+                    {text}
+                  </Typography>
                 </Box>
-              </AnimatedBox>
+
+                <ButtonGetPump variant="getpump" />
+              </Box>
             </InfoWrapper>
           </Grid>
 

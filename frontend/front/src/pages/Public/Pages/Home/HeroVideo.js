@@ -3,7 +3,6 @@ import { styled } from "@mui/material/styles";
 import { Typography, Box, Link } from "@mui/material";
 
 import ButtonGetPump from "../../Components/ButtonGetPump";
-import AnimatedBox from "../../Components/AnimatedBox";
 
 const HeroWrapper = styled("div")(({ theme }) => ({
   display: "flex",
@@ -58,21 +57,10 @@ const HeroVideo = ({
   text2,
   videoBgGround,
 }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setIsMounted(true), 500);
-  }, []);
-
   return (
     <HeroWrapper sx={{ background: "var(--accent-3)" }}>
       <Box className="text-wrapper" px={4}>
-        <AnimatedBox
-          isMounted={isMounted}
-          delay={400}
-          animation="fadeInUp"
-          className="text-overlay"
-        >
+        <Box className="text-overlay">
           <Box sx={{ textShadow: "1px 1px 2px #000" }}>
             <Typography variant="titleHero">
               {title.toUpperCase()}
@@ -93,7 +81,7 @@ const HeroVideo = ({
             </Typography>
           </Box>
           <ButtonGetPump variant="getpump" />
-        </AnimatedBox>
+        </Box>
       </Box>
 
       <VideoContainer className="component-video">

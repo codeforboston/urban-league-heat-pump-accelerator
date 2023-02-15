@@ -1,8 +1,6 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Box } from "@mui/material";
-import HeroPage from "./HeroPage";
-import imageHeroHouse from "../../../../assets/images/hero-house-heat-pump.png";
 import imageHeroFirst from "../../../../assets/images/copywritingImages/EricRichards-volunteer-photo-3.jpg";
 import imageHeroSecond from "../../../../assets/images/copywritingImages/EricRichards-volunteer-photo-4.jpg";
 import HeroPageBgGroundCenter from "./HeroPageBgGroundCenter";
@@ -22,17 +20,6 @@ function CarrouselHero(props) {
         />
       ),
     },
-    // {
-    //   component: (
-    //     <HeroPage
-    //       title="BOSTON RESIDENTS CAN "
-    //       titleBold="BENEFIT FROM HEAT PUMPS"
-    //       text="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
-    //       image={imageHeroHouse}
-    //       backColor="var(--bgColor-1)"
-    //     />
-    //   ),
-    // },
     {
       component: (
         <HeroPageBgGroundCenter
