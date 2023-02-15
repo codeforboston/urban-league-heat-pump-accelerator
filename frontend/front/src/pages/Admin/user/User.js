@@ -1,13 +1,14 @@
-import { Box, Button, IconButton, TextField } from "@mui/material";
+import { Box, Button, Container, IconButton, TextField } from "@mui/material";
 import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import UserTable from "./UserTable";
 import { Link } from "react-router-dom";
+import ContainerAdmin from "../component/ContainerAdmin";
 
 const User = () => {
   return (
-    <Box>
+    <ContainerAdmin>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Box m={3} display="flex" alignItems="center">
           <TextField
@@ -32,7 +33,7 @@ const User = () => {
         </Box>
       </Box>
       <UserTable />
-    </Box>
+    </ContainerAdmin>
   );
 };
 

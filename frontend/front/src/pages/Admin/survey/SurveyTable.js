@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import OnlineSurvey from "../../../dummyData/onlineSurvey.json";
+import Survey from "../../../dummyData/Survey.json";
 import { useNavigate } from "react-router-dom";
 
 const columns = [
@@ -27,9 +27,9 @@ const columns = [
   { id: "zipCode", label: "Zip Code", minWidth: 100 },
 ];
 
-const rows = OnlineSurvey;
+const rows = Survey;
 
-const OnlineSurveyTable = () => {
+const SurveyTable = () => {
   const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
@@ -45,7 +45,7 @@ const OnlineSurveyTable = () => {
   };
 
   const onRowClick = (row) => {
-    navigate(`onlinesurveyprofile/${row.id}`);
+    navigate(`surveyprofile/${row.id}`);
   };
 
   return (
@@ -105,4 +105,4 @@ const OnlineSurveyTable = () => {
   );
 };
 
-export default OnlineSurveyTable;
+export default SurveyTable;

@@ -34,9 +34,9 @@ const Dashboard = () => {
         size="large"
         sx={{ width: 200, height: 150, fontSize: "1.5em" }}
         component={Link}
-        to={"onlinesurvey"}
+        to={"survey"}
       >
-        Online Survey
+        Survey
       </Button>
 
       <Button

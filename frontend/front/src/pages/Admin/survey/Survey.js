@@ -1,13 +1,14 @@
-import { Box, Button, IconButton, TextField } from "@mui/material";
+import { Box, Button, Container, IconButton, TextField } from "@mui/material";
 import React from "react";
-import OnlineSurveyTable from "./OnlineSurveyTable";
+import SurveyTable from "./SurveyTable";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
+import ContainerAdmin from "../component/ContainerAdmin";
 
 const Home = () => {
   return (
-    <Box>
+    <ContainerAdmin>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Box m={3} display="flex" alignItems="center">
           <TextField
@@ -27,13 +28,13 @@ const Home = () => {
             startIcon={<AddIcon />}
             to="createHome"
           >
-            Create Online Survey
+            Create Survey
           </Button>
         </Box>
       </Box>
 
-      <OnlineSurveyTable />
-    </Box>
+      <SurveyTable />
+    </ContainerAdmin>
   );
 };
 

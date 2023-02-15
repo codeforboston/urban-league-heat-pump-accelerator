@@ -9,6 +9,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { DataGrid } from "@mui/x-data-grid";
 import AssignProfileTable from "../../../dummyData/assignProfileTable.json";
+import ContainerAdmin from "../component/ContainerAdmin";
 
 const rows = AssignProfileTable;
 
@@ -85,7 +86,7 @@ const AssignProfile = () => {
     },
     {
       field: "remove",
-      headerName: "remove",
+      headerName: "remove from assignment",
       width: 200,
       flex: 1,
       renderCell: (params) => (
@@ -102,51 +103,49 @@ const AssignProfile = () => {
   ];
 
   return (
-    <Box>
-      <Container style={{ maxWidth: 2000 }}>
-        <Box textAlign="center" m={5}>
-          <Typography variant="h3">Assignment Id: {aid}</Typography>
-        </Box>
-        <Box p={3} flexDirection="row" display="flex">
-          <Box sx={{ minWidth: 200 }}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={surveyor}
-                label="Surveyor"
-                onChange={handleChange}
-              >
-                <MenuItem value={"Jane"}>Jane Austin</MenuItem>
-                <MenuItem value={"Allen"}>Allen Poe</MenuItem>
-                <MenuItem value={"Clark"}>Clark Kent</MenuItem>
-                <MenuItem value={"Clark"}>No Surveyor</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-          <Box>
-            <Button
-              size={"large"}
-              variant="outlined"
-              sx={{ padding: 1.6, ml: 3 }}
+    <ContainerAdmin>
+      <Box textAlign="center" m={5}>
+        <Typography variant="h3">Assignment Id: {aid}</Typography>
+      </Box>
+      <Box p={3} flexDirection="row" display="flex">
+        <Box sx={{ minWidth: 200 }}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={surveyor}
+              label="Surveyor"
+              onChange={handleChange}
             >
-              Select
-            </Button>
-          </Box>
+              <MenuItem value={"Jane"}>Jane Austin</MenuItem>
+              <MenuItem value={"Allen"}>Allen Poe</MenuItem>
+              <MenuItem value={"Clark"}>Clark Kent</MenuItem>
+              <MenuItem value={"Clark"}>No Surveyor</MenuItem>
+            </Select>
+          </FormControl>
         </Box>
-        <div style={{ width: "100%" }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={20}
-            rowsPerPageOptions={[20]}
-            checkboxSelection
-            autoHeight
-          />
-        </div>
-      </Container>
-    </Box>
+        <Box>
+          <Button
+            size={"large"}
+            variant="outlined"
+            sx={{ padding: 1.6, ml: 3 }}
+          >
+            Select
+          </Button>
+        </Box>
+      </Box>
+      <div style={{ width: "100%" }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={20}
+          rowsPerPageOptions={[20]}
+          checkboxSelection
+          autoHeight
+        />
+      </div>
+    </ContainerAdmin>
   );
 };
 
