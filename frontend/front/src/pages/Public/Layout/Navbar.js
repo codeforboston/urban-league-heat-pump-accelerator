@@ -21,10 +21,10 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
-import strings from "../Assets/constants";
 import { Link } from "react-router-dom";
 import ButtonGetPump from "../Components/ButtonGetPump";
-import logoHeatPump from "../../../assets/images/logoHeatPump.png";
+// import logoHeatPump from "../../../assets/images/logoHeatPump.png";
+import logoHeatPump from "../../../assets/images/boston-heat-pump-logo.gif";
 import heatPumpFan from "../../../assets/images/fan-heat-pumpSM.png";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandLess from "@mui/icons-material/ExpandLess";
@@ -40,6 +40,7 @@ const ImageAnimation = styled("div")(({ theme }) => ({
     position: "absolute",
     transform: "translate(-50%,-50%)",
     animation: "fanHero 1.5s infinite linear",
+    display: "none",
   },
   [theme.breakpoints.up("xs")]: {
     "& .home-hero-fan": {
