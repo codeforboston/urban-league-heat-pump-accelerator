@@ -52,7 +52,7 @@ function Testimonial() {
 function TestimonialItem(props) {
   return (
     <>
-      <AnimatedBox>
+      <AnimatedBox triggerOnce={false}>
         <Avatar
           src={props.item.avatarSrc}
           sx={{

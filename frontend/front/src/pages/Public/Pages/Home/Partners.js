@@ -48,7 +48,7 @@ const Partners = () => {
         <Typography variant="title1">{title}</Typography>
       </Box>
 
-      <AnimatedBox>
+      <AnimatedBox triggerOnce={false}>
         <Grid
           container
           spacing={4}
