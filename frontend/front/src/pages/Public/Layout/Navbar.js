@@ -24,12 +24,31 @@ import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import ButtonGetPump from "../Components/ButtonGetPump";
-// import logoHeatPump from "../../../assets/images/logoHeatPump.png";
 import logoHeatPump from "../../../assets/images/boston-heat-pump-logo.gif";
 import heatPumpFan from "../../../assets/images/fan-heat-pumpSM.png";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
+
+// import { red, green, blue, yellow, orange } from "@mui/material/colors";
+const Root = styled("div")(({ theme }) => ({
+  // padding: theme.spacing(1),
+  // [theme.breakpoints.up("xs")]: {
+  //   backgroundColor: yellow[500],
+  // },
+  // [theme.breakpoints.up("sm")]: {
+  //   backgroundColor: red[500],
+  // },
+  // [theme.breakpoints.up("md")]: {
+  //   backgroundColor: blue[500],
+  // },
+  // [theme.breakpoints.up("lg")]: {
+  //   backgroundColor: green[500],
+  // },
+  // [theme.breakpoints.up("xl")]: {
+  //   backgroundColor: orange[500],
+  // },
+}));
 
 const drawerWidth = "100%";
 
@@ -223,111 +242,113 @@ function Navbar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex", zIndex: 3 }}>
-      <AppBar
-        position="static"
-        marginTop={2}
-        sx={{
-          bgcolor: "var(--bgColor-1)",
-          background: "var(--bgColor-1)",
-          boxShadow: "none",
-          padding: { xl: "0 18%" },
-        }}
-      >
-        <Toolbar>
-          <Grid
-            container
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <Grid item sx={{ my: 2 }}>
-              <ImageAnimation>
-                <Box
-                  component="img"
-                  src={logoHeatPump}
-                  className="logo"
-                  alt="logo"
-                  sx={{
-                    my: 2,
-                  }}
-                />
-                <Box
-                  component="img"
-                  src={heatPumpFan}
-                  alt="heat-pump-fan"
-                  className="home-hero-fan"
-                ></Box>
-              </ImageAnimation>
-            </Grid>
-            <Grid item>
-              <Box sx={{ display: { xs: "none", md: "block" } }}>
-                <Stack spacing={2} direction="row">
-                  {Object.keys(navbarItems).map((item) => (
-                    <>
-                      {item === "MORE" ? (
-                        desktopNavLink(navbarItems, item)
-                      ) : (
-                        <Button
-                          key={item}
-                          component={Link}
-                          to={navbarItems[item].link}
-                        >
-                          <Typography variant="navLinks">{item}</Typography>
-                        </Button>
-                      )}
-                    </>
-                  ))}
-                </Stack>
-              </Box>
-            </Grid>
-            <Box sx={{ display: { xs: "none", md: "block" } }}>
-              <Grid item>
-                <ButtonGetPump variant="getpumpOutlined" />
-              </Grid>
-            </Box>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{
-                ml: 2,
-                display: { md: "none" },
-                color: "#000",
-                justifyContent: "flex-start",
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          anchor="right"
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
+    <Root>
+      <Box sx={{ display: "flex", zIndex: 3 }}>
+        <AppBar
+          position="static"
+          marginTop={2}
           sx={{
-            display: { xs: "block", md: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-              color: "var(--color-text-1)",
-              background: "var(--bgColor-1)",
-            },
+            bgcolor: "var(--bgColor-1)",
+            background: "var(--bgColor-1)",
+            boxShadow: "none",
+            padding: { xl: "0 18%" },
           }}
         >
-          {drawer}
-        </Drawer>
+          <Toolbar>
+            <Grid
+              container
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <Grid item sx={{ my: 2 }}>
+                <ImageAnimation>
+                  <Box
+                    component="img"
+                    src={logoHeatPump}
+                    className="logo"
+                    alt="logo"
+                    sx={{
+                      my: 2,
+                    }}
+                  />
+                  <Box
+                    component="img"
+                    src={heatPumpFan}
+                    alt="heat-pump-fan"
+                    className="home-hero-fan"
+                  ></Box>
+                </ImageAnimation>
+              </Grid>
+              <Grid item>
+                <Box sx={{ display: { xs: "none", lg: "block" } }}>
+                  <Stack spacing={2} direction="row">
+                    {Object.keys(navbarItems).map((item) => (
+                      <>
+                        {item === "MORE" ? (
+                          desktopNavLink(navbarItems, item)
+                        ) : (
+                          <Button
+                            key={item}
+                            component={Link}
+                            to={navbarItems[item].link}
+                          >
+                            <Typography variant="navLinks">{item}</Typography>
+                          </Button>
+                        )}
+                      </>
+                    ))}
+                  </Stack>
+                </Box>
+              </Grid>
+              <Box sx={{ display: { xs: "none", lg: "block" } }}>
+                <Grid item>
+                  <ButtonGetPump variant="getpumpOutlined" />
+                </Grid>
+              </Box>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{
+                  ml: 2,
+                  display: { lg: "none" },
+                  color: "#000",
+                  justifyContent: "flex-start",
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Grid>
+          </Toolbar>
+        </AppBar>
+
+        <Box component="nav">
+          <Drawer
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            anchor="right"
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: "block", lg: "none" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+                color: "var(--color-text-1)",
+                background: "var(--bgColor-1)",
+              },
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Box>
       </Box>
-    </Box>
+    </Root>
   );
 }
 
