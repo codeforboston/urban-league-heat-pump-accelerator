@@ -5,7 +5,6 @@ import CardBenefitsSection from "./CardBenefitsSection";
 import CardLinksSection from "./CardLinksSection";
 
 import imageTwo from "../../../../assets/images/heat-pump-outside-home.jpg";
-import imageLearnMore from "../../../../assets/images/image-learn-more.jpeg";
 import liveMoreCom from "../../../../assets/images/copywritingImages/liveMoreCom.jpg";
 import strengthenCommunity from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
 import beEnvironmentally from "../../../../assets/images/copywritingImages/beEnvironmentally.jpg";

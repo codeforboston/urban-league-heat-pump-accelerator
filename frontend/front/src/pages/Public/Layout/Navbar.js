@@ -25,7 +25,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import ButtonGetPump from "../Components/ButtonGetPump";
 import logoHeatPump from "../../../assets/images/boston-heat-pump-logo.gif";
-import heatPumpFan from "../../../assets/images/fan-heat-pumpSM.png";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
@@ -262,23 +261,15 @@ function Navbar(props) {
               alignItems="center"
             >
               <Grid item sx={{ my: 2 }}>
-                <ImageAnimation>
-                  <Box
-                    component="img"
-                    src={logoHeatPump}
-                    className="logo"
-                    alt="logo"
-                    sx={{
-                      my: 2,
-                    }}
-                  />
-                  <Box
-                    component="img"
-                    src={heatPumpFan}
-                    alt="heat-pump-fan"
-                    className="home-hero-fan"
-                  ></Box>
-                </ImageAnimation>
+                <Box
+                  component="img"
+                  src={logoHeatPump}
+                  className="logo"
+                  alt="logo"
+                  sx={{
+                    my: 2,
+                  }}
+                />
               </Grid>
               <Grid item>
                 <Box sx={{ display: { xs: "none", lg: "block" } }}>
