@@ -22,17 +22,17 @@ function CarrouselHero(props) {
         />
       ),
     },
-    {
-      component: (
-        <HeroPage
-          title="BOSTON RESIDENTS CAN "
-          titleBold="BENEFIT FROM HEAT PUMPS"
-          text="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
-          image={imageHeroHouse}
-          backColor="var(--bgColor-1)"
-        />
-      ),
-    },
+    // {
+    //   component: (
+    //     <HeroPage
+    //       title="BOSTON RESIDENTS CAN "
+    //       titleBold="BENEFIT FROM HEAT PUMPS"
+    //       text="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
+    //       image={imageHeroHouse}
+    //       backColor="var(--bgColor-1)"
+    //     />
+    //   ),
+    // },
     {
       component: (
         <HeroPageBgGroundCenter
