@@ -4,8 +4,6 @@ import { Paper, Box } from "@mui/material";
 import HeroPage from "./HeroPage";
 import imageHeroHouse from "../../../../assets/images/hero-house-heat-pump.png";
 import imageHero from "../../../../assets/images/copywritingImages/EricRichards-volunteer-photo-4.jpg";
-import HeroVideo from "./HeroVideo";
-import videoBgGround from "../../../../assets/images/productionID_4791180.mp4";
 import HeroPageBgGroundCenter from "./HeroPageBgGroundCenter";
 
 function CarrouselHero(props) {
@@ -29,18 +27,6 @@ function CarrouselHero(props) {
           text="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
           image={imageHero}
           backColor="var(--bgColor-1)"
-        />
-      ),
-    },
-    {
-      component: (
-        <HeroVideo
-          title="Boston Residents Can "
-          titleBold="Save Money with Heat Pumps"
-          text1="Heat pumps can help you "
-          textBold="save money"
-          text2=" on your home heating and cooling costs."
-          videoBgGround={videoBgGround}
         />
       ),
     },
