@@ -45,7 +45,7 @@ const HeroPageBgGroundCenter = ({
   return (
     <HeroWrapper image={image}>
       <Box className="text-wrapper" px={4}>
-        <AnimatedBox>
+        <AnimatedBox triggerOnce={false}>
           <Box className="text-overlay" p={2}>
             <Typography variant="titleHero">
               {title.toUpperCase()}
