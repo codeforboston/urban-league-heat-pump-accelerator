@@ -64,27 +64,6 @@ const navbarItems = {
   },
 };
 
-const ImageAnimation = styled("div")(({ theme }) => ({
-  "& .home-hero-fan": {
-    left: "55px",
-    top: "62px",
-    position: "absolute",
-    transform: "translate(-50%,-50%)",
-    animation: "fanHero 1.5s infinite linear",
-    display: "none",
-  },
-  [theme.breakpoints.up("xs")]: {
-    "& .home-hero-fan": {
-      marginLeft: "-1%",
-    },
-  },
-  [theme.breakpoints.up("sm")]: {
-    "& .home-hero-fan": {
-      marginLeft: "0%",
-    },
-  },
-}));
-
 function Navbar(props) {
   const [anchorMore, setAnchorMore] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
