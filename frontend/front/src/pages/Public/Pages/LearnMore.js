@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 
-function Contact() {
+function LearnMore() {
   return (
     <Box
       sx={{
@@ -23,7 +23,7 @@ function Contact() {
       >
         <Grid item display="flex" flexDirection="column" alignItems="center">
           <Typography variant="h4" mb={3} textAlign="center">
-            Contact
+            Learn more
           </Typography>
         </Grid>
       </Grid>
@@ -31,4 +31,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default LearnMore;
