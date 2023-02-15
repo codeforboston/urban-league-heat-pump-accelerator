@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box } from "@mui/material";
-import imageHero from "../../../../assets/images/copywritingImages/EricRichards-volunteer-photo-4.jpg";
+import { Typography, Box, Link } from "@mui/material";
+// import imageHero from "../../../../assets/images/copywritingImages/EricRichards-volunteer-photo-4.jpg";
 import ButtonGetPump from "../../Components/ButtonGetPump";
 import AnimatedBox from "../../Components/AnimatedBox";
 
-const HeroWrapper = styled("div")(({ theme }) => ({
+const HeroWrapper = styled("div")(({ theme, image }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   height: "100vh",
   position: "relative",
-  backgroundImage: `url(${imageHero})`,
+  backgroundImage: `url(${image})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
@@ -34,7 +34,15 @@ const HeroWrapper = styled("div")(({ theme }) => ({
   },
 }));
 
-const HeroPageBgGroundCenter = ({ title, titleBold, text, image }) => {
+const HeroPageBgGroundCenter = ({
+  title,
+  titleBold,
+  text1,
+  textBold,
+  link,
+  text2,
+  image,
+}) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -42,7 +50,7 @@ const HeroPageBgGroundCenter = ({ title, titleBold, text, image }) => {
   }, []);
 
   return (
-    <HeroWrapper>
+    <HeroWrapper image={image}>
       <Box className="text-wrapper" px={4}>
         <AnimatedBox
           isMounted={isMounted}
@@ -57,7 +65,18 @@ const HeroPageBgGroundCenter = ({ title, titleBold, text, image }) => {
           </Typography>
 
           <Typography variant="bodyHero" mb={8} mt={2}>
-            {text}
+            {text1}
+            {link !== "" && (
+              <Link
+                href={link} // fix: use {link} variable, not the string "link"
+                target="_blank"
+                rel="noopener"
+                sx={{ color: "var(--color-text-5)", fontWeight: "800" }}
+              >
+                {textBold}
+              </Link>
+            )}
+            {text2}
           </Typography>
 
           <ButtonGetPump variant="getpump" />
