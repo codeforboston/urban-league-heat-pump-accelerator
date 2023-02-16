@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import { Grid, Typography, Box } from "@mui/material";
 import ButtonGetPump from "../../Components/ButtonGetPump";
-import graphicHeroUnderline from "../../../../assets/images/graphic-hero-underline.svg";
-import AnimatedBox from "../../Components/AnimatedBox";
 
 // import { red, green, blue, yellow, orange } from "@mui/material/colors";
 const Root = styled("div")(({ theme }) => ({
@@ -30,9 +28,7 @@ const HeroWrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   overflow: "hidden",
   height: "calc(100vh - 115px)",
-  maxHeight: "850px",
   position: "relative",
-
   "& .home-hero-container": {
     display: "flex",
     flexDirection: "column",
@@ -62,14 +58,10 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     "& .image-wrapper": {
       justifyContent: "flex-end",
     },
-    "& .image-overlay": {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      height: "100%",
-      width: "100%",
-      backgroundColor: "var(--accent-3)",
-      overflow: "hidden",
+    "& .info-container": {
+      background: "var(--accent-3)",
+      padding: "16px",
+      margin: "0 16px",
     },
   },
   [theme.breakpoints.up("sm")]: {
@@ -81,6 +73,10 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     "& .home-hero-info": {
       justifyContent: "flex-start",
       marginLeft: "10%",
+    },
+    "& .info-container": {
+      background: "none",
+      padding: "none",
     },
   },
   [theme.breakpoints.up("lg")]: {
@@ -114,13 +110,7 @@ const InfoWrapper = styled("div")(({ theme }) => ({
   },
 }));
 
-const ImageOverlay = styled("div")(({ theme }) => ({
-  [theme.breakpoints.up("md")]: {
-    display: "none",
-  },
-}));
-
-const HeroPage = ({ title, text, image, backColor }) => {
+const HeroPage = ({ title, titleBold, text, image, backColor }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -142,29 +132,26 @@ const HeroPage = ({ title, text, image, backColor }) => {
             sx={{ zIndex: 3 }}
           >
             <InfoWrapper className="info-container">
-              <AnimatedBox animation="animate__fadeInUp">
-                <Box className="info-wrapper">
-                  <Box sx={{ textShadow: "1px 1px 2px #000" }}>
-                    <Typography variant="titleHero">{title}</Typography>
-                    <Box
-                      component="img"
-                      src={graphicHeroUnderline}
-                      mb={3}
-                      sx={{ width: "80%", maxWidth: "500px", marginTop: "5px" }}
-                    />
-                    <Typography variant="bodyHero" mb={7}>
-                      {text}
-                    </Typography>
-                  </Box>
+              <Box className="info-wrapper">
+                <Box sx={{ textShadow: "1px 1px 2px #000" }}>
+                  <Typography variant="titleHero">
+                    {title.toUpperCase()}
+                    <span className="hero-title-bold">
+                      {titleBold.toUpperCase()}
+                    </span>
+                  </Typography>
 
-                  <ButtonGetPump variant="getpump" />
+                  <Typography variant="bodyHero" mb={8} mt={2}>
+                    {text}
+                  </Typography>
                 </Box>
-              </AnimatedBox>
+
+                <ButtonGetPump variant="getpump" />
+              </Box>
             </InfoWrapper>
           </Grid>
 
           <Grid item xs={6} lg={6} className="image-wrapper">
-            <ImageOverlay className="image-overlay" />
             <Box
               component="img"
               src={image}

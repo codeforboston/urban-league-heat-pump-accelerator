@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { Typography, Paper, Avatar, Box } from "@mui/material";
+import { Typography, Avatar, Box } from "@mui/material";
+import AnimatedBox from "../../Components/AnimatedBox";
 
 const items = [
   {
@@ -38,7 +39,7 @@ function Testimonial() {
           width: "100%",
         }}
       >
-        <Carousel animation="slide" navButtonsAlwaysInvisible>
+        <Carousel animation="slide" height="380px">
           {items.map((item, i) => (
             <TestimonialItem key={i} item={item} />
           ))}
@@ -51,34 +52,51 @@ function Testimonial() {
 function TestimonialItem(props) {
   return (
     <>
-      <Avatar
-        src={props.item.avatarSrc}
-        sx={{ width: "112px", height: "112px", margin: "0 auto", top: "27px" }}
-      />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          padding: "15px",
-          background: "var(--bgColor-10)",
-          borderRadius: "10px",
-          boxShadow: "var(--boxShadow-3)",
-          color: "var(--color-text-1)",
-          margin: "0 16px",
-        }}
-      >
-        <Typography variant="h6" my={2}>
-          {props.item.name}
-        </Typography>
-        <Typography
-          variant="body1"
-          textAlign="center"
-          sx={{ color: "var(--color-text-3)" }}
+      <AnimatedBox triggerOnce={false}>
+        <Avatar
+          src={props.item.avatarSrc}
+          sx={{
+            width: "112px",
+            height: "112px",
+            margin: "0 auto",
+            top: "67px",
+          }}
+        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            padding: "15px",
+            background: "var(--bgColor-10)",
+            borderRadius: "10px",
+            boxShadow: "var(--boxShadow-3)",
+            color: "var(--color-text-1)",
+            margin: "0 16px",
+            height: "220px",
+          }}
         >
-          "{props.item.text}"
-        </Typography>
-      </Box>
+          <Typography variant="h6" mt={8}>
+            {props.item.name}
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              height: "100%",
+            }}
+          >
+            <Typography
+              variant="body1"
+              textAlign="center"
+              sx={{ color: "var(--color-text-3)", mb: 3 }}
+            >
+              "{props.item.text}"
+            </Typography>
+          </Box>
+        </Box>
+      </AnimatedBox>
     </>
   );
 }

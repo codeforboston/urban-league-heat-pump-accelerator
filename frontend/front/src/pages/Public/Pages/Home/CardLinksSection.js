@@ -1,7 +1,9 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box, Grid, Card } from "@mui/material";
+import { Typography, Box, Grid } from "@mui/material";
 import ButtonCustom from "../../Components/ButtonCustom";
+
+import AnimatedBox from "../../Components/AnimatedBox";
 
 const CardLinks = styled("div")(({ theme }) => ({
   minWidth: "350px",
@@ -33,8 +35,7 @@ const CardLinksSection = () => {
   const linkCards = [
     {
       id: 1,
-      title: "Take ",
-      titleSticky: "the Survey",
+      title: "Share Your Opinions",
       paragraph: "Tell us your thoughts and questions about heat pumps.",
       button: {
         text: "Take the survey",
@@ -46,8 +47,7 @@ const CardLinksSection = () => {
     },
     {
       id: 2,
-      title: "Learn more ",
-      titleSticky: "About us",
+      title: "About Us",
       paragraph: "It’s our mission to bring heat pumps to Boston homes.",
       button: {
         text: "Learn more",
@@ -62,47 +62,49 @@ const CardLinksSection = () => {
   return (
     <GridLinkWrapper container>
       {linkCards.map((detail) => (
-        <Grid
-          item
-          id={detail.idCSS}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <CardLinks>
-            <Box id="survey-link-section" m={4}>
-              <Typography textAlign="center" variant="title2">
-                {detail.title}
-                <span className="exp-title1-span">{detail.titleSticky}</span>
-              </Typography>
-              <Box
-                sx={{
-                  height: "140px",
-                  display: "flex",
-                  textAlign: "center",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  color: "var(--color-text-3)",
-                }}
-              >
-                <Typography variant="body1">{detail.paragraph}</Typography>
+        <AnimatedBox triggerOnce={false}>
+          <Grid
+            item
+            id={detail.idCSS}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <CardLinks>
+              <Box id="survey-link-section" m={4}>
+                <Typography textAlign="center" variant="title2">
+                  {detail.title}
+                </Typography>
+
+                <Box
+                  sx={{
+                    height: "140px",
+                    display: "flex",
+                    textAlign: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: "var(--color-text-3)",
+                  }}
+                >
+                  <Typography variant="body1">{detail.paragraph}</Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <ButtonCustom
+                    text={detail.button.text}
+                    to={detail.button.to}
+                    variant={detail.button.variant}
+                  />
+                </Box>
               </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <ButtonCustom
-                  text={detail.button.text}
-                  to={detail.button.to}
-                  variant={detail.button.variant}
-                />
-              </Box>
-            </Box>
-          </CardLinks>
-        </Grid>
+            </CardLinks>
+          </Grid>
+        </AnimatedBox>
       ))}
     </GridLinkWrapper>
   );

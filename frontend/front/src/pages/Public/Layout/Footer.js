@@ -46,7 +46,7 @@ const Footer = () => {
           container
           position="static"
           pt={4}
-          pb={8}
+          pb={2}
           sx={{
             alignItems: "space-between",
             display: "flex",
@@ -86,11 +86,15 @@ const Footer = () => {
               sx={{
                 margin: "0 auto",
                 mt: 6,
+                mb: 2,
                 width: "auto",
               }}
             />
-            <Typography align="center" pt={1}>
-              © {currentYear} | All Rights Reserved.
+            <Typography align="center" variant="caption" pt={1}>
+              © {currentYear} | Boston Heat Pump Accelerator.
+            </Typography>{" "}
+            <Typography align="center" variant="caption" pt={1}>
+              All logos and trademarks are copyright their respective owners.
             </Typography>
           </Grid>
         </Grid>

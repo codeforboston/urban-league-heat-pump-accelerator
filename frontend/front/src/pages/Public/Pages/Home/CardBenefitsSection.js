@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import AnimatedBox from "../../Components/AnimatedBox";
 
 const StyledGrid = styled(Grid)(() => ({
   display: "flex",
@@ -51,31 +52,35 @@ const CardBenefitsSection = ({ cards }) => {
             xs={12}
             sm={6}
           >
-            <Typography variant="h6" textAlign="center">
-              <span className="exp-title2-span">{card.title}</span>
-            </Typography>
-            <CardContent>
-              {card.paragraphs.map((paragraph) => (
-                <Typography
-                  gutterBottom
-                  variant="subtitle1"
-                  color="var(--color-text-3)"
-                >
-                  {paragraph}
-                </Typography>
-              ))}
-              {card.buttonLink !== "" && (
-                <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-                  <Button
-                    component={Link}
-                    to={card.buttonLink}
-                    sx={{ color: "var(--color-text-4)" }}
+            <AnimatedBox>
+              <Typography variant="h6" textAlign="center">
+                <span className="exp-title2-span">{card.title}</span>
+              </Typography>
+              <CardContent>
+                {card.paragraphs.map((paragraph) => (
+                  <Typography
+                    gutterBottom
+                    variant="subtitle1"
+                    color="var(--color-text-3)"
                   >
-                    {card.buttonText}
-                  </Button>
-                </CardActions>
-              )}
-            </CardContent>
+                    {paragraph}
+                  </Typography>
+                ))}
+                {card.buttonLink !== "" && (
+                  <CardActions
+                    sx={{ display: "flex", justifyContent: "center" }}
+                  >
+                    <Button
+                      component={Link}
+                      to={card.buttonLink}
+                      sx={{ color: "var(--color-text-4)" }}
+                    >
+                      {card.buttonText}
+                    </Button>
+                  </CardActions>
+                )}
+              </CardContent>
+            </AnimatedBox>
           </StyledGrid>
         </Grid>
       ))}
