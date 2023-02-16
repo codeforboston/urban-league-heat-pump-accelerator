@@ -41,7 +41,6 @@ const AdminContainer = () => {
             element={<AssignProfile />}
           ></Route>
         </Routes>
-        {/* <Footer /> */}
       </Box>
     </Box>
   );

@@ -8,7 +8,7 @@ import ContainerAdmin from "../component/ContainerAdmin";
 
 const Home = () => {
   return (
-    <ContainerAdmin>
+    <ContainerAdmin name={"SURVEYS"}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Box m={3} display="flex" alignItems="center">
           <TextField
