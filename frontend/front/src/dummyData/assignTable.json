@@ -1,68 +1,81 @@
 [
   {
     "id": 0,
-    "uid": 5,
     "assigned": "John Smith",
-    "completed": true
+    "completed": 4,
+    "homeCount": 10,
+    "status": "completed"
   },
   {
     "id": 1,
-    "uid": 12,
     "assigned": "John Smith",
-    "completed": true
+    "completed": 4,
+    "homeCount": 25,
+    "status": "completed"
   },
   {
     "id": 2,
-    "uid": "",
     "assigned": "",
-    "completed": true
+    "completed": 0,
+    "homeCount": 30,
+    "status": "incompleted"
   },
   {
     "id": 3,
-    "uid": 34,
     "assigned": "Lobby King",
-    "completed": false
+    "completed": 10,
+    "homeCount": 10,
+    "status": "completed"
   },
   {
     "id": 4,
-    "uid": 23,
     "assigned": "Open Saw",
-    "completed": false
+    "completed": 14,
+    "homeCount": 40,
+    "status": "completed"
   },
   {
     "id": 5,
-    "uid": 12,
     "assigned": "Wind Mine",
-    "completed": false
+    "completed": 14,
+    "homeCount": 60,
+    "status": "incompleted"
   },
   {
     "id": 6,
     "uid": 75,
     "assigned": "Kimbo Pin",
-    "completed": false
+    "completed": 14,
+    "homeCount": 10,
+    "status": "completed"
   },
   {
     "id": 7,
-    "uid": 26,
     "assigned": "Pack Log",
-    "completed": false
+    "completed": 14,
+    "homeCount": 30,
+    "status": "incompleted"
   },
   {
     "id": 8,
-    "uid": "",
     "assigned": "",
-    "completed": true
+    "completed": 0,
+    "homeCount": 10,
+    "status": "completed"
   },
   {
     "id": 9,
     "uid": 42,
     "assigned": "Poink",
-    "completed": true
+    "completed": 0,
+    "homeCount": 10,
+    "status": "incompleted"
   },
   {
     "id": 10,
-    "uid": "",
     "assigned": "",
-    "completed": false
+    "completed": 0,
+    "homeCount": 10,
+    "status": "incompleted"
   }
 ]

@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 const Dashboard = () => {
@@ -10,44 +10,46 @@ const Dashboard = () => {
       alignItems="center"
       pt={20}
     >
-      <Button
-        variant="contained"
-        size="large"
-        sx={{ width: 200, height: 150, fontSize: "1.5em" }}
-        component={Link}
-        to={"home"}
-      >
-        HOMES
-      </Button>
-      <Button
-        variant="contained"
-        size="large"
-        sx={{ width: 200, height: 150, fontSize: "1.5em" }}
-        component={Link}
-        to={"user"}
-      >
-        USERS
-      </Button>
+      <Stack>
+        <Button
+          variant="contained"
+          size="large"
+          sx={{ width: 300, height: 100, m:2, fontSize: "1.5em" }}
+          component={Link}
+          to={"home"}
+        >
+          HOMES
+        </Button>
+        <Button
+          variant="contained"
+          size="large"
+          sx={{ width: 300, height: 100, m:2, fontSize: "1.5em" }}
+          component={Link}
+          to={"user"}
+        >
+          USERS
+        </Button>
 
-      <Button
-        variant="contained"
-        size="large"
-        sx={{ width: 200, height: 150, fontSize: "1.5em" }}
-        component={Link}
-        to={"onlinesurvey"}
-      >
-        Online Survey
-      </Button>
+        <Button
+          variant="contained"
+          size="large"
+          sx={{ width: 300, height: 100, m:2, fontSize: "1.5em" }}
+          component={Link}
+          to={"survey"}
+        >
+          SURVEYS
+        </Button>
 
-      <Button
-        variant="contained"
-        size="large"
-        sx={{ width: 200, height: 150, fontSize: "1.5em" }}
-        component={Link}
-        to={"assignment"}
-      >
-        Assignment
-      </Button>
+        <Button
+          variant="contained"
+          size="large"
+          sx={{ width: 300, height: 100, m:2, fontSize: "1.5em" }}
+          component={Link}
+          to={"assignment"}
+        >
+          AssignmentS
+        </Button>
+      </Stack>
     </Box>
   );
 };

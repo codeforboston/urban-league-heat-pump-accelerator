@@ -3,7 +3,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import ConfirmationModal from "../../Developer/confirmModal/ConfirmationModal";
 
-const OnlineSurveyProfile = () => {
+const SurveyProfile = () => {
   const { uid } = useParams();
   const [editMode, setEditMode] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -150,4 +150,4 @@ const OnlineSurveyProfile = () => {
   );
 };
 
-export default OnlineSurveyProfile;
+export default SurveyProfile;

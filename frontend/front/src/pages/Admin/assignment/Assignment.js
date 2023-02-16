@@ -1,14 +1,14 @@
 import React from "react";
 
-import { Box } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import AssignTable from "./AssignTable";
+import ContainerTitle from "../component/ContainerTitle";
 
 const Assignment = () => {
   return (
-    <Box mt={4}>
-
+    <ContainerTitle name={"ASSIGNMENT"}>
       <AssignTable />
-    </Box>
+    </ContainerTitle>
   );
 };
 
