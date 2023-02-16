@@ -9,7 +9,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { DataGrid } from "@mui/x-data-grid";
 import AssignProfileTable from "../../../dummyData/assignProfileTable.json";
-import ContainerAdmin from "../component/ContainerAdmin";
+import ContainerTitle from "../component/ContainerTitle";
 
 const rows = AssignProfileTable;
 
@@ -103,7 +103,7 @@ const AssignProfile = () => {
   ];
 
   return (
-    <ContainerAdmin>
+    <ContainerTitle>
       <Box textAlign="center" m={5}>
         <Typography variant="h3">Assignment Id: {aid}</Typography>
       </Box>
@@ -145,7 +145,7 @@ const AssignProfile = () => {
           autoHeight
         />
       </div>
-    </ContainerAdmin>
+    </ContainerTitle>
   );
 };
 

@@ -4,11 +4,11 @@ import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import UserTable from "./UserTable";
 import { Link } from "react-router-dom";
-import ContainerAdmin from "../component/ContainerAdmin";
+import ContainerTitle from "../component/ContainerTitle";
 
 const User = () => {
   return (
-    <ContainerAdmin name={"USERS"}>
+    <ContainerTitle name={"USERS"}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Box m={3} display="flex" alignItems="center">
           <TextField
@@ -33,7 +33,7 @@ const User = () => {
         </Box>
       </Box>
       <UserTable />
-    </ContainerAdmin>
+    </ContainerTitle>
   );
 };
 

@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 
-const ContainerAdmin = (props) => {
+const ContainerTitle = (props) => {
   return (
     <Container style={{ maxWidth: 2000 }}>
       <Box display="flex" justifyContent="center" alignItems="center" m={3}>
@@ -13,4 +13,4 @@ const ContainerAdmin = (props) => {
   );
 };
 
-export default ContainerAdmin;
+export default ContainerTitle;

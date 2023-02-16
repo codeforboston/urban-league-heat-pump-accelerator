@@ -2,13 +2,13 @@ import React from "react";
 
 import { Box, Container, Typography } from "@mui/material";
 import AssignTable from "./AssignTable";
-import ContainerAdmin from "../component/ContainerAdmin";
+import ContainerTitle from "../component/ContainerTitle";
 
 const Assignment = () => {
   return (
-    <ContainerAdmin name={"ASSIGNMENT"}>
+    <ContainerTitle name={"ASSIGNMENT"}>
       <AssignTable />
-    </ContainerAdmin>
+    </ContainerTitle>
   );
 };
 

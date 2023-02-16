@@ -4,11 +4,11 @@ import HomeTable from "./HomeTable";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
-import ContainerAdmin from "../component/ContainerAdmin";
+import ContainerTitle from "../component/ContainerTitle";
 
 const Home = () => {
   return (
-    <ContainerAdmin name="HOMES">
+    <ContainerTitle name="HOMES">
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Box m={3} display="flex" alignItems="center">
           <TextField
@@ -34,7 +34,7 @@ const Home = () => {
       </Box>
 
       <HomeTable />
-    </ContainerAdmin>
+    </ContainerTitle>
   );
 };
 
