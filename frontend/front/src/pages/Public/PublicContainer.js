@@ -6,11 +6,12 @@ import Home from "./Pages/Home/Home";
 import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
 import About from "./Pages/About";
-import Contact from "./Pages/Contact";
 import { SurveyPage } from "./Pages/SurveyPage/SurveyPage";
 import GetStarted from "./Pages/GetStarted";
 import SpreadWorld from "./Pages/SpreadWorld";
 import Faq from "./Pages/Faq";
+import Testimonials from "./Pages/Testimonials";
+import LearnMore from "./Pages/LearnMore";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
 
@@ -34,10 +35,11 @@ const PublicContainer = () => {
             <Box>
               <Routes>
                 <Route path="/" element={<Home />}></Route>
-                <Route path="/contact" element={<Contact />}></Route>
+                <Route path="/learn-more" element={<LearnMore />}></Route>
                 <Route path="/about" element={<About />}></Route>
                 <Route path="/survey" element={<SurveyPage />} />
                 <Route path="/getstarted" element={<GetStarted />}></Route>
+                <Route path="/testimonials" element={<Testimonials />}></Route>
                 <Route path="/spreadtheworld" element={<SpreadWorld />}></Route>
                 <Route path="/faq" element={<Faq />}></Route>
               </Routes>

@@ -21,7 +21,7 @@ const ViewMenu = () => {
             <Box height={30} />
 
             <Box>
-              <Typography variant="h3">URBAN LEAGUE HEAT PUMP</Typography>
+              <Typography variant="h3">BOSTON HEAT PUMP ACCELERATOR</Typography>
             </Box>
             <Box m={2}>
               <Typography variant="h4">Front End Developement</Typography>
