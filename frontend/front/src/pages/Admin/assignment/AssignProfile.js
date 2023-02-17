@@ -86,7 +86,7 @@ const AssignProfile = () => {
     },
     {
       field: "remove",
-      headerName: "remove from assignment",
+      headerName: "remove",
       width: 200,
       flex: 1,
       renderCell: (params) => (
@@ -107,9 +107,9 @@ const AssignProfile = () => {
       <Box textAlign="center" m={5}>
         <Typography variant="h3">Assignment Id: {aid}</Typography>
       </Box>
-      <Box p={3} flexDirection="row" display="flex">
+      <Box py={3} flexDirection="row" display="flex">
         <Box sx={{ minWidth: 200 }}>
-          <FormControl fullWidth>
+        <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -125,15 +125,20 @@ const AssignProfile = () => {
             </Select>
           </FormControl>
         </Box>
-        <Box>
-          <Button
-            size={"large"}
-            variant="outlined"
-            sx={{ padding: 1.6, ml: 3 }}
-          >
-            Select
-          </Button>
-        </Box>
+        <Button
+          size="large"
+          sx={{ mb: 2.5, px: 3, py: 1.5, mx: 4 }}
+          variant="outlined"
+        >
+          Add
+        </Button>
+        <Button
+          size="large"
+          sx={{ mb: 2.5, px: 3, py: 1.5, mx: 1 }}
+          variant="outlined"
+        >
+          Remove
+        </Button>
       </Box>
       <div style={{ width: "100%" }}>
         <DataGrid

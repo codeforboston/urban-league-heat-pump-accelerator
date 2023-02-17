@@ -1,10 +1,9 @@
 import * as React from "react";
 
-import UserData from "../../../dummyData/assignTable.json";
+import RowData from "../../../dummyData/assignTable.json";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-
 
 const columns = [
   { field: "id", headerName: "ID", maxWidth: 100, flex: 1 },
@@ -14,13 +13,12 @@ const columns = [
     width: 150,
     flex: 1,
   },
-
   { field: "homeCount", headerName: "Home", width: 110, flex: 1 },
+  { field: "surveyed", headerName: "Status", width: 110, flex: 1 },
   { field: "completed", headerName: "Completed", width: 110, flex: 1 },
-  { field: "status", headerName: "Status", width: 110, flex: 1 },
 ];
 
-const rows = UserData;
+const rows = RowData;
 
 const AssignTable = () => {
   const navigate = useNavigate();
@@ -40,6 +38,7 @@ const AssignTable = () => {
           disableSelectionOnClick
           autoHeight
           onRowClick={handRowClick}
+          checkboxSelection
         />
       </Box>
     </Box>
