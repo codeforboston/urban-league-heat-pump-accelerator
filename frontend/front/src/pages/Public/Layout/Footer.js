@@ -14,42 +14,30 @@ const FooterWrapper = styled("div")(({ theme }) => ({
   marginTop: "128px",
   position: "relative",
   "& .footer-logo-wrapper": {
-    width: "40%",
+    width: "36%",
   },
   "& .footer-links-wrapper": {
-    width: "28%",
-    // display: "flex",
-    // flexDirection: "column",
-    // justifyContent: "space-between",
+    width: "30%",
   },
   "& .footer-links": {
     display: "flex",
     flexDirection: "column",
     gap: "34px",
     alignItems: "center",
-    // alignItems: "baseline",
-    // display: "flex",
-    // flexDirection: "row",
-    // justifyContent: "flex-end",
   },
   "& .footer-contact-wrapper": {
-    width: "28%",
+    width: "30%",
+  },
+  "& .footer-contact": {
+    height: "169px",
     display: "flex",
     flexDirection: "column",
-    gap: "34px",
-    alignItems: "center",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
   },
   [theme.breakpoints.down("md")]: {
-    "& .footer-links-wrapper": {
-      // flexDirection: "column",
-      // alignItems: "center",
-    },
-    "& .footer-links": {
-      // flexDirection: "column",
-      // alignItems: "center",
-      // gap: "12px",
-      // marginBottom: "10px",
-    },
+    "& .footer-links-wrapper": {},
+    "& .footer-links": {},
   },
 }));
 
@@ -58,20 +46,7 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <Toolbar>
-        <Grid
-          container
-          position="static"
-          pt={4}
-          pb={2}
-          sx={
-            {
-              // alignItems: "space-between",
-              // display: "flex",
-              // justifyContent: "space-between",
-              // textAlign: "center",
-            }
-          }
-        >
+        <Grid container position="static" pt={4} pb={2}>
           <Grid item className="footer-logo-wrapper">
             <Grid
               component="img"
@@ -93,21 +68,13 @@ const Footer = () => {
             </Typography>
           </Grid>
 
-          <Grid item sx={{ width: "2%" }} pl={2}>
+          <Grid item sx={{ width: "auto" }} pl={2}>
             <Divider orientation="vertical" light="true" />
           </Grid>
 
           <Grid item className="footer-links-wrapper">
             <Box className="footer-links">
-              <Button
-                component={Link}
-                size="medium"
-                sx={{ color: "var(--color-text-2)", width: "auto" }}
-                to="survey"
-              >
-                Take The Survey
-              </Button>
-              <ButtonGetPump variant="getpumpOutlined" />
+              <ButtonGetPump variant="getpump" />
               <Button
                 component={Link}
                 size="medium"
@@ -116,26 +83,47 @@ const Footer = () => {
               >
                 Learn More About Us
               </Button>
+              <Button
+                component={Link}
+                size="medium"
+                sx={{ color: "var(--color-text-2)", width: "auto" }}
+                to="survey"
+              >
+                Take The Survey
+              </Button>
             </Box>
           </Grid>
 
-          <Grid item sx={{ width: "2%" }} textAlign="left">
+          <Grid item sx={{ width: "auto" }} textAlign="left">
             <Divider orientation="vertical" light="true" textAlign="left" />
           </Grid>
 
-          <Grid item className="footer-contact-wrapper">
-            <Box>
-              <Typography variant="navLinks" pt={1}>
-                CONTACT US
+          <Grid item className="footer-contact-wrapper" ml={2}>
+            <Typography variant="navLinks" pt={1} sx={{ margin: "0 auto" }}>
+              CONTACT US
+            </Typography>
+            <Box className="footer-contact">
+              <Typography
+                variant="navLinks"
+                pt={1}
+                sx={{ display: "flex", alignItems: "baseline" }}
+              >
+                <LocationOnIcon sx={{ mr: 2 }} /> 1 City Hall Square, Boston, MA
+                02201
               </Typography>
-              <Typography variant="navLinks" pt={1}>
-                <LocationOnIcon /> 1 City Hall Square, Boston, MA 02201
+              <Typography
+                variant="navLinks"
+                pt={1}
+                sx={{ display: "flex", alignItems: "baseline" }}
+              >
+                <LocalPhoneIcon sx={{ mr: 2 }} /> 617-635-4500
               </Typography>
-              <Typography variant="navLinks" pt={1}>
-                <LocalPhoneIcon /> 617-635-4500
-              </Typography>
-              <Typography variant="navLinks" pt={1}>
-                <EmailIcon /> email@email.com
+              <Typography
+                variant="navLinks"
+                pt={1}
+                sx={{ display: "flex", alignItems: "baseline" }}
+              >
+                <EmailIcon sx={{ mr: 2 }} /> email@email.com
               </Typography>
             </Box>
           </Grid>

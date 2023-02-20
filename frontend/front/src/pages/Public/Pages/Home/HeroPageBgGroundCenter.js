@@ -68,7 +68,7 @@ const HeroPageBgGroundCenter = ({
               {text2}
             </Typography>
 
-            <ButtonGetPump variant="getpumpOutlined" />
+            <ButtonGetPump variant="getpump" />
           </Box>
         </AnimatedBox>
       </Box>

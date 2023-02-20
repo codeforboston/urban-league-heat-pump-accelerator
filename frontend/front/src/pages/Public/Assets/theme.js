@@ -116,7 +116,7 @@ export const theme = createTheme({
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
             boxShadow: "var(--box-shadow-1)",
             letterSpacing: "-.03em",
-            background: "var(--bgColor-10)",
+            // background: "var(--bgColor-10)",
             textShadow: "none",
             "&:hover": {
               transform: "scale(1.1)",
