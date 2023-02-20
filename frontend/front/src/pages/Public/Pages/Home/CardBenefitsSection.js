@@ -54,7 +54,7 @@ const CardBenefitsSection = ({ cards }) => {
           >
             <AnimatedBox>
               <Typography variant="h6" textAlign="center">
-                <span className="exp-title2-span">{card.title}</span>
+                <span>{card.title}</span>
               </Typography>
               <CardContent>
                 {card.paragraphs.map((paragraph) => (

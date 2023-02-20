@@ -24,7 +24,6 @@ export const theme = createTheme({
       background: "var(--bgColor-5)",
       padding: "0.75rem 0",
       textAlign: "center",
-      marginBottom: "1rem",
       // "@media (max-width:600px)": {
       //   fontSize: "2rem",
       // },
