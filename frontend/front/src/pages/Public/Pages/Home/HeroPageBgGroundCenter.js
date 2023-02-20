@@ -25,10 +25,11 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     zIndex: 1,
   },
   "& .text-overlay": {
-    color: "var(--color-text-2)",
+    color: "var(--color-text-6)",
     textShadow: "1px 1px 2px #000",
     margin: "0 auto",
     maxWidth: "1000px",
+    borderRadius: "10px",
     background: "var(--accent-3)",
   },
 }));
@@ -67,7 +68,7 @@ const HeroPageBgGroundCenter = ({
               {text2}
             </Typography>
 
-            <ButtonGetPump variant="getpump" />
+            <ButtonGetPump variant="getpumpOutlined" />
           </Box>
         </AnimatedBox>
       </Box>

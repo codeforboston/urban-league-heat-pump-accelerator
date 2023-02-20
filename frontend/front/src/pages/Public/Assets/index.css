@@ -5,16 +5,18 @@
 }
 
 :root { 
-    /* Title - variant: h4*/
-    /* Description= variant: body1 */
+    /* Font Weights */
+    --font-weight-1: 600;
 
     /* Colors text*/
     --color-text-1: #041367;
-    --color-text-2: #ffffff;
+    /* --color-text-1: #020403; */
+    --color-text-2: #020403;
     --color-text-3: #6e6e6e;
     --color-text-4: #72bede;
     --color-text-5: #E9F7FB;
-
+    --color-text-6: #fff;
+    
     /* Background colors */
     --bgColor-1:  linear-gradient(90deg, #98c7d6 50%, #72bede 100%); /* HeroPage bgColor */;
     --bgColor-2: #72bede;
@@ -23,7 +25,7 @@
     --bgColor-5: #E9F7FB;
     --bgColor-6: #303F4F; /* footer bgColor */
     --bgColor-7: #1E1E1E;
-    --bgColor-8:  #efed70;
+    --bgColor-8:  #EFED6F;
     --bgColor-9:  #FBC61C;
     --bgColor-10:  #F5F5F7;
     --bgColor-11:  #F9F9F9;
@@ -103,7 +105,7 @@
 
 .hero-title-bold {
     font-weight: 900;
-    color: var(--color-text-2);
+    color: var(--color-text-5);
 }
 
 .motion-div {

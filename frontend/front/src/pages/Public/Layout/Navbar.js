@@ -273,7 +273,7 @@ function Navbar(props) {
               </Grid>
               <Box sx={{ display: { xs: "none", lg: "block" } }}>
                 <Grid item>
-                  <ButtonGetPump variant="getpumpOutlined" />
+                  <ButtonGetPump variant="getpump" />
                 </Grid>
               </Box>
               <IconButton
