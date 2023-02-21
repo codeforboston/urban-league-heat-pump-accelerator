@@ -4,6 +4,7 @@ import { Button, Container, Stack, TextField } from "@mui/material";
 import { HeatPumpAddressField } from "./HeatPumpAddressField";
 import { HeatPumpNameField } from "./HeatPumpNameField";
 import { HeatPumpDropdown } from "./HeatPumpDropdown";
+import { useGetReCAPTCHAToken } from "../../../../components/ReCaptcha";
 
 const DEFAULT_FORM = {
   heatingSystem: "",
@@ -21,15 +22,17 @@ const DEFAULT_FORM = {
 
 export const SurveyPage = () => {
   const {
-    register,
     handleSubmit,
     reset,
     control,
     formState: { errors },
   } = useForm({ defaultValues: DEFAULT_FORM });
 
-  const onSubmit = (data) => {
-    // TODO: connect to back-end
+  const getReCaptchaToken = useGetReCAPTCHAToken("submit");
+
+  const onSubmit = async (data) => {
+    // TODO: connect to back-end, pass reCaptchaToken so it can be used for validation
+    const token = await getReCaptchaToken();
     alert(JSON.stringify(data, null, 4));
   };
 
