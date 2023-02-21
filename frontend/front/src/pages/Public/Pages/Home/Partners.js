@@ -44,7 +44,9 @@ const Partners = () => {
 
   return (
     <Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", marginBottom: "1rem" }}
+      >
         <Typography variant="title1">{title}</Typography>
       </Box>
 

@@ -71,7 +71,7 @@ function TestimonialItem(props) {
             background: "var(--bgColor-10)",
             borderRadius: "10px",
             boxShadow: "var(--boxShadow-3)",
-            color: "var(--color-text-1)",
+            color: "var(--color-text-2)",
             margin: "0 16px",
             height: "220px",
           }}

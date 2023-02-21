@@ -148,7 +148,7 @@ function Navbar(props) {
                   <ListItemText
                     primary={item}
                     sx={{
-                      color: "var(--color-text-2)",
+                      color: "var(--color-text-1)",
                     }}
                   />
                 </ListItemButton>
@@ -163,7 +163,7 @@ function Navbar(props) {
                 >
                   <ListItemText
                     sx={{
-                      color: "var(--color-text-2)",
+                      color: "var(--color-text-1)",
                       display: "flex",
                       justifyContent: "center",
                     }}
@@ -198,7 +198,7 @@ function Navbar(props) {
                         >
                           <ListItemText
                             sx={{
-                              color: "var(--color-text-2)",
+                              color: "var(--color-text-1)",
                             }}
                             primary={subItem}
                           />
@@ -273,7 +273,7 @@ function Navbar(props) {
               </Grid>
               <Box sx={{ display: { xs: "none", lg: "block" } }}>
                 <Grid item>
-                  <ButtonGetPump variant="getpumpOutlined" />
+                  <ButtonGetPump variant="getpump" />
                 </Grid>
               </Box>
               <IconButton
@@ -309,7 +309,7 @@ function Navbar(props) {
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
-                color: "var(--color-text-1)",
+                color: "var(--color-text-2)",
                 background: "var(--bgColor-1)",
               },
             }}
