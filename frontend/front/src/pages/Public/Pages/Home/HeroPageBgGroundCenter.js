@@ -25,10 +25,11 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     zIndex: 1,
   },
   "& .text-overlay": {
-    color: "var(--color-text-2)",
+    color: "var(--color-text-8)",
     textShadow: "1px 1px 2px #000",
     margin: "0 auto",
-    maxWidth: "1000px",
+    maxWidth: "800px",
+    borderRadius: "10px",
     background: "var(--accent-3)",
   },
 }));
@@ -44,22 +45,30 @@ const HeroPageBgGroundCenter = ({
 }) => {
   return (
     <HeroWrapper image={image}>
-      <Box className="text-wrapper" px={4}>
+      <Box className="text-wrapper">
         <AnimatedBox triggerOnce={false}>
-          <Box className="text-overlay" p={2}>
+          <Box className="text-overlay" py={2}>
             <Typography variant="titleHero">
               {title.toUpperCase()}
-              <span className="hero-title-bold">{titleBold.toUpperCase()}</span>
+              <Typography variant="titleHeroBold">
+                {titleBold.toUpperCase()}
+              </Typography>
             </Typography>
 
-            <Typography variant="bodyHero" mb={8} mt={2}>
+            <Typography variant="bodyHero" mb={8} mt={6}>
               {text1}
               {link !== "" && (
                 <Link
                   href={link} // fix: use {link} variable, not the string "link"
                   target="_blank"
                   rel="noopener"
-                  sx={{ color: "var(--color-text-5)", fontWeight: "800" }}
+                  underline="always"
+                  sx={{
+                    color: "var(--color-text-8)",
+                    fontWeight: "var(--font-weight-2)",
+                    textDecoration: "solid underline 4px",
+                    textUnderlinePosition: "under",
+                  }}
                 >
                   {textBold}
                 </Link>

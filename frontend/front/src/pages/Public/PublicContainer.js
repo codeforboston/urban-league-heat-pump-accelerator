@@ -27,7 +27,7 @@ const PublicContainer = () => {
               display: "flex",
               minHeight: "100vh",
               flexDirection: "column",
-              color: "var(--color-text-1)",
+              color: "var(--color-text-2)",
               fontSize: "16px",
             }}
           >

@@ -1,8 +1,8 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Box } from "@mui/material";
-import imageHeroFirst from "../../../../assets/images/copywritingImages/EricRichards-volunteer-photo-3.jpg";
-import imageHeroSecond from "../../../../assets/images/copywritingImages/EricRichards-volunteer-photo-4.jpg";
+import imageHeroFirst from "../../../../assets/images/copywritingImages/Eric-Richards-unedited-3-EDITED.jpg";
+import imageHeroSecond from "../../../../assets/images/copywritingImages/Eric-Richards-unedited-4-EDITED.jpg";
 import HeroPageBgGroundCenter from "./HeroPageBgGroundCenter";
 
 function CarrouselHero(props) {
