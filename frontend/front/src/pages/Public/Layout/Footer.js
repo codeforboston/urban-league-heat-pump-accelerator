@@ -10,7 +10,7 @@ import EmailIcon from "@mui/icons-material/Email";
 
 const FooterWrapper = styled("div")(({ theme }) => ({
   background: "var(--bgColor-2)",
-  color: "var(--color-text-2)",
+  color: "var(--color-text-1)",
   marginTop: "128px",
   position: "relative",
   "& .footer-logo-wrapper": {
@@ -78,7 +78,7 @@ const Footer = () => {
               <Button
                 component={Link}
                 size="medium"
-                sx={{ color: "var(--color-text-2)", width: "auto" }}
+                sx={{ color: "var(--color-text-1)", width: "auto" }}
                 to="about"
               >
                 Learn More About Us
@@ -86,7 +86,7 @@ const Footer = () => {
               <Button
                 component={Link}
                 size="medium"
-                sx={{ color: "var(--color-text-2)", width: "auto" }}
+                sx={{ color: "var(--color-text-1)", width: "auto" }}
                 to="survey"
               >
                 Take The Survey

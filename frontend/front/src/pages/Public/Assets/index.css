@@ -7,15 +7,22 @@
 :root { 
     /* Font Weights */
     --font-weight-1: 600;
+    --font-weight-2: 800;
 
-    /* Colors text*/
-    --color-text-1: #041367;
-    --color-text-2: #020403;
-    --color-text-3: #6e6e6e;
-    --color-text-4: #72bede;
-    --color-text-5: #E9F7FB;
-    --color-text-6: #fff;
-    
+    /* Colors text*/    
+    --color-text-1: #070600;
+    --color-text-2: #03045E;
+    --color-text-3: #0077B6;
+    --color-text-4: #90E0EF;
+    --color-text-5: #CAF0F8;
+
+    --color-text-6: #EA526F;
+    --color-text-7: #070600; 
+    --color-text-8: #F7F7FF;
+    --color-text-9: #23B5D3;
+    --color-text-10: #279AF1;
+
+
     /* Background colors */
     --bgColor-1:  linear-gradient(90deg, #98c7d6 50%, #72bede 100%); /* HeroPage bgColor */;
     --bgColor-2: #72bede;
@@ -26,14 +33,14 @@
     --bgColor-7: #1E1E1E;
     --bgColor-8:  #EFED6F;
     --bgColor-9:  #FBC61C;
-    --bgColor-10:  #F5F5F7;
+    --bgColor-10:  #F7F7FF;
     --bgColor-11:  #F9F9F9;
     --bgColor-12: rgba(157, 210, 225, 1);
 
     /* Accent colors */
     --accent-1: rgba(252, 56, 56, 0.4);
 
-    --accent-3: rgba(0, 0, 0, 0.4); /* image overlay*/
+    --accent-3: rgba(7, 6, 0, 0.7); /* image overlay*/
     --accent-5:  hsl(0deg 0% 100% );
 
     /* Box shadow */
@@ -102,11 +109,6 @@
     object-fit: cover;
 }
 
-.hero-title-bold {
-    font-weight: 900;
-    color: var(--color-text-5);
-}
-
 .motion-div {
     opacity: 0;
     transform: translateY(20px);
@@ -120,3 +122,4 @@
   .hero-carousel {
     min-height: 100%;
   }
+

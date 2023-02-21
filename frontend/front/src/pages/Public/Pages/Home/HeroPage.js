@@ -36,7 +36,7 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     alignContent: "flex-end",
   },
   "& .home-hero-info": {
-    color: "var(--color-text-2)",
+    color: "var(--color-text-1)",
     position: "absolute",
     justifyContent: "center",
   },

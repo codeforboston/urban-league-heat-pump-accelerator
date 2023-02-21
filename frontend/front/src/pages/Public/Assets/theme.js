@@ -6,7 +6,7 @@ export const theme = createTheme({
   typography: {
     // h3
     titleHero: {
-      color: "var(--color-text-5)",
+      color: "var(--color-text-4)",
       fontSize: "3rem",
       display: "block",
       fontWeight: "var(--font-weight-1)",
@@ -14,6 +14,28 @@ export const theme = createTheme({
       "@media (max-width:600px)": {
         fontSize: "2rem",
       },
+    },
+    // h3
+    titleHeroBold: {
+      color: "var(--color-text-9)",
+      fontSize: "3rem",
+      display: "block",
+      fontWeight: "var(--font-weight-2)",
+      textShadow: "1px 2px 12px #000",
+      "@media (max-width:600px)": {
+        fontSize: "2rem",
+      },
+    },
+    // h6
+    bodyHero: {
+      color: "var(--color-text-8)",
+      fontSize: "1.3rem",
+      display: "block",
+      // letterSpacing: "-.03em",
+      padding: "0.75rem 0",
+      textAlign: "center",
+      fontWeight: "500",
+      textShadow: "1px 2px 12px #000",
     },
     // h4
     title1: {
@@ -36,17 +58,6 @@ export const theme = createTheme({
       padding: "0.75rem 0",
       textAlign: "center",
     },
-    // h6
-    bodyHero: {
-      color: "var(--color-text-6)",
-      fontSize: "1.3rem",
-      display: "block",
-      // letterSpacing: "-.03em",
-      padding: "0.75rem 0",
-      textAlign: "center",
-      fontWeight: "500",
-      textShadow: "12px 12px 12px #000",
-    },
     navLinks: {
       fontSize: "1rem",
       display: "block",
@@ -54,7 +65,7 @@ export const theme = createTheme({
       letterSpacing: "-.03em",
       padding: "0.75rem 0",
       textAlign: "center",
-      color: "var(--color-text-2)",
+      color: "var(--color-text-1)",
     },
   },
   components: {
@@ -64,7 +75,7 @@ export const theme = createTheme({
           props: { variant: "getpump" },
           style: {
             fontSize: "1rem",
-            color: "var(--color-text-2)",
+            color: "var(--color-text-1)",
             height: "70px",
             fontWeight: "var(--font-weight-1)",
             borderRadius: "1000px",
@@ -77,7 +88,7 @@ export const theme = createTheme({
             backgroundColor: "var(--bgColor-10)",
             "&:hover": {
               transform: "scale(1.1)",
-              color: "var(--color-text-1)",
+              color: "var(--color-text-2)",
               background: "var(--bgColor-11)",
             },
           },
@@ -86,7 +97,7 @@ export const theme = createTheme({
           props: { variant: "getpumpMobile" },
           style: {
             fontSize: "1rem",
-            color: "var(--color-text-2)",
+            color: "var(--color-text-1)",
             height: "60px",
             borderRadius: "1000px",
             fontWeight: "var(--font-weight-1)",
@@ -107,7 +118,7 @@ export const theme = createTheme({
           props: { variant: "getpumpOutlined" },
           style: {
             fontSize: "1rem",
-            color: "var(--color-text-2)",
+            color: "var(--color-text-1)",
             height: "60px",
             borderRadius: "1000px",
             minWidth: 200,
@@ -115,19 +126,18 @@ export const theme = createTheme({
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
             boxShadow: "var(--box-shadow-1)",
             letterSpacing: "-.03em",
-            // background: "var(--bgColor-10)",
             textShadow: "none",
             "&:hover": {
               transform: "scale(1.1)",
               background: "var(--bgColor-10)",
-              color: "var(--color-text-1)",
+              color: "var(--color-text-2)",
             },
           },
         },
         {
           props: { variant: "customBtn" },
           style: {
-            color: "var(--color-text-6)",
+            color: "var(--color-text-8)",
             height: "50px",
             borderRadius: "1000px",
             minWidth: 200,
