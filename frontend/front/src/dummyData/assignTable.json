@@ -1,42 +1,60 @@
 [
   {
     "id": 0,
-    "assigned": "John Smith",
+    "assigned": [
+      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
+    ],
     "completed": 4,
     "homeCount": 10,
     "status": "completed"
   },
   {
     "id": 1,
-    "assigned": "John Smith",
+    "assigned": [
+      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
+    ],
     "completed": 4,
     "homeCount": 25,
     "status": "completed"
   },
   {
     "id": 2,
-    "assigned": "",
+    "assigned": [
+      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
+    ],
     "completed": 0,
     "homeCount": 30,
     "status": "incompleted"
   },
   {
     "id": 3,
-    "assigned": "Lobby King",
+    "assigned": [
+      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
+    ],
     "completed": 10,
     "homeCount": 10,
     "status": "completed"
   },
   {
     "id": 4,
-    "assigned": "Open Saw",
+    "assigned": [
+      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
+    ],
     "completed": 14,
     "homeCount": 40,
     "status": "completed"
   },
   {
     "id": 5,
-    "assigned": "Wind Mine",
+    "assigned": [
+      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
+    ],
     "completed": 14,
     "homeCount": 60,
     "status": "incompleted"
@@ -44,21 +62,30 @@
   {
     "id": 6,
     "uid": 75,
-    "assigned": "Kimbo Pin",
+    "assigned": [
+      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
+    ],
     "completed": 14,
     "homeCount": 10,
     "status": "completed"
   },
   {
     "id": 7,
-    "assigned": "Pack Log",
+    "assigned": [
+      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
+    ],
     "completed": 14,
     "homeCount": 30,
     "status": "incompleted"
   },
   {
     "id": 8,
-    "assigned": "",
+    "assigned": [
+      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
+    ],
     "completed": 0,
     "homeCount": 10,
     "status": "completed"
@@ -66,14 +93,17 @@
   {
     "id": 9,
     "uid": 42,
-    "assigned": "Poink",
+    "assigned": [
+      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
+    ],
     "completed": 0,
     "homeCount": 10,
     "status": "incompleted"
   },
   {
     "id": 10,
-    "assigned": "",
+    "assigned": [""],
     "completed": 0,
     "homeCount": 10,
     "status": "incompleted"

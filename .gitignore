@@ -1,3 +1,6 @@
 # ignore IDE settings
 .idea
 .vscode
+frontend/front/src/pages/Developer/googlemap/GoogleMap.js
+frontend/front/src/pages/Developer/googlemap/Map.js
+frontend/front/src/pages/Developer/googlemap/MapLink.js

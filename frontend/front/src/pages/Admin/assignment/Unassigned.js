@@ -13,13 +13,17 @@ import ContainerTitle from "../component/ContainerTitle";
 
 const rows = AssignProfileTable;
 
-const AssignProfile = () => {
-  const { aid } = useParams();
+const Unassigned = () => {
   const navigate = useNavigate();
   const [surveyor, setSurveyor] = React.useState("");
+  const [assignment, setAssignment] = React.useState("");
 
   const handleChange = (event) => {
     setSurveyor(event.target.value);
+  };
+
+  const handleChangeAssignment = (event) => {
+    setAssignment(event.target.value);
   };
 
   const [selectionModel, setSelectionModel] = React.useState([]);
@@ -29,34 +33,43 @@ const AssignProfile = () => {
     console.log("Selected IDs:", newSelection);
   };
 
-  const handleAddSurveyor = () => {
-    console.log(`add ${surveyor} to this selected home id`, selectionModel);
-  };
-  const handleRemoveSurveyor = () => {
+  const handleSentTo = () => {
+    console.log("clicked sent to with these home Id:", selectionModel);
+
+    console.log("assignment id:", assignment);
     console.log(
-      `remove ${surveyor} from this selected home id`,
-      selectionModel
+      "delete these home id from unassigned and send them to the assigned id location"
     );
   };
 
+  // const handleAddSurveyor = () => {
+  //   console.log(`add ${surveyor} to this selected home id`, selectionModel);
+  // };
+  // const handleRemoveSurveyor = () => {
+  //   console.log(
+  //     `remove ${surveyor} from this selected home id`,
+  //     selectionModel
+  //   );
+  // };
+
   const columns = [
     { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
-    {
-      field: "surveyor",
-      headerName: "Surveyor",
-      minWidth: 250,
-      flex: 1,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="primary"
-          size="small"
-          onClick={() => navigate(`/admin/user/userprofile/${params.row.id}`)}
-        >
-          {params.row.surveyor}
-        </Button>
-      ),
-    },
+    // {
+    //   field: "surveyor",
+    //   headerName: "Surveyor",
+    //   minWidth: 250,
+    //   flex: 1,
+    //   renderCell: (params) => (
+    //     <Button
+    //       variant="text"
+    //       color="primary"
+    //       size="small"
+    //       onClick={() => navigate(`/admin/user/userprofile/${params.row.id}`)}
+    //     >
+    //       {params.row.surveyor}
+    //     </Button>
+    //   ),
+    // },
     { field: "address", headerName: "Address", width: 200 },
     { field: "zipcode", headerName: "Zipcode", width: 120 },
     {
@@ -101,30 +114,11 @@ const AssignProfile = () => {
         </Button>
       ),
     },
-    {
-      field: "unassign",
-      headerName: "unassign",
-      width: 200,
-      flex: 1,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="error"
-          size="small"
-          onClick={() => console.log("clicked unassign")}
-        >
-          X
-        </Button>
-      ),
-    },
   ];
 
   return (
-    <ContainerTitle>
-      <Box textAlign="center" m={5}>
-        <Typography variant="h3">Assignment Id: {aid}</Typography>
-      </Box>
-      <Box py={3} flexDirection="row" display="flex">
+    <ContainerTitle name={"UNASSINGED"}>
+      {/* <Box py={1} flexDirection="row" display="flex">
         <Box sx={{ minWidth: 200 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
@@ -158,6 +152,40 @@ const AssignProfile = () => {
         >
           Remove
         </Button>
+      </Box> */}
+
+      <Box py={1} flexDirection="row" display="flex">
+        <Box sx={{ minWidth: 200 }}>
+          <FormControl fullWidth>
+            <InputLabel id="assignment-label">Assignment</InputLabel>
+            <Select
+              labelId="assignment-label"
+              id="assignment-selection"
+              value={assignment}
+              label="Assignment"
+              onChange={handleChangeAssignment}
+            >
+              <MenuItem value={"0"}>0</MenuItem>
+              <MenuItem value={"1"}>1</MenuItem>
+              <MenuItem value={"2"}>2</MenuItem>
+              <MenuItem value={"3"}>3</MenuItem>
+              <MenuItem value={"4"}>4</MenuItem>
+              <MenuItem value={"5"}>5</MenuItem>
+              <MenuItem value={"6"}>6</MenuItem>
+              <MenuItem value={"7"}>7</MenuItem>
+              <MenuItem value={"8"}>8</MenuItem>
+              <MenuItem value={"9"}>9</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+        <Button
+          size="large"
+          sx={{ mb: 2.5, px: 3, py: 1.5, mx: 4 }}
+          variant="outlined"
+          onClick={handleSentTo}
+        >
+          Send To
+        </Button>
       </Box>
       <div style={{ width: "100%" }}>
         <DataGrid
@@ -175,4 +203,4 @@ const AssignProfile = () => {
   );
 };
 
-export default AssignProfile;
+export default Unassigned;
