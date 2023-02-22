@@ -30,10 +30,10 @@ export const HeatPumpNameField = ({ control, label }) => {
               fullWidth
               variant="standard"
               {...field}
-              error={!!formState.errors.firstName}
+              error={!!formState.errors.name?.first}
               helperText={
-                !!formState.errors.firstName &&
-                formState.errors.firstName.message
+                !!formState.errors.name?.first &&
+                formState.errors.name?.first.message
               }
             />
           )}
@@ -54,9 +54,10 @@ export const HeatPumpNameField = ({ control, label }) => {
               fullWidth
               variant="standard"
               {...field}
-              error={!!formState.errors.lastName}
+              error={!!formState.errors.name?.last}
               helperText={
-                !!formState.errors.lastName && formState.errors.lastName.message
+                !!formState.errors.name?.last &&
+                formState.errors.name?.last.message
               }
             />
           )}

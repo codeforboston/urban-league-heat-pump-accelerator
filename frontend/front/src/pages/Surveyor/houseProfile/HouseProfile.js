@@ -1,5 +1,6 @@
 import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
+import { SurveyComponent } from "../../../components/SurveyComponent/SurveyComponent";
 import AccordionMenu from "./AccordionMenu";
 
 const HouseProfile = () => {
@@ -8,14 +9,14 @@ const HouseProfile = () => {
       <Box pt={5}></Box>
       <Grid
         container
-        direction='column'
-        justifyContent='center'
-        alignItems='Left'
+        direction="column"
+        justifyContent="center"
+        alignItems="Left"
         rowSpacing={2}
       >
         <Grid item xs={12}>
           <Box p={2}>
-            <Typography variant='h5'>1008 SW Military Dr</Typography>
+            <Typography variant="h5">1008 SW Military Dr</Typography>
             <Typography>78221, San Antonio, Texas</Typography>
             <Typography>John Smith</Typography>
             <Typography>Heat Type: </Typography>
@@ -23,16 +24,7 @@ const HouseProfile = () => {
             <Typography>Owner: </Typography>
           </Box>
         </Grid>
-        <Grid item xs={12}>
-          <AccordionMenu />
-        </Grid>
-        <Grid item xs={12}>
-          <Box textAlign='center' my={4}>
-            <Button variant='contained' size='large' color='success'>
-              Sumbit Survey
-            </Button>
-          </Box>
-        </Grid>
+        <SurveyComponent isSurveyor />
       </Grid>
     </Box>
   );

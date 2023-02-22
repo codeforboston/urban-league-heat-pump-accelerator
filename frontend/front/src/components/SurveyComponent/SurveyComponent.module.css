@@ -1,0 +1,4 @@
+.accordionError {
+  /* color same as mui error color */
+  border: 2px solid #d32f2f !important;
+}
