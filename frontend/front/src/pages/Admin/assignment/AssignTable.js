@@ -45,8 +45,8 @@ const AssignTable = () => {
   const columns = [
     { field: "id", headerName: "Id", maxWidth: 100, flex: 1 },
     {
-      field: "assigned",
-      headerName: "Assigned",
+      field: "surveyor",
+      headerName: "Surveyor",
       width: 150,
       flex: 1,
       renderCell: (params) => {
@@ -63,8 +63,8 @@ const AssignTable = () => {
     { field: "surveyed", headerName: "Surveyed", width: 110, flex: 1 },
     { field: "completed", headerName: "Completed", width: 110, flex: 1 },
     {
-      field: "view",
-      headerName: "View",
+      field: "assignment",
+      headerName: "Assignment",
       width: 110,
       flex: 1,
       renderCell: (params) => (

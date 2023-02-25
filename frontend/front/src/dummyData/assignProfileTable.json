@@ -1,24 +1,27 @@
 [
   {
     "id": 13,
+    "order": 1,
     "address": "357 Sage Pass",
     "zipcode": "702324",
     "completed": true,
     "surveyor": "Deanne Sherewood",
     "city": "Mulong",
-    "surveyId": 1
+    "surveyId": null
   },
   {
     "id": 2,
+    "order": 2,
     "address": "7 Lillian Lane",
     "zipcode": "938577",
     "completed": false,
     "surveyor": "Alana Ceschini",
     "city": "Banjar Baleagung",
-    "surveyId": 2
+    "surveyId": ""
   },
   {
     "id": 3,
+    "order": 3,
     "address": "357 Sage Pass",
     "zipcode": "702324",
     "completed": true,
@@ -28,6 +31,7 @@
   },
   {
     "id": 4,
+    "order": 4,
     "address": "60 Spaight Circle",
     "zipcode": "804512",
     "completed": true,
@@ -37,6 +41,7 @@
   },
   {
     "id": 5,
+    "order": 5,
     "address": "575 Barnett Way",
     "zipcode": "355821",
     "completed": false,
@@ -46,6 +51,7 @@
   },
   {
     "id": 6,
+    "order": 6,
     "address": "3 Lindbergh Park",
     "zipcode": "692908",
     "completed": false,
@@ -54,6 +60,7 @@
   },
   {
     "id": 7,
+    "order": 7,
     "address": "679 Eagle Crest Drive",
     "zipcode": "909169",
     "completed": false,
@@ -63,6 +70,7 @@
   },
   {
     "id": 8,
+    "order": 8,
     "address": "22514 Riverside Park",
     "zipcode": "822803",
     "completed": true,
@@ -72,6 +80,7 @@
   },
   {
     "id": 9,
+    "order": 9,
     "address": "95782 Carberry Way",
     "zipcode": "627343",
     "completed": false,
@@ -81,6 +90,7 @@
   },
   {
     "id": 10,
+    "order": 10,
     "address": "68599 American Crossing",
     "zipcode": "651138",
     "completed": false,
