@@ -124,6 +124,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_23_042608) do
     t.datetime "updated_at", null: false
     t.integer "display_order", default: 0, null: false
     t.index ["response_options"], name: "index_survey_questions_on_response_options", using: :gin
+    t.index ["survey_id", "display_order"], name: "index_survey_questions_on_survey_id_and_display_order", unique: true
     t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
   end
 
