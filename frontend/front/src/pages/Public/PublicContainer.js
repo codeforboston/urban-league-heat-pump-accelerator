@@ -14,6 +14,7 @@ import Testimonials from "./Pages/Testimonials";
 import LearnMore from "./Pages/LearnMore";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
+import ScrollToTopButton from "./Components/ScrollToTopButton";
 
 const PublicContainer = () => {
   return (
@@ -44,6 +45,7 @@ const PublicContainer = () => {
                 <Route path="/faq" element={<Faq />}></Route>
               </Routes>
             </Box>
+            <ScrollToTopButton />
             <Footer />
           </Stack>
         </Box>
