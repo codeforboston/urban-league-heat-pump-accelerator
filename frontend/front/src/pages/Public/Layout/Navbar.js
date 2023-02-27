@@ -52,7 +52,6 @@ const Root = styled("div")(({ theme }) => ({
 const drawerWidth = "100%";
 
 const navbarItems = {
-  HOME: { link: "" },
   "LEARN MORE": { link: "learn-more" },
   "ABOUT US": { link: "about" },
   SURVEY: { link: "survey" },
@@ -122,15 +121,17 @@ function Navbar(props) {
         </Button>
 
         <Box sx={{ flexGrow: 1, marginRight: "48px" }}>
-          <Box
-            component="img"
-            src={logoHeatPump}
-            className="logo"
-            alt="logo"
-            sx={{
-              my: 2,
-            }}
-          />
+          <Link to="" onClick={handleDrawerToggle}>
+            <Box
+              component="img"
+              src={logoHeatPump}
+              className="logo"
+              alt="logo"
+              sx={{
+                my: 2,
+              }}
+            />
+          </Link>
         </Box>
       </Stack>
       <Divider />
@@ -221,7 +222,7 @@ function Navbar(props) {
 
   return (
     <Root>
-      <Box sx={{ display: "flex", zIndex: 3 }}>
+      <Box id="navbar" sx={{ display: "flex", zIndex: 3 }}>
         <AppBar
           position="static"
           marginTop={2}
@@ -240,15 +241,17 @@ function Navbar(props) {
               alignItems="center"
             >
               <Grid item sx={{ my: 2 }}>
-                <Box
-                  component="img"
-                  src={logoHeatPump}
-                  className="logo"
-                  alt="logo"
-                  sx={{
-                    my: 2,
-                  }}
-                />
+                <Link to="">
+                  <Box
+                    component="img"
+                    src={logoHeatPump}
+                    className="logo"
+                    alt="logo"
+                    sx={{
+                      my: 2,
+                    }}
+                  />
+                </Link>
               </Grid>
               <Grid item>
                 <Box sx={{ display: { xs: "none", lg: "block" } }}>

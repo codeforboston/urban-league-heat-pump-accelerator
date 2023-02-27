@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Button, Grid, Toolbar, Typography, Divider } from "@mui/material";
 import { Link } from "react-router-dom";
 import ButtonGetPump from "../Components/ButtonGetPump";
@@ -52,6 +52,10 @@ const FooterWrapper = styled("div")(({ theme }) => ({
 }));
 
 const Footer = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const currentYear = new Date().getFullYear();
   return (
     <FooterWrapper>
@@ -64,17 +68,19 @@ const Footer = () => {
           pb={2}
         >
           <Grid item className="footer-logo-wrapper">
-            <Grid
-              component="img"
-              container
-              alt="logo"
-              src={logoHeatPump}
-              sx={{
-                mt: 6,
+            <Link to="" onClick={() => window.scrollTo(0, 0)}>
+              <Box
+                component="img"
+                container
+                alt="logo"
+                src={logoHeatPump}
+                sx={{
+                  mt: 6,
 
-                width: "auto",
-              }}
-            />
+                  width: "auto",
+                }}
+              />
+            </Link>
             <Divider light="true" sx={{ my: 2 }} />
             <Typography variant="caption" pt={1}>
               © {currentYear} | Boston Heat Pump Accelerator.
