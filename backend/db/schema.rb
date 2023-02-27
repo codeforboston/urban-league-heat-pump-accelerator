@@ -122,7 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_23_042608) do
     t.bigint "survey_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "display_order", null: false
+    t.integer "display_order", default: 0, null: false
     t.index ["response_options"], name: "index_survey_questions_on_response_options", using: :gin
     t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
   end
