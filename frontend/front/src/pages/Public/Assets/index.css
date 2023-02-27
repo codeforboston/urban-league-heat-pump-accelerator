@@ -40,7 +40,7 @@
     /* Accent colors */
     --accent-1: rgba(252, 56, 56, 0.4);
 
-    --accent-3: rgba(7, 6, 0, 0.7); /* image overlay*/
+    --accent-3: rgba(7, 6, 0, 0.65); /* image overlay*/
     --accent-5:  hsl(0deg 0% 100% );
 
     /* Box shadow */

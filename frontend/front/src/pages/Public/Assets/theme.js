@@ -75,8 +75,8 @@ export const theme = createTheme({
           props: { variant: "getpump" },
           style: {
             fontSize: "1rem",
-            color: "var(--color-text-1)",
-            height: "70px",
+            color: "var(--color-text-2)",
+            height: "60px",
             fontWeight: "var(--font-weight-1)",
             borderRadius: "1000px",
             minWidth: 200,
@@ -97,7 +97,7 @@ export const theme = createTheme({
           props: { variant: "getpumpMobile" },
           style: {
             fontSize: "1rem",
-            color: "var(--color-text-1)",
+            color: "var(--color-text-2)",
             height: "60px",
             borderRadius: "1000px",
             fontWeight: "var(--font-weight-1)",
@@ -110,7 +110,7 @@ export const theme = createTheme({
             border: "var(--border-card-2)",
             "&:hover": {
               backgroundColor: "var(--bgColor-11)",
-              color: "var(--color-text-11)",
+              color: "var(--color-text-2)",
             },
           },
         },

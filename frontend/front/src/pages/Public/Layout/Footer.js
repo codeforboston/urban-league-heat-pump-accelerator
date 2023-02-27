@@ -13,6 +13,12 @@ const FooterWrapper = styled("div")(({ theme }) => ({
   color: "var(--color-text-1)",
   marginTop: "128px",
   position: "relative",
+  "& .footer-wrapper": {
+    flexDirection: "row",
+    // justifyContent: "center",
+    // alignItems: "center",
+    // gap: "20px",
+  },
   "& .footer-logo-wrapper": {
     width: "36%",
   },
@@ -35,9 +41,13 @@ const FooterWrapper = styled("div")(({ theme }) => ({
     alignItems: "flex-start",
     justifyContent: "space-between",
   },
-  [theme.breakpoints.down("md")]: {
-    "& .footer-links-wrapper": {},
-    "& .footer-links": {},
+  [theme.breakpoints.down("lg")]: {
+    "& .footer-wrapper": {
+      flexDirection: "column-reverse",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "20px",
+    },
   },
 }));
 
@@ -46,7 +56,13 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <Toolbar>
-        <Grid container position="static" pt={4} pb={2}>
+        <Grid
+          container
+          position="static"
+          className="footer-wrapper"
+          pt={4}
+          pb={2}
+        >
           <Grid item className="footer-logo-wrapper">
             <Grid
               component="img"
