@@ -61,13 +61,13 @@ const Faq = () => {
             textAlign="center"
             justifyContent="center"
           >
-            <Link href="#section-1" style={{ textDecoration: 'none' }}>
+            <Link href="#section-1" style={{ textDecoration: "none" }}>
               <Typography variant="h5">Section 1 Jump</Typography>
             </Link>
-            <Link href="#section-2" style={{ textDecoration: 'none' }}>
-              <Typography variant="h5" >Section 2 Jump</Typography>
+            <Link href="#section-2" style={{ textDecoration: "none" }}>
+              <Typography variant="h5">Section 2 Jump</Typography>
             </Link>
-            <Link href="#section-3" style={{ textDecoration: 'none' }}>
+            <Link href="#section-3" style={{ textDecoration: "none" }}>
               <Typography variant="h5">Section 3 Jump</Typography>
             </Link>
           </Typography>
@@ -79,7 +79,7 @@ const Faq = () => {
         <Typography variant="h4" m={3} textAlign="center" id="section-1">
           Section 1 Title
         </Typography>
-        <Accordion >
+        <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography color="#03045E">
               How can I dolor sit amet, velit esse cillum dolore eu fugiat nulla
@@ -133,7 +133,7 @@ const Faq = () => {
         <Typography variant="h4" m={3} textAlign="center" id="section-2">
           Section 2 Title
         </Typography>
-        <Accordion >
+        <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography color="#03045E">
               How can I dolor sit amet, velit esse cillum dolore eu fugiat nulla
@@ -181,7 +181,6 @@ const Faq = () => {
           </AccordionDetails>
         </Accordion>
       </Stack>
-
 
       {/* Section 3 */}
       <Stack mb={4}>
@@ -236,9 +235,6 @@ const Faq = () => {
           </AccordionDetails>
         </Accordion>
       </Stack>
-
-
-
     </Grid>
   );
 };
