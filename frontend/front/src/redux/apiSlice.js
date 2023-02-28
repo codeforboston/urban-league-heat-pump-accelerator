@@ -1,8 +1,18 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import Survey from "../dummyData/Survey.json";
+
+const mockSurvey = Survey;
+
+const mockBaseQuery =
+  ({ baseUrl } = { baseUrl: "" }) =>
+  ({ mock }) => {
+    return { data: mock };
+  };
 
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
-  baseQuery: fetchBaseQuery({
+  // TODO: remove mock when connecting to Real API
+  baseQuery: mockBaseQuery({
     baseUrl: "http://localhost:3500",
   }),
   // prepareHeaders: (headers) => {
@@ -71,6 +81,11 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["User"],
     }),
+    /* Survey Endpoints */
+    getSurveyList: builder.query({
+      // TODO: remove mock when connecting to Real API
+      query: () => ({ url: "/survey", method: "get", mock: Survey }),
+    }),
   }),
 });
 
@@ -86,4 +101,7 @@ export const {
   useUpdateHomeDataMutation,
   useCreateHomeDataMutation,
   useGetHomeDataQuery,
+
+  // Survey
+  useGetSurveyListQuery,
 } = apiSlice;

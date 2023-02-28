@@ -6,7 +6,7 @@ import { FormLabel, Grid, TextField, Stack } from "@mui/material";
  * Field to collect a user's address
  * Based on this spec I found online: https://designsystem.digital.gov/templates/form-templates/address-form/
  */
-export const HeatPumpAddressField = ({ control, label }) => {
+export const HeatPumpAddressField = ({ control, label, disabled }) => {
   const { formState } = useController({ name: "address", control });
 
   return (
@@ -45,6 +45,7 @@ export const HeatPumpAddressField = ({ control, label }) => {
                   !!formState.errors.address?.street &&
                   formState.errors.address?.street.message
                 }
+                disabled={disabled}
               />
             )}
           />
@@ -65,6 +66,7 @@ export const HeatPumpAddressField = ({ control, label }) => {
                   !!formState.errors.address?.aptNumber &&
                   formState.errors.address?.aptNumber.message
                 }
+                disabled={disabled}
               />
             )}
           />
@@ -95,6 +97,7 @@ export const HeatPumpAddressField = ({ control, label }) => {
                   !!formState.errors.address?.zipCode &&
                   formState.errors.address?.zipCode.message
                 }
+                disabled={disabled}
               />
             )}
           />
@@ -121,6 +124,7 @@ export const HeatPumpAddressField = ({ control, label }) => {
                   !!formState.errors.address?.city &&
                   formState.errors.address?.city.message
                 }
+                disabled={disabled}
               />
             )}
           />

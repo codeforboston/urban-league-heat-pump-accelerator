@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Stack } from "@mui/material";
-import { SurveyComponent } from "../../../../components/SurveyComponent/SurveyComponent";
+import { PublicSurvey } from "../../../../components/SurveyComponent/SurveyComponent";
 
 export const SurveyPage = () => (
   <Container>
@@ -15,6 +15,6 @@ export const SurveyPage = () => (
         installation process.
       </p>
     </Stack>
-    <SurveyComponent isSurveyor={false} />
+    <PublicSurvey />
   </Container>
 );

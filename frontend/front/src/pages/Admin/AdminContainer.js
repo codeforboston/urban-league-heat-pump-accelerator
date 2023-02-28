@@ -32,7 +32,7 @@ const AdminContainer = () => {
           <Route path="user/userprofile/:uid" element={<UserProfile />}></Route>
           <Route path="user/createUser" element={<CreateNewUser />}></Route>
           <Route path="/survey" element={<Survey />}></Route>
-          <Route path="surveyprofile/:uid" element={<SurveyProfile />}></Route>
+          <Route path="/survey/:uid" element={<SurveyProfile />}></Route>
           <Route path="assignment" element={<Assignment />}></Route>
           <Route
             path="assignment/assignProfile/:aid"
