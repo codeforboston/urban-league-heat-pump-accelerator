@@ -1,18 +1,33 @@
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Stack, IconButton, Typography } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 function ScrollToTopButton() {
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleScroll = () => {
+    setIsVisible(window.pageYOffset > 500);
+    console.log(isVisible);
+  };
+
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <Stack>
+    <Stack
+      id="scrollToTopBtn"
+      className={isVisible ? `showScrollTopBtn show` : "hiddenScrollTopBtn"}
+      onClick={handleClick}
+    >
       <IconButton
         color="primary"
         aria-label="backTotheTop"
-        onClick={() => window.scrollTo(0, 0)}
         sx={{
           display: "flex",
           flexDirection: "column",

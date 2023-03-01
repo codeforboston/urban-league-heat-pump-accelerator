@@ -123,3 +123,16 @@
     min-height: 100%;
   }
 
+.hiddenScrollTopBtn {
+    display: none !important;
+}
+
+.showScrollTopBtn {
+    display: block !important;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.showScrollTopBtn.show {
+  opacity: 1;
+}
