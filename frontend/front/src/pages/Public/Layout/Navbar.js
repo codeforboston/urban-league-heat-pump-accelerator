@@ -53,10 +53,10 @@ const drawerWidth = "100%";
 
 const navbarItems = {
   "LEARN MORE": { link: "learn-more" },
-  "ABOUT US": { link: "about" },
+  // "ABOUT US": { link: "about" },
   SURVEY: { link: "survey" },
   MORE: {
-    "SPREAD THE WORLD": { link: "spreadtheworld" },
+    "GET INVOLVED": { link: "get-involved" },
     TESTIMONIALS: { link: "testimonials" },
     FAQ: { link: "faq" },
     LOGIN: { link: "/surveyor" },

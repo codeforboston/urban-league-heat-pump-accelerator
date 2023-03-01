@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 
-const About = () => {
+const GetInvolved = () => {
   return (
     <Box
       sx={{
@@ -23,7 +23,7 @@ const About = () => {
       >
         <Grid item display="flex" flexDirection="column" alignItems="center">
           <Typography variant="h4" mb={3} textAlign="center">
-            About us
+            Get Involved
           </Typography>
         </Grid>
       </Grid>
@@ -31,4 +31,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default GetInvolved;

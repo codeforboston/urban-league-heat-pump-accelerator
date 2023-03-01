@@ -101,7 +101,7 @@ const Footer = () => {
                 component={Link}
                 size="medium"
                 sx={{ color: "var(--color-text-1)", width: "auto" }}
-                to="about"
+                to="learn-more"
               >
                 Learn More About Us
               </Button>

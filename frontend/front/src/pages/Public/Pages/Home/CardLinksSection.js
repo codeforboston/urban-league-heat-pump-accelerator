@@ -51,7 +51,7 @@ const CardLinksSection = () => {
       paragraph: "It’s our mission to bring heat pumps to Boston homes.",
       button: {
         text: "Learn more",
-        to: "about",
+        to: "learn-more",
         variant: "customBtn",
       },
       idCSS: "learnmore-link-section",

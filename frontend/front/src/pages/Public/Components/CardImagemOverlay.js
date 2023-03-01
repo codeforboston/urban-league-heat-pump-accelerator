@@ -132,7 +132,11 @@ const CardImagemOverlay = () => {
               backgroundColor: "var(--bgColor-8)",
             }}
           >
-            <ButtonCustom text="Learn More" to="about" variant="customBtn" />
+            <ButtonCustom
+              text="Learn More"
+              to="learn-more"
+              variant="customBtn"
+            />
           </CardActions>
         </CardLinks>
       </Grid>
