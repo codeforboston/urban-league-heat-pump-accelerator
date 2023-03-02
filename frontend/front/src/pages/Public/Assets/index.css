@@ -24,12 +24,13 @@
 
 
     /* Background colors */
-    --bgColor-1:  linear-gradient(90deg, #98c7d6 50%, #72bede 100%); /* HeroPage bgColor */;
+    --bgColor-1:  linear-gradient(90deg, #98c7d6 50%, #72bede 100%); /* navbar */
     --bgColor-2: #72bede;
     --bgColor-3: #03045E; 
     --bgColor-4: #23B5D3;
     --bgColor-5: #CAF0F8;
     --bgColor-6: #90E0EF;
+    --bgColor-7: #EA526F;;
     
     --bgColor-8:  #EFED6F;
     --bgColor-9:  #FBC61C;
@@ -43,11 +44,8 @@
 
     /* Box shadow */
     --box-shadow-1: inset 0 0 0 2px hsl(0deg 0% 100% / 30%); /* btn variant: "getpumpOutlined"*/
-    
-    
-
-    /* Border Card */
-    --border-card-2: 1px solid rgba(0, 0, 0, 0.12)
+    --box-shadow-2: 1px solid rgba(0, 0, 0, 0.12);
+    --box-shadow-3: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -119,16 +117,3 @@
     min-height: 100%;
   }
 
-.hiddenScrollTopBtn {
-    display: none !important;
-}
-
-.showScrollTopBtn {
-    display: block !important;
-    opacity: 0;
-    transition: opacity 500ms ease-in-out;
-}
-
-.showScrollTopBtn.show {
-  opacity: 1;
-}

@@ -222,7 +222,6 @@ function Navbar(props) {
           position="static"
           marginTop={2}
           sx={{
-            bgcolor: "var(--bgColor-1)",
             background: "var(--bgColor-1)",
             boxShadow: "none",
             padding: { xl: "0 18%" },

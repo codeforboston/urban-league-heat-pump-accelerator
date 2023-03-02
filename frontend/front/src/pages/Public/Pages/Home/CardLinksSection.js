@@ -11,7 +11,7 @@ const CardLinks = styled("div")(({ theme }) => ({
   borderRadius: "2%",
   padding: "1px 0",
   backgroundColor: "var(--bgColor-10)",
-  border: "var(--border-card-2)",
+  border: "var(--box-shadow-2)",
   "& .links-wrapper": {
     "& h2": {
       fontSize: "1.5rem",
