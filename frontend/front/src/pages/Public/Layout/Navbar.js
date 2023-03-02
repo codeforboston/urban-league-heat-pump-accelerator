@@ -53,7 +53,6 @@ const drawerWidth = "100%";
 
 const navbarItems = {
   "LEARN MORE": { link: "learn-more" },
-  // "ABOUT US": { link: "about" },
   SURVEY: { link: "survey" },
   MORE: {
     "GET INVOLVED": { link: "get-involved" },
@@ -181,11 +180,7 @@ function Navbar(props) {
                 </ListItemButton>
                 <Collapse in={openMoreMobile} timeout="auto" unmountOnExit>
                   {Object.keys(navbarItems[item]).map((subItem, index) => (
-                    <List
-                      component="div"
-                      disablePadding
-                      sx={{ background: "var(--bgColor-2)" }}
-                    >
+                    <List component="div" disablePadding>
                       <ListItem
                         key={subItem}
                         disablePadding
