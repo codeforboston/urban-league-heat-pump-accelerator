@@ -102,12 +102,13 @@ const Footer = () => {
           className="footer-wrapper"
           pt={4}
           pb={2}
-          sx={{ textAlign: "center" }}
+          sx={{ textAlign: { xs: "center", lg: "left" } }}
         >
           <Grid
             item
             className="footer-logo-wrapper"
             sx={{ display: { xs: "none", lg: "block" } }}
+            lg={3}
           >
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
               <Box component="img" container alt="logo" src={logoHeatPump} />
@@ -117,20 +118,9 @@ const Footer = () => {
           <Grid
             item
             sx={{
-              width: "auto",
-              display: { xs: "none", lg: "block" },
+              display: { xs: "block", lg: "none" },
             }}
             xs={12}
-            lg={4}
-          >
-            <Divider orientation="vertical" light="true" />
-          </Grid>
-
-          <Grid
-            item
-            sx={{ display: { xs: "block", lg: "none" } }}
-            xs={12}
-            lg={4}
           >
             <ButtonGetPump variant="getpump" />
           </Grid>
@@ -139,16 +129,24 @@ const Footer = () => {
           <Grid
             item
             className="footer-links-wrapper"
-            sx={{ display: { xs: "block", lg: "none" }, pt: { xs: 3 } }}
+            sx={{
+              pt: { xs: 2, lg: 0 },
+              px: { lg: 2 },
+              borderLeft: { lg: "1px solid rgba(0, 0, 0, 0.08)" },
+            }}
             xs={12}
-            lg={4}
+            lg={3}
           >
             <List variant="caption">
               <Typography className="subtitle-footer">LEARN</Typography>
               {Object.keys(footerItems).map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
+                <ListItem key={item} sx={{ py: { xs: 0, lg: 1 }, px: 0 }}>
                   <ListItemButton
-                    sx={{ py: 0, textAlign: "center" }}
+                    sx={{
+                      py: 0,
+                      px: 0,
+                      textAlign: { xs: "center", lg: "left" },
+                    }}
                     component={Link}
                     to={footerItems[item].link}
                   >
@@ -167,16 +165,20 @@ const Footer = () => {
           {/* LEGAL */}
           <Grid
             item
-            sx={{ display: { xs: "block", lg: "none" }, pt: { xs: 1 } }}
+            sx={{
+              pt: { xs: 1, lg: 0 },
+              px: { lg: 2 },
+              borderLeft: { lg: "1px solid rgba(0, 0, 0, 0.08)" },
+            }}
             xs={12}
-            lg={4}
+            lg={3}
           >
             <List variant="caption">
               <Typography className="subtitle-footer">LEGAL</Typography>
 
-              <ListItem sx={{ py: 0 }}>
+              <ListItem sx={{ py: { xs: 0, lg: 1 }, px: 0 }}>
                 <ListItemButton
-                  sx={{ py: 0, textAlign: "center" }}
+                  sx={{ py: 0, px: 0, textAlign: { xs: "center", lg: "left" } }}
                   component={Link}
                   to="privacy-policy"
                 >
@@ -191,43 +193,94 @@ const Footer = () => {
             </List>
           </Grid>
 
-          <Grid
-            item
-            sx={{ width: "auto", display: { xs: "none", lg: "block" } }}
-            textAlign="left"
-          >
-            <Divider orientation="vertical" light="true" textAlign="left" />
-          </Grid>
-
+          {/* GET IN TOUCH */}
           <Grid
             item
             className="footer-contact-wrapper"
-            sx={{ display: { xs: "block", lg: "none" } }}
             xs={12}
-            lg={4}
+            lg={3}
+            sx={{
+              pt: { xs: 2, lg: 0 },
+              px: { lg: 2 },
+              borderLeft: { lg: "1px solid rgba(0, 0, 0, 0.08)" },
+            }}
           >
-            <Typography className="subtitle-footer" sx={{ pt: { xs: 2 } }}>
-              GET IN TOUCH
-            </Typography>
-            <Box className="footer-contact">
-              <Box variant="navLinks">
-                <LocalPhoneIcon sx={{ mr: 1 }} /> 617-635-4500 (Voicemail)
+            <>
+              <Typography className="subtitle-footer">GET IN TOUCH</Typography>
+              <Box className="footer-contact">
+                <Box
+                  variant="navLinks"
+                  sx={{
+                    display: "flex",
+                    alignItem: "flex-center",
+                    justifyContent: { xs: "center", lg: "flex-start" },
+                    pt: { xs: 1, lg: 2 },
+                  }}
+                >
+                  <LocalPhoneIcon sx={{ mr: 1 }} /> 617-635-4500 (Voicemail)
+                </Box>
+                <Box
+                  variant="navLinks"
+                  pt={1}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: { xs: "center", lg: "flex-start" },
+                    py: { xs: 1, lg: 2 },
+                  }}
+                >
+                  <EmailIcon sx={{ mr: 1 }} />
+                  <span>info@bhpa.org</span>
+                </Box>
+                <Box
+                  sx={{
+                    display: { xs: "none", lg: "block" },
+                  }}
+                >
+                  <ButtonGetPump variant="getpump" />
+                </Box>
+                <Box
+                  sx={{
+                    display: { xs: "none", lg: "block" },
+                    py: { xs: 0, lg: 2 },
+                  }}
+                >
+                  <Button
+                    aria-describedby={id}
+                    variant="blackBtn"
+                    onClick={handleClick}
+                    sx={{ width: "200px", height: "60px" }}
+                  >
+                    <LockOutlinedIcon sx={{ mr: 1 }} /> Member Login
+                  </Button>
+                  <Popover
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "left",
+                    }}
+                    transformOrigin={{
+                      vertical: "bottom",
+                      horizontal: "left",
+                    }}
+                  >
+                    <LoginPublicView />
+                  </Popover>
+                </Box>
               </Box>
-              <Box
-                variant="navLinks"
-                pt={1}
-                // sx={{ display: "flex", alignItems: "baseline" }}
-              >
-                <EmailIcon sx={{ mr: 1 }} />
-                info@bhpa.org
-              </Box>
-            </Box>
+            </>
           </Grid>
+
           {/* LOGIN */}
-          <Grid item xs={12} align="center" sx={{ pt: { xs: 4 } }}>
-            {/* <Typography className="subtitle-footer" sx={{ pt: { xs: 2 } }}>
-              RESTRICTED AREA
-            </Typography> */}
+          <Grid
+            item
+            xs={12}
+            align="center"
+            sx={{ pt: { xs: 4 }, display: { xs: "block", lg: "none" } }}
+          >
             <Button
               aria-describedby={id}
               variant="blackBtn"
@@ -259,7 +312,6 @@ const Footer = () => {
             className="footer-logo-wrapper"
             sx={{ display: { xs: "block", lg: "none" }, pt: { xs: 4 } }}
             xs={12}
-            lg={4}
           >
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
               <Box component="img" container alt="logo" src={logoHeatPump} />
