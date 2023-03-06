@@ -69,7 +69,14 @@ const Footer = () => {
             textAlign: { xs: "center", lg: "left" },
           }}
         >
-          <Grid item sx={{ display: { xs: "none", lg: "block" } }} lg={3}>
+          <Grid
+            item
+            direction="column"
+            justifyContent="center"
+            alignItems="flex-start"
+            sx={{ display: { xs: "none", lg: "flex" } }}
+            lg={3}
+          >
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
               <Box
                 component="img"
