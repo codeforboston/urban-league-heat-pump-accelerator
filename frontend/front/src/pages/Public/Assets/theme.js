@@ -95,6 +95,29 @@ export const theme = createTheme({
           },
         },
         {
+          props: { variant: "getpumpFooter" },
+          style: {
+            fontSize: "1rem",
+            color: "var(--color-text-2)",
+            height: "50px",
+            fontWeight: "var(--font-weight-1)",
+            borderRadius: "1000px",
+            minWidth: 200,
+            transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+            letterSpacing: "-.03em",
+            textShadow: "1px 1px 2px #fff",
+            boxShadow: "var(--box-shadow-1)",
+            backgroundColor: "var(--bgColor-10)",
+            border: "var(--box-shadow-2)",
+            "&:hover": {
+              border: "var(--box-shadow-3)",
+              transform: "scale(1.1)",
+              color: "var(--color-text-2)",
+              background: "var(--bgColor-11)",
+            },
+          },
+        },
+        {
           props: { variant: "getpumpMobile" },
           style: {
             fontSize: "1rem",

@@ -195,7 +195,7 @@ const Footer = () => {
                     display: { xs: "none", lg: "block" },
                   }}
                 >
-                  <ButtonGetPump variant="getpump" />
+                  <ButtonGetPump variant="getpumpFooter" />
                 </Box>
                 <Box
                   sx={{
@@ -207,7 +207,7 @@ const Footer = () => {
                     aria-describedby={id}
                     variant="blackBtn"
                     onClick={handleClick}
-                    sx={{ width: "200px", height: "60px" }}
+                    sx={{ width: "200px", height: "50px" }}
                   >
                     <LockOutlinedIcon sx={{ mr: 1 }} /> Member Login
                   </Button>
