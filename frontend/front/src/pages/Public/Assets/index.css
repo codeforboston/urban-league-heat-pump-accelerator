@@ -31,14 +31,16 @@
     --bgColor-5: #CAF0F8;
     --bgColor-6: #90E0EF;
     --bgColor-7: #EA526F;;
-    
     --bgColor-8:  #EFED6F;
     --bgColor-9:  #FBC61C;
     --bgColor-10:  #F7F7FF;
     --bgColor-11:  #F9F9F9;
+    --bgColor-12:  #070600;
+    ;
 
 
     /* Accent colors */
+    --accent-2: rgba(7, 6, 0, 0.1); /* image overlay*/
     --accent-3: rgba(7, 6, 0, 0.65); /* image overlay*/
     
 

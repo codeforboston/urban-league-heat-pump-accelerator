@@ -151,6 +151,21 @@ export const theme = createTheme({
             },
           },
         },
+        {
+          props: { variant: "blackBtn" },
+          style: {
+            color: "var(--color-text-1)",
+            height: "50px",
+            borderRadius: "1000px",
+            // boxShadow: "var(--box-shadow-1)",
+            // minWidth: 200,
+            backgroundColor: "var(--accent-2)",
+            "&:hover": {
+              // // transform: "scale(1.1)",
+              // backgroundColor: "var(--bgColor-12)",
+            },
+          },
+        },
       ],
     },
   },

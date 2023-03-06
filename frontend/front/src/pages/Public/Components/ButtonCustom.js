@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const ButtonGetPumnp = ({ variant, text, to }) => {
+const ButtonCustom = ({ variant, text, to }) => {
   return (
     <>
       <Button component={Link} to={to} variant={variant}>
@@ -11,4 +11,4 @@ const ButtonGetPumnp = ({ variant, text, to }) => {
   );
 };
 
-export default ButtonGetPumnp;
+export default ButtonCustom;

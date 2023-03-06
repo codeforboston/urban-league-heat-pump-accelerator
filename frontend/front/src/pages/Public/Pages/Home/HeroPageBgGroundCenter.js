@@ -29,7 +29,7 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     textShadow: "1px 1px 2px #000",
     margin: "0 auto",
     maxWidth: "800px",
-    borderRadius: "10px",
+    // borderRadius: "10px",
     background: "var(--accent-3)",
   },
 }));

@@ -35,8 +35,9 @@ const CardLinksSection = () => {
   const linkCards = [
     {
       id: 1,
-      title: "Share Your Opinions",
-      paragraph: "Tell us your thoughts and questions about heat pumps.",
+      title: "Add Your Voice",
+      paragraph:
+        "Tell us your thoughts and questions about heat pumps to a collection of homeowner's questions and thoughts about heat pumps.",
       button: {
         text: "Take the survey",
         to: "survey",
@@ -48,7 +49,7 @@ const CardLinksSection = () => {
     {
       id: 2,
       title: "About Us",
-      paragraph: "It’s our mission to bring heat pumps to Boston homes.",
+      paragraph: "Empowering Boston residents to save, stay, and sustain.",
       button: {
         text: "Learn more",
         to: "learn-more",
@@ -98,7 +99,7 @@ const CardLinksSection = () => {
                   <ButtonCustom
                     text={detail.button.text}
                     to={detail.button.to}
-                    variant={detail.button.variant}
+                    variant="customBtn"
                   />
                 </Box>
               </Box>
