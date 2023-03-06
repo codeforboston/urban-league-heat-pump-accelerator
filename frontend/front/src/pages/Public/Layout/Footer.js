@@ -31,46 +31,10 @@ const FooterWrapper = styled("div")(({ theme }) => ({
   background: "var(--bgColor-2)",
   color: "var(--color-text-1)",
   marginTop: "128px",
-  // position: "relative",
+  position: "relative",
   "& .subtitle-footer": {
     fontWeight: "bold",
     textDecoration: "underline",
-  },
-  "& .footer-wrapper": {
-    // flexDirection: "row",
-    // justifyContent: "center",
-    // alignItems: "center",
-    // gap: "20px",
-  },
-  "& .footer-logo-wrapper": {
-    //     width: "36%",
-  },
-  "& .footer-links-wrapper": {
-    //     width: "30%",
-  },
-  "& .footer-links": {
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     gap: "34px",
-    //     alignItems: "center",
-  },
-  "& .footer-contact-wrapper": {
-    //     width: "30%",
-  },
-  "& .footer-contact": {
-    //     height: "169px",
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     alignItems: "flex-start",
-    //     justifyContent: "space-between",
-  },
-  [theme.breakpoints.down("lg")]: {
-    "& .footer-wrapper": {
-      //       flexDirection: "column-reverse",
-      //       justifyContent: "center",
-      //       alignItems: "center",
-      //       gap: "20px",
-    },
   },
 }));
 
@@ -94,22 +58,18 @@ const Footer = () => {
 
   const currentYear = new Date().getFullYear();
   return (
-    <FooterWrapper>
+    <FooterWrapper sx={{ px: { xl: "18%" } }}>
       <Toolbar>
         <Grid
           container
           position="static"
-          className="footer-wrapper"
           pt={4}
           pb={2}
-          sx={{ textAlign: { xs: "center", lg: "left" } }}
+          sx={{
+            textAlign: { xs: "center", lg: "left" },
+          }}
         >
-          <Grid
-            item
-            className="footer-logo-wrapper"
-            sx={{ display: { xs: "none", lg: "block" } }}
-            lg={3}
-          >
+          <Grid item sx={{ display: { xs: "none", lg: "block" } }} lg={3}>
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
               <Box component="img" container alt="logo" src={logoHeatPump} />
             </Link>
@@ -128,7 +88,6 @@ const Footer = () => {
           {/* LEARN */}
           <Grid
             item
-            className="footer-links-wrapper"
             sx={{
               pt: { xs: 2, lg: 0 },
               px: { lg: 2 },
@@ -196,7 +155,6 @@ const Footer = () => {
           {/* GET IN TOUCH */}
           <Grid
             item
-            className="footer-contact-wrapper"
             xs={12}
             lg={3}
             sx={{
@@ -207,7 +165,7 @@ const Footer = () => {
           >
             <>
               <Typography className="subtitle-footer">GET IN TOUCH</Typography>
-              <Box className="footer-contact">
+              <Box>
                 <Box
                   variant="navLinks"
                   sx={{
@@ -309,7 +267,6 @@ const Footer = () => {
           {/* COPYRIGHT */}
           <Grid
             item
-            className="footer-logo-wrapper"
             sx={{ display: { xs: "block", lg: "none" }, pt: { xs: 4 } }}
             xs={12}
           >
