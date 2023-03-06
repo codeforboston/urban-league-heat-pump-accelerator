@@ -71,7 +71,13 @@ const Footer = () => {
         >
           <Grid item sx={{ display: { xs: "none", lg: "block" } }} lg={3}>
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
-              <Box component="img" container alt="logo" src={logoHeatPump} />
+              <Box
+                component="img"
+                container
+                alt="logo"
+                src={logoHeatPump}
+                sx={{ maxWidth: "100%" }}
+              />
             </Link>
           </Grid>
 
