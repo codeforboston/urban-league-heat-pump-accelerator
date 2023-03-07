@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import cx from "classnames";
 import { Controller, useForm } from "react-hook-form";
 import {
@@ -16,6 +16,12 @@ import { HeatPumpDropdown } from "./HeatPumpDropdown";
 import { useGetReCAPTCHAToken } from "../ReCaptcha";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import styles from "./SurveyComponent.module.css";
+import { HeatPumpPhoneField } from "./HeatPumpPhoneField";
+import ConfirmationModal from "../../pages/Developer/confirmModal/ConfirmationModal";
+
+export const SURVEYOR_MODE = "SURVEYOR_MODE";
+export const PUBLIC_MODE = "PUBLIC_MODE";
+export const ADMIN_MODE = "ADMIN_MODE";
 
 const DEFAULT_PUBLIC_FORM = {
   heatingSystem: "",
@@ -46,6 +52,12 @@ const DEFAULT_EVALUATION_FORM = {
   primarySpokenLanguage: "",
 };
 
+const DEFAULT_FULL_FORM = {
+  ...DEFAULT_PUBLIC_FORM,
+  ...DEFAULT_SURVEYOR_FORM,
+  ...DEFAULT_EVALUATION_FORM,
+};
+
 const useSectionErrors = (fields, errors) =>
   useMemo(() => {
     return fields.filter((f) => !!errors[f]).length > 0;
@@ -54,21 +66,31 @@ const useSectionErrors = (fields, errors) =>
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
  */
-export const SurveyComponent = ({ isSurveyor }) => {
+const SurveyComponent = ({ mode, defaultData }) => {
   const {
     handleSubmit,
     reset,
     control,
     formState: { errors },
   } = useForm({
-    defaultValues: isSurveyor
-      ? {
-          ...DEFAULT_PUBLIC_FORM,
-          ...DEFAULT_SURVEYOR_FORM,
-          ...DEFAULT_EVALUATION_FORM,
-        }
-      : DEFAULT_PUBLIC_FORM,
+    defaultValues:
+      mode === SURVEYOR_MODE
+        ? DEFAULT_FULL_FORM
+        : mode === ADMIN_MODE
+        ? defaultData || DEFAULT_FULL_FORM
+        : DEFAULT_PUBLIC_FORM,
   });
+
+  const [isEditing, setIsEditing] = useState(
+    mode === ADMIN_MODE ? false : true
+  );
+
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const isDisabled = useMemo(
+    () => mode === ADMIN_MODE && !isEditing,
+    [mode, isEditing]
+  );
 
   const getReCaptchaToken = useGetReCAPTCHAToken("submit");
 
@@ -91,7 +113,11 @@ export const SurveyComponent = ({ isSurveyor }) => {
     alert(JSON.stringify(data, null, 4));
   };
 
-  const PublicSection = useCallback(
+  const onDelete = useCallback(() => {
+    alert("This deletion logic still needs to be implemented!");
+  }, []);
+
+  const publicSection = useCallback(
     () => (
       <>
         <HeatPumpDropdown
@@ -103,9 +129,10 @@ export const SurveyComponent = ({ isSurveyor }) => {
             { label: "Gas", value: "Gas" },
             { label: "Other", value: "Other" },
           ]}
+          disabled={isDisabled}
         />
 
-        <HeatPumpNameField control={control} />
+        <HeatPumpNameField control={control} disabled={isDisabled} />
 
         <HeatPumpDropdown
           name="isHomeowner"
@@ -115,28 +142,14 @@ export const SurveyComponent = ({ isSurveyor }) => {
             { label: "Yes", value: "true" },
             { label: "No", value: "false" },
           ]}
+          disabled={isDisabled}
         />
 
-        <Controller
+        <HeatPumpPhoneField
           name="phoneNumber"
           control={control}
-          rules={{
-            required: { value: true, message: "This field is required!" },
-            pattern: {
-              value: /^\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})$/,
-              message: "Invalid phone number.",
-            },
-          }}
-          render={({ field }) => (
-            <TextField
-              id="survey-phonenumber"
-              label="Phone Number"
-              variant="standard"
-              error={!!errors.phoneNumber}
-              helperText={!!errors.phoneNumber && errors.phoneNumber.message}
-              {...field}
-            />
-          )}
+          label="Phone Number"
+          disabled={isDisabled}
         />
 
         <HeatPumpDropdown
@@ -147,15 +160,16 @@ export const SurveyComponent = ({ isSurveyor }) => {
             { label: "Morning", value: "Morning" },
             { label: "Evening", value: "Evening" },
           ]}
+          disabled={isDisabled}
         />
 
-        <HeatPumpAddressField control={control} />
+        <HeatPumpAddressField control={control} disabled={isDisabled} />
       </>
     ),
-    [control, errors]
+    [control, isDisabled]
   );
 
-  const SurveyorSection = useCallback(
+  const surveyorSection = useCallback(
     () => (
       <>
         <HeatPumpDropdown
@@ -166,6 +180,7 @@ export const SurveyComponent = ({ isSurveyor }) => {
             { label: "Yes", value: "true" },
             { label: "No", value: "false" },
           ]}
+          disabled={isDisabled}
         />
 
         <HeatPumpDropdown
@@ -176,6 +191,7 @@ export const SurveyComponent = ({ isSurveyor }) => {
             { label: "Yes", value: "true" },
             { label: "No", value: "false" },
           ]}
+          disabled={isDisabled}
         />
 
         <HeatPumpDropdown
@@ -186,21 +202,27 @@ export const SurveyComponent = ({ isSurveyor }) => {
             { label: "Yes", value: "true" },
             { label: "No", value: "false" },
           ]}
+          disabled={isDisabled}
         />
 
         <Controller
           name="otherComments"
           control={control}
           render={({ field }) => (
-            <TextField label="Other comments" variant="standard" {...field} />
+            <TextField
+              label="Other comments"
+              variant="standard"
+              disabled={isDisabled}
+              {...field}
+            />
           )}
         />
       </>
     ),
-    [control]
+    [control, isDisabled]
   );
 
-  const EvaluationSection = useCallback(
+  const evaluationSection = useCallback(
     () => (
       <>
         <HeatPumpDropdown
@@ -211,6 +233,7 @@ export const SurveyComponent = ({ isSurveyor }) => {
             { label: "Yes", value: "true" },
             { label: "No", value: "false" },
           ]}
+          disabled={isDisabled}
         />
 
         <HeatPumpDropdown
@@ -221,6 +244,7 @@ export const SurveyComponent = ({ isSurveyor }) => {
             { label: "Yes", value: "true" },
             { label: "No", value: "false" },
           ]}
+          disabled={isDisabled}
         />
 
         <HeatPumpDropdown
@@ -231,6 +255,7 @@ export const SurveyComponent = ({ isSurveyor }) => {
             { label: "Yes", value: "true" },
             { label: "No", value: "false" },
           ]}
+          disabled={isDisabled}
         />
 
         <HeatPumpDropdown
@@ -241,6 +266,7 @@ export const SurveyComponent = ({ isSurveyor }) => {
             { label: "Yes", value: "true" },
             { label: "No", value: "false" },
           ]}
+          disabled={isDisabled}
         />
 
         <HeatPumpDropdown
@@ -253,13 +279,14 @@ export const SurveyComponent = ({ isSurveyor }) => {
             { label: "Mandarin", value: "Mandarin" },
             { label: "Other", value: "Other" },
           ]}
+          disabled={isDisabled}
         />
       </>
     ),
-    [control]
+    [control, isDisabled]
   );
 
-  const SurveyorForm = useCallback(
+  const surveyorForm = useCallback(
     () => (
       <>
         <Accordion>
@@ -271,7 +298,7 @@ export const SurveyComponent = ({ isSurveyor }) => {
           </AccordionSummary>
           <AccordionDetails>
             <Stack spacing={5} mb={5}>
-              <PublicSection />
+              {publicSection()}
             </Stack>
           </AccordionDetails>
         </Accordion>
@@ -284,7 +311,7 @@ export const SurveyComponent = ({ isSurveyor }) => {
           </AccordionSummary>
           <AccordionDetails>
             <Stack spacing={5} mb={5}>
-              <SurveyorSection />
+              {surveyorSection()}
             </Stack>
           </AccordionDetails>
         </Accordion>
@@ -297,30 +324,132 @@ export const SurveyComponent = ({ isSurveyor }) => {
           </AccordionSummary>
           <AccordionDetails>
             <Stack spacing={5} mb={5}>
-              <EvaluationSection />
+              {evaluationSection()}
             </Stack>
           </AccordionDetails>
         </Accordion>
       </>
     ),
-    [evaluationErrors, publicErrors, surveyorErrors]
+    [
+      evaluationErrors,
+      evaluationSection,
+      publicErrors,
+      publicSection,
+      surveyorErrors,
+      surveyorSection,
+    ]
   );
 
-  const formSpacing = useMemo(() => (isSurveyor ? 2 : 5), [isSurveyor]);
+  const adminForm = useCallback(
+    () => (
+      <Stack spacing={2} mb={2}>
+        {publicSection()}
+        {surveyorSection()}
+        {evaluationSection()}
+      </Stack>
+    ),
+    [evaluationSection, publicSection, surveyorSection]
+  );
+
+  const commonButtonSection = useCallback(
+    () => (
+      <>
+        <Button variant="contained" type="submit">
+          {"Submit"}
+        </Button>
+        <Button variant="outlined" type="button" onClick={() => reset()}>
+          {"Clear"}
+        </Button>
+      </>
+    ),
+    [reset]
+  );
+
+  const adminButtonsViewing = useCallback(
+    () => (
+      <>
+        <Button
+          variant="contained"
+          onClick={() => {
+            setIsEditing(true);
+          }}
+        >
+          {"EDIT"}
+        </Button>
+        <Button
+          variant="outlined"
+          type="button"
+          color="error"
+          onClick={() => {
+            setIsDeleteModalOpen(true);
+          }}
+        >
+          {"DELETE"}
+        </Button>
+      </>
+    ),
+    []
+  );
+
+  const adminButtonsEditing = useCallback(
+    () => (
+      <>
+        <Button variant="contained" type="submit">
+          {"SAVE"}
+        </Button>
+        <Button
+          variant="outlined"
+          type="button"
+          color="error"
+          onClick={() => {
+            reset();
+            setIsEditing(false);
+          }}
+        >
+          {"CANCEL"}
+        </Button>
+      </>
+    ),
+    [reset]
+  );
+
+  const formSpacing = useMemo(() => (mode === PUBLIC_MODE ? 5 : 2), [mode]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
-        {isSurveyor ? <SurveyorForm /> : <PublicSection />}
-        <Stack direction="row" justifyContent="flex-end" spacing={2}>
-          <Button variant="contained" type="submit">
-            Submit
-          </Button>
-          <Button variant="outlined" type="button" onClick={() => reset()}>
-            Clear
-          </Button>
+    <>
+      <ConfirmationModal
+        isOpen={isDeleteModalOpen}
+        handleConfirm={() => onDelete()}
+        handleCancel={() => setIsDeleteModalOpen(false)}
+        confirmBtnText="Delete"
+        cancelBtnText="Cancel"
+        title="Confirm Delete"
+        message={`Are you sure you want to delete this survey data?`}
+      />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
+          {mode === ADMIN_MODE
+            ? adminForm()
+            : mode === SURVEYOR_MODE
+            ? surveyorForm()
+            : publicSection()}
+          <Stack direction="row" justifyContent="flex-end" spacing={2}>
+            {mode === ADMIN_MODE
+              ? isEditing
+                ? adminButtonsEditing()
+                : adminButtonsViewing()
+              : commonButtonSection()}
+          </Stack>
         </Stack>
-      </Stack>
-    </form>
+      </form>
+    </>
   );
 };
+
+export const AdminSurvey = ({ defaultData }) => (
+  <SurveyComponent mode={ADMIN_MODE} defaultData={defaultData} />
+);
+
+export const SurveyorSurvey = () => <SurveyComponent mode={SURVEYOR_MODE} />;
+
+export const PublicSurvey = () => <SurveyComponent mode={PUBLIC_MODE} />;

@@ -2,7 +2,7 @@ import React from "react";
 import { Controller, useController } from "react-hook-form";
 import { FormLabel, Stack, TextField } from "@mui/material";
 
-export const HeatPumpNameField = ({ control, label }) => {
+export const HeatPumpNameField = ({ control, label, disabled }) => {
   const { formState } = useController({ name: "address", control });
 
   return (
@@ -35,6 +35,7 @@ export const HeatPumpNameField = ({ control, label }) => {
                 !!formState.errors.name?.first &&
                 formState.errors.name?.first.message
               }
+              disabled={disabled}
             />
           )}
         />
@@ -59,6 +60,7 @@ export const HeatPumpNameField = ({ control, label }) => {
                 !!formState.errors.name?.last &&
                 formState.errors.name?.last.message
               }
+              disabled={disabled}
             />
           )}
         />

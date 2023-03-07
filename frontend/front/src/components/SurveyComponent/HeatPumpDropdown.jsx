@@ -11,7 +11,13 @@ import React, { useCallback, useMemo } from "react";
 /**
  * A radio group to be used with react-hook-form
  */
-export const HeatPumpDropdown = ({ name, control, options, label }) => {
+export const HeatPumpDropdown = ({
+  name,
+  control,
+  options,
+  label,
+  disabled,
+}) => {
   const { field: groupField, formState } = useController({ name, control });
 
   const otherFieldName = `${name}/other`;
@@ -36,6 +42,7 @@ export const HeatPumpDropdown = ({ name, control, options, label }) => {
             name={`${name}-dropdown`}
             aria-labelledby={`${name}-dropdown-label`}
             variant="filled"
+            disabled={disabled}
             {...field}
           >
             {options.map((option) => (
@@ -47,7 +54,7 @@ export const HeatPumpDropdown = ({ name, control, options, label }) => {
         </FormControl>
       );
     },
-    [name, options, label, mainFieldError]
+    [name, options, label, mainFieldError, disabled]
   );
 
   return (
@@ -77,6 +84,7 @@ export const HeatPumpDropdown = ({ name, control, options, label }) => {
               {...field}
               error={!!otherFieldError}
               helperText={!!otherFieldError && otherFieldError.message}
+              disabled={disabled}
             />
           )}
         ></Controller>

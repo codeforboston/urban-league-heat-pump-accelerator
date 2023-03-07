@@ -1,7 +1,6 @@
-import { Box, Button, Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
-import { SurveyComponent } from "../../../components/SurveyComponent/SurveyComponent";
-import AccordionMenu from "./AccordionMenu";
+import { SurveyorSurvey } from "../../../components/SurveyComponent/SurveyComponent";
 
 const HouseProfile = () => {
   return (
@@ -24,7 +23,7 @@ const HouseProfile = () => {
             <Typography>Owner: </Typography>
           </Box>
         </Grid>
-        <SurveyComponent isSurveyor />
+        <SurveyorSurvey />
       </Grid>
     </Box>
   );
