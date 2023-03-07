@@ -52,15 +52,12 @@ const Root = styled("div")(({ theme }) => ({
 const drawerWidth = "100%";
 
 const navbarItems = {
-  HOME: { link: "" },
   "LEARN MORE": { link: "learn-more" },
-  "ABOUT US": { link: "about" },
   SURVEY: { link: "survey" },
   MORE: {
-    "SPREAD THE WORLD": { link: "spreadtheworld" },
+    "GET INVOLVED": { link: "get-involved" },
     TESTIMONIALS: { link: "testimonials" },
     FAQ: { link: "faq" },
-    LOGIN: { link: "/surveyor" },
   },
 };
 
@@ -122,15 +119,17 @@ function Navbar(props) {
         </Button>
 
         <Box sx={{ flexGrow: 1, marginRight: "48px" }}>
-          <Box
-            component="img"
-            src={logoHeatPump}
-            className="logo"
-            alt="logo"
-            sx={{
-              my: 2,
-            }}
-          />
+          <Link to="" onClick={handleDrawerToggle}>
+            <Box
+              component="img"
+              src={logoHeatPump}
+              className="logo"
+              alt="logo"
+              sx={{
+                my: 2,
+              }}
+            />
+          </Link>
         </Box>
       </Stack>
       <Divider />
@@ -180,11 +179,7 @@ function Navbar(props) {
                 </ListItemButton>
                 <Collapse in={openMoreMobile} timeout="auto" unmountOnExit>
                   {Object.keys(navbarItems[item]).map((subItem, index) => (
-                    <List
-                      component="div"
-                      disablePadding
-                      sx={{ background: "var(--bgColor-2)" }}
-                    >
+                    <List component="div" disablePadding>
                       <ListItem
                         key={subItem}
                         disablePadding
@@ -221,12 +216,11 @@ function Navbar(props) {
 
   return (
     <Root>
-      <Box sx={{ display: "flex", zIndex: 3 }}>
+      <Box id="navbar" sx={{ display: "flex", zIndex: 3 }}>
         <AppBar
           position="static"
           marginTop={2}
           sx={{
-            bgcolor: "var(--bgColor-1)",
             background: "var(--bgColor-1)",
             boxShadow: "none",
             padding: { xl: "0 18%" },
@@ -240,15 +234,17 @@ function Navbar(props) {
               alignItems="center"
             >
               <Grid item sx={{ my: 2 }}>
-                <Box
-                  component="img"
-                  src={logoHeatPump}
-                  className="logo"
-                  alt="logo"
-                  sx={{
-                    my: 2,
-                  }}
-                />
+                <Link to="">
+                  <Box
+                    component="img"
+                    src={logoHeatPump}
+                    className="logo"
+                    alt="logo"
+                    sx={{
+                      my: 2,
+                    }}
+                  />
+                </Link>
               </Grid>
               <Grid item>
                 <Box sx={{ display: { xs: "none", lg: "block" } }}>

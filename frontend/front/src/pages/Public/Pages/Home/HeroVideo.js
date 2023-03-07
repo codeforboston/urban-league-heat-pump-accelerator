@@ -35,7 +35,7 @@ const VideoContainer = styled("div")({
   height: "100%",
   width: "100%",
   opacity: 0.7,
-  background: "var(--bgColor-12)",
+  background: "var(--bgColor-5)",
   "& .component-video": {
     width: "100%",
     height: "100%",

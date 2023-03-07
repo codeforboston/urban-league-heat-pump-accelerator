@@ -10,8 +10,8 @@ const CardLinks = styled("div")(({ theme }) => ({
   maxWidth: "480px",
   borderRadius: "2%",
   padding: "1px 0",
-  backgroundColor: "var(--bgColor-11)",
-  border: "var(--border-card-2)",
+  backgroundColor: "var(--bgColor-10)",
+  border: "var(--box-shadow-2)",
   "& .links-wrapper": {
     "& h2": {
       fontSize: "1.5rem",
@@ -35,8 +35,9 @@ const CardLinksSection = () => {
   const linkCards = [
     {
       id: 1,
-      title: "Share Your Opinions",
-      paragraph: "Tell us your thoughts and questions about heat pumps.",
+      title: "Add Your Voice",
+      paragraph:
+        "Tell us your thoughts and questions about heat pumps to a collection of homeowner's questions and thoughts about heat pumps.",
       button: {
         text: "Take the survey",
         to: "survey",
@@ -48,10 +49,10 @@ const CardLinksSection = () => {
     {
       id: 2,
       title: "About Us",
-      paragraph: "It’s our mission to bring heat pumps to Boston homes.",
+      paragraph: "Empowering Boston residents to save, stay, and sustain.",
       button: {
         text: "Learn more",
-        to: "about",
+        to: "learn-more",
         variant: "customBtn",
       },
       idCSS: "learnmore-link-section",
@@ -98,7 +99,7 @@ const CardLinksSection = () => {
                   <ButtonCustom
                     text={detail.button.text}
                     to={detail.button.to}
-                    variant={detail.button.variant}
+                    variant="customBtn"
                   />
                 </Box>
               </Box>

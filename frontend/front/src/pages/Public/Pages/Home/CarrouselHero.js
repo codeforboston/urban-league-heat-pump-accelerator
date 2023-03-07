@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Box } from "@mui/material";
 import imageHeroFirst from "../../../../assets/images/copywritingImages/Eric-Richards-unedited-3-EDITED.jpg";
@@ -6,6 +6,18 @@ import imageHeroSecond from "../../../../assets/images/copywritingImages/Eric-Ri
 import HeroPageBgGroundCenter from "./HeroPageBgGroundCenter";
 
 function CarrouselHero(props) {
+  const [heroHeight, setHeroHeight] = useState("100vh");
+
+  useEffect(() => {
+    const handleResize = () => {
+      setHeroHeight(window.innerHeight);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const items = [
     {
       component: (
@@ -34,7 +46,7 @@ function CarrouselHero(props) {
   ];
 
   return (
-    <div sx={{ height: "100vh", minHeight: "100vh" }}>
+    <div sx={{ height: { heroHeight }, minHeight: "100vh" }}>
       <Carousel
         animation="fade"
         stopAutoPlayOnHover={false}

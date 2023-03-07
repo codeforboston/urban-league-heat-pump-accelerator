@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 
-const SpreadWorld = () => {
+function PrivacyPolicy() {
   return (
     <Box
       sx={{
@@ -23,12 +23,12 @@ const SpreadWorld = () => {
       >
         <Grid item display="flex" flexDirection="column" alignItems="center">
           <Typography variant="h4" mb={3} textAlign="center">
-            Spread the world
+            PrivacyPolicy
           </Typography>
         </Grid>
       </Grid>
     </Box>
   );
-};
+}
 
-export default SpreadWorld;
+export default PrivacyPolicy;
