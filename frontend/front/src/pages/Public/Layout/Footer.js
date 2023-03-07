@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Grid,
@@ -10,7 +10,6 @@ import {
   ListItemButton,
   ListItemText,
   Button,
-  Popover,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import ButtonGetPump from "../Components/ButtonGetPump";
@@ -18,7 +17,6 @@ import logoHeatPump from "../../../assets/images/logoHeatPump.png";
 import { styled } from "@mui/material/styles";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
-import LoginPublicView from "../Components/LoginPublicView";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const footerItems = {
@@ -39,18 +37,18 @@ const FooterWrapper = styled("div")(({ theme }) => ({
 }));
 
 const Footer = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
+  // const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  // const open = Boolean(anchorEl);
+  // const id = open ? "simple-popover" : undefined;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -217,29 +215,13 @@ const Footer = () => {
                   }}
                 >
                   <Button
-                    aria-describedby={id}
                     variant="blackBtn"
-                    onClick={handleClick}
                     sx={{ width: "200px", height: "50px" }}
+                    component={Link}
+                    to="/surveyor"
                   >
                     <LockOutlinedIcon sx={{ mr: 1 }} /> Member Login
                   </Button>
-                  <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "left",
-                    }}
-                    transformOrigin={{
-                      vertical: "bottom",
-                      horizontal: "left",
-                    }}
-                  >
-                    <LoginPublicView />
-                  </Popover>
                 </Box>
               </Box>
             </>
@@ -253,28 +235,13 @@ const Footer = () => {
             sx={{ pt: { xs: 4 }, display: { xs: "block", lg: "none" } }}
           >
             <Button
-              aria-describedby={id}
               variant="blackBtn"
-              onClick={handleClick}
+              component={Link}
+              to="/surveyor"
+              sx={{ width: "200px", height: "50px" }}
             >
               <LockOutlinedIcon sx={{ mr: 1 }} /> Member Login
             </Button>
-            <Popover
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              transformOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-            >
-              <LoginPublicView />
-            </Popover>
           </Grid>
 
           {/* COPYRIGHT */}
