@@ -58,7 +58,6 @@ const navbarItems = {
     "GET INVOLVED": { link: "get-involved" },
     TESTIMONIALS: { link: "testimonials" },
     FAQ: { link: "faq" },
-    LOGIN: { link: "/surveyor" },
   },
 };
 
