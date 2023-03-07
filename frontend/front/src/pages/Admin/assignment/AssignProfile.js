@@ -2,11 +2,6 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import { DataGrid } from "@mui/x-data-grid";
 import AssignProfileTable from "../../../dummyData/assignProfileTable.json";
 import ContainerTitle from "../component/ContainerTitle";
@@ -16,47 +11,10 @@ const rows = AssignProfileTable;
 const AssignProfile = () => {
   const { aid } = useParams();
   const navigate = useNavigate();
-  const [surveyor, setSurveyor] = React.useState("");
-
-  const handleChange = (event) => {
-    setSurveyor(event.target.value);
-  };
-
-  const [selectionModel, setSelectionModel] = React.useState([]);
-
-  const handleSelectionModelChange = (newSelection) => {
-    setSelectionModel(newSelection);
-    console.log("Selected IDs:", newSelection);
-  };
-
-  const handleAddSurveyor = () => {
-    console.log(`add ${surveyor} to this selected home id`, selectionModel);
-  };
-  const handleRemoveSurveyor = () => {
-    console.log(
-      `remove ${surveyor} from this selected home id`,
-      selectionModel
-    );
-  };
 
   const columns = [
     { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
-    {
-      field: "surveyor",
-      headerName: "Surveyor",
-      minWidth: 250,
-      flex: 1,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="primary"
-          size="small"
-          onClick={() => navigate(`/admin/user/userprofile/${params.row.id}`)}
-        >
-          {params.row.surveyor}
-        </Button>
-      ),
-    },
+    { field: "order", headerName: "Order", maxWidth: 100, flex: 1 },
     { field: "address", headerName: "Address", width: 200 },
     { field: "zipcode", headerName: "Zipcode", width: 120 },
     {
@@ -86,7 +44,7 @@ const AssignProfile = () => {
     },
     {
       field: "hid",
-      headerName: "Home Link",
+      headerName: "Home",
       width: 150,
       flex: 1,
 
@@ -124,39 +82,21 @@ const AssignProfile = () => {
       <Box textAlign="center" m={5}>
         <Typography variant="h3">Assignment Id: {aid}</Typography>
       </Box>
-      <Box py={3} flexDirection="row" display="flex">
-        <Box sx={{ minWidth: 200 }}>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={surveyor}
-              label="Surveyor"
-              onChange={handleChange}
-            >
-              <MenuItem value={"Jane"}>Jane Austin</MenuItem>
-              <MenuItem value={"Allen"}>Allen Poe</MenuItem>
-              <MenuItem value={"Clark"}>Clark Kent</MenuItem>
-              <MenuItem value={"Clark"}>No Surveyor</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
+      <Box
+        py={3}
+        display="flex"
+        justifyContent="flex-start"
+        alignItems="center"
+      >
+        <Typography variant="h5" sx={{ mr: 3 }}>
+          Assign Surveyor:
+        </Typography>
         <Button
-          size="large"
-          sx={{ mb: 2.5, px: 3, py: 1.5, mx: 4 }}
           variant="outlined"
-          onClick={handleAddSurveyor}
+          color="primary"
+          onClick={() => navigate(`/admin/user/userprofile/1`)}
         >
-          Add
-        </Button>
-        <Button
-          size="large"
-          sx={{ mb: 2.5, px: 3, py: 1.5, mx: 1 }}
-          variant="outlined"
-          onClick={handleRemoveSurveyor}
-        >
-          Remove
+          JohnSmith
         </Button>
       </Box>
       <div style={{ width: "100%" }}>
@@ -165,9 +105,6 @@ const AssignProfile = () => {
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}
-          checkboxSelection
-          onSelectionModelChange={handleSelectionModelChange}
-          selectionModel={selectionModel}
           autoHeight
         />
       </div>

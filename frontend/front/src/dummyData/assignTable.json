@@ -1,111 +1,92 @@
 [
   {
     "id": 0,
-    "assigned": [
-      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
-      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
-    ],
-    "completed": 4,
-    "homeCount": 10,
-    "status": "completed"
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 4,
+    "home": 10,
+    "completed": true
   },
   {
     "id": 1,
-    "assigned": [
-      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
-      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
-    ],
-    "completed": 4,
-    "homeCount": 25,
-    "status": "completed"
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 4,
+    "home": 25,
+    "completed": true
   },
   {
     "id": 2,
-    "assigned": [
-      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
-      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
-    ],
-    "completed": 0,
-    "homeCount": 30,
-    "status": "incompleted"
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 0,
+    "home": 30,
+    "completed": false
   },
   {
     "id": 3,
-    "assigned": [
-      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
-      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
-    ],
-    "completed": 10,
-    "homeCount": 10,
-    "status": "completed"
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 10,
+    "home": 10,
+    "completed": true
   },
   {
     "id": 4,
-    "assigned": [
-      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
-      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
-    ],
-    "completed": 14,
-    "homeCount": 40,
-    "status": "completed"
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 14,
+    "home": 40,
+    "completed": true
   },
   {
     "id": 5,
-    "assigned": [
-      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
-      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
-    ],
-    "completed": 14,
-    "homeCount": 60,
-    "status": "incompleted"
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 14,
+    "home": 60,
+    "completed": false
   },
   {
     "id": 6,
+    "homeAssignmentId": 12345,
     "uid": 75,
-    "assigned": [
-      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
-      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
-    ],
-    "completed": 14,
-    "homeCount": 10,
-    "status": "completed"
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 14,
+    "home": 10,
+    "completed": true
   },
   {
     "id": 7,
-    "assigned": [
-      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
-      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
-    ],
-    "completed": 14,
-    "homeCount": 30,
-    "status": "incompleted"
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 14,
+    "home": 30,
+    "completed": false
   },
   {
     "id": 8,
-    "assigned": [
-      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
-      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
-    ],
-    "completed": 0,
-    "homeCount": 10,
-    "status": "completed"
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 0,
+    "home": 10,
+    "completed": true
   },
   {
     "id": 9,
+    "homeAssignmentId": 12345,
     "uid": 42,
-    "assigned": [
-      { "userId": 12345, "firstName": "John", "lastName": "Smith" },
-      { "userId": 123453, "firstName": "Molly", "lastName": "Winter" }
-    ],
-    "completed": 0,
-    "homeCount": 10,
-    "status": "incompleted"
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 0,
+    "home": 10,
+    "completed": false
   },
   {
     "id": 10,
+    "homeAssignmentId": 12345,
     "assigned": [""],
-    "completed": 0,
-    "homeCount": 10,
-    "status": "incompleted"
+    "surveyed": 0,
+    "home": 10,
+    "completed": false
   }
 ]
