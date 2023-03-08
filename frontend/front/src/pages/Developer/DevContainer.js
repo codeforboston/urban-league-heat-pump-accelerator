@@ -9,8 +9,7 @@ import { ReduxTKQuery } from "./rtkq/ReduxTKQuery";
 
 import ConfirmationTest from "./confirmModal/ConfirmationTest";
 import RtkTesting from "./rtkDat/RtkTesting";
-// import Map from "./googlemap/Map";
-// import MapLink from "./googlemap/MapLink";
+import Map from "./googlemap/Map";
 
 const DevContainer = () => {
   return (
@@ -27,7 +26,7 @@ const DevContainer = () => {
           <Route path="rtkq" element={<RtkTesting />}></Route>
 
           <Route path="confirmation" element={<ConfirmationTest />}></Route>
-          {/* <Route path="map" element={<Map />}></Route> */}
+          <Route path="map" element={<Map />}></Route>
         </Routes>
       </Container>
     </Box>

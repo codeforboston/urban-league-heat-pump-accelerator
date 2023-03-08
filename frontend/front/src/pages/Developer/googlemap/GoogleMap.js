@@ -6,9 +6,8 @@ function GoogleMap({ locations, travelMode }) {
   const [directionsService, setDirectionsService] = useState(null);
   const [directionsRenderer, setDirectionsRenderer] = useState(null);
 
-  const bostonLatlng = { lat: 42.361145, lng: -71.057083 };
-
   useEffect(() => {
+    const bostonLatlng = { lat: 42.361145, lng: -71.057083 };
     const google = window.google;
     const map = new google.maps.Map(mapRef.current, {
       zoom: 10,
@@ -60,16 +59,5 @@ function GoogleMap({ locations, travelMode }) {
 
 // Get the API key from an environment variable
 // const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-
-// add this to script in html  
-// <script
-// src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7843NTJKH1RZ17RQVh5ZFYM5a0eSy324"
-// defer
-// ></script>
-
-// const apiKey = "AIzaSyD7843NTJKH1RZ17RQVh5ZFYM5a0eSy324";
-
-// // Create the URL to load the Maps API script
-// const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
 
 export default GoogleMap;

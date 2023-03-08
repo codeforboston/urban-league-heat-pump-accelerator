@@ -217,7 +217,7 @@ const UserProfile = () => {
           />
 
           {/* BUTTONS */}
-          <Box sx={{ display: "flex", "justify-content": "space-between" }}>
+          <Box sx={{ display: "flex", "justifyContent": "space-between" }}>
             <Box pt={5} textAlign="left">
               <Button
                 variant="contained" sx={{ ml: 2 }}

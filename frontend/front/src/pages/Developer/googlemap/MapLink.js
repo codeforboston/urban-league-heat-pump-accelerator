@@ -18,12 +18,12 @@ function openGoogleMaps(locations) {
 }
 
 const MapLink = () => {
-  const locations = [
-    { lat: 37.7749, lng: -122.4194 }, // San Francisco
-    { lat: 37.774929, lng: -122.419416 }, // San Francisco City Hall
-    { lat: 37.789602, lng: -122.390317 }, // Ferry Building
-    { lat: 37.805726, lng: -122.412465 }, // Lombard Street
-  ];
+  // const locations = [
+  //   { lat: 37.7749, lng: -122.4194 }, // San Francisco
+  //   { lat: 37.774929, lng: -122.419416 }, // San Francisco City Hall
+  //   { lat: 37.789602, lng: -122.390317 }, // Ferry Building
+  //   { lat: 37.805726, lng: -122.412465 }, // Lombard Street
+  // ];
 
   const bostonlocation = [];
 

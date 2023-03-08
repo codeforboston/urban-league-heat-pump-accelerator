@@ -69,7 +69,9 @@ const AssignProfile = () => {
           variant="text"
           color="error"
           size="small"
-          onClick={() => console.log("clicked unassign")}
+          onClick={() =>
+            console.log(`clicked unassign home id: ${params.row.id}`)
+          }
         >
           X
         </Button>
