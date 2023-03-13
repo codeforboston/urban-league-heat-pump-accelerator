@@ -1,12 +1,4 @@
-import {
-  Box,
-  Grid,
-  Typography,
-  Stack,
-  ButtonBase,
-  Button,
-  ListItemText,
-} from "@mui/material";
+import { Box, Typography, Button, ListItemText } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import List from "@mui/material/List";
@@ -27,7 +19,7 @@ const ListView = () => {
   const navigate = useNavigate();
 
   const OnclickFx = () => {
-    navigate("/surveyor/house");
+    navigate("/surveyor/map");
   };
 
   const [checked, setChecked] = React.useState([]);
@@ -52,6 +44,7 @@ const ListView = () => {
     console.log("generateGoogleMap");
     console.log();
     dispatch(selectedHome(checked));
+    OnclickFx();
   };
 
   return (
