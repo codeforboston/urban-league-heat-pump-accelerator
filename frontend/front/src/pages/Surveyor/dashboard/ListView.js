@@ -1,65 +1,144 @@
-import { Box, Grid, Typography, Stack, ButtonBase } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  Stack,
+  ButtonBase,
+  Button,
+  ListItemText,
+} from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Checkbox from "@mui/material/Checkbox";
+import Avatar from "@mui/material/Avatar";
 
-{
-}
-const data = [
-  "listview1",
-  "listview2",
-  "listview3",
-  "listview4",
-  "listview5",
-  "listview6",
-  "listview7",
-  "listview8",
-  "listview9",
-  "listview10",
-  "listview11",
-];
+import data from "../../../dummyData/homeDataCluster1.json";
+import DialogMenu from "./DialogMenu";
+import { useDispatch, useSelector } from "react-redux";
+import { selectedHome } from "../../../features/surveyor/surveyorSlice";
 
 const ListView = () => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const OnclickFx = () => {
     navigate("/surveyor/house");
   };
-  const itemMap = data.map((item) => {
-    return (
-      <Grid item xs={12} key={item}>
-        <ButtonBase sx={{ width: "100%" }} onClick={() => OnclickFx()}>
-          <Box pt={2} borderTop={1} px={2} sx={{ width: "100%" }}>
-            <Box textAlign='left'>
-              <Typography>12345 John Smith Way</Typography>
-              <Typography>John Smith</Typography>
 
-              <Box py={1}>
-                <Stack direction='row' spacing={1}>
-                  <Typography>Question:</Typography>
-                  <Typography sx={{ color: "green" }}>Completed</Typography>
-                </Stack>
-                <Stack direction='row' spacing={1}>
-                  <Typography>Evaluation:</Typography>
-                  <Typography sx={{ color: "orange" }}>Incomplete</Typography>
-                </Stack>
-              </Box>
-            </Box>
-          </Box>
-        </ButtonBase>
-      </Grid>
-    );
-  });
+  const [checked, setChecked] = React.useState([]);
+
+  const handleToggle = (value) => () => {
+    const currentIndex = checked.indexOf(value);
+    console.log(currentIndex);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
+    console.log(checked);
+  };
+  // const selectedHomeValue = useSelector((state) => state.surveyor.selectedHome);
+  // console.log(selectedHomeValue);
+  const generateGoogleMap = () => {
+    console.log("generateGoogleMap");
+    console.log();
+    dispatch(selectedHome(checked));
+  };
 
   return (
-    <Grid
-      container
-      direction='column'
-      justifyContent='center'
-      alignItems='left'
-      mt={2}
-    >
-      {itemMap}
-    </Grid>
+    <Box>
+      <Box display="flex" justifyContent="space-around" p={3}>
+        <Button variant="contained" size="large" onClick={generateGoogleMap}>
+          GENERATE MAPS
+        </Button>
+      </Box>
+      <Box textAlign={"right"}>
+        <Button
+          variant="outlined"
+          onClick={() => setChecked(data)}
+          size="small"
+          sx={{ mr: 2 }}
+        >
+          Select All
+        </Button>
+        <Button variant="outlined" onClick={() => setChecked([])} size="small">
+          Deselect All
+        </Button>
+      </Box>
+
+      <Box textAlign={"center"} pt={3}>
+        <Typography variant="h4">Assignment #1</Typography>
+      </Box>
+      <List
+        dense
+        sx={{
+          width: "100%",
+          maxWidth: 360,
+          bgcolor: "background.paper",
+        }}
+      >
+        {data.map((value) => {
+          const labelId = `checkbox-list-secondary-label-${value}`;
+          return (
+            <ListItem
+              key={value.ORDER + value.ST_NUM}
+              sx={{ pl: 0 }}
+              secondaryAction={
+                <Checkbox
+                  edge="end"
+                  onChange={handleToggle(value)}
+                  checked={checked.indexOf(value) !== -1}
+                  inputProps={{ "aria-labelledby": labelId }}
+                />
+              }
+            >
+              <ListItemButton>
+                <ListItemAvatar>
+                  <Avatar
+                    sx={{
+                      border: 1,
+                      fontSize: "1.5em",
+                      bgcolor: "white",
+                      color: "black",
+                    }}
+                  >
+                    {value.ORDER}
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  id={labelId}
+                  primary={
+                    <Box>
+                      <Box>{`${value.ST_NUM} ${value.ST_NAME}`}</Box>
+                      <Box>{`${value.CITY} ${value.ZIPCODE}`}</Box>
+                      <Box>
+                        {value.completed ? (
+                          <Typography color="green">Completed</Typography>
+                        ) : (
+                          <Typography color="red">Incompleted</Typography>
+                        )}
+                      </Box>
+                    </Box>
+                  }
+                />
+              </ListItemButton>
+              <Box pt={0.5} pl={1}>
+                <DialogMenu value={value} />
+              </Box>
+            </ListItem>
+          );
+        })}
+      </List>
+    </Box>
   );
 };
 
