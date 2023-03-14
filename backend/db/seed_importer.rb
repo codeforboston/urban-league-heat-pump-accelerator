@@ -8,7 +8,7 @@ module SeedImporter
     options = { downcase_header: true, verbose: true }
 
     # Seed survey
-    SmarterCSV.process(File.join(path, "test_surveys.csv"), options) do |chunk|
+    SmarterCSV.process(File.join(path, 'test_surveys.csv'), options) do |chunk|
       chunk.each do |data_hash|
         Survey.create!(data_hash)
       end
@@ -16,9 +16,10 @@ module SeedImporter
 
     # Seed survey questions
     survey = Survey.first
-    SmarterCSV.process(File.join(path, "test_survey_questions.csv"), options) do |chunk|
+    SmarterCSV.process(File.join(path, 'test_survey_questions.csv'), options) do |chunk|
       chunk.each do |data_hash|
-        data_hash[:response_options] = if data_hash[:response_options].nil? then Array.new else data_hash[:response_options].split("/", -1) end
+        data_hash[:response_options] =
+          (data_hash[:response_options].nil? ? [] : data_hash[:response_options].split('/', -1))
         question = SurveyQuestion.new(data_hash)
         question.survey = survey
         question.save!
@@ -26,13 +27,13 @@ module SeedImporter
     end
 
     # Seed users and surveyors
-    SmarterCSV.process(File.join(path, "test_users.csv"), options) do |chunk|
+    SmarterCSV.process(File.join(path, 'test_users.csv'), options) do |chunk|
       chunk.each do |data_hash|
-        user = User.create!(data_hash)
+        User.create!(data_hash)
       end
     end
 
-    SmarterCSV.process(File.join(path, "test_surveyors.csv"), options) do |chunk|
+    SmarterCSV.process(File.join(path, 'test_surveyors.csv'), options) do |chunk|
       chunk.each do |data_hash|
         surveyor = Surveyor.new(data_hash)
         surveyor.user = User.where(email: data_hash[:email]).first
@@ -41,7 +42,7 @@ module SeedImporter
     end
 
     # Seed assignments
-    SmarterCSV.process(File.join(path, "test_assignments.csv"), options) do |chunk|
+    SmarterCSV.process(File.join(path, 'test_assignments.csv'), options) do |chunk|
       chunk.each do |data_hash|
         surveyor_email = data_hash[:surveyor_email]
         assignment = Assignment.new(data_hash.except(:surveyor_email))
@@ -51,7 +52,7 @@ module SeedImporter
     end
 
     # Seed homes
-    SmarterCSV.process(File.join(path, "test_homes.csv"), options) do |chunk|
+    SmarterCSV.process(File.join(path, 'test_homes.csv'), options) do |chunk|
       chunk.each do |data_hash|
         assignment_group = data_hash[:assignment_group]
         home = Home.new(data_hash.except(:assignment_group))
@@ -60,7 +61,7 @@ module SeedImporter
       end
     end
 
-    SmarterCSV.process(File.join(path, "test_seeds.csv"), options) do |chunk|
+    SmarterCSV.process(File.join(path, 'test_seeds.csv'), options) do |chunk|
       chunk.each do |data_hash|
         PropertyAssessment.create!(data_hash)
       end
