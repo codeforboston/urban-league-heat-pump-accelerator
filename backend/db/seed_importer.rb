@@ -40,6 +40,26 @@ module SeedImporter
       end
     end
 
+    # Seed assignments
+    SmarterCSV.process(File.join(path, "test_assignments.csv"), options) do |chunk|
+      chunk.each do |data_hash|
+        surveyor_email = data_hash[:surveyor_email]
+        assignment = Assignment.new(data_hash.except(:surveyor_email))
+        assignment.surveyor = Surveyor.where(email: surveyor_email).first
+        assignment.save!
+      end
+    end
+
+    # Seed homes
+    SmarterCSV.process(File.join(path, "test_homes.csv"), options) do |chunk|
+      chunk.each do |data_hash|
+        assignment_group = data_hash[:assignment_group]
+        home = Home.new(data_hash.except(:assignment_group))
+        home.assignment = Assignment.where(group: assignment_group).first
+        home.save!
+      end
+    end
+
     SmarterCSV.process(File.join(path, "test_seeds.csv"), options) do |chunk|
       chunk.each do |data_hash|
         PropertyAssessment.create!(data_hash)
