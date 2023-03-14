@@ -25,6 +25,21 @@ module SeedImporter
       end
     end
 
+    # Seed users and surveyors
+    SmarterCSV.process(File.join(path, "test_users.csv"), options) do |chunk|
+      chunk.each do |data_hash|
+        user = User.create!(data_hash)
+      end
+    end
+
+    SmarterCSV.process(File.join(path, "test_surveyors.csv"), options) do |chunk|
+      chunk.each do |data_hash|
+        surveyor = Surveyor.new(data_hash)
+        surveyor.user = User.where(email: data_hash[:email]).first
+        surveyor.save!
+      end
+    end
+
     SmarterCSV.process(File.join(path, "test_seeds.csv"), options) do |chunk|
       chunk.each do |data_hash|
         PropertyAssessment.create!(data_hash)
