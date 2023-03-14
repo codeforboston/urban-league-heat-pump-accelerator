@@ -6,7 +6,7 @@ require 'smarter_csv'
 module SeedImporter
   def import_seed_data(path)
     options = { downcase_header: true, verbose: true }
-    SmarterCSV.process(path, options) do |chunk|
+    SmarterCSV.process(File.join(path, "test_seeds.csv"), options) do |chunk|
       chunk.each do |data_hash|
         PropertyAssessment.create!(data_hash)
       end
