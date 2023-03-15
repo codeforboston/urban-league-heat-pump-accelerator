@@ -40,7 +40,6 @@ street_number,street_name,unit_number,city,state,zip_code,building_type,assignme
 9,Boylston Street,9,Boston,MA,02116,House,B
 3,Hanover Street,8,Boston,MA,02108,House,A2
 6,Hanover Street,4,Boston,MA,02108,House,A2
-1,Commonwealth Avenue,6,Boston,MA,02135,House,E2
 6,Fenway,7,Boston,MA,02215,House,C
 6,Commonwealth Avenue,9,Boston,MA,02135,House,E2
 14,Dorchester Avenue,9,Boston,MA,02127,House,E1
@@ -62,7 +61,6 @@ street_number,street_name,unit_number,city,state,zip_code,building_type,assignme
 3,Beacon Street,1,Boston,MA,02108,House,A1
 7,Boylston Street,7,Boston,MA,02116,House,B
 6,Newbury Street,5,Boston,MA,02116,House,B
-7,Fenway,5,Boston,MA,02215,House,C
 13,Fenway,2,Boston,MA,02215,House,C
 12,Federal Street,1,Boston,MA,02110,House,D
 7,Hanover Street,3,Boston,MA,02108,House,A2
@@ -77,7 +75,6 @@ street_number,street_name,unit_number,city,state,zip_code,building_type,assignme
 6,Fenway,5,Boston,MA,02215,House,C
 3,Beacon Street,2,Boston,MA,02108,House,A1
 7,Tremont Street,9,Boston,MA,02108,House,A1
-14,Tremont Street,9,Boston,MA,02108,House,A1
 17,Beacon Street,3,Boston,MA,02108,House,A1
 11,Tremont Street,3,Boston,MA,02108,House,A1
 14,Newbury Street,8,Boston,MA,02116,House,B
@@ -85,17 +82,20 @@ street_number,street_name,unit_number,city,state,zip_code,building_type,assignme
 12,Hanover Street,9,Boston,MA,02108,House,A2
 11,Beacon Street,8,Boston,MA,02108,House,A1
 2,Newbury Street,6,Boston,MA,02116,House,B
-13,Fenway,5,Boston,MA,02215,House,C
 13,Commonwealth Avenue,1,Boston,MA,02135,House,E2
 16,Boylston Street,2,Boston,MA,02116,House,B
 6,Boylston Street,1,Boston,MA,02116,House,B
 10,Beacon Street,4,Boston,MA,02108,House,A1
 4,Tremont Street,8,Boston,MA,02108,House,A1
-16,Newbury Street,1,Boston,MA,02116,House,B
 8,Hanover Street,4,Boston,MA,02108,House,A2
-6,Fenway,7,Boston,MA,02215,House,C
 8,Tremont Street,8,Boston,MA,02108,House,A1
 7,Commonwealth Avenue,9,Boston,MA,02135,House,E2
 7,Tremont Street,3,Boston,MA,02108,House,A1
 1,Newbury Street,4,Boston,MA,02116,House,B
 3,Boylston Street,9,Boston,MA,02116,House,B
+4,Boylston Street,5,Boston,MA,02116,House,B
+7,Dorchester Avenue,5,Boston,MA,02127,House,E1
+16,Dorchester Avenue,6,Boston,MA,02127,House,E1
+13,Newbury Street,9,Boston,MA,02116,House,B
+15,Dorchester Avenue,9,Boston,MA,02127,House,E1
+18,Tremont Street,6,Boston,MA,02108,House,A1
