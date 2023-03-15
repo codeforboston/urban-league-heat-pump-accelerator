@@ -3,4 +3,6 @@
 class Home < ApplicationRecord
   has_many :survey_visits, dependent: nil
   belongs_to :assignment, optional: true
+
+  validates :visit_order, uniqueness: { scope: :assignment_id }
 end
