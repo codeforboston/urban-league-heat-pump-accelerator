@@ -1,0 +1,267 @@
+{
+    "id": 1,
+    "group": "A1",
+    "surveyor_id": 1,
+    "homes": [
+        {
+            "id": 5,
+            "street_number": "6",
+            "street_name": "Tremont Street",
+            "unit_number": "9",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 7,
+            "street_number": "14",
+            "street_name": "Tremont Street",
+            "unit_number": "9",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 19,
+            "street_number": "6",
+            "street_name": "Tremont Street",
+            "unit_number": "5",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 21,
+            "street_number": "6",
+            "street_name": "Beacon Street",
+            "unit_number": "5",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 22,
+            "street_number": "5",
+            "street_name": "Beacon Street",
+            "unit_number": "4",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 25,
+            "street_number": "2",
+            "street_name": "Beacon Street",
+            "unit_number": "1",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 31,
+            "street_number": "7",
+            "street_name": "Tremont Street",
+            "unit_number": "6",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 37,
+            "street_number": "1",
+            "street_name": "Tremont Street",
+            "unit_number": "3",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 38,
+            "street_number": "16",
+            "street_name": "Beacon Street",
+            "unit_number": "3",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 50,
+            "street_number": "9",
+            "street_name": "Beacon Street",
+            "unit_number": "7",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 51,
+            "street_number": "12",
+            "street_name": "Beacon Street",
+            "unit_number": "9",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 52,
+            "street_number": "19",
+            "street_name": "Tremont Street",
+            "unit_number": "2",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 54,
+            "street_number": "9",
+            "street_name": "Beacon Street",
+            "unit_number": "8",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 60,
+            "street_number": "3",
+            "street_name": "Beacon Street",
+            "unit_number": "1",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 71,
+            "street_number": "8",
+            "street_name": "Beacon Street",
+            "unit_number": "2",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 75,
+            "street_number": "3",
+            "street_name": "Beacon Street",
+            "unit_number": "2",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 76,
+            "street_number": "7",
+            "street_name": "Tremont Street",
+            "unit_number": "9",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 77,
+            "street_number": "17",
+            "street_name": "Beacon Street",
+            "unit_number": "3",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 78,
+            "street_number": "11",
+            "street_name": "Tremont Street",
+            "unit_number": "3",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 80,
+            "street_number": "12",
+            "street_name": "Beacon Street",
+            "unit_number": "1",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 82,
+            "street_number": "11",
+            "street_name": "Beacon Street",
+            "unit_number": "8",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 87,
+            "street_number": "10",
+            "street_name": "Beacon Street",
+            "unit_number": "4",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 88,
+            "street_number": "4",
+            "street_name": "Tremont Street",
+            "unit_number": "8",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 90,
+            "street_number": "8",
+            "street_name": "Tremont Street",
+            "unit_number": "8",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 92,
+            "street_number": "7",
+            "street_name": "Tremont Street",
+            "unit_number": "3",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        },
+        {
+            "id": 100,
+            "street_number": "18",
+            "street_name": "Tremont Street",
+            "unit_number": "6",
+            "city": "Boston",
+            "state": "MA",
+            "zip_code": "2108",
+            "building_type": "House"
+        }
+    ]
+}
