@@ -103,7 +103,7 @@ RSpec.describe '/surveyors', type: :request do
     context 'with valid parameters' do
       let(:new_attributes) do
         {
-          user_id: user.id,
+          id: user.id,
           firstname: 'John',
           lastname: 'Smith',
           email: 'johnsmith@example.com',
