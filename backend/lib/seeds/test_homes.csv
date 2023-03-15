@@ -1,101 +1,101 @@
-street_number,street_name,unit_number,city,state,zip_code,building_type,assignment_group
-1,Hanover Street,5,Boston,MA,02108,House,A2
-7,Fenway,5,Boston,MA,02215,House,C
-6,Hanover Street,6,Boston,MA,02108,House,A2
-14,Boylston Street,5,Boston,MA,02116,House,B
-6,Tremont Street,9,Boston,MA,02108,House,A1
-12,Commonwealth Avenue,2,Boston,MA,02135,House,E2
-14,Tremont Street,9,Boston,MA,02108,House,A1
-5,Commonwealth Avenue,4,Boston,MA,02135,House,E2
-7,Boylston Street,6,Boston,MA,02116,House,B
-1,Fenway,8,Boston,MA,02215,House,C
-1,Fenway,9,Boston,MA,02215,House,C
-1,Hanover Street,1,Boston,MA,02108,House,A2
-19,Commonwealth Avenue,3,Boston,MA,02135,House,E2
-4,Federal Street,7,Boston,MA,02110,House,D
-19,Boylston Street,3,Boston,MA,02116,House,B
-8,Hanover Street,9,Boston,MA,02108,House,A2
-2,Fenway,4,Boston,MA,02215,House,C
-16,Boylston Street,4,Boston,MA,02116,House,B
-6,Tremont Street,5,Boston,MA,02108,House,A1
-17,Hanover Street,3,Boston,MA,02108,House,A2
-6,Beacon Street,5,Boston,MA,02108,House,A1
-5,Beacon Street,4,Boston,MA,02108,House,A1
-18,Fenway,6,Boston,MA,02215,House,C
-13,Commonwealth Avenue,6,Boston,MA,02135,House,E2
-2,Beacon Street,1,Boston,MA,02108,House,A1
-3,Newbury Street,7,Boston,MA,02116,House,B
-1,Commonwealth Avenue,6,Boston,MA,02135,House,E2
-17,Dorchester Avenue,2,Boston,MA,02127,House,E1
-2,Newbury Street,1,Boston,MA,02116,House,B
-11,Newbury Street,7,Boston,MA,02116,House,B
-7,Tremont Street,6,Boston,MA,02108,House,A1
-18,Boylston Street,3,Boston,MA,02116,House,B
-16,Boylston Street,3,Boston,MA,02116,House,B
-8,Fenway,4,Boston,MA,02215,House,C
-6,Commonwealth Avenue,5,Boston,MA,02135,House,E2
-18,Commonwealth Avenue,2,Boston,MA,02135,House,E2
-1,Tremont Street,3,Boston,MA,02108,House,A1
-16,Beacon Street,3,Boston,MA,02108,House,A1
-9,Boylston Street,9,Boston,MA,02116,House,B
-3,Hanover Street,8,Boston,MA,02108,House,A2
-6,Hanover Street,4,Boston,MA,02108,House,A2
-6,Fenway,7,Boston,MA,02215,House,C
-6,Commonwealth Avenue,9,Boston,MA,02135,House,E2
-14,Dorchester Avenue,9,Boston,MA,02127,House,E1
-11,Hanover Street,2,Boston,MA,02108,House,A2
-15,Boylston Street,4,Boston,MA,02116,House,B
-5,Dorchester Avenue,9,Boston,MA,02127,House,E1
-11,Dorchester Avenue,5,Boston,MA,02127,House,E1
-18,Commonwealth Avenue,9,Boston,MA,02135,House,E2
-9,Beacon Street,7,Boston,MA,02108,House,A1
-12,Beacon Street,9,Boston,MA,02108,House,A1
-19,Tremont Street,2,Boston,MA,02108,House,A1
-5,Boylston Street,6,Boston,MA,02116,House,B
-9,Beacon Street,8,Boston,MA,02108,House,A1
-13,Fenway,5,Boston,MA,02215,House,C
-9,Newbury Street,5,Boston,MA,02116,House,B
-16,Newbury Street,1,Boston,MA,02116,House,B
-15,Federal Street,1,Boston,MA,02110,House,D
-12,Dorchester Avenue,3,Boston,MA,02127,House,E1
-3,Beacon Street,1,Boston,MA,02108,House,A1
-7,Boylston Street,7,Boston,MA,02116,House,B
-6,Newbury Street,5,Boston,MA,02116,House,B
-13,Fenway,2,Boston,MA,02215,House,C
-12,Federal Street,1,Boston,MA,02110,House,D
-7,Hanover Street,3,Boston,MA,02108,House,A2
-5,Boylston Street,5,Boston,MA,02116,House,B
-11,Dorchester Avenue,7,Boston,MA,02127,House,E1
-1,Dorchester Avenue,3,Boston,MA,02127,House,E1
-17,Boylston Street,1,Boston,MA,02116,House,B
-13,Fenway,6,Boston,MA,02215,House,C
-8,Beacon Street,2,Boston,MA,02108,House,A1
-5,Newbury Street,4,Boston,MA,02116,House,B
-19,Federal Street,9,Boston,MA,02110,House,D
-6,Fenway,5,Boston,MA,02215,House,C
-3,Beacon Street,2,Boston,MA,02108,House,A1
-7,Tremont Street,9,Boston,MA,02108,House,A1
-17,Beacon Street,3,Boston,MA,02108,House,A1
-11,Tremont Street,3,Boston,MA,02108,House,A1
-14,Newbury Street,8,Boston,MA,02116,House,B
-12,Beacon Street,1,Boston,MA,02108,House,A1
-12,Hanover Street,9,Boston,MA,02108,House,A2
-11,Beacon Street,8,Boston,MA,02108,House,A1
-2,Newbury Street,6,Boston,MA,02116,House,B
-13,Commonwealth Avenue,1,Boston,MA,02135,House,E2
-16,Boylston Street,2,Boston,MA,02116,House,B
-6,Boylston Street,1,Boston,MA,02116,House,B
-10,Beacon Street,4,Boston,MA,02108,House,A1
-4,Tremont Street,8,Boston,MA,02108,House,A1
-8,Hanover Street,4,Boston,MA,02108,House,A2
-8,Tremont Street,8,Boston,MA,02108,House,A1
-7,Commonwealth Avenue,9,Boston,MA,02135,House,E2
-7,Tremont Street,3,Boston,MA,02108,House,A1
-1,Newbury Street,4,Boston,MA,02116,House,B
-3,Boylston Street,9,Boston,MA,02116,House,B
-4,Boylston Street,5,Boston,MA,02116,House,B
-7,Dorchester Avenue,5,Boston,MA,02127,House,E1
-16,Dorchester Avenue,6,Boston,MA,02127,House,E1
-13,Newbury Street,9,Boston,MA,02116,House,B
-15,Dorchester Avenue,9,Boston,MA,02127,House,E1
-18,Tremont Street,6,Boston,MA,02108,House,A1
+street_number,street_name,unit_number,city,state,zip_code,building_type,assignment_group,visit_order
+1,Hanover Street,5,Boston,MA,2108,House,A2,2
+7,Fenway,5,Boston,MA,2215,House,C,6
+6,Hanover Street,6,Boston,MA,2108,House,A2,5
+14,Boylston Street,5,Boston,MA,2116,House,B,9
+6,Tremont Street,9,Boston,MA,2108,House,A1,18
+12,Commonwealth Avenue,2,Boston,MA,2135,House,E2,6
+14,Tremont Street,9,Boston,MA,2108,House,A1,24
+5,Commonwealth Avenue,4,Boston,MA,2135,House,E2,2
+7,Boylston Street,6,Boston,MA,2116,House,B,6
+1,Fenway,8,Boston,MA,2215,House,C,1
+1,Fenway,9,Boston,MA,2215,House,C,2
+1,Hanover Street,1,Boston,MA,2108,House,A2,1
+19,Commonwealth Avenue,3,Boston,MA,2135,House,E2,11
+4,Federal Street,7,Boston,MA,2110,House,D,1
+19,Boylston Street,3,Boston,MA,2116,House,B,16
+8,Hanover Street,9,Boston,MA,2108,House,A2,8
+2,Fenway,4,Boston,MA,2215,House,C,3
+16,Boylston Street,4,Boston,MA,2116,House,B,13
+6,Tremont Street,5,Boston,MA,2108,House,A1,17
+17,Hanover Street,3,Boston,MA,2108,House,A2,11
+6,Beacon Street,5,Boston,MA,2108,House,A1,5
+5,Beacon Street,4,Boston,MA,2108,House,A1,4
+18,Fenway,6,Boston,MA,2215,House,C,11
+13,Commonwealth Avenue,6,Boston,MA,2135,House,E2,8
+2,Beacon Street,1,Boston,MA,2108,House,A1,1
+3,Newbury Street,7,Boston,MA,2116,House,B,20
+1,Commonwealth Avenue,6,Boston,MA,2135,House,E2,1
+17,Dorchester Avenue,2,Boston,MA,2127,House,E1,10
+2,Newbury Street,1,Boston,MA,2116,House,B,18
+11,Newbury Street,7,Boston,MA,2116,House,B,24
+7,Tremont Street,6,Boston,MA,2108,House,A1,20
+18,Boylston Street,3,Boston,MA,2116,House,B,15
+16,Boylston Street,3,Boston,MA,2116,House,B,12
+8,Fenway,4,Boston,MA,2215,House,C,7
+6,Commonwealth Avenue,5,Boston,MA,2135,House,E2,3
+18,Commonwealth Avenue,2,Boston,MA,2135,House,E2,9
+1,Tremont Street,3,Boston,MA,2108,House,A1,15
+16,Beacon Street,3,Boston,MA,2108,House,A1,13
+9,Boylston Street,9,Boston,MA,2116,House,B,8
+3,Hanover Street,8,Boston,MA,2108,House,A2,3
+6,Hanover Street,4,Boston,MA,2108,House,A2,4
+6,Fenway,7,Boston,MA,2215,House,C,5
+6,Commonwealth Avenue,9,Boston,MA,2135,House,E2,4
+14,Dorchester Avenue,9,Boston,MA,2127,House,E1,7
+11,Hanover Street,2,Boston,MA,2108,House,A2,9
+15,Boylston Street,4,Boston,MA,2116,House,B,10
+5,Dorchester Avenue,9,Boston,MA,2127,House,E1,2
+11,Dorchester Avenue,5,Boston,MA,2127,House,E1,4
+18,Commonwealth Avenue,9,Boston,MA,2135,House,E2,10
+9,Beacon Street,7,Boston,MA,2108,House,A1,7
+12,Beacon Street,9,Boston,MA,2108,House,A1,12
+19,Tremont Street,2,Boston,MA,2108,House,A1,26
+5,Boylston Street,6,Boston,MA,2116,House,B,4
+9,Beacon Street,8,Boston,MA,2108,House,A1,8
+13,Fenway,5,Boston,MA,2215,House,C,9
+9,Newbury Street,5,Boston,MA,2116,House,B,23
+16,Newbury Street,1,Boston,MA,2116,House,B,27
+15,Federal Street,1,Boston,MA,2110,House,D,3
+12,Dorchester Avenue,3,Boston,MA,2127,House,E1,6
+3,Beacon Street,1,Boston,MA,2108,House,A1,2
+7,Boylston Street,7,Boston,MA,2116,House,B,7
+6,Newbury Street,5,Boston,MA,2116,House,B,22
+13,Fenway,2,Boston,MA,2215,House,C,8
+12,Federal Street,1,Boston,MA,2110,House,D,2
+7,Hanover Street,3,Boston,MA,2108,House,A2,6
+5,Boylston Street,5,Boston,MA,2116,House,B,3
+11,Dorchester Avenue,7,Boston,MA,2127,House,E1,5
+1,Dorchester Avenue,3,Boston,MA,2127,House,E1,1
+17,Boylston Street,1,Boston,MA,2116,House,B,14
+13,Fenway,6,Boston,MA,2215,House,C,10
+8,Beacon Street,2,Boston,MA,2108,House,A1,6
+5,Newbury Street,4,Boston,MA,2116,House,B,21
+19,Federal Street,9,Boston,MA,2110,House,D,4
+6,Fenway,5,Boston,MA,2215,House,C,4
+3,Beacon Street,2,Boston,MA,2108,House,A1,3
+7,Tremont Street,9,Boston,MA,2108,House,A1,21
+17,Beacon Street,3,Boston,MA,2108,House,A1,14
+11,Tremont Street,3,Boston,MA,2108,House,A1,23
+14,Newbury Street,8,Boston,MA,2116,House,B,26
+12,Beacon Street,1,Boston,MA,2108,House,A1,11
+12,Hanover Street,9,Boston,MA,2108,House,A2,10
+11,Beacon Street,8,Boston,MA,2108,House,A1,10
+2,Newbury Street,6,Boston,MA,2116,House,B,19
+13,Commonwealth Avenue,1,Boston,MA,2135,House,E2,7
+16,Boylston Street,2,Boston,MA,2116,House,B,11
+6,Boylston Street,1,Boston,MA,2116,House,B,5
+10,Beacon Street,4,Boston,MA,2108,House,A1,9
+4,Tremont Street,8,Boston,MA,2108,House,A1,16
+8,Hanover Street,4,Boston,MA,2108,House,A2,7
+8,Tremont Street,8,Boston,MA,2108,House,A1,22
+7,Commonwealth Avenue,9,Boston,MA,2135,House,E2,5
+7,Tremont Street,3,Boston,MA,2108,House,A1,19
+1,Newbury Street,4,Boston,MA,2116,House,B,17
+3,Boylston Street,9,Boston,MA,2116,House,B,1
+4,Boylston Street,5,Boston,MA,2116,House,B,2
+7,Dorchester Avenue,5,Boston,MA,2127,House,E1,3
+16,Dorchester Avenue,6,Boston,MA,2127,House,E1,9
+13,Newbury Street,9,Boston,MA,2116,House,B,25
+15,Dorchester Avenue,9,Boston,MA,2127,House,E1,8
+18,Tremont Street,6,Boston,MA,2108,House,A1,25
