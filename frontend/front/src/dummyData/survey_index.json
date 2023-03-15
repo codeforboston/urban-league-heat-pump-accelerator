@@ -5,7 +5,7 @@
         "survey_questions": [
             {
                 "id": 1,
-                "display_order": 0,
+                "display_order": 1,
                 "text": "Have you heard of heat pumps?",
                 "response_type": "radio",
                 "response_options": [
