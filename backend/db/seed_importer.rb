@@ -1,3 +1,8 @@
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/PerceivedComplexity
+
 # frozen_string_literal: true
 
 require 'smarter_csv'
@@ -68,3 +73,8 @@ module SeedImporter
     end
   end
 end
+
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/PerceivedComplexity
