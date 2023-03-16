@@ -6,7 +6,7 @@ import ButtonCustom from "../../Components/ButtonCustom";
 import AnimatedBox from "../../Components/AnimatedBox";
 
 const CardLinks = styled("div")(({ theme }) => ({
-  minWidth: "350px",
+  minWidth: "270px",
   maxWidth: "480px",
   borderRadius: "2%",
   padding: "1px 0",
@@ -26,7 +26,7 @@ const GridLinkWrapper = styled("Grid")(({ theme }) => ({
   justifyContent: "center",
   flexWrap: "nowrap",
   gap: "2rem",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     flexWrap: "wrap",
   },
 }));

@@ -126,13 +126,18 @@ function Navbar(props) {
               className="logo"
               alt="logo"
               sx={{
-                my: 2,
+                mb: 3,
+                mt: 5,
+                maxWidth: "100%",
+                "@media (max-width: 385px)": {
+                  minWidth: "192px",
+                },
               }}
             />
           </Link>
         </Box>
       </Stack>
-      <Divider />
+      {/* <Divider /> */}
       <List variant="caption">
         {Object.keys(navbarItems).map((item) => (
           <>
@@ -232,6 +237,7 @@ function Navbar(props) {
               direction="row"
               justifyContent="space-between"
               alignItems="center"
+              wrap="noWrap"
             >
               <Grid item sx={{ my: 2 }}>
                 <Link to="">
@@ -242,6 +248,10 @@ function Navbar(props) {
                     alt="logo"
                     sx={{
                       my: 2,
+                      maxWidth: "100%",
+                      "@media (max-width: 385px)": {
+                        minWidth: "192px",
+                      },
                     }}
                   />
                 </Link>
