@@ -221,7 +221,7 @@ const Footer = () => {
                     display: { xs: "none", lg: "block" },
                   }}
                 >
-                  <ButtonGetPump variant="getpumpFooter" />
+                  <ButtonGetPump variant="getpump" />
                 </Box>
                 <Box
                   sx={{
