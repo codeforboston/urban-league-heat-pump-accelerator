@@ -33,6 +33,7 @@ const Home = () => {
 
         {/* PARTNERS LOGO */}
         <Box
+          id="our-partners-section"
           sx={{
             background: "var(--bgColor-10)",
             padding: { xs: "0", lg: "64px 128px 64px 128px" },

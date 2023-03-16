@@ -11,7 +11,7 @@ import {
   ListItemText,
   Button,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ButtonGetPump from "../Components/ButtonGetPump";
 import logoHeatPump from "../../../assets/images/logoHeatPump.png";
 import { styled } from "@mui/material/styles";
@@ -21,7 +21,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const footerItems = {
   "About B.H.P.A": { link: "learn-more" },
-  "Our Partners": { link: "" },
+  "Our Partners": { link: "our-partners-section" },
   "F.A.Q": { link: "faq" },
 };
 
@@ -37,23 +37,11 @@ const FooterWrapper = styled("div")(({ theme }) => ({
 }));
 
 const Footer = () => {
-  // const [anchorEl, setAnchorEl] = useState(null);
-
-  // const handleClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
-
-  // const open = Boolean(anchorEl);
-  // const id = open ? "simple-popover" : undefined;
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
   return (
     <FooterWrapper sx={{ px: { xl: "18%" } }}>
@@ -117,8 +105,23 @@ const Footer = () => {
                       px: 0,
                       textAlign: { xs: "center", lg: "left" },
                     }}
-                    component={Link}
-                    to={footerItems[item].link}
+                    component={item === "Our Partners" ? "button" : Link}
+                    to={item === "Our Partners" ? null : footerItems[item].link}
+                    onClick={
+                      item === "Our Partners"
+                        ? () => {
+                            navigate("/public");
+                            setTimeout(() => {
+                              const target = document.getElementById(
+                                footerItems[item].link
+                              );
+                              if (target) {
+                                target.scrollIntoView({ behavior: "smooth" });
+                              }
+                            }, 100);
+                          }
+                        : () => window.scrollTo(0, 0)
+                    }
                   >
                     <ListItemText
                       primary={item}
@@ -151,6 +154,7 @@ const Footer = () => {
                   sx={{ py: 0, px: 0, textAlign: { xs: "center", lg: "left" } }}
                   component={Link}
                   to="privacy-policy"
+                  onClick={() => window.scrollTo(0, 0)}
                 >
                   <ListItemText
                     primary="Privacy & Data Policy"
@@ -186,7 +190,13 @@ const Footer = () => {
                     pt: { xs: 1, lg: 2 },
                   }}
                 >
-                  <LocalPhoneIcon sx={{ mr: 1 }} /> 617-635-4500 (Voicemail)
+                  <LocalPhoneIcon sx={{ mr: 1 }} />
+                  <a
+                    href="tel:617-635-4500"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    617-635-4500 (Voicemail)
+                  </a>
                 </Box>
                 <Box
                   variant="navLinks"
@@ -199,7 +209,12 @@ const Footer = () => {
                   }}
                 >
                   <EmailIcon sx={{ mr: 1 }} />
-                  <span>info@bhpa.org</span>
+                  <a
+                    href="mailto:info@bhpa.org"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    info@bhpa.org
+                  </a>
                 </Box>
                 <Box
                   sx={{
