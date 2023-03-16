@@ -23,6 +23,11 @@ const HeroWrapper = styled("div")(({ theme }) => ({
     textAlign: "center",
     zIndex: 1,
   },
+  "& .video-background": {
+    width: "100vw",
+    height: "100vw",
+    objectFit: "cover",
+  },
 }));
 
 const VideoContainer = styled("div")({

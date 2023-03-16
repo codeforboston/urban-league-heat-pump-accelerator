@@ -1,5 +1,18 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { styled } from "@mui/material/styles";
+
+const StyledMotionDiv = styled(motion.div)(({ theme }) => ({
+  "& .motion-div": {
+    opacity: 0,
+    transform: "translateY(20px)",
+  },
+  "& .motion-div.visible": {
+    opacity: 1,
+    transform: "translateY(0)",
+    transition: "all 0.5s ease-in-out",
+  },
+}));
 
 function AnimatedBox({ triggerOnce = true, children }) {
   const [ref, inView] = useInView({
@@ -22,7 +35,7 @@ function AnimatedBox({ triggerOnce = true, children }) {
   };
 
   return (
-    <motion.div
+    <StyledMotionDiv
       ref={ref}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
@@ -30,7 +43,7 @@ function AnimatedBox({ triggerOnce = true, children }) {
       className="motion-div"
     >
       {children}
-    </motion.div>
+    </StyledMotionDiv>
   );
 }
 
