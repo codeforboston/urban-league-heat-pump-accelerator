@@ -29,7 +29,6 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     textShadow: "1px 1px 2px #000",
     margin: "0 auto",
     maxWidth: "800px",
-    // borderRadius: "10px",
     background: "var(--accent-3)",
   },
 }));
@@ -47,7 +46,7 @@ const HeroPage = ({
     <HeroWrapper image={image}>
       <Box className="text-wrapper">
         <AnimatedBox triggerOnce={false}>
-          <Box className="text-overlay" py={2}>
+          <Box className="text-overlay" px={4} py={6}>
             <Typography variant="titleHero">
               {title.toUpperCase()}
               <Typography variant="titleHeroBold">
@@ -55,11 +54,11 @@ const HeroPage = ({
               </Typography>
             </Typography>
 
-            <Typography variant="bodyHero" mb={8} mt={6}>
+            <Typography variant="bodyHero" mb={6} mt={1}>
               {text1}
               {link !== "" && (
                 <Link
-                  href={link} // fix: use {link} variable, not the string "link"
+                  href={link}
                   target="_blank"
                   rel="noopener"
                   underline="always"

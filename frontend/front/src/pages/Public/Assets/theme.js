@@ -31,10 +31,13 @@ export const theme = createTheme({
       color: "var(--color-text-8)",
       fontSize: "1.3rem",
       display: "block",
-      padding: "0.75rem 0",
+      // padding: "0.75rem 0",
       textAlign: "center",
       fontWeight: "500",
       textShadow: "1px 2px 12px #000",
+      "@media (max-width:600px)": {
+        fontSize: "1rem",
+      },
     },
     // h4
     title1: {
