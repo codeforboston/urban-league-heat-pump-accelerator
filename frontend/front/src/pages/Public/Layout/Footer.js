@@ -234,6 +234,7 @@ const Footer = () => {
                     sx={{ width: "200px", height: "50px" }}
                     component={Link}
                     to="/surveyor"
+                    onClick={() => window.scrollTo(0, 0)}
                   >
                     <LockOutlinedIcon sx={{ mr: 1 }} /> Member Login
                   </Button>
@@ -253,6 +254,7 @@ const Footer = () => {
               variant="blackBtn"
               component={Link}
               to="/surveyor"
+              onClick={() => window.scrollTo(0, 0)}
               sx={{ width: "200px", height: "50px" }}
             >
               <LockOutlinedIcon sx={{ mr: 1 }} /> Member Login
