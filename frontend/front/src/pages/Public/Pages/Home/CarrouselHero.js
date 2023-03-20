@@ -6,7 +6,7 @@ import imageHeroSecond from "../../../../assets/images/copywritingImages/Eric-Ri
 import HeroPage from "./HeroPage";
 
 function CarrouselHero(props) {
-  const [heroHeight, setHeroHeight] = useState("100vh");
+  const [heroHeight, setHeroHeight] = useState("calc(100vh - 343px)");
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,13 +46,15 @@ function CarrouselHero(props) {
   ];
 
   return (
-    <div sx={{ height: { heroHeight }, minHeight: "100vh" }}>
+    <div
+      sx={{ height: { heroHeight }, minHeight: "100vh", position: "absolute" }}
+    >
       <Carousel
         animation="fade"
         stopAutoPlayOnHover={false}
         interval="8000"
         indicators={false}
-        // autoPlay={false}
+        autoPlay={false}
       >
         {items.map((item, i) => (
           <Item key={i} item={item} alt={item.alt} />

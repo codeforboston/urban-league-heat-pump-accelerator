@@ -23,6 +23,7 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     textAlign: "center",
     position: "relative",
     zIndex: 1,
+    paddingBottom: "143px",
   },
   "& .text-overlay": {
     color: "var(--color-text-8)",

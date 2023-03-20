@@ -24,7 +24,7 @@
 
 
     /* Background colors */
-    --bgColor-1:  linear-gradient(90deg, #98c7d6 50%, #72bede 100%); /* navbar */
+    --bgColor-1:  linear-gradient(90deg, #98c7d6 50%, #72bede 100%); /* navbar - drawer*/
     --bgColor-2: #72bede;
     --bgColor-3: #03045E; 
     --bgColor-4: #23B5D3;
@@ -36,6 +36,7 @@
     --bgColor-10:  #F7F7FF;
     --bgColor-11:  #F9F9F9;
     --bgColor-12:  #070600;
+    --bgColor-13:  rgba(114,  190,  222,  0.5);
     ;
 
 

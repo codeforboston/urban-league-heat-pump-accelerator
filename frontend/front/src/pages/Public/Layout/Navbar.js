@@ -137,7 +137,7 @@ function Navbar(props) {
           </Link>
         </Box>
       </Stack>
-      {/* <Divider /> */}
+
       <List variant="caption">
         {Object.keys(navbarItems).map((item) => (
           <>
@@ -232,12 +232,19 @@ function Navbar(props) {
 
   return (
     <Root>
-      <Box id="navbar" sx={{ display: "flex", zIndex: 3 }}>
+      <Box
+        id="navbar"
+        sx={{
+          display: "flex",
+          zIndex: 3,
+          width: "100vw",
+        }}
+      >
         <AppBar
           position="static"
           marginTop={2}
           sx={{
-            background: "var(--bgColor-1)",
+            background: "var(--bgColor-13)",
             boxShadow: "none",
             padding: { xl: "0 18%" },
           }}
