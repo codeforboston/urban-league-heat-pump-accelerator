@@ -6,13 +6,16 @@ export const theme = createTheme({
   typography: {
     // h3
     titleHero: {
-      color: "var(--color-text-4)",
+      color: "var(--color-text-8)",
       fontSize: "3rem",
       display: "block",
       fontWeight: "var(--font-weight-1)",
-      textShadow: "12px 12px 12px #000",
+      lineHeight: "60px",
+      letterSpacing: ".02rem",
       "@media (max-width:600px)": {
         fontSize: "2rem",
+        lineHeight: "50px",
+        letterSpacing: "0rem",
       },
     },
     // h3
@@ -21,22 +24,27 @@ export const theme = createTheme({
       fontSize: "3rem",
       display: "block",
       fontWeight: "var(--font-weight-2)",
-      textShadow: "1px 2px 12px #000",
+
+      textShadow: "1px 1px 1px var(--color-text-8)",
+      lineHeight: "60px",
+      letterSpacing: ".09rem",
       "@media (max-width:600px)": {
         fontSize: "2rem",
+        lineHeight: "50px",
+        letterSpacing: "0rem",
       },
     },
     // h6
     bodyHero: {
       color: "var(--color-text-8)",
-      fontSize: "1.3rem",
+      fontSize: "1.6rem",
       display: "block",
-      // padding: "0.75rem 0",
       textAlign: "center",
       fontWeight: "500",
-      textShadow: "1px 2px 12px #000",
+      textShadow: "1px 1px 1px #000",
+      lineHeight: "45px",
       "@media (max-width:600px)": {
-        fontSize: "1rem",
+        fontSize: "1.3rem",
       },
     },
     // h4
@@ -59,6 +67,7 @@ export const theme = createTheme({
       letterSpacing: "-.03em",
       padding: "0.75rem 0",
       textAlign: "center",
+      lineHeight: "34px",
     },
     navLinks: {
       fontSize: "1rem",

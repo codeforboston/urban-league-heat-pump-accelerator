@@ -29,8 +29,18 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     color: "var(--color-text-8)",
     textShadow: "1px 1px 2px #000",
     margin: "0 auto",
-    maxWidth: "800px",
+    maxWidth: "650px",
     background: "var(--accent-3)",
+  },
+  [theme.breakpoints.up("xs")]: {
+    "& .text-overlay": {
+      borderRadius: "0",
+    },
+  },
+  [theme.breakpoints.up("md")]: {
+    "& .text-overlay": {
+      borderRadius: "5% 15% 5% 15%",
+    },
   },
 }));
 
@@ -47,7 +57,16 @@ const HeroPage = ({
     <HeroWrapper image={image}>
       <Box className="text-wrapper">
         <AnimatedBox triggerOnce={false}>
-          <Box className="text-overlay" px={4} py={6}>
+          <Box
+            className="text-overlay"
+            pt={8}
+            pb={9}
+            sx={{
+              px: { xs: 1, md: 4 },
+              pt: { md: 8 },
+              paddingTop: { xs: "143px" },
+            }}
+          >
             <Typography variant="titleHero">
               {title.toUpperCase()}
               <Typography variant="titleHeroBold">
@@ -55,7 +74,7 @@ const HeroPage = ({
               </Typography>
             </Typography>
 
-            <Typography variant="bodyHero" mb={6} mt={1}>
+            <Typography variant="bodyHero" mt={6} mb={7}>
               {text1}
               {link !== "" && (
                 <Link
@@ -66,8 +85,9 @@ const HeroPage = ({
                   sx={{
                     color: "var(--color-text-8)",
                     fontWeight: "var(--font-weight-2)",
-                    textDecoration: "solid underline 4px",
+                    textDecoration: "solid underline 3px",
                     textUnderlinePosition: "under",
+                    textDecorationColor: "var(--color-text-4)",
                   }}
                 >
                   {textBold}

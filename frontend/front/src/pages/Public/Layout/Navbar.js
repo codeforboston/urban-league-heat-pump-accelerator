@@ -237,7 +237,7 @@ function Navbar(props) {
         sx={{
           display: "flex",
           zIndex: 3,
-          width: "100vw",
+          // width: "100vw",
         }}
       >
         <AppBar

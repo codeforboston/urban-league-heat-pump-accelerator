@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Box } from "@mui/material";
-import imageHeroFirst from "../../../../assets/images/copywritingImages/Eric-Richards-unedited-3-EDITED.jpg";
-import imageHeroSecond from "../../../../assets/images/copywritingImages/Eric-Richards-unedited-4-EDITED.jpg";
+import imageHeroFirst from "../../../../assets/images/copywritingImages/Eric-Richards-unedited-3-EDITED.webp";
+import imageHeroSecond from "../../../../assets/images/copywritingImages/EricRichards-volunteer-photo-4.webp";
 import HeroPage from "./HeroPage";
 
 function CarrouselHero(props) {
