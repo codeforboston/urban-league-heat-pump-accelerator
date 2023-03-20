@@ -25,13 +25,14 @@ export const theme = createTheme({
       display: "block",
       fontWeight: "var(--font-weight-2)",
 
-      textShadow: "1px 1px 1px var(--color-text-8)",
+      textShadow: "1px 1px 1px var(--color-text-5)",
       lineHeight: "60px",
       letterSpacing: ".09rem",
       "@media (max-width:600px)": {
         fontSize: "2rem",
         lineHeight: "50px",
         letterSpacing: "0rem",
+        fontWeight: "var(--font-weight-1)",
       },
     },
     // h6

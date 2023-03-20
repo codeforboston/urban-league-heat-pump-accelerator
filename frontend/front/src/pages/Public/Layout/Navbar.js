@@ -181,12 +181,14 @@ function Navbar(props) {
                     <Button
                       endIcon={openMoreMobile ? <ExpandLess /> : <ExpandMore />}
                       disablePadding
-                      variant="text"
                       sx={{ height: "20px" }}
                     >
                       <Typography
                         variant="navLinks"
-                        sx={{ color: "var(--color-text-1)" }}
+                        sx={{
+                          color: "var(--color-text-1)",
+                          fontWeight: "500",
+                        }}
                       >
                         {item}
                       </Typography>
