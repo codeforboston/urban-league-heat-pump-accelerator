@@ -32,6 +32,11 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     maxWidth: "650px",
     background: "var(--accent-3)",
   },
+  [theme.breakpoints.up("lg")]: {
+    "& .text-overlay": {
+      maxWidth: "1000px",
+    },
+  },
   [theme.breakpoints.up("xs")]: {
     "& .text-overlay": {
       borderRadius: "0",
@@ -63,8 +68,8 @@ const HeroPage = ({
             pb={9}
             sx={{
               px: { xs: 1, md: 4 },
-              pt: { md: 8 },
-              paddingTop: { xs: "143px" },
+              pt: { xs: 8 },
+              marginTop: { xs: "143px" },
             }}
           >
             <Typography variant="titleHero">

@@ -89,7 +89,7 @@ function TestimonialItem(props) {
             color: "var(--color-text-2)",
             margin: "0 16px",
             height: "220px",
-
+            border: "var(--box-shadow-2)",
             maxWidth: { lg: "500px" },
             minWidth: { lg: "310px" },
           }}

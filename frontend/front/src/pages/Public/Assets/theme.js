@@ -6,16 +6,20 @@ export const theme = createTheme({
   typography: {
     // h3
     titleHero: {
-      color: "var(--color-text-8)",
+      color: "var(--color-text-4)",
       fontSize: "3rem",
       display: "block",
       fontWeight: "var(--font-weight-1)",
       lineHeight: "60px",
       letterSpacing: ".02rem",
+      "@media (min-width:1400px)": {
+        fontSize: "3.8rem",
+        lineHeight: "80px",
+      },
       "@media (max-width:600px)": {
         fontSize: "2rem",
         lineHeight: "50px",
-        letterSpacing: "0rem",
+        letterSpacing: "0",
       },
     },
     // h3
@@ -24,10 +28,13 @@ export const theme = createTheme({
       fontSize: "3rem",
       display: "block",
       fontWeight: "var(--font-weight-2)",
-
       textShadow: "1px 1px 1px var(--color-text-5)",
       lineHeight: "60px",
       letterSpacing: ".09rem",
+      "@media (min-width:1400px)": {
+        fontSize: "3.8rem",
+        lineHeight: "80px",
+      },
       "@media (max-width:600px)": {
         fontSize: "2rem",
         lineHeight: "50px",
@@ -44,6 +51,9 @@ export const theme = createTheme({
       fontWeight: "500",
       textShadow: "1px 1px 1px #000",
       lineHeight: "45px",
+      "@media (min-width:1400px)": {
+        fontSize: "1.8rem",
+      },
       "@media (max-width:600px)": {
         fontSize: "1.3rem",
       },
