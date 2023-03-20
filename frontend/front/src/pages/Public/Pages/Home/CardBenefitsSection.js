@@ -22,7 +22,9 @@ const CardBenefitsSection = ({ cards }) => {
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Typography variant="title1">Benefits of Heat Pumps</Typography>
+        <Typography px={2} variant="title1">
+          Benefits of Heat Pumps
+        </Typography>
       </Box>
       {cards.map((card, index) => (
         <Grid
@@ -39,6 +41,7 @@ const CardBenefitsSection = ({ cards }) => {
             <Box
               component="img"
               sx={{
+                backgroundSize: "fit",
                 width: "100%",
                 height: "100%",
               }}
@@ -47,39 +50,41 @@ const CardBenefitsSection = ({ cards }) => {
             />
           </Grid>
           <StyledGrid
-            sx={{ background: "var(--bgColor-10)" }}
             item
+            sx={{ background: "var(--bgColor-10)", pt: { xs: 2, md: 0 } }}
             xs={12}
             sm={6}
           >
             <AnimatedBox>
-              <Typography variant="h6" textAlign="center">
-                <span>{card.title}</span>
-              </Typography>
-              <CardContent>
-                {card.paragraphs.map((paragraph) => (
-                  <Typography
-                    gutterBottom
-                    variant="subtitle1"
-                    color="var(--color-text-3)"
-                  >
-                    {paragraph}
-                  </Typography>
-                ))}
-                {card.buttonLink !== "" && (
-                  <CardActions
-                    sx={{ display: "flex", justifyContent: "center" }}
-                  >
-                    <Button
-                      component={Link}
-                      to={card.buttonLink}
-                      sx={{ color: "var(--color-text-4)" }}
+              <Box>
+                <Typography variant="h6">
+                  <span>{card.title}</span>
+                </Typography>
+                <CardContent>
+                  {card.paragraphs.map((paragraph) => (
+                    <Typography
+                      gutterBottom
+                      variant="subtitle1"
+                      color="var(--color-text-3)"
                     >
-                      {card.buttonText}
-                    </Button>
-                  </CardActions>
-                )}
-              </CardContent>
+                      {paragraph}
+                    </Typography>
+                  ))}
+                  {card.buttonLink !== "" && (
+                    <CardActions
+                      sx={{ display: "flex", justifyContent: "center" }}
+                    >
+                      <Button
+                        component={Link}
+                        to={card.buttonLink}
+                        sx={{ color: "var(--color-text-4)" }}
+                      >
+                        {card.buttonText}
+                      </Button>
+                    </CardActions>
+                  )}
+                </CardContent>
+              </Box>
             </AnimatedBox>
           </StyledGrid>
         </Grid>
