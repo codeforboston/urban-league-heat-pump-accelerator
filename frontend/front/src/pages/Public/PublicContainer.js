@@ -10,7 +10,8 @@ import GetStarted from "./Pages/GetStarted";
 import GetInvolved from "./Pages/GetInvolved";
 import Faq from "./Pages/Faq";
 import Testimonials from "./Pages/Testimonials";
-import LearnMore from "./Pages/LearnMore";
+import AboutUs from "./Pages/AboutUs";
+import AboutHeatPump from "./Pages/AboutHeatPump";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
@@ -36,13 +37,16 @@ const PublicContainer = () => {
             <Box>
               <Routes>
                 <Route path="/" element={<Home />}></Route>
-                <Route path="/learn-more" element={<LearnMore />}></Route>
+                <Route path="/about-us" element={<AboutUs />}></Route>
+                <Route
+                  path="/about-heat-pump"
+                  element={<AboutHeatPump />}
+                ></Route>
 
                 <Route path="/survey" element={<SurveyPage />} />
                 <Route path="/getstarted" element={<GetStarted />}></Route>
                 <Route path="/testimonials" element={<Testimonials />}></Route>
                 <Route path="/get-involved" element={<GetInvolved />}></Route>
-
                 <Route path="/faq" element={<Faq />}></Route>
                 <Route
                   path="/privacy-policy"

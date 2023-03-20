@@ -65,7 +65,6 @@ export const theme = createTheme({
       display: "block",
       fontWeight: "var(--font-weight-1)",
       letterSpacing: "-.03em",
-      padding: "0.75rem 0",
       textAlign: "center",
       color: "var(--color-text-1)",
     },
