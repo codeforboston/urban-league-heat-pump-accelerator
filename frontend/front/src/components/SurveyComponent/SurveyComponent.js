@@ -1,5 +1,4 @@
 import React, { useCallback, useMemo, useState } from "react";
-import cx from "classnames";
 import { Controller, useForm } from "react-hook-form";
 import {
   Button,
@@ -15,7 +14,6 @@ import { HeatPumpNameField } from "./HeatPumpNameField";
 import { HeatPumpDropdown } from "./HeatPumpDropdown";
 import { useGetReCAPTCHAToken } from "../ReCaptcha";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import styles from "./SurveyComponent.module.css";
 import { HeatPumpPhoneField } from "./HeatPumpPhoneField";
 import ConfirmationModal from "../../pages/Developer/confirmModal/ConfirmationModal";
 
@@ -292,7 +290,11 @@ const SurveyComponent = ({ mode, defaultData }) => {
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMore />}
-            className={cx({ [styles.accordionError]: publicErrors })}
+            sx={
+              publicErrors
+                ? { border: "2px solid #d32f2f !important" }
+                : undefined
+            }
           >
             <Typography>Core Questions</Typography>
           </AccordionSummary>
@@ -305,7 +307,11 @@ const SurveyComponent = ({ mode, defaultData }) => {
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMore />}
-            className={cx({ [styles.accordionError]: surveyorErrors })}
+            sx={
+              surveyorErrors
+                ? { border: "2px solid #d32f2f !important" }
+                : undefined
+            }
           >
             <Typography>Survey Questions</Typography>
           </AccordionSummary>
@@ -318,7 +324,11 @@ const SurveyComponent = ({ mode, defaultData }) => {
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMore />}
-            className={cx({ [styles.accordionError]: evaluationErrors })}
+            sx={
+              evaluationErrors
+                ? { border: "2px solid #d32f2f !important" }
+                : undefined
+            }
           >
             <Typography>Evaluation</Typography>
           </AccordionSummary>
@@ -330,14 +340,7 @@ const SurveyComponent = ({ mode, defaultData }) => {
         </Accordion>
       </>
     ),
-    [
-      evaluationErrors,
-      evaluationSection,
-      publicErrors,
-      publicSection,
-      surveyorErrors,
-      surveyorSection,
-    ]
+    [evaluationSection, publicErrors, publicSection, surveyorSection]
   );
 
   const adminForm = useCallback(
@@ -433,7 +436,7 @@ const SurveyComponent = ({ mode, defaultData }) => {
             : mode === SURVEYOR_MODE
             ? surveyorForm()
             : publicSection()}
-          <Stack direction="row" justifyContent="flex-end" spacing={2}>
+          <Stack direction="row" justifyContent="center" spacing={2}>
             {mode === ADMIN_MODE
               ? isEditing
                 ? adminButtonsEditing()
