@@ -55,13 +55,7 @@ function SimpleDialog(props) {
           </ListItem>
         </List>
       </Box>
-      <Button
-        variant="contained"
-        ml="auto"
-        mr="auto"
-        size="large"
-        onClick={handleClose}
-      >
+      <Button variant="contained" ml="auto" mr="auto" size="large">
         Close
       </Button>
     </Dialog>

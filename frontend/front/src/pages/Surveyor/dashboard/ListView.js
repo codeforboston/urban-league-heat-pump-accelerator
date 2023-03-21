@@ -63,8 +63,10 @@ const ListView = () => {
       return console.log("No data selected");
     }
 
+    const sortedCheck = [...checked].sort(compareArrayByOrder);
+
     // ensure all the home elements are sorted by their order before sending it to google map
-    const sortedCheck = checked.sort(compareArrayByOrder);
+    // const sortedCheck = checked.sort(compareArrayByOrder);
     dispatch(selectedHome(sortedCheck));
     OnclickFx();
   };
@@ -95,30 +97,24 @@ const ListView = () => {
           </Alert>
         ) : null}
       </Box>
-      <Box textAlign={"right"}>
+      <Box
+        textAlign={"center"}
+        display="flex"
+        justifyContent={"center"}
+        flexDirection="row"
+      >
         <Button
           variant="outlined"
           onClick={() => setChecked(data)}
           size="small"
-          sx={{ mr: 2 }}
         >
           Select All
         </Button>
-        <Button
-          variant="outlined"
-          onClick={() => setChecked([])}
-          size="small"
-          sx={{ mr: 2 }}
-        >
+        <Button variant="outlined" onClick={() => setChecked([])} size="small">
           Deselect All
         </Button>
 
-        <Button
-          variant="outlined"
-          onClick={SelectAllIncompleted}
-          size="small"
-          sx={{ mr: 2 }}
-        >
+        <Button variant="outlined" onClick={SelectAllIncompleted} size="small">
           Select Incompleted
         </Button>
       </Box>
