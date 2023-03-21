@@ -34,21 +34,6 @@ const Home = () => {
           <LinkButton to="rtkq" text="React Tool Kit Querey Example" />
           <LinkButton to="map" text="Google Map with API key" />
         </Box>
-
-      {
-        // box with 3 link buttons inside
-        <Box p={3} m={3}>
-          <LinkButton></LinkButton>
-          </Box>
-        // button with text "open ai"
-        <Box p={3} m={3}>
-          <LinkButton text="Open AI" />
-        </Box>
-        </Box>
-        // button with text "open ai"
-
-
-      }
       </Box>
     </Container>
   );
