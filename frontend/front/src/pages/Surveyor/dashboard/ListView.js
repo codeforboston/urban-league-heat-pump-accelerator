@@ -21,7 +21,7 @@ const ListView = () => {
       </Box>
       {quickData.map((item) => {
         return (
-          <Box my={2}>
+          <Box my={2} key={item.id}>
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}

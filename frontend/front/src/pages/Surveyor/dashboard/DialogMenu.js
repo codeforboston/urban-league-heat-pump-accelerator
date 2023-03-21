@@ -20,8 +20,6 @@ function SimpleDialog(props) {
     handleClose(false);
   };
 
-  console.log("selectedValue", selectedValue);
-
   return (
     <Dialog onClose={handleClose} open={open}>
       <Box p={1}>

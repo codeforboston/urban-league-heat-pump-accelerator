@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Survey from "../dummyData/Survey.json";
+import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
 
 const mockSurvey = Survey;
 
@@ -85,6 +86,15 @@ export const apiSlice = createApi({
     getSurveyList: builder.query({
       // TODO: remove mock when connecting to Real API
       query: () => ({ url: "/survey", method: "get", mock: Survey }),
+    }),
+    // mocking surveyorView data
+    // getAssigment within surveyor view
+    getSurveyorAssigment: builder.query({
+      query: () => ({
+        url: `/surveyor/assignment/user1`,
+        method: "get",
+        mock: SurveyorViewAssigment1,
+      }),
     }),
   }),
 });
