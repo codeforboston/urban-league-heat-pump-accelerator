@@ -24,7 +24,7 @@
 
 
     /* Background colors */
-    --bgColor-1:  linear-gradient(90deg, #98c7d6 50%, #72bede 100%); /* navbar */
+    --bgColor-1:  linear-gradient(90deg, #98c7d6 50%, #72bede 100%); /* navbar - drawer*/
     --bgColor-2: #72bede;
     --bgColor-3: #03045E; 
     --bgColor-4: #23B5D3;
@@ -33,15 +33,16 @@
     --bgColor-7: #EA526F;;
     --bgColor-8:  #EFED6F;
     --bgColor-9:  #FBC61C;
-    --bgColor-10:  #F7F7FF;
+    --bgColor-10:  #F6F6F6;
     --bgColor-11:  #F9F9F9;
-    --bgColor-12:  #070600;
+    --bgColor-12:  #F7F7FF;
+    --bgColor-13:  rgba(114,  190,  222,  0.5);
     ;
 
 
     /* Accent colors */
     --accent-2: rgba(7, 6, 0, 0.1); /* image overlay*/
-    --accent-3: rgba(7, 6, 0, 0.65); /* image overlay*/
+    --accent-3: rgba(0, 0, 0, 0.4); /* image overlay*/
     
 
     /* Box shadow */
@@ -49,73 +50,4 @@
     --box-shadow-2: 1px solid rgba(0, 0, 0, 0.12);
     --box-shadow-3: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
-
-
-
-@keyframes fanHero{
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg)
-    }
-    100%{
-        transform: translate(-50%, -50%) rotate(360deg)
-    }
-}
-
-.exp-title1-span {
-    display: inline-block;
-    padding-bottom: 10px;
-    background-image: url("../../../assets/images/stick-title1.svg");
-    background-position: 0% 92%;
-    background-size: 104px;
-    background-repeat: no-repeat;
-}
-.exp-title2-span {
-    display: inline-block;
-    padding-bottom: 10px;
-    background-image: url("../../../assets/images/stick-title2.svg");
-    background-position: 50% 77%;
-    background-size: 60%;
-    background-repeat: no-repeat;
-}
-.exp-hero1-span {
-    display: inline-block;
-    padding-bottom: 10px;
-    background-position: 50% 77%;
-    background-image: url("../../../assets/images/graphic-hero-underline.svg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
-/* .exp-hero1-span:hover {
-    background-size: 100%;
-    transition: all 0.2s ease-out;
-} */
-
-.exp-hero2-span {
-    display: inline-block;
-    padding-bottom: 10px;
-    background-image: url("../../../assets/images/stick-title2.svg");
-    background-position: 50% 77%;
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
-
-.video-background  {
-    width: 100vw;
-    height: 100vw;
-    object-fit: cover;
-}
-
-.motion-div {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  .motion-div.visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.5s ease-in-out;
-  }
-  
-  .hero-carousel {
-    min-height: 100%;
-  }
 

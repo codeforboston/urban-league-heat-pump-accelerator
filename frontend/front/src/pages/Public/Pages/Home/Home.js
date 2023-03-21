@@ -33,6 +33,7 @@ const Home = () => {
 
         {/* PARTNERS LOGO */}
         <Box
+          id="our-partners-section"
           sx={{
             background: "var(--bgColor-10)",
             padding: { xs: "0", lg: "64px 128px 64px 128px" },
@@ -51,8 +52,8 @@ const Home = () => {
                   "Heat pumps can help you keep cool in summer and keep warm in winter. They are nearly silent, work continuously, and are reliable.",
                 ],
                 image: liveMoreCom,
-                // buttonText: "SAVINGS CALCULATOR",
-                // buttonLink: "/external-page",
+                buttonText: "",
+                buttonLink: "",
               },
               {
                 id: 2,
@@ -81,8 +82,8 @@ const Home = () => {
                   "To help address climate change, we all need to reduce our greenhouse gas emissions. Heat pumps can help because they are powered by electricity rather than fossil fuels. Because they handle both cooling and heating, you can have one rather than two systems for a comfortable home.",
                 ],
                 image: beEnvironmentally,
-                // buttonText: "CLEAN ENERGY GUIDE",
-                // buttonLink: "/external-page",
+                buttonText: "",
+                buttonLink: "",
               },
             ]}
           />

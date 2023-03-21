@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Box } from "@mui/material";
-import imageHeroFirst from "../../../../assets/images/copywritingImages/Eric-Richards-unedited-3-EDITED.jpg";
-import imageHeroSecond from "../../../../assets/images/copywritingImages/Eric-Richards-unedited-4-EDITED.jpg";
-import HeroPageBgGroundCenter from "./HeroPageBgGroundCenter";
+import imageHeroFirst from "../../../../assets/images/copywritingImages/Eric-Richards-unedited-3-EDITED.webp";
+import imageHeroSecond from "../../../../assets/images/copywritingImages/EricRichards-volunteer-photo-4.webp";
+import HeroPage from "./HeroPage";
 
 function CarrouselHero(props) {
-  const [heroHeight, setHeroHeight] = useState("100vh");
+  const [heroHeight, setHeroHeight] = useState("calc(100vh - 343px)");
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,7 +21,7 @@ function CarrouselHero(props) {
   const items = [
     {
       component: (
-        <HeroPageBgGroundCenter
+        <HeroPage
           title="Boston Residents Can "
           titleBold="Save Money with Heat Pumps"
           text1="Heat pumps can help you "
@@ -34,7 +34,7 @@ function CarrouselHero(props) {
     },
     {
       component: (
-        <HeroPageBgGroundCenter
+        <HeroPage
           title="BOSTON RESIDENTS CAN "
           titleBold="BENEFIT FROM HEAT PUMPS"
           text1="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
@@ -46,7 +46,9 @@ function CarrouselHero(props) {
   ];
 
   return (
-    <div sx={{ height: { heroHeight }, minHeight: "100vh" }}>
+    <div
+      sx={{ height: { heroHeight }, minHeight: "100vh", position: "absolute" }}
+    >
       <Carousel
         animation="fade"
         stopAutoPlayOnHover={false}

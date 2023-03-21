@@ -53,9 +53,9 @@ const Partners = () => {
       <AnimatedBox triggerOnce={false}>
         <Grid
           container
-          spacing={4}
           alignItems="center"
           justifyContent="space-around"
+          px={2}
         >
           {partners.map((partner) => (
             <Grid item key={partner.id}>

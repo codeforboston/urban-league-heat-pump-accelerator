@@ -3,7 +3,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Box,
-  Divider,
   Drawer,
   IconButton,
   List,
@@ -52,10 +51,11 @@ const Root = styled("div")(({ theme }) => ({
 const drawerWidth = "100%";
 
 const navbarItems = {
-  "LEARN MORE": { link: "learn-more" },
+  "GET INVOLVED": { link: "get-involved" },
   SURVEY: { link: "survey" },
-  MORE: {
-    "GET INVOLVED": { link: "get-involved" },
+  "LEARN MORE": {
+    "ABOUT US": { link: "about-us" },
+    "ABOUT HEAT PUMP": { link: "about-heat-pump" },
     TESTIMONIALS: { link: "testimonials" },
     FAQ: { link: "faq" },
   },
@@ -126,17 +126,22 @@ function Navbar(props) {
               className="logo"
               alt="logo"
               sx={{
-                my: 2,
+                mb: 3,
+                mt: 5,
+                maxWidth: "100%",
+                "@media (max-width: 385px)": {
+                  minWidth: "192px",
+                },
               }}
             />
           </Link>
         </Box>
       </Stack>
-      <Divider />
+
       <List variant="caption">
         {Object.keys(navbarItems).map((item) => (
           <>
-            {item !== "MORE" ? (
+            {item !== "LEARN MORE" ? (
               <ListItem key={item} disablePadding onClick={handleDrawerToggle}>
                 <ListItemButton
                   sx={{ textAlign: "center" }}
@@ -145,11 +150,17 @@ function Navbar(props) {
                   focusVisible
                 >
                   <ListItemText
-                    primary={item}
                     sx={{
                       color: "var(--color-text-1)",
                     }}
-                  />
+                  >
+                    <Typography
+                      variant="navLinks"
+                      sx={{ display: "flex", justifyContent: "center" }}
+                    >
+                      {item}
+                    </Typography>
+                  </ListItemText>
                 </ListItemButton>
               </ListItem>
             ) : (
@@ -170,10 +181,17 @@ function Navbar(props) {
                     <Button
                       endIcon={openMoreMobile ? <ExpandLess /> : <ExpandMore />}
                       disablePadding
-                      variant="text"
                       sx={{ height: "20px" }}
                     >
-                      <Typography variant="navLinks">{item}</Typography>
+                      <Typography
+                        variant="navLinks"
+                        sx={{
+                          color: "var(--color-text-1)",
+                          fontWeight: "500",
+                        }}
+                      >
+                        {item}
+                      </Typography>
                     </Button>
                   </ListItemText>
                 </ListItemButton>
@@ -216,12 +234,19 @@ function Navbar(props) {
 
   return (
     <Root>
-      <Box id="navbar" sx={{ display: "flex", zIndex: 3 }}>
+      <Box
+        id="navbar"
+        sx={{
+          display: "flex",
+          zIndex: 3,
+          // width: "100vw",
+        }}
+      >
         <AppBar
           position="static"
           marginTop={2}
           sx={{
-            background: "var(--bgColor-1)",
+            background: "var(--bgColor-13)",
             boxShadow: "none",
             padding: { xl: "0 18%" },
           }}
@@ -232,6 +257,7 @@ function Navbar(props) {
               direction="row"
               justifyContent="space-between"
               alignItems="center"
+              wrap="noWrap"
             >
               <Grid item sx={{ my: 2 }}>
                 <Link to="">
@@ -242,16 +268,20 @@ function Navbar(props) {
                     alt="logo"
                     sx={{
                       my: 2,
+                      maxWidth: "100%",
+                      "@media (max-width: 385px)": {
+                        minWidth: "192px",
+                      },
                     }}
                   />
                 </Link>
               </Grid>
               <Grid item>
-                <Box sx={{ display: { xs: "none", lg: "block" } }}>
+                <Box sx={{ display: { xs: "none", md: "block" } }}>
                   <Stack spacing={2} direction="row">
                     {Object.keys(navbarItems).map((item) => (
                       <>
-                        {item === "MORE" ? (
+                        {item === "LEARN MORE" ? (
                           desktopNavLink(navbarItems, item)
                         ) : (
                           <Button
@@ -267,7 +297,7 @@ function Navbar(props) {
                   </Stack>
                 </Box>
               </Grid>
-              <Box sx={{ display: { xs: "none", lg: "block" } }}>
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
                 <Grid item>
                   <ButtonGetPump variant="getpump" />
                 </Grid>
@@ -279,7 +309,7 @@ function Navbar(props) {
                 onClick={handleDrawerToggle}
                 sx={{
                   ml: 2,
-                  display: { lg: "none" },
+                  display: { md: "none" },
                   color: "#000",
                   justifyContent: "flex-start",
                 }}
@@ -301,7 +331,7 @@ function Navbar(props) {
               keepMounted: true, // Better open performance on mobile.
             }}
             sx={{
-              display: { xs: "block", lg: "none" },
+              display: { xs: "block", md: "none" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
