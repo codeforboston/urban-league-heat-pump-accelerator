@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_26_152018) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_15_161105) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_152018) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "assignment_id"
+    t.integer "visit_order"
+    t.index ["assignment_id", "visit_order"], name: "index_homes_on_assignment_id_and_visit_order", unique: true
     t.index ["assignment_id"], name: "index_homes_on_assignment_id"
   end
 
@@ -122,7 +124,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_152018) do
     t.bigint "survey_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "display_order", default: 0, null: false
     t.index ["response_options"], name: "index_survey_questions_on_response_options", using: :gin
+    t.index ["survey_id", "display_order"], name: "index_survey_questions_on_survey_id_and_display_order", unique: true
     t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
   end
 
