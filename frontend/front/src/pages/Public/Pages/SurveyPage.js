@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Stack } from "@mui/material";
-import { PublicSurvey } from "../../../../components/SurveyComponent/SurveyComponent";
+import { PublicSurvey } from "../../../components/SurveyComponent/SurveyComponent";
 
 export const SurveyPage = () => (
   <Container>

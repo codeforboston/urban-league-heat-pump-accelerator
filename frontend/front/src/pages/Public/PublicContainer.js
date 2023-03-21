@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
-import { SurveyPage } from "./Pages/SurveyPage/SurveyPage";
+import { SurveyPage } from "./Pages/SurveyPage";
 import GetStarted from "./Pages/GetStarted";
 import GetInvolved from "./Pages/GetInvolved";
 import Faq from "./Pages/Faq";

@@ -17,6 +17,7 @@ export const HeatPumpDropdown = ({
   options,
   label,
   disabled,
+  required,
 }) => {
   const { field: groupField, formState } = useController({ name, control });
 
@@ -62,21 +63,25 @@ export const HeatPumpDropdown = ({
       <Controller
         name={name}
         control={control}
-        rules={{
-          required: { value: true, message: "This field is required!" },
-        }}
+        rules={
+          required && {
+            required: { value: true, message: "This field is required!" },
+          }
+        }
         render={({ field }) => renderDropdown(field)}
       />
       {showOtherInput && (
         <Controller
           name={otherFieldName}
           control={control}
-          rules={{
-            required: {
-              value: showOtherInput,
-              message: "This field is required!",
-            },
-          }}
+          rules={
+            required && {
+              required: {
+                value: showOtherInput,
+                message: "This field is required!",
+              },
+            }
+          }
           render={({ field }) => (
             <TextField
               label="Other..."
