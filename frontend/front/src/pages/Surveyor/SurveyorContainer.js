@@ -8,6 +8,7 @@ import Dashboard from "./dashboard/Dashboard";
 import Account from "./account/Account";
 import HouseProfile from "./houseProfile/HouseProfile";
 import EditAccount from "./account/edit/EditAccount";
+import Map from "./map/Map";
 
 const SurveyorContainer = () => {
   const { authenticated } = useSelector((state) => state.login);
@@ -15,13 +16,14 @@ const SurveyorContainer = () => {
   return (
     <Box>
       {authenticated ? <Nav /> : ""}
-      <Box sx={{ maxWidth: "800px" }} m='auto'>
+      <Box sx={{ maxWidth: "800px" }} m="auto">
         <Routes>
-          <Route path='/' element={<Login />}></Route>
-          <Route path='dashboard' element={<Dashboard />}></Route>
-          <Route path='account' element={<Account />}></Route>
-          <Route path='account/edit' element={<EditAccount />}></Route>
-          <Route path='house' element={<HouseProfile />}></Route>
+          <Route path="/" element={<Login />}></Route>
+          <Route path="dashboard" element={<Dashboard />}></Route>
+          <Route path="account" element={<Account />}></Route>
+          <Route path="account/edit" element={<EditAccount />}></Route>
+          <Route path="house" element={<HouseProfile />}></Route>
+          <Route path="map" element={<Map />}></Route>
         </Routes>
       </Box>
     </Box>

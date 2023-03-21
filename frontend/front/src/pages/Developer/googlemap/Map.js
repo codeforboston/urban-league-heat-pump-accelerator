@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import GoogleMap from "./GoogleMap";
 import cluster1 from "../../../dummyData/homeDataCluster1.json";
-import { Box, Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import MapLink from "./MapLink";
 
 console.log(cluster1);
@@ -16,7 +16,8 @@ const Map = () => {
   const bostonlocation = [];
 
   const calclocation = () => {
-    for (let i = 0; i < 25; i++) {
+    // limit placed by google maps api < 25 stops possible
+    for (let i = 0; i < 24; i++) {
       const lat = parseFloat(cluster1[i].latitude);
       const lng = parseFloat(cluster1[i].longitude);
       bostonlocation.push({ lat: lat, lng: lng });
@@ -26,11 +27,14 @@ const Map = () => {
   calclocation();
   console.log(bostonlocation);
   console.log(locations);
-  
+
   // DRIVING
   return (
     <Container>
       <Box m={5}>
+        <Box>
+          <Typography>Google Map</Typography>
+        </Box>
         {<GoogleMap locations={bostonlocation} travelMode="WALKING" />}
 
         <MapLink />
