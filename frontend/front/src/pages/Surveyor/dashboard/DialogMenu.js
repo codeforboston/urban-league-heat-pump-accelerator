@@ -14,14 +14,13 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ClearIcon from "@mui/icons-material/Clear";
 import DeleteIcon from "@mui/icons-material/Delete";
 function SimpleDialog(props) {
-  const { onClose, selectedValue, open } = props;
-  const handleClose = () => {
-    onClose(selectedValue);
+  const { handleClose, selectedValue, open } = props;
+
+  const handleListItemClick = () => {
+    handleClose(false);
   };
 
-  const handleListItemClick = (value) => {
-    onClose(value);
-  };
+  console.log("selectedValue", selectedValue);
 
   return (
     <Dialog onClose={handleClose} open={open}>
@@ -34,7 +33,9 @@ function SimpleDialog(props) {
         </DialogTitle>
         <List sx={{ pt: 0 }}>
           <ListItem disableGutters>
-            <ListItemButton onClick={() => handleListItemClick()}>
+            <ListItemButton
+              onClick={() => handleListItemClick(selectedValue.GIS_ID)}
+            >
               <ListItemAvatar>
                 <Avatar sx={{ bgcolor: "white", color: blue[600] }}>
                   <DeleteIcon />
@@ -44,7 +45,9 @@ function SimpleDialog(props) {
             </ListItemButton>
           </ListItem>
           <ListItem disableGutters>
-            <ListItemButton onClick={() => handleListItemClick()}>
+            <ListItemButton
+              onClick={() => handleListItemClick(selectedValue.GIS_ID)}
+            >
               <ListItemAvatar>
                 <Avatar sx={{ bgcolor: "white", color: blue[600] }}>
                   <ClearIcon />
@@ -55,7 +58,13 @@ function SimpleDialog(props) {
           </ListItem>
         </List>
       </Box>
-      <Button variant="contained" ml="auto" mr="auto" size="large">
+      <Button
+        variant="contained"
+        ml="auto"
+        mr="auto"
+        size="large"
+        onClick={handleClose}
+      >
         Close
       </Button>
     </Dialog>
@@ -63,9 +72,7 @@ function SimpleDialog(props) {
 }
 
 SimpleDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  // selectedValue: PropTypes.string.isRequired,
 };
 
 export default function DialogMenu(props) {
@@ -89,7 +96,7 @@ export default function DialogMenu(props) {
       <SimpleDialog
         selectedValue={selectedValue}
         open={open}
-        onClose={handleClose}
+        handleClose={handleClose}
       />
     </Box>
   );
