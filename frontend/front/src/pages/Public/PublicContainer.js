@@ -10,7 +10,7 @@ import GetStarted from "./Pages/GetStarted";
 import GetInvolved from "./Pages/GetInvolved";
 import Faq from "./Pages/Faq";
 import Testimonials from "./Pages/Testimonials";
-import AboutUs from "./Pages/AboutUs";
+import AboutUs from "./Pages/AboutUs/AboutUs";
 import AboutHeatPump from "./Pages/AboutHeatPump";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import "./Assets/index.css";
