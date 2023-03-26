@@ -3,12 +3,12 @@ import Survey from "../dummyData/Survey.json";
 import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
 import surveyStructure from "../dummyData/backendData/survey_show.json";
 
-const mockSurvey = Survey;
-
 const mockBaseQuery =
   ({ baseUrl } = { baseUrl: "" }) =>
   ({ mock }) => {
-    return { data: mock };
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({ data: mock }), 2000);
+    });
   };
 
 export const apiSlice = createApi({
@@ -31,9 +31,10 @@ export const apiSlice = createApi({
     }),
     createHomeData: builder.mutation({
       query: (home) => ({
-        url: `/home`,
+        url: `/homes`,
         method: "POST",
         body: home,
+        mock: home,
       }),
       invalidatesTags: ["Home"],
     }),
@@ -105,6 +106,15 @@ export const apiSlice = createApi({
         mock: surveyStructure,
       }),
     }),
+    /* Survey visit endpoints */
+    postSurveyVisit: builder.mutation({
+      query: (body) => ({
+        url: "/homesurvey",
+        method: "post",
+        body,
+        mock: body,
+      }),
+    }),
   }),
 });
 
@@ -124,4 +134,7 @@ export const {
   // Survey
   useGetSurveyListQuery,
   useGetSurveyStructureQuery,
+
+  // Survey visit
+  usePostSurveyVisitMutation,
 } = apiSlice;

@@ -46,6 +46,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                   formState.errors.address?.street.message
                 }
                 disabled={disabled}
+                autoComplete="address-line1"
               />
             )}
           />
@@ -67,6 +68,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                   formState.errors.address?.aptNumber.message
                 }
                 disabled={disabled}
+                autoComplete="address-line2"
               />
             )}
           />
@@ -98,6 +100,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                   formState.errors.address?.zipCode.message
                 }
                 disabled={disabled}
+                autoComplete="postal-code"
               />
             )}
           />
@@ -125,6 +128,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                   formState.errors.address?.city.message
                 }
                 disabled={disabled}
+                autoComplete="address-level2"
               />
             )}
           />

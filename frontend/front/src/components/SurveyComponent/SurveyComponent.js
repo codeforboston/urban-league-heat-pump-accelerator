@@ -2,10 +2,11 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Stack, Alert, CircularProgress, Box } from "@mui/material";
 import { HeatPumpDropdown } from "./HeatPumpDropdown";
-import { useGetReCAPTCHAToken } from "../ReCaptcha";
 import ConfirmationModal from "../../pages/Developer/confirmModal/ConfirmationModal";
 import { useGetSurveyStructureQuery } from "../../redux/apiSlice";
 import { HeatPumpTextField } from "./HeatPumpTextField";
+import { useSelector } from "react-redux";
+import { AddressComponent } from "../AddressComponent";
 
 const getDefaultResponse = (question) =>
   question.response_type === "radio" ? question.response_options[0] : "";
@@ -17,8 +18,9 @@ export const ADMIN_MODE = "ADMIN_MODE";
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
  */
-const SurveyComponent = ({ mode }) => {
+export const SurveyComponent = ({ mode, submitSurvey, isLoading }) => {
   const { handleSubmit, reset, control } = useForm();
+  const activeHome = useSelector((store) => store.home.activeHome);
 
   // TODO: id of the main survey goes here
   const { data: surveyStructure, error: surveyStructureError } =
@@ -48,14 +50,6 @@ const SurveyComponent = ({ mode }) => {
     () => mode === ADMIN_MODE && !isEditing,
     [mode, isEditing]
   );
-
-  const getReCaptchaToken = useGetReCAPTCHAToken("submit");
-
-  const onSubmit = async (data) => {
-    // TODO: connect to back-end, pass reCaptchaToken so it can be used for validation
-    const token = await getReCaptchaToken();
-    alert(JSON.stringify(data, null, 4));
-  };
 
   const onDelete = useCallback(() => {
     alert("This deletion logic still needs to be implemented!");
@@ -129,7 +123,6 @@ const SurveyComponent = ({ mode }) => {
     () => (
       <>
         {surveyStructure?.survey_questions.map((q) => {
-          console.log("question", q);
           switch (q.response_type) {
             case "radio":
               return (
@@ -175,7 +168,8 @@ const SurveyComponent = ({ mode }) => {
         title="Confirm Delete"
         message={`Are you sure you want to delete this survey data?`}
       />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <AddressComponent home={activeHome} />
+      <form onSubmit={handleSubmit(submitSurvey)}>
         <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
           {surveyStructure ? (
             renderSurvey()
@@ -183,12 +177,15 @@ const SurveyComponent = ({ mode }) => {
             <Alert severity="error">
               {"Encountered an error while loading the survey."}
             </Alert>
+          ) : !activeHome ? (
+            <Alert severity="error">{"No active home set!"}</Alert>
           ) : (
             <Box display="flex" justifyContent="center">
               <CircularProgress />
             </Box>
           )}
           <Stack direction="row" justifyContent="center" spacing={2}>
+            {isLoading && <CircularProgress />}
             {mode === ADMIN_MODE
               ? isEditing
                 ? adminButtonsEditing()
@@ -201,10 +198,27 @@ const SurveyComponent = ({ mode }) => {
   );
 };
 
-export const AdminSurvey = ({ defaultData }) => (
-  <SurveyComponent mode={ADMIN_MODE} defaultData={defaultData} />
+export const AdminSurvey = ({ defaultData, submitSurvey, isLoading }) => (
+  <SurveyComponent
+    mode={ADMIN_MODE}
+    defaultData={defaultData}
+    onSuccess={submitSurvey}
+    isLoading={isLoading}
+  />
 );
 
-export const SurveyorSurvey = () => <SurveyComponent mode={SURVEYOR_MODE} />;
+export const SurveyorSurvey = ({ submitSurvey, isLoading }) => (
+  <SurveyComponent
+    mode={SURVEYOR_MODE}
+    submitSurvey={submitSurvey}
+    isLoading={isLoading}
+  />
+);
 
-export const PublicSurvey = () => <SurveyComponent mode={PUBLIC_MODE} />;
+export const PublicSurvey = ({ submitSurvey, isLoading }) => (
+  <SurveyComponent
+    mode={PUBLIC_MODE}
+    submitSurvey={submitSurvey}
+    isLoading={isLoading}
+  />
+);
