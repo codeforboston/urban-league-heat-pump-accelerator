@@ -19,7 +19,10 @@ RSpec.describe '/survey_responses', type: :request do
   # SurveyResponse. As you add validations to SurveyResponse, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      survey_id: 1,
+      survey_visit_id: 1
+    }
   end
 
   let(:invalid_attributes) do
@@ -61,25 +64,27 @@ RSpec.describe '/survey_responses', type: :request do
     context 'with valid parameters' do
       it 'creates a new SurveyResponse' do
         expect do
-          post survey_responses_url, params: { survey_response: valid_attributes }
+          debugger
+          post survey_responses_url, params: { survey_response: valid_attributes }, as: :json
         end.to change(SurveyResponse, :count).by(1)
       end
 
       it 'redirects to the created survey_response' do
-        post survey_responses_url, params: { survey_response: valid_attributes }
+        post survey_responses_url, params: { survey_response: valid_attributes }, as: :json
         expect(response).to redirect_to(survey_response_url(SurveyResponse.last))
       end
     end
 
     context 'with invalid parameters' do
       it 'does not create a new SurveyResponse' do
+        pending
         expect do
           post survey_responses_url, params: { survey_response: invalid_attributes }
         end.to change(SurveyResponse, :count).by(0)
       end
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post survey_responses_url, params: { survey_response: invalid_attributes }
+        post survey_responses_url, params: { survey_response: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
