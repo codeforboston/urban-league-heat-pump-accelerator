@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20230118011909) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_18_205650) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.string "group"
+    t.bigint "surveyor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["surveyor_id"], name: "index_assignments_on_surveyor_id"
+  end
 
   create_table "homes", force: :cascade do |t|
     t.string "street_number"
@@ -24,6 +32,18 @@ ActiveRecord::Schema[7.0].define(version: 20230118011909) do
     t.string "building_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "assignment_id"
+    t.integer "visit_order"
+    t.index ["assignment_id", "visit_order"], name: "index_homes_on_assignment_id_and_visit_order", unique: true
+    t.index ["assignment_id"], name: "index_homes_on_assignment_id"
+  end
+
+  create_table "jwt_denylists", force: :cascade do |t|
+    t.string "jti"
+    t.datetime "expired_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jti"], name: "index_jwt_denylists_on_jti"
   end
 
   create_table "property_assessments", force: :cascade do |t|
@@ -43,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 20230118011909) do
     t.string "lu", limit: 2
     t.string "lu_desc"
     t.string "bldg_type"
-    t.string "own_occ"
+    t.boolean "own_occ"
     t.string "owner"
     t.string "mail_addressee"
     t.string "mail_address"
@@ -92,7 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 20230118011909) do
     t.string "orientation"
     t.integer "num_parking"
     t.string "prop_view"
-    t.string "corner_unit"
+    t.boolean "corner_unit"
   end
 
   create_table "survey_answers", force: :cascade do |t|
@@ -112,19 +132,19 @@ ActiveRecord::Schema[7.0].define(version: 20230118011909) do
     t.bigint "survey_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "display_order", default: 0, null: false
     t.index ["response_options"], name: "index_survey_questions_on_response_options", using: :gin
+    t.index ["survey_id", "display_order"], name: "index_survey_questions_on_survey_id_and_display_order", unique: true
     t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
   end
 
   create_table "survey_responses", force: :cascade do |t|
     t.bigint "survey_id", null: false
     t.bigint "survey_visit_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["survey_id"], name: "index_survey_responses_on_survey_id"
     t.index ["survey_visit_id"], name: "index_survey_responses_on_survey_visit_id"
-    t.index ["user_id"], name: "index_survey_responses_on_user_id"
   end
 
   create_table "survey_visits", force: :cascade do |t|
@@ -173,12 +193,12 @@ ActiveRecord::Schema[7.0].define(version: 20230118011909) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "assignments", "surveyors"
   add_foreign_key "survey_answers", "survey_questions"
   add_foreign_key "survey_answers", "survey_responses"
   add_foreign_key "survey_questions", "surveys"
   add_foreign_key "survey_responses", "survey_visits"
   add_foreign_key "survey_responses", "surveys"
-  add_foreign_key "survey_responses", "users"
   add_foreign_key "survey_visits", "users"
   add_foreign_key "surveyors", "users"
 end

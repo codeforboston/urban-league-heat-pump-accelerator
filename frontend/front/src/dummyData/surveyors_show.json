@@ -1,0 +1,15 @@
+{
+    "id": 1,
+    "firstname": "Alice",
+    "lastname": "Abbott",
+    "email": "alice.abbott@test.com",
+    "phone": "(123) 111-1111",
+    "street_address": "1 Boylston Street",
+    "city": "Boston",
+    "state": "MA",
+    "zipcode": "2116",
+    "geocode": "abc",
+    "role": "surveyor",
+    "status": "active",
+    "url": "http://localhost:3000/surveyors/1.json"
+}

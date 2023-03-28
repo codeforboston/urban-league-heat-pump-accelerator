@@ -2,6 +2,7 @@
 
 class Surveyor < ApplicationRecord
   belongs_to :user
+  has_many :assignments, dependent: nil
 
   validates :firstname, presence: true
   validates :lastname, presence: true

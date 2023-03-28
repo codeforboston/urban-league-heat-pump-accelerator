@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :assignments
   resources :homes
   resources :surveyors
   resources :survey_visits
@@ -9,7 +10,9 @@ Rails.application.routes.draw do
   resources :survey_questions
   resources :surveys
 
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   resources :property_assessments, only: [:index]
   root 'property_assessments#index'
 end

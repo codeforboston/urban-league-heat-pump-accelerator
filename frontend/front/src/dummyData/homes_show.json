@@ -1,0 +1,11 @@
+{
+    "id": 1,
+    "street_number": "1",
+    "street_name": "Hanover Street",
+    "unit_number": "5",
+    "city": "Boston",
+    "state": "MA",
+    "zip_code": "2108",
+    "building_type": "House",
+    "url": "http://localhost:3000/homes/1.json"
+}

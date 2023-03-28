@@ -1,68 +1,135 @@
 import React from "react";
-import { Typography, Stack, Box, Button, Grid, Divider } from "@mui/material";
-import strings from "../Assets/constants";
-import ButtonGetPump from "../Components/ButtonGetPump";
+import { Box, Button, Grid, Toolbar, Typography, Divider } from "@mui/material";
 import { Link } from "react-router-dom";
-import Partners from "../Components/Partners";
+import ButtonGetPump from "../Components/ButtonGetPump";
+import logoHeatPump from "../../../assets/images/logoHeatPump.png";
+import { styled } from "@mui/material/styles";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import EmailIcon from "@mui/icons-material/Email";
+
+const FooterWrapper = styled("div")(({ theme }) => ({
+  background: "var(--bgColor-2)",
+  color: "var(--color-text-1)",
+  marginTop: "128px",
+  position: "relative",
+  "& .footer-logo-wrapper": {
+    width: "36%",
+  },
+  "& .footer-links-wrapper": {
+    width: "30%",
+  },
+  "& .footer-links": {
+    display: "flex",
+    flexDirection: "column",
+    gap: "34px",
+    alignItems: "center",
+  },
+  "& .footer-contact-wrapper": {
+    width: "30%",
+  },
+  "& .footer-contact": {
+    height: "169px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+  },
+  [theme.breakpoints.down("md")]: {
+    "& .footer-links-wrapper": {},
+    "& .footer-links": {},
+  },
+}));
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <Box
-      pt={4}
-      sx={{
-        bgcolor: "footer.bgColor",
-        color: "#FFF",
-      }}
-    >
-      <Grid container spacing={4} sx={{ alignItems: "center" }}>
-        <Grid item lg={9} sx={{ pb: 6, mx: 4 }}>
-          <Partners />
-        </Grid>
-        <Divider
-          orientation="vertical"
-          variant="fullWidth"
-          sx={{ mt: 4 }}
-          color="gray"
-          flexItem
-        />
-        <Grid item lg={2} alignItems="center">
-          <Stack
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Button
-              component={Link}
-              to="survey"
-              sx={{ color: "#fff", width: "200px" }}
-              size="medium"
-            >
-              Take The Survey
-            </Button>
-            <Button
-              component={Link}
-              to="about"
-              sx={{ color: "#fff", width: "200px" }}
-              size="medium"
-            >
-              Learn More About Us
-            </Button>
+    <FooterWrapper>
+      <Toolbar>
+        <Grid container position="static" pt={4} pb={2}>
+          <Grid item className="footer-logo-wrapper">
+            <Grid
+              component="img"
+              container
+              alt="logo"
+              src={logoHeatPump}
+              sx={{
+                mt: 6,
 
-            <ButtonGetPump />
-          </Stack>
-        </Grid>
-        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-          <Stack justifyContent="center" p={4} sx={{ color: "main" }}>
-            <Typography align="center">
-              © {currentYear} Copyrights: {strings.appName}
+                width: "auto",
+              }}
+            />
+            <Divider light="true" sx={{ my: 2 }} />
+            <Typography variant="caption" pt={1}>
+              © {currentYear} | Boston Heat Pump Accelerator.
             </Typography>
-          </Stack>
+            <Typography align="center" variant="caption" pt={1}>
+              All logos and trademarks are copyright their respective owners.
+            </Typography>
+          </Grid>
+
+          <Grid item sx={{ width: "auto" }} pl={2}>
+            <Divider orientation="vertical" light="true" />
+          </Grid>
+
+          <Grid item className="footer-links-wrapper">
+            <Box className="footer-links">
+              <ButtonGetPump variant="getpump" />
+              <Button
+                component={Link}
+                size="medium"
+                sx={{ color: "var(--color-text-1)", width: "auto" }}
+                to="about"
+              >
+                Learn More About Us
+              </Button>
+              <Button
+                component={Link}
+                size="medium"
+                sx={{ color: "var(--color-text-1)", width: "auto" }}
+                to="survey"
+              >
+                Take The Survey
+              </Button>
+            </Box>
+          </Grid>
+
+          <Grid item sx={{ width: "auto" }} textAlign="left">
+            <Divider orientation="vertical" light="true" textAlign="left" />
+          </Grid>
+
+          <Grid item className="footer-contact-wrapper" ml={2}>
+            <Typography variant="navLinks" pt={1} sx={{ margin: "0 auto" }}>
+              CONTACT US
+            </Typography>
+            <Box className="footer-contact">
+              <Typography
+                variant="navLinks"
+                pt={1}
+                sx={{ display: "flex", alignItems: "baseline" }}
+              >
+                <LocationOnIcon sx={{ mr: 2 }} /> 1 City Hall Square, Boston, MA
+                02201
+              </Typography>
+              <Typography
+                variant="navLinks"
+                pt={1}
+                sx={{ display: "flex", alignItems: "baseline" }}
+              >
+                <LocalPhoneIcon sx={{ mr: 2 }} /> 617-635-4500
+              </Typography>
+              <Typography
+                variant="navLinks"
+                pt={1}
+                sx={{ display: "flex", alignItems: "baseline" }}
+              >
+                <EmailIcon sx={{ mr: 2 }} /> email@email.com
+              </Typography>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </Box>
+      </Toolbar>
+    </FooterWrapper>
   );
 };
 
