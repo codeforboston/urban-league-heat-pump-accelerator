@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :surveyors
   resources :survey_visits
   resources :survey_answers
-  resources :survey_responses
+  resources :survey_responses, except: [:edit]
   resources :survey_questions
   resources :surveys
 

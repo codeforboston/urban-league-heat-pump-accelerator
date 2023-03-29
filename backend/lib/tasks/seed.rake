@@ -24,16 +24,4 @@ namespace :seed do
       end
     end
   end
-
-  desc 'Import test seed data (1000 record subset)'
-  task test: :environment do
-    puts "Environment Check: Rails Environment = #{Rails.env}"
-    import_seed_data(test_seed_data_local_path)
-  end
-
-  desc 'Import full Boston dataset'
-  task full: :environment do
-    puts "Environment Check: Rails Environment = #{Rails.env}"
-    import_seed_data(full_seed_data_local_path)
-  end
 end

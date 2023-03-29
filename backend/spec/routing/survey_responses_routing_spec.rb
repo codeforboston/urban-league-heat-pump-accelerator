@@ -16,10 +16,6 @@ RSpec.describe SurveyResponsesController, type: :routing do
       expect(get: '/survey_responses/1').to route_to('survey_responses#show', id: '1')
     end
 
-    it 'routes to #edit' do
-      expect(get: '/survey_responses/1/edit').to route_to('survey_responses#edit', id: '1')
-    end
-
     it 'routes to #create' do
       expect(post: '/survey_responses').to route_to('survey_responses#create')
     end
