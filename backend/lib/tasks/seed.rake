@@ -8,7 +8,6 @@ include SeedImporter
 # rubocop:enable Style/MixinUsage
 
 full_seed_data_local_path = 'lib/seeds/download/boston_fy2022_pa.csv'
-test_seed_data_local_path = 'lib/seeds/test_seeds.csv'
 
 namespace :seed do
   desc 'Download City of Boston dataset'
