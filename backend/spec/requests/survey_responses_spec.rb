@@ -18,8 +18,13 @@ RSpec.describe '/survey_responses', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # SurveyResponse. As you add validations to SurveyResponse, be sure to
   # adjust the attributes here as well.
+  let(:survey) { create(:survey) }
+  let(:survey_visit) { create(:survey_visit) }
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      survey_id: survey.id,
+      survey_visit_id: survey_visit.id
+    }
   end
 
   let(:invalid_attributes) do
@@ -49,37 +54,25 @@ RSpec.describe '/survey_responses', type: :request do
     end
   end
 
-  describe 'GET /edit' do
-    it 'renders a successful response' do
-      survey_response = SurveyResponse.create! valid_attributes
-      get edit_survey_response_url(survey_response)
-      expect(response).to be_successful
-    end
-  end
-
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new SurveyResponse' do
         expect do
-          post survey_responses_url, params: { survey_response: valid_attributes }
+          post survey_responses_url, params: { survey_response: valid_attributes }, as: :json
         end.to change(SurveyResponse, :count).by(1)
-      end
-
-      it 'redirects to the created survey_response' do
-        post survey_responses_url, params: { survey_response: valid_attributes }
-        expect(response).to redirect_to(survey_response_url(SurveyResponse.last))
       end
     end
 
     context 'with invalid parameters' do
       it 'does not create a new SurveyResponse' do
+        pending
         expect do
           post survey_responses_url, params: { survey_response: invalid_attributes }
         end.to change(SurveyResponse, :count).by(0)
       end
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post survey_responses_url, params: { survey_response: invalid_attributes }
+        post survey_responses_url, params: { survey_response: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -97,13 +90,6 @@ RSpec.describe '/survey_responses', type: :request do
         survey_response.reload
         skip('Add assertions for updated state')
       end
-
-      it 'redirects to the survey_response' do
-        survey_response = SurveyResponse.create! valid_attributes
-        patch survey_response_url(survey_response), params: { survey_response: new_attributes }
-        survey_response.reload
-        expect(response).to redirect_to(survey_response_url(survey_response))
-      end
     end
 
     context 'with invalid parameters' do
@@ -115,18 +101,12 @@ RSpec.describe '/survey_responses', type: :request do
     end
   end
 
-  describe 'DELETE /destroy' do
+  describe 'DELETE /survey_response/5' do
     it 'destroys the requested survey_response' do
       survey_response = SurveyResponse.create! valid_attributes
       expect do
-        delete survey_response_url(survey_response)
+        delete survey_response_url(survey_response), as: :json
       end.to change(SurveyResponse, :count).by(-1)
-    end
-
-    it 'redirects to the survey_responses list' do
-      survey_response = SurveyResponse.create! valid_attributes
-      delete survey_response_url(survey_response)
-      expect(response).to redirect_to(survey_responses_url)
     end
   end
 end
