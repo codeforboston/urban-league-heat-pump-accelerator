@@ -36,7 +36,7 @@ const Dashboard = () => {
   return (
     <Box>
       <Box m={3} p={2}>
-        <Typography>Json Surveyor call</Typography>
+        <Typography>Json Server api</Typography>
         {content}
       </Box>
 

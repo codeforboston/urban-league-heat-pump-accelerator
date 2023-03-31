@@ -7,10 +7,16 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const MapLinkUnit = ({ value }) => {
+  const navigate = useNavigate();
+
+  const OnBtnClick = (value) => {
+    navigate("/surveyor/house/" + value);
+  };
   return (
-    <ListItemButton>
+    <ListItemButton onClick={() => OnBtnClick(value.GIS_ID)}>
       <ListItemAvatar>
         <Avatar
           sx={{

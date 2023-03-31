@@ -8,11 +8,11 @@ export const surveyorViewApiSlice = createApi({
   //   baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
   baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
   endpoints: (builder) => ({
-    getSurveyorAssignment: builder.query({
-      query: () => "/assignments",
+    getAdminHomes: builder.query({
+      query: () => "/homes",
     }),
-    deleteSurveyorAssignment: builder.query({
-      query: () => "/surveyorViewAssignment",
+    getAdminUsers: builder.query({
+      query: () => "/users",
     }),
   }),
 });

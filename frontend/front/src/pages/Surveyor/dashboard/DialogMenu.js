@@ -36,18 +36,6 @@ function SimpleDialog(props) {
             >
               <ListItemAvatar>
                 <Avatar sx={{ bgcolor: "white", color: blue[600] }}>
-                  <DeleteIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={"Unassign"} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disableGutters>
-            <ListItemButton
-              onClick={() => handleListItemClick(selectedValue.GIS_ID)}
-            >
-              <ListItemAvatar>
-                <Avatar sx={{ bgcolor: "white", color: blue[600] }}>
                   <ClearIcon />
                 </Avatar>
               </ListItemAvatar>

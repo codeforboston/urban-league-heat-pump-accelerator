@@ -22,7 +22,7 @@ const SurveyorContainer = () => {
           <Route path="dashboard" element={<Dashboard />}></Route>
           <Route path="account" element={<Account />}></Route>
           <Route path="account/edit" element={<EditAccount />}></Route>
-          <Route path="house" element={<HouseProfile />}></Route>
+          <Route path="house/:id" element={<HouseProfile />}></Route>
           <Route path="map" element={<Map />}></Route>
         </Routes>
       </Box>

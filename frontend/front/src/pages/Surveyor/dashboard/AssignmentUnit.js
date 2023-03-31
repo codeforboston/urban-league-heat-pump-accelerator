@@ -29,6 +29,10 @@ const AssignmentUnit = (props) => {
     navigate("/surveyor/map");
   };
 
+  const OnBtnClick = (value) => {
+    navigate("/surveyor/house/" + value);
+  };
+
   const [checked, setChecked] = useState([]);
 
   const [alert, setAlert] = useState(false);
@@ -145,7 +149,7 @@ const AssignmentUnit = (props) => {
                 />
               }
             >
-              <ListItemButton>
+              <ListItemButton onClick={() => OnBtnClick(value.GIS_ID)}>
                 <ListItemAvatar>
                   <Avatar
                     sx={{
