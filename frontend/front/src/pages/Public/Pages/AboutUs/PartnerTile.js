@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Typography, Divider } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
 const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
 
@@ -8,21 +8,26 @@ const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
       container
       justifyContent="center"
       alignItems="center"
-      color="#000000"
       marginTop={3}
       marginBottom={3}
     >
-      <Typography marginBottom={3} paragraph={true}>
+      <Typography marginBottom={3}>
         <b>{partnerName}</b> {paragraphText}
       </Typography>
       <a
         href={website}
         target='_blank'
+        rel="noopener noreferrer"
       >
-        <img
-          style={{ height: 100, marginBottom: 12 }}
-          alt={`logo of ${partnerName}`}
-          src={image}
+        <Box
+          component="img"
+          src={ulem}
+          sx={{
+            height: 100,
+            "max-width": "90%",
+            mt: 3,
+            mb: 3,
+          }}
         />
       </a>
     </Grid>

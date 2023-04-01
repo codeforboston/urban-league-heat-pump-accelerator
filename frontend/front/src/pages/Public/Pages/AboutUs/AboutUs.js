@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography, Divider } from "@mui/material";
+import { Grid, Typography, Container } from "@mui/material";
 import PartnerTile from "./PartnerTile";
 import ulem from "../../../../assets/images/ULEM.png"
 import mcec from "../../../../assets/images/MACleanEnergy.png"
@@ -10,36 +10,53 @@ import pcb from "../../../../assets/images/powercorp-boston.jpeg"
 
 function AboutUs() {
   return (
-    <Box>
-      <Grid item display="flex" flexDirection="column" alignItems="center" mr={4} ml={4}>
+    <Container>
+      <Grid
+        item display="flex"
+        flexDirection="column"
+        alignItems="center"
+        mr={4}
+        ml={4}
+        sx={{
+          color: 'var(--color-text-1) !important'
+        }}
+
+      >
         <Typography
           variant="h4"
           mt={3}
           mb={3}
-          color="#000000"
           textAlign="center"
           sx={{
             textDecoration: "underline #72bede",
           }}
         >
-          About The Project
+          About the Boston Heat Pump Accelerator
         </Typography>
-        <Typography mb={3} paragraph={true}>
+        <Typography mb={3}>
           <b>The Boston Heat Pump Accelerator (BHPA)</b> works to support increased access for Boston homeowners to heat pumps and related resources, helping to reduce costs for residents, increase community resilience, and shift the region to low-carbon technologies. This initiative takes no funding from companies or heat pump installers - it supports overall access to heat pumps only, via education and awareness efforts.
         </Typography>
-        <Typography mb={3} paragraph={true}>
+        <Typography mb={3}>
           <b>The Urban League of Eastern Massachusetts (ULEM)</b> is the sponsor of the BHPA effort. Since 1919, ULEM has delivered workforce and economic development services and programs to increase self-reliance of residents of the Boston community and surrounding metropolitan areas. ULEM is a 501c3 nonprofit organization and one of the oldest affiliates within the National Urban League movement.
         </Typography>
-        <Typography paragraph={true}>
+        <Typography>
           The BHPA project is directed by ULEM Board Member Christopher Scranton, in coordination with core partners, listed below.
         </Typography>
-        <img style={{ height: 100, 'max-width': '90%', mt: 3, mb: 3 }} src={ulem} />
+        <Box
+          component="img"
+          src={ulem}
+          sx={{
+            height: 100,
+            "max-width": "90%",
+            mt: 3,
+            mb: 3,
+          }}
+        />
         <Typography
           variant="h4"
           mt={3}
           mb={3}
           textAlign="center"
-          color="#000000"
           sx={{ textDecoration: "underline #72bede" }}
         >
           BHPA CORE PARTNERS
@@ -75,7 +92,7 @@ function AboutUs() {
           website='https://www.boston.gov/departments/workforce-development/powercorpsbos'
         />
       </Grid>
-    </Box >
+    </Container >
   );
 }
 
