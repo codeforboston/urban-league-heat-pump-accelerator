@@ -1,18 +1,13 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import { Alert, Container, Snackbar, Stack } from "@mui/material";
-import {
-  PUBLIC_MODE,
-  SurveyComponent,
-} from "../../../components/SurveyComponent/SurveyComponent";
 import { AddressValidatorComponent } from "../Components/AddressValidatorComponent";
-import { useDispatch, useSelector } from "react-redux";
-import { setActiveHome } from "../../../features/home/homeSlice";
 import {
   useCreateHomeDataMutation,
   usePostSurveyVisitMutation,
 } from "../../../redux/apiSlice";
 import { useGetReCAPTCHAToken } from "../../../components/ReCaptcha";
 import { ThanksForSubmission } from "../Components/ThanksForSubmission";
+import { PublicSurvey } from "../Components/PublicSurvey";
 
 /*
  * Page that handles the lifecycle of the public survey process
@@ -39,8 +34,6 @@ export const SurveyPage = () => {
       isSuccess: isSurveyVisitSuccess,
     },
   ] = usePostSurveyVisitMutation();
-  const activeHome = useSelector((store) => store.home.activeHome);
-  const dispatch = useDispatch();
 
   const handleCreateHome = useCallback(
     async ({ address }) => {
@@ -58,20 +51,6 @@ export const SurveyPage = () => {
     [addSurveyVisit, getReCaptchaToken]
   );
 
-  // automatically update the active home if home creation succeeded
-  useEffect(() => {
-    if (createHomeData) {
-      dispatch(setActiveHome(createHomeData.address));
-    }
-  }, [createHomeData, dispatch]);
-
-  // automatically clear active home if survey submission succeeded
-  useEffect(() => {
-    if (isSurveyVisitSuccess) {
-      dispatch(setActiveHome(null));
-    }
-  }, [dispatch, isSurveyVisitSuccess]);
-
   return (
     <Container>
       <Stack direction="column" alignItems="center" justifyContent="center">
@@ -85,7 +64,7 @@ export const SurveyPage = () => {
           the installation process.
         </p>
       </Stack>
-      {!activeHome && !isSurveyVisitSuccess ? (
+      {!createHomeData && !isSurveyVisitSuccess ? (
         <AddressValidatorComponent
           onValidate={handleCreateHome}
           isLoading={isCreateHomeLoading}
@@ -93,10 +72,10 @@ export const SurveyPage = () => {
       ) : isSurveyVisitSuccess ? (
         <ThanksForSubmission />
       ) : (
-        <SurveyComponent
-          mode={PUBLIC_MODE}
+        <PublicSurvey
           submitSurvey={handleAddSurveyVisit}
           isLoading={isSurveyVisitLoading}
+          activeHome={createHomeData.address}
         />
       )}
       {/* TODO: this should probably be a more specific error */}

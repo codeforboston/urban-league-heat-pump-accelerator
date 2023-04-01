@@ -3,7 +3,7 @@ import { Box, CircularProgress, Container, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useGetSurveyListQuery } from "../../../redux/apiSlice";
 import { SurveyError } from "./SurveyError";
-import { AdminSurvey } from "../../../components/SurveyComponent/SurveyComponent";
+import { AdminSurvey } from "../component/AdminSurvey";
 
 const SurveyProfile = () => {
   const { uid } = useParams();

@@ -6,7 +6,6 @@ const initialState = {
   pageArray: [],
   title: "Home page",
   isLoading: true,
-  activeHome: null,
 };
 
 const homeSlice = createSlice({
@@ -26,12 +25,9 @@ const homeSlice = createSlice({
       state.title = DataHome.title;
       state.array = DataHome.array;
     },
-    setActiveHome: (state, action) => {
-      state.activeHome = action.payload;
-    },
   },
 });
 
-export const { fetchHomeData, setActiveHome } = homeSlice.actions;
+export const { fetchHomeData } = homeSlice.actions;
 
 export default homeSlice.reducer;

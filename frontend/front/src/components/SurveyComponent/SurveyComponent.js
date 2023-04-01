@@ -5,26 +5,27 @@ import { HeatPumpDropdown } from "./HeatPumpDropdown";
 import ConfirmationModal from "../../pages/Developer/confirmModal/ConfirmationModal";
 import { useGetSurveyStructureQuery } from "../../redux/apiSlice";
 import { HeatPumpTextField } from "./HeatPumpTextField";
-import { useSelector } from "react-redux";
 import { AddressComponent } from "../AddressComponent";
 
 const getDefaultResponse = (question) =>
   question.response_type === "radio" ? question.response_options[0] : "";
 
-export const SURVEYOR_MODE = "SURVEYOR_MODE";
-export const PUBLIC_MODE = "PUBLIC_MODE";
-export const ADMIN_MODE = "ADMIN_MODE";
-
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
  */
-export const SurveyComponent = ({ mode, submitSurvey, isLoading }) => {
+export const SurveyComponent = ({
+  submitSurvey,
+  isLoading,
+  activeHome,
+  isEditable,
+  surveyId,
+  formSpacing,
+}) => {
   const { handleSubmit, reset, control } = useForm();
-  const activeHome = useSelector((store) => store.home.activeHome);
 
   // TODO: id of the main survey goes here
   const { data: surveyStructure, error: surveyStructureError } =
-    useGetSurveyStructureQuery("mainSurvey");
+    useGetSurveyStructureQuery(surveyId);
 
   // useEffect to set the default data for the form
   useEffect(() => {
@@ -40,15 +41,13 @@ export const SurveyComponent = ({ mode, submitSurvey, isLoading }) => {
     }
   }, [reset, surveyStructure]);
 
-  const [isEditing, setIsEditing] = useState(
-    mode === ADMIN_MODE ? false : true
-  );
+  const [isEditing, setIsEditing] = useState(!isEditable);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const isDisabled = useMemo(
-    () => mode === ADMIN_MODE && !isEditing,
-    [mode, isEditing]
+    () => isEditable && !isEditing,
+    [isEditing, isEditable]
   );
 
   const onDelete = useCallback(() => {
@@ -117,8 +116,6 @@ export const SurveyComponent = ({ mode, submitSurvey, isLoading }) => {
     [reset]
   );
 
-  const formSpacing = useMemo(() => (mode === PUBLIC_MODE ? 5 : 2), [mode]);
-
   const renderSurvey = useCallback(
     () => (
       <>
@@ -169,7 +166,11 @@ export const SurveyComponent = ({ mode, submitSurvey, isLoading }) => {
         message={`Are you sure you want to delete this survey data?`}
       />
       <AddressComponent home={activeHome} />
-      <form onSubmit={handleSubmit(submitSurvey)}>
+      <form
+        onSubmit={handleSubmit((surveyData) =>
+          submitSurvey(surveyData, surveyId)
+        )}
+      >
         <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
           {surveyStructure ? (
             renderSurvey()
@@ -186,7 +187,7 @@ export const SurveyComponent = ({ mode, submitSurvey, isLoading }) => {
           )}
           <Stack direction="row" justifyContent="center" spacing={2}>
             {isLoading && <CircularProgress />}
-            {mode === ADMIN_MODE
+            {isEditable
               ? isEditing
                 ? adminButtonsEditing()
                 : adminButtonsViewing()
@@ -197,28 +198,3 @@ export const SurveyComponent = ({ mode, submitSurvey, isLoading }) => {
     </>
   );
 };
-
-export const AdminSurvey = ({ defaultData, submitSurvey, isLoading }) => (
-  <SurveyComponent
-    mode={ADMIN_MODE}
-    defaultData={defaultData}
-    onSuccess={submitSurvey}
-    isLoading={isLoading}
-  />
-);
-
-export const SurveyorSurvey = ({ submitSurvey, isLoading }) => (
-  <SurveyComponent
-    mode={SURVEYOR_MODE}
-    submitSurvey={submitSurvey}
-    isLoading={isLoading}
-  />
-);
-
-export const PublicSurvey = ({ submitSurvey, isLoading }) => (
-  <SurveyComponent
-    mode={PUBLIC_MODE}
-    submitSurvey={submitSurvey}
-    isLoading={isLoading}
-  />
-);

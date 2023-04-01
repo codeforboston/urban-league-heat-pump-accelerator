@@ -1,22 +1,16 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Survey from "../dummyData/Survey.json";
 import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
-import surveyStructure from "../dummyData/backendData/survey_show.json";
 
-const mockBaseQuery =
-  ({ baseUrl } = { baseUrl: "" }) =>
-  ({ mock }) => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve({ data: mock }), 2000);
-    });
-  };
+const baseUrl = "http://localhost:3001";
 
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
   // TODO: remove mock when connecting to Real API
-  baseQuery: mockBaseQuery({
-    baseUrl: "http://localhost:3500",
-  }),
+  // baseQuery: mockBaseQuery({
+  //   baseUrl: "http://localhost:3500",
+  // }),
+  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
   // prepareHeaders: (headers) => {
   //   headers.set("apiKey", "TOKEN");
   //   return headers;
@@ -25,8 +19,8 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     //Home section of the slice
     getHomeData: builder.query({
-      query: () => "/home",
-      transformResponse: (res) => res.sort((a, b) => b.id - a.id),
+      query: () => "/homes",
+      transformResponse: (res) => (res ? res.sort((a, b) => a.id - b.id) : []),
       providesTags: [{ type: "Home" }],
     }),
     createHomeData: builder.mutation({
@@ -103,7 +97,6 @@ export const apiSlice = createApi({
       query: (id) => ({
         url: `/surveys/${id}`,
         method: "get",
-        mock: surveyStructure,
       }),
     }),
     /* Survey visit endpoints */
@@ -112,7 +105,6 @@ export const apiSlice = createApi({
         url: "/homesurvey",
         method: "post",
         body,
-        mock: body,
       }),
     }),
   }),
