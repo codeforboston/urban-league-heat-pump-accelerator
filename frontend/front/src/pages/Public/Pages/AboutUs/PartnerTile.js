@@ -21,7 +21,7 @@ const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
       >
         <Box
           component="img"
-          src={ulem}
+          src={image}
           sx={{
             height: 100,
             "max-width": "90%",

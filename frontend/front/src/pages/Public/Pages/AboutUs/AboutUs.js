@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Container } from "@mui/material";
+import { Box, Grid, Typography, Container } from "@mui/material";
 import PartnerTile from "./PartnerTile";
 import ulem from "../../../../assets/images/ULEM.png"
 import mcec from "../../../../assets/images/MACleanEnergy.png"
