@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Survey from "../dummyData/Survey.json";
 import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
-import surveyStructure from "../dummyData/survey_show.json";
+import surveyStructure from "../dummyData/backendData/survey_show.json";
 
 const mockSurvey = Survey;
 
