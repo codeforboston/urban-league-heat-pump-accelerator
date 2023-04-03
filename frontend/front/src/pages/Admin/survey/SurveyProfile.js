@@ -1,29 +1,81 @@
 import React, { useCallback, useMemo } from "react";
 import { Box, CircularProgress, Container, Typography } from "@mui/material";
-import { useParams } from "react-router-dom";
-import { useGetSurveyListQuery } from "../../../redux/apiSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  useGetHomeDataQuery,
+  useGetSurveyVisitQuery,
+  usePutSurveyVisitMutation,
+  useDeleteSurveyVisitMutation,
+} from "../../../redux/apiSlice";
 import { SurveyError } from "./SurveyError";
 import { AdminSurvey } from "../component/AdminSurvey";
+import { houseToString } from "../../../components/AddressUtils";
+import { formatISODate } from "../../../components/DateUtils";
 
 const SurveyProfile = () => {
-  const { uid } = useParams();
+  const navigate = useNavigate();
+  const { uid: surveyVisitId } = useParams();
 
-  const { survey, error, isLoading } = useGetSurveyListQuery(undefined, {
-    selectFromResult: ({ data }) => ({
-      // make sure ID is a string!
-      survey: data?.find((s) => `${s.id}` === uid),
-    }),
-  });
+  const { data: surveyVisit, error: surveyVisitError } =
+    useGetSurveyVisitQuery(surveyVisitId);
 
-  const title = useMemo(() => `Survey ${uid}`, [uid]);
+  const { data: houseData, error: houseError } = useGetHomeDataQuery(
+    surveyVisit?.homeId,
+    { skip: !surveyVisit }
+  );
+  const [
+    putSurveyVisit,
+    { isLoading: isSurveyVisitPutLoading, error: surveyVisitPutError },
+  ] = usePutSurveyVisitMutation();
+  const [
+    deleteSurveyVisit,
+    { isLoading: isSurveyDeleteLoading, error: surveyVisitDeleteError },
+  ] = useDeleteSurveyVisitMutation();
+
+  const title = useMemo(
+    () =>
+      surveyVisit && houseData
+        ? `${houseToString(houseData)} ${formatISODate(surveyVisit.date)}`
+        : "Loading...",
+    [houseData, surveyVisit]
+  );
+
+  const onSubmit = useCallback(
+    async (responses, surveyId) => {
+      const body = {
+        responses,
+        surveyId,
+        homeId: surveyVisit?.homeId,
+        // TODO: probably remove this and handle on the back end
+        date: new Date().toISOString(),
+      };
+      putSurveyVisit({ id: surveyVisitId, body });
+    },
+    [putSurveyVisit, surveyVisit?.homeId, surveyVisitId]
+  );
+
+  const onDelete = useCallback(() => {
+    deleteSurveyVisit(surveyVisitId);
+    navigate("/admin/survey");
+    navigate(0); // reload page to update data
+  }, [deleteSurveyVisit, surveyVisitId, navigate]);
 
   const PageContent = useCallback(() => {
-    if (survey) {
-      return <AdminSurvey defaultData={survey} />;
+    if (surveyVisit && houseData) {
+      return (
+        <AdminSurvey
+          defaultData={surveyVisit.responses}
+          activeHome={houseData}
+          surveyId={surveyVisit.surveyId}
+          submitSurvey={onSubmit}
+          onDelete={onDelete}
+          isLoading={isSurveyVisitPutLoading || isSurveyDeleteLoading}
+        />
+      );
     }
 
-    if (error) {
-      <SurveyError />;
+    if (surveyVisitError || houseError) {
+      return <SurveyError />;
     }
 
     return (
@@ -31,7 +83,16 @@ const SurveyProfile = () => {
         <CircularProgress />
       </Box>
     );
-  }, [error, survey]);
+  }, [
+    houseData,
+    houseError,
+    isSurveyDeleteLoading,
+    isSurveyVisitPutLoading,
+    onDelete,
+    onSubmit,
+    surveyVisit,
+    surveyVisitError,
+  ]);
 
   return (
     <Container>

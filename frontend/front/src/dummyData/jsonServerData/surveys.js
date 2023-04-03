@@ -2,7 +2,7 @@
 module.exports = [
   {
     id: 1,
-    title: "Draft Surveyor Survey",
+    title: "Draft Public Survey",
     survey_questions: [
       {
         id: 1,
@@ -135,7 +135,7 @@ module.exports = [
   },
   {
     id: 2,
-    title: "Draft Survey",
+    title: "Draft Surveyor Survey",
     survey_questions: [
       {
         id: 1,

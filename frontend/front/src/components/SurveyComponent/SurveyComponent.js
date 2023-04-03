@@ -5,10 +5,8 @@ import { HeatPumpDropdown } from "./HeatPumpDropdown";
 import ConfirmationModal from "../../pages/Developer/confirmModal/ConfirmationModal";
 import { useGetSurveyStructureQuery } from "../../redux/apiSlice";
 import { HeatPumpTextField } from "./HeatPumpTextField";
-import { AddressComponent } from "../AddressComponent";
-
-const getDefaultResponse = (question) =>
-  question.response_type === "radio" ? question.response_options[0] : "";
+import { AddressComponent } from "../AddressUtils";
+import { useNavigate } from "react-router-dom";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
@@ -20,26 +18,41 @@ export const SurveyComponent = ({
   isEditable,
   surveyId,
   formSpacing,
+  defaultData,
+  onDelete,
 }) => {
+  const navigate = useNavigate();
+
   const { handleSubmit, reset, control } = useForm();
 
   // TODO: id of the main survey goes here
   const { data: surveyStructure, error: surveyStructureError } =
     useGetSurveyStructureQuery(surveyId);
 
-  // useEffect to set the default data for the form
-  useEffect(() => {
+  const formDefault = useMemo(() => {
+    if (defaultData) {
+      return defaultData;
+    }
+
     if (surveyStructure) {
-      const defaultSurvey = surveyStructure.survey_questions.reduce(
+      return surveyStructure.survey_questions.reduce(
         (prev, curr) => ({
           ...prev,
-          [`${curr.id}`]: getDefaultResponse(curr),
+          [`${curr.id}`]: "",
         }),
         {}
       );
-      reset(defaultSurvey);
     }
-  }, [reset, surveyStructure]);
+
+    return null;
+  }, [defaultData, surveyStructure]);
+
+  // useEffect to set the default data for the form
+  useEffect(() => {
+    if (formDefault) {
+      reset(formDefault);
+    }
+  }, [formDefault, reset]);
 
   const [isEditing, setIsEditing] = useState(!isEditable);
 
@@ -50,17 +63,20 @@ export const SurveyComponent = ({
     [isEditing, isEditable]
   );
 
-  const onDelete = useCallback(() => {
-    alert("This deletion logic still needs to be implemented!");
-  }, []);
-
   const commonButtonSection = useCallback(
     () => (
       <>
         <Button variant="contained" type="submit">
           {"Submit"}
         </Button>
-        <Button variant="outlined" type="button" onClick={() => reset()}>
+        <Button
+          variant="outlined"
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            reset();
+          }}
+        >
           {"Clear"}
         </Button>
       </>
@@ -72,18 +88,24 @@ export const SurveyComponent = ({
     () => (
       <>
         <Button
+          type="button"
           variant="contained"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             setIsEditing(true);
           }}
         >
           {"EDIT"}
         </Button>
+        <Button variant="outlined" type="button" onClick={() => navigate(-1)}>
+          {"BACK"}
+        </Button>
         <Button
           variant="outlined"
           type="button"
           color="error"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             setIsDeleteModalOpen(true);
           }}
         >
@@ -91,7 +113,7 @@ export const SurveyComponent = ({
         </Button>
       </>
     ),
-    []
+    [navigate]
   );
 
   const adminButtonsEditing = useCallback(
@@ -104,7 +126,8 @@ export const SurveyComponent = ({
           variant="outlined"
           type="button"
           color="error"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             reset();
             setIsEditing(false);
           }}
@@ -158,7 +181,11 @@ export const SurveyComponent = ({
     <>
       <ConfirmationModal
         isOpen={isDeleteModalOpen}
-        handleConfirm={() => onDelete()}
+        handleConfirm={() => {
+          if (onDelete) {
+            onDelete();
+          }
+        }}
         handleCancel={() => setIsDeleteModalOpen(false)}
         confirmBtnText="Delete"
         cancelBtnText="Cancel"

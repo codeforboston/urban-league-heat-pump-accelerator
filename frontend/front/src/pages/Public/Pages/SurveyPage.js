@@ -38,17 +38,24 @@ export const SurveyPage = () => {
   const handleCreateHome = useCallback(
     async ({ address }) => {
       const recaptcha = await getReCaptchaToken();
-      createHome({ address, recaptcha });
+      createHome({ ...address, recaptcha });
     },
     [createHome, getReCaptchaToken]
   );
 
   const handleAddSurveyVisit = useCallback(
-    async (visit) => {
+    async (responses, surveyId) => {
       const recaptcha = await getReCaptchaToken();
-      addSurveyVisit({ visit, recaptcha });
+      addSurveyVisit({
+        responses,
+        recaptcha,
+        surveyId,
+        homeId: createHomeData?.id,
+        // TODO: probably remove this and handle on the back end
+        date: new Date().toISOString(),
+      });
     },
-    [addSurveyVisit, getReCaptchaToken]
+    [addSurveyVisit, createHomeData?.id, getReCaptchaToken]
   );
 
   return (
@@ -75,7 +82,7 @@ export const SurveyPage = () => {
         <PublicSurvey
           submitSurvey={handleAddSurveyVisit}
           isLoading={isSurveyVisitLoading}
-          activeHome={createHomeData.address}
+          activeHome={createHomeData}
         />
       )}
       {/* TODO: this should probably be a more specific error */}

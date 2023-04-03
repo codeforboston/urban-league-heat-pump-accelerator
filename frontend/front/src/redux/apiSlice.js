@@ -18,10 +18,13 @@ export const apiSlice = createApi({
   tagTypes: ["Home"],
   endpoints: (builder) => ({
     //Home section of the slice
-    getHomeData: builder.query({
+    getHomesData: builder.query({
       query: () => "/homes",
       transformResponse: (res) => (res ? res.sort((a, b) => a.id - b.id) : []),
       providesTags: [{ type: "Home" }],
+    }),
+    getHomeData: builder.query({
+      query: (id) => `/homes/${id}`,
     }),
     createHomeData: builder.mutation({
       query: (home) => ({
@@ -34,7 +37,7 @@ export const apiSlice = createApi({
     }),
     updateHomeData: builder.mutation({
       query: (item) => ({
-        url: `/home/${item.id}`,
+        url: `/homes/${item.id}`,
         method: "PUT",
         body: item,
       }),
@@ -42,7 +45,7 @@ export const apiSlice = createApi({
     }),
     deleteHomeData: builder.mutation({
       query: (item) => ({
-        url: `/home/${item.id}`,
+        url: `/homes/${item.id}`,
         method: "DELETE",
         body: "",
       }),
@@ -80,8 +83,7 @@ export const apiSlice = createApi({
     }),
     /* Survey Endpoints */
     getSurveyList: builder.query({
-      // TODO: remove mock when connecting to Real API
-      query: () => ({ url: "/survey", method: "get", mock: Survey }),
+      query: () => ({ url: "/surveys", method: "get" }),
     }),
     // mocking surveyorView data
     // getAssigment within surveyor view
@@ -93,7 +95,6 @@ export const apiSlice = createApi({
       }),
     }),
     getSurveyStructure: builder.query({
-      // TODO: remove mock when connecting to Real API
       query: (id) => ({
         url: `/surveys/${id}`,
         method: "get",
@@ -105,6 +106,27 @@ export const apiSlice = createApi({
         url: "/homesurvey",
         method: "post",
         body,
+      }),
+    }),
+    getSurveyVisits: builder.query({
+      query: () => ({ url: "/homesurvey", method: "get" }),
+    }),
+    getSurveyVisit: builder.query({
+      query: (id) => ({ url: `/homesurvey/${id}`, method: "get" }),
+    }),
+    putSurveyVisit: builder.mutation({
+      query: ({ id, body }) => {
+        return {
+          url: `/homesurvey/${id}`,
+          method: "put",
+          body,
+        };
+      },
+    }),
+    deleteSurveyVisit: builder.mutation({
+      query: (id) => ({
+        url: `/homesurvey/${id}`,
+        method: "delete",
       }),
     }),
   }),
@@ -121,6 +143,7 @@ export const {
   useDeleteHomeDataMutation,
   useUpdateHomeDataMutation,
   useCreateHomeDataMutation,
+  useGetHomesDataQuery,
   useGetHomeDataQuery,
 
   // Survey
@@ -129,4 +152,8 @@ export const {
 
   // Survey visit
   usePostSurveyVisitMutation,
+  useGetSurveyVisitsQuery,
+  useGetSurveyVisitQuery,
+  usePutSurveyVisitMutation,
+  useDeleteSurveyVisitMutation,
 } = apiSlice;

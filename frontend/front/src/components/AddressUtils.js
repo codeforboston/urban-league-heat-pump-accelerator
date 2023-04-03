@@ -15,3 +15,12 @@ export const AddressComponent = ({ home }) => (
     </CardContent>
   </Card>
 );
+
+export const houseToString = (home) => {
+  if (!home) {
+    return "";
+  }
+
+  const unitString = home.unit_number ? ` #${home.unit_number}` : "";
+  return `${home.street_number} ${home.street_name}${unitString}, ${home.city} ${home.state}`;
+};

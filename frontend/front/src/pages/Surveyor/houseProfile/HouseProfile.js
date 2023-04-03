@@ -5,7 +5,7 @@ import {
   CircularProgress,
   Snackbar,
 } from "@mui/material";
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import { useParams } from "react-router-dom";
 import {
   useGetHomeDataQuery,
@@ -17,10 +17,10 @@ import { SurveyorSurvey } from "../Components/SurveyorSurvey";
 const HouseProfile = () => {
   const { id: homeId } = useParams();
   const {
-    data: homesData,
+    data: homeData,
     error: homesError,
     isLoading: isHomesLoading,
-  } = useGetHomeDataQuery();
+  } = useGetHomeDataQuery(homeId);
 
   const [
     addSurveyVisit,
@@ -32,22 +32,15 @@ const HouseProfile = () => {
     },
   ] = usePostSurveyVisitMutation();
 
-  const homeData = useMemo(
-    () =>
-      homeId && homesData
-        ? homesData.filter((h) => `${h.id}` === `${homeId}`)[0] || null
-        : null,
-    [homesData, homeId]
-  );
-
   const submitSurvey = useCallback(
     (responses, surveyId) => {
-      const surveyVisit = {
+      addSurveyVisit({
         responses,
         homeId,
         surveyId,
-      };
-      addSurveyVisit(surveyVisit);
+        // TODO: probably remove this and handle on the back end
+        date: new Date().toISOString(),
+      });
     },
     [addSurveyVisit, homeId]
   );
