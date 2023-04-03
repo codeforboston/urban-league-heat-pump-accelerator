@@ -24,7 +24,7 @@ const Home = () => {
         </Box>
 
         {/* TESTIMONIALS */}
-        <Box sx={{ padding: { xs: "0" } }} mt={16}>
+        <Box id="testimonial-section" sx={{ padding: { xs: "0" } }} mt={16}>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Typography variant="title1">Testimonials</Typography>
           </Box>

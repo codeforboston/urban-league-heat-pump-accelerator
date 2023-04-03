@@ -12,17 +12,19 @@ import {
   Button,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import ButtonGetPump from "../Components/ButtonGetPump";
+// import ButtonGetPump from "../Components/ButtonGetPump";
 import logoHeatPump from "../../../assets/images/logoHeatPump.png";
 import { styled } from "@mui/material/styles";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 import EmailIcon from "@mui/icons-material/Email";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const footerItems = {
-  "About B.H.P.A": { link: "learn-more" },
+  "About B.H.P.A": { link: "about-us" },
+  "About Heat Pumps": { link: "about-heat-pump" },
   "Our Partners": { link: "our-partners-section" },
-  "F.A.Q": { link: "faq" },
+  "Learn More": { link: "learn-more" },
+  Testimonials: { link: "testimonial-section" },
 };
 
 const FooterWrapper = styled("div")(({ theme }) => ({
@@ -74,7 +76,7 @@ const Footer = () => {
             </Link>
           </Grid>
 
-          <Grid
+          {/* <Grid
             item
             sx={{
               display: { xs: "block", lg: "none" },
@@ -82,9 +84,9 @@ const Footer = () => {
             xs={12}
           >
             <ButtonGetPump variant="getpump" />
-          </Grid>
+          </Grid> */}
 
-          {/* LEARN */}
+          {/* BENEFITS OF HEAT PUMPS */}
           <Grid
             item
             sx={{
@@ -96,19 +98,29 @@ const Footer = () => {
             lg={3}
           >
             <List variant="caption">
-              <Typography className="subtitle-footer">LEARN</Typography>
+              <Typography className="subtitle-footer" pb={1}>
+                Benefits of Heat Pumps
+              </Typography>
               {Object.keys(footerItems).map((item) => (
-                <ListItem key={item} sx={{ py: { xs: 0, lg: 1 }, px: 0 }}>
+                <ListItem key={item} sx={{ pt: { xs: 0, lg: 0 }, px: 0 }}>
                   <ListItemButton
                     sx={{
                       py: 0,
                       px: 0,
                       textAlign: { xs: "center", lg: "left" },
                     }}
-                    component={item === "Our Partners" ? "button" : Link}
-                    to={item === "Our Partners" ? null : footerItems[item].link}
+                    component={
+                      item === "Our Partners" || item === "Testimonials"
+                        ? "button"
+                        : Link
+                    }
+                    to={
+                      item === "Our Partners" || item === "Testimonials"
+                        ? null
+                        : footerItems[item].link
+                    }
                     onClick={
-                      item === "Our Partners"
+                      item === "Our Partners" || item === "Testimonials"
                         ? () => {
                             navigate("/public");
                             setTimeout(() => {
@@ -147,9 +159,11 @@ const Footer = () => {
             lg={3}
           >
             <List variant="caption">
-              <Typography className="subtitle-footer">LEGAL</Typography>
+              <Typography className="subtitle-footer" pb={1}>
+                Legal
+              </Typography>
 
-              <ListItem sx={{ py: { xs: 0, lg: 1 }, px: 0 }}>
+              <ListItem sx={{ py: { xs: 0, lg: 0 }, px: 0 }}>
                 <ListItemButton
                   sx={{ py: 0, px: 0, textAlign: { xs: "center", lg: "left" } }}
                   component={Link}
@@ -179,7 +193,9 @@ const Footer = () => {
             }}
           >
             <>
-              <Typography className="subtitle-footer">GET IN TOUCH</Typography>
+              <Typography className="subtitle-footer">
+                Get to Know Us
+              </Typography>
               <Box>
                 <Box
                   variant="navLinks"
@@ -190,12 +206,12 @@ const Footer = () => {
                     pt: { xs: 1, lg: 2 },
                   }}
                 >
-                  <LocalPhoneIcon sx={{ mr: 1 }} />
+                  <PermPhoneMsgIcon sx={{ mr: 1 }} />
                   <a
                     href="tel:617-635-4500"
                     style={{ textDecoration: "none", color: "inherit" }}
                   >
-                    617-635-4500 (Voicemail)
+                    617-635-4500
                   </a>
                 </Box>
                 <Box
@@ -205,24 +221,24 @@ const Footer = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: { xs: "center", lg: "flex-start" },
-                    py: { xs: 1, lg: 2 },
+                    py: { xs: 1, lg: 1 },
                   }}
                 >
                   <EmailIcon sx={{ mr: 1 }} />
                   <a
-                    href="mailto:info@bhpa.org"
+                    href="mailto:help@bostonhpa.org"
                     style={{ textDecoration: "none", color: "inherit" }}
                   >
-                    info@bhpa.org
+                    help@bostonhpa.org
                   </a>
                 </Box>
-                <Box
+                {/* <Box
                   sx={{
                     display: { xs: "none", lg: "block" },
                   }}
                 >
                   <ButtonGetPump variant="getpump" />
-                </Box>
+                </Box> */}
                 <Box
                   sx={{
                     display: { xs: "none", lg: "block" },
@@ -286,10 +302,10 @@ const Footer = () => {
           <Grid item xs={12} align="center">
             <Divider light="true" sx={{ my: 2 }} />
             <Typography variant="caption" pt={1}>
-              © {currentYear} | Boston Heat Pump Accelerator.
+              Copyright © {currentYear} | Boston Heat Pump Accelerator. {` `}
             </Typography>
             <Typography align="center" variant="caption" pt={1}>
-              All logos and trademarks are copyright their respective owners.
+              All Rights Reserved.
             </Typography>
           </Grid>
         </Grid>
