@@ -246,7 +246,7 @@ function Navbar(props) {
           position="static"
           marginTop={2}
           sx={{
-            background: "var(--bgColor-13)",
+            background: "var(--bgColor-2)",
             boxShadow: "none",
             padding: { xl: "0 18%" },
           }}

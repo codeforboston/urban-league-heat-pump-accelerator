@@ -24,7 +24,7 @@ export const theme = createTheme({
     },
     // h3
     titleHeroBold: {
-      color: "var(--color-text-9)",
+      color: "var(--color-text-7)",
       fontSize: "3rem",
       display: "block",
       fontWeight: "var(--font-weight-2)",
@@ -44,7 +44,7 @@ export const theme = createTheme({
     },
     // h6
     bodyHero: {
-      color: "var(--color-text-8)",
+      color: "var(--color-text-1)",
       fontSize: "1.6rem",
       display: "block",
       textAlign: "center",
@@ -138,7 +138,7 @@ export const theme = createTheme({
         {
           props: { variant: "customBtn" },
           style: {
-            color: "var(--color-text-8)",
+            color: "var(--color-text-1)",
             height: "50px",
             borderRadius: "1000px",
             minWidth: 200,
