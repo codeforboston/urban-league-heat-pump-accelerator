@@ -1,31 +1,49 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  AUTHORIZATION_HEADER,
+  AUTH_TOKEN_LOCAL_STORAGE_KEY,
+} from "./loginUtils";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  userName: null,
-  password: null,
-  authenticated: true,
-};
+import { apiSlice } from "../../api/apiSlice";
 
 const loginSlice = createSlice({
   name: "login",
-  initialState,
+  initialState: { user: null, token: null },
   reducers: {
-    setLogin: (state, action) => {
-      state.userName = action.payload.userName;
-      state.password = action.payload.password;
+    setLoginInfo: (state, action) => {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
     },
-    setLogOut: (state) => {
-      state.userName = null;
-      state.password = null;
-    },
-    setAuthenticated: (state, action) => {
-      state.authenticated = action.payload;
-    },
+  },
+  extraReducers: (builder) => {
+    // update state whenever user logs in successfully
+    builder.addMatcher(
+      apiSlice.endpoints.loginUser.matchFulfilled,
+      (state, { payload, meta }) => {
+        const token =
+          meta.baseQueryMeta.response.headers.get(AUTHORIZATION_HEADER);
+        state.token = token;
+        state.user = payload;
+        if (token) {
+          localStorage.setItem(AUTH_TOKEN_LOCAL_STORAGE_KEY, token);
+        }
+      }
+    );
+    // update state whenever user logs out successfully
+    builder.addMatcher(apiSlice.endpoints.logoutUser.matchPending, (state) => {
+      state.user = null;
+      state.token = null;
+      localStorage.removeItem(AUTH_TOKEN_LOCAL_STORAGE_KEY);
+    });
   },
 });
 
-export const { setLogin, setLogOut, setAuthenticated } = loginSlice.actions;
+export const { setLoginInfo } = loginSlice.actions;
 
-export const selectuserName = (state) => state.login.userName;
+export const loginReducer = loginSlice.reducer;
 
-export default loginSlice.reducer;
+export const selectCurrentUser = (state) => state.login.user;
+export const selectIsLoggedIn = createSelector(
+  [selectCurrentUser],
+  (user) => !!user
+);
