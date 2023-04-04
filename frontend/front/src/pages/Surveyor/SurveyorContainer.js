@@ -8,23 +8,39 @@ import Dashboard from "./dashboard/Dashboard";
 import Account from "./account/Account";
 import HouseProfile from "./houseProfile/HouseProfile";
 import EditAccount from "./account/edit/EditAccount";
+import { AuthenticatedRoute } from "./nav/AuthenticatedRoute";
 
 const SurveyorContainer = () => {
   const { authenticated } = useSelector((state) => state.login);
-  console.log(authenticated);
+  // console.log(authenticated);
   return (
     <Box>
       {authenticated ? <Nav /> : ""}
       <Box sx={{ maxWidth: "800px" }} m='auto'>
         <Routes>
-          <Route path='/' element={<Login />}></Route>
-          <Route path='dashboard' element={<Dashboard />}></Route>
-          <Route path='account' element={<Account />}></Route>
-          <Route path='account/edit' element={<EditAccount />}></Route>
-          <Route path='house' element={<HouseProfile />}></Route>
+          <Route
+            path='/'
+            element={<Login />}>
+          </Route>
+          <Route
+            path='dashboard'
+            element={<AuthenticatedRoute component={<Dashboard />} />}>
+          </Route>
+          <Route
+            path='account'
+            element={<AuthenticatedRoute component={<Account />} />}>
+          </Route>
+          <Route
+            path='account/edit'
+            element={<AuthenticatedRoute component={<EditAccount />} />}>
+          </Route>
+          <Route
+            path='house'
+            element={<AuthenticatedRoute component={<HouseProfile />} />}>
+          </Route>
         </Routes>
       </Box>
-    </Box>
+    </Box >
   );
 };
 
