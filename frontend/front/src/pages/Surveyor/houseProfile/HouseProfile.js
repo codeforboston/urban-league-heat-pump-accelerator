@@ -1,31 +1,81 @@
-import { Box, Grid, Typography } from "@mui/material";
-import React from "react";
-import { SurveyorSurvey } from "../../../components/SurveyComponent/SurveyComponent";
+import {
+  Alert,
+  Box,
+  Container,
+  CircularProgress,
+  Snackbar,
+} from "@mui/material";
+import React, { useCallback } from "react";
+import { useParams } from "react-router-dom";
+import {
+  useGetHomeDataQuery,
+  usePostSurveyVisitMutation,
+} from "../../../redux/apiSlice";
+import { SubmissionSuccess } from "../Components/SubmissionSuccess";
+import { SurveyorSurvey } from "../Components/SurveyorSurvey";
 
 const HouseProfile = () => {
+  const { id: homeId } = useParams();
+  const {
+    data: homeData,
+    error: homesError,
+    isLoading: isHomesLoading,
+  } = useGetHomeDataQuery(homeId);
+
+  const [
+    addSurveyVisit,
+    {
+      isLoading: isSurveyVisitLoading,
+      error: surveyVisitError,
+      isSuccess: isSurveyVisitSuccess,
+      data: surveyVisitData,
+    },
+  ] = usePostSurveyVisitMutation();
+
+  const submitSurvey = useCallback(
+    (responses, surveyId) => {
+      addSurveyVisit({
+        responses,
+        homeId,
+        surveyId,
+        // TODO: probably remove this and handle on the back end
+        date: new Date().toISOString(),
+      });
+    },
+    [addSurveyVisit, homeId]
+  );
+
   return (
-    <Box>
-      <Box pt={5}></Box>
-      <Grid
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="Left"
-        rowSpacing={2}
-      >
-        <Grid item xs={12}>
-          <Box p={2}>
-            <Typography variant="h5">1008 SW Military Dr</Typography>
-            <Typography>78221, San Antonio, Texas</Typography>
-            <Typography>John Smith</Typography>
-            <Typography>Heat Type: </Typography>
-            <Typography>AC: </Typography>
-            <Typography>Owner: </Typography>
-          </Box>
-        </Grid>
-        <SurveyorSurvey />
-      </Grid>
-    </Box>
+    <Container>
+      {isHomesLoading ? (
+        <Box display="flex" justifyContent="center">
+          <CircularProgress />
+        </Box>
+      ) : homesError ? (
+        <Alert sx={{ margin: "1em" }} severity="error">
+          {"Error retrieving home data."}
+        </Alert>
+      ) : !homeData ? (
+        <Alert
+          sx={{ margin: "1em" }}
+          severity="warning"
+        >{`No home found with ID '${homeId}'`}</Alert>
+      ) : isSurveyVisitSuccess ? (
+        <SubmissionSuccess
+          surveyId={surveyVisitData?.surveyId}
+          submissionId={surveyVisitData?.id}
+        />
+      ) : (
+        <SurveyorSurvey
+          submitSurvey={submitSurvey}
+          isLoading={isHomesLoading || isSurveyVisitLoading}
+          activeHome={homeData}
+        />
+      )}
+      <Snackbar open={!!surveyVisitError}>
+        <Alert severity="error">{"Error submitting survey."}</Alert>
+      </Snackbar>
+    </Container>
   );
 };
 

@@ -2,64 +2,66 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Stack, Alert, CircularProgress, Box } from "@mui/material";
 import { HeatPumpDropdown } from "./HeatPumpDropdown";
-import { useGetReCAPTCHAToken } from "../ReCaptcha";
 import ConfirmationModal from "../../pages/Developer/confirmModal/ConfirmationModal";
 import { useGetSurveyStructureQuery } from "../../redux/apiSlice";
 import { HeatPumpTextField } from "./HeatPumpTextField";
-
-const getDefaultResponse = (question) =>
-  question.response_type === "radio" ? question.response_options[0] : "";
-
-export const SURVEYOR_MODE = "SURVEYOR_MODE";
-export const PUBLIC_MODE = "PUBLIC_MODE";
-export const ADMIN_MODE = "ADMIN_MODE";
+import { AddressComponent } from "../AddressUtils";
+import { useNavigate } from "react-router-dom";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
  */
-const SurveyComponent = ({ mode }) => {
+export const SurveyComponent = ({
+  submitSurvey,
+  isLoading,
+  activeHome,
+  isEditable,
+  surveyId,
+  formSpacing,
+  defaultData,
+  onDelete,
+}) => {
+  const navigate = useNavigate();
+
   const { handleSubmit, reset, control } = useForm();
 
   // TODO: id of the main survey goes here
   const { data: surveyStructure, error: surveyStructureError } =
-    useGetSurveyStructureQuery("mainSurvey");
+    useGetSurveyStructureQuery(surveyId);
 
-  // useEffect to set the default data for the form
-  useEffect(() => {
+  const formDefault = useMemo(() => {
+    if (defaultData) {
+      return defaultData;
+    }
+
     if (surveyStructure) {
-      const defaultSurvey = surveyStructure.survey_questions.reduce(
+      return surveyStructure.survey_questions.reduce(
         (prev, curr) => ({
           ...prev,
-          [`${curr.id}`]: getDefaultResponse(curr),
+          [`${curr.id}`]: "",
         }),
         {}
       );
-      reset(defaultSurvey);
     }
-  }, [reset, surveyStructure]);
 
-  const [isEditing, setIsEditing] = useState(
-    mode === ADMIN_MODE ? false : true
-  );
+    return null;
+  }, [defaultData, surveyStructure]);
+
+  // useEffect to set the default data for the form
+  useEffect(() => {
+    if (formDefault) {
+      reset(formDefault);
+    }
+  }, [formDefault, reset]);
+
+  const [isEditing, setIsEditing] = useState(!isEditable);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const isDisabled = useMemo(
-    () => mode === ADMIN_MODE && !isEditing,
-    [mode, isEditing]
+    () => isEditable && !isEditing,
+    [isEditing, isEditable]
   );
-
-  const getReCaptchaToken = useGetReCAPTCHAToken("submit");
-
-  const onSubmit = async (data) => {
-    // TODO: connect to back-end, pass reCaptchaToken so it can be used for validation
-    const token = await getReCaptchaToken();
-    alert(JSON.stringify(data, null, 4));
-  };
-
-  const onDelete = useCallback(() => {
-    alert("This deletion logic still needs to be implemented!");
-  }, []);
 
   const commonButtonSection = useCallback(
     () => (
@@ -67,7 +69,14 @@ const SurveyComponent = ({ mode }) => {
         <Button variant="contained" type="submit">
           {"Submit"}
         </Button>
-        <Button variant="outlined" type="button" onClick={() => reset()}>
+        <Button
+          variant="outlined"
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            reset();
+          }}
+        >
           {"Clear"}
         </Button>
       </>
@@ -79,18 +88,24 @@ const SurveyComponent = ({ mode }) => {
     () => (
       <>
         <Button
+          type="button"
           variant="contained"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             setIsEditing(true);
           }}
         >
           {"EDIT"}
         </Button>
+        <Button variant="outlined" type="button" onClick={() => navigate(-1)}>
+          {"BACK"}
+        </Button>
         <Button
           variant="outlined"
           type="button"
           color="error"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             setIsDeleteModalOpen(true);
           }}
         >
@@ -98,7 +113,7 @@ const SurveyComponent = ({ mode }) => {
         </Button>
       </>
     ),
-    []
+    [navigate]
   );
 
   const adminButtonsEditing = useCallback(
@@ -111,7 +126,8 @@ const SurveyComponent = ({ mode }) => {
           variant="outlined"
           type="button"
           color="error"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             reset();
             setIsEditing(false);
           }}
@@ -123,13 +139,10 @@ const SurveyComponent = ({ mode }) => {
     [reset]
   );
 
-  const formSpacing = useMemo(() => (mode === PUBLIC_MODE ? 5 : 2), [mode]);
-
   const renderSurvey = useCallback(
     () => (
       <>
         {surveyStructure?.survey_questions.map((q) => {
-          console.log("question", q);
           switch (q.response_type) {
             case "radio":
               return (
@@ -168,14 +181,23 @@ const SurveyComponent = ({ mode }) => {
     <>
       <ConfirmationModal
         isOpen={isDeleteModalOpen}
-        handleConfirm={() => onDelete()}
+        handleConfirm={() => {
+          if (onDelete) {
+            onDelete();
+          }
+        }}
         handleCancel={() => setIsDeleteModalOpen(false)}
         confirmBtnText="Delete"
         cancelBtnText="Cancel"
         title="Confirm Delete"
         message={`Are you sure you want to delete this survey data?`}
       />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <AddressComponent home={activeHome} />
+      <form
+        onSubmit={handleSubmit((surveyData) =>
+          submitSurvey(surveyData, surveyId)
+        )}
+      >
         <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
           {surveyStructure ? (
             renderSurvey()
@@ -183,13 +205,16 @@ const SurveyComponent = ({ mode }) => {
             <Alert severity="error">
               {"Encountered an error while loading the survey."}
             </Alert>
+          ) : !activeHome ? (
+            <Alert severity="error">{"No active home set!"}</Alert>
           ) : (
             <Box display="flex" justifyContent="center">
               <CircularProgress />
             </Box>
           )}
           <Stack direction="row" justifyContent="center" spacing={2}>
-            {mode === ADMIN_MODE
+            {isLoading && <CircularProgress />}
+            {isEditable
               ? isEditing
                 ? adminButtonsEditing()
                 : adminButtonsViewing()
@@ -200,11 +225,3 @@ const SurveyComponent = ({ mode }) => {
     </>
   );
 };
-
-export const AdminSurvey = ({ defaultData }) => (
-  <SurveyComponent mode={ADMIN_MODE} defaultData={defaultData} />
-);
-
-export const SurveyorSurvey = () => <SurveyComponent mode={SURVEYOR_MODE} />;
-
-export const PublicSurvey = () => <SurveyComponent mode={PUBLIC_MODE} />;

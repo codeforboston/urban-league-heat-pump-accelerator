@@ -1,50 +1,60 @@
-import * as React from "react";
+import React, { useMemo } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { CircularProgress, Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { useGetSurveyListQuery } from "../../../redux/apiSlice";
+import {
+  useGetSurveyVisitsQuery,
+  useGetHomesDataQuery,
+  useGetSurveyListQuery,
+} from "../../../redux/apiSlice";
 import { SurveyError } from "./SurveyError";
+import { houseToString } from "../../../components/AddressUtils";
+import { formatISODate } from "../../../components/DateUtils";
 
-const columns = [
-  { field: "id", headerName: "Id", maxWidth: 50 },
-  {
-    field: "firstName",
-    headerName: "First Name",
-    width: 200,
-  },
-  {
-    field: "lastName",
-    headerName: "Last Name",
-    width: 200,
-  },
-  {
-    field: "phone",
-    headerName: "Phone",
-    width: 200,
-  },
-  { field: "heatType", headerName: "Heat", width: 200 },
-  { field: "nextStep", headerName: "Next Step", width: 200 },
-  { field: "status", headerName: "Status", width: 200 },
-  { field: "address", headerName: "Address", width: 200 },
-  { field: "city", headerName: "City", width: 200 },
-  { field: "zipCode", headerName: "Zip Code", width: 200 },
+const COLUMNS = [
+  { field: "id", headerName: "ID", flex: 1 },
+  { field: "surveyName", headerName: "Survey", flex: 3 },
+  { field: "homeName", headerName: "Address", flex: 5 },
+  { field: "date", headerName: "Survey Date", flex: 3 },
 ];
+
+const createTableData = (surveyVisitData, surveyStructureData, houseData) => {
+  return surveyVisitData.map((d) => ({
+    id: d.id,
+    surveyName: surveyStructureData.find((s) => `${s.id}` === `${d.surveyId}`)
+      ?.title,
+    homeName: houseToString(houseData.find((h) => `${h.id}` === `${d.homeId}`)),
+    date: formatISODate(d.date),
+  }));
+};
 
 const SurveyTable = () => {
   const navigate = useNavigate();
 
-  const { data, error } = useGetSurveyListQuery();
+  const { data: surveyVisitData, error: surveyVisitError } =
+    useGetSurveyVisitsQuery();
+  const { data: houseData, error: houseError } = useGetHomesDataQuery();
+  const { data: surveyStructureData, error: surveyStructureError } =
+    useGetSurveyListQuery();
+
+  const tableData = useMemo(
+    () =>
+      surveyVisitData && surveyStructureData && houseData
+        ? createTableData(surveyVisitData, surveyStructureData, houseData)
+        : [],
+    [houseData, surveyStructureData, surveyVisitData]
+  );
 
   const onRowClick = (row) => {
     navigate(`${row.id}`);
   };
 
-  if (data) {
+  if (tableData) {
     return (
       <DataGrid
-        rows={data}
-        columns={columns}
+        rows={tableData}
+        columns={COLUMNS}
         pageSize={20}
         rowsPerPageOptions={[20]}
         disableSelectionOnClick
@@ -54,7 +64,7 @@ const SurveyTable = () => {
     );
   }
 
-  if (error) {
+  if (surveyVisitError || houseError || surveyStructureError) {
     <SurveyError />;
   }
 

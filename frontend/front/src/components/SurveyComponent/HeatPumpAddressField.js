@@ -10,7 +10,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
   const { formState } = useController({ name: "address", control });
 
   return (
-    <Stack spacing={1}>
+    <Stack>
       {label && (
         <FormLabel
           error={
@@ -24,9 +24,41 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
         </FormLabel>
       )}
       <Grid container spacing={2}>
-        <Grid item xs={12} lg={12}>
+        <Grid item xs={12} lg={3}>
           <Controller
-            name={"address.street"}
+            name={"address.street_number"}
+            control={control}
+            rules={{
+              required: {
+                value: true,
+                message: "This field is required!",
+              },
+              pattern: {
+                value: /\d+/,
+                message: "Invalid street number.",
+              },
+            }}
+            render={({ field }) => (
+              <TextField
+                fullWidth
+                variant="standard"
+                label="* Street Number"
+                {...field}
+                error={!!formState.errors.address?.street_number}
+                helperText={
+                  !!formState.errors.address?.street_number &&
+                  formState.errors.address?.street_number.message
+                }
+                disabled={disabled}
+                autoComplete="address-line1"
+              />
+            )}
+          />
+        </Grid>
+
+        <Grid item xs={12} lg={6}>
+          <Controller
+            name={"address.street_name"}
             control={control}
             rules={{
               required: {
@@ -38,43 +70,108 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
               <TextField
                 fullWidth
                 variant="standard"
-                label="Street Address"
+                label="* Street Name"
                 {...field}
-                error={!!formState.errors.address?.street}
+                error={!!formState.errors.address?.street_name}
                 helperText={
-                  !!formState.errors.address?.street &&
-                  formState.errors.address?.street.message
+                  !!formState.errors.address?.street_name &&
+                  formState.errors.address?.street_name.message
                 }
                 disabled={disabled}
+                autoComplete="address-line1"
               />
             )}
           />
         </Grid>
 
-        <Grid item xs={6} lg={6}>
+        <Grid item xs={12} lg={3}>
           <Controller
-            name={"address.aptNumber"}
+            name={"address.unit_number"}
             control={control}
+            rules={{
+              pattern: {
+                value: /\d+/,
+                message: "Invalid unit number.",
+              },
+            }}
             render={({ field }) => (
               <TextField
                 fullWidth
                 variant="standard"
-                label="Apartment Number"
+                label="Unit Number"
                 {...field}
-                error={!!formState.errors.address?.aptNumber}
+                error={!!formState.errors.address?.unit_number}
                 helperText={
-                  !!formState.errors.address?.aptNumber &&
-                  formState.errors.address?.aptNumber.message
+                  !!formState.errors.address?.unit_number &&
+                  formState.errors.address?.unit_number.message
                 }
                 disabled={disabled}
+                autoComplete="address-line2"
               />
             )}
           />
         </Grid>
 
-        <Grid item xs={6} lg={6}>
+        <Grid item xs={12} lg={6}>
           <Controller
-            name={"address.zipCode"}
+            name={"address.city"}
+            control={control}
+            rules={{
+              required: {
+                value: true,
+                message: "This field is required!",
+              },
+            }}
+            render={({ field }) => (
+              <TextField
+                fullWidth
+                variant="standard"
+                label="* City"
+                {...field}
+                error={!!formState.errors.address?.city}
+                helperText={
+                  !!formState.errors.address?.city &&
+                  formState.errors.address?.city.message
+                }
+                disabled={disabled}
+                autoComplete="address-level2"
+              />
+            )}
+          />
+        </Grid>
+
+        <Grid item xs={12} lg={3}>
+          <Controller
+            name={"address.state"}
+            control={control}
+            rules={{
+              required: {
+                value: true,
+                message: "This field is required!",
+              },
+            }}
+            defaultValue={"MA"}
+            render={({ field }) => (
+              <TextField
+                fullWidth
+                variant="standard"
+                label="* State"
+                {...field}
+                error={!!formState.errors.address?.state}
+                helperText={
+                  !!formState.errors.address?.state &&
+                  formState.errors.address?.state.message
+                }
+                disabled={disabled}
+                autoComplete="address-level1"
+              />
+            )}
+          />
+        </Grid>
+
+        <Grid item xs={12} lg={3}>
+          <Controller
+            name={"address.zip_code"}
             control={control}
             rules={{
               required: {
@@ -90,41 +187,15 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
               <TextField
                 fullWidth
                 variant="standard"
-                label="ZIP Code"
+                label="* ZIP Code"
                 {...field}
-                error={!!formState.errors.address?.zipCode}
+                error={!!formState.errors.address?.zip_code}
                 helperText={
-                  !!formState.errors.address?.zipCode &&
-                  formState.errors.address?.zipCode.message
+                  !!formState.errors.address?.zip_code &&
+                  formState.errors.address?.zip_code.message
                 }
                 disabled={disabled}
-              />
-            )}
-          />
-        </Grid>
-
-        <Grid item xs={12} lg={12}>
-          <Controller
-            name={"address.city"}
-            control={control}
-            rules={{
-              required: {
-                value: true,
-                message: "This field is required!",
-              },
-            }}
-            render={({ field }) => (
-              <TextField
-                fullWidth
-                variant="standard"
-                label="City"
-                {...field}
-                error={!!formState.errors.address?.city}
-                helperText={
-                  !!formState.errors.address?.city &&
-                  formState.errors.address?.city.message
-                }
-                disabled={disabled}
+                autoComplete="postal-code"
               />
             )}
           />
