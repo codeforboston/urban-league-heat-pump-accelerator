@@ -6,9 +6,9 @@ import Home from "./Pages/Home/Home";
 import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
 import { SurveyPage } from "./Pages/SurveyPage";
-import GetStarted from "./Pages/GetStarted";
 import GetInvolved from "./Pages/GetInvolved";
 import Faq from "./Pages/Faq";
+import LearnMore from "./Pages/LearnMore";
 import Testimonials from "./Pages/Testimonials";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import AboutHeatPump from "./Pages/AboutHeatPump";
@@ -38,20 +38,14 @@ const PublicContainer = () => {
               <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/about-us" element={<AboutUs />}></Route>
-                <Route
-                  path="/about-heat-pump"
-                  element={<AboutHeatPump />}
-                ></Route>
+                <Route path="/about-heat-pump" element={<AboutHeatPump />} />
 
                 <Route path="/survey" element={<SurveyPage />} />
-                <Route path="/getstarted" element={<GetStarted />}></Route>
-                <Route path="/testimonials" element={<Testimonials />}></Route>
-                <Route path="/get-involved" element={<GetInvolved />}></Route>
-                <Route path="/faq" element={<Faq />}></Route>
-                <Route
-                  path="/privacy-policy"
-                  element={<PrivacyPolicy />}
-                ></Route>
+                <Route path="/testimonials" element={<Testimonials />} />
+                <Route path="/get-involved" element={<GetInvolved />} />
+                <Route path="/learn-more" element={<LearnMore />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/faq" element={<Faq />} />
               </Routes>
             </Box>
             <ScrollToTopButton />

@@ -24,7 +24,7 @@ export const theme = createTheme({
     },
     // h3
     titleHeroBold: {
-      color: "var(--color-text-9)",
+      color: "var(--color-text-7)",
       fontSize: "3rem",
       display: "block",
       fontWeight: "var(--font-weight-2)",
@@ -44,7 +44,7 @@ export const theme = createTheme({
     },
     // h6
     bodyHero: {
-      color: "var(--color-text-8)",
+      color: "var(--color-text-1)",
       fontSize: "1.6rem",
       display: "block",
       textAlign: "center",
@@ -104,14 +104,9 @@ export const theme = createTheme({
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
             letterSpacing: "-.03em",
             textShadow: "1px 1px 2px #fff",
-            boxShadow: "var(--box-shadow-1)",
-            backgroundColor: "var(--bgColor-10)",
-            border: "var(--box-shadow-2)",
+            background: "var(--accent-1)",
             "&:hover": {
-              border: "var(--box-shadow-3)",
-              transform: "scale(1.1)",
-              color: "var(--color-text-2)",
-              background: "var(--bgColor-11)",
+              background: "var(--accent-1)",
             },
           },
         },
@@ -120,7 +115,7 @@ export const theme = createTheme({
           style: {
             fontSize: "1rem",
             color: "var(--color-text-1)",
-            height: "60px",
+            height: "50px",
             borderRadius: "1000px",
             minWidth: 200,
             fontWeight: "var(--font-weight-1)",
@@ -138,7 +133,7 @@ export const theme = createTheme({
         {
           props: { variant: "customBtn" },
           style: {
-            color: "var(--color-text-8)",
+            color: "var(--color-text-1)",
             height: "50px",
             borderRadius: "1000px",
             minWidth: 200,
@@ -153,10 +148,13 @@ export const theme = createTheme({
         {
           props: { variant: "blackBtn" },
           style: {
-            color: "var(--color-text-1)",
+            color: "var(--color-text-2)",
             height: "50px",
             borderRadius: "1000px",
-            backgroundColor: "var(--accent-2)",
+            background: "var(--bgColor-11)",
+            "&:hover": {
+              backgroundColor: "var(--accent-1)",
+            },
           },
         },
       ],

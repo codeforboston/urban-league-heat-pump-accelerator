@@ -10,29 +10,27 @@
     --font-weight-2: 800;
 
     /* Colors text*/    
-    --color-text-1: #070600;
+    --color-text-1: #F9F9F9;
     --color-text-2: #03045E;
     --color-text-3: #0077B6;
     --color-text-4: #90E0EF;
     --color-text-5: #CAF0F8;
-
-    --color-text-6: #EA526F;
-    --color-text-7: #070600; 
-    --color-text-8: #F7F7FF;
-    --color-text-9: #23B5D3;
-    --color-text-10: #279AF1;
+    --color-text-6: #070600;
+    --color-text-7: #23B5D3;
+    
 
 
     /* Background colors */
     --bgColor-1:  linear-gradient(90deg, #98c7d6 50%, #72bede 100%); /* navbar - drawer*/
-    --bgColor-2: #72bede;
+    /* --bgColor-2: #72bede; */
+    --bgColor-2: #00497a; 
     --bgColor-3: #03045E; 
     --bgColor-4: #23B5D3;
     --bgColor-5: #CAF0F8;
     --bgColor-6: #90E0EF;
     --bgColor-7: #EA526F;;
     --bgColor-8:  #EFED6F;
-    --bgColor-9:  #FBC61C;
+    
     --bgColor-10:  #F6F6F6;
     --bgColor-11:  #F9F9F9;
     --bgColor-12:  #F7F7FF;
@@ -41,8 +39,10 @@
 
 
     /* Accent colors */
+    --accent-1:rgba(176, 232, 252, 0.9); /* image overlay*/
     --accent-2: rgba(7, 6, 0, 0.1); /* image overlay*/
     --accent-3: rgba(0, 0, 0, 0.4); /* image overlay*/
+    --accent-4: rgba(202, 240, 254,0.8); /* Divider color */
     
 
     /* Box shadow */

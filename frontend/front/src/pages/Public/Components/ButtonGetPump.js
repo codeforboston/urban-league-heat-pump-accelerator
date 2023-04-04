@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const ButtonGetPumnp = ({ variant }) => {
   return (
     <>
-      <Button component={Link} to="getstarted" variant={variant}>
-        GET A HEAT PUMP
+      <Button component={Link} to="get-involved" variant={variant}>
+        GET INVOLVED
       </Button>
     </>
   );

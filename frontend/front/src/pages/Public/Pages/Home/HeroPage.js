@@ -26,7 +26,7 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     paddingBottom: "143px",
   },
   "& .text-overlay": {
-    color: "var(--color-text-8)",
+    color: "var(--color-text-1)",
     textShadow: "1px 1px 2px #000",
     margin: "0 auto",
     maxWidth: "650px",
@@ -88,7 +88,7 @@ const HeroPage = ({
                   rel="noopener"
                   underline="always"
                   sx={{
-                    color: "var(--color-text-8)",
+                    color: "var(--color-text-1)",
                     fontWeight: "var(--font-weight-2)",
                     textDecoration: "solid underline 3px",
                     textUnderlinePosition: "under",
