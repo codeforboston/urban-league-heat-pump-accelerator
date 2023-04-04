@@ -12,7 +12,7 @@ import {
   Button,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-// import ButtonGetPump from "../Components/ButtonGetPump";
+import ButtonGetPump from "../Components/ButtonGetPump";
 import logoHeatPump from "../../../assets/images/logoHeatPump.png";
 import { styled } from "@mui/material/styles";
 import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
@@ -76,7 +76,7 @@ const Footer = () => {
             </Link>
           </Grid>
 
-          {/* <Grid
+          <Grid
             item
             sx={{
               display: { xs: "block", lg: "none" },
@@ -84,7 +84,7 @@ const Footer = () => {
             xs={12}
           >
             <ButtonGetPump variant="getpump" />
-          </Grid> */}
+          </Grid>
 
           {/* BENEFITS OF HEAT PUMPS */}
           <Grid
@@ -92,7 +92,6 @@ const Footer = () => {
             sx={{
               pt: { xs: 2, lg: 0 },
               px: { lg: 2 },
-              borderLeft: { lg: "1px solid rgba(0, 0, 0, 0.08)" },
             }}
             xs={12}
             lg={3}
@@ -153,7 +152,8 @@ const Footer = () => {
             sx={{
               pt: { xs: 1, lg: 0 },
               px: { lg: 2 },
-              borderLeft: { lg: "1px solid rgba(0, 0, 0, 0.08)" },
+              borderLeft: { lg: "1px solid var(--accent-4)" },
+              pl: { lg: 4 },
             }}
             xs={12}
             lg={3}
@@ -189,7 +189,8 @@ const Footer = () => {
             sx={{
               pt: { xs: 2, lg: 0 },
               px: { lg: 2 },
-              borderLeft: { lg: "1px solid rgba(0, 0, 0, 0.08)" },
+              borderLeft: { lg: "1px solid var(--accent-4)" },
+              pl: { lg: 4 },
             }}
           >
             <>
@@ -232,13 +233,15 @@ const Footer = () => {
                     help@bostonhpa.org
                   </a>
                 </Box>
-                {/* <Box
+
+                <Box
+                  mt={2}
                   sx={{
                     display: { xs: "none", lg: "block" },
                   }}
                 >
                   <ButtonGetPump variant="getpump" />
-                </Box> */}
+                </Box>
                 <Box
                   sx={{
                     display: { xs: "none", lg: "block" },
@@ -300,7 +303,7 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} align="center">
-            <Divider light="true" sx={{ my: 2 }} />
+            <Divider sx={{ my: 2, backgroundColor: "var(--accent-4)" }} />
             <Typography variant="caption" pt={1}>
               Copyright © {currentYear} | Boston Heat Pump Accelerator. {` `}
             </Typography>

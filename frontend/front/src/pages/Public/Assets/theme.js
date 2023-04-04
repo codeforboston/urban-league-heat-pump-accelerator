@@ -115,7 +115,7 @@ export const theme = createTheme({
           style: {
             fontSize: "1rem",
             color: "var(--color-text-1)",
-            height: "60px",
+            height: "50px",
             borderRadius: "1000px",
             minWidth: 200,
             fontWeight: "var(--font-weight-1)",
@@ -151,7 +151,7 @@ export const theme = createTheme({
             color: "var(--color-text-2)",
             height: "50px",
             borderRadius: "1000px",
-            backgroundColor: "var(--accent-1)",
+            background: "var(--bgColor-11)",
             "&:hover": {
               backgroundColor: "var(--accent-1)",
             },

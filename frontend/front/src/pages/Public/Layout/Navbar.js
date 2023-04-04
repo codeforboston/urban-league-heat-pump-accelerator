@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
@@ -21,7 +22,6 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
-import { Link } from "react-router-dom";
 import ButtonGetPump from "../Components/ButtonGetPump";
 import logoHeatPump from "../../../assets/images/boston-heat-pump-logo.gif";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -51,13 +51,12 @@ const Root = styled("div")(({ theme }) => ({
 const drawerWidth = "100%";
 
 const navbarItems = {
-  "GET INVOLVED": { link: "get-involved" },
   SURVEY: { link: "survey" },
-  "LEARN MORE": {
-    "ABOUT US": { link: "about-us" },
-    "ABOUT HEAT PUMP": { link: "about-heat-pump" },
-    TESTIMONIALS: { link: "testimonials" },
-    FAQ: { link: "faq" },
+  "Benefits of Heat Pumps": {
+    "About BHPA": { link: "about-us" },
+    "About Heat Pump": { link: "about-heat-pump" },
+    "Learn More": { link: "learn-more" },
+    Testimonials: { link: "testimonial-section" },
   },
 };
 
@@ -68,6 +67,8 @@ function Navbar(props) {
 
   const { window } = props;
 
+  const navigate = useNavigate();
+
   const open = Boolean(anchorMore);
 
   const handleClickMore = (event) => setAnchorMore(event.currentTarget);
@@ -75,6 +76,20 @@ function Navbar(props) {
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   const handleClickMoreMobile = () => setOpenMoreMobile(!openMoreMobile);
+
+  const handleNavigation = (link) => {
+    if (link === "testimonial-section") {
+      navigate("/public#testimonial-section");
+      setTimeout(() => {
+        const target = document.getElementById("testimonial-section");
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      navigate(link);
+    }
+  };
 
   const desktopNavLink = (navbarItems, item) => (
     <>
@@ -100,9 +115,14 @@ function Navbar(props) {
       >
         {Object.keys(navbarItems[item]).map((subItem, index) => (
           <MenuItem
-            onClick={handleCloseMore}
-            component={Link}
-            to={navbarItems[item][subItem].link}
+            variant="dropdown"
+            sx={{
+              backgroundColor: "var(--bgColor-111)",
+            }}
+            onClick={() => {
+              handleNavigation(navbarItems[item][subItem].link);
+              handleCloseMore();
+            }}
           >
             {subItem}
           </MenuItem>
@@ -141,13 +161,14 @@ function Navbar(props) {
       <List variant="caption">
         {Object.keys(navbarItems).map((item) => (
           <>
-            {item !== "LEARN MORE" ? (
+            {item !== "Benefits of Heat Pumps" ? (
               <ListItem key={item} disablePadding onClick={handleDrawerToggle}>
                 <ListItemButton
                   sx={{ textAlign: "center" }}
                   component={Link}
                   to={navbarItems[item].link}
                   focusVisible
+                  onClick={() => setOpenMoreMobile(false)} // Close the dropdown menu (if open) in the drawer when an item is selected
                 >
                   <ListItemText
                     sx={{
@@ -205,8 +226,11 @@ function Navbar(props) {
                       >
                         <ListItemButton
                           sx={{ textAlign: "center" }}
-                          component={Link}
-                          to={navbarItems[item][subItem].link}
+                          onClick={() => {
+                            handleNavigation(navbarItems[item][subItem].link);
+                            handleCloseMore();
+                            setOpenMoreMobile(false); // Close the dropdown menu (if open) in the drawer when an item is selected
+                          }}
                           focusVisible
                         >
                           <ListItemText
@@ -281,7 +305,7 @@ function Navbar(props) {
                   <Stack spacing={2} direction="row">
                     {Object.keys(navbarItems).map((item) => (
                       <>
-                        {item === "LEARN MORE" ? (
+                        {item === "Benefits of Heat Pumps" ? (
                           desktopNavLink(navbarItems, item)
                         ) : (
                           <Button
@@ -307,10 +331,11 @@ function Navbar(props) {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
+                size="large"
                 sx={{
                   ml: 2,
                   display: { md: "none" },
-                  color: "#000",
+                  color: "#ffffff",
                   justifyContent: "flex-start",
                 }}
               >
