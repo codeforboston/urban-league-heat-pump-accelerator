@@ -1,9 +1,8 @@
-// Vercel deployment: https://vercel.com/docs/serverless-functions/introduction
-const assignments = require("../src/dummyData/jsonServerData/assignments.js");
-const homes = require("../src/dummyData/jsonServerData/homes.js");
-const users = require("../src/dummyData/jsonServerData/users.js");
-const surveys = require("../src/dummyData/jsonServerData/surveys.js");
-const homesurvey = require("../src/dummyData/jsonServerData/homesurvey.js");
+const assignments = require("./assignments.js");
+const homes = require("./homes.js");
+const users = require("./users.js");
+const surveys = require("./surveys.js");
+const homesurvey = require("./homesurvey.js");
 
 module.exports = () => ({
   assignments,

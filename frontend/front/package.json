@@ -29,12 +29,14 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "node scripts/copy-db.js && react-scripts start",
+    "build": "node scripts/copy-db.js && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "jsonserver": "json-server --watch ./src/dummyData/jsonServerData/db.js --port 3001"
+    "jsonserver": "json-server --watch ./src/dummyData/jsonServerData/db.js --port 3001",
+    "copy-db": "node scripts/copy-db.js"  
   },
+  
   "eslintConfig": {
     "extends": [
       "react-app",
