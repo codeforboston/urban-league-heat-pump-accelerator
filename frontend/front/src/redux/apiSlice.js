@@ -2,7 +2,25 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Survey from "../dummyData/Survey.json";
 import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
 
-const baseUrl = "http://localhost:3001";
+// This custom base query function checks the availability of the local API
+// and the Vercel-hosted API. It sets the base URL according to the API
+// that is available, so you don't need to manually change the base URL.
+async function customBaseQuery(args, api, extraOptions) {
+  const localApiUrl = "http://localhost:3001";
+  const vercelApiUrl = "https://bhpa.vercel.app/api";
+
+  // Check if the local API is available
+  const isLocalApiAvailable = await fetch(localApiUrl)
+    .then((response) => response.ok)
+    .catch(() => false);
+
+  // Set the base URL depending on the availability of the local API
+  const baseUrl = isLocalApiAvailable ? localApiUrl : vercelApiUrl;
+
+  // Call the baseFetch function with the updated baseUrl
+  const baseFetch = fetchBaseQuery({ baseUrl });
+  return baseFetch(args, api, extraOptions);
+}
 
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
@@ -10,7 +28,7 @@ export const apiSlice = createApi({
   // baseQuery: mockBaseQuery({
   //   baseUrl: "http://localhost:3500",
   // }),
-  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
+  baseQuery: customBaseQuery,
   // prepareHeaders: (headers) => {
   //   headers.set("apiKey", "TOKEN");
   //   return headers;
