@@ -5,6 +5,10 @@ import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
 // This custom base query function checks the availability of the local API
 // and the Vercel-hosted API. It sets the base URL according to the API
 // that is available, so you don't need to manually change the base URL.
+//
+// To access and visualize the data from the Vercel-hosted API, simply
+// visit the API endpoint URLs using the Vercel deployment domain
+// (e.g., https://https://bhpa.vercel.app/api/your-endpoint).
 async function customBaseQuery(args, api, extraOptions) {
   const localApiUrl = "http://localhost:3001";
   const vercelApiUrl = "https://bhpa.vercel.app/api";
