@@ -130,7 +130,14 @@ export const SurveyComponent = forwardRef(
     const adminButtonsEditing = useCallback(
       () => (
         <>
-          <Button variant="contained" type="submit">
+          <Button
+            variant="contained"
+            type="submit"
+            onClick={() => {
+              // no preventDefault here, we want to do the submit and ALSO setIsEditing(false)
+              setIsEditing(false);
+            }}
+          >
             {"SAVE"}
           </Button>
           <Button
