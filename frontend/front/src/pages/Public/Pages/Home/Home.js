@@ -10,8 +10,6 @@ import imageTwo from "../../../../assets/images/heat-pump-outside-home.jpg";
 import liveMoreCom from "../../../../assets/images/copywritingImages/liveMoreCom.jpg";
 import strengthenCommunity from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
 import beEnvironmentally from "../../../../assets/images/copywritingImages/beEnvironmentally.jpg";
-import heatPumpBgGround from "../../../../assets/images/logoPlainBGground.png";
-
 import CarrouselHero from "./CarrouselHero";
 import Testimonial from "./Testimonial";
 
@@ -35,7 +33,7 @@ const Home = () => {
       </Container>
 
       {/* TESTIMONIALS */}
-      <SectionWrapper id="testimonial-section" my={16} image={heatPumpBgGround}>
+      <SectionWrapper id="testimonial-section" my={16}>
         <Box variant="sectionBackground" sx={{ padding: { xs: "0" } }}>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Typography variant="title1">Testimonials</Typography>
