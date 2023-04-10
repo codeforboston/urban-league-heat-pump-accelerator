@@ -219,6 +219,7 @@ function Navbar(props) {
               ) : (
                 <>
                   <ListItemButton
+                    variant="navLinks"
                     component={Link}
                     to=""
                     focusVisible
@@ -233,7 +234,19 @@ function Navbar(props) {
                     >
                       <Button
                         endIcon={
-                          openMoreMobile ? <ExpandLess /> : <ExpandMore />
+                          openMoreMobile ? (
+                            <ExpandLess
+                              sx={{
+                                color: "var(--color-text-1)",
+                              }}
+                            />
+                          ) : (
+                            <ExpandMore
+                              sx={{
+                                color: "var(--color-text-1)",
+                              }}
+                            />
+                          )
                         }
                         disablePadding
                         sx={{ height: "20px" }}
@@ -259,6 +272,7 @@ function Navbar(props) {
                           onClick={handleDrawerToggle}
                         >
                           <ListItemButton
+                            variant="navLinks"
                             sx={{ textAlign: "center" }}
                             onClick={() => {
                               handleNavigation(navbarItems[item][subItem].link);
@@ -271,8 +285,17 @@ function Navbar(props) {
                               sx={{
                                 color: "var(--color-text-1)",
                               }}
-                              primary={subItem}
-                            />
+                            >
+                              <Typography
+                                variant="navLinks"
+                                sx={{
+                                  color: "var(--color-text-1)",
+                                  fontWeight: "500",
+                                }}
+                              >
+                                {subItem}
+                              </Typography>
+                            </ListItemText>
                           </ListItemButton>
                         </ListItem>
                       </List>
