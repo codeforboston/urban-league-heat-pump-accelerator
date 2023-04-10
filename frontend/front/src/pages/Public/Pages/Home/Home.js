@@ -47,7 +47,7 @@ const Home = () => {
         <Box
           id="our-partners-section"
           sx={{
-            background: "var(--bgColor-10)",
+            background: "var(--bgColor-11)",
             padding: { xs: "0", lg: "64px 128px 64px 128px" },
           }}
         >

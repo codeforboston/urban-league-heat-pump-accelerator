@@ -83,7 +83,7 @@ function TestimonialItem(props) {
             flexDirection: "column",
             alignItems: "center",
             padding: "15px",
-            background: "var(--bgColor-10)",
+            background: "var(--bgColor-11)",
             borderRadius: "10px",
             boxShadow: "var(--boxShadow-3)",
             color: "var(--color-text-2)",
@@ -108,7 +108,7 @@ function TestimonialItem(props) {
             <Typography
               variant="body1"
               textAlign="center"
-              sx={{ color: "var(--color-text-3)", mb: 3 }}
+              sx={{ color: "var(--color-text-6)", mb: 3 }}
             >
               "{props.item.text}"
             </Typography>
