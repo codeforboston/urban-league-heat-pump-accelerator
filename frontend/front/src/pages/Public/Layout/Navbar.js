@@ -373,7 +373,15 @@ function Navbar(props) {
                             component={Link}
                             to={navbarItems[item].link}
                           >
-                            <Typography variant="navLinks">{item}</Typography>
+                            <Typography
+                              variant="navLinks"
+                              sx={{
+                                color: "var(--color-text-1)",
+                                fontWeight: "500",
+                              }}
+                            >
+                              {item}
+                            </Typography>
                           </Button>
                         )}
                       </>
