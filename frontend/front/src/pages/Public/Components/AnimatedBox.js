@@ -38,8 +38,8 @@ function AnimatedBox({ triggerOnce = true, children }) {
     <StyledMotionDiv
       ref={ref}
       initial="hidden"
-      // animate={inView ? "visible" : "hidden"}
-      animate="visible"
+      animate={inView ? "visible" : "hidden"}
+      // animate="visible"
       variants={variants}
       className="motion-div"
     >
