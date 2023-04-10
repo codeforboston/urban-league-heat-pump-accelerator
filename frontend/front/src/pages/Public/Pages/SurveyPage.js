@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Alert, Container, Snackbar, Stack } from "@mui/material";
 import { AddressValidatorComponent } from "../Components/AddressValidatorComponent";
 import {
@@ -8,6 +8,12 @@ import {
 import { useGetReCAPTCHAToken } from "../../../components/ReCaptcha";
 import { ThanksForSubmission } from "../Components/ThanksForSubmission";
 import { PublicSurvey } from "../Components/PublicSurvey";
+import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
+import { HeatPumpFade } from "../../../components/HeatPumpFade";
+
+const STEP_ADDRESS = "PHASE_ADDRESS";
+const STEP_SURVEY = "PHASE_SURVEY";
+const STEP_THANKS = "PHASE_THANKS";
 
 /*
  * Page that handles the lifecycle of the public survey process
@@ -58,6 +64,15 @@ export const SurveyPage = () => {
     [addSurveyVisit, createHomeData?.id, getReCaptchaToken]
   );
 
+  const step = useMemo(() => {
+    if (!createHomeData && !isSurveyVisitSuccess) {
+      return STEP_ADDRESS;
+    } else if (isSurveyVisitSuccess) {
+      return STEP_THANKS;
+    }
+    return STEP_SURVEY;
+  }, [createHomeData, isSurveyVisitSuccess]);
+
   return (
     <Container>
       <Stack direction="column" alignItems="center" justifyContent="center">
@@ -71,20 +86,22 @@ export const SurveyPage = () => {
           the installation process.
         </p>
       </Stack>
-      {!createHomeData && !isSurveyVisitSuccess ? (
+      <HeatPumpFade show={step === STEP_ADDRESS}>
         <AddressValidatorComponent
           onValidate={handleCreateHome}
           isLoading={isCreateHomeLoading}
         />
-      ) : isSurveyVisitSuccess ? (
-        <ThanksForSubmission />
-      ) : (
+      </HeatPumpFade>
+      <HeatPumpSlide show={step === STEP_SURVEY}>
         <PublicSurvey
           submitSurvey={handleAddSurveyVisit}
           isLoading={isSurveyVisitLoading}
           activeHome={createHomeData}
         />
-      )}
+      </HeatPumpSlide>
+      <HeatPumpSlide show={step === STEP_THANKS}>
+        <ThanksForSubmission />
+      </HeatPumpSlide>
       {/* TODO: this should probably be a more specific error */}
       <Snackbar open={!!createHomeError}>
         <Alert severity="info">

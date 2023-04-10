@@ -5,14 +5,21 @@ import {
   CircularProgress,
   Snackbar,
 } from "@mui/material";
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useParams } from "react-router-dom";
+import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
+import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import {
   useGetHomeDataQuery,
   usePostSurveyVisitMutation,
 } from "../../../redux/apiSlice";
 import { SubmissionSuccess } from "../Components/SubmissionSuccess";
 import { SurveyorSurvey } from "../Components/SurveyorSurvey";
+
+const STEP_LOADING = "PHASE_LOADING";
+const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
+const STEP_SURVEY = "PHASE_SURVEY";
+const STEP_THANKS = "PHASE_THANKS";
 
 const HouseProfile = () => {
   const { id: homeId } = useParams();
@@ -45,35 +52,48 @@ const HouseProfile = () => {
     [addSurveyVisit, homeId]
   );
 
+  const step = useMemo(() => {
+    if (isHomesLoading) {
+      return STEP_LOADING;
+    } else if (!homeData) {
+      return STEP_HOME_ERROR;
+    } else if (isSurveyVisitSuccess) {
+      return STEP_THANKS;
+    }
+    return STEP_SURVEY;
+  }, [homeData, isHomesLoading, isSurveyVisitSuccess]);
+
   return (
     <Container>
-      {isHomesLoading ? (
+      {step === STEP_LOADING && (
         <Box display="flex" justifyContent="center">
           <CircularProgress />
         </Box>
-      ) : homesError ? (
-        <Alert sx={{ margin: "1em" }} severity="error">
-          {"Error retrieving home data."}
-        </Alert>
-      ) : !homeData ? (
+      )}
+      <HeatPumpFade show={step === STEP_HOME_ERROR}>
         <Alert
           sx={{ margin: "1em" }}
           severity="warning"
         >{`No home found with ID '${homeId}'`}</Alert>
-      ) : isSurveyVisitSuccess ? (
-        <SubmissionSuccess
-          surveyId={surveyVisitData?.surveyId}
-          submissionId={surveyVisitData?.id}
-        />
-      ) : (
+      </HeatPumpFade>
+      <HeatPumpFade show={step === STEP_SURVEY}>
         <SurveyorSurvey
           submitSurvey={submitSurvey}
           isLoading={isHomesLoading || isSurveyVisitLoading}
           activeHome={homeData}
         />
-      )}
+      </HeatPumpFade>
+      <HeatPumpSlide show={step === STEP_THANKS}>
+        <SubmissionSuccess
+          surveyId={surveyVisitData?.surveyId}
+          submissionId={surveyVisitData?.id}
+        />
+      </HeatPumpSlide>
       <Snackbar open={!!surveyVisitError}>
         <Alert severity="error">{"Error submitting survey."}</Alert>
+      </Snackbar>
+      <Snackbar open={!!homesError}>
+        <Alert severity="error">{"Error retrieving home data."}</Alert>
       </Snackbar>
     </Container>
   );
