@@ -159,5 +159,19 @@ export const theme = createTheme({
         },
       ],
     },
+    MuiMenu: {
+      styleOverrides: {
+        paper: {
+          background: "var(--bgColor-5) !important",
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: "var(--color-text-6)",
+        },
+      },
+    },
   },
 });

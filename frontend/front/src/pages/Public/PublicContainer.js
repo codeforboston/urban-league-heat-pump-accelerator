@@ -8,8 +8,8 @@ import Footer from "./Layout/Footer";
 import { SurveyPage } from "./Pages/SurveyPage";
 import GetInvolved from "./Pages/GetInvolved";
 import Faq from "./Pages/Faq";
-import LearnMore from "./Pages/LearnMore";
-import Testimonials from "./Pages/Testimonials";
+// import LearnMore from "./Pages/LearnMore";
+import GetHeatPump from "./Pages/GetHeatPump";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import AboutHeatPump from "./Pages/AboutHeatPump";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
@@ -39,11 +39,10 @@ const PublicContainer = () => {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/about-us" element={<AboutUs />}></Route>
                 <Route path="/about-heat-pump" element={<AboutHeatPump />} />
-
                 <Route path="/survey" element={<SurveyPage />} />
-                <Route path="/testimonials" element={<Testimonials />} />
+                <Route path="/get-heat-pump" element={<GetHeatPump />} />
                 <Route path="/get-involved" element={<GetInvolved />} />
-                <Route path="/learn-more" element={<LearnMore />} />
+                {/* <Route path="/learn-more" element={<LearnMore />} /> */}
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/faq" element={<Faq />} />
               </Routes>

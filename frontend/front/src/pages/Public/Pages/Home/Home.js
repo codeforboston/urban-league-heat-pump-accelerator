@@ -1,5 +1,7 @@
 import React from "react";
 import { Box, Container, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+
 import Partners from "./Partners";
 import CardBenefitsSection from "./CardBenefitsSection";
 import CardLinksSection from "./CardLinksSection";
@@ -8,9 +10,17 @@ import imageTwo from "../../../../assets/images/heat-pump-outside-home.jpg";
 import liveMoreCom from "../../../../assets/images/copywritingImages/liveMoreCom.jpg";
 import strengthenCommunity from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
 import beEnvironmentally from "../../../../assets/images/copywritingImages/beEnvironmentally.jpg";
+import heatPumpBgGround from "../../../../assets/images/logoPlainBGground.png";
 
 import CarrouselHero from "./CarrouselHero";
 import Testimonial from "./Testimonial";
+
+const SectionWrapper = styled(Box)(({ theme, image }) => ({
+  background: "var(--bgColor-5)",
+  paddingTop: "4em",
+  paddingBottom: "2.75rem",
+  clipPath: "polygon(0 10%,100% 0,100% 100%,0 100%)",
+}));
 
 const Home = () => {
   return (
@@ -22,15 +32,19 @@ const Home = () => {
         <Box mt={16}>
           <CardLinksSection />
         </Box>
+      </Container>
 
-        {/* TESTIMONIALS */}
-        <Box id="testimonial-section" sx={{ padding: { xs: "0" } }} mt={16}>
+      {/* TESTIMONIALS */}
+      <SectionWrapper id="testimonial-section" my={16} image={heatPumpBgGround}>
+        <Box variant="sectionBackground" sx={{ padding: { xs: "0" } }}>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Typography variant="title1">Testimonials</Typography>
           </Box>
           <Testimonial />
         </Box>
+      </SectionWrapper>
 
+      <Container>
         {/* PARTNERS LOGO */}
         <Box
           id="our-partners-section"
@@ -42,7 +56,7 @@ const Home = () => {
           <Partners />
         </Box>
         {/* CARDS BENEFITS */}
-        <Box mt={16}>
+        <Box mt={16} id="benefits-heat-pump">
           <CardBenefitsSection
             cards={[
               {

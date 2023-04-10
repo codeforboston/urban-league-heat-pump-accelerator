@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 
-const Testimonials = () => {
+const GetHeatPump = () => {
   return (
     <Box
       sx={{
@@ -23,7 +23,7 @@ const Testimonials = () => {
       >
         <Grid item display="flex" flexDirection="column" alignItems="center">
           <Typography variant="h4" mb={3} textAlign="center">
-            Testimonials
+            Get Heat Pump
           </Typography>
         </Grid>
       </Grid>
@@ -31,4 +31,4 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials;
+export default GetHeatPump;

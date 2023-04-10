@@ -52,12 +52,13 @@ const drawerWidth = "100%";
 
 const navbarItems = {
   SURVEY: { link: "survey" },
-  "Benefits of Heat Pumps": {
+  "Learn More": {
     "About BHPA": { link: "about-us" },
     "About Heat Pump": { link: "about-heat-pump" },
-    "Learn More": { link: "learn-more" },
+    "Benefits of Heat Pumps": { link: "benefits-heat-pump" },
     Testimonials: { link: "testimonial-section" },
   },
+  "GET INVOLVED": { link: "get-involved" },
 };
 
 function Navbar(props) {
@@ -86,6 +87,14 @@ function Navbar(props) {
           target.scrollIntoView({ behavior: "smooth" });
         }
       }, 100);
+    } else if (link === "benefits-heat-pump") {
+      navigate("/public#benefits-heat-pump");
+      setTimeout(() => {
+        const target = document.getElementById("benefits-heat-pump");
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     } else {
       navigate(link);
     }
@@ -98,7 +107,7 @@ function Navbar(props) {
         aria-controls={open ? "fade-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        onClick={handleClickMore}
+        onMouseEnter={handleClickMore}
         endIcon={<KeyboardArrowDownIcon />}
       >
         <Typography variant="navLinks">{item}</Typography>
@@ -113,20 +122,26 @@ function Navbar(props) {
         onClose={handleCloseMore}
         TransitionComponent={Fade}
       >
-        {Object.keys(navbarItems[item]).map((subItem, index) => (
-          <MenuItem
-            variant="dropdown"
-            sx={{
-              backgroundColor: "var(--bgColor-111)",
-            }}
-            onClick={() => {
-              handleNavigation(navbarItems[item][subItem].link);
-              handleCloseMore();
-            }}
-          >
-            {subItem}
-          </MenuItem>
-        ))}
+        <Box
+          onMouseEnter={() => {
+            handleClickMore();
+          }}
+          onMouseLeave={() => {
+            handleCloseMore();
+          }}
+        >
+          {Object.keys(navbarItems[item]).map((subItem, index) => (
+            <MenuItem
+              variant="dropdown"
+              onClick={() => {
+                handleNavigation(navbarItems[item][subItem].link);
+                handleCloseMore();
+              }}
+            >
+              {subItem}
+            </MenuItem>
+          ))}
+        </Box>
       </Menu>
     </>
   );
@@ -161,7 +176,7 @@ function Navbar(props) {
       <List variant="caption">
         {Object.keys(navbarItems).map((item) => (
           <>
-            {item !== "Benefits of Heat Pumps" ? (
+            {item !== "Learn More" ? (
               <ListItem key={item} disablePadding onClick={handleDrawerToggle}>
                 <ListItemButton
                   sx={{ textAlign: "center" }}
@@ -249,7 +264,9 @@ function Navbar(props) {
           </>
         ))}
       </List>
-      <ButtonGetPump variant="getpump" />
+      <Box onClick={handleDrawerToggle}>
+        <ButtonGetPump variant="getpump" />
+      </Box>
     </Box>
   );
 
@@ -305,7 +322,7 @@ function Navbar(props) {
                   <Stack spacing={2} direction="row">
                     {Object.keys(navbarItems).map((item) => (
                       <>
-                        {item === "Benefits of Heat Pumps" ? (
+                        {item === "Learn More" ? (
                           desktopNavLink(navbarItems, item)
                         ) : (
                           <Button
@@ -323,7 +340,10 @@ function Navbar(props) {
               </Grid>
               <Box sx={{ display: { xs: "none", md: "block" } }}>
                 <Grid item>
-                  <ButtonGetPump variant="getpump" />
+                  <ButtonGetPump
+                    variant="getpump"
+                    onClick={handleDrawerToggle}
+                  />
                 </Grid>
               </Box>
               <IconButton
