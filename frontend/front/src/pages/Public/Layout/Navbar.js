@@ -109,6 +109,7 @@ function Navbar(props) {
         aria-expanded={open ? "true" : undefined}
         onMouseEnter={handleClickMore}
         endIcon={<KeyboardArrowDownIcon />}
+        sx={{ color: "var(--color-text-1)" }}
       >
         <Typography variant="navLinks">{item}</Typography>
       </Button>
