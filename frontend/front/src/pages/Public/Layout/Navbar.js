@@ -132,7 +132,7 @@ function Navbar(props) {
         >
           {Object.keys(navbarItems[item]).map((subItem, index) => (
             <MenuItem
-              variant="dropdown"
+              variant="navLinks"
               onClick={() => {
                 handleNavigation(navbarItems[item][subItem].link);
                 handleCloseMore();
@@ -148,12 +148,8 @@ function Navbar(props) {
 
   const drawer = (
     <Box sx={{ textAlign: "center" }}>
-      <Stack direction="row" alignItems="center">
-        <Button onClick={handleDrawerToggle}>
-          <CloseIcon />
-        </Button>
-
-        <Box sx={{ flexGrow: 1, marginRight: "48px" }}>
+      <Stack direction="row" alignItems="center" justifyContent="center">
+        <Box sx={{ flexGrow: 1 }}>
           <Link to="" onClick={handleDrawerToggle}>
             <Box
               component="img"
@@ -171,102 +167,126 @@ function Navbar(props) {
             />
           </Link>
         </Box>
+        <Button
+          onClick={handleDrawerToggle}
+          sx={{ position: "absolute", right: 0, mt: 2 }}
+        >
+          <CloseIcon
+            sx={{
+              fontSize: 32,
+              color: "var(--color-text-1)",
+            }}
+          />
+        </Button>
       </Stack>
-
-      <List variant="caption">
-        {Object.keys(navbarItems).map((item) => (
-          <>
-            {item !== "Learn More" ? (
-              <ListItem key={item} disablePadding onClick={handleDrawerToggle}>
-                <ListItemButton
-                  sx={{ textAlign: "center" }}
-                  component={Link}
-                  to={navbarItems[item].link}
-                  focusVisible
-                  onClick={() => setOpenMoreMobile(false)} // Close the dropdown menu (if open) in the drawer when an item is selected
+      <Stack
+        direction="column"
+        justifyContent="space-around"
+        alignItems="stretch"
+        spacing={2}
+        height="100%"
+      >
+        <List variant="navLinks">
+          {Object.keys(navbarItems).map((item) => (
+            <>
+              {item !== "Learn More" ? (
+                <ListItem
+                  key={item}
+                  disablePadding
+                  onClick={handleDrawerToggle}
                 >
-                  <ListItemText
-                    sx={{
-                      color: "var(--color-text-1)",
-                    }}
+                  <ListItemButton
+                    sx={{ textAlign: "center" }}
+                    component={Link}
+                    to={navbarItems[item].link}
+                    focusVisible
+                    onClick={() => setOpenMoreMobile(false)} // Close the dropdown menu (if open) in the drawer when an item is selected
                   >
-                    <Typography
-                      variant="navLinks"
-                      sx={{ display: "flex", justifyContent: "center" }}
-                    >
-                      {item}
-                    </Typography>
-                  </ListItemText>
-                </ListItemButton>
-              </ListItem>
-            ) : (
-              <>
-                <ListItemButton
-                  component={Link}
-                  to=""
-                  focusVisible
-                  onClick={handleClickMoreMobile}
-                >
-                  <ListItemText
-                    sx={{
-                      color: "var(--color-text-1)",
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Button
-                      endIcon={openMoreMobile ? <ExpandLess /> : <ExpandMore />}
-                      disablePadding
-                      sx={{ height: "20px" }}
+                    <ListItemText
+                      sx={{
+                        color: "var(--color-text-1)",
+                      }}
                     >
                       <Typography
                         variant="navLinks"
-                        sx={{
-                          color: "var(--color-text-1)",
-                          fontWeight: "500",
-                        }}
+                        sx={{ display: "flex", justifyContent: "center" }}
                       >
                         {item}
                       </Typography>
-                    </Button>
-                  </ListItemText>
-                </ListItemButton>
-                <Collapse in={openMoreMobile} timeout="auto" unmountOnExit>
-                  {Object.keys(navbarItems[item]).map((subItem, index) => (
-                    <List component="div" disablePadding>
-                      <ListItem
-                        key={subItem}
+                    </ListItemText>
+                  </ListItemButton>
+                </ListItem>
+              ) : (
+                <>
+                  <ListItemButton
+                    component={Link}
+                    to=""
+                    focusVisible
+                    onClick={handleClickMoreMobile}
+                  >
+                    <ListItemText
+                      sx={{
+                        color: "var(--color-text-1)",
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Button
+                        endIcon={
+                          openMoreMobile ? <ExpandLess /> : <ExpandMore />
+                        }
                         disablePadding
-                        onClick={handleDrawerToggle}
+                        sx={{ height: "20px" }}
                       >
-                        <ListItemButton
-                          sx={{ textAlign: "center" }}
-                          onClick={() => {
-                            handleNavigation(navbarItems[item][subItem].link);
-                            handleCloseMore();
-                            setOpenMoreMobile(false); // Close the dropdown menu (if open) in the drawer when an item is selected
+                        <Typography
+                          variant="navLinks"
+                          sx={{
+                            color: "var(--color-text-1)",
+                            fontWeight: "500",
                           }}
-                          focusVisible
                         >
-                          <ListItemText
-                            sx={{
-                              color: "var(--color-text-1)",
+                          {item}
+                        </Typography>
+                      </Button>
+                    </ListItemText>
+                  </ListItemButton>
+                  <Collapse in={openMoreMobile} timeout="auto" unmountOnExit>
+                    {Object.keys(navbarItems[item]).map((subItem, index) => (
+                      <List component="div" disablePadding>
+                        <ListItem
+                          key={subItem}
+                          disablePadding
+                          onClick={handleDrawerToggle}
+                        >
+                          <ListItemButton
+                            sx={{ textAlign: "center" }}
+                            onClick={() => {
+                              handleNavigation(navbarItems[item][subItem].link);
+                              handleCloseMore();
+                              setOpenMoreMobile(false); // Close the dropdown menu (if open) in the drawer when an item is selected
                             }}
-                            primary={subItem}
-                          />
-                        </ListItemButton>
-                      </ListItem>
-                    </List>
-                  ))}
-                </Collapse>
-              </>
-            )}
-          </>
-        ))}
-      </List>
-      <Box onClick={handleDrawerToggle}>
-        <ButtonGetPump variant="getpump" />
-      </Box>
+                            focusVisible
+                          >
+                            <ListItemText
+                              sx={{
+                                color: "var(--color-text-1)",
+                              }}
+                              primary={subItem}
+                            />
+                          </ListItemButton>
+                        </ListItem>
+                      </List>
+                    ))}
+                  </Collapse>
+                </>
+              )}
+            </>
+          ))}
+        </List>
+        <Box onClick={handleDrawerToggle}>
+          <ButtonGetPump variant="getpump" />
+        </Box>
+      </Stack>
     </Box>
   );
 
@@ -359,7 +379,12 @@ function Navbar(props) {
                   justifyContent: "flex-start",
                 }}
               >
-                <MenuIcon />
+                <MenuIcon
+                  sx={{
+                    fontSize: 32,
+                    color: "var(--color-text-1)",
+                  }}
+                />
               </IconButton>
             </Grid>
           </Toolbar>
@@ -368,7 +393,7 @@ function Navbar(props) {
         <Box component="nav">
           <Drawer
             container={container}
-            variant="temporary"
+            variant="navLinks"
             open={mobileOpen}
             onClose={handleDrawerToggle}
             anchor="right"
@@ -381,7 +406,7 @@ function Navbar(props) {
                 boxSizing: "border-box",
                 width: drawerWidth,
                 color: "var(--color-text-2)",
-                background: "var(--bgColor-1)",
+                background: "var(--bgColor-2)",
               },
             }}
           >
