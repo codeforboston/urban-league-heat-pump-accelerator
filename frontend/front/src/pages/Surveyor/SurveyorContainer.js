@@ -12,7 +12,7 @@ import { AuthenticatedRoute } from "./nav/AuthenticatedRoute";
 
 const SurveyorContainer = () => {
   const { authenticated } = useSelector((state) => state.login);
-  // console.log(authenticated);
+  console.log(authenticated);
   return (
     <Box>
       {authenticated ? <Nav /> : ""}

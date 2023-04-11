@@ -4,6 +4,7 @@ import { Grid, Paper, Avatar, TextField, Checkbox, Box } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useForm } from "react-hook-form";
+import { useLoginUserMutation } from '../../../api/apiSlice'
 import { useDispatch } from "react-redux";
 import { setAuthenticated, setLogin } from "../../../features/login/loginSlice";
 import { useNavigate } from "react-router-dom";
@@ -38,13 +39,20 @@ const Login = () => {
   };
 
   async function LoginForms(values) {
-    if (!values) return;
-
-    dispatch(
-      setLogin({ userName: values.userName, password: values.password })
-    );
-
-    dispatch(setAuthenticated(true));
+    console.log(values);
+    // useLoginUserMutation(values)
+    try {
+      const res = await fetch('users/sign_in', {
+        method: 'POST',
+        body: values,
+        headers: new Headers({
+          "Content-Type": "application/json"
+        })
+      })
+      const data = res.json()
+    } catch (error) {
+      console.error(error);
+    }
     reset();
 
     navigate("dashboard");

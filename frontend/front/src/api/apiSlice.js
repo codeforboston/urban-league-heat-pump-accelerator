@@ -67,6 +67,15 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["User"],
     }),
+    //sessions section of the slice
+    loginUser: builder.mutation({
+      query: (user) => ({
+        url: `/user/sign_in`,
+        method: "POST",
+        body: user
+      }),
+      invalidatesTags: ["User"]
+    }),
   }),
 });
 
@@ -80,4 +89,6 @@ export const {
   useUpdateHomeDataMutation,
   useCreateHomeDataMutation,
   useGetHomeDataQuery,
+
+  useLoginUserMutation,
 } = apiSlice;
