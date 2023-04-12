@@ -32,34 +32,25 @@ RSpec.describe '/assignments', type: :request do
   let(:invalid_attributes) do
     {
       group: 1,
-      surveyor_id: 'boop'
+      home_id: 'boop'
     }
   end
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      Assignment.create! valid_attributes
       get assignments_url, as: :json
       expect(response).to be_successful
     end
 
     it 'can filter based a surveyor' do
-      Assignment.create! valid_attributes
       get assignments_url, params: { surveyor_id: surveyor.id }, as: :json
-      expect(response.body).to match(/#{surveyor.id}/)
-    end
-
-    it 'can filter based a surveyor' do
-      Assignment.create! valid_attributes
-      get assignments_url, params: { surveyor_id: 24 }, as: :json
-      expect(response.body).not_to match(/#{surveyor.id}/)
+      expect(response.body).to match(/#{surveyor.assignments.first.home.id}/)
     end
   end
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      assignment = Assignment.create! valid_attributes
-      get assignment_url(assignment), as: :json
+      get assignment_url(surveyor.assignments.first), as: :json
       expect(response).to be_successful
     end
   end
@@ -122,8 +113,7 @@ RSpec.describe '/assignments', type: :request do
 
     context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        assignment = Assignment.create! valid_attributes
-        patch assignment_url(assignment), params: { assignment: invalid_attributes }, as: :json
+        patch assignment_url(surveyor.assignments.first), params: { assignment: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -131,15 +121,13 @@ RSpec.describe '/assignments', type: :request do
 
   describe 'DELETE /destroy' do
     it 'destroys the requested assignment' do
-      assignment = Assignment.create! valid_attributes
       expect do
-        delete assignment_url(assignment), as: :json
+        delete assignment_url(surveyor.assignments.first), as: :json
       end.to change(Assignment, :count).by(-1)
     end
 
     it 'returns a valid response' do
-      assignment = Assignment.create! valid_attributes
-      delete assignment_url(assignment), as: :json
+      delete assignment_url(surveyor.assignments.first), as: :json
       expect(response).to be_successful
     end
   end

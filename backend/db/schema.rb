@@ -10,16 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_010819) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_11_235403) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assignments", force: :cascade do |t|
     t.string "group"
-    t.bigint "surveyor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["surveyor_id"], name: "index_assignments_on_surveyor_id"
+  end
+
+  create_table "assignments_surveyors", id: false, force: :cascade do |t|
+    t.bigint "surveyor_id", null: false
+    t.bigint "assignment_id", null: false
+    t.index ["assignment_id"], name: "index_assignments_surveyors_on_assignment_id"
+    t.index ["surveyor_id"], name: "index_assignments_surveyors_on_surveyor_id"
   end
 
   create_table "homes", force: :cascade do |t|
@@ -194,7 +199,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_010819) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "assignments", "surveyors"
   add_foreign_key "survey_answers", "survey_questions"
   add_foreign_key "survey_answers", "survey_responses"
   add_foreign_key "survey_questions", "surveys"
