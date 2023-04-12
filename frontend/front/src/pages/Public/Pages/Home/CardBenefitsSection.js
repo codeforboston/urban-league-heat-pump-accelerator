@@ -51,7 +51,7 @@ const CardBenefitsSection = ({ cards }) => {
           </Grid>
           <StyledGrid
             item
-            sx={{ background: "var(--bgColor-10)", pt: { xs: 2, md: 0 } }}
+            sx={{ background: "var(--bgColor-11)", pt: { xs: 2, md: 0 } }}
             xs={12}
             sm={6}
           >
@@ -65,7 +65,7 @@ const CardBenefitsSection = ({ cards }) => {
                     <Typography
                       gutterBottom
                       variant="subtitle1"
-                      color="var(--color-text-3)"
+                      color="var(--color-text-6)"
                     >
                       {paragraph}
                     </Typography>

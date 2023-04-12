@@ -1,37 +1,35 @@
-import React from 'react';
-import { Box, Grid, Typography } from "@mui/material";
+import React from "react";
+import { Box, Stack, Typography, Link } from "@mui/material";
 
 const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
-
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      marginTop={3}
-      marginBottom={3}
-    >
-      <Typography marginBottom={3}>
+    <Box mb={3} container>
+      <Typography>
         <b>{partnerName}</b> {paragraphText}
       </Typography>
-      <a
-        href={website}
-        target='_blank'
-        rel="noopener noreferrer"
+      <Stack
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        spacing={1}
       >
-        <Box
+        <Link
           component="img"
           src={image}
+          href={website}
+          target="_blank"
+          rel="noopener noreferrer"
           sx={{
-            height: 100,
-            "max-width": "90%",
+            width: "250px",
+            display: "flex",
+            justifyContent: "center",
             mt: 3,
             mb: 3,
           }}
         />
-      </a>
-    </Grid>
-  )
-}
+      </Stack>
+    </Box>
+  );
+};
 
-export default PartnerTile
+export default PartnerTile;

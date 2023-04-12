@@ -39,6 +39,7 @@ function AnimatedBox({ triggerOnce = true, children }) {
       ref={ref}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
+      // animate="visible"
       variants={variants}
       className="motion-div"
     >
