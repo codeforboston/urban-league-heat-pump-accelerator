@@ -8,7 +8,7 @@ import Footer from "./Layout/Footer";
 import { SurveyPage } from "./Pages/SurveyPage";
 import GetInvolved from "./Pages/GetInvolved";
 import Faq from "./Pages/Faq";
-// import LearnMore from "./Pages/LearnMore";
+import BenefitsHeatPump from "./Pages/BenefitsHeatPump";
 import GetHeatPump from "./Pages/GetHeatPump";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import AboutHeatPump from "./Pages/AboutHeatPump";
@@ -42,7 +42,10 @@ const PublicContainer = () => {
                 <Route path="/survey" element={<SurveyPage />} />
                 <Route path="/get-heat-pump" element={<GetHeatPump />} />
                 <Route path="/get-involved" element={<GetInvolved />} />
-                {/* <Route path="/learn-more" element={<LearnMore />} /> */}
+                <Route
+                  path="/benefits-heat-pump"
+                  element={<BenefitsHeatPump />}
+                />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/faq" element={<Faq />} />
               </Routes>

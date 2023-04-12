@@ -54,7 +54,7 @@ const Home = () => {
           <Partners />
         </Box>
         {/* CARDS BENEFITS */}
-        <Box mt={16} id="benefits-heat-pump">
+        <Box mt={16}>
           <CardBenefitsSection
             cards={[
               {

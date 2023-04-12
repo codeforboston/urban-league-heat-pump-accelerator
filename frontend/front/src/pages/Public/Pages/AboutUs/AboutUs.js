@@ -22,46 +22,48 @@ function AboutUs() {
           color: "var(--color-text-6) !important",
         }}
       >
-        <Typography
-          variant="h4"
-          mt={3}
-          mb={3}
-          textAlign="center"
-          sx={{
-            textDecoration: "underline #72bede",
-          }}
-        >
-          About the Boston Heat Pump Accelerator
-        </Typography>
-        <Typography mb={3}>
-          <b>The Boston Heat Pump Accelerator (BHPA)</b> works to support
-          increased access for Boston homeowners to heat pumps and related
-          resources, helping to reduce costs for residents, increase community
-          resilience, and shift the region to low-carbon technologies. This
-          initiative takes no funding from companies or heat pump installers -
-          it supports overall access to heat pumps only, via education and
-          awareness efforts.
-        </Typography>
-        <Typography mb={3}>
-          <b>The Urban League of Eastern Massachusetts (ULEM)</b> is the sponsor
-          of the BHPA effort. Since 1919, ULEM has delivered workforce and
-          economic development services and programs to increase self-reliance
-          of residents of the Boston community and surrounding metropolitan
-          areas. ULEM is a 501c3 nonprofit organization and one of the oldest
-          affiliates within the National Urban League movement.
-        </Typography>
-        <Typography>
-          The BHPA project is directed by ULEM Board Member Christopher
-          Scranton, in coordination with core partners, listed below.
-        </Typography>
+        <Box>
+          <Typography
+            variant="h4"
+            mt={3}
+            mb={3}
+            textAlign="center"
+            sx={{
+              textDecoration: "underline #72bede",
+            }}
+          >
+            About the Boston Heat Pump Accelerator
+          </Typography>
+          <Typography mb={3}>
+            <b>The Boston Heat Pump Accelerator (BHPA)</b> works to support
+            increased access for Boston homeowners to heat pumps and related
+            resources, helping to reduce costs for residents, increase community
+            resilience, and shift the region to low-carbon technologies. This
+            initiative takes no funding from companies or heat pump installers -
+            it supports overall access to heat pumps only, via education and
+            awareness efforts.
+          </Typography>
+          <Typography mb={3}>
+            <b>The Urban League of Eastern Massachusetts (ULEM)</b> is the
+            sponsor of the BHPA effort. Since 1919, ULEM has delivered workforce
+            and economic development services and programs to increase
+            self-reliance of residents of the Boston community and surrounding
+            metropolitan areas. ULEM is a 501c3 nonprofit organization and one
+            of the oldest affiliates within the National Urban League movement.
+          </Typography>
+
+          <Typography>
+            The BHPA project is directed by ULEM Board Member Christopher
+            Scranton, in coordination with core partners, listed below.
+          </Typography>
+        </Box>
         <Box
           component="img"
           src={ulem}
           sx={{
-            height: 100,
-            "max-width": "90%",
+            width: "250px",
             mt: 3,
-            mb: 3,
+            mb: 5,
           }}
         />
         <Typography

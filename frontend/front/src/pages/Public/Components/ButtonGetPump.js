@@ -15,7 +15,7 @@ const ButtonGetPumnp = ({ variant }) => {
         variant={variant}
         onClick={() => window.scrollTo(0, 0)}
       >
-        GET HEAT PUMP
+        GET A HEAT PUMP
       </Button>
     </>
   );

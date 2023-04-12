@@ -53,10 +53,10 @@ const drawerWidth = "100%";
 const navbarItems = {
   SURVEY: { link: "survey" },
   "Learn More": {
-    "About BHPA": { link: "about-us" },
-    "About Heat Pump": { link: "about-heat-pump" },
     "Benefits of Heat Pumps": { link: "benefits-heat-pump" },
+    "About Heat Pump": { link: "about-heat-pump" },
     Testimonials: { link: "testimonial-section" },
+    "About BHPA": { link: "about-us" },
   },
   "GET INVOLVED": { link: "get-involved" },
 };
@@ -83,14 +83,6 @@ function Navbar(props) {
       navigate("/public#testimonial-section");
       setTimeout(() => {
         const target = document.getElementById("testimonial-section");
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    } else if (link === "benefits-heat-pump") {
-      navigate("/public#benefits-heat-pump");
-      setTimeout(() => {
-        const target = document.getElementById("benefits-heat-pump");
         if (target) {
           target.scrollIntoView({ behavior: "smooth" });
         }

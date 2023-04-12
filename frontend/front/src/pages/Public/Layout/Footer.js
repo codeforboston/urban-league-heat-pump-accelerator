@@ -110,23 +110,17 @@ const Footer = () => {
                       textAlign: { xs: "center", lg: "left" },
                     }}
                     component={
-                      item === "Our Partners" ||
-                      item === "Testimonials" ||
-                      item === "Benefits of Heat Pumps"
+                      item === "Our Partners" || item === "Testimonials"
                         ? "button"
                         : Link
                     }
                     to={
-                      item === "Our Partners" ||
-                      item === "Testimonials" ||
-                      item === "Benefits of Heat Pumps"
+                      item === "Our Partners" || item === "Testimonials"
                         ? null
                         : footerItems[item].link
                     }
                     onClick={
-                      item === "Our Partners" ||
-                      item === "Testimonials" ||
-                      item === "Benefits of Heat Pumps"
+                      item === "Our Partners" || item === "Testimonials"
                         ? () => {
                             navigate("/public");
                             setTimeout(() => {

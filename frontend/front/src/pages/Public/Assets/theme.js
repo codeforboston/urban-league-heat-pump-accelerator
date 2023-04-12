@@ -103,7 +103,6 @@ export const theme = createTheme({
             minWidth: 200,
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
             letterSpacing: "-.03em",
-            textShadow: "1px 1px 2px #fff",
             background: "var(--accent-1)",
             "&:hover": {
               background: "var(--accent-1)",
@@ -122,7 +121,6 @@ export const theme = createTheme({
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
             boxShadow: "var(--box-shadow-1)",
             letterSpacing: "-.03em",
-            textShadow: "none",
             "&:hover": {
               transform: "scale(1.1)",
               background: "var(--bgColor-10)",
