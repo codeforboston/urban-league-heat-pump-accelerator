@@ -13,6 +13,10 @@ import { useGetSurveyStructureQuery } from "../../redux/apiSlice";
 import { HeatPumpTextField } from "./HeatPumpTextField";
 import { AddressComponent } from "../AddressUtils";
 import { useNavigate } from "react-router-dom";
+import {
+  buildSurveyCacheKey,
+  buildDefaultDataFromSurveyStructure,
+} from "../../util/surveyUtils";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
@@ -34,36 +38,10 @@ export const SurveyComponent = forwardRef(
   ) => {
     const navigate = useNavigate();
 
-    const { handleSubmit, reset, control } = useForm();
+    const { handleSubmit, reset, control, watch } = useForm();
 
-    // TODO: id of the main survey goes here
     const { data: surveyStructure, error: surveyStructureError } =
       useGetSurveyStructureQuery(surveyId);
-
-    const formDefault = useMemo(() => {
-      if (defaultData) {
-        return defaultData;
-      }
-
-      if (surveyStructure) {
-        return surveyStructure.survey_questions.reduce(
-          (prev, curr) => ({
-            ...prev,
-            [`${curr.id}`]: "",
-          }),
-          {}
-        );
-      }
-
-      return null;
-    }, [defaultData, surveyStructure]);
-
-    // useEffect to set the default data for the form
-    useEffect(() => {
-      if (formDefault) {
-        reset(formDefault);
-      }
-    }, [formDefault, reset]);
 
     const [isEditing, setIsEditing] = useState(!isEditable);
 
@@ -74,10 +52,57 @@ export const SurveyComponent = forwardRef(
       [isEditing, isEditable]
     );
 
+    const cacheKey = useMemo(
+      () => buildSurveyCacheKey(surveyId, activeHome.id),
+      [activeHome.id, surveyId]
+    );
+
+    // gets the data from the cache when the form initially loads
+    // only use this for prepopulating the form
+    const cachedData = useMemo(() => {
+      const cacheDataString = localStorage.getItem(cacheKey);
+      return cacheDataString ? JSON.parse(cacheDataString) : null;
+    }, [cacheKey]);
+
+    const clearCache = useCallback(() => {
+      localStorage.removeItem(cacheKey);
+    }, [cacheKey]);
+
+    const formDefault = useMemo(() => {
+      if (defaultData) {
+        return defaultData;
+      }
+
+      if (surveyStructure) {
+        return buildDefaultDataFromSurveyStructure(surveyStructure);
+      }
+
+      return null;
+    }, [defaultData, surveyStructure]);
+
+    // useEffect to set the default data for the form
+    // add in cached data here instead of in formDefault so that clicking "clear" doesn't treat the cache as default
+    useEffect(() => {
+      const cacheOrDefault = cachedData || formDefault;
+      if (cacheOrDefault) {
+        reset(cacheOrDefault);
+      }
+    }, [cachedData, formDefault, reset]);
+
+    useEffect(() => {
+      // function passed to watch is executed every time the form data changes
+      // to update the data in the cache
+      const formSubscription = watch((value) => {
+        localStorage.setItem(cacheKey, JSON.stringify(value));
+      });
+
+      return () => formSubscription.unsubscribe();
+    }, [cacheKey, watch]);
+
     const commonButtonSection = useCallback(
       () => (
         <>
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" name="submit">
             {"Submit"}
           </Button>
           <Button
@@ -85,14 +110,14 @@ export const SurveyComponent = forwardRef(
             type="button"
             onClick={(e) => {
               e.preventDefault();
-              reset();
+              reset(formDefault);
             }}
           >
             {"Clear"}
           </Button>
         </>
       ),
-      [reset]
+      [formDefault, reset]
     );
 
     const adminButtonsViewing = useCallback(
@@ -146,7 +171,7 @@ export const SurveyComponent = forwardRef(
             color="error"
             onClick={(e) => {
               e.preventDefault();
-              reset();
+              reset(formDefault);
               setIsEditing(false);
             }}
           >
@@ -154,7 +179,7 @@ export const SurveyComponent = forwardRef(
           </Button>
         </>
       ),
-      [reset]
+      [formDefault, reset]
     );
 
     const renderSurvey = useCallback(
@@ -212,9 +237,17 @@ export const SurveyComponent = forwardRef(
         />
         <AddressComponent home={activeHome} />
         <form
-          onSubmit={handleSubmit((surveyData) =>
-            submitSurvey(surveyData, surveyId)
-          )}
+          onSubmit={handleSubmit(async (surveyData) => {
+            const { data } = await submitSurvey(
+              surveyData,
+              surveyId,
+              clearCache
+            );
+            if (!!data) {
+              // clear cache data if survey submission succeeds
+              clearCache();
+            }
+          })}
         >
           <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
             {surveyStructure ? (
