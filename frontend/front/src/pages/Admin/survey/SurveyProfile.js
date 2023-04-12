@@ -42,14 +42,16 @@ const SurveyProfile = () => {
 
   const onSubmit = useCallback(
     async (responses, surveyId) => {
-      const body = {
-        responses,
-        surveyId,
-        homeId: surveyVisit?.homeId,
-        // TODO: probably remove this and handle on the back end
-        date: new Date().toISOString(),
-      };
-      putSurveyVisit({ id: surveyVisitId, body });
+      return await putSurveyVisit({
+        id: surveyVisitId,
+        body: {
+          responses,
+          surveyId,
+          homeId: surveyVisit?.homeId,
+          // TODO: probably remove this and handle on the back end
+          date: new Date().toISOString(),
+        },
+      });
     },
     [putSurveyVisit, surveyVisit?.homeId, surveyVisitId]
   );

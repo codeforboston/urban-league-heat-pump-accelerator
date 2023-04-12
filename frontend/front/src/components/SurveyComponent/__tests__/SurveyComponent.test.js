@@ -1,61 +1,148 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import { AdminSurvey, PublicSurvey, SurveyorSurvey } from "../SurveyComponent";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import * as router from "react-router";
+import { SurveyComponent } from "../SurveyComponent";
 import * as apiSlice from "../../../redux/apiSlice";
-import surveyStructure from "../../../dummyData/backendData/survey_show.json";
+import surveys from "../../../dummyData/jsonServerData/surveys";
+import homes from "../../../dummyData/jsonServerData/homes";
+import {
+  buildSurveyCacheKey,
+  buildDefaultDataFromSurveyStructure,
+} from "../../../util/surveyUtils";
+
+const DEFAULT_TEST_SURVEY = surveys[0];
+const DEFAULT_TEST_HOME = homes[0];
+const DEFAULT_TEST_SURVEY_CACHE_KEY = buildSurveyCacheKey(
+  DEFAULT_TEST_SURVEY.id,
+  DEFAULT_TEST_HOME.id
+);
+const DEFAULT_TEST_DEFAULT_SURVEY_DATA =
+  buildDefaultDataFromSurveyStructure(DEFAULT_TEST_SURVEY);
 
 describe("SurveyComponent", () => {
-  // overwrite recaptcha key for testing purposes
-  process.env.REACT_APP_RECAPTCHA_KEY = "RECAPTCHA_KEY";
+  beforeEach(() => {
+    jest.spyOn(router, "useNavigate").mockImplementation(() => jest.fn());
 
-  const mockSurveyStructure = jest.spyOn(
-    apiSlice,
-    "useGetSurveyStructureQuery"
-  );
-
-  it("dummy test", () => {
-    expect(true).toBeTruthy();
+    jest
+      .spyOn(apiSlice, "useGetSurveyStructureQuery")
+      .mockImplementation((id) => {
+        const survey = surveys.find((s) => `${s.id}` === `${id}`);
+        return { data: survey, error: !survey };
+      });
   });
 
-  /*
-  TODO: uncomment these once the code stops changing so often
-
-  it("snapshot test, public", () => {
-    mockSurveyStructure.mockImplementation(() => ({
-      data: surveyStructure,
-    }));
-
-    expect(render(<PublicSurvey />, {})).toMatchSnapshot();
+  afterEach(() => {
+    localStorage.clear();
   });
 
-  it("snapshot test, surveyor", () => {
-    mockSurveyStructure.mockImplementation(() => ({
-      data: surveyStructure,
-    }));
+  it("should load from cache if available", () => {
+    localStorage.setItem(
+      DEFAULT_TEST_SURVEY_CACHE_KEY,
+      JSON.stringify({
+        ...DEFAULT_TEST_DEFAULT_SURVEY_DATA,
+        3: "some text",
+      })
+    );
 
-    expect(render(<SurveyorSurvey />, {})).toMatchSnapshot();
+    render(
+      <SurveyComponent
+        submitSurvey={jest.fn()}
+        isLoading={false}
+        activeHome={DEFAULT_TEST_HOME}
+        isEditable={false}
+        surveyId={DEFAULT_TEST_SURVEY.id}
+        formSpacing={5}
+      />,
+      {}
+    );
+
+    // eslint-disable-next-line testing-library/no-node-access
+    expect(screen.getByTestId("3").querySelector("input")).toHaveAttribute(
+      "value",
+      "some text"
+    );
   });
 
-  it("snapshot test, admin", () => {
-    mockSurveyStructure.mockImplementation(() => ({
-      data: surveyStructure,
-    }));
+  it("should cache data when form is edited", () => {
+    render(
+      <SurveyComponent
+        submitSurvey={jest.fn()}
+        isLoading={false}
+        activeHome={DEFAULT_TEST_HOME}
+        isEditable={false}
+        surveyId={DEFAULT_TEST_SURVEY.id}
+        formSpacing={5}
+      />,
+      {}
+    );
 
-    expect(render(<AdminSurvey />, {})).toMatchSnapshot();
+    fireEvent.change(screen.getAllByRole("textbox")[0], {
+      target: { value: "some text" },
+    });
+
+    expect(localStorage.getItem(DEFAULT_TEST_SURVEY_CACHE_KEY)).toBeTruthy();
+    expect(localStorage.getItem(DEFAULT_TEST_SURVEY_CACHE_KEY)).toContain(
+      "some text"
+    );
   });
 
-  it("snapshot test, error message", () => {
-    mockSurveyStructure.mockImplementation(() => ({
-      error: "There was an error!",
-    }));
+  it("should clear data when form is submitted", async () => {
+    localStorage.setItem(
+      DEFAULT_TEST_SURVEY_CACHE_KEY,
+      JSON.stringify({
+        ...DEFAULT_TEST_DEFAULT_SURVEY_DATA,
+        3: "some text",
+      })
+    );
 
-    expect(render(<PublicSurvey />, {})).toMatchSnapshot();
+    const mockSubmit = jest.fn(() => Promise.resolve({ data: "success!" }));
+
+    render(
+      <SurveyComponent
+        submitSurvey={mockSubmit}
+        isLoading={false}
+        activeHome={DEFAULT_TEST_HOME}
+        isEditable={false}
+        surveyId={DEFAULT_TEST_SURVEY.id}
+        formSpacing={5}
+      />,
+      {}
+    );
+
+    const submitButton = screen.getByRole("button", { name: /submit/i });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => expect(mockSubmit).toHaveBeenCalled());
+    expect(localStorage.getItem(DEFAULT_TEST_SURVEY_CACHE_KEY)).toBeFalsy();
   });
 
-  it("snapshot test, loading", () => {
-    mockSurveyStructure.mockImplementation(() => ({}));
+  it("should not clear data if form submission fails", async () => {
+    localStorage.setItem(
+      DEFAULT_TEST_SURVEY_CACHE_KEY,
+      JSON.stringify({
+        ...DEFAULT_TEST_DEFAULT_SURVEY_DATA,
+        3: "some text",
+      })
+    );
 
-    expect(render(<PublicSurvey />, {})).toMatchSnapshot();
+    const mockSubmit = jest.fn(() => Promise.resolve({ error: "oh no!" }));
+
+    render(
+      <SurveyComponent
+        submitSurvey={mockSubmit}
+        isLoading={false}
+        activeHome={DEFAULT_TEST_HOME}
+        isEditable={false}
+        surveyId={DEFAULT_TEST_SURVEY.id}
+        formSpacing={5}
+      />,
+      {}
+    );
+
+    const submitButton = screen.getByRole("button", { name: /submit/i });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => expect(mockSubmit).toHaveBeenCalled());
+    expect(localStorage.getItem(DEFAULT_TEST_SURVEY_CACHE_KEY)).toBeTruthy();
   });
-  */
 });

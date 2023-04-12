@@ -40,8 +40,8 @@ const HouseProfile = () => {
   ] = usePostSurveyVisitMutation();
 
   const submitSurvey = useCallback(
-    (responses, surveyId) => {
-      addSurveyVisit({
+    async (responses, surveyId) => {
+      return await addSurveyVisit({
         responses,
         homeId,
         surveyId,

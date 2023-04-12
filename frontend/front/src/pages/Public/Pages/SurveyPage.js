@@ -52,7 +52,7 @@ export const SurveyPage = () => {
   const handleAddSurveyVisit = useCallback(
     async (responses, surveyId) => {
       const recaptcha = await getReCaptchaToken();
-      addSurveyVisit({
+      return await addSurveyVisit({
         responses,
         recaptcha,
         surveyId,
