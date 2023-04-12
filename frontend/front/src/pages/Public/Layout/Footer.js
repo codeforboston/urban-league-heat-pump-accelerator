@@ -22,8 +22,9 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 const footerItems = {
   "About B.H.P.A": { link: "about-us" },
   "About Heat Pumps": { link: "about-heat-pump" },
+  "Benefits of Heat Pumps": { link: "benefits-heat-pump" },
+  "Get Involved": { link: "get-involved" },
   "Our Partners": { link: "our-partners-section" },
-  "Learn More": { link: "learn-more" },
   Testimonials: { link: "testimonial-section" },
 };
 
@@ -62,7 +63,7 @@ const Footer = () => {
             direction="column"
             justifyContent="center"
             alignItems="flex-start"
-            sx={{ display: { xs: "none", lg: "flex" } }}
+            sx={{ display: { xs: "none", lg: "flex" }, pr: { lg: 1 } }}
             lg={3}
           >
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
@@ -98,7 +99,7 @@ const Footer = () => {
           >
             <List variant="caption">
               <Typography className="subtitle-footer" pb={1}>
-                Benefits of Heat Pumps
+                Learn More
               </Typography>
               {Object.keys(footerItems).map((item) => (
                 <ListItem key={item} sx={{ pt: { xs: 0, lg: 0 }, px: 0 }}>

@@ -72,7 +72,7 @@ const Partners = () => {
             </Grid>
           ))}
           <Grid item pb={4} mx={2}>
-            <Typography variant="body2">
+            <Typography variant="body2" sx={{ color: "var(--color-text-6)" }}>
               This initiative is a collaboration of Massachusetts government and
               nonprofit organizations working together to help{" "}
               <Link

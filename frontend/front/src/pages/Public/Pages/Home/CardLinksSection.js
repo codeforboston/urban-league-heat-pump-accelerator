@@ -10,7 +10,7 @@ const CardLinks = styled("div")(({ theme }) => ({
   maxWidth: "480px",
   borderRadius: "2%",
   padding: "1px 0",
-  backgroundColor: "var(--bgColor-10)",
+  backgroundColor: "var(--bgColor-11)",
   border: "var(--box-shadow-2)",
   "& .links-wrapper": {
     "& h2": {
@@ -85,7 +85,7 @@ const CardLinksSection = () => {
                     textAlign: "center",
                     justifyContent: "center",
                     alignItems: "center",
-                    color: "var(--color-text-3)",
+                    color: "var(--color-text-6)",
                   }}
                 >
                   <Typography variant="body1">{detail.paragraph}</Typography>
