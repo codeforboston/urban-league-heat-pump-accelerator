@@ -9,22 +9,10 @@ import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
 // To access and visualize the data from the Vercel-hosted API, simply
 // visit the API endpoint URLs using the Vercel deployment domain
 // (e.g., https://https://bhpa.vercel.app/api/your-endpoint).
-async function customBaseQuery(args, api, extraOptions) {
-  const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
-  const vercelApiUrl = process.env.REACT_APP_VERCEL_API_URL;
-
-  // Check if the local API is available
-  const isLocalApiAvailable = await fetch(localApiUrl)
-    .then((response) => response.ok)
-    .catch(() => false);
-
-  // Set the base URL depending on the availability of the local API
-  const baseUrl = isLocalApiAvailable ? localApiUrl : vercelApiUrl;
-
-  // Call the baseFetch function with the updated baseUrl
-  const baseFetch = fetchBaseQuery({ baseUrl });
-  return baseFetch(args, api, extraOptions);
-}
+const baseUrl =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3001"
+    : process.env.REACT_APP_VERCEL_API_URL;
 
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
@@ -32,7 +20,7 @@ export const apiSlice = createApi({
   // baseQuery: mockBaseQuery({
   //   baseUrl: "http://localhost:3500",
   // }),
-  baseQuery: customBaseQuery,
+  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
   // prepareHeaders: (headers) => {
   //   headers.set("apiKey", "TOKEN");
   //   return headers;
