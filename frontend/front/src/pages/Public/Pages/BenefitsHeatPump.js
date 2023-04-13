@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-const BenefitsHeatPump = () => {
+const LearnMore = () => {
   return (
     <Box>
       <Typography variant="h4" mb={3} textAlign="center">
@@ -11,4 +11,4 @@ const BenefitsHeatPump = () => {
   );
 };
 
-export default BenefitsHeatPump;
+export default LearnMore;
