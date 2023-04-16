@@ -15,7 +15,7 @@ export const apiSlice = createApi({
   //   headers.set("apiKey", "TOKEN");
   //   return headers;
   // },
-  tagTypes: ["Home"],
+  tagTypes: ["Home", "SurveyVisit"],
   endpoints: (builder) => ({
     //Home section of the slice
     getHomesData: builder.query({
@@ -107,12 +107,20 @@ export const apiSlice = createApi({
         method: "post",
         body,
       }),
+      invalidatesTags: ["SurveyVisit"],
     }),
     getSurveyVisits: builder.query({
       query: () => ({ url: "/homesurvey", method: "get" }),
+      providesTags: (result = []) => [
+        "SurveyVisit",
+        ...result.map(({ id }) => ({ type: "SurveyVisit", id })),
+      ],
     }),
     getSurveyVisit: builder.query({
       query: (id) => ({ url: `/homesurvey/${id}`, method: "get" }),
+      providesTags: (result = [], error, arg) => [
+        { type: "SurveyVisit", id: arg },
+      ],
     }),
     putSurveyVisit: builder.mutation({
       query: ({ id, body }) => {
@@ -122,12 +130,18 @@ export const apiSlice = createApi({
           body,
         };
       },
+      invalidatesTags: (result, error, arg) => [
+        { type: "SurveyVisit", id: arg.id },
+      ],
     }),
     deleteSurveyVisit: builder.mutation({
       query: (id) => ({
         url: `/homesurvey/${id}`,
         method: "delete",
       }),
+      invalidatesTags: (result, error, arg) => [
+        { type: "SurveyVisit", id: arg.id },
+      ],
     }),
   }),
 });
