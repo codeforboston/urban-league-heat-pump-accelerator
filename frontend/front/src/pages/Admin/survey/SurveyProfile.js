@@ -59,7 +59,6 @@ const SurveyProfile = () => {
   const onDelete = useCallback(() => {
     deleteSurveyVisit(surveyVisitId);
     navigate("/admin/survey");
-    navigate(0); // reload page to update data
   }, [deleteSurveyVisit, surveyVisitId, navigate]);
 
   return (
