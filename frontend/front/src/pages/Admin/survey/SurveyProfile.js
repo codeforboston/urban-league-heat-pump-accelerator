@@ -42,14 +42,16 @@ const SurveyProfile = () => {
 
   const onSubmit = useCallback(
     async (responses, surveyId) => {
-      const body = {
-        responses,
-        surveyId,
-        homeId: surveyVisit?.homeId,
-        // TODO: probably remove this and handle on the back end
-        date: new Date().toISOString(),
-      };
-      putSurveyVisit({ id: surveyVisitId, body });
+      return await putSurveyVisit({
+        id: surveyVisitId,
+        body: {
+          responses,
+          surveyId,
+          homeId: surveyVisit?.homeId,
+          // TODO: probably remove this and handle on the back end
+          date: new Date().toISOString(),
+        },
+      });
     },
     [putSurveyVisit, surveyVisit?.homeId, surveyVisitId]
   );
@@ -57,12 +59,14 @@ const SurveyProfile = () => {
   const onDelete = useCallback(() => {
     deleteSurveyVisit(surveyVisitId);
     navigate("/admin/survey");
-    navigate(0); // reload page to update data
   }, [deleteSurveyVisit, surveyVisitId, navigate]);
 
-  const PageContent = useCallback(() => {
-    if (surveyVisit && houseData) {
-      return (
+  return (
+    <Container>
+      <Typography variant="h5" mt={2}>
+        {title}
+      </Typography>
+      {surveyVisit && houseData ? (
         <AdminSurvey
           defaultData={surveyVisit.responses}
           activeHome={houseData}
@@ -71,35 +75,13 @@ const SurveyProfile = () => {
           onDelete={onDelete}
           isLoading={isSurveyVisitPutLoading || isSurveyDeleteLoading}
         />
-      );
-    }
-
-    if (surveyVisitError || houseError) {
-      return <SurveyError />;
-    }
-
-    return (
-      <Box display="flex" justifyContent="center">
-        <CircularProgress />
-      </Box>
-    );
-  }, [
-    houseData,
-    houseError,
-    isSurveyDeleteLoading,
-    isSurveyVisitPutLoading,
-    onDelete,
-    onSubmit,
-    surveyVisit,
-    surveyVisitError,
-  ]);
-
-  return (
-    <Container>
-      <Typography variant="h5" mt={2}>
-        {title}
-      </Typography>
-      <PageContent />
+      ) : surveyVisitError || houseError ? (
+        <SurveyError />
+      ) : (
+        <Box display="flex" justifyContent="center">
+          <CircularProgress />
+        </Box>
+      )}
     </Container>
   );
 };

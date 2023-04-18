@@ -32,11 +32,21 @@ const createTableData = (surveyVisitData, surveyStructureData, houseData) => {
 const SurveyTable = () => {
   const navigate = useNavigate();
 
-  const { data: surveyVisitData, error: surveyVisitError } =
-    useGetSurveyVisitsQuery();
-  const { data: houseData, error: houseError } = useGetHomesDataQuery();
-  const { data: surveyStructureData, error: surveyStructureError } =
-    useGetSurveyListQuery();
+  const {
+    data: surveyVisitData,
+    error: surveyVisitError,
+    isLoading: isSurveyVisitLoading,
+  } = useGetSurveyVisitsQuery();
+  const {
+    data: houseData,
+    error: houseError,
+    isLoading: isHouseDataLoading,
+  } = useGetHomesDataQuery();
+  const {
+    data: surveyStructureData,
+    error: surveyStructureError,
+    isLoading: isSurveyStructureLoading,
+  } = useGetSurveyListQuery();
 
   const tableData = useMemo(
     () =>
@@ -50,28 +60,28 @@ const SurveyTable = () => {
     navigate(`${row.id}`);
   };
 
-  if (tableData) {
+  if (isSurveyVisitLoading || isHouseDataLoading || isSurveyStructureLoading) {
     return (
-      <DataGrid
-        rows={tableData}
-        columns={COLUMNS}
-        pageSize={20}
-        rowsPerPageOptions={[20]}
-        disableSelectionOnClick
-        autoHeight
-        onRowClick={onRowClick}
-      />
+      <Box display="flex" justifyContent="center">
+        <CircularProgress />
+      </Box>
     );
   }
 
   if (surveyVisitError || houseError || surveyStructureError) {
-    <SurveyError />;
+    return <SurveyError />;
   }
 
   return (
-    <Box display="flex" justifyContent="center">
-      <CircularProgress />
-    </Box>
+    <DataGrid
+      rows={tableData}
+      columns={COLUMNS}
+      pageSize={20}
+      rowsPerPageOptions={[20]}
+      disableSelectionOnClick
+      autoHeight
+      onRowClick={onRowClick}
+    />
   );
 };
 
