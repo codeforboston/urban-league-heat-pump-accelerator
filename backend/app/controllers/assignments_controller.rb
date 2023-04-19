@@ -65,7 +65,7 @@ class AssignmentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def assignment_params
-    params.require(:assignment).permit(:group, :surveyor_id, :home_id)
+    params.require(:assignment).permit(:group, :surveyor_id)
   end
 
   def search_params
