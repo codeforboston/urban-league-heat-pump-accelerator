@@ -53,9 +53,7 @@ module SeedImporter
         # and ensures that each assignment exists.
         # We sort the associations below.
         assignment = Assignment.where(group: data_hash[:group]).first
-        if assignment.nil?
-          assignment = Assignment.new(data_hash.except(:surveyor_email))
-        end
+        assignment = Assignment.new(data_hash.except(:surveyor_email)) if assignment.nil?
         assignment.save!
       end
     end
