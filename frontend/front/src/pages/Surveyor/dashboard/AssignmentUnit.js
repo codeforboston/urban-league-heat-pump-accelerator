@@ -14,9 +14,9 @@ import {
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { selectedHome } from "../../../features/surveyor/surveyorSlice";
 import DialogMenu from "./DialogMenu";
 import OptionMenu from "./OptionMenu";
-import { selectedHome } from "../../../features/surveyor/surveyorSlice";
 
 const AssignmentUnit = (props) => {
   const { data } = props;
@@ -56,10 +56,10 @@ const AssignmentUnit = (props) => {
 
   // does a quick comparison by order
   const compareArrayByOrder = (a, b) => {
-    if (a.ORDER < b.ORDER) {
+    if (a.visit_order < b.visit_order) {
       return -1;
     }
-    if (a.ORDER > b.ORDER) {
+    if (a.visit_order > b.visit_order) {
       return 1;
     }
     return 0;
@@ -138,7 +138,7 @@ const AssignmentUnit = (props) => {
           const labelId = `checkbox-list-secondary-label-${value}`;
           return (
             <ListItem
-              key={value.ORDER + value.ST_NUM}
+              key={value.visit_order + value.street_number}
               sx={{ pl: 0 }}
               secondaryAction={
                 <Checkbox
@@ -159,15 +159,15 @@ const AssignmentUnit = (props) => {
                       color: "black",
                     }}
                   >
-                    {value.ORDER}
+                    {value.visit_order}
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText
                   id={labelId}
                   primary={
                     <Box>
-                      <Box>{`${value.ST_NUM} ${value.ST_NAME}`}</Box>
-                      <Box>{`${value.CITY} ${value.ZIPCODE}`}</Box>
+                      <Box>{`${value.street_number} ${value.street_name}`}</Box>
+                      <Box>{`${value.city} ${value.zip_code}`}</Box>
                       <Box>
                         {value.completed ? (
                           <Typography color="green">Completed</Typography>

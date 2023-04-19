@@ -1,12 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AssignmentUnit from "./AssignmentUnit";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
 import { useGetSurveyorAssignmentQuery } from "../../../redux/surveyorViewApiSlice";
+import AssignmentUnit from "./AssignmentUnit";
 
 const ListView = () => {
   const { data, isLoading, isSuccess } = useGetSurveyorAssignmentQuery();
@@ -23,7 +23,7 @@ const ListView = () => {
         <Box my={3} display={"flex"} justifyContent="center">
           <Typography variant="h4">Assignment</Typography>
         </Box>
-        {/* {data &&
+        {data &&
           data.map((item) => {
             return (
               <Box my={2} key={item.id}>
@@ -36,12 +36,12 @@ const ListView = () => {
                     <Typography variant="h5">Id: {item.id}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <AssignmentUnit data={item.data} />
+                    <AssignmentUnit data={item.homes} />
                   </AccordionDetails>
                 </Accordion>
               </Box>
             );
-          })} */}
+          })}
       </Box>
     );
   }
