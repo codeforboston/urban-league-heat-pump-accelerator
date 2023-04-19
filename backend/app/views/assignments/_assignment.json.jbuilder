@@ -2,6 +2,10 @@
 
 json.extract! assignment, :id, :group, :region_code
 
+json.surveyor_ids do
+  json.array!(assignment.surveyors, :id)
+end
+
 json.homes do
   json.array!(assignment.homes.sort_by do |h|
                 h[:visit_order]
