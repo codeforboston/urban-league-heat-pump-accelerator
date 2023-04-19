@@ -18,7 +18,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_19_144022) do
     t.string "group"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "assignment_code"
     t.integer "region_code"
   end
 

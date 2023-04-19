@@ -14,25 +14,33 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe '/assignments', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Assignment. As you add validations to Assignment, be sure to
   # adjust the attributes here as well.
 
-  let(:user) { FactoryBot.create(:user) }
-  let(:surveyor) { FactoryBot.create(:surveyor, user:) }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:home) { FactoryBot.create(:home) }
+  let!(:surveyor) do 
+    FactoryBot.create(:surveyor, user: user) do |surveyor|
+      FactoryBot.create_list(:assignment, 1, surveyors: [surveyor] )
+      home.assignment = surveyor.assignments[0]
+      home.visit_order = 1
+    end
+  end
+
   let(:valid_attributes) do
     {
       group: 'all-stars',
-      surveyor_id: surveyor.id
+      region_code: 1,
     }
   end
 
   let(:invalid_attributes) do
     {
       group: 1,
-      home_id: 'boop'
+      region_code: "invalid_region",
+      unknown: "test",
     }
   end
 
@@ -43,8 +51,9 @@ RSpec.describe '/assignments', type: :request do
     end
 
     it 'can filter based a surveyor' do
+      Assignment.create! valid_attributes
       get assignments_url, params: { surveyor_id: surveyor.id }, as: :json
-      expect(response.body).to match(/#{surveyor.assignments.first.home.id}/)
+      expect(response.body).to match(/#{surveyor.assignments.first.homes.first.id}/)
     end
   end
 
@@ -132,4 +141,3 @@ RSpec.describe '/assignments', type: :request do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength
