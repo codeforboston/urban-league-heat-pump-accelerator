@@ -8,6 +8,8 @@
         "state": "MA",
         "zip_code": "2108",
         "building_type": "House",
+        "assignment_id": 2,
+        "visit_order": 2,
         "url": "http://localhost:3000/homes/1.json"
     },
     {
@@ -19,6 +21,8 @@
         "state": "MA",
         "zip_code": "2215",
         "building_type": "House",
+        "assignment_id": 4,
+        "visit_order": 6,
         "url": "http://localhost:3000/homes/2.json"
     },
     {
@@ -30,6 +34,8 @@
         "state": "MA",
         "zip_code": "2108",
         "building_type": "House",
+        "assignment_id": 2,
+        "visit_order": 5,
         "url": "http://localhost:3000/homes/3.json"
     },
     {
@@ -41,6 +47,8 @@
         "state": "MA",
         "zip_code": "2116",
         "building_type": "House",
+        "assignment_id": 3,
+        "visit_order": 9,
         "url": "http://localhost:3000/homes/4.json"
     },
     {
@@ -52,6 +60,8 @@
         "state": "MA",
         "zip_code": "2108",
         "building_type": "House",
+        "assignment_id": 1,
+        "visit_order": 18,
         "url": "http://localhost:3000/homes/5.json"
     },
     {
@@ -63,6 +73,8 @@
         "state": "MA",
         "zip_code": "2135",
         "building_type": "House",
+        "assignment_id": 7,
+        "visit_order": 6,
         "url": "http://localhost:3000/homes/6.json"
     },
     {
@@ -74,6 +86,8 @@
         "state": "MA",
         "zip_code": "2108",
         "building_type": "House",
+        "assignment_id": 1,
+        "visit_order": 24,
         "url": "http://localhost:3000/homes/7.json"
     },
     {
@@ -85,6 +99,8 @@
         "state": "MA",
         "zip_code": "2135",
         "building_type": "House",
+        "assignment_id": 7,
+        "visit_order": 2,
         "url": "http://localhost:3000/homes/8.json"
     },
     {
@@ -96,6 +112,8 @@
         "state": "MA",
         "zip_code": "2116",
         "building_type": "House",
+        "assignment_id": 3,
+        "visit_order": 6,
         "url": "http://localhost:3000/homes/9.json"
     },
     {
@@ -107,6 +125,8 @@
         "state": "MA",
         "zip_code": "2215",
         "building_type": "House",
+        "assignment_id": 4,
+        "visit_order": 1,
         "url": "http://localhost:3000/homes/10.json"
     },
     {
@@ -118,6 +138,8 @@
         "state": "MA",
         "zip_code": "2215",
         "building_type": "House",
+        "assignment_id": 4,
+        "visit_order": 2,
         "url": "http://localhost:3000/homes/11.json"
     },
     {
@@ -129,6 +151,8 @@
         "state": "MA",
         "zip_code": "2108",
         "building_type": "House",
+        "assignment_id": 2,
+        "visit_order": 1,
         "url": "http://localhost:3000/homes/12.json"
     },
     {
@@ -140,6 +164,8 @@
         "state": "MA",
         "zip_code": "2135",
         "building_type": "House",
+        "assignment_id": 7,
+        "visit_order": 11,
         "url": "http://localhost:3000/homes/13.json"
     },
     {
@@ -151,6 +177,8 @@
         "state": "MA",
         "zip_code": "2110",
         "building_type": "House",
+        "assignment_id": 5,
+        "visit_order": 1,
         "url": "http://localhost:3000/homes/14.json"
     },
     {
@@ -162,6 +190,8 @@
         "state": "MA",
         "zip_code": "2116",
         "building_type": "House",
+        "assignment_id": 3,
+        "visit_order": 16,
         "url": "http://localhost:3000/homes/15.json"
     },
     {
@@ -173,6 +203,8 @@
         "state": "MA",
         "zip_code": "2108",
         "building_type": "House",
+        "assignment_id": 2,
+        "visit_order": 8,
         "url": "http://localhost:3000/homes/16.json"
     },
     {
@@ -184,6 +216,8 @@
         "state": "MA",
         "zip_code": "2215",
         "building_type": "House",
+        "assignment_id": 4,
+        "visit_order": 3,
         "url": "http://localhost:3000/homes/17.json"
     },
     {
@@ -195,6 +229,8 @@
         "state": "MA",
         "zip_code": "2116",
         "building_type": "House",
+        "assignment_id": 3,
+        "visit_order": 13,
         "url": "http://localhost:3000/homes/18.json"
     },
     {
@@ -206,6 +242,8 @@
         "state": "MA",
         "zip_code": "2108",
         "building_type": "House",
+        "assignment_id": 1,
+        "visit_order": 17,
         "url": "http://localhost:3000/homes/19.json"
     },
     {
@@ -217,6 +255,8 @@
         "state": "MA",
         "zip_code": "2108",
         "building_type": "House",
+        "assignment_id": 2,
+        "visit_order": 11,
         "url": "http://localhost:3000/homes/20.json"
     },
     {
@@ -228,6 +268,8 @@
         "state": "MA",
         "zip_code": "2108",
         "building_type": "House",
+        "assignment_id": 1,
+        "visit_order": 5,
         "url": "http://localhost:3000/homes/21.json"
     },
     {
@@ -239,6 +281,8 @@
         "state": "MA",
         "zip_code": "2108",
         "building_type": "House",
+        "assignment_id": 1,
+        "visit_order": 4,
         "url": "http://localhost:3000/homes/22.json"
     },
     {
@@ -250,6 +294,8 @@
         "state": "MA",
         "zip_code": "2215",
         "building_type": "House",
+        "assignment_id": 4,
+        "visit_order": 11,
         "url": "http://localhost:3000/homes/23.json"
     },
     {
@@ -261,6 +307,8 @@
         "state": "MA",
         "zip_code": "2135",
         "building_type": "House",
+        "assignment_id": 7,
+        "visit_order": 8,
         "url": "http://localhost:3000/homes/24.json"
     },
     {
@@ -272,6 +320,8 @@
         "state": "MA",
         "zip_code": "2108",
         "building_type": "House",
+        "assignment_id": 1,
+        "visit_order": 1,
         "url": "http://localhost:3000/homes/25.json"
     },
     {
@@ -283,6 +333,8 @@
         "state": "MA",
         "zip_code": "2116",
         "building_type": "House",
+        "assignment_id": 3,
+        "visit_order": 20,
         "url": "http://localhost:3000/homes/26.json"
     },
     {
@@ -294,6 +346,8 @@
         "state": "MA",
         "zip_code": "2135",
         "building_type": "House",
+        "assignment_id": 7,
+        "visit_order": 1,
         "url": "http://localhost:3000/homes/27.json"
     },
     {
@@ -305,6 +359,8 @@
         "state": "MA",
         "zip_code": "2127",
         "building_type": "House",
+        "assignment_id": 6,
+        "visit_order": 10,
         "url": "http://localhost:3000/homes/28.json"
     },
     {
@@ -316,6 +372,8 @@
         "state": "MA",
         "zip_code": "2116",
         "building_type": "House",
+        "assignment_id": 3,
+        "visit_order": 18,
         "url": "http://localhost:3000/homes/29.json"
     },
     {
@@ -327,6 +385,8 @@
         "state": "MA",
         "zip_code": "2116",
         "building_type": "House",
+        "assignment_id": 3,
+        "visit_order": 24,
         "url": "http://localhost:3000/homes/30.json"
     }
 ]

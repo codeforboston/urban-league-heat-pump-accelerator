@@ -3,7 +3,7 @@
 json.extract! assignment, :id, :group, :region_code
 
 json.surveyor_ids do
-  json.array!(assignment.surveyors, :id)
+  json.array!(assignment.surveyors.map { |s| s[:id] })
 end
 
 json.homes do
