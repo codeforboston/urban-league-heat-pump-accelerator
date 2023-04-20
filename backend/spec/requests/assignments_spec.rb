@@ -20,40 +20,47 @@ RSpec.describe '/assignments', type: :request do
   # adjust the attributes here as well.
 
   let!(:user) { FactoryBot.create(:user) }
+  let(:surveyor) { FactoryBot.create(:surveyor, user:) }
   let!(:home) { FactoryBot.create(:home) }
-  let!(:surveyor) do 
-    FactoryBot.create(:surveyor, user: user) do |surveyor|
-      FactoryBot.create_list(:assignment, 1, surveyors: [surveyor] )
-      home.assignment = surveyor.assignments[0]
-      home.visit_order = 1
+  let!(:surveyor) do
+    FactoryBot.create(:surveyor, user:) do |surveyor|
+      FactoryBot.create_list(:assignment, 1, surveyors: [surveyor])
+      home.update(assignment: surveyor.assignments[0], visit_order: 1)
     end
   end
 
   let(:valid_attributes) do
     {
+      surveyors: [surveyor],
       group: 'all-stars',
-      region_code: 1,
+      region_code: 1
     }
   end
 
   let(:invalid_attributes) do
     {
       group: 1,
-      region_code: "invalid_region",
-      unknown: "test",
+      region_code: 'invalid_region'
     }
   end
 
   describe 'GET /index' do
     it 'renders a successful response' do
+      Assignment.create! valid_attributes
       get assignments_url, as: :json
       expect(response).to be_successful
     end
 
-    it 'can filter based a surveyor' do
+    it 'can filter based on a surveyor' do
       Assignment.create! valid_attributes
       get assignments_url, params: { surveyor_id: surveyor.id }, as: :json
-      expect(response.body).to match(/#{surveyor.assignments.first.homes.first.id}/)
+      expect(response.body).to match(/#{home.id}/)
+    end
+
+    it 'can filter based on a surveyor' do
+      Assignment.create! valid_attributes
+      get assignments_url, params: { surveyor_id: (surveyor.id + 1) }, as: :json
+      expect(response.body).to match('[]')
     end
   end
 
