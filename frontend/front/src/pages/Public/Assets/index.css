@@ -6,9 +6,8 @@
 }
 
 :root { 
-    /* Font Families */
-    --font-family-1: 'Roboto', sans-serif;
-    --font-family-2: 'Lora', sans-serif;
+    /* Font Families */ 
+    --font-family-1: 'Lora', sans-serif;
     
     /* Font Weights */
     --font-weight-1: 600;
