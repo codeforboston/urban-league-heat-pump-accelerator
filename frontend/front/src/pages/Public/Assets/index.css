@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 
 /* Global Styles */
 .container-wrapper {
@@ -5,6 +6,10 @@
 }
 
 :root { 
+    /* Font Families */
+    --font-family-1: 'Roboto', sans-serif;
+    --font-family-2: 'Lora', sans-serif;
+    
     /* Font Weights */
     --font-weight-1: 600;
     --font-weight-2: 800;

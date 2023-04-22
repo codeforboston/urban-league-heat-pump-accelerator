@@ -60,6 +60,7 @@ export const theme = createTheme({
     },
     // h4
     title1: {
+      fontFamily: "var(--font-family-1)",
       display: "block",
       width: "100%",
       fontSize: "2rem",
@@ -73,11 +74,12 @@ export const theme = createTheme({
     },
     // h5
     title2: {
+      fontFamily: "var(--font-family-1)",
       fontSize: "1.5rem",
       display: "block",
       letterSpacing: "-.03em",
       padding: "0.75rem 0",
-      textAlign: "center",
+      color: "var(--color-text-2)",
       lineHeight: "34px",
     },
     navLinks: {
