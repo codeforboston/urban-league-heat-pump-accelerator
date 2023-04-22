@@ -9,11 +9,10 @@ import ButtonCustom from "../../Components/ButtonCustom";
 import AnimatedBox from "../../Components/AnimatedBox";
 
 const CardLinks = styled("div")(({ theme }) => ({
-  minWidth: "270px",
+  minWidth: "260px",
   maxWidth: "480px",
   borderRadius: "2%",
   padding: "1px 0",
-  backgroundColor: "var(--bgColor-11)",
   border: "var(--box-shadow-2)",
   "& .links-wrapper": {
     "& h2": {
@@ -71,13 +70,25 @@ const CardLinksSection = () => {
             <Card sx={{ display: "flex" }} id={detail.idCSS}>
               <CardMedia
                 component="img"
-                sx={{ width: 151 }}
+                sx={{
+                  width: { sm: "151px", xs: "25%" },
+                  display: { xxs: "block", xs: "none" },
+                }}
                 image={detail.image}
                 alt={detail.title}
               />
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <CardContent sx={{ flex: "1 0 auto" }}>
-                  <Box id="survey-link-section" m={4}>
+                  <Box
+                    id="survey-link-section"
+                    sx={{
+                      maxHeight: "300px",
+                      minHeight: "270px",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                    }}
+                  >
                     <Typography variant="title2">{detail.title}</Typography>
 
                     <Box
@@ -91,6 +102,7 @@ const CardLinksSection = () => {
                       </Typography>
                     </Box>
                     <Box
+                      mt={2}
                       sx={{
                         display: "flex",
                         justifyContent: "flex-end",

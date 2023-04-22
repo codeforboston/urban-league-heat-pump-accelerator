@@ -3,6 +3,16 @@ import { createTheme } from "@mui/material";
 /* The custom colors palette is located in the Index.css file. */
 
 export const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      xxs: 330, // Custom breakpoint
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
   typography: {
     // h3
     titleHero: {
