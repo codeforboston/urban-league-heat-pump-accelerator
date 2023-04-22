@@ -54,7 +54,7 @@ const CardLinksSection = () => {
       paragraph: "Empowering Boston residents to save, stay, and sustain.",
       button: {
         text: "Learn more",
-        to: "learn-more",
+        to: "about-us",
         variant: "customBtn",
       },
       idCSS: "learnmore-link-section",

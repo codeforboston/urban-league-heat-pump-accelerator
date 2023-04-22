@@ -78,6 +78,7 @@ export const theme = createTheme({
       background: "var(--bgColor-5)",
       padding: "0.75rem 0",
       textAlign: "center",
+      fontWeight: "700",
       // "@media (max-width:600px)": {
       //   fontSize: "2rem",
       // },
@@ -91,6 +92,7 @@ export const theme = createTheme({
       padding: "0.75rem 0",
       color: "var(--color-text-2)",
       lineHeight: "34px",
+      fontWeight: "700",
     },
     navLinks: {
       fontSize: "1rem",
