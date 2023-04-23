@@ -1,16 +1,17 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box, Grid } from "@mui/material";
+import { Typography, Box, Card, CardContent, CardMedia } from "@mui/material";
+import imageVoice from "../../../../assets/images/surveyor.jpg";
+import imageAbout from "../../../../assets/images/heat-pump-outside-home.jpg";
 import ButtonCustom from "../../Components/ButtonCustom";
 
 import AnimatedBox from "../../Components/AnimatedBox";
 
 const CardLinks = styled("div")(({ theme }) => ({
-  minWidth: "270px",
+  minWidth: "260px",
   maxWidth: "480px",
   borderRadius: "2%",
   padding: "1px 0",
-  backgroundColor: "var(--bgColor-11)",
   border: "var(--box-shadow-2)",
   "& .links-wrapper": {
     "& h2": {
@@ -44,7 +45,7 @@ const CardLinksSection = () => {
         variant: "customBtn",
       },
       idCSS: "survey-link-section",
-      animationCSS: "animate__heartBeat",
+      image: imageVoice,
     },
     {
       id: 2,
@@ -52,11 +53,11 @@ const CardLinksSection = () => {
       paragraph: "Empowering Boston residents to save, stay, and sustain.",
       button: {
         text: "Learn more",
-        to: "learn-more",
+        to: "about-us",
         variant: "customBtn",
       },
       idCSS: "learnmore-link-section",
-      animationCSS: "animate__heartBeat",
+      image: imageAbout,
     },
   ];
 
@@ -64,47 +65,61 @@ const CardLinksSection = () => {
     <GridLinkWrapper container>
       {linkCards.map((detail) => (
         <AnimatedBox triggerOnce={false}>
-          <Grid
-            item
-            id={detail.idCSS}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <CardLinks>
-              <Box id="survey-link-section" m={4}>
-                <Typography textAlign="center" variant="title2">
-                  {detail.title}
-                </Typography>
+          <CardLinks>
+            <Card sx={{ display: "flex" }} id={detail.idCSS}>
+              <CardMedia
+                component="img"
+                sx={{
+                  width: { sm: "151px", xs: "25%" },
+                  display: { xxs: "block", xs: "none" },
+                }}
+                image={detail.image}
+                alt={detail.title}
+              />
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <CardContent sx={{ flex: "1 0 auto" }}>
+                  <Box
+                    id="survey-link-section"
+                    sx={{
+                      maxHeight: "300px",
+                      minHeight: "270px",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Typography py={2} variant="title2">
+                      {detail.title}
+                    </Typography>
 
-                <Box
-                  sx={{
-                    height: "140px",
-                    display: "flex",
-                    textAlign: "center",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    color: "var(--color-text-6)",
-                  }}
-                >
-                  <Typography variant="body1">{detail.paragraph}</Typography>
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <ButtonCustom
-                    text={detail.button.text}
-                    to={detail.button.to}
-                    variant="customBtn"
-                  />
-                </Box>
+                    <Box
+                      sx={{
+                        height: "140px",
+                        color: "var(--color-text-6)",
+                      }}
+                    >
+                      <Typography variant="body1">
+                        {detail.paragraph}
+                      </Typography>
+                    </Box>
+                    <Box
+                      mt={2}
+                      sx={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <ButtonCustom
+                        text={detail.button.text}
+                        to={detail.button.to}
+                        variant="customBtn"
+                      />
+                    </Box>
+                  </Box>
+                </CardContent>
               </Box>
-            </CardLinks>
-          </Grid>
+            </Card>
+          </CardLinks>
         </AnimatedBox>
       ))}
     </GridLinkWrapper>
