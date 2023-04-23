@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Box, Link } from "@mui/material";
+import { Grid, Typography, Box, Link, Container } from "@mui/material";
 import ulemLogo from "../../../../assets/images/ULEM.png";
 import maCleanEnergyLogo from "../../../../assets/images/MACleanEnergy.png";
 import heatSmartLogo from "../../../../assets/images/HeatSmart.png";
@@ -43,11 +43,13 @@ const Partners = () => {
   ];
 
   return (
-    <Box>
+    <Container>
       <Box
         sx={{ display: "flex", justifyContent: "center", marginBottom: "1rem" }}
       >
-        <Typography variant="title1">{title}</Typography>
+        <Typography py={2} variant="title1">
+          {title}
+        </Typography>
       </Box>
 
       <AnimatedBox triggerOnce={false}>
@@ -71,7 +73,7 @@ const Partners = () => {
               </a>
             </Grid>
           ))}
-          <Grid item pb={4} mx={2}>
+          <Grid item pb={4} pt={2} mx={2}>
             <Typography variant="body2" sx={{ color: "var(--color-text-6)" }}>
               This initiative is a collaboration of Massachusetts government and
               nonprofit organizations working together to help{" "}
@@ -79,7 +81,7 @@ const Partners = () => {
                 href="https://www.masssave.com/residential/programs-and-services/income-based-offers/income-eligible-programs"
                 target="_blank"
                 rel="noopener"
-                sx={{ color: "var(--color-text-8)" }}
+                sx={{ color: "var(--color-text-2)" }}
               >
                 make heat pumps more available to low-income residents
               </Link>
@@ -88,7 +90,7 @@ const Partners = () => {
           </Grid>
         </Grid>
       </AnimatedBox>
-    </Box>
+    </Container>
   );
 };
 

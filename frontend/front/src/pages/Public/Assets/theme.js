@@ -78,8 +78,6 @@ export const theme = createTheme({
       width: "100%",
       fontSize: "2rem",
       letterSpacing: "-.03em",
-      background: "var(--bgColor-5)",
-      padding: "0.75rem 0",
       textAlign: "center",
       fontWeight: "700",
       // "@media (max-width:600px)": {
@@ -89,11 +87,20 @@ export const theme = createTheme({
     // h5
     title2: {
       fontFamily: "var(--font-family-1)",
-      fontWeight: "700",
+      fontWeight: "600",
       fontSize: "1.5rem",
       display: "block",
       letterSpacing: "-.03em",
-      padding: "0.75rem 0",
+      color: "var(--color-text-2)",
+      lineHeight: "34px",
+    },
+    // h5
+    title3: {
+      fontFamily: "var(--font-family-1)",
+      fontWeight: "600",
+      fontSize: "1.5rem",
+      display: "block",
+      letterSpacing: "-.03em",
       color: "var(--color-text-2)",
       lineHeight: "34px",
     },

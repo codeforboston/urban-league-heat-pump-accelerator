@@ -89,7 +89,9 @@ const CardLinksSection = () => {
                       justifyContent: "space-between",
                     }}
                   >
-                    <Typography variant="title2">{detail.title}</Typography>
+                    <Typography py={2} variant="title2">
+                      {detail.title}
+                    </Typography>
 
                     <Box
                       sx={{

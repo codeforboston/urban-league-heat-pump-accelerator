@@ -27,7 +27,7 @@ const items = [
 function Testimonial() {
   return (
     <Box
-      mb={16}
+      pb={8}
       sx={{
         display: "flex",
         justifyContent: "center",

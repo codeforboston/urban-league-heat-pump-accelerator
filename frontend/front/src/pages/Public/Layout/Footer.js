@@ -31,7 +31,7 @@ const footerItems = {
 const FooterWrapper = styled("div")(({ theme }) => ({
   background: "var(--bgColor-2)",
   color: "var(--color-text-1)",
-  marginTop: "128px",
+  // marginTop: "128px",
   position: "relative",
   "& .subtitle-footer": {
     fontWeight: "bold",
@@ -52,7 +52,7 @@ const Footer = () => {
         <Grid
           container
           position="static"
-          pt={4}
+          pt={5}
           pb={2}
           sx={{
             textAlign: { xs: "center", lg: "left" },

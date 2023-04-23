@@ -16,13 +16,13 @@
 
     /* Colors text*/    
     --color-text-1: #F9F9F9;
-    --color-text-2: #03045E;
+    --color-text-2: #00497A;
     --color-text-3: #0077B6;
     --color-text-4: #90E0EF;
     --color-text-5: #CAF0F8;
     --color-text-6: #070600;
     --color-text-7: #23B5D3;
-    --color-text-8: #00497A;
+    --color-text-8: #03045E;
     
 
 
@@ -38,11 +38,10 @@
     --bgColor-8:  #EFED6F;
     
     --bgColor-10:  #F6F6F6;
-    --bgColor-11:  #F9F9F9;
+    --bgColor-11:  #FAFBFD;
     --bgColor-12:  #F7F7FF;
     --bgColor-13:  rgba(114,  190,  222,  0.5);
-    ;
-
+ 
 
     /* Accent colors */
     --accent-1:rgba(176, 232, 252, 0.9); /* image overlay*/
