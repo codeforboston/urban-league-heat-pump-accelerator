@@ -12,6 +12,7 @@
     /* Font Weights */
     --font-weight-1: 600;
     --font-weight-2: 800;
+    --font-weight-3: 900;
 
     /* Colors text*/    
     --color-text-1: #F9F9F9;
@@ -55,3 +56,4 @@
     --box-shadow-3: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+  

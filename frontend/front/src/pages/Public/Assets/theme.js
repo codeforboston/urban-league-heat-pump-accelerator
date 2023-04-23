@@ -16,12 +16,14 @@ export const theme = createTheme({
   typography: {
     // h3
     titleHero: {
+      fontFamily: "var(--font-family-1)",
       color: "var(--color-text-4)",
       fontSize: "3rem",
       display: "block",
-      fontWeight: "var(--font-weight-1)",
+      fontWeight: "var(--font-weight-3)",
       lineHeight: "60px",
       letterSpacing: ".02rem",
+
       "@media (min-width:1400px)": {
         fontSize: "3.8rem",
         lineHeight: "80px",
@@ -34,10 +36,11 @@ export const theme = createTheme({
     },
     // h3
     titleHeroBold: {
+      fontFamily: "var(--font-family-1)",
       color: "var(--color-text-7)",
       fontSize: "3rem",
       display: "block",
-      fontWeight: "var(--font-weight-2)",
+      fontWeight: "var(--font-weight-3)",
       textShadow: "1px 1px 1px var(--color-text-5)",
       lineHeight: "60px",
       letterSpacing: ".09rem",
@@ -86,16 +89,16 @@ export const theme = createTheme({
     // h5
     title2: {
       fontFamily: "var(--font-family-1)",
+      fontWeight: "700",
       fontSize: "1.5rem",
       display: "block",
       letterSpacing: "-.03em",
       padding: "0.75rem 0",
       color: "var(--color-text-2)",
       lineHeight: "34px",
-      fontWeight: "700",
     },
     navLinks: {
-      fontSize: "1rem",
+      fontSize: "1.1rem",
       display: "block",
       fontWeight: "var(--font-weight-1)",
       letterSpacing: "-.03em",
@@ -164,8 +167,9 @@ export const theme = createTheme({
             height: "50px",
             borderRadius: "1000px",
             background: "var(--bgColor-11)",
+            width: "200px",
             "&:hover": {
-              backgroundColor: "var(--accent-1)",
+              backgroundColor: "var(--bgColor-11)",
             },
           },
         },
