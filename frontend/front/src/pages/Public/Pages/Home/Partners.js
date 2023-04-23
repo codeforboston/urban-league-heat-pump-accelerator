@@ -79,7 +79,7 @@ const Partners = () => {
                 href="https://www.masssave.com/residential/programs-and-services/income-based-offers/income-eligible-programs"
                 target="_blank"
                 rel="noopener"
-                sx={{ color: "var(--color-text-4)" }}
+                sx={{ color: "var(--color-text-8)" }}
               >
                 make heat pumps more available to low-income residents
               </Link>

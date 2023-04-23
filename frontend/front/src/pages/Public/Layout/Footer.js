@@ -20,7 +20,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const footerItems = {
-  "About B.H.P.A": { link: "about-us" },
+  "About BHPA": { link: "about-us" },
   "About Heat Pumps": { link: "about-heat-pump" },
   "Benefits of Heat Pumps": { link: "benefits-heat-pump" },
   "Get Involved": { link: "get-involved" },
