@@ -31,7 +31,6 @@ const footerItems = {
 const FooterWrapper = styled("div")(({ theme }) => ({
   background: "var(--bgColor-2)",
   color: "var(--color-text-1)",
-  // marginTop: "128px",
   position: "relative",
   "& .subtitle-footer": {
     fontWeight: "bold",
