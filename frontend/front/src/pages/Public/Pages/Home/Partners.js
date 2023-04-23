@@ -6,6 +6,7 @@ import heatSmartLogo from "../../../../assets/images/HeatSmart.png";
 import codeForAmericaLogo from "../../../../assets/images/CFA.png";
 import codeForBostonLogo from "../../../../assets/images/CFB.png";
 import AnimatedBox from "../../Components/AnimatedBox";
+import ButtonCustom from "../../Components/ButtonCustom";
 
 const Partners = () => {
   let title = "Our Partners";
@@ -73,7 +74,7 @@ const Partners = () => {
               </a>
             </Grid>
           ))}
-          <Grid item pb={4} pt={2} mx={2}>
+          <Grid item pb={4} pt={1} mx={2}>
             <Typography variant="body2" sx={{ color: "var(--color-text-6)" }}>
               This initiative is a collaboration of Massachusetts government and
               nonprofit organizations working together to help{" "}
@@ -87,6 +88,9 @@ const Partners = () => {
               </Link>
               .
             </Typography>
+          </Grid>
+          <Grid item mt={2}>
+            <ButtonCustom text="Learn more" to="about-us" variant="customBtn" />
           </Grid>
         </Grid>
       </AnimatedBox>

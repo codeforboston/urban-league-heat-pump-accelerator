@@ -3,7 +3,6 @@ import { styled } from "@mui/material/styles";
 import { Typography, Box, Card, CardContent, CardMedia } from "@mui/material";
 import imageVoice from "../../../../assets/images/surveyor.jpg";
 import imageAbout from "../../../../assets/images/heat-pump-outside-home.jpg";
-
 import ButtonCustom from "../../Components/ButtonCustom";
 
 import AnimatedBox from "../../Components/AnimatedBox";

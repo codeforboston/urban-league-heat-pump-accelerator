@@ -161,7 +161,6 @@ export const theme = createTheme({
             minWidth: 200,
             backgroundColor: "var(--bgColor-3)",
             "&:hover": {
-              transform: "scale(1.1)",
               backgroundColor: "var(--bgColor-3)",
               textShadow: "1px 1px 2px #000",
             },
