@@ -1,53 +1,51 @@
-
 /* Global Styles */
 .container-wrapper {
-    /* background-color: var(--bgColor-10); */
+  /* background-color: var(--bgColor-10); */
 }
 
-:root { 
-    /* Font Weights */
-    --font-weight-1: 600;
-    --font-weight-2: 800;
+:root {
+  /* Font Weights */
+  --font-weight-1: 600;
+  --font-weight-2: 800;
 
-    /* Colors text*/    
-    --color-text-1: #F9F9F9;
-    --color-text-2: #03045E;
-    --color-text-3: #0077B6;
-    --color-text-4: #90E0EF;
-    --color-text-5: #CAF0F8;
-    --color-text-6: #070600;
-    --color-text-7: #23B5D3;
-    
+  /* Colors text*/
+  --color-text-1: #f9f9f9;
+  --color-text-2: #03045e;
+  --color-text-3: #0077b6;
+  --color-text-4: #90e0ef;
+  --color-text-5: #caf0f8;
+  --color-text-6: #070600;
+  --color-text-7: #23b5d3;
+  --color-text-8: #00497a;
 
+  /* Background colors */
+  --bgColor-1: linear-gradient(
+    90deg,
+    #98c7d6 50%,
+    #72bede 100%
+  ); /* navbar - drawer*/
+  /* --bgColor-2: #72bede; */
+  --bgColor-2: #00497a;
+  --bgColor-3: #03045e;
+  --bgColor-4: #23b5d3;
+  --bgColor-5: #caf0f8;
+  --bgColor-6: #90e0ef;
+  --bgColor-7: #ea526f;
+  --bgColor-8: #efed6f;
 
-    /* Background colors */
-    --bgColor-1:  linear-gradient(90deg, #98c7d6 50%, #72bede 100%); /* navbar - drawer*/
-    /* --bgColor-2: #72bede; */
-    --bgColor-2: #00497a; 
-    --bgColor-3: #03045E; 
-    --bgColor-4: #23B5D3;
-    --bgColor-5: #CAF0F8;
-    --bgColor-6: #90E0EF;
-    --bgColor-7: #EA526F;;
-    --bgColor-8:  #EFED6F;
-    
-    --bgColor-10:  #F6F6F6;
-    --bgColor-11:  #F9F9F9;
-    --bgColor-12:  #F7F7FF;
-    --bgColor-13:  rgba(114,  190,  222,  0.5);
-    ;
+  --bgColor-10: #f6f6f6;
+  --bgColor-11: #f9f9f9;
+  --bgColor-12: #f7f7ff;
+  --bgColor-13: rgba(114, 190, 222, 0.5);
+  --bgColor-14: #eaf7fb;
+  /* Accent colors */
+  --accent-1: rgba(176, 232, 252, 0.9); /* image overlay*/
+  --accent-2: rgba(7, 6, 0, 0.1); /* image overlay*/
+  --accent-3: rgba(0, 0, 0, 0.4); /* image overlay*/
+  --accent-4: rgba(202, 240, 254, 0.8); /* Divider color */
 
-
-    /* Accent colors */
-    --accent-1:rgba(176, 232, 252, 0.9); /* image overlay*/
-    --accent-2: rgba(7, 6, 0, 0.1); /* image overlay*/
-    --accent-3: rgba(0, 0, 0, 0.4); /* image overlay*/
-    --accent-4: rgba(202, 240, 254,0.8); /* Divider color */
-    
-
-    /* Box shadow */
-    --box-shadow-1: inset 0 0 0 2px hsl(0deg 0% 100% / 30%); /* btn variant: "getpumpOutlined"*/
-    --box-shadow-2: 1px solid rgba(0, 0, 0, 0.12);
-    --box-shadow-3: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  /* Box shadow */
+  --box-shadow-1: inset 0 0 0 2px hsl(0deg 0% 100% / 30%); /* btn variant: "getpumpOutlined"*/
+  --box-shadow-2: 1px solid rgba(0, 0, 0, 0.12);
+  --box-shadow-3: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
-
