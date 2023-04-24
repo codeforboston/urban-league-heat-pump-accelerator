@@ -1,12 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
 /* Global Styles */
 .container-wrapper {
   /* background-color: var(--bgColor-10); */
 }
 
 :root {
+  /* Font Families */
+  --font-family-1: "Lora", sans-serif;
+
   /* Font Weights */
   --font-weight-1: 600;
   --font-weight-2: 800;
+  --font-weight-3: 900;
 
   /* Colors text*/
   --color-text-1: #f9f9f9;
@@ -16,7 +22,6 @@
   --color-text-5: #caf0f8;
   --color-text-6: #070600;
   --color-text-7: #23b5d3;
-  --color-text-8: #00497a;
 
   /* Background colors */
   --bgColor-1: linear-gradient(
@@ -38,6 +43,7 @@
   --bgColor-12: #f7f7ff;
   --bgColor-13: rgba(114, 190, 222, 0.5);
   --bgColor-14: #eaf7fb;
+
   /* Accent colors */
   --accent-1: rgba(176, 232, 252, 0.9); /* image overlay*/
   --accent-2: rgba(7, 6, 0, 0.1); /* image overlay*/

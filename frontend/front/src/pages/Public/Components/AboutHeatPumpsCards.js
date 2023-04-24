@@ -15,9 +15,9 @@ const CardTitle = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
     fontSize: "2.875rem",
   },
-
+  fontFamily: "var(--font-family-1)",
   fontWeight: 500,
-  color: "var(--color-text-8)",
+  color: "var(--bgColor-2)",
   marginTop: "10px",
 }));
 
@@ -43,7 +43,7 @@ function AboutHeatPumpCards({
       <Box
         sx={{
           height: { xs: "198px", lg: "367px" },
-          width: { lg: "654px" },
+          width: { xs: "353px", lg: "654px" },
           order: { lg: "2" },
         }}
       >
@@ -62,6 +62,7 @@ function AboutHeatPumpCards({
               color: "var(--colot-trext-6)",
               marginTop: "10px",
               fontSize: { lg: "1.875rem" },
+              fontFamily: "var(--font-family-1)",
             }}
           >
             {body}
@@ -77,11 +78,14 @@ function AboutHeatPumpCards({
           >
             <Link
               href={link}
+              target="_blank"
+              rel="noopener noreferrer"
               sx={{
                 textDecoration: "none",
                 fontSize: { xs: "0.75rem", lg: "1.875rem" },
                 fontWeight: 700,
-                color: "var(--color-text-8)",
+                color: "var(--bgColor-2)",
+                fontFamily: "var(--font-family-1)",
               }}
             >
               {linkDescription.toUpperCase()}

@@ -39,10 +39,11 @@ function AboutHeatPump() {
     <Box>
       <PublicPageTile pageTitle="About Heat Pumps" />
       <Container
+        disableGutters
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: { xs: "10px", lg: "60px" },
+          gap: { xs: "20px", lg: "60px" },
           maxWidth: { xs: "353px", lg: "1300px" },
           marginTop: { xs: "20px", lg: "60px" },
           paddingLeft: 0,
@@ -54,7 +55,8 @@ function AboutHeatPump() {
             maxWidth: "905px",
             fontSize: { xs: "1.5rem", lg: "3.875rem" },
             fontWeight: 500,
-            color: "var(--color-text-8)",
+            color: "var(--bgColor-2)",
+            fontFamily: "var(--font-family-1)",
           }}
         >
           Learn how heat pumps work and why they are right for you!

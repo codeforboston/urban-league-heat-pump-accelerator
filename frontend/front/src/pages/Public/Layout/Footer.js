@@ -20,7 +20,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const footerItems = {
-  "About B.H.P.A": { link: "about-us" },
+  "About BHPA": { link: "about-us" },
   "About Heat Pumps": { link: "about-heat-pump" },
   "Benefits of Heat Pumps": { link: "benefits-heat-pump" },
   "Get Involved": { link: "get-involved" },
@@ -31,7 +31,6 @@ const footerItems = {
 const FooterWrapper = styled("div")(({ theme }) => ({
   background: "var(--bgColor-2)",
   color: "var(--color-text-1)",
-  marginTop: "128px",
   position: "relative",
   "& .subtitle-footer": {
     fontWeight: "bold",
@@ -52,7 +51,7 @@ const Footer = () => {
         <Grid
           container
           position="static"
-          pt={4}
+          pt={5}
           pb={2}
           sx={{
             textAlign: { xs: "center", lg: "left" },

@@ -27,7 +27,7 @@ const items = [
 function Testimonial() {
   return (
     <Box
-      mb={16}
+      pb={8}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -82,7 +82,7 @@ function TestimonialItem(props) {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            padding: "15px",
+            p: 3,
             background: "var(--bgColor-11)",
             borderRadius: "10px",
             boxShadow: "var(--boxShadow-3)",

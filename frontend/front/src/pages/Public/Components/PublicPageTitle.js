@@ -15,7 +15,8 @@ const StyledTitle = styled(Typography)(({ theme }) => ({
     fontSize: "3.875",
   },
   fontWeight: 500,
-  color: "var(--color-text-8)",
+  color: "var(--bgColor-2)",
+  fontFamily: "var(--font-family-1)",
 }));
 function PublicPageTile({ pageTitle }) {
   return (
