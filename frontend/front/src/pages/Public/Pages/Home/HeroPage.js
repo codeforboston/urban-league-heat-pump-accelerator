@@ -98,7 +98,7 @@ const HeroPage = ({
               </span>
             </Typography>
 
-            <Typography variant="bodyHero" mt={6} mb={7}>
+            <Typography variant="bodyHero" mt={3} mb={7}>
               {text1}
               {link !== "" && (
                 <Link
