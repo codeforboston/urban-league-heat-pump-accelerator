@@ -64,7 +64,7 @@ const CardLinksSection = () => {
   return (
     <GridLinkWrapper container>
       {linkCards.map((detail) => (
-        <AnimatedBox triggerOnce={false}>
+        <AnimatedBox triggerOnce={true}>
           <CardLinks>
             <Card sx={{ display: "flex" }} id={detail.idCSS}>
               <CardMedia

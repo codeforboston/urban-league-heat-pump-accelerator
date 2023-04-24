@@ -14,6 +14,26 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
+  "& .title-hero-underline": {
+    fontFamily: "var(--font-family-1)",
+    color: "var(--color-text-7)",
+    fontSize: "3rem",
+    // display: "block",
+    fontWeight: "var(--font-weight-3)",
+    textShadow: "1px 1px 1px var(--color-text-5)",
+    lineHeight: "60px",
+    letterSpacing: ".09rem",
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "3.8rem",
+      lineHeight: "80px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2rem !important",
+      lineHeight: "50px",
+      letterSpacing: "0rem",
+      fontWeight: "var(--font-weight-1)",
+    },
+  },
   "& .text-wrapper": {
     width: "100%",
     display: "flex",
@@ -60,7 +80,7 @@ const HeroPage = ({
   return (
     <HeroWrapper image={image}>
       <Box className="text-wrapper">
-        <AnimatedBox triggerOnce={false}>
+        <AnimatedBox triggerOnce={true}>
           <Box
             className="text-overlay"
             pt={8}
@@ -73,9 +93,9 @@ const HeroPage = ({
           >
             <Typography variant="titleHero">
               {title.toUpperCase()}
-              <Typography variant="titleHeroBold">
+              <span className="title-hero-underline">
                 {titleBold.toUpperCase()}
-              </Typography>
+              </span>
             </Typography>
 
             <Typography variant="bodyHero" mt={6} mb={7}>

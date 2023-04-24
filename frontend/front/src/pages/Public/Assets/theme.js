@@ -58,7 +58,7 @@ export const theme = createTheme({
     // h6
     bodyHero: {
       color: "var(--color-text-1)",
-      fontSize: "1.6rem",
+      fontSize: "1.3rem",
       display: "block",
       textAlign: "center",
       fontWeight: "500",
@@ -68,7 +68,7 @@ export const theme = createTheme({
         fontSize: "1.8rem",
       },
       "@media (max-width:600px)": {
-        fontSize: "1.3rem",
+        fontSize: "1.2rem",
       },
     },
     // h4

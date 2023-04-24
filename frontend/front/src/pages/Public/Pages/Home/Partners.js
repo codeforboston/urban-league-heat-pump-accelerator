@@ -53,7 +53,7 @@ const Partners = () => {
         </Typography>
       </Box>
 
-      <AnimatedBox triggerOnce={false}>
+      <AnimatedBox triggerOnce={true}>
         <Grid
           container
           alignItems="center"

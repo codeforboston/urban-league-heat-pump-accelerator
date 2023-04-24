@@ -47,7 +47,7 @@ function CarrouselHero(props) {
 
   return (
     <div
-      sx={{ height: { heroHeight }, minHeight: "100vh", position: "absolute" }}
+      sx={{ height: { heroHeight }, minHeight: "100vh", position: "relative" }}
     >
       <Carousel
         animation="fade"
