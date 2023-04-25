@@ -1,0 +1,30 @@
+[
+  {
+    "heading": "What data does the BHPA use?",
+    "content": "The data used for the BHPA project was the open, public data from the City of Boston's online Property Assessor's database. This data is not privileged or private. It is open to the public."
+  },
+  {
+    "heading": "What did BHPA do with the data?",
+    "content": "BHPA used the Boston Assessor's data to identify homeowner-occupied homes in the the neighborhoods of Dorchester, Roxbury, and Mattapan. This enabled the project organizers to develop a list of neighborhood residents who could potentially participate in a survey intended for the owners of homes. Essentially, it helps the BHPA avoid sending surveyors to an address where the only residents/occupants wouldn't be able to participate in the survey. BHPA plans to use the anonymized data collected from surveys and the open source code to promote public access to generic information that hopefully will enable Boston-area users to make better informed decisions on heat pumps in their own personal environments."
+  },
+  {
+    "heading": "Why is the BHPA survey only for homeowners and not for renters?",
+    "content": "Renters in Boston are residents and important voices in the community. Renters living in multi-unit homes and/or apartment buildings are already eligible to participate in other programs and initiatives, such as BlocPower. Separately, homeowners of owner-occupied homes (usually have legal control of their building and can make decisions about switching heating and cooling systems in ways that renters (usually) cannot. Both homeowners and renters have important voices and parts to play in the efforts around switching to cleaner, lower-cost heating and cooling. It makes sense to engage with these groups with an individualized and customized approach- the BHPA project focuses on homeowners."
+  },
+  {
+    "heading": "Why does the City of Boston have data on the houses and owners of homes in the city of Boston?",
+    "content": "The City of Boston is the best resource for this question. The BHPA can offer our own take: During the purchase of a property, basic information involved in the transaction becomes part of the property record. This information is public- it is available to anyone who seeks it. Nearly every city, town, and/or county in the United States collects basically the same information and also makes it available to the public."
+  },
+  {
+    "heading": "What data exactly does the City of Boston have about me and my property?",
+    "content": "The City of Boston's Property Assessor's database is easy to use. To learn more about the data that the city has, feel free to look up the address in question in their database here [<a href='https://www.cityofboston.gov/assessing/search/'>LINK</a>]"
+  },
+  {
+    "heading": "What data about me and my property was used in this project? [and it harmed/reduced/invaded my privacy...]",
+    "content": "The Boston Heat Pump Accelerator uses publicly available data from the City of Boston Assessor's office to reach out to homeowners in Boston neighborhoods to survey residents about their knowledge of heat pumps. Since Massachusetts has some discounts for residents based on being a resident and a homeowner, we are reaching out to folks who are eligible for these discounts, and we use public data to do this. We also use open source code to help create tools to make the lists for people to contact. The Boston Heat Pump Accelerator works with volunteers in the Code for Boston community to create open source computer code in our technology. The code is <a href='https://github.com/codeforboston/urban-league-heat-pump-accelerator'>public on GitHub</a> in case you would like to inspect it."
+  },
+  {
+    "heading": "What happens to the input that people provide to the survey (either in person or online)?",
+    "content": "When you take the BHPA survey about heat pumps, it is anonymized and collected in aggregate. We report data we collect in our survey to the partners listed on our Partners page to help them improve their programs, so we can help more people get the discounts for heat pumps for which they are eligible. We do not sell your data to 3rd parties. If you have questions about how your data is used, please contact <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
+  }
+]
