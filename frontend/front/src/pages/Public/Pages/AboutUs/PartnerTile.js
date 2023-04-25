@@ -3,7 +3,7 @@ import { Box, Stack, Typography, Link } from "@mui/material";
 
 const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
   return (
-    <Box mb={3} container>
+    <Box mb={3}>
       <Typography>
         <b>{partnerName}</b> {paragraphText}
       </Typography>

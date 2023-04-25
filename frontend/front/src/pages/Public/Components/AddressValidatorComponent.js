@@ -17,7 +17,14 @@ export const AddressValidatorComponent = forwardRef(
 
     const { handleSubmit, control } = useForm({
       defaultValues: {
-        address: { street: "", aptNumber: "", zipCode: "", city: "" },
+        address: {
+          street_number: "",
+          street_name: "",
+          unit_number: "",
+          city: "",
+          state: "MA",
+          zip_code: "",
+        },
       },
     });
 
@@ -33,7 +40,7 @@ export const AddressValidatorComponent = forwardRef(
             label={"Enter the address where you're interested in a heat pump:"}
           />
         </Box>
-        <Stack direction="row" justifyContent="center" spacing={2}>
+        <Stack direction="row" justifyContent="center" spacing={2} mb={5}>
           {isLoading && <CircularProgress />}
           <Button variant="contained" type="submit">
             {"Verify"}

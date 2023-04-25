@@ -31,9 +31,9 @@ function PrivacyPolicy() {
             Table of Contents
           </Typography>
           <ol>
-            {pageContent.map((i) => (
-              <li>
-                <a href={`#${sentenceAsLink(i.heading)}`}>{i.heading}</a>
+            {pageContent.map((c, i) => (
+              <li key={`privacyHeading${i}`} style={{ marginBottom: "0.5em" }}>
+                <a href={`#${sentenceAsLink(c.heading)}`}>{c.heading}</a>
               </li>
             ))}
           </ol>
@@ -43,14 +43,14 @@ function PrivacyPolicy() {
           <Typography variant="h5" sx={{ textDecoration: "underline" }}>
             Privacy Summary
           </Typography>
-          {pageContent.map((i) => {
+          {pageContent.map((c, i) => {
             return (
-              <div>
-                <Typography variant="h6" id={sentenceAsLink(i.heading)}>
-                  {i.heading}
+              <div key={`privacy${i}`}>
+                <Typography variant="h6" id={sentenceAsLink(c.heading)}>
+                  {c.heading}
                 </Typography>
                 {/* Using dangerouslySetInnerHTML here to get formatting for links. */}
-                <p dangerouslySetInnerHTML={{ __html: i.content }} />
+                <p dangerouslySetInnerHTML={{ __html: c.content }} />
               </div>
             );
           })}

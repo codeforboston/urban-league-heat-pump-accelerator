@@ -59,7 +59,6 @@ const Footer = () => {
         >
           <Grid
             item
-            direction="column"
             justifyContent="center"
             alignItems="flex-start"
             sx={{ display: { xs: "none", lg: "flex" }, pr: { lg: 1 } }}
@@ -68,7 +67,6 @@ const Footer = () => {
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
               <Box
                 component="img"
-                container
                 alt="logo"
                 src={logoHeatPump}
                 sx={{ maxWidth: "100%" }}
@@ -289,7 +287,6 @@ const Footer = () => {
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
               <Box
                 component="img"
-                container
                 alt="logo"
                 src={logoHeatPump}
                 sx={{

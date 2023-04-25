@@ -72,7 +72,11 @@ function Navbar(props) {
 
   const open = Boolean(anchorMore);
 
-  const handleClickMore = (event) => setAnchorMore(event.currentTarget);
+  const handleClickMore = (event) => {
+    if (event) {
+      setAnchorMore(event.currentTarget);
+    }
+  };
   const handleCloseMore = () => setAnchorMore(null);
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
@@ -125,6 +129,7 @@ function Navbar(props) {
         >
           {Object.keys(navbarItems[item]).map((subItem, index) => (
             <MenuItem
+              key={subItem}
               variant="navLinks"
               onClick={() => {
                 handleNavigation(navbarItems[item][subItem].link);
@@ -181,18 +186,13 @@ function Navbar(props) {
       >
         <List variant="navLinks">
           {Object.keys(navbarItems).map((item) => (
-            <>
+            <div key={item}>
               {item !== "Learn More" ? (
-                <ListItem
-                  key={item}
-                  disablePadding
-                  onClick={handleDrawerToggle}
-                >
+                <ListItem disablePadding onClick={handleDrawerToggle}>
                   <ListItemButton
                     sx={{ textAlign: "center" }}
                     component={Link}
                     to={navbarItems[item].link}
-                    focusVisible
                     onClick={() => setOpenMoreMobile(false)} // Close the dropdown menu (if open) in the drawer when an item is selected
                   >
                     <ListItemText
@@ -215,7 +215,6 @@ function Navbar(props) {
                     variant="navLinks"
                     component={Link}
                     to=""
-                    focusVisible
                     onClick={handleClickMoreMobile}
                   >
                     <ListItemText
@@ -241,7 +240,6 @@ function Navbar(props) {
                             />
                           )
                         }
-                        disablePadding
                         sx={{ height: "20px" }}
                       >
                         <Typography
@@ -258,12 +256,8 @@ function Navbar(props) {
                   </ListItemButton>
                   <Collapse in={openMoreMobile} timeout="auto" unmountOnExit>
                     {Object.keys(navbarItems[item]).map((subItem, index) => (
-                      <List component="div" disablePadding>
-                        <ListItem
-                          key={subItem}
-                          disablePadding
-                          onClick={handleDrawerToggle}
-                        >
+                      <List component="div" disablePadding key={subItem}>
+                        <ListItem disablePadding onClick={handleDrawerToggle}>
                           <ListItemButton
                             variant="navLinks"
                             sx={{ textAlign: "center" }}
@@ -272,7 +266,6 @@ function Navbar(props) {
                               handleCloseMore();
                               setOpenMoreMobile(false); // Close the dropdown menu (if open) in the drawer when an item is selected
                             }}
-                            focusVisible
                           >
                             <ListItemText
                               sx={{
@@ -296,7 +289,7 @@ function Navbar(props) {
                   </Collapse>
                 </>
               )}
-            </>
+            </div>
           ))}
         </List>
         <Box onClick={handleDrawerToggle}>
@@ -321,7 +314,7 @@ function Navbar(props) {
       >
         <AppBar
           position="static"
-          marginTop={2}
+          mt={2}
           sx={{
             background: "var(--bgColor-2)",
             boxShadow: "none",
@@ -334,7 +327,7 @@ function Navbar(props) {
               direction="row"
               justifyContent="space-between"
               alignItems="center"
-              wrap="noWrap"
+              wrap="nowrap"
             >
               <Grid item sx={{ my: 2 }}>
                 <Link to="">
@@ -357,15 +350,11 @@ function Navbar(props) {
                 <Box sx={{ display: { xs: "none", md: "block" } }}>
                   <Stack spacing={2} direction="row">
                     {Object.keys(navbarItems).map((item) => (
-                      <>
+                      <div key={item}>
                         {item === "Learn More" ? (
                           desktopNavLink(navbarItems, item)
                         ) : (
-                          <Button
-                            key={item}
-                            component={Link}
-                            to={navbarItems[item].link}
-                          >
+                          <Button component={Link} to={navbarItems[item].link}>
                             <Typography
                               variant="navLinks"
                               sx={{
@@ -377,7 +366,7 @@ function Navbar(props) {
                             </Typography>
                           </Button>
                         )}
-                      </>
+                      </div>
                     ))}
                   </Stack>
                 </Box>
@@ -417,7 +406,6 @@ function Navbar(props) {
         <Box component="nav">
           <Drawer
             container={container}
-            variant="navLinks"
             open={mobileOpen}
             onClose={handleDrawerToggle}
             anchor="right"
