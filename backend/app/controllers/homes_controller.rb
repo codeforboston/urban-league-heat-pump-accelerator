@@ -5,7 +5,8 @@ class HomesController < ApplicationController
 
   # GET /homes or /homes.json
   def index
-    @homes = Home.all.first(30)
+    @homes = Home.where(search_params.slice(:street_number, :street_name, :unit_number, :city, :state, :zip_code,
+                                            :building_type, :assignment_id))
   end
 
   # GET /homes/1 or /homes/1.json
@@ -65,6 +66,6 @@ class HomesController < ApplicationController
   end
 
   def search_params
-    params.permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type)
+    params.permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type, :assignment_id)
   end
 end

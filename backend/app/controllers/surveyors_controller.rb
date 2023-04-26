@@ -6,7 +6,7 @@ class SurveyorsController < ApplicationController
 
   # GET /surveyors or /surveyors.json
   def index
-    @surveyors = Surveyor.where(params.slice(:city, :zipcode, :state, :role, :status))
+    @surveyors = Surveyor.where(search_params.slice(:city, :zipcode, :state, :role, :status))
   end
 
   # GET /surveyors/1 or /surveyors/1.json
@@ -64,5 +64,9 @@ class SurveyorsController < ApplicationController
   def surveyor_params
     params.require(:surveyor).permit(:user_id, :firstname, :lastname, :email, :phone, :street_address, :geocode,
                                      :city, :zipcode, :state, :role, :status)
+  end
+
+  def search_params
+    params.permit(:city, :zipcode, :state, :role, :status)
   end
 end
