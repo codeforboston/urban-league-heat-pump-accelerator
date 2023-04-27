@@ -152,7 +152,7 @@ const Footer = () => {
             sx={{
               pt: { xs: 1, lg: 0 },
               px: { lg: 2 },
-              borderLeft: { lg: "1px solid var(--accent-4)" },
+              borderLeft: { lg: "1px solid var(--accent-2)" },
               pl: { lg: 4 },
             }}
             xs={12}
@@ -189,7 +189,7 @@ const Footer = () => {
             sx={{
               pt: { xs: 2, lg: 0 },
               px: { lg: 2 },
-              borderLeft: { lg: "1px solid var(--accent-4)" },
+              borderLeft: { lg: "1px solid var(--accent-2)" },
               pl: { lg: 4 },
             }}
           >
@@ -249,7 +249,7 @@ const Footer = () => {
                   }}
                 >
                   <Button
-                    variant="blackBtn"
+                    variant="whiteBtn"
                     sx={{ width: "200px", height: "50px" }}
                     component={Link}
                     to="/surveyor"
@@ -270,7 +270,7 @@ const Footer = () => {
             sx={{ pt: { xs: 4 }, display: { xs: "block", lg: "none" } }}
           >
             <Button
-              variant="blackBtn"
+              variant="whiteBtn"
               component={Link}
               to="/surveyor"
               onClick={() => window.scrollTo(0, 0)}
@@ -303,7 +303,7 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} align="center">
-            <Divider sx={{ my: 2, backgroundColor: "var(--accent-4)" }} />
+            <Divider sx={{ my: 2, backgroundColor: "var(--accent-2)" }} />
             <Typography variant="caption" pt={1}>
               Copyright © {currentYear} | Boston Heat Pump Accelerator. {` `}
             </Typography>

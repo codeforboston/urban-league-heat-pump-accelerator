@@ -53,7 +53,7 @@ const Partners = () => {
         </Typography>
       </Box>
 
-      <AnimatedBox triggerOnce={true}>
+      <AnimatedBox triggerOnce={false}>
         <Grid
           container
           alignItems="center"
@@ -75,7 +75,7 @@ const Partners = () => {
             </Grid>
           ))}
           <Grid item pb={4} pt={1} mx={2}>
-            <Typography variant="body2" sx={{ color: "var(--color-text-6)" }}>
+            <Typography variant="body2" sx={{ color: "var(--color-text-3)" }}>
               This initiative is a collaboration of Massachusetts government and
               nonprofit organizations working together to help{" "}
               <Link

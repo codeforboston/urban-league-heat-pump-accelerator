@@ -67,7 +67,7 @@ function Testimonial() {
 function TestimonialItem(props) {
   return (
     <>
-      <AnimatedBox triggerOnce={true}>
+      <AnimatedBox triggerOnce={false}>
         <Avatar
           src={props.item.avatarSrc}
           sx={{
@@ -83,13 +83,13 @@ function TestimonialItem(props) {
             flexDirection: "column",
             alignItems: "center",
             p: 3,
-            background: "var(--bgColor-11)",
+            background: "var(--bgColor-3)",
             borderRadius: "10px",
             boxShadow: "var(--boxShadow-3)",
             color: "var(--color-text-2)",
             margin: "0 16px",
             height: "220px",
-            border: "var(--box-shadow-2)",
+            border: "var(--boder-color-1)",
             maxWidth: { lg: "500px" },
             minWidth: { lg: "310px" },
           }}
@@ -108,7 +108,7 @@ function TestimonialItem(props) {
             <Typography
               variant="body1"
               textAlign="center"
-              sx={{ color: "var(--color-text-6)", mb: 3 }}
+              sx={{ color: "var(--color-text-3)", mb: 3 }}
             >
               "{props.item.text}"
             </Typography>

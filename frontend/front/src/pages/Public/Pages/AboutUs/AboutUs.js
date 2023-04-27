@@ -19,7 +19,7 @@ function AboutUs() {
         mr={4}
         ml={4}
         sx={{
-          color: "var(--color-text-6) !important",
+          color: "var(--color-text-3) !important",
         }}
       >
         <Box>

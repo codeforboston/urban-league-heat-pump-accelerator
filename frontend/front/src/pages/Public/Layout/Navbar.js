@@ -167,7 +167,7 @@ function Navbar(props) {
           <CloseIcon
             sx={{
               fontSize: 32,
-              color: "var(--color-text-5)",
+              color: "var(--bgColor-1)",
             }}
           />
         </Button>

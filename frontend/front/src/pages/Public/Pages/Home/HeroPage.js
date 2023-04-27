@@ -20,7 +20,7 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     fontSize: "3rem",
     // display: "block",
     fontWeight: "var(--font-weight-3)",
-    textShadow: "1px 1px 1px var(--color-text-5)",
+    textShadow: "1px 1px 1px var(--color-text-2)",
     lineHeight: "60px",
     letterSpacing: ".09rem",
     [theme.breakpoints.up("lg")]: {
@@ -49,7 +49,7 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     color: "var(--color-text-1)",
     margin: "0 auto",
     maxWidth: "650px",
-    background: "var(--accent-3)",
+    background: "var(--accent-1)",
   },
   [theme.breakpoints.up("lg")]: {
     "& .text-overlay": {
@@ -80,7 +80,7 @@ const HeroPage = ({
   return (
     <HeroWrapper image={image}>
       <Box className="text-wrapper">
-        <AnimatedBox triggerOnce={true}>
+        <AnimatedBox triggerOnce={false}>
           <Box
             className="text-overlay"
             pt={8}
@@ -111,7 +111,7 @@ const HeroPage = ({
                     fontWeight: "var(--font-weight-2)",
                     textDecoration: "solid underline 3px",
                     textUnderlinePosition: "under",
-                    textDecorationColor: "var(--color-text-4)",
+                    textDecorationColor: "var(--color-text-5)",
                   }}
                 >
                   {textBold}
@@ -123,7 +123,7 @@ const HeroPage = ({
             <ButtonCustom
               text="Take the survey"
               to="survey"
-              variant="blackBtn"
+              variant="whiteBtn"
               sx={{ width: "200px", height: "50px", textShadow: "none" }}
             />
           </Box>

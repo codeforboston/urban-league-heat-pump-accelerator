@@ -87,14 +87,14 @@ const CardBenefitsSection = () => {
           >
             <Typography
               variant="subtitle2"
-              sx={{ color: "var(--color-text-6)" }}
+              sx={{ color: "var(--color-text-3)" }}
             >
               Learn more about&nbsp;
             </Typography>
             <Link to="benefits-heat-pump">
               <Typography
                 variant="subtitle2"
-                sx={{ color: "var(--color-text-2)" }}
+                sx={{ color: "var(--color-text-4)" }}
               >
                 Benefits of Heat Pump
               </Typography>
@@ -127,7 +127,7 @@ const CardBenefitsSection = () => {
               />
             </Grid>
             <StyledGrid item sx={{ pt: { xs: 2, md: 0 } }} xs={12} sm={6}>
-              <AnimatedBox>
+              <AnimatedBox triggerOnce={false}>
                 <Box sx={{ p: { md: 4, xs: 0 } }}>
                   <Typography pl={2} variant="title3">
                     <span>{card.title}</span>
@@ -137,7 +137,7 @@ const CardBenefitsSection = () => {
                       <Typography
                         gutterBottom
                         variant="body1"
-                        color="var(--color-text-6)"
+                        color="var(--color-text-3)"
                       >
                         {paragraph}
                       </Typography>
@@ -149,7 +149,7 @@ const CardBenefitsSection = () => {
                         <Button
                           component={Link}
                           to={card.buttonLink}
-                          sx={{ color: "var(--color-text-4)" }}
+                          sx={{ color: "var(--color-text-2)" }}
                         >
                           {card.buttonText}
                         </Button>

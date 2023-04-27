@@ -1,8 +1,8 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 import { Typography, Box, Card, CardContent, CardMedia } from "@mui/material";
-import imageVoice from "../../../../assets/images/surveyor.jpg";
-import imageAbout from "../../../../assets/images/heat-pump-outside-home.jpg";
+import imageVoice from "../../../../assets/images/add-your-voice.png";
+import imageAbout from "../../../../assets/images/about-us.png";
 import ButtonCustom from "../../Components/ButtonCustom";
 
 import AnimatedBox from "../../Components/AnimatedBox";
@@ -12,7 +12,7 @@ const CardLinks = styled("div")(({ theme }) => ({
   maxWidth: "480px",
   borderRadius: "2%",
   padding: "1px 0",
-  border: "var(--box-shadow-2)",
+  border: "var(--boder-color-1)",
   "& .links-wrapper": {
     "& h2": {
       fontSize: "1.5rem",
@@ -64,9 +64,12 @@ const CardLinksSection = () => {
   return (
     <GridLinkWrapper container>
       {linkCards.map((detail) => (
-        <AnimatedBox triggerOnce={true}>
+        <AnimatedBox triggerOnce={false}>
           <CardLinks>
-            <Card sx={{ display: "flex" }} id={detail.idCSS}>
+            <Card
+              sx={{ background: "var(--bgColor-3)", display: "flex" }}
+              id={detail.idCSS}
+            >
               <CardMedia
                 component="img"
                 sx={{
@@ -95,7 +98,7 @@ const CardLinksSection = () => {
                     <Box
                       sx={{
                         height: "140px",
-                        color: "var(--color-text-6)",
+                        color: "var(--color-text-3)",
                       }}
                     >
                       <Typography variant="body1">
