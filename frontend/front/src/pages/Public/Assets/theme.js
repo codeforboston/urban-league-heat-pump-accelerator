@@ -73,6 +73,7 @@ export const theme = createTheme({
     },
     // h4
     title1: {
+      color: "var(--color-text-2)",
       fontFamily: "var(--font-family-1)",
       display: "block",
       width: "100%",
