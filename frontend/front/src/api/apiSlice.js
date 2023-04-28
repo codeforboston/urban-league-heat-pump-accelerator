@@ -8,10 +8,10 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3500",
   }),
-  // Should I add: "Surveyor",
+  // Should I add: "Surveyor", "Survey"
   tagTypes: ["Home", "Surveyor"],
   endpoints: (builder) => ({
-    //Home section of the slice
+    /* Homes Endpoints */
     getHomesData: builder.query({
       query: () => "/homes",
       transformResponse: (res) => (res ? res.sort(sortById) : []),
@@ -45,7 +45,7 @@ export const apiSlice = createApi({
       invalidatesTags: ["Home"],
     }),
 
-    // Surveyors section of the slice
+    /* Surveyors Endpoints*/
     getSurveyorsData: builder.query({
       query: () => "/surveyors",
       transformResponse: (res) => res.sort(sortById),
@@ -78,10 +78,38 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Surveyor"],
     }),
+
     /* Survey Endpoints */
-    getSurveyList: builder.query({
+    getSurveysData: builder.query({
       query: () => ({ url: "/surveys", method: "get" }),
       transformResponse: (res) => res.sort(sortById),
+    }),
+    getSurveyData: builder.query({
+      query: (id) => ({
+        url: `/surveys/${id}`,
+        method: "get",
+      }),
+    }),
+    createSurveyData: builder.mutation({
+      query: (body) => ({
+        url: `/surveys`,
+        method: "POST",
+        body,
+      }),
+    }),
+    updateSurveyData: builder.mutation({
+      query: (item) => ({
+        url: `/surveys/${item.id}`,
+        method: "PUT",
+        body: item,
+      }),
+    }),
+    deleteSurveyData: builder.mutation({
+      query: (item) => ({
+        url: `/surveys/${item.id}`,
+        method: "DELETE",
+        body: "",
+      }),
     }),
     // mocking surveyorView data
     // getAssigment within surveyor view
@@ -92,38 +120,33 @@ export const apiSlice = createApi({
         mock: SurveyorViewAssigment1,
       }),
     }),
-    getSurveyStructure: builder.query({
-      query: (id) => ({
-        url: `/surveys/${id}`,
-        method: "get",
-      }),
-    }),
+
     /* Survey visit endpoints */
-    postSurveyVisit: builder.mutation({
-      query: (body) => ({
-        url: "/homesurvey",
-        method: "post",
-        body,
-      }),
-      invalidatesTags: ["SurveyVisit"],
-    }),
-    getSurveyVisits: builder.query({
-      query: () => ({ url: "/homesurvey", method: "get" }),
+    getSurveyVisitsData: builder.query({
+      query: () => ({ url: "/survey_visits", method: "get" }),
       providesTags: (result = []) => [
         "SurveyVisit",
         ...result.map(({ id }) => ({ type: "SurveyVisit", id })),
       ],
     }),
-    getSurveyVisit: builder.query({
-      query: (id) => ({ url: `/homesurvey/${id}`, method: "get" }),
+    getSurveyVisitData: builder.query({
+      query: (id) => ({ url: `/survey_visits/${id}`, method: "get" }),
       providesTags: (result = [], error, arg) => [
         { type: "SurveyVisit", id: arg },
       ],
     }),
-    putSurveyVisit: builder.mutation({
+    createSurveyVisitData: builder.mutation({
+      query: (body) => ({
+        url: "/survey_visits",
+        method: "post",
+        body,
+      }),
+      invalidatesTags: ["SurveyVisit"],
+    }),
+    updateSurveyVisitData: builder.mutation({
       query: ({ id, body }) => {
         return {
-          url: `/homesurvey/${id}`,
+          url: `/survey_visits/${id}`,
           method: "put",
           body,
         };
@@ -132,14 +155,74 @@ export const apiSlice = createApi({
         { type: "SurveyVisit", id: arg.id },
       ],
     }),
-    deleteSurveyVisit: builder.mutation({
+    deleteSurveyVisitData: builder.mutation({
       query: (id) => ({
-        url: `/homesurvey/${id}`,
+        url: `/survey_visits/${id}`,
         method: "delete",
       }),
       invalidatesTags: (result, error, arg) => [
         { type: "SurveyVisit", id: arg.id },
       ],
+    }),
+
+    /* Survey response endpoints */
+    getSurveyResponsesData: builder.query({
+      query: () => ({ url: "/survey_responses", method: "get" }),
+    }),
+    getSurveyResponseData: builder.query({
+      query: (id) => ({ url: `/survey_responses/${id}`, method: "get" }),
+    }),
+    createSurveyResponseData: builder.mutation({
+      query: (body) => ({
+        url: "/survey_responses",
+        method: "post",
+        body,
+      }),
+    }),
+    updateSurveyResponseData: builder.mutation({
+      query: ({ id, body }) => {
+        return {
+          url: `/survey_responses/${id}`,
+          method: "put",
+          body,
+        };
+      },
+    }),
+    deleteSurveyResponseData: builder.mutation({
+      query: (id) => ({
+        url: `/survey_responses/${id}`,
+        method: "delete",
+      }),
+    }),
+
+    /* Survey answer endpoints */
+    getSurveyAnswersData: builder.query({
+      query: () => ({ url: "/survey_answers", method: "get" }),
+    }),
+    getSurveyAnswerData: builder.query({
+      query: (id) => ({ url: `/survey_answers/${id}`, method: "get" }),
+    }),
+    createSurveyAnswerData: builder.mutation({
+      query: (body) => ({
+        url: "/survey_answers",
+        method: "post",
+        body,
+      }),
+    }),
+    updateSurveyAnswerData: builder.mutation({
+      query: ({ id, body }) => {
+        return {
+          url: `/survey_answers/${id}`,
+          method: "put",
+          body,
+        };
+      },
+    }),
+    deleteSurveyAnswerData: builder.mutation({
+      query: (id) => ({
+        url: `/survey_answers/${id}`,
+        method: "delete",
+      }),
     }),
   }),
 });
@@ -160,13 +243,30 @@ export const {
   useGetHomesDataQuery,
 
   // Survey
-  useGetSurveyListQuery,
-  useGetSurveyStructureQuery,
+  useDeleteSurveyDataMutation,
+  useUpdateSurveyDataMutation,
+  useCreateSurveyDataMutation,
+  useGetSurveysDataQuery,
+  useGetSurveyDataQuery,
 
   // Survey visit
-  usePostSurveyVisitMutation,
-  useGetSurveyVisitsQuery,
-  useGetSurveyVisitQuery,
-  usePutSurveyVisitMutation,
-  useDeleteSurveyVisitMutation,
+  useCreateSurveyVisitDataMutation,
+  useUpdateSurveyVisitDataMutation,
+  useDeleteSurveyVisitDataMutation,
+  useGetSurveyVisitsDataQuery,
+  useGetSurveyVisitDataQuery,
+
+  // Survey response
+  useCreateSurveyResponseDataMutation,
+  useUpdateSurveyResponseDataMutation,
+  useDeleteSurveyResponseDataMutation,
+  useGetSurveyResponsesDataQuery,
+  useGetSurveyResponseDataQuery,
+
+  // Survey answer
+  useCreateSurveyAnswerDataMutation,
+  useUpdateSurveyAnswerDataMutation,
+  useDeleteSurveyAnswerDataMutation,
+  useGetSurveyAnswersDataQuery,
+  useGetSurveyAnswerDataQuery,
 } = apiSlice;
