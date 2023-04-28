@@ -81,6 +81,7 @@ export const apiSlice = createApi({
     /* Survey Endpoints */
     getSurveyList: builder.query({
       query: () => ({ url: "/surveys", method: "get" }),
+      transformResponse: (res) => res.sort(sortById),
     }),
     // mocking surveyorView data
     // getAssigment within surveyor view
@@ -144,13 +145,28 @@ export const apiSlice = createApi({
 });
 
 export const {
-  useDeleteUserDataMutation,
-  useUpdateUserDataMutation,
-  useCreateUserDataMutation,
-  useGetUserDataQuery,
+  // Surveyor
+  useDeleteSurveyorDataMutation,
+  useUpdateSurveyorDataMutation,
+  useCreateSurveyorDataMutation,
+  useGetSurveyorDataQuery,
+  useGetSurveyorsDataQuery,
 
+  // Home
   useDeleteHomeDataMutation,
   useUpdateHomeDataMutation,
   useCreateHomeDataMutation,
   useGetHomeDataQuery,
+  useGetHomesDataQuery,
+
+  // Survey
+  useGetSurveyListQuery,
+  useGetSurveyStructureQuery,
+
+  // Survey visit
+  usePostSurveyVisitMutation,
+  useGetSurveyVisitsQuery,
+  useGetSurveyVisitQuery,
+  usePutSurveyVisitMutation,
+  useDeleteSurveyVisitMutation,
 } = apiSlice;
