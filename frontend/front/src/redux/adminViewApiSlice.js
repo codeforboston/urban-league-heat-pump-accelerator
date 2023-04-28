@@ -1,8 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const baseUrl = process.env.API_URL || "http://localhost:3001";
+const baseUrl = process.env.REACT_APP_API_URL;
 
-console.log("baseUrl", baseUrl);
+fetch(`${baseUrl}/users`)
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error));
+
+console.log("API URL:", baseUrl);
 
 // Define a service using a base URL and expected endpoints
 export const surveyorViewApiSlice = createApi({

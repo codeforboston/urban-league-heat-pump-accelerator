@@ -2,9 +2,14 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Survey from "../dummyData/Survey.json";
 import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
 
-const baseUrl = process.env.API_URL || "http://localhost:3001";
+const baseUrl = process.env.REACT_APP_API_URL;
 
-console.log("baseUrl", baseUrl);
+fetch(`${baseUrl}/users`)
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error));
+
+console.log("API URL:", baseUrl);
 
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
