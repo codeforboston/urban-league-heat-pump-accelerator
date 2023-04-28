@@ -1,6 +1,13 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box, Card, CardContent, CardMedia } from "@mui/material";
+import {
+  Typography,
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
+} from "@mui/material";
 import imageVoice from "../../../../assets/images/surveyor.jpg";
 import imageAbout from "../../../../assets/images/heat-pump-outside-home.jpg";
 import ButtonCustom from "../../Components/ButtonCustom";
@@ -22,7 +29,7 @@ const CardLinks = styled("div")(({ theme }) => ({
   },
 }));
 
-const GridLinkWrapper = styled("Grid")(({ theme }) => ({
+const GridLinkWrapper = styled(Grid)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   flexWrap: "nowrap",
@@ -64,7 +71,7 @@ const CardLinksSection = () => {
   return (
     <GridLinkWrapper container>
       {linkCards.map((detail) => (
-        <AnimatedBox triggerOnce={false}>
+        <AnimatedBox triggerOnce={false} key={detail.id}>
           <CardLinks>
             <Card sx={{ display: "flex" }} id={detail.idCSS}>
               <CardMedia

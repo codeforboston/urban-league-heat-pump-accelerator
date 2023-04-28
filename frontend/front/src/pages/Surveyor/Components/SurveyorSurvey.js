@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { SurveyComponent } from "../../../components/SurveyComponent/SurveyComponent";
+import SurveyComponent from "../../../components/SurveyComponent/SurveyComponent";
 
 export const SURVEYOR_SURVEY_ID = "2";
 export const SurveyorSurvey = forwardRef((props, ref) => (
