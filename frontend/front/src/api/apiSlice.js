@@ -8,8 +8,8 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3500",
   }),
-  // Should I add: "Surveyor", "Survey"
-  tagTypes: ["Home", "Surveyor"],
+
+  tagTypes: ["Home", "Surveyor", "Survey", "SurveyVisit"],
   endpoints: (builder) => ({
     /* Homes Endpoints */
     getHomesData: builder.query({
@@ -83,6 +83,7 @@ export const apiSlice = createApi({
     getSurveysData: builder.query({
       query: () => ({ url: "/surveys", method: "get" }),
       transformResponse: (res) => res.sort(sortById),
+      providesTags: [{ type: "Survey" }],
     }),
     getSurveyData: builder.query({
       query: (id) => ({
@@ -96,6 +97,7 @@ export const apiSlice = createApi({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["Survey"],
     }),
     updateSurveyData: builder.mutation({
       query: (item) => ({
@@ -103,6 +105,7 @@ export const apiSlice = createApi({
         method: "PUT",
         body: item,
       }),
+      invalidatesTags: ["Survey"],
     }),
     deleteSurveyData: builder.mutation({
       query: (item) => ({
@@ -110,6 +113,7 @@ export const apiSlice = createApi({
         method: "DELETE",
         body: "",
       }),
+      invalidatesTags: ["Survey"],
     }),
     // mocking surveyorView data
     // getAssigment within surveyor view
@@ -119,6 +123,7 @@ export const apiSlice = createApi({
         method: "get",
         mock: SurveyorViewAssigment1,
       }),
+      
     }),
 
     /* Survey visit endpoints */
