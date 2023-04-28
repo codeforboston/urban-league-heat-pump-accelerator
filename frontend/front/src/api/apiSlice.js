@@ -1,21 +1,26 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
 
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3500",
   }),
-  tagTypes: ["Home"],
+  // Should I add: "Surveyor",
+  tagTypes: ["Home", "Surveyor"],
   endpoints: (builder) => ({
     //Home section of the slice
-    getHomeData: builder.query({
-      query: () => "/home",
-      transformResponse: (res) => res.sort((a, b) => b.id - a.id),
+    getHomesData: builder.query({
+      query: () => "/homes",
+      transformResponse: (res) => (res ? res.sort((a, b) => a.id - b.id) : []),
       providesTags: [{ type: "Home" }],
+    }),
+    getHomeData: builder.query({
+      query: (id) => `/homes/${id}`,
     }),
     createHomeData: builder.mutation({
       query: (home) => ({
-        url: `/home`,
+        url: `/homes`,
         method: "POST",
         body: home,
       }),
@@ -37,35 +42,101 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Home"],
     }),
-    // user section of the slice
-    getUserData: builder.query({
-      query: () => "/user",
+
+    // Surveyors section of the slice
+    getSurveyorsData: builder.query({
+      query: () => "/surveyors",
       transformResponse: (res) => res.sort((a, b) => b.id - a.id),
-      providesTags: [{ type: "User" }],
+      providesTags: [{ type: "Surveyor" }],
     }),
-    createUserData: builder.mutation({
+    getSurveyorData: builder.query({
+      query: (item) => `/surveyors/${item.id}`,
+    }),
+    createSurveyorData: builder.mutation({
       query: (user) => ({
-        url: `/user`,
+        url: `/surveyors`,
         method: "POST",
         body: user,
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ["Surveyor"],
     }),
-    updateUserData: builder.mutation({
+    updateSurveyorData: builder.mutation({
       query: (item) => ({
-        url: `/user/${item.id}`,
+        url: `/surveyors/${item.id}`,
         method: "PUT",
         body: item,
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ["Surveyor"],
     }),
-    deleteUserData: builder.mutation({
+    deleteSurveyorData: builder.mutation({
       query: (item) => ({
-        url: `/user/${item.id}`,
+        url: `/surveyors/${item.id}`,
         method: "DELETE",
         body: "",
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ["Surveyor"],
+    }),
+    /* Survey Endpoints */
+    getSurveyList: builder.query({
+      query: () => ({ url: "/surveys", method: "get" }),
+    }),
+    // mocking surveyorView data
+    // getAssigment within surveyor view
+    getSurveyorAssigment: builder.query({
+      query: () => ({
+        url: `/surveyor/assignment/user1`,
+        method: "get",
+        mock: SurveyorViewAssigment1,
+      }),
+    }),
+    getSurveyStructure: builder.query({
+      query: (id) => ({
+        url: `/surveys/${id}`,
+        method: "get",
+      }),
+    }),
+    /* Survey visit endpoints */
+    postSurveyVisit: builder.mutation({
+      query: (body) => ({
+        url: "/homesurvey",
+        method: "post",
+        body,
+      }),
+      invalidatesTags: ["SurveyVisit"],
+    }),
+    getSurveyVisits: builder.query({
+      query: () => ({ url: "/homesurvey", method: "get" }),
+      providesTags: (result = []) => [
+        "SurveyVisit",
+        ...result.map(({ id }) => ({ type: "SurveyVisit", id })),
+      ],
+    }),
+    getSurveyVisit: builder.query({
+      query: (id) => ({ url: `/homesurvey/${id}`, method: "get" }),
+      providesTags: (result = [], error, arg) => [
+        { type: "SurveyVisit", id: arg },
+      ],
+    }),
+    putSurveyVisit: builder.mutation({
+      query: ({ id, body }) => {
+        return {
+          url: `/homesurvey/${id}`,
+          method: "put",
+          body,
+        };
+      },
+      invalidatesTags: (result, error, arg) => [
+        { type: "SurveyVisit", id: arg.id },
+      ],
+    }),
+    deleteSurveyVisit: builder.mutation({
+      query: (id) => ({
+        url: `/homesurvey/${id}`,
+        method: "delete",
+      }),
+      invalidatesTags: (result, error, arg) => [
+        { type: "SurveyVisit", id: arg.id },
+      ],
     }),
   }),
 });
