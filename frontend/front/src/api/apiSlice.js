@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
 
+const sortById = (a, b) => b.id - a.id;
+
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
   baseQuery: fetchBaseQuery({
@@ -12,7 +14,7 @@ export const apiSlice = createApi({
     //Home section of the slice
     getHomesData: builder.query({
       query: () => "/homes",
-      transformResponse: (res) => (res ? res.sort((a, b) => a.id - b.id) : []),
+      transformResponse: (res) => (res ? res.sort(sortById) : []),
       providesTags: [{ type: "Home" }],
     }),
     getHomeData: builder.query({
@@ -28,7 +30,7 @@ export const apiSlice = createApi({
     }),
     updateHomeData: builder.mutation({
       query: (item) => ({
-        url: `/home/${item.id}`,
+        url: `/homes/${item.id}`,
         method: "PUT",
         body: item,
       }),
@@ -36,7 +38,7 @@ export const apiSlice = createApi({
     }),
     deleteHomeData: builder.mutation({
       query: (item) => ({
-        url: `/home/${item.id}`,
+        url: `/homes/${item.id}`,
         method: "DELETE",
         body: "",
       }),
@@ -46,7 +48,7 @@ export const apiSlice = createApi({
     // Surveyors section of the slice
     getSurveyorsData: builder.query({
       query: () => "/surveyors",
-      transformResponse: (res) => res.sort((a, b) => b.id - a.id),
+      transformResponse: (res) => res.sort(sortById),
       providesTags: [{ type: "Surveyor" }],
     }),
     getSurveyorData: builder.query({
