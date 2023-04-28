@@ -1,0 +1,17 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      { "src": "/api/assignments", "dest": "./api/db.js" },
+      { "src": "/api/homes", "dest": "./api/db.js" },
+      { "src": "/api/users", "dest": "./api/db.js" },
+      { "src": "/api/surveys", "dest": "./api/db.js" },
+      { "src": "/api/homesurvey", "dest": "./api/db.js" }
+    ]
+  }
+  
