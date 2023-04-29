@@ -6,8 +6,8 @@ const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
     <Box my={3}>
       <Stack
         direction="row"
-        alignItems={"center"}
-        justifyContent={"center"}
+        alignItems="center"
+        justifyContent="center"
         flexDirection={{ xs: "column", md: "row" }}
       >
         <Link
