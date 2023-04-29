@@ -14,10 +14,12 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
       {label && (
         <FormLabel
           error={
-            !!formState.errors.address?.street ||
-            !!formState.errors.address?.aptNumber ||
+            !!formState.errors.address?.street_number ||
+            !!formState.errors.address?.street_name ||
+            !!formState.errors.address?.unit_number ||
             !!formState.errors.address?.city ||
-            !!formState.errors.address?.zipCode
+            !!formState.errors.address?.state ||
+            !!formState.errors.address?.zip_code
           }
         >
           {label}
@@ -150,7 +152,6 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                 message: "This field is required!",
               },
             }}
-            defaultValue={"MA"}
             render={({ field }) => (
               <TextField
                 fullWidth

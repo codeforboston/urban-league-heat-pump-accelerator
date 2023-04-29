@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import * as router from "react-router";
-import { SurveyComponent } from "../SurveyComponent";
+import SurveyComponent from "../SurveyComponent";
 import * as apiSlice from "../../../redux/apiSlice";
 import surveys from "../../../dummyData/jsonServerData/surveys";
 import homes from "../../../dummyData/jsonServerData/homes";
@@ -144,5 +144,24 @@ describe("SurveyComponent", () => {
 
     await waitFor(() => expect(mockSubmit).toHaveBeenCalled());
     expect(localStorage.getItem(DEFAULT_TEST_SURVEY_CACHE_KEY)).toBeTruthy();
+  });
+
+  it("no errors when rendering", () => {
+    const errSpy = jest.spyOn(console, "error");
+
+    const { container } = render(
+      <SurveyComponent
+        submitSurvey={jest.fn()}
+        isLoading={false}
+        activeHome={DEFAULT_TEST_HOME}
+        isEditable={false}
+        surveyId={DEFAULT_TEST_SURVEY.id}
+        formSpacing={5}
+      />,
+      {}
+    );
+
+    expect(container).toMatchSnapshot();
+    expect(errSpy).not.toHaveBeenCalled();
   });
 });
