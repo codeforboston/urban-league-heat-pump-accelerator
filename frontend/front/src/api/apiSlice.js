@@ -117,13 +117,13 @@ export const apiSlice = createApi({
     }),
     // mocking surveyorView data
     // getAssigment within surveyor view
+    // Is this endpoint still used?
     getSurveyorAssigment: builder.query({
       query: () => ({
         url: `/surveyor/assignment/user1`,
         method: "get",
         mock: SurveyorViewAssigment1,
       }),
-      
     }),
 
     /* Survey visit endpoints */
@@ -229,6 +229,7 @@ export const apiSlice = createApi({
         method: "delete",
       }),
     }),
+   
   }),
 });
 
