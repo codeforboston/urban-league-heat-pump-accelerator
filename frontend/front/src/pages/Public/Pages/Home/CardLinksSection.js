@@ -1,20 +1,21 @@
-import React from "react";
-import { styled } from "@mui/material/styles";
 import {
-  Typography,
   Box,
   Card,
   CardContent,
   CardMedia,
   Grid,
+  Typography,
 } from "@mui/material";
-import imageVoice from "../../../../assets/images/surveyor.jpg";
+import { styled } from "@mui/material/styles";
+import React from "react";
 import imageAbout from "../../../../assets/images/heat-pump-outside-home.jpg";
+import imageVoice from "../../../../assets/images/surveyor.jpg";
 import ButtonCustom from "../../Components/ButtonCustom";
 
 import AnimatedBox from "../../Components/AnimatedBox";
 
 const CardLinks = styled("div")(({ theme }) => ({
+  minWidth: "260px",
   minWidth: "260px",
   maxWidth: "480px",
   borderRadius: "2%",
@@ -52,6 +53,7 @@ const CardLinksSection = () => {
         variant: "customBtn",
       },
       idCSS: "survey-link-section",
+      image: imageVoice,
       image: imageVoice,
     },
     {
@@ -99,6 +101,34 @@ const CardLinksSection = () => {
                       {detail.title}
                     </Typography>
 
+                    <Box
+                      sx={{
+                        height: "140px",
+                        color: "var(--color-text-6)",
+                      }}
+                    >
+                      <Typography variant="body1">
+                        {detail.paragraph}
+                      </Typography>
+                    </Box>
+                    <Box
+                      mt={2}
+                      sx={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <ButtonCustom
+                        text={detail.button.text}
+                        to={detail.button.to}
+                        variant="customBtn"
+                      />
+                    </Box>
+                  </Box>
+                </CardContent>
+              </Box>
+            </Card>
+          </CardLinks>
                     <Box
                       sx={{
                         height: "140px",
