@@ -1,24 +1,30 @@
 import { Box, Button } from "@mui/material";
 import {
-  useCreateUserDataMutation,
-  useDeleteUserDataMutation,
-  useGetUserDataQuery,
-  useUpdateUserDataMutation,
+  useCreateSurveyorDataMutation,
+  useDeleteSurveyorDataMutation,
+  useGetSurveyorDataQuery,
+  useUpdateSurveyorDataMutation,
 } from "../../../api/apiSlice";
 import UserItem from "./UserItem";
 
 const UserTab = () => {
-  const { data, isLoading, isSuccess, isError, error } = useGetUserDataQuery();
+  const {
+    data,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetSurveyorDataQuery();
 
-  const [createUserData] = useCreateUserDataMutation();
-  const [updateUserData] = useUpdateUserDataMutation();
-  const [deleteUserData] = useDeleteUserDataMutation();
+  const [createSurveyorData] = useCreateSurveyorDataMutation();
+  const [updateSurveyorData] = useUpdateSurveyorDataMutation();
+  const [deleteSurveyorData] = useDeleteSurveyorDataMutation();
 
   let content;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUserData({
+    createSurveyorData({
       firstName: "Zero",
       lastName: "Forst",
       email: "Gimlyoper@t.co",
@@ -39,7 +45,7 @@ const UserTab = () => {
         <Box key={item.id} border={1}>
           <UserItem data={item} />
 
-          <Button onClick={() => deleteUserData(item)}>delete</Button>
+          <Button onClick={() => deleteSurveyorData(item)}>delete</Button>
         </Box>
       );
     });

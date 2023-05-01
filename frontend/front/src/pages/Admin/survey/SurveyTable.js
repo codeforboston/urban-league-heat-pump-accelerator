@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { CircularProgress, Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import {
-  useGetSurveyVisitsQuery,
+  useGetSurveyVisitsDataQuery,
   useGetHomesDataQuery,
-  useGetSurveyListQuery,
-} from "../../../redux/apiSlice";
+  useGetSurveysDataQuery,
+} from "../../../api/apiSlice";
 import { SurveyError } from "./SurveyError";
 import { houseToString } from "../../../components/AddressUtils";
 import { formatISODate } from "../../../components/DateUtils";
@@ -36,7 +36,7 @@ const SurveyTable = () => {
     data: surveyVisitData,
     error: surveyVisitError,
     isLoading: isSurveyVisitLoading,
-  } = useGetSurveyVisitsQuery();
+  } = useGetSurveyVisitsDataQuery();
   const {
     data: houseData,
     error: houseError,
@@ -46,7 +46,7 @@ const SurveyTable = () => {
     data: surveyStructureData,
     error: surveyStructureError,
     isLoading: isSurveyStructureLoading,
-  } = useGetSurveyListQuery();
+  } = useGetSurveysDataQuery();
 
   const tableData = useMemo(
     () =>
