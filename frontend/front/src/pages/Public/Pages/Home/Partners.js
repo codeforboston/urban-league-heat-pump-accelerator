@@ -48,7 +48,7 @@ const Partners = () => {
       <Box
         sx={{ display: "flex", justifyContent: "center", marginBottom: "1rem" }}
       >
-        <Typography py={2} variant="title1">
+        <Typography py={2} variant="h3">
           {title}
         </Typography>
       </Box>

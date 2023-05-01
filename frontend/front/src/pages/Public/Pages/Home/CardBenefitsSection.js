@@ -78,7 +78,7 @@ const CardBenefitsSection = () => {
             textAlign: "center",
           }}
         >
-          <Typography variant="title1">Benefits of Heat Pumps</Typography>
+          <Typography variant="h3">Benefits of Heat Pumps</Typography>
           <Stack
             direction="row"
             justifyContent="center"
@@ -129,7 +129,7 @@ const CardBenefitsSection = () => {
             <StyledGrid item sx={{ pt: { xs: 2, md: 0 } }} xs={12} sm={6}>
               <AnimatedBox triggerOnce={false}>
                 <Box sx={{ p: { md: 4, xs: 0 } }}>
-                  <Typography pl={2} variant="title3">
+                  <Typography pl={2} variant="h4">
                     <span>{card.title}</span>
                   </Typography>
                   <CardContent>

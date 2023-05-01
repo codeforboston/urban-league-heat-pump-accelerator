@@ -193,7 +193,7 @@ function Navbar(props) {
                     sx={{ textAlign: "center" }}
                     component={Link}
                     to={navbarItems[item].link}
-                    focusVisible
+                    // focusVisible
                     onClick={() => setOpenMoreMobile(false)} // Close the dropdown menu (if open) in the drawer when an item is selected
                   >
                     <ListItemText
@@ -216,7 +216,7 @@ function Navbar(props) {
                     variant="navLinks"
                     component={Link}
                     to=""
-                    focusVisible
+                    // focusVisible
                     onClick={handleClickMoreMobile}
                   >
                     <ListItemText
@@ -273,7 +273,7 @@ function Navbar(props) {
                               handleCloseMore();
                               setOpenMoreMobile(false); // Close the dropdown menu (if open) in the drawer when an item is selected
                             }}
-                            focusVisible
+                            // focusVisible
                           >
                             <ListItemText
                               sx={{

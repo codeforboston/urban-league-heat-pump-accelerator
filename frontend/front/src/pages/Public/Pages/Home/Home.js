@@ -32,7 +32,7 @@ const Home = () => {
       <SectionWrapper id="testimonial-section" my={16}>
         <Box variant="sectionBackground" sx={{ padding: { xs: "0" } }}>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <Typography variant="title1" pt={4}>
+            <Typography variant="h3" pt={4}>
               Testimonials
             </Typography>
           </Box>

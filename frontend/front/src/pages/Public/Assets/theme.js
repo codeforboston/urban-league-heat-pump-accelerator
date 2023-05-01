@@ -1,8 +1,8 @@
-import { createTheme } from "@mui/material";
+import { createTheme, responsiveFontSizes } from "@mui/material";
 
 /* The custom colors palette is located in the Index.css file. */
 
-export const theme = createTheme({
+let theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
@@ -14,7 +14,32 @@ export const theme = createTheme({
     },
   },
   typography: {
-    // h3
+    h3: {
+      color: "var(--color-text-2)",
+      fontFamily: "var(--font-family-1)",
+      letterSpacing: "-.03em",
+      fontWeight: "semibold",
+    },
+    h4: {
+      color: "var(--color-text-2)",
+      fontFamily: "var(--font-family-1)",
+      letterSpacing: "-.03em",
+      fontWeight: "semibold",
+    },
+    h5: {
+      color: "var(--color-text-2)",
+      fontFamily: "var(--font-family-1)",
+      letterSpacing: "-.03em",
+      fontWeight: "semibold",
+    },
+
+    // fontFamily: "var(--font-family-1)",
+    // fontWeight: "600",
+    // fontSize: "2.2rem",
+    // display: "block",
+    // letterSpacing: "-.03em",
+    // color: "var(--color-text-2)",
+
     titleHero: {
       fontFamily: "var(--font-family-1)",
       color: "var(--color-text-6)",
@@ -71,54 +96,49 @@ export const theme = createTheme({
         fontSize: "1.2rem",
       },
     },
-    // h4
-    title1: {
-      color: "var(--color-text-2)",
-      fontFamily: "var(--font-family-1)",
-      display: "block",
-      width: "100%",
-      fontSize: "2rem",
-      letterSpacing: "-.03em",
-      textAlign: "center",
-      fontWeight: "700",
-      // "@media (max-width:600px)": {
-      //   fontSize: "2rem",
-      // },
-    },
-    // h5
-    title2: {
-      fontFamily: "var(--font-family-1)",
-      fontWeight: "600",
-      fontSize: "1.5rem",
-      display: "block",
-      letterSpacing: "-.03em",
-      color: "var(--color-text-2)",
-      lineHeight: "34px",
-    },
-    // h5
+    // h1
+    // title1: {
+    //   color: "var(--color-text-2)",
+    //   fontFamily: "var(--font-family-1)",
+    //   display: "block",
+    //   width: "100%",
+    //   fontSize: "3rem",
+    //   letterSpacing: "-.03em",
+    //   textAlign: "center",
+    //   fontWeight: "700",
+    //   // "@media (max-width:600px)": {
+    //   //   fontSize: "2rem",
+    //   // },
+    // },
+    // h2
+    // title2: {
+    //   fontFamily: "var(--font-family-1)",
+    //   fontWeight: "600",
+    //   fontSize: "2.2rem",
+    //   display: "block",
+    //   letterSpacing: "-.03em",
+    //   color: "var(--color-text-2)",
+    //   // lineHeight: "34px",
+    // },
+    // h3
     title3: {
       fontFamily: "var(--font-family-1)",
       fontWeight: "600",
-      fontSize: "1.5rem",
+      fontSize: "2rem",
       display: "block",
       letterSpacing: "-.03em",
       color: "var(--color-text-2)",
-      lineHeight: "34px",
+      // lineHeight: "34px",
     },
-    // h5
+    // h4
     title4: {
       fontFamily: "var(--font-family-1)",
       fontWeight: "600",
-      fontSize: "1.5rem",
+      fontSize: "2rem",
       display: "block",
       letterSpacing: "-.03em",
       color: "var(--color-text-2)",
       lineHeight: "34px",
-
-      margin: "0 auto",
-      borderBottom: "2px solid var(--color-text-3)",
-      borderRadius: "2px",
-      width: "fit-content",
 
       // transition: "border-bottom-color 0.3s ease-in-out",
       // "&:hover": {
@@ -199,3 +219,7 @@ export const theme = createTheme({
     },
   },
 });
+
+theme = responsiveFontSizes(theme);
+
+export default theme;

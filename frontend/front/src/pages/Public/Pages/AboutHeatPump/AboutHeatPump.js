@@ -1,9 +1,9 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, Grid } from "@mui/material";
 import React from "react";
-import streets from "../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
-import homeExterior from "../../../assets/images/home-exterior.jpg";
-import AboutHeatPumpCards from "../Components/AboutHeatPumpsCards";
-import PublicPageTile from "../Components/PublicPageTitle";
+import streets from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
+import homeExterior from "../../../../assets/images/home-exterior.jpg";
+import AboutHeatPumpCards from "./AboutHeatPumpsCards";
+import PublicPageTile from "../../Components/PublicPageTitle";
 
 const cardContent = [
   {
@@ -39,7 +39,6 @@ function AboutHeatPump() {
     <Box>
       <PublicPageTile pageTitle="About Heat Pumps" />
       <Container
-        disableGutters
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -49,25 +48,31 @@ function AboutHeatPump() {
           paddingLeft: 0,
         }}
       >
-        <Typography
-          variant="h3"
-          sx={{
-            maxWidth: "905px",
-            fontSize: { xs: "1.5rem", lg: "3.875rem" },
-            fontWeight: 500,
-            color: "var(--bgColor-2)",
-            fontFamily: "var(--font-family-1)",
-          }}
-        >
-          Learn how heat pumps work and why they are right for you!
-        </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: { xs: "10px", lg: "60px" },
-          }}
-        >
+        <Box sx={{ height: "100%", mb: 4 }}>
+          <Typography
+            variant="h4"
+            sx={
+              {
+                // maxWidth: "905px",
+                //   fontSize: { xs: "1.5rem", lg: "3.875rem" },
+                //   fontWeight: 500,
+                //   color: "var(--bgColor-2)",
+                //   fontFamily: "var(--font-family-1)",
+              }
+            }
+          >
+            Learn how heat pumps work
+          </Typography>
+          <Typography variant="h4">and why they are right for you!</Typography>
+        </Box>
+        <Grid flexDirection="column" gap={{ xs: "10px", lg: "60px" }}>
+          {/* <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: { xs: "10px", lg: "60px" },
+            }}
+          > */}
           {cardContent.map((card, index) => {
             return (
               <AboutHeatPumpCards
@@ -81,7 +86,8 @@ function AboutHeatPump() {
               />
             );
           })}
-        </Box>
+          {/* </Box> */}
+        </Grid>
       </Container>
     </Box>
   );
