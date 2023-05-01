@@ -9,7 +9,7 @@ export const apiSlice = createApi({
     baseUrl: "http://localhost:3500",
   }),
 
-  tagTypes: ["Home", "Surveyor", "Survey", "SurveyVisit"],
+  tagTypes: ["Home", "Surveyor", "Survey", "SurveyVisit", "Assignment"],
   endpoints: (builder) => ({
     /* Homes Endpoints */
     getHomesData: builder.query({
@@ -117,7 +117,6 @@ export const apiSlice = createApi({
     }),
     // mocking surveyorView data
     // getAssigment within surveyor view
-    // Is this endpoint still used?
     getSurveyorAssigment: builder.query({
       query: () => ({
         url: `/surveyor/assignment/user1`,
@@ -229,6 +228,41 @@ export const apiSlice = createApi({
         method: "delete",
       }),
     }),
+
+    /* Assignment endpoints*/
+
+    getAssignmentsData: builder.query({
+      query: () => "/assignments",
+      transformResponse: (res) => (res ? res.sort(sortById) : []),
+      providesTags: [{ type: "Assignment" }],
+    }),
+    getAssignmentData: builder.query({
+      query: (id) => `/assignments/${id}`,
+    }),
+    createAssignmentData: builder.mutation({
+      query: (Assignment) => ({
+        url: `/assignments`,
+        method: "POST",
+        body: Assignment,
+      }),
+      invalidatesTags: ["Assignment"],
+    }),
+    updateAssignmentData: builder.mutation({
+      query: (item) => ({
+        url: `/assignments/${item.id}`,
+        method: "PUT",
+        body: item,
+      }),
+      invalidatesTags: ["Assignment"],
+    }),
+    deleteAssignmentData: builder.mutation({
+      query: (item) => ({
+        url: `/assignments/${item.id}`,
+        method: "DELETE",
+        body: "",
+      }),
+      invalidatesTags: ["Assignment"],
+    }),
   }),
 });
 
@@ -274,4 +308,11 @@ export const {
   useDeleteSurveyAnswerDataMutation,
   useGetSurveyAnswersDataQuery,
   useGetSurveyAnswerDataQuery,
+
+  // Assignment
+  useCreateAssignmentDataMutation,
+  useUpdateAssignmentDataMutation,
+  useDeleteAssignmentDataMutation,
+  useGetAssignmentsDataQuery,
+  useGetAssignmentDataQuery,
 } = apiSlice;
