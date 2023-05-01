@@ -85,7 +85,7 @@ export const apiSlice = createApi({
       transformResponse: (res) => res.sort(sortById),
       providesTags: [{ type: "Survey" }],
     }),
-    getSurveyData: builder.query({
+    getSurveyStructure: builder.query({
       query: (id) => ({
         url: `/surveys/${id}`,
         method: "get",
@@ -229,7 +229,6 @@ export const apiSlice = createApi({
         method: "delete",
       }),
     }),
-   
   }),
 });
 
@@ -253,7 +252,7 @@ export const {
   useUpdateSurveyDataMutation,
   useCreateSurveyDataMutation,
   useGetSurveysDataQuery,
-  useGetSurveyDataQuery,
+  useGetSurveyStructureQuery,
 
   // Survey visit
   useCreateSurveyVisitDataMutation,
