@@ -263,6 +263,13 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Assignment"],
     }),
+
+    /* Property assessment endpoints*/
+    getPropertyAssessmentsData: builder.query({
+      query: () => "/assignments",
+      transformResponse: (res) => (res ? res.sort(sortById) : []),
+      providesTags: [{ type: "Assignment" }],
+    }),
   }),
 });
 
@@ -315,4 +322,7 @@ export const {
   useDeleteAssignmentDataMutation,
   useGetAssignmentsDataQuery,
   useGetAssignmentDataQuery,
+
+  // Property assessments
+  useGetPropertyAssessmentsDataQuery,
 } = apiSlice;
