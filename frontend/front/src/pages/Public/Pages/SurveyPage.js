@@ -3,8 +3,8 @@ import { Alert, Container, Snackbar, Stack } from "@mui/material";
 import { AddressValidatorComponent } from "../Components/AddressValidatorComponent";
 import {
   useCreateHomeDataMutation,
-  usePostSurveyVisitMutation,
-} from "../../../redux/apiSlice";
+  useCreateSurveyVisitDataMutation,
+} from "../../../api/apiSlice";
 import { useGetReCAPTCHAToken } from "../../../components/ReCaptcha";
 import { ThanksForSubmission } from "../Components/ThanksForSubmission";
 import { PublicSurvey } from "../Components/PublicSurvey";
@@ -39,7 +39,7 @@ export const SurveyPage = () => {
       error: surveyVisitError,
       isSuccess: isSurveyVisitSuccess,
     },
-  ] = usePostSurveyVisitMutation();
+  ] = useCreateSurveyVisitDataMutation();
 
   const handleCreateHome = useCallback(
     async ({ address }) => {
