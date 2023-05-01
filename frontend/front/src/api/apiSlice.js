@@ -266,7 +266,7 @@ export const apiSlice = createApi({
 
     /* Property assessment endpoints*/
     getPropertyAssessmentsData: builder.query({
-      query: () => "/assignments",
+      query: () => "/property_assessments",
       transformResponse: (res) => (res ? res.sort(sortById) : []),
       providesTags: [{ type: "PropertyAssessment" }],
     }),
