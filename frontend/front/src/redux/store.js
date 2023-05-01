@@ -7,7 +7,7 @@ import navReducer from "../features/nav/navSlice";
 import loginReducer from "../features/login/loginSlice";
 import surveyorReducer from "../features/surveyor/surveyorSlice";
 // import { itemApi } from "./services";
-import { apiSlice } from "./apiSlice";
+import { apiSlice } from "../api/apiSlice";
 import { surveyorViewApiSlice } from "./surveyorViewApiSlice";
 
 export const createStore = (options) =>
