@@ -3,10 +3,10 @@ import { Box, CircularProgress, Container, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetHomeDataQuery,
-  useGetSurveyVisitQuery,
-  usePutSurveyVisitMutation,
-  useDeleteSurveyVisitMutation,
-} from "../../../redux/apiSlice";
+  useGetSurveyVisitDataQuery,
+  useUpdateSurveyVisitDataMutation,
+  useDeleteSurveyVisitDataMutation,
+} from "../../../api/apiSlice";
 import { SurveyError } from "./SurveyError";
 import { AdminSurvey } from "../component/AdminSurvey";
 import { houseToString } from "../../../components/AddressUtils";
@@ -17,7 +17,7 @@ const SurveyProfile = () => {
   const { uid: surveyVisitId } = useParams();
 
   const { data: surveyVisit, error: surveyVisitError } =
-    useGetSurveyVisitQuery(surveyVisitId);
+    useGetSurveyVisitDataQuery(surveyVisitId);
 
   const { data: houseData, error: houseError } = useGetHomeDataQuery(
     surveyVisit?.homeId,
@@ -26,11 +26,11 @@ const SurveyProfile = () => {
   const [
     putSurveyVisit,
     { isLoading: isSurveyVisitPutLoading, error: surveyVisitPutError },
-  ] = usePutSurveyVisitMutation();
+  ] = useUpdateSurveyVisitDataMutation();
   const [
     deleteSurveyVisit,
     { isLoading: isSurveyDeleteLoading, error: surveyVisitDeleteError },
-  ] = useDeleteSurveyVisitMutation();
+  ] = useDeleteSurveyVisitDataMutation();
 
   const title = useMemo(
     () =>
