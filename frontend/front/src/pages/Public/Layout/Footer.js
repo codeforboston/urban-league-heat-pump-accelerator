@@ -28,7 +28,7 @@ const footerItems = {
   Testimonials: { link: "testimonial-section" },
 };
 
-const FooterWrapper = styled("div")(({ theme }) => ({
+const FooterWrapper = styled(Grid)(({ theme }) => ({
   background: "var(--bgColor-2)",
   color: "var(--color-text-1)",
   position: "relative",

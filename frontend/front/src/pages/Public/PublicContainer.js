@@ -25,16 +25,14 @@ const PublicContainer = () => {
           direction="column"
           justifyContent="space-between"
           sx={{
-            display: "flex",
             minHeight: "100vh",
-            flexDirection: "column",
             color: "var(--color-text-3)",
             fontSize: "16px",
             background: "var(--bgColor-5)",
           }}
         >
           <Navbar />
-          <Box>
+          <Box sx={{ flexGrow: 1 }}>
             <Routes>
               <Route path="/" element={<Home />}></Route>
               <Route path="/about-us" element={<AboutUs />}></Route>
