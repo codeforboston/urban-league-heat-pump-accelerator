@@ -9,7 +9,7 @@ export const apiSlice = createApi({
     baseUrl: "http://localhost:3500",
   }),
 
-  tagTypes: ["Home", "Surveyor", "Survey", "SurveyVisit", "Assignment"],
+  tagTypes: ["Home", "Surveyor", "Survey", "SurveyVisit", "Assignment", "PropertyAssessment"],
   endpoints: (builder) => ({
     /* Homes Endpoints */
     getHomesData: builder.query({
@@ -268,7 +268,7 @@ export const apiSlice = createApi({
     getPropertyAssessmentsData: builder.query({
       query: () => "/assignments",
       transformResponse: (res) => (res ? res.sort(sortById) : []),
-      providesTags: [{ type: "Assignment" }],
+      providesTags: [{ type: "PropertyAssessment" }],
     }),
   }),
 });
