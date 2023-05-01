@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { SurveyComponent } from "../../../components/SurveyComponent/SurveyComponent";
+import SurveyComponent from "../../../components/SurveyComponent/SurveyComponent";
 
 const PUBLIC_SURVEY_ID = "1";
 

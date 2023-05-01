@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 
 /* Global Styles */
 .container-wrapper {
     background-color: var(--bgColor-5);
 }
 
-:root { 
-    /* Font Families */ 
-    --font-family-1: 'Lora', sans-serif;
-    
-    /* Font Weights */
-    --font-weight-1: 600;
-    --font-weight-2: 800;
-    --font-weight-3: 900;
+:root {
+  /* Font Families */
+  --font-family-1: "Lora", sans-serif;
+
+  /* Font Weights */
+  --font-weight-1: 600;
+  --font-weight-2: 800;
+  --font-weight-3: 900;
 
     /* Colors text*/    
     --color-text-1: #F7F7F7; /* text: navbar, footer, special cases */
@@ -41,5 +41,3 @@
     /* Box shadow */
     --box-shadow-1: 0px 2px 5px rgba(0, 0, 0, 0.2);/* Button Scroll Up Shadow */
 }
-
-  

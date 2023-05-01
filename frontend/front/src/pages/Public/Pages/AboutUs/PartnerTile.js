@@ -3,15 +3,12 @@ import { Box, Stack, Typography, Link } from "@mui/material";
 
 const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
   return (
-    <Box mb={3} container>
-      <Typography>
-        <b>{partnerName}</b> {paragraphText}
-      </Typography>
+    <Box my={3}>
       <Stack
         direction="row"
-        justifyContent="center"
         alignItems="center"
-        spacing={1}
+        justifyContent="center"
+        flexDirection={{ xs: "column", md: "row" }}
       >
         <Link
           component="img"
@@ -19,14 +16,15 @@ const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
           href={website}
           target="_blank"
           rel="noopener noreferrer"
-          sx={{
-            width: "250px",
-            display: "flex",
-            justifyContent: "center",
-            mt: 3,
-            mb: 3,
-          }}
+          width={220}
+          m={2}
         />
+
+        <Box>
+          <Typography color="#0a0b0b">
+            <b>{partnerName}</b> {paragraphText}
+          </Typography>
+        </Box>
       </Stack>
     </Box>
   );

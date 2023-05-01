@@ -105,6 +105,26 @@ export const theme = createTheme({
       color: "var(--color-text-2)",
       lineHeight: "34px",
     },
+    // h5
+    title4: {
+      fontFamily: "var(--font-family-1)",
+      fontWeight: "600",
+      fontSize: "1.5rem",
+      display: "block",
+      letterSpacing: "-.03em",
+      color: "var(--color-text-2)",
+      lineHeight: "34px",
+
+      margin: "0 auto",
+      borderBottom: "2px solid var(--color-text-3)",
+      borderRadius: "2px",
+      width: "fit-content",
+
+      // transition: "border-bottom-color 0.3s ease-in-out",
+      // "&:hover": {
+      //   borderBottomColor: "#f00",
+      // },
+    },
     navLinks: {
       fontSize: "1.1rem",
       display: "block",

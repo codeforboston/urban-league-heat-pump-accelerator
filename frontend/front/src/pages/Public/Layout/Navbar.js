@@ -125,6 +125,7 @@ function Navbar(props) {
         >
           {Object.keys(navbarItems[item]).map((subItem, index) => (
             <MenuItem
+              key={subItem}
               variant="navLinks"
               onClick={() => {
                 handleNavigation(navbarItems[item][subItem].link);
@@ -181,7 +182,7 @@ function Navbar(props) {
       >
         <List variant="navLinks">
           {Object.keys(navbarItems).map((item) => (
-            <>
+            <Box key={item}>
               {item !== "Learn More" ? (
                 <ListItem
                   key={item}
@@ -296,7 +297,7 @@ function Navbar(props) {
                   </Collapse>
                 </>
               )}
-            </>
+            </Box>
           ))}
         </List>
         <Box onClick={handleDrawerToggle}>
@@ -321,7 +322,7 @@ function Navbar(props) {
       >
         <AppBar
           position="static"
-          marginTop={2}
+          mt={2}
           sx={{
             background: "var(--bgColor-2)",
             boxShadow: "none",
@@ -334,7 +335,7 @@ function Navbar(props) {
               direction="row"
               justifyContent="space-between"
               alignItems="center"
-              wrap="noWrap"
+              wrap="nowrap"
             >
               <Grid item sx={{ my: 2 }}>
                 <Link to="">
@@ -357,7 +358,7 @@ function Navbar(props) {
                 <Box sx={{ display: { xs: "none", md: "block" } }}>
                   <Stack spacing={2} direction="row">
                     {Object.keys(navbarItems).map((item) => (
-                      <>
+                      <Box key={item}>
                         {item === "Learn More" ? (
                           desktopNavLink(navbarItems, item)
                         ) : (
@@ -377,7 +378,7 @@ function Navbar(props) {
                             </Typography>
                           </Button>
                         )}
-                      </>
+                      </Box>
                     ))}
                   </Stack>
                 </Box>
@@ -417,7 +418,6 @@ function Navbar(props) {
         <Box component="nav">
           <Drawer
             container={container}
-            variant="navLinks"
             open={mobileOpen}
             onClose={handleDrawerToggle}
             anchor="right"

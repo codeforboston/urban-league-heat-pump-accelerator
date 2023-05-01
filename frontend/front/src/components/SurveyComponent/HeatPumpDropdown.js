@@ -47,7 +47,7 @@ export const HeatPumpDropdown = ({
             {...field}
           >
             {options.map((option) => (
-              <MenuItem value={option.value} key={`${option.value}-key`}>
+              <MenuItem value={option.value} key={`option-${option.value}`}>
                 {option.label}
               </MenuItem>
             ))}

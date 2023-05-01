@@ -133,8 +133,9 @@ const CardBenefitsSection = () => {
                     <span>{card.title}</span>
                   </Typography>
                   <CardContent>
-                    {card.paragraphs.map((paragraph) => (
+                    {card.paragraphs.map((paragraph, i) => (
                       <Typography
+                        key={`p${i}`}
                         gutterBottom
                         variant="body1"
                         color="var(--color-text-3)"

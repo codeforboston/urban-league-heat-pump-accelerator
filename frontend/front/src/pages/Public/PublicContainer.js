@@ -12,7 +12,7 @@ import BenefitsHeatPump from "./Pages/BenefitsHeatPump";
 import GetHeatPump from "./Pages/GetHeatPump";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import AboutHeatPump from "./Pages/AboutHeatPump";
-import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
 import ScrollToTopButton from "./Components/ScrollToTopButton";
