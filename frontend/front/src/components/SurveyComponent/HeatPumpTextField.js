@@ -22,7 +22,7 @@ export const HeatPumpTextField = ({
       }
       render={({ field }) => (
         <TextField
-          data-testId={name}
+          data-testid={name}
           label={label}
           variant="standard"
           error={!!formState.errors[name]}
