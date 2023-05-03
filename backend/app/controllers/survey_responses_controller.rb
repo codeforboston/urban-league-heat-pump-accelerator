@@ -20,8 +20,11 @@ class SurveyResponsesController < ApplicationController
   def edit; end
 
   # POST /survey_responses or /survey_responses.json
+  # rubocop:disable Metrics/MethodLength
   def create
-    @survey_response = SurveyResponse.new(survey_response_params)
+    params_hash = survey_response_params.to_h
+    params_hash[:ip] = request.ip
+    @survey_response = SurveyResponse.new(params_hash)
 
     respond_to do |format|
       if @survey_response.save
@@ -34,6 +37,7 @@ class SurveyResponsesController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   # PATCH/PUT /survey_responses/1 or /survey_responses/1.json
   def update
@@ -67,6 +71,6 @@ class SurveyResponsesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def survey_response_params
-    params.require(:survey_response).permit(:survey_id, :user_id)
+    params.require(:survey_response).permit(:survey_id, :survey_visit_id)
   end
 end

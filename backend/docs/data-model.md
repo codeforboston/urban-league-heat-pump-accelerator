@@ -29,7 +29,9 @@ These are grouped geographically,
 so that nearby properties can be visited together.
 These groups are represented by the assignment type.
 Homes optionally can have an assignment.
-The assignment in turn is associated with a single surveyor.
+The assignment in turn is associated with one or more surveyors
+(although in practice intended to be exactly two).
+This is through a join table.
 When a surveyor visits a house that is in one of their assignments,
 a survey_visit is created.
 

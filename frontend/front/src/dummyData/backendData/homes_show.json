@@ -7,5 +7,7 @@
     "state": "MA",
     "zip_code": "2108",
     "building_type": "House",
+    "assignment_id": 2,
+    "visit_order": 2,
     "url": "http://localhost:3000/homes/1.json"
 }

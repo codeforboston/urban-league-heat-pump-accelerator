@@ -47,11 +47,24 @@ module SeedImporter
     end
 
     # Seed assignments
+    # This is slightly inelegant, but first goes through the dummy data
+    # and ensures that each assignment exists.
+    # We sort the associations below.
     SmarterCSV.process(File.join(path, 'test_assignments.csv'), options) do |chunk|
       chunk.each do |data_hash|
-        surveyor_email = data_hash[:surveyor_email]
-        assignment = Assignment.new(data_hash.except(:surveyor_email))
-        assignment.surveyor = Surveyor.where(email: surveyor_email).first
+        assignment = Assignment.where(group: data_hash[:group]).first
+        assignment = Assignment.new(data_hash.except(:surveyor_email)) if assignment.nil?
+        assignment.save!
+      end
+    end
+
+    # Seed assignments-surveyor joins
+    SmarterCSV.process(File.join(path, 'test_assignments.csv'), options) do |chunk|
+      chunk.each do |data_hash|
+        surveyor = Surveyor.where(email: data_hash[:surveyor_email]).first
+        assignment = Assignment.where(group: data_hash[:group]).first
+
+        assignment.surveyors.append(surveyor)
         assignment.save!
       end
     end
