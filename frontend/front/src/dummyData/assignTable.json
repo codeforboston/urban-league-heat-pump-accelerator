@@ -1,68 +1,92 @@
 [
   {
     "id": 0,
-    "uid": 5,
-    "assigned": "John Smith",
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 4,
+    "home": 10,
     "completed": true
   },
   {
     "id": 1,
-    "uid": 12,
-    "assigned": "John Smith",
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 4,
+    "home": 25,
     "completed": true
   },
   {
     "id": 2,
-    "uid": "",
-    "assigned": "",
-    "completed": true
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 0,
+    "home": 30,
+    "completed": false
   },
   {
     "id": 3,
-    "uid": 34,
-    "assigned": "Lobby King",
-    "completed": false
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 10,
+    "home": 10,
+    "completed": true
   },
   {
     "id": 4,
-    "uid": 23,
-    "assigned": "Open Saw",
-    "completed": false
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 14,
+    "home": 40,
+    "completed": true
   },
   {
     "id": 5,
-    "uid": 12,
-    "assigned": "Wind Mine",
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 14,
+    "home": 60,
     "completed": false
   },
   {
     "id": 6,
+    "homeAssignmentId": 12345,
     "uid": 75,
-    "assigned": "Kimbo Pin",
-    "completed": false
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 14,
+    "home": 10,
+    "completed": true
   },
   {
     "id": 7,
-    "uid": 26,
-    "assigned": "Pack Log",
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 14,
+    "home": 30,
     "completed": false
   },
   {
     "id": 8,
-    "uid": "",
-    "assigned": "",
+    "homeAssignmentId": 12345,
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 0,
+    "home": 10,
     "completed": true
   },
   {
     "id": 9,
+    "homeAssignmentId": 12345,
     "uid": 42,
-    "assigned": "Poink",
-    "completed": true
+    "assigned": { "userId": 12345, "firstName": "John", "lastName": "Smith" },
+    "surveyed": 0,
+    "home": 10,
+    "completed": false
   },
   {
     "id": 10,
-    "uid": "",
-    "assigned": "",
+    "homeAssignmentId": 12345,
+    "assigned": [""],
+    "surveyed": 0,
+    "home": 10,
     "completed": false
   }
 ]

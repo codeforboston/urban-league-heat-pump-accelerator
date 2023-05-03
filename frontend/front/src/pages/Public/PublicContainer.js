@@ -5,15 +5,17 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
-import About from "./Pages/About";
-import { SurveyPage } from "./Pages/SurveyPage/SurveyPage";
-import GetStarted from "./Pages/GetStarted";
-import SpreadWorld from "./Pages/SpreadWorld";
+import { SurveyPage } from "./Pages/SurveyPage";
+import GetInvolved from "./Pages/GetInvolved";
 import Faq from "./Pages/Faq";
-import Testimonials from "./Pages/Testimonials";
-import LearnMore from "./Pages/LearnMore";
+import BenefitsHeatPump from "./Pages/BenefitsHeatPump";
+import GetHeatPump from "./Pages/GetHeatPump";
+import AboutUs from "./Pages/AboutUs/AboutUs";
+import AboutHeatPump from "./Pages/AboutHeatPump";
+import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
+import ScrollToTopButton from "./Components/ScrollToTopButton";
 
 const PublicContainer = () => {
   return (
@@ -35,15 +37,20 @@ const PublicContainer = () => {
             <Box>
               <Routes>
                 <Route path="/" element={<Home />}></Route>
-                <Route path="/learn-more" element={<LearnMore />}></Route>
-                <Route path="/about" element={<About />}></Route>
+                <Route path="/about-us" element={<AboutUs />}></Route>
+                <Route path="/about-heat-pump" element={<AboutHeatPump />} />
                 <Route path="/survey" element={<SurveyPage />} />
-                <Route path="/getstarted" element={<GetStarted />}></Route>
-                <Route path="/testimonials" element={<Testimonials />}></Route>
-                <Route path="/spreadtheworld" element={<SpreadWorld />}></Route>
-                <Route path="/faq" element={<Faq />}></Route>
+                <Route path="/get-heat-pump" element={<GetHeatPump />} />
+                <Route path="/get-involved" element={<GetInvolved />} />
+                <Route
+                  path="/benefits-heat-pump"
+                  element={<BenefitsHeatPump />}
+                />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/faq" element={<Faq />} />
               </Routes>
             </Box>
+            <ScrollToTopButton />
             <Footer />
           </Stack>
         </Box>

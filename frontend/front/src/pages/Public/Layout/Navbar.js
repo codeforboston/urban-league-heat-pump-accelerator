@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Box,
-  Divider,
   Drawer,
   IconButton,
   List,
@@ -22,7 +22,6 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
-import { Link } from "react-router-dom";
 import ButtonGetPump from "../Components/ButtonGetPump";
 import logoHeatPump from "../../../assets/images/boston-heat-pump-logo.gif";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -52,16 +51,14 @@ const Root = styled("div")(({ theme }) => ({
 const drawerWidth = "100%";
 
 const navbarItems = {
-  HOME: { link: "" },
-  "LEARN MORE": { link: "learn-more" },
-  "ABOUT US": { link: "about" },
   SURVEY: { link: "survey" },
-  MORE: {
-    "SPREAD THE WORLD": { link: "spreadtheworld" },
-    TESTIMONIALS: { link: "testimonials" },
-    FAQ: { link: "faq" },
-    LOGIN: { link: "/surveyor" },
+  "Learn More": {
+    "Benefits of Heat Pumps": { link: "benefits-heat-pump" },
+    "About Heat Pump": { link: "about-heat-pump" },
+    Testimonials: { link: "testimonial-section" },
+    "About BHPA": { link: "about-us" },
   },
+  "GET INVOLVED": { link: "get-involved" },
 };
 
 function Navbar(props) {
@@ -71,13 +68,33 @@ function Navbar(props) {
 
   const { window } = props;
 
+  const navigate = useNavigate();
+
   const open = Boolean(anchorMore);
 
-  const handleClickMore = (event) => setAnchorMore(event.currentTarget);
+  const handleClickMore = (event) => {
+    if (event) {
+      setAnchorMore(event.currentTarget);
+    }
+  };
   const handleCloseMore = () => setAnchorMore(null);
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   const handleClickMoreMobile = () => setOpenMoreMobile(!openMoreMobile);
+
+  const handleNavigation = (link) => {
+    if (link === "testimonial-section") {
+      navigate("/public#testimonial-section");
+      setTimeout(() => {
+        const target = document.getElementById("testimonial-section");
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      navigate(link);
+    }
+  };
 
   const desktopNavLink = (navbarItems, item) => (
     <>
@@ -86,8 +103,9 @@ function Navbar(props) {
         aria-controls={open ? "fade-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        onClick={handleClickMore}
+        onMouseEnter={handleClickMore}
         endIcon={<KeyboardArrowDownIcon />}
+        sx={{ color: "var(--color-text-1)" }}
       >
         <Typography variant="navLinks">{item}</Typography>
       </Button>
@@ -101,118 +119,183 @@ function Navbar(props) {
         onClose={handleCloseMore}
         TransitionComponent={Fade}
       >
-        {Object.keys(navbarItems[item]).map((subItem, index) => (
-          <MenuItem
-            onClick={handleCloseMore}
-            component={Link}
-            to={navbarItems[item][subItem].link}
-          >
-            {subItem}
-          </MenuItem>
-        ))}
+        <Box
+          onMouseEnter={() => {
+            handleClickMore();
+          }}
+          onMouseLeave={() => {
+            handleCloseMore();
+          }}
+        >
+          {Object.keys(navbarItems[item]).map((subItem, index) => (
+            <MenuItem
+              key={subItem}
+              variant="navLinks"
+              onClick={() => {
+                handleNavigation(navbarItems[item][subItem].link);
+                handleCloseMore();
+              }}
+            >
+              {subItem}
+            </MenuItem>
+          ))}
+        </Box>
       </Menu>
     </>
   );
 
   const drawer = (
     <Box sx={{ textAlign: "center" }}>
-      <Stack direction="row" alignItems="center">
-        <Button onClick={handleDrawerToggle}>
-          <CloseIcon />
-        </Button>
-
-        <Box sx={{ flexGrow: 1, marginRight: "48px" }}>
-          <Box
-            component="img"
-            src={logoHeatPump}
-            className="logo"
-            alt="logo"
+      <Stack direction="row" alignItems="center" justifyContent="center">
+        <Box sx={{ flexGrow: 1 }}>
+          <Link to="" onClick={handleDrawerToggle}>
+            <Box
+              component="img"
+              src={logoHeatPump}
+              className="logo"
+              alt="logo"
+              sx={{
+                mb: 3,
+                mt: 5,
+                maxWidth: "100%",
+                "@media (max-width: 385px)": {
+                  minWidth: "192px",
+                },
+              }}
+            />
+          </Link>
+        </Box>
+        <Button
+          onClick={handleDrawerToggle}
+          sx={{ position: "absolute", right: 0, mt: 2 }}
+        >
+          <CloseIcon
             sx={{
-              my: 2,
+              fontSize: 32,
+              color: "var(--color-text-5)",
             }}
           />
+        </Button>
+      </Stack>
+      <Stack
+        direction="column"
+        justifyContent="space-around"
+        alignItems="stretch"
+        spacing={2}
+        height="100%"
+      >
+        <List variant="navLinks">
+          {Object.keys(navbarItems).map((item) => (
+            <div key={item}>
+              {item !== "Learn More" ? (
+                <ListItem disablePadding onClick={handleDrawerToggle}>
+                  <ListItemButton
+                    sx={{ textAlign: "center" }}
+                    component={Link}
+                    to={navbarItems[item].link}
+                    onClick={() => setOpenMoreMobile(false)} // Close the dropdown menu (if open) in the drawer when an item is selected
+                  >
+                    <ListItemText
+                      sx={{
+                        color: "var(--color-text-1)",
+                      }}
+                    >
+                      <Typography
+                        variant="navLinks"
+                        sx={{ display: "flex", justifyContent: "center" }}
+                      >
+                        {item}
+                      </Typography>
+                    </ListItemText>
+                  </ListItemButton>
+                </ListItem>
+              ) : (
+                <>
+                  <ListItemButton
+                    variant="navLinks"
+                    component={Link}
+                    to=""
+                    onClick={handleClickMoreMobile}
+                  >
+                    <ListItemText
+                      sx={{
+                        color: "var(--color-text-1)",
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Button
+                        endIcon={
+                          openMoreMobile ? (
+                            <ExpandLess
+                              sx={{
+                                color: "var(--color-text-1)",
+                              }}
+                            />
+                          ) : (
+                            <ExpandMore
+                              sx={{
+                                color: "var(--color-text-1)",
+                              }}
+                            />
+                          )
+                        }
+                        sx={{ height: "20px" }}
+                      >
+                        <Typography
+                          variant="navLinks"
+                          sx={{
+                            color: "var(--color-text-1)",
+                            fontWeight: "500",
+                          }}
+                        >
+                          {item}
+                        </Typography>
+                      </Button>
+                    </ListItemText>
+                  </ListItemButton>
+                  <Collapse in={openMoreMobile} timeout="auto" unmountOnExit>
+                    {Object.keys(navbarItems[item]).map((subItem, index) => (
+                      <List component="div" disablePadding key={subItem}>
+                        <ListItem disablePadding onClick={handleDrawerToggle}>
+                          <ListItemButton
+                            variant="navLinks"
+                            sx={{ textAlign: "center" }}
+                            onClick={() => {
+                              handleNavigation(navbarItems[item][subItem].link);
+                              handleCloseMore();
+                              setOpenMoreMobile(false); // Close the dropdown menu (if open) in the drawer when an item is selected
+                            }}
+                          >
+                            <ListItemText
+                              sx={{
+                                color: "var(--color-text-1)",
+                              }}
+                            >
+                              <Typography
+                                variant="navLinks"
+                                sx={{
+                                  color: "var(--color-text-1)",
+                                  fontWeight: "500",
+                                }}
+                              >
+                                {subItem}
+                              </Typography>
+                            </ListItemText>
+                          </ListItemButton>
+                        </ListItem>
+                      </List>
+                    ))}
+                  </Collapse>
+                </>
+              )}
+            </div>
+          ))}
+        </List>
+        <Box onClick={handleDrawerToggle}>
+          <ButtonGetPump variant="getpump" />
         </Box>
       </Stack>
-      <Divider />
-      <List variant="caption">
-        {Object.keys(navbarItems).map((item) => (
-          <>
-            {item !== "MORE" ? (
-              <ListItem key={item} disablePadding onClick={handleDrawerToggle}>
-                <ListItemButton
-                  sx={{ textAlign: "center" }}
-                  component={Link}
-                  to={navbarItems[item].link}
-                  focusVisible
-                >
-                  <ListItemText
-                    primary={item}
-                    sx={{
-                      color: "var(--color-text-1)",
-                    }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            ) : (
-              <>
-                <ListItemButton
-                  component={Link}
-                  to=""
-                  focusVisible
-                  onClick={handleClickMoreMobile}
-                >
-                  <ListItemText
-                    sx={{
-                      color: "var(--color-text-1)",
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Button
-                      endIcon={openMoreMobile ? <ExpandLess /> : <ExpandMore />}
-                      disablePadding
-                      variant="text"
-                      sx={{ height: "20px" }}
-                    >
-                      <Typography variant="navLinks">{item}</Typography>
-                    </Button>
-                  </ListItemText>
-                </ListItemButton>
-                <Collapse in={openMoreMobile} timeout="auto" unmountOnExit>
-                  {Object.keys(navbarItems[item]).map((subItem, index) => (
-                    <List
-                      component="div"
-                      disablePadding
-                      sx={{ background: "var(--bgColor-2)" }}
-                    >
-                      <ListItem
-                        key={subItem}
-                        disablePadding
-                        onClick={handleDrawerToggle}
-                      >
-                        <ListItemButton
-                          sx={{ textAlign: "center" }}
-                          component={Link}
-                          to={navbarItems[item][subItem].link}
-                          focusVisible
-                        >
-                          <ListItemText
-                            sx={{
-                              color: "var(--color-text-1)",
-                            }}
-                            primary={subItem}
-                          />
-                        </ListItemButton>
-                      </ListItem>
-                    </List>
-                  ))}
-                </Collapse>
-              </>
-            )}
-          </>
-        ))}
-      </List>
-      <ButtonGetPump variant="getpump" />
     </Box>
   );
 
@@ -221,13 +304,19 @@ function Navbar(props) {
 
   return (
     <Root>
-      <Box sx={{ display: "flex", zIndex: 3 }}>
+      <Box
+        id="navbar"
+        sx={{
+          display: "flex",
+          zIndex: 3,
+          // width: "100vw",
+        }}
+      >
         <AppBar
           position="static"
-          marginTop={2}
+          mt={2}
           sx={{
-            bgcolor: "var(--bgColor-1)",
-            background: "var(--bgColor-1)",
+            background: "var(--bgColor-2)",
             boxShadow: "none",
             padding: { xl: "0 18%" },
           }}
@@ -238,42 +327,56 @@ function Navbar(props) {
               direction="row"
               justifyContent="space-between"
               alignItems="center"
+              wrap="nowrap"
             >
               <Grid item sx={{ my: 2 }}>
-                <Box
-                  component="img"
-                  src={logoHeatPump}
-                  className="logo"
-                  alt="logo"
-                  sx={{
-                    my: 2,
-                  }}
-                />
+                <Link to="">
+                  <Box
+                    component="img"
+                    src={logoHeatPump}
+                    className="logo"
+                    alt="logo"
+                    sx={{
+                      my: 2,
+                      maxWidth: "100%",
+                      "@media (max-width: 385px)": {
+                        minWidth: "192px",
+                      },
+                    }}
+                  />
+                </Link>
               </Grid>
               <Grid item>
-                <Box sx={{ display: { xs: "none", lg: "block" } }}>
+                <Box sx={{ display: { xs: "none", md: "block" } }}>
                   <Stack spacing={2} direction="row">
                     {Object.keys(navbarItems).map((item) => (
-                      <>
-                        {item === "MORE" ? (
+                      <div key={item}>
+                        {item === "Learn More" ? (
                           desktopNavLink(navbarItems, item)
                         ) : (
-                          <Button
-                            key={item}
-                            component={Link}
-                            to={navbarItems[item].link}
-                          >
-                            <Typography variant="navLinks">{item}</Typography>
+                          <Button component={Link} to={navbarItems[item].link}>
+                            <Typography
+                              variant="navLinks"
+                              sx={{
+                                color: "var(--color-text-1)",
+                                fontWeight: "500",
+                              }}
+                            >
+                              {item}
+                            </Typography>
                           </Button>
                         )}
-                      </>
+                      </div>
                     ))}
                   </Stack>
                 </Box>
               </Grid>
-              <Box sx={{ display: { xs: "none", lg: "block" } }}>
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
                 <Grid item>
-                  <ButtonGetPump variant="getpump" />
+                  <ButtonGetPump
+                    variant="getpump"
+                    onClick={handleDrawerToggle}
+                  />
                 </Grid>
               </Box>
               <IconButton
@@ -281,14 +384,20 @@ function Navbar(props) {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
+                size="large"
                 sx={{
                   ml: 2,
-                  display: { lg: "none" },
-                  color: "#000",
+                  display: { md: "none" },
+                  color: "#ffffff",
                   justifyContent: "flex-start",
                 }}
               >
-                <MenuIcon />
+                <MenuIcon
+                  sx={{
+                    fontSize: 32,
+                    color: "var(--color-text-1)",
+                  }}
+                />
               </IconButton>
             </Grid>
           </Toolbar>
@@ -297,7 +406,6 @@ function Navbar(props) {
         <Box component="nav">
           <Drawer
             container={container}
-            variant="temporary"
             open={mobileOpen}
             onClose={handleDrawerToggle}
             anchor="right"
@@ -305,12 +413,11 @@ function Navbar(props) {
               keepMounted: true, // Better open performance on mobile.
             }}
             sx={{
-              display: { xs: "block", lg: "none" },
+              display: { xs: "block", md: "none" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
-                color: "var(--color-text-2)",
-                background: "var(--bgColor-1)",
+                background: "var(--bgColor-2)",
               },
             }}
           >

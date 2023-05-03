@@ -9,10 +9,11 @@ import CreateNewUser from "./user/CreateNewUser";
 import CreateNewHome from "./home/CreateNewHome";
 import Home from "./home/Home";
 import User from "./user/User";
-import OnlineSurvey from "./onlinesurvey/OnlineSurvey";
-import OnlineSurveyProfile from "./onlinesurvey/OnlineSurveyProfile";
+import Survey from "./survey/Survey";
+import SurveyProfile from "./survey/SurveyProfile";
 import Assignment from "./assignment/Assignment";
 import AssignProfile from "./assignment/AssignProfile";
+import Unassigned from "./assignment/Unassigned";
 
 const AdminContainer = () => {
   return (
@@ -24,27 +25,21 @@ const AdminContainer = () => {
         <Nav />
         <Routes>
           <Route path="/" element={<Dashboard />}></Route>
-
           <Route path="/home" element={<Home />}></Route>
           <Route path="home/homeprofile/:hid" element={<HomeProfile />}></Route>
           <Route path="home/createHome" element={<CreateNewHome />}></Route>
-
           <Route path="/user" element={<User />}></Route>
           <Route path="user/userprofile/:uid" element={<UserProfile />}></Route>
           <Route path="user/createUser" element={<CreateNewUser />}></Route>
-
-          <Route path="/onlinesurvey" element={<OnlineSurvey />}></Route>
-          <Route
-            path="onlinesurveyprofile/:uid"
-            element={<OnlineSurveyProfile />}
-          ></Route>
+          <Route path="/survey" element={<Survey />}></Route>
+          <Route path="/survey/:uid" element={<SurveyProfile />}></Route>
           <Route path="assignment" element={<Assignment />}></Route>
           <Route
             path="assignment/assignProfile/:aid"
             element={<AssignProfile />}
-          ></Route>
+          ></Route>{" "}
+          <Route path="assignment/unassigned" element={<Unassigned />}></Route>
         </Routes>
-        {/* <Footer /> */}
       </Box>
     </Box>
   );

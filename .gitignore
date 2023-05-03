@@ -1,3 +1,4 @@
 # ignore IDE settings
 .idea
 .vscode
+frontend/front/.env
