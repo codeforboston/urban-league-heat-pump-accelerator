@@ -14,25 +14,32 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe '/assignments', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Assignment. As you add validations to Assignment, be sure to
   # adjust the attributes here as well.
 
-  let(:user) { FactoryBot.create(:user) }
-  let(:surveyor) { FactoryBot.create(:surveyor, user:) }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:home) { FactoryBot.create(:home) }
+  let!(:surveyor) do
+    FactoryBot.create(:surveyor, user:) do |surveyor|
+      FactoryBot.create_list(:assignment, 1, surveyors: [surveyor])
+      home.update(assignment: surveyor.assignments[0], visit_order: 1)
+    end
+  end
+
   let(:valid_attributes) do
     {
+      surveyors: [surveyor],
       group: 'all-stars',
-      surveyor_id: surveyor.id
+      region_code: 1
     }
   end
 
   let(:invalid_attributes) do
     {
       group: 1,
-      surveyor_id: 'boop'
+      region_code: 'invalid_region'
     }
   end
 
@@ -43,23 +50,22 @@ RSpec.describe '/assignments', type: :request do
       expect(response).to be_successful
     end
 
-    it 'can filter based a surveyor' do
+    it 'can filter based on a surveyor' do
       Assignment.create! valid_attributes
       get assignments_url, params: { surveyor_id: surveyor.id }, as: :json
-      expect(response.body).to match(/#{surveyor.id}/)
+      expect(response.body).to match(/#{home.id}/)
     end
 
-    it 'can filter based a surveyor' do
+    it 'can filter based on a surveyor' do
       Assignment.create! valid_attributes
-      get assignments_url, params: { surveyor_id: 24 }, as: :json
-      expect(response.body).not_to match(/#{surveyor.id}/)
+      get assignments_url, params: { surveyor_id: (surveyor.id + 1) }, as: :json
+      expect(response.body).to match('[]')
     end
   end
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      assignment = Assignment.create! valid_attributes
-      get assignment_url(assignment), as: :json
+      get assignment_url(surveyor.assignments.first), as: :json
       expect(response).to be_successful
     end
   end
@@ -122,8 +128,7 @@ RSpec.describe '/assignments', type: :request do
 
     context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        assignment = Assignment.create! valid_attributes
-        patch assignment_url(assignment), params: { assignment: invalid_attributes }, as: :json
+        patch assignment_url(surveyor.assignments.first), params: { assignment: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -131,17 +136,14 @@ RSpec.describe '/assignments', type: :request do
 
   describe 'DELETE /destroy' do
     it 'destroys the requested assignment' do
-      assignment = Assignment.create! valid_attributes
       expect do
-        delete assignment_url(assignment), as: :json
+        delete assignment_url(surveyor.assignments.first), as: :json
       end.to change(Assignment, :count).by(-1)
     end
 
     it 'returns a valid response' do
-      assignment = Assignment.create! valid_attributes
-      delete assignment_url(assignment), as: :json
+      delete assignment_url(surveyor.assignments.first), as: :json
       expect(response).to be_successful
     end
   end
 end
-# rubocop:enable Metrics/BlockLength
