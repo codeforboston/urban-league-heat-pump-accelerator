@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
 
 const sortById = (a, b) => a.id - b.id;
 
@@ -14,6 +13,8 @@ export const apiSlice = createApi({
     "Surveyor",
     "Survey",
     "SurveyVisit",
+    "SurveyResponse",
+    "SurveyAnswer",
     "Assignment",
     "PropertyAssessment",
   ],
@@ -22,10 +23,14 @@ export const apiSlice = createApi({
     getHomes: builder.query({
       query: () => "/homes",
       transformResponse: (res) => (res ? res.sort(sortById) : []),
-      providesTags: [{ type: "Home" }],
+      providesTags: (result = [], error, arg) => [
+        "Home",
+        ...result.map(({ id }) => ({ type: "Post", id })),
+      ],
     }),
     getHome: builder.query({
       query: (id) => `/homes/${id}`,
+      providesTags: (result, error, arg) => [{ type: 'Home', id: arg }]
     }),
     createHome: builder.mutation({
       query: (home) => ({
@@ -178,6 +183,7 @@ export const apiSlice = createApi({
         method: "POST",
         body: surveyResponse,
       }),
+      invalidatesTags: ["SurveyResponse"]
     }),
     updateSurveyResponse: builder.mutation({
       query: ({ id, body }) => {
@@ -208,6 +214,7 @@ export const apiSlice = createApi({
         method: "POST",
         body: surveyAnswer,
       }),
+      invalidatesTags: ["SurveyAnswer"]
     }),
     updateSurveyAnswer: builder.mutation({
       query: ({ id, body }) => {
