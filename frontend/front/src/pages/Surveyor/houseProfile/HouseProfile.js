@@ -10,8 +10,8 @@ import { useParams } from "react-router-dom";
 import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
 import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import {
-  useGetHomeDataQuery,
-  useCreateSurveyVisitDataMutation,
+  useGetHomeQuery,
+  useCreateSurveyVisitMutation,
 } from "../../../api/apiSlice";
 import { SubmissionSuccess } from "../Components/SubmissionSuccess";
 import { SurveyorSurvey } from "../Components/SurveyorSurvey";
@@ -27,7 +27,7 @@ const HouseProfile = () => {
     data: homeData,
     error: homesError,
     isLoading: isHomesLoading,
-  } = useGetHomeDataQuery(homeId);
+  } = useGetHomeQuery(homeId);
 
   const [
     addSurveyVisit,
@@ -37,7 +37,7 @@ const HouseProfile = () => {
       isSuccess: isSurveyVisitSuccess,
       data: surveyVisitData,
     },
-  ] = useCreateSurveyVisitDataMutation();
+  ] = useCreateSurveyVisitMutation();
 
   const submitSurvey = useCallback(
     async (responses, surveyId) => {

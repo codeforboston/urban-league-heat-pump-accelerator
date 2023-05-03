@@ -12,15 +12,15 @@ export const apiSlice = createApi({
   tagTypes: ["Home", "Surveyor", "Survey", "SurveyVisit", "Assignment", "PropertyAssessment"],
   endpoints: (builder) => ({
     /* Homes Endpoints */
-    getHomesData: builder.query({
+    getHomes: builder.query({
       query: () => "/homes",
       transformResponse: (res) => (res ? res.sort(sortById) : []),
       providesTags: [{ type: "Home" }],
     }),
-    getHomeData: builder.query({
+    getHome: builder.query({
       query: (id) => `/homes/${id}`,
     }),
-    createHomeData: builder.mutation({
+    createHome: builder.mutation({
       query: (home) => ({
         url: `/homes`,
         method: "POST",
@@ -28,7 +28,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Home"],
     }),
-    updateHomeData: builder.mutation({
+    updateHome: builder.mutation({
       query: (home) => ({
         url: `/homes/${home.id}`,
         method: "PUT",
@@ -36,7 +36,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Home"],
     }),
-    deleteHomeData: builder.mutation({
+    deleteHome: builder.mutation({
       query: (home) => ({
         url: `/homes/${home.id}`,
         method: "DELETE",
@@ -46,15 +46,15 @@ export const apiSlice = createApi({
     }),
 
     /* Surveyors Endpoints*/
-    getSurveyorsData: builder.query({
+    getSurveyors: builder.query({
       query: () => "/surveyors",
       transformResponse: (res) => res.sort(sortById),
       providesTags: [{ type: "Surveyor" }],
     }),
-    getSurveyorData: builder.query({
+    getSurveyor: builder.query({
       query: (surveyor) => `/surveyors/${surveyor.id}`,
     }),
-    createSurveyorData: builder.mutation({
+    createSurveyor: builder.mutation({
       query: (surveyor) => ({
         url: `/surveyors`,
         method: "POST",
@@ -62,7 +62,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Surveyor"],
     }),
-    updateSurveyorData: builder.mutation({
+    updateSurveyor: builder.mutation({
       query: (surveyor) => ({
         url: `/surveyors/${surveyor.id}`,
         method: "PUT",
@@ -70,7 +70,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Surveyor"],
     }),
-    deleteSurveyorData: builder.mutation({
+    deleteSurveyor: builder.mutation({
       query: (surveyor) => ({
         url: `/surveyors/${surveyor.id}`,
         method: "DELETE",
@@ -80,7 +80,7 @@ export const apiSlice = createApi({
     }),
 
     /* Survey Endpoints */
-    getSurveysData: builder.query({
+    getSurveys: builder.query({
       query: () => ({ url: "/surveys", method: "get" }),
       transformResponse: (res) => res.sort(sortById),
       providesTags: [{ type: "Survey" }],
@@ -91,7 +91,7 @@ export const apiSlice = createApi({
         method: "get",
       }),
     }),
-    createSurveyData: builder.mutation({
+    createSurvey: builder.mutation({
       query: (survey) => ({
         url: `/surveys`,
         method: "POST",
@@ -99,7 +99,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Survey"],
     }),
-    updateSurveyData: builder.mutation({
+    updateSurvey: builder.mutation({
       query: (survey) => ({
         url: `/surveys/${survey.id}`,
         method: "PUT",
@@ -107,7 +107,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Survey"],
     }),
-    deleteSurveyData: builder.mutation({
+    deleteSurvey: builder.mutation({
       query: (survey) => ({
         url: `/surveys/${survey.id}`,
         method: "DELETE",
@@ -126,20 +126,20 @@ export const apiSlice = createApi({
     }),
 
     /* Survey visit endpoints */
-    getSurveyVisitsData: builder.query({
+    getSurveyVisits: builder.query({
       query: () => ({ url: "/survey_visits", method: "get" }),
       providesTags: (result = []) => [
         "SurveyVisit",
         ...result.map(({ id }) => ({ type: "SurveyVisit", id })),
       ],
     }),
-    getSurveyVisitData: builder.query({
+    getSurveyVisit: builder.query({
       query: (id) => ({ url: `/survey_visits/${id}`, method: "get" }),
       providesTags: (result = [], error, arg) => [
         { type: "SurveyVisit", id: arg },
       ],
     }),
-    createSurveyVisitData: builder.mutation({
+    createSurveyVisit: builder.mutation({
       query: (surveyVisit) => ({
         url: "/survey_visits",
         method: "post",
@@ -147,7 +147,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["SurveyVisit"],
     }),
-    updateSurveyVisitData: builder.mutation({
+    updateSurveyVisit: builder.mutation({
       query: ({ id, body }) => {
         return {
           url: `/survey_visits/${id}`,
@@ -159,7 +159,7 @@ export const apiSlice = createApi({
         { type: "SurveyVisit", id: arg.id },
       ],
     }),
-    deleteSurveyVisitData: builder.mutation({
+    deleteSurveyVisit: builder.mutation({
       query: (id) => ({
         url: `/survey_visits/${id}`,
         method: "delete",
@@ -170,20 +170,20 @@ export const apiSlice = createApi({
     }),
 
     /* Survey response endpoints */
-    getSurveyResponsesData: builder.query({
+    getSurveyResponses: builder.query({
       query: () => ({ url: "/survey_responses", method: "get" }),
     }),
-    getSurveyResponseData: builder.query({
+    getSurveyResponse: builder.query({
       query: (id) => ({ url: `/survey_responses/${id}`, method: "get" }),
     }),
-    createSurveyResponseData: builder.mutation({
+    createSurveyResponse: builder.mutation({
       query: (surveyResponse) => ({
         url: "/survey_responses",
         method: "post",
         body: surveyResponse,
       }),
     }),
-    updateSurveyResponseData: builder.mutation({
+    updateSurveyResponse: builder.mutation({
       query: ({ id, body }) => {
         return {
           url: `/survey_responses/${id}`,
@@ -192,7 +192,7 @@ export const apiSlice = createApi({
         };
       },
     }),
-    deleteSurveyResponseData: builder.mutation({
+    deleteSurveyResponse: builder.mutation({
       query: (id) => ({
         url: `/survey_responses/${id}`,
         method: "delete",
@@ -200,20 +200,20 @@ export const apiSlice = createApi({
     }),
 
     /* Survey answer endpoints */
-    getSurveyAnswersData: builder.query({
+    getSurveyAnswers: builder.query({
       query: () => ({ url: "/survey_answers", method: "get" }),
     }),
-    getSurveyAnswerData: builder.query({
+    getSurveyAnswer: builder.query({
       query: (id) => ({ url: `/survey_answers/${id}`, method: "get" }),
     }),
-    createSurveyAnswerData: builder.mutation({
+    createSurveyAnswer: builder.mutation({
       query: (surveyAnswer) => ({
         url: "/survey_answers",
         method: "post",
         body: surveyAnswer,
       }),
     }),
-    updateSurveyAnswerData: builder.mutation({
+    updateSurveyAnswer: builder.mutation({
       query: ({ id, body }) => {
         return {
           url: `/survey_answers/${id}`,
@@ -222,7 +222,7 @@ export const apiSlice = createApi({
         };
       },
     }),
-    deleteSurveyAnswerData: builder.mutation({
+    deleteSurveyAnswer: builder.mutation({
       query: (id) => ({
         url: `/survey_answers/${id}`,
         method: "delete",
@@ -231,15 +231,15 @@ export const apiSlice = createApi({
 
     /* Assignment endpoints*/
 
-    getAssignmentsData: builder.query({
+    getAssignments: builder.query({
       query: () => "/assignments",
       transformResponse: (res) => (res ? res.sort(sortById) : []),
       providesTags: [{ type: "Assignment" }],
     }),
-    getAssignmentData: builder.query({
+    getAssignment: builder.query({
       query: (id) => `/assignments/${id}`,
     }),
-    createAssignmentData: builder.mutation({
+    createAssignment: builder.mutation({
       query: (assignment) => ({
         url: `/assignments`,
         method: "POST",
@@ -247,7 +247,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Assignment"],
     }),
-    updateAssignmentData: builder.mutation({
+    updateAssignment: builder.mutation({
       query: (assignment) => ({
         url: `/assignments/${assignment.id}`,
         method: "PUT",
@@ -255,7 +255,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Assignment"],
     }),
-    deleteAssignmentData: builder.mutation({
+    deleteAssignment: builder.mutation({
       query: (assignment) => ({
         url: `/assignments/${assignment.id}`,
         method: "DELETE",
@@ -265,7 +265,7 @@ export const apiSlice = createApi({
     }),
 
     /* Property assessment endpoints*/
-    getPropertyAssessmentsData: builder.query({
+    getPropertyAssessments: builder.query({
       query: () => "/property_assessments",
       transformResponse: (res) => (res ? res.sort(sortById) : []),
       providesTags: [{ type: "PropertyAssessment" }],
@@ -275,54 +275,54 @@ export const apiSlice = createApi({
 
 export const {
   // Surveyor
-  useDeleteSurveyorDataMutation,
-  useUpdateSurveyorDataMutation,
-  useCreateSurveyorDataMutation,
-  useGetSurveyorDataQuery,
-  useGetSurveyorsDataQuery,
+  useDeleteSurveyorMutation,
+  useUpdateSurveyorMutation,
+  useCreateSurveyorMutation,
+  useGetSurveyorQuery,
+  useGetSurveyorsQuery,
 
   // Home
-  useDeleteHomeDataMutation,
-  useUpdateHomeDataMutation,
-  useCreateHomeDataMutation,
-  useGetHomeDataQuery,
-  useGetHomesDataQuery,
+  useDeleteHomeMutation,
+  useUpdateHomeMutation,
+  useCreateHomeMutation,
+  useGetHomeQuery,
+  useGetHomesQuery,
 
   // Survey
-  useDeleteSurveyDataMutation,
-  useUpdateSurveyDataMutation,
-  useCreateSurveyDataMutation,
-  useGetSurveysDataQuery,
+  useDeleteSurveyMutation,
+  useUpdateSurveyMutation,
+  useCreateSurveyMutation,
+  useGetSurveysQuery,
   useGetSurveyStructureQuery,
 
   // Survey visit
-  useCreateSurveyVisitDataMutation,
-  useUpdateSurveyVisitDataMutation,
-  useDeleteSurveyVisitDataMutation,
-  useGetSurveyVisitsDataQuery,
-  useGetSurveyVisitDataQuery,
+  useCreateSurveyVisitMutation,
+  useUpdateSurveyVisitMutation,
+  useDeleteSurveyVisitMutation,
+  useGetSurveyVisitsQuery,
+  useGetSurveyVisitQuery,
 
   // Survey response
-  useCreateSurveyResponseDataMutation,
-  useUpdateSurveyResponseDataMutation,
-  useDeleteSurveyResponseDataMutation,
-  useGetSurveyResponsesDataQuery,
-  useGetSurveyResponseDataQuery,
+  useCreateSurveyResponseMutation,
+  useUpdateSurveyResponseMutation,
+  useDeleteSurveyResponseMutation,
+  useGetSurveyResponsesQuery,
+  useGetSurveyResponseQuery,
 
   // Survey answer
-  useCreateSurveyAnswerDataMutation,
-  useUpdateSurveyAnswerDataMutation,
-  useDeleteSurveyAnswerDataMutation,
-  useGetSurveyAnswersDataQuery,
-  useGetSurveyAnswerDataQuery,
+  useCreateSurveyAnswerMutation,
+  useUpdateSurveyAnswerMutation,
+  useDeleteSurveyAnswerMutation,
+  useGetSurveyAnswersQuery,
+  useGetSurveyAnswerQuery,
 
   // Assignment
-  useCreateAssignmentDataMutation,
-  useUpdateAssignmentDataMutation,
-  useDeleteAssignmentDataMutation,
-  useGetAssignmentsDataQuery,
-  useGetAssignmentDataQuery,
+  useCreateAssignmentMutation,
+  useUpdateAssignmentMutation,
+  useDeleteAssignmentMutation,
+  useGetAssignmentsQuery,
+  useGetAssignmentQuery,
 
   // Property assessments
-  useGetPropertyAssessmentsDataQuery,
+  useGetPropertyAssessmentsQuery,
 } = apiSlice;

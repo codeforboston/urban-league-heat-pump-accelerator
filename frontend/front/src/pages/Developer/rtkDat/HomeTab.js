@@ -1,18 +1,18 @@
 import { Box, Button } from "@mui/material";
 import {
-  useCreateHomeDataMutation,
-  useDeleteHomeDataMutation,
+  useCreateHomeMutation,
+  useDeleteHomeMutation,
   useGetHomeDataQuery,
-  useUpdateHomeDataMutation,
+  useUpdateHomeMutation,
 } from "../../../api/apiSlice";
 import HomeItem from "./HomeItem";
 
 const HomeTab = () => {
   const { data, isLoading, isSuccess, isError, error } = useGetHomeDataQuery();
 
-  const [createHomeData] = useCreateHomeDataMutation();
-  const [updateHomeData] = useUpdateHomeDataMutation();
-  const [deleteHomeData] = useDeleteHomeDataMutation();
+  const [createHomeData] = useCreateHomeMutation();
+  const [updateHomeData] = useUpdateHomeMutation();
+  const [deleteHomeData] = useDeleteHomeMutation();
 
   let content = "no data";
 

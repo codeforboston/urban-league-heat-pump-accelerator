@@ -1,24 +1,18 @@
 import { Box, Button } from "@mui/material";
 import {
-  useCreateSurveyorDataMutation,
-  useDeleteSurveyorDataMutation,
-  useGetSurveyorDataQuery,
-  useUpdateSurveyorDataMutation,
+  useCreateSurveyorMutation,
+  useDeleteSurveyorMutation,
+  useGetSurveyorQuery,
+  useUpdateSurveyorMutation,
 } from "../../../api/apiSlice";
 import UserItem from "./UserItem";
 
 const UserTab = () => {
-  const {
-    data,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-  } = useGetSurveyorDataQuery();
+  const { data, isLoading, isSuccess, isError, error } = useGetSurveyorQuery();
 
-  const [createSurveyorData] = useCreateSurveyorDataMutation();
-  const [updateSurveyorData] = useUpdateSurveyorDataMutation();
-  const [deleteSurveyorData] = useDeleteSurveyorDataMutation();
+  const [createSurveyorData] = useCreateSurveyorMutation();
+  const [updateSurveyorData] = useUpdateSurveyorMutation();
+  const [deleteSurveyorData] = useDeleteSurveyorMutation();
 
   let content;
 

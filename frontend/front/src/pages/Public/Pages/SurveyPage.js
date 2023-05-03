@@ -2,8 +2,8 @@ import React, { useCallback, useMemo } from "react";
 import { Alert, Container, Snackbar, Stack } from "@mui/material";
 import { AddressValidatorComponent } from "../Components/AddressValidatorComponent";
 import {
-  useCreateHomeDataMutation,
-  useCreateSurveyVisitDataMutation,
+  useCreateHomeMutation,
+  useCreateSurveyVisitMutation,
 } from "../../../api/apiSlice";
 import { useGetReCAPTCHAToken } from "../../../components/ReCaptcha";
 import { ThanksForSubmission } from "../Components/ThanksForSubmission";
@@ -30,7 +30,7 @@ export const SurveyPage = () => {
       error: createHomeError,
       isLoading: isCreateHomeLoading,
     },
-  ] = useCreateHomeDataMutation();
+  ] = useCreateHomeMutation();
 
   const [
     addSurveyVisit,
@@ -39,7 +39,7 @@ export const SurveyPage = () => {
       error: surveyVisitError,
       isSuccess: isSurveyVisitSuccess,
     },
-  ] = useCreateSurveyVisitDataMutation();
+  ] = useCreateSurveyVisitMutation();
 
   const handleCreateHome = useCallback(
     async ({ address }) => {

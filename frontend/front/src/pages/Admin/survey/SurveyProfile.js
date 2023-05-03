@@ -2,10 +2,10 @@ import React, { useCallback, useMemo } from "react";
 import { Box, CircularProgress, Container, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  useGetHomeDataQuery,
-  useGetSurveyVisitDataQuery,
-  useUpdateSurveyVisitDataMutation,
-  useDeleteSurveyVisitDataMutation,
+  useGetHomeQuery,
+  useGetSurveyVisitQuery,
+  useUpdateSurveyVisitMutation,
+  useDeleteSurveyVisitMutation,
 } from "../../../api/apiSlice";
 import { SurveyError } from "./SurveyError";
 import { AdminSurvey } from "../component/AdminSurvey";
@@ -16,21 +16,22 @@ const SurveyProfile = () => {
   const navigate = useNavigate();
   const { uid: surveyVisitId } = useParams();
 
-  const { data: surveyVisit, error: surveyVisitError } =
-    useGetSurveyVisitDataQuery(surveyVisitId);
-
-  const { data: houseData, error: houseError } = useGetHomeDataQuery(
-    surveyVisit?.homeId,
-    { skip: !surveyVisit }
+  const { data: surveyVisit, error: surveyVisitError } = useGetSurveyVisitQuery(
+    surveyVisitId
   );
+
+  const {
+    data: houseData,
+    error: houseError,
+  } = useGetHomeQuery(surveyVisit?.homeId, { skip: !surveyVisit });
   const [
     putSurveyVisit,
     { isLoading: isSurveyVisitPutLoading, error: surveyVisitPutError },
-  ] = useUpdateSurveyVisitDataMutation();
+  ] = useUpdateSurveyVisitMutation();
   const [
     deleteSurveyVisit,
     { isLoading: isSurveyDeleteLoading, error: surveyVisitDeleteError },
-  ] = useDeleteSurveyVisitDataMutation();
+  ] = useDeleteSurveyVisitMutation();
 
   const title = useMemo(
     () =>
