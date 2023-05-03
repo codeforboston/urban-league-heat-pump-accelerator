@@ -20,7 +20,6 @@ RSpec.describe '/assignments', type: :request do
   # adjust the attributes here as well.
 
   let!(:user) { FactoryBot.create(:user) }
-  let(:surveyor) { FactoryBot.create(:surveyor, user:) }
   let!(:home) { FactoryBot.create(:home) }
   let!(:surveyor) do
     FactoryBot.create(:surveyor, user:) do |surveyor|
