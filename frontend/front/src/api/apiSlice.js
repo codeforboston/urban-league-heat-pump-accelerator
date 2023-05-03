@@ -68,6 +68,7 @@ export const apiSlice = createApi({
     }),
     getSurveyor: builder.query({
       query: (surveyor) => `/surveyors/${surveyor.id}`,
+      providesTags: (result, error, arg) => [{ type: "Surveyor", id: arg }],
     }),
     createSurveyor: builder.mutation({
       query: (surveyor) => ({
@@ -108,6 +109,7 @@ export const apiSlice = createApi({
         url: `/surveys/${id}`,
         method: "GET",
       }),
+      providesTags: (result, error, arg) => [{ type: "Survey", id: arg }],
     }),
     createSurvey: builder.mutation({
       query: (survey) => ({
@@ -186,6 +188,7 @@ export const apiSlice = createApi({
     }),
     getSurveyResponse: builder.query({
       query: (id) => ({ url: `/survey_responses/${id}`, method: "GET" }),
+      providesTags: (result, error, arg) => [{ type: "SurveyResponse", id: arg }],
     }),
     createSurveyResponse: builder.mutation({
       query: (surveyResponse) => ({
@@ -221,6 +224,7 @@ export const apiSlice = createApi({
     }),
     getSurveyAnswer: builder.query({
       query: (id) => ({ url: `/survey_answers/${id}`, method: "GET" }),
+      providesTags: (result, error, arg) => [{ type: "SurveyAnswer", id: arg }],
     }),
     createSurveyAnswer: builder.mutation({
       query: (surveyAnswer) => ({
@@ -258,6 +262,7 @@ export const apiSlice = createApi({
     }),
     getAssignment: builder.query({
       query: (id) => `/assignments/${id}`,
+      providesTags: (result, error, arg) => [{ type: "Assignment", id: arg }],
     }),
     createAssignment: builder.mutation({
       query: (assignment) => ({
