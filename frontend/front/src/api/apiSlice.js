@@ -46,7 +46,7 @@ export const apiSlice = createApi({
         method: "PUT",
         body: home,
       }),
-      invalidatesTags: ["Home"],
+      invalidatesTags: (result, error, arg) => [{ type: "Home", id: arg.id }],
     }),
     deleteHome: builder.mutation({
       query: (home) => ({
@@ -84,7 +84,9 @@ export const apiSlice = createApi({
         method: "PUT",
         body: surveyor,
       }),
-      invalidatesTags: ["Surveyor"],
+      invalidatesTags: (result, error, arg) => [
+        { type: "Surveyor", id: arg.id },
+      ],
     }),
     deleteSurveyor: builder.mutation({
       query: (surveyor) => ({
@@ -125,7 +127,7 @@ export const apiSlice = createApi({
         method: "PUT",
         body: survey,
       }),
-      invalidatesTags: ["Survey"],
+      invalidatesTags: (result, error, arg) => [{ type: "Survey", id: arg.id }],
     }),
     deleteSurvey: builder.mutation({
       query: (survey) => ({
@@ -188,7 +190,9 @@ export const apiSlice = createApi({
     }),
     getSurveyResponse: builder.query({
       query: (id) => ({ url: `/survey_responses/${id}`, method: "GET" }),
-      providesTags: (result, error, arg) => [{ type: "SurveyResponse", id: arg }],
+      providesTags: (result, error, arg) => [
+        { type: "SurveyResponse", id: arg },
+      ],
     }),
     createSurveyResponse: builder.mutation({
       query: (surveyResponse) => ({
@@ -206,6 +210,7 @@ export const apiSlice = createApi({
           body,
         };
       },
+      invalidatesTags: (result, error, arg) => [{ type: 'SurveyResponse', id: arg.id }]
     }),
     deleteSurveyResponse: builder.mutation({
       query: (id) => ({
@@ -242,6 +247,7 @@ export const apiSlice = createApi({
           body,
         };
       },
+      invalidatesTags: (result, error, arg) => [{ type: 'SurveyAnswer', id: arg.id }]
     }),
     deleteSurveyAnswer: builder.mutation({
       query: (id) => ({
@@ -278,7 +284,7 @@ export const apiSlice = createApi({
         method: "PUT",
         body: assignment,
       }),
-      invalidatesTags: ["Assignment"],
+      invalidatesTags: (result, error, arg) => [{ type: 'Assignment', id: arg.id }]
     }),
     deleteAssignment: builder.mutation({
       query: (assignment) => ({
