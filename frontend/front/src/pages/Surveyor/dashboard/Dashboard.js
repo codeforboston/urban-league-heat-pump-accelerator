@@ -1,11 +1,11 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
-import { useGetSurveyorAssignmentQuery } from "../../../redux/surveyorViewApiSlice";
+import { useGetAssignmentsQuery } from "../../../api/apiSlice";
 import ListView from "./ListView";
 
 const Dashboard = () => {
   const { data, isLoading, isSuccess, isError, error } =
-    useGetSurveyorAssignmentQuery();
+    useGetAssignmentsQuery();
 
   let content = "no data";
 
