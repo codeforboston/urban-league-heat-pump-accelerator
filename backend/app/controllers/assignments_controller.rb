@@ -6,7 +6,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments or /assignments.json
   def index
     @assignments = if search_params[:surveyor_id]
-                     Assignment.where(surveyor_id: search_params[:surveyor_id])
+                     Assignment.joins(:surveyors).where({ surveyors: { id: search_params[:surveyor_id] } })
                    else
                      Assignment.all
                    end
@@ -65,7 +65,7 @@ class AssignmentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def assignment_params
-    params.require(:assignment).permit(:group, :surveyor_id)
+    params.require(:assignment).permit(:group, :region_code)
   end
 
   def search_params

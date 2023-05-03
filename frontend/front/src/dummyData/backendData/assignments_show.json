@@ -1,7 +1,10 @@
 {
     "id": 1,
     "group": "A1",
-    "surveyor_id": 1,
+    "region_code": 1,
+    "surveyor_ids": [
+        1
+    ],
     "homes": [
         {
             "id": 25,

@@ -10,16 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_15_161105) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_19_144022) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assignments", force: :cascade do |t|
     t.string "group"
-    t.bigint "surveyor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["surveyor_id"], name: "index_assignments_on_surveyor_id"
+    t.integer "region_code"
+  end
+
+  create_table "assignments_surveyors", id: false, force: :cascade do |t|
+    t.bigint "surveyor_id", null: false
+    t.bigint "assignment_id", null: false
+    t.index ["assignment_id"], name: "index_assignments_surveyors_on_assignment_id"
+    t.index ["surveyor_id"], name: "index_assignments_surveyors_on_surveyor_id"
   end
 
   create_table "homes", force: :cascade do |t|
@@ -36,6 +42,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_161105) do
     t.integer "visit_order"
     t.index ["assignment_id", "visit_order"], name: "index_homes_on_assignment_id_and_visit_order", unique: true
     t.index ["assignment_id"], name: "index_homes_on_assignment_id"
+  end
+
+  create_table "jwt_denylists", force: :cascade do |t|
+    t.string "jti"
+    t.datetime "expired_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jti"], name: "index_jwt_denylists_on_jti"
   end
 
   create_table "property_assessments", force: :cascade do |t|
@@ -135,6 +149,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_161105) do
     t.bigint "survey_visit_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ip"
     t.index ["survey_id"], name: "index_survey_responses_on_survey_id"
     t.index ["survey_visit_id"], name: "index_survey_responses_on_survey_visit_id"
   end
@@ -185,7 +200,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_161105) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "assignments", "surveyors"
   add_foreign_key "survey_answers", "survey_questions"
   add_foreign_key "survey_answers", "survey_responses"
   add_foreign_key "survey_questions", "surveys"

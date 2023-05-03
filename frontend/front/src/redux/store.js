@@ -7,8 +7,7 @@ import navReducer from "../features/nav/navSlice";
 import loginReducer from "../features/login/loginSlice";
 import surveyorReducer from "../features/surveyor/surveyorSlice";
 // import { itemApi } from "./services";
-import { apiSlice } from "./apiSlice";
-import { surveyorViewApiSlice } from "./surveyorViewApiSlice";
+import { apiSlice } from "../api/apiSlice";
 
 export const createStore = (options) =>
   configureStore({
@@ -22,15 +21,11 @@ export const createStore = (options) =>
       surveyor: surveyorReducer,
       // apis
       // [itemApi.reducerPath]: itemApi.reducer,
-      [surveyorViewApiSlice.reducerPath]: surveyorViewApiSlice.reducer,
       [apiSlice.reducerPath]: apiSlice.reducer,
     },
     // adding the api middleware enables caching, invalidation, polling and other features of `rtk-query`
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(
-        apiSlice.middleware,
-        surveyorViewApiSlice.middleware
-      ),
+      getDefaultMiddleware().concat(apiSlice.middleware),
     ...options,
   });
 

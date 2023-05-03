@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :assignment do
     group { 'MyString' }
-    surveyor { nil }
+    region_code { 2 }
   end
 end

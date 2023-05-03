@@ -5,9 +5,9 @@ import { CircularProgress, Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import {
   useGetSurveyVisitsQuery,
-  useGetHomesDataQuery,
-  useGetSurveyListQuery,
-} from "../../../redux/apiSlice";
+  useGetHomesQuery,
+  useGetSurveysQuery,
+} from "../../../api/apiSlice";
 import { SurveyError } from "./SurveyError";
 import { houseToString } from "../../../components/AddressUtils";
 import { formatISODate } from "../../../components/DateUtils";
@@ -41,12 +41,12 @@ const SurveyTable = () => {
     data: houseData,
     error: houseError,
     isLoading: isHouseDataLoading,
-  } = useGetHomesDataQuery();
+  } = useGetHomesQuery();
   const {
     data: surveyStructureData,
     error: surveyStructureError,
     isLoading: isSurveyStructureLoading,
-  } = useGetSurveyListQuery();
+  } = useGetSurveysQuery();
 
   const tableData = useMemo(
     () =>
