@@ -122,15 +122,6 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Survey"],
     }),
-    // mocking surveyorView data
-    // getAssigment within surveyor view
-    getSurveyorAssigment: builder.query({
-      query: () => ({
-        url: `/surveyor/assignment/user1`,
-        method: "GET",
-        mock: SurveyorViewAssigment1,
-      }),
-    }),
 
     /* Survey visit endpoints */
     getSurveyVisits: builder.query({
