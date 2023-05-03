@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // const baseUrl = "http://localhost:3001"; testing
-const baseUrl = "https://testing-ibhy.onrender.com";
+const baseUrl = process.env.API_URL;
 
 console.log("baseUrl", baseUrl);
 
