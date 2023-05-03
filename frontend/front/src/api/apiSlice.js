@@ -126,16 +126,14 @@ export const apiSlice = createApi({
     /* Survey visit endpoints */
     getSurveyVisits: builder.query({
       query: () => ({ url: "/survey_visits", method: "GET" }),
-      providesTags: (result = []) => [
+      providesTags: (result = [], error, arg) => [
         "SurveyVisit",
         ...result.map(({ id }) => ({ type: "SurveyVisit", id })),
       ],
     }),
     getSurveyVisit: builder.query({
       query: (id) => ({ url: `/survey_visits/${id}`, method: "GET" }),
-      providesTags: (result = [], error, arg) => [
-        { type: "SurveyVisit", id: arg },
-      ],
+      providesTags: (result, error, arg) => [{ type: "SurveyVisit", id: arg }],
     }),
     createSurveyVisit: builder.mutation({
       query: (surveyVisit) => ({
