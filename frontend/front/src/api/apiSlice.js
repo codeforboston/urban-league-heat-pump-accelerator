@@ -6,10 +6,17 @@ const sortById = (a, b) => b.id - a.id;
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3500",
+    baseUrl: "http://localhost:3001",
   }),
 
-  tagTypes: ["Home", "Surveyor", "Survey", "SurveyVisit", "Assignment", "PropertyAssessment"],
+  tagTypes: [
+    "Home",
+    "Surveyor",
+    "Survey",
+    "SurveyVisit",
+    "Assignment",
+    "PropertyAssessment",
+  ],
   endpoints: (builder) => ({
     /* Homes Endpoints */
     getHomes: builder.query({
