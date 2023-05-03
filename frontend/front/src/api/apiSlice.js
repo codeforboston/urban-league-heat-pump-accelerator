@@ -25,12 +25,12 @@ export const apiSlice = createApi({
       transformResponse: (res) => (res ? res.sort(sortById) : []),
       providesTags: (result = [], error, arg) => [
         "Home",
-        ...result.map(({ id }) => ({ type: "Post", id })),
+        ...result.map(({ id }) => ({ type: "Home", id })),
       ],
     }),
     getHome: builder.query({
       query: (id) => `/homes/${id}`,
-      providesTags: (result, error, arg) => [{ type: 'Home', id: arg }]
+      providesTags: (result, error, arg) => [{ type: "Home", id: arg }],
     }),
     createHome: builder.mutation({
       query: (home) => ({
@@ -61,7 +61,10 @@ export const apiSlice = createApi({
     getSurveyors: builder.query({
       query: () => "/surveyors",
       transformResponse: (res) => res.sort(sortById),
-      providesTags: [{ type: "Surveyor" }],
+      providesTags: (result = [], error, arg) => [
+        "Surveyor",
+        ...result.map(({ id }) => ({ type: "Surveyor", id })),
+      ],
     }),
     getSurveyor: builder.query({
       query: (surveyor) => `/surveyors/${surveyor.id}`,
@@ -95,7 +98,10 @@ export const apiSlice = createApi({
     getSurveys: builder.query({
       query: () => ({ url: "/surveys", method: "GET" }),
       transformResponse: (res) => res.sort(sortById),
-      providesTags: [{ type: "Survey" }],
+      providesTags: (result = [], error, arg) => [
+        "Survey",
+        ...result.map(({ id }) => ({ type: "Survey", id })),
+      ],
     }),
     getSurveyStructure: builder.query({
       query: (id) => ({
@@ -173,6 +179,10 @@ export const apiSlice = createApi({
     /* Survey response endpoints */
     getSurveyResponses: builder.query({
       query: () => ({ url: "/survey_responses", method: "GET" }),
+      providesTags: (result = [], error, arg) => [
+        "SurveyResponses",
+        ...result.map(({ id }) => ({ type: "SurveyResponses", id })),
+      ],
     }),
     getSurveyResponse: builder.query({
       query: (id) => ({ url: `/survey_responses/${id}`, method: "GET" }),
@@ -183,7 +193,7 @@ export const apiSlice = createApi({
         method: "POST",
         body: surveyResponse,
       }),
-      invalidatesTags: ["SurveyResponse"]
+      invalidatesTags: ["SurveyResponse"],
     }),
     updateSurveyResponse: builder.mutation({
       query: ({ id, body }) => {
@@ -204,6 +214,10 @@ export const apiSlice = createApi({
     /* Survey answer endpoints */
     getSurveyAnswers: builder.query({
       query: () => ({ url: "/survey_answers", method: "GET" }),
+      providesTags: (result = [], error, arg) => [
+        "SurveyAnswers",
+        ...result.map(({ id }) => ({ type: "SurveyAnswers", id })),
+      ],
     }),
     getSurveyAnswer: builder.query({
       query: (id) => ({ url: `/survey_answers/${id}`, method: "GET" }),
@@ -214,7 +228,7 @@ export const apiSlice = createApi({
         method: "POST",
         body: surveyAnswer,
       }),
-      invalidatesTags: ["SurveyAnswer"]
+      invalidatesTags: ["SurveyAnswer"],
     }),
     updateSurveyAnswer: builder.mutation({
       query: ({ id, body }) => {
@@ -237,7 +251,10 @@ export const apiSlice = createApi({
     getAssignments: builder.query({
       query: () => "/assignments",
       transformResponse: (res) => (res ? res.sort(sortById) : []),
-      providesTags: [{ type: "Assignment" }],
+      providesTags: (result = [], error, arg) => [
+        "Assignment",
+        ...result.map(({ id }) => ({ type: "Assignment", id })),
+      ],
     }),
     getAssignment: builder.query({
       query: (id) => `/assignments/${id}`,
@@ -271,7 +288,10 @@ export const apiSlice = createApi({
     getPropertyAssessments: builder.query({
       query: () => "/property_assessments",
       transformResponse: (res) => (res ? res.sort(sortById) : []),
-      providesTags: [{ type: "PropertyAssessment" }],
+      providesTags: (result = [], error, arg) => [
+        "PropertyAssessment",
+        ...result.map(({ id }) => ({ type: "PropertyAssessment", id })),
+      ],
     }),
   }),
 });
