@@ -17,9 +17,28 @@ import { useNavigate } from "react-router-dom";
 import { selectedHome } from "../../../features/surveyor/surveyorSlice";
 import DialogMenu from "./DialogMenu";
 import OptionMenu from "./OptionMenu";
+import { useGetHomeQuery, useGetHomesQuery } from "../../../api/apiSlice";
 
 const AssignmentUnit = (props) => {
-  const { data } = props;
+  let { assignment } = props;
+  const getHome = useGetHomeQuery;
+  const homes = []
+  assignment.forEach((assignment, index) => {
+    const { data, isLoading, isSuccess } = getHome(assignment.id);
+    if (isLoading) return <>"loading</>;
+    if (isSuccess) {
+      homes.push({
+        ...assignment,
+        street_number: data.street_number,
+        street_name: data.street_name,
+        unit_number: data.unit_number,
+        city: data.city,
+        state: data.state,
+        zip_code: data.zip_code,
+        building_type: data.building_type,
+      });
+    }
+  });
 
   const dispatch = useDispatch();
 
@@ -83,7 +102,7 @@ const AssignmentUnit = (props) => {
 
   const SelectAllIncompleted = () => {
     const IncompletedArray = [];
-    data.forEach((item) => {
+    assignment.forEach((item) => {
       if (item.completed === false) {
         IncompletedArray.push(item);
       }
@@ -93,7 +112,7 @@ const AssignmentUnit = (props) => {
   };
 
   const HandleSelectAll = () => {
-    setChecked(data);
+    setChecked(assignment);
   };
 
   const HandleDeselectAll = () => {
@@ -133,11 +152,11 @@ const AssignmentUnit = (props) => {
           bgcolor: "background.paper",
         }}
       >
-        {data.map((value) => {
+        {homes.map((value) => {
           const labelId = `checkbox-list-secondary-label-${value}`;
           return (
             <ListItem
-              key={value.visit_order + value.street_number}
+              key={value.visit_order + value.home_id}
               sx={{ pl: 0 }}
               secondaryAction={
                 <Checkbox
@@ -148,7 +167,11 @@ const AssignmentUnit = (props) => {
                 />
               }
             >
-              <ListItemButton onClick={() => OnBtnClick(value.id)}>
+              <ListItemButton
+                onClick={() => {
+                  OnBtnClick(value.id);
+                }}
+              >
                 <ListItemAvatar>
                   <Avatar
                     sx={{

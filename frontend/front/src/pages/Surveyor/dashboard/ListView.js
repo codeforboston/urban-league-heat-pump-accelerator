@@ -10,7 +10,6 @@ import AssignmentUnit from "./AssignmentUnit";
 
 const ListView = () => {
   const { data, isLoading, isSuccess } = useGetAssignmentsQuery();
-
   let content;
 
   if (isLoading) {
@@ -36,7 +35,7 @@ const ListView = () => {
                     <Typography variant="h5">Id: {item.id}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <AssignmentUnit data={item.homes} />
+                    <AssignmentUnit assignment={item.homes} />
                   </AccordionDetails>
                 </Accordion>
               </Box>

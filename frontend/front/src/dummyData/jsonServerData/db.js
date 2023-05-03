@@ -1,5 +1,5 @@
-const assignments = require("./assignments.js");
-const homes = require("./homes.js");
+const assignments = require("./assignments_refs.js");
+const homes = require("./homes_refs.js");
 const users = require("./users.js");
 const surveys = require("./surveys.js");
 const homesurvey = require("./homesurvey.js");
