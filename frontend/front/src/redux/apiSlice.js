@@ -3,7 +3,8 @@ import Survey from "../dummyData/Survey.json";
 import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
 
 // const baseUrl = "http://localhost:3001";
-const baseUrl = process.env.API_URL;
+// const baseUrl = process.env.API_URL;
+const baseUrl = "https://testing-ibhy.onrender.com";
 
 console.log("baseUrl", baseUrl);
 
