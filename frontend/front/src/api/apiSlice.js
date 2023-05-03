@@ -240,7 +240,7 @@ export const apiSlice = createApi({
       query: (id) => `/assignments/${id}`,
     }),
     createAssignmentData: builder.mutation({
-      query: (Assignment) => ({
+      query: (assignment) => ({
         url: `/assignments`,
         method: "POST",
         body: Assignment,
