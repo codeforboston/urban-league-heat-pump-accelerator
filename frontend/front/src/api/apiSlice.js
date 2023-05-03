@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import SurveyorViewAssigment1 from "../dummyData/surveyorView/assignment1.json";
 
-const sortById = (a, b) => b.id - a.id;
+const sortById = (a, b) => a.id - b.id;
 
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
