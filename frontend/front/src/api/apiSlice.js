@@ -29,16 +29,16 @@ export const apiSlice = createApi({
       invalidatesTags: ["Home"],
     }),
     updateHomeData: builder.mutation({
-      query: (item) => ({
-        url: `/homes/${item.id}`,
+      query: (home) => ({
+        url: `/homes/${home.id}`,
         method: "PUT",
-        body: item,
+        body: home,
       }),
       invalidatesTags: ["Home"],
     }),
     deleteHomeData: builder.mutation({
-      query: (item) => ({
-        url: `/homes/${item.id}`,
+      query: (home) => ({
+        url: `/homes/${home.id}`,
         method: "DELETE",
         body: "",
       }),
@@ -52,27 +52,27 @@ export const apiSlice = createApi({
       providesTags: [{ type: "Surveyor" }],
     }),
     getSurveyorData: builder.query({
-      query: (item) => `/surveyors/${item.id}`,
+      query: (surveyor) => `/surveyors/${surveyor.id}`,
     }),
     createSurveyorData: builder.mutation({
-      query: (user) => ({
+      query: (surveyor) => ({
         url: `/surveyors`,
         method: "POST",
-        body: user,
+        body: surveyor,
       }),
       invalidatesTags: ["Surveyor"],
     }),
     updateSurveyorData: builder.mutation({
-      query: (item) => ({
-        url: `/surveyors/${item.id}`,
+      query: (surveyor) => ({
+        url: `/surveyors/${surveyor.id}`,
         method: "PUT",
-        body: item,
+        body: surveyor,
       }),
       invalidatesTags: ["Surveyor"],
     }),
     deleteSurveyorData: builder.mutation({
-      query: (item) => ({
-        url: `/surveyors/${item.id}`,
+      query: (surveyor) => ({
+        url: `/surveyors/${surveyor.id}`,
         method: "DELETE",
         body: "",
       }),
@@ -92,24 +92,24 @@ export const apiSlice = createApi({
       }),
     }),
     createSurveyData: builder.mutation({
-      query: (body) => ({
+      query: (survey) => ({
         url: `/surveys`,
         method: "POST",
-        body,
+        body: survey,
       }),
       invalidatesTags: ["Survey"],
     }),
     updateSurveyData: builder.mutation({
-      query: (item) => ({
-        url: `/surveys/${item.id}`,
+      query: (survey) => ({
+        url: `/surveys/${survey.id}`,
         method: "PUT",
-        body: item,
+        body: survey,
       }),
       invalidatesTags: ["Survey"],
     }),
     deleteSurveyData: builder.mutation({
-      query: (item) => ({
-        url: `/surveys/${item.id}`,
+      query: (survey) => ({
+        url: `/surveys/${survey.id}`,
         method: "DELETE",
         body: "",
       }),
@@ -140,10 +140,10 @@ export const apiSlice = createApi({
       ],
     }),
     createSurveyVisitData: builder.mutation({
-      query: (body) => ({
+      query: (surveyVisit) => ({
         url: "/survey_visits",
         method: "post",
-        body,
+        body: surveyVisit,
       }),
       invalidatesTags: ["SurveyVisit"],
     }),
@@ -177,10 +177,10 @@ export const apiSlice = createApi({
       query: (id) => ({ url: `/survey_responses/${id}`, method: "get" }),
     }),
     createSurveyResponseData: builder.mutation({
-      query: (body) => ({
+      query: (surveyResponse) => ({
         url: "/survey_responses",
         method: "post",
-        body,
+        body: surveyResponse,
       }),
     }),
     updateSurveyResponseData: builder.mutation({
@@ -207,10 +207,10 @@ export const apiSlice = createApi({
       query: (id) => ({ url: `/survey_answers/${id}`, method: "get" }),
     }),
     createSurveyAnswerData: builder.mutation({
-      query: (body) => ({
+      query: (surveyAnswer) => ({
         url: "/survey_answers",
         method: "post",
-        body,
+        body: surveyAnswer,
       }),
     }),
     updateSurveyAnswerData: builder.mutation({
@@ -243,21 +243,21 @@ export const apiSlice = createApi({
       query: (assignment) => ({
         url: `/assignments`,
         method: "POST",
-        body: Assignment,
+        body: assignment,
       }),
       invalidatesTags: ["Assignment"],
     }),
     updateAssignmentData: builder.mutation({
-      query: (item) => ({
-        url: `/assignments/${item.id}`,
+      query: (assignment) => ({
+        url: `/assignments/${assignment.id}`,
         method: "PUT",
-        body: item,
+        body: assignment,
       }),
       invalidatesTags: ["Assignment"],
     }),
     deleteAssignmentData: builder.mutation({
-      query: (item) => ({
-        url: `/assignments/${item.id}`,
+      query: (assignment) => ({
+        url: `/assignments/${assignment.id}`,
         method: "DELETE",
         body: "",
       }),
