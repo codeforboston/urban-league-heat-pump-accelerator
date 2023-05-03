@@ -30,7 +30,6 @@ const AssignmentUnit = (props) => {
   };
 
   const OnBtnClick = (value) => {
-    console.log(value);
     navigate("/surveyor/house/" + value);
   };
 
@@ -68,7 +67,6 @@ const AssignmentUnit = (props) => {
 
   const generateGoogleMap = () => {
     console.log("generateGoogleMap");
-    console.log();
 
     if (checked.length === 0) {
       setAlert(true);
