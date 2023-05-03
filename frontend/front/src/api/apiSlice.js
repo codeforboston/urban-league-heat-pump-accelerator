@@ -175,9 +175,7 @@ export const apiSlice = createApi({
         url: `/survey_visits/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: (result, error, arg) => [
-        { type: "SurveyVisit", id: arg.id },
-      ],
+      invalidatesTags: ["SurveyVisit"],
     }),
 
     /* Survey response endpoints */
@@ -217,6 +215,7 @@ export const apiSlice = createApi({
         url: `/survey_responses/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["SurveyResponse"],
     }),
 
     /* Survey answer endpoints */
@@ -254,6 +253,7 @@ export const apiSlice = createApi({
         url: `/survey_answers/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["SurveyAnswer"],
     }),
 
     /* Assignment endpoints*/
