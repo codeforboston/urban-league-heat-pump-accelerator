@@ -30,6 +30,7 @@ const AssignmentUnit = (props) => {
   };
 
   const OnBtnClick = (value) => {
+    console.log(value);
     navigate("/surveyor/house/" + value);
   };
 
@@ -149,7 +150,7 @@ const AssignmentUnit = (props) => {
                 />
               }
             >
-              <ListItemButton onClick={() => OnBtnClick(value.GIS_ID)}>
+              <ListItemButton onClick={() => OnBtnClick(value.id)}>
                 <ListItemAvatar>
                   <Avatar
                     sx={{

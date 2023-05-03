@@ -88,14 +88,14 @@ export const apiSlice = createApi({
 
     /* Survey Endpoints */
     getSurveys: builder.query({
-      query: () => ({ url: "/surveys", method: "get" }),
+      query: () => ({ url: "/surveys", method: "GET" }),
       transformResponse: (res) => res.sort(sortById),
       providesTags: [{ type: "Survey" }],
     }),
     getSurveyStructure: builder.query({
       query: (id) => ({
         url: `/surveys/${id}`,
-        method: "get",
+        method: "GET",
       }),
     }),
     createSurvey: builder.mutation({
@@ -127,21 +127,21 @@ export const apiSlice = createApi({
     getSurveyorAssigment: builder.query({
       query: () => ({
         url: `/surveyor/assignment/user1`,
-        method: "get",
+        method: "GET",
         mock: SurveyorViewAssigment1,
       }),
     }),
 
     /* Survey visit endpoints */
     getSurveyVisits: builder.query({
-      query: () => ({ url: "/survey_visits", method: "get" }),
+      query: () => ({ url: "/survey_visits", method: "GET" }),
       providesTags: (result = []) => [
         "SurveyVisit",
         ...result.map(({ id }) => ({ type: "SurveyVisit", id })),
       ],
     }),
     getSurveyVisit: builder.query({
-      query: (id) => ({ url: `/survey_visits/${id}`, method: "get" }),
+      query: (id) => ({ url: `/survey_visits/${id}`, method: "GET" }),
       providesTags: (result = [], error, arg) => [
         { type: "SurveyVisit", id: arg },
       ],
@@ -149,7 +149,7 @@ export const apiSlice = createApi({
     createSurveyVisit: builder.mutation({
       query: (surveyVisit) => ({
         url: "/survey_visits",
-        method: "post",
+        method: "POST",
         body: surveyVisit,
       }),
       invalidatesTags: ["SurveyVisit"],
@@ -158,7 +158,7 @@ export const apiSlice = createApi({
       query: ({ id, body }) => {
         return {
           url: `/survey_visits/${id}`,
-          method: "put",
+          method: "PUT",
           body,
         };
       },
@@ -169,7 +169,7 @@ export const apiSlice = createApi({
     deleteSurveyVisit: builder.mutation({
       query: (id) => ({
         url: `/survey_visits/${id}`,
-        method: "delete",
+        method: "DELETE",
       }),
       invalidatesTags: (result, error, arg) => [
         { type: "SurveyVisit", id: arg.id },
@@ -178,15 +178,15 @@ export const apiSlice = createApi({
 
     /* Survey response endpoints */
     getSurveyResponses: builder.query({
-      query: () => ({ url: "/survey_responses", method: "get" }),
+      query: () => ({ url: "/survey_responses", method: "GET" }),
     }),
     getSurveyResponse: builder.query({
-      query: (id) => ({ url: `/survey_responses/${id}`, method: "get" }),
+      query: (id) => ({ url: `/survey_responses/${id}`, method: "GET" }),
     }),
     createSurveyResponse: builder.mutation({
       query: (surveyResponse) => ({
         url: "/survey_responses",
-        method: "post",
+        method: "POST",
         body: surveyResponse,
       }),
     }),
@@ -194,7 +194,7 @@ export const apiSlice = createApi({
       query: ({ id, body }) => {
         return {
           url: `/survey_responses/${id}`,
-          method: "put",
+          method: "PUT",
           body,
         };
       },
@@ -202,21 +202,21 @@ export const apiSlice = createApi({
     deleteSurveyResponse: builder.mutation({
       query: (id) => ({
         url: `/survey_responses/${id}`,
-        method: "delete",
+        method: "DELETE",
       }),
     }),
 
     /* Survey answer endpoints */
     getSurveyAnswers: builder.query({
-      query: () => ({ url: "/survey_answers", method: "get" }),
+      query: () => ({ url: "/survey_answers", method: "GET" }),
     }),
     getSurveyAnswer: builder.query({
-      query: (id) => ({ url: `/survey_answers/${id}`, method: "get" }),
+      query: (id) => ({ url: `/survey_answers/${id}`, method: "GET" }),
     }),
     createSurveyAnswer: builder.mutation({
       query: (surveyAnswer) => ({
         url: "/survey_answers",
-        method: "post",
+        method: "POST",
         body: surveyAnswer,
       }),
     }),
@@ -224,7 +224,7 @@ export const apiSlice = createApi({
       query: ({ id, body }) => {
         return {
           url: `/survey_answers/${id}`,
-          method: "put",
+          method: "PUT",
           body,
         };
       },
@@ -232,7 +232,7 @@ export const apiSlice = createApi({
     deleteSurveyAnswer: builder.mutation({
       query: (id) => ({
         url: `/survey_answers/${id}`,
-        method: "delete",
+        method: "DELETE",
       }),
     }),
 
