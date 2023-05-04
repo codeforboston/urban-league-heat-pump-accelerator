@@ -6,12 +6,12 @@ const TitleContainer = styled(Box)({
   textAlign: "center",
 });
 
-function PublicPageTile({ pageTitle }) {
+function Heading1({ text }) {
   return (
     <TitleContainer mb={2}>
-      <Typography variant="h3">{pageTitle}</Typography>
+      <Typography>{text}</Typography>
     </TitleContainer>
   );
 }
 
-export default PublicPageTile;
+export default Heading1;

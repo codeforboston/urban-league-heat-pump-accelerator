@@ -3,7 +3,7 @@ import React from "react";
 import streets from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
 import homeExterior from "../../../../assets/images/home-exterior.jpg";
 import AboutHeatPumpCards from "./AboutHeatPumpsCards";
-import PublicPageTile from "../../Components/PublicPageTitle";
+import Heading1 from "../../Components/Typography/Heading1";
 
 const cardContent = [
   {
@@ -37,7 +37,7 @@ const cardContent = [
 function AboutHeatPump() {
   return (
     <Box>
-      <PublicPageTile pageTitle="About Heat Pumps" />
+      <Heading1 text="About Heat Pumps" />
       <Container
         sx={{
           display: "flex",

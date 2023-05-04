@@ -14,12 +14,12 @@ import cfb from "../../../../assets/images/CFB.png";
 import cfa from "../../../../assets/images/CFA.png";
 import heatsmart from "../../../../assets/images/HeatSmart.png";
 import pcb from "../../../../assets/images/powercorp-boston.jpeg";
-import TitleContainer from "../../Components/PublicPageTitle";
+import Heading1 from "../../Components/Typography/Heading1";
 
 function AboutUs() {
   return (
     <Box mb={3}>
-      <TitleContainer pageTitle="About the Boston Heat Pump Accelerator" />
+      <Heading1 text="About the Boston Heat Pump Accelerator" />
       <Container>
         <Stack direction="column" justifyContent="center" itemAlign="center">
           <Box mb={{ xs: 2, md: 6 }}>
