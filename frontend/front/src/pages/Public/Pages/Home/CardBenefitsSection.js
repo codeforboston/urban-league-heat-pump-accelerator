@@ -87,7 +87,7 @@ const CardBenefitsSection = () => {
           >
             <Typography
               variant="subtitle2"
-              sx={{ color: "var(--color-text-6)" }}
+              sx={{ color: "var(--color-text-3)" }}
             >
               Learn more about&nbsp;
             </Typography>
@@ -138,7 +138,7 @@ const CardBenefitsSection = () => {
                         key={`p${i}`}
                         gutterBottom
                         variant="body1"
-                        color="var(--color-text-6)"
+                        color="var(--color-text-3)"
                       >
                         {paragraph}
                       </Typography>
@@ -150,7 +150,7 @@ const CardBenefitsSection = () => {
                         <Button
                           component={Link}
                           to={card.buttonLink}
-                          sx={{ color: "var(--color-text-4)" }}
+                          sx={{ color: "var(--color-text-6)" }}
                         >
                           {card.buttonText}
                         </Button>

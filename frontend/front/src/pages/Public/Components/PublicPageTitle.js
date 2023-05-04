@@ -1,7 +1,7 @@
 import { Box, Typography, styled } from "@mui/material";
 const TitleContainer = styled(Box)({
   height: "102px",
-  backgroundColor: "var(--bgColor-14)",
+  backgroundColor: "var(--bgColor-1)",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

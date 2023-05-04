@@ -40,7 +40,7 @@ const VideoContainer = styled("div")({
   height: "100%",
   width: "100%",
   opacity: 0.7,
-  background: "var(--bgColor-5)",
+  background: "var(--bgColor-1)",
   "& .component-video": {
     width: "100%",
     height: "100%",
@@ -63,7 +63,7 @@ const HeroVideo = ({
   videoBgGround,
 }) => {
   return (
-    <HeroWrapper sx={{ background: "var(--accent-3)" }}>
+    <HeroWrapper sx={{ background: "var(--accent-1)" }}>
       <Box className="text-wrapper" px={4}>
         <Box className="text-overlay">
           <Box sx={{ textShadow: "1px 1px 2px #000" }}>

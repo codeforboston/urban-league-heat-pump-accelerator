@@ -59,7 +59,7 @@ const HeroWrapper = styled("div")(({ theme }) => ({
       justifyContent: "flex-end",
     },
     "& .info-container": {
-      background: "var(--accent-3)",
+      background: "var(--accent-1)",
       padding: "16px",
       margin: "0 16px",
     },

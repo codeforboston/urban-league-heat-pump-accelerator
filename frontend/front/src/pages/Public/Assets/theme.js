@@ -17,7 +17,7 @@ const theme = createTheme({
     // h3
     titleHero: {
       fontFamily: "var(--font-family-1)",
-      color: "var(--color-text-4)",
+      color: "var(--color-text-6)",
       fontSize: "3rem",
       display: "block",
       fontWeight: "var(--font-weight-3)",
@@ -147,9 +147,9 @@ const theme = createTheme({
             minWidth: 200,
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
             letterSpacing: "-.03em",
-            background: "var(--accent-1)",
+            background: "var(--accent-2)",
             "&:hover": {
-              background: "var(--accent-1)",
+              background: "var(--accent-2)",
             },
           },
         },
@@ -163,11 +163,10 @@ const theme = createTheme({
             minWidth: 200,
             fontWeight: "var(--font-weight-1)",
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-            boxShadow: "var(--box-shadow-1)",
             letterSpacing: "-.03em",
             "&:hover": {
               transform: "scale(1.1)",
-              background: "var(--bgColor-10)",
+              background: "var(--bgColor-4)",
               color: "var(--color-text-2)",
             },
           },
@@ -179,9 +178,9 @@ const theme = createTheme({
             height: "50px",
             borderRadius: "1000px",
             minWidth: 200,
-            backgroundColor: "var(--bgColor-3)",
+            backgroundColor: "var(--bgColor-2)",
             "&:hover": {
-              backgroundColor: "var(--bgColor-3)",
+              backgroundColor: "var(--bgColor-2)",
               textShadow: "1px 1px 2px #000",
             },
           },
@@ -192,10 +191,10 @@ const theme = createTheme({
             color: "var(--color-text-2)",
             height: "50px",
             borderRadius: "1000px",
-            background: "var(--bgColor-11)",
+            background: "var(--bgColor-3)",
             width: "200px",
             "&:hover": {
-              backgroundColor: "var(--bgColor-11)",
+              backgroundColor: "var(--bgColor-3)",
             },
           },
         },
@@ -204,14 +203,14 @@ const theme = createTheme({
     MuiMenu: {
       styleOverrides: {
         paper: {
-          background: "var(--bgColor-5) !important",
+          background: "var(--bgColor-1) !important",
         },
       },
     },
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          color: "var(--color-text-6)",
+          color: "var(--color-text-3)",
         },
       },
     },

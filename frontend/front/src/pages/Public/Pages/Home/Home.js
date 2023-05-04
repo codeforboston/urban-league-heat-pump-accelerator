@@ -10,7 +10,7 @@ import CarrouselHero from "./CarrouselHero";
 import Testimonial from "./Testimonial";
 
 const SectionWrapper = styled(Box)(({ theme, image }) => ({
-  background: "var(--bgColor-5)",
+  background: "var(--bgColor-1)",
   paddingTop: "4em",
   paddingBottom: "2.75rem",
   clipPath: "polygon(0 10%,100% 0,100% 100%,0 100%)",
@@ -49,7 +49,7 @@ const Home = () => {
       <Box
         mt={16}
         sx={{
-          background: "var(--bgColor-11)",
+          background: "var(--bgColor-3)",
         }}
       >
         <CardBenefitsSection />

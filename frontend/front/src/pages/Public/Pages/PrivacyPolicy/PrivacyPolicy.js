@@ -8,7 +8,7 @@ function PrivacyPolicy() {
     <div>
       <Typography
         variant="title1"
-        sx={{ background: "var(--bgColor-5)", padding: "1em 0" }}
+        sx={{ background: "var(--bgColor-1)", padding: "1em 0" }}
       >
         Privacy Policy
       </Typography>

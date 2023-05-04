@@ -19,7 +19,7 @@ const CardLinks = styled("div")(({ theme }) => ({
   maxWidth: "480px",
   borderRadius: "2%",
   padding: "1px 0",
-  border: "var(--box-shadow-2)",
+  border: "var(--boder-color-1)",
   "& .links-wrapper": {
     "& h2": {
       fontSize: "1.5rem",
@@ -102,7 +102,7 @@ const CardLinksSection = () => {
                     <Box
                       sx={{
                         height: "140px",
-                        color: "var(--color-text-6)",
+                        color: "var(--color-text-3)",
                       }}
                     >
                       <Typography variant="body1">

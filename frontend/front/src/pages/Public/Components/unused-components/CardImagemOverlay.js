@@ -41,7 +41,7 @@ const CardImagemOverlay = () => {
                 bottom: 0,
                 left: 0,
                 width: "100%",
-                bgcolor: "var(--accent-3)",
+                bgcolor: "var(--accent-1)",
                 color: "white",
                 height: "100%",
                 borderRadius: "25% 10%",
@@ -100,7 +100,7 @@ const CardImagemOverlay = () => {
                 bottom: 0,
                 left: 0,
                 width: "100%",
-                bgcolor: "var(--accent-3)",
+                bgcolor: "var(--accent-1)",
                 color: "white",
                 height: "100%",
               }}

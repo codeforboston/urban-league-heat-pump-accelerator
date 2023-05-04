@@ -29,7 +29,7 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     color: "var(--color-text-1)",
     margin: "0 auto",
     maxWidth: "650px",
-    background: "var(--accent-3)",
+    background: "var(--accent-1)",
   },
   [theme.breakpoints.up("lg")]: {
     "& .text-overlay": {
@@ -91,7 +91,7 @@ const HeroPage = ({
                     fontWeight: "var(--font-weight-2)",
                     textDecoration: "solid underline 3px",
                     textUnderlinePosition: "under",
-                    textDecorationColor: "var(--color-text-4)",
+                    textDecorationColor: "var(--color-text-6)",
                   }}
                 >
                   {textBold}
