@@ -1,8 +1,8 @@
-import { createTheme } from "@mui/material";
+import { createTheme, responsiveFontSizes } from "@mui/material";
 
 /* The custom colors palette is located in the Index.css file. */
 
-export const theme = createTheme({
+const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
@@ -217,3 +217,5 @@ export const theme = createTheme({
     },
   },
 });
+
+export const responsiveTheme = responsiveFontSizes(theme);

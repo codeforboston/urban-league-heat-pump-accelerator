@@ -15,8 +15,9 @@
   --font-weight-3: 900;
 
   /* Colors text*/
-  --color-text-1: #f9f9f9;
-  --color-text-2: #03045e;
+  --color-text-1: #F7F7F7; /* text: navbar, footer, special cases */
+  --color-text-2: #00497A; /* titles */
+  
   --color-text-3: #0077b6;
   --color-text-4: #90e0ef;
   --color-text-5: #caf0f8;
@@ -55,3 +56,47 @@
   --box-shadow-2: 1px solid rgba(0, 0, 0, 0.12);
   --box-shadow-3: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+
+/* Global Styles */
+/* .container-wrapper { */
+    /* background-color: var(--bgColor-5); */
+/* } */
+
+
+  /* Font Families */
+  /* --font-family-1: "Lora", sans-serif; */
+  /* --font-family-2: "Roboto", sans-serif; */
+
+  /* Font Weights */
+  /* --font-weight-1: 600; */
+  /* --font-weight-2: 800; */
+  /* --font-weight-3: 900; */
+
+    /* Colors text*/    
+    /* --color-text-1: #F7F7F7; text: navbar, footer, special cases */
+    /* --color-text-2: #00497A; titles */
+    /* --color-text-3: #0A0B0B; text body */
+    /* --color-text-4: #0000FF; links */
+    
+    /* --color-text-5: #CAF0F6; Hero Page */
+    /* --color-text-6: #90E0EF;Hero Page */
+    /* --color-text-7: #23B5D3; Hero Page */
+
+    /* Background colors */
+    /* --bgColor-1:  #CAF0FE; Background Testimonials, Button */
+    /* --bgColor-2: #00497A; Background Navbar, Footer, Button */
+    /* --bgColor-3:  #F9F9F9; Background Cards */
+    /* --bgColor-4:  #F7F7FF; Background Button */
+    /* --bgColor-5:  #FCFDFE; Background */
+
+    /* Accent colors */
+    /* --accent-1: rgba(0, 0, 0, 0.4); image overlay */
+    /* --accent-2: rgba(202, 240, 254,0.8); Divider color */
+    
+    /* Border */
+    /* --boder-color-1: 1px solid rgba(0, 0, 0, 0.12); Border color cards */
+
+    /* Box shadow */
+    /* --box-shadow-1: 0px 2px 5px rgba(0, 0, 0, 0.2);Button Scroll Up Shadow */
+ 

@@ -71,7 +71,7 @@ const HeroPage = ({
               marginTop: { xs: "143px" },
             }}
           >
-            <Typography variant="titleHero">
+            <Typography variant="h1">
               {title.toUpperCase()}
               <Typography variant="titleHeroBold">
                 {titleBold.toUpperCase()}

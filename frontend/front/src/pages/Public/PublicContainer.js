@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider, Box, Stack } from "@mui/material";
-import { theme } from "./Assets/theme";
+import { responsiveTheme } from "./Assets/theme";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Navbar from "./Layout/Navbar";
@@ -20,7 +20,7 @@ import ScrollToTopButton from "./Components/ScrollToTopButton";
 const PublicContainer = () => {
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={responsiveTheme}>
         <Box className="container-wrapper">
           <Stack
             direction="column"
