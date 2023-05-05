@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { Button, Stack, Alert, CircularProgress, Box } from "@mui/material";
 import { HeatPumpDropdown } from "./HeatPumpDropdown";
 import ConfirmationModal from "../../pages/Developer/confirmModal/ConfirmationModal";
-import { useGetSurveyStructureQuery } from "../../redux/apiSlice";
+import { useGetSurveyStructureQuery } from "../../api/apiSlice";
 import { HeatPumpTextField } from "./HeatPumpTextField";
 import { AddressComponent } from "../AddressUtils";
 import { useNavigate } from "react-router-dom";

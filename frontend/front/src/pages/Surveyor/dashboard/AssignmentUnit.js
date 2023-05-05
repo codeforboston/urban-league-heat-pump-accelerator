@@ -67,7 +67,6 @@ const AssignmentUnit = (props) => {
 
   const generateGoogleMap = () => {
     console.log("generateGoogleMap");
-    console.log();
 
     if (checked.length === 0) {
       setAlert(true);
@@ -149,7 +148,7 @@ const AssignmentUnit = (props) => {
                 />
               }
             >
-              <ListItemButton onClick={() => OnBtnClick(value.GIS_ID)}>
+              <ListItemButton onClick={() => OnBtnClick(value.id)}>
                 <ListItemAvatar>
                   <Avatar
                     sx={{

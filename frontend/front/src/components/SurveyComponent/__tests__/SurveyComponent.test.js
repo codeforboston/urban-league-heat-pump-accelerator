@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import * as router from "react-router";
 import SurveyComponent from "../SurveyComponent";
-import * as apiSlice from "../../../redux/apiSlice";
+import * as apiSlice from "../../../api/apiSlice";
 import surveys from "../../../dummyData/jsonServerData/surveys";
 import homes from "../../../dummyData/jsonServerData/homes";
 import {
