@@ -72,18 +72,7 @@ const theme = createTheme({
       },
     },
     // h4
-    title1: {
-      fontFamily: "var(--font-family-1)",
-      display: "block",
-      width: "100%",
-      fontSize: "2rem",
-      letterSpacing: "-.03em",
-      textAlign: "center",
-      fontWeight: "700",
-      // "@media (max-width:600px)": {
-      //   fontSize: "2rem",
-      // },
-    },
+
     // h5
     title2: {
       fontFamily: "var(--font-family-1)",
@@ -115,7 +104,7 @@ const theme = createTheme({
       lineHeight: "34px",
 
       margin: "0 auto",
-      borderBottom: "2px solid var(--color-text-3)",
+      borderBottom: "2px solid var(--color-text-6)",
       borderRadius: "2px",
       width: "fit-content",
 
@@ -134,72 +123,23 @@ const theme = createTheme({
     },
   },
   components: {
-    MuiButton: {
-      variants: [
-        {
-          props: { variant: "getpump" },
-          style: {
-            fontSize: "1rem",
-            color: "var(--color-text-2)",
-            height: "50px",
-            fontWeight: "var(--font-weight-1)",
-            borderRadius: "1000px",
-            minWidth: 200,
-            transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-            letterSpacing: "-.03em",
-            background: "var(--accent-2)",
-            "&:hover": {
-              background: "var(--accent-2)",
-            },
-          },
-        },
-        {
-          props: { variant: "getpumpOutlined" },
-          style: {
-            fontSize: "1rem",
-            color: "var(--color-text-1)",
-            height: "50px",
-            borderRadius: "1000px",
-            minWidth: 200,
-            fontWeight: "var(--font-weight-1)",
-            transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-            letterSpacing: "-.03em",
-            "&:hover": {
-              transform: "scale(1.1)",
-              background: "var(--bgColor-4)",
-              color: "var(--color-text-2)",
-            },
-          },
-        },
-        {
-          props: { variant: "customBtn" },
-          style: {
-            color: "var(--color-text-1)",
-            height: "50px",
-            borderRadius: "1000px",
-            minWidth: 200,
-            backgroundColor: "var(--bgColor-2)",
-            "&:hover": {
-              backgroundColor: "var(--bgColor-2)",
-              textShadow: "1px 1px 2px #000",
-            },
-          },
-        },
-        {
-          props: { variant: "blackBtn" },
-          style: {
-            color: "var(--color-text-2)",
-            height: "50px",
-            borderRadius: "1000px",
-            background: "var(--bgColor-3)",
-            width: "200px",
-            "&:hover": {
-              backgroundColor: "var(--bgColor-3)",
-            },
-          },
-        },
-      ],
-    },
+    // MuiButton: {
+    //   variants: [
+    //     {
+    //       props: { variant: "whiteButton" },
+    //       style: {
+    //         color: "var(--color-text-2)",
+    //         height: "50px",
+    //         borderRadius: "1000px",
+    //         background: "var(--bgColor-3)",
+    //         width: "200px",
+    //         "&:hover": {
+    //           backgroundColor: "var(--bgColor-3)",
+    //         },
+    //       },
+    //     },
+    //   ],
+    // },
     MuiMenu: {
       styleOverrides: {
         paper: {

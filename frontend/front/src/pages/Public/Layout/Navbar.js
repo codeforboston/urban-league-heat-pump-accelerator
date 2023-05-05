@@ -22,7 +22,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
-import ButtonGetPump from "../Components/ButtonGetPump";
+import ButtonGetPump from "../Components/Button/ButtonGetPump";
 import logoHeatPump from "../../../assets/images/boston-heat-pump-logo.gif";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandLess from "@mui/icons-material/ExpandLess";
@@ -293,7 +293,7 @@ function Navbar(props) {
           ))}
         </List>
         <Box onClick={handleDrawerToggle}>
-          <ButtonGetPump variant="getpump" />
+          <ButtonGetPump />
         </Box>
       </Stack>
     </Box>

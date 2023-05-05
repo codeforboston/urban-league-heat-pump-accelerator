@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "@mui/material/styles";
 import { Typography, Box, Grid, CardMedia, CardActions } from "@mui/material";
 
-import ButtonCustom from "./ButtonCustom";
+import ButtonDarkBklue from "./ButtonDarkBklue";
 import imageLearnMore from "../../../assets/images/image-learn-more.jpeg";
 
 const CardLinks = styled("div")(({ theme }) => ({
@@ -72,11 +72,7 @@ const CardImagemOverlay = () => {
                     // borderRadius: "100%",
                   }}
                 >
-                  <ButtonCustom
-                    text="Take the survey"
-                    to="survey"
-                    variant="customBtn"
-                  />
+                  <ButtonDarkBklue text="Take the survey" to="survey" />
                 </Box>
               </Box>
             </Box>
@@ -132,11 +128,7 @@ const CardImagemOverlay = () => {
               backgroundColor: "var(--bgColor-8)",
             }}
           >
-            <ButtonCustom
-              text="Learn More"
-              to="learn-more"
-              variant="customBtn"
-            />
+            <ButtonDarkBklue text="Learn More" to="learn-more" />
           </CardActions>
         </CardLinks>
       </Grid>

@@ -9,15 +9,15 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  Button,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import ButtonGetPump from "../Components/ButtonGetPump";
+import ButtonGetPump from "../Components/Button/ButtonGetPump";
 import logoHeatPump from "../../../assets/images/logoHeatPump.png";
 import { styled } from "@mui/material/styles";
 import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 import EmailIcon from "@mui/icons-material/Email";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import ButtonWhite from "../Components/Button/ButtonWhite";
 
 const footerItems = {
   "About BHPA": { link: "about-us" },
@@ -81,7 +81,7 @@ const Footer = () => {
             }}
             xs={12}
           >
-            <ButtonGetPump variant="getpump" />
+            <ButtonGetPump />
           </Grid>
 
           {/* BENEFITS OF HEAT PUMPS */}
@@ -238,7 +238,7 @@ const Footer = () => {
                     display: { xs: "none", lg: "block" },
                   }}
                 >
-                  <ButtonGetPump variant="getpump" />
+                  <ButtonGetPump />
                 </Box>
                 <Box
                   sx={{
@@ -246,15 +246,10 @@ const Footer = () => {
                     py: { xs: 0, lg: 2 },
                   }}
                 >
-                  <Button
-                    variant="blackBtn"
-                    sx={{ width: "200px", height: "50px" }}
-                    component={Link}
-                    to="/surveyor"
-                    onClick={() => window.scrollTo(0, 0)}
-                  >
-                    <LockOutlinedIcon sx={{ mr: 1 }} /> Member Login
-                  </Button>
+                  <ButtonWhite to="/surveyor">
+                    <LockOutlinedIcon sx={{ mr: 1 }} />
+                    Member Login
+                  </ButtonWhite>
                 </Box>
               </Box>
             </>
@@ -267,15 +262,10 @@ const Footer = () => {
             align="center"
             sx={{ pt: { xs: 4 }, display: { xs: "block", lg: "none" } }}
           >
-            <Button
-              variant="blackBtn"
-              component={Link}
-              to="/surveyor"
-              onClick={() => window.scrollTo(0, 0)}
-              sx={{ width: "200px", height: "50px" }}
-            >
-              <LockOutlinedIcon sx={{ mr: 1 }} /> Member Login
-            </Button>
+            <ButtonWhite to="/surveyor">
+              <LockOutlinedIcon sx={{ mr: 1 }} />
+              Member Login
+            </ButtonWhite>
           </Grid>
 
           {/* COPYRIGHT */}

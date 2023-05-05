@@ -6,10 +6,10 @@ import heatSmartLogo from "../../../../assets/images/HeatSmart.png";
 import codeForAmericaLogo from "../../../../assets/images/CFA.png";
 import codeForBostonLogo from "../../../../assets/images/CFB.png";
 import AnimatedBox from "../../Components/AnimatedBox";
-import ButtonCustom from "../../Components/ButtonCustom";
+import ButtonDarkBklue from "../../Components/Button/ButtonDarkBlue";
+import Heading1 from "../../Components/Typography/Heading1";
 
 const Partners = () => {
-  let title = "Our Partners";
   const partners = [
     {
       id: 1,
@@ -46,11 +46,14 @@ const Partners = () => {
   return (
     <Container>
       <Box
-        sx={{ display: "flex", justifyContent: "center", marginBottom: "1rem" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mb: 4,
+          textAlign: "center",
+        }}
       >
-        <Typography py={2} variant="title1">
-          {title}
-        </Typography>
+        <Heading1 text="Our Partners" />
       </Box>
 
       <AnimatedBox triggerOnce={false}>
@@ -90,7 +93,7 @@ const Partners = () => {
             </Typography>
           </Grid>
           <Grid item mt={2}>
-            <ButtonCustom text="Learn more" to="about-us" variant="customBtn" />
+            <ButtonDarkBklue text="Learn more" to="about-us" />
           </Grid>
         </Grid>
       </AnimatedBox>

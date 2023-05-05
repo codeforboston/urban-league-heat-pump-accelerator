@@ -16,6 +16,8 @@ import imageTwo from "../../../../assets/images/heat-pump-outside-home.jpg";
 import liveMoreCom from "../../../../assets/images/copywritingImages/liveMoreCom.jpg";
 import strengthenCommunity from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
 import beEnvironmentally from "../../../../assets/images/copywritingImages/beEnvironmentally.jpg";
+import Heading1 from "../../Components/Typography/Heading1";
+import Heading3 from "../../Components/Typography/Heading3";
 
 const StyledGrid = styled(Grid)(() => ({
   display: "flex",
@@ -78,7 +80,7 @@ const CardBenefitsSection = () => {
             textAlign: "center",
           }}
         >
-          <Typography variant="title1">Benefits of Heat Pumps</Typography>
+          <Heading1 text="Benefits of Heat Pumps" />
           <Stack
             direction="row"
             justifyContent="center"
@@ -129,9 +131,9 @@ const CardBenefitsSection = () => {
             <StyledGrid item sx={{ pt: { xs: 2, md: 0 } }} xs={12} sm={6}>
               <AnimatedBox>
                 <Box sx={{ p: { md: 4, xs: 0 } }}>
-                  <Typography pl={2} variant="title3">
-                    <span>{card.title}</span>
-                  </Typography>
+                  <Box pl={2}>
+                    <Heading3 text={card.title} />
+                  </Box>
                   <CardContent>
                     {card.paragraphs.map((paragraph, i) => (
                       <Typography

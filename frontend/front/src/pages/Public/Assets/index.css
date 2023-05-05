@@ -2,7 +2,7 @@
 
 /* Global Styles */
 .container-wrapper {
-  /* background-color: var(--bgColor-5); */
+  background-color: var(--bgColor-5);
 }
 
 :root {

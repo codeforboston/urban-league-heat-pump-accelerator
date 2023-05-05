@@ -10,7 +10,8 @@ import {
 } from "@mui/material";
 import imageVoice from "../../../../assets/images/surveyor.jpg";
 import imageAbout from "../../../../assets/images/heat-pump-outside-home.jpg";
-import ButtonCustom from "../../Components/ButtonCustom";
+import ButtonDarkBklue from "../../Components/Button/ButtonDarkBlue";
+import Heading2 from "../../Components/Typography/Heading2";
 
 import AnimatedBox from "../../Components/AnimatedBox";
 
@@ -49,7 +50,6 @@ const CardLinksSection = () => {
       button: {
         text: "Take the survey",
         to: "survey",
-        variant: "customBtn",
       },
       idCSS: "survey-link-section",
       image: imageVoice,
@@ -61,7 +61,6 @@ const CardLinksSection = () => {
       button: {
         text: "Learn more",
         to: "about-us",
-        variant: "customBtn",
       },
       idCSS: "learnmore-link-section",
       image: imageAbout,
@@ -95,9 +94,7 @@ const CardLinksSection = () => {
                       justifyContent: "space-between",
                     }}
                   >
-                    <Typography py={2} variant="title2">
-                      {detail.title}
-                    </Typography>
+                    <Heading2 text={detail.title} />
 
                     <Box
                       sx={{
@@ -116,10 +113,9 @@ const CardLinksSection = () => {
                         justifyContent: "flex-end",
                       }}
                     >
-                      <ButtonCustom
+                      <ButtonDarkBklue
                         text={detail.button.text}
                         to={detail.button.to}
-                        variant="customBtn"
                       />
                     </Box>
                   </Box>

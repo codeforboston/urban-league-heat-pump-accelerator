@@ -85,7 +85,7 @@ const HeroVideo = ({
               {text2}
             </Typography>
           </Box>
-          <ButtonGetPump variant="getpump" />
+          <ButtonGetPump />
         </Box>
       </Box>
 

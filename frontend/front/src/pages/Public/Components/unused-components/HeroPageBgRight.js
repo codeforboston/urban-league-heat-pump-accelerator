@@ -146,7 +146,7 @@ const HeroPage = ({ title, titleBold, text, image, backColor }) => {
                   </Typography>
                 </Box>
 
-                <ButtonGetPump variant="getpump" />
+                <ButtonGetPump />
               </Box>
             </InfoWrapper>
           </Grid>

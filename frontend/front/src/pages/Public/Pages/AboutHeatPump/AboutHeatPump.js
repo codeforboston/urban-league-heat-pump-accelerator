@@ -1,9 +1,10 @@
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
-import streets from "../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
-import homeExterior from "../../../assets/images/home-exterior.jpg";
-import AboutHeatPumpCards from "../Components/AboutHeatPumpsCards";
-import PublicPageTile from "../Components/PublicPageTitle";
+import streets from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
+import homeExterior from "../../../../assets/images/home-exterior.jpg";
+import AboutHeatPumpCards from "./AboutHeatPumpsCards";
+import Heading1BlueBackground from "../../Components/Typography/Heading1BlueBackground";
+import Heading2 from "../../Components/Typography/Heading2";
 
 const cardContent = [
   {
@@ -23,13 +24,13 @@ const cardContent = [
   {
     mediaType: "iframe",
     mediaSource: "https://youtube.com/embed/PIulbHyK0bc",
-    title: "Why are heat pumps better",
+    title: "Why are heat pumps better?",
     body: "This video by Vox explains why heat pumps are better for the environment than fossil fuel heaters.",
   },
   {
     mediaType: "img",
     mediaSource: streets,
-    title: "What do other people say",
+    title: "What do other people say?",
     body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
   },
 ];
@@ -37,30 +38,23 @@ const cardContent = [
 function AboutHeatPump() {
   return (
     <Box>
-      <PublicPageTile pageTitle="About Heat Pumps" />
+      <Heading1BlueBackground text="About Heat Pumps" />
       <Container
-        disableGutters
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: { xs: "20px", lg: "60px" },
-          maxWidth: { xs: "353px", lg: "1300px" },
-          marginTop: { xs: "20px", lg: "60px" },
-          paddingLeft: 0,
-        }}
+      // disableGutters
+      // sx={{
+      //   display: "flex",
+      //   flexDirection: "column",
+      //   gap: { xs: "20px", lg: "60px" },
+      //   maxWidth: { xs: "353px", lg: "1300px" },
+      //   marginTop: { xs: "20px", lg: "60px" },
+      //   paddingLeft: 0,
+      // }}
       >
-        <Typography
-          variant="h3"
-          sx={{
-            maxWidth: "905px",
-            fontSize: { xs: "1.5rem", lg: "3.875rem" },
-            fontWeight: 500,
-            color: "var(--bgColor-2)",
-            fontFamily: "var(--font-family-1)",
-          }}
-        >
-          Learn how heat pumps work and why they are right for you!
-        </Typography>
+        <Box mb={4}>
+          <Heading2 text="Learn how heat pumps work " />
+          <Heading2 text="and why they are right for you!" />
+        </Box>
+
         <Box
           sx={{
             display: "flex",

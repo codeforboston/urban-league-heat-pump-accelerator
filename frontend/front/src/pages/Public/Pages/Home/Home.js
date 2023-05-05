@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import Partners from "./Partners";
@@ -8,6 +8,7 @@ import CardLinksSection from "./CardLinksSection";
 
 import CarrouselHero from "./CarrouselHero";
 import Testimonial from "./Testimonial";
+import Heading1 from "../../Components/Typography/Heading1";
 
 const SectionWrapper = styled(Box)(({ theme, image }) => ({
   background: "var(--bgColor-1)",
@@ -31,10 +32,14 @@ const Home = () => {
       {/* TESTIMONIALS */}
       <SectionWrapper id="testimonial-section" my={16}>
         <Box variant="sectionBackground" sx={{ padding: { xs: "0" } }}>
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <Typography variant="title1" pt={4}>
-              Testimonials
-            </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          >
+            <Heading1 text="Testimonials" />
           </Box>
           <Testimonial />
         </Box>

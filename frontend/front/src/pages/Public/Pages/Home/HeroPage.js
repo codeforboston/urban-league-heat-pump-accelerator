@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 import { Typography, Box, Link } from "@mui/material";
-import ButtonCustom from "../../Components/ButtonCustom";
+import ButtonWhite from "../../Components/Button/ButtonWhite";
 import AnimatedBox from "../../Components/AnimatedBox";
 
 const HeroWrapper = styled("div")(({ theme, image }) => ({
@@ -100,12 +100,7 @@ const HeroPage = ({
               {text2}
             </Typography>
 
-            <ButtonCustom
-              text="Take the survey"
-              to="survey"
-              variant="blackBtn"
-              sx={{ width: "200px", height: "50px", textShadow: "none" }}
-            />
+            <ButtonWhite text="Take the survey" to="survey" />
           </Box>
         </AnimatedBox>
       </Box>

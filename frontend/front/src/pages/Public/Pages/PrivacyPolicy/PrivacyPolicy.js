@@ -1,17 +1,14 @@
 import React from "react";
-import { Container, Divider, Typography } from "@mui/material";
+import { Container, Divider, Typography, Box } from "@mui/material";
 import pageContent from "./privacyContent.json";
 import { sentenceAsLink } from "../../../../util/stringUtils";
+import Heading1BlueBackground from "../../Components/Typography/Heading1BlueBackground";
 
 function PrivacyPolicy() {
   return (
-    <div>
-      <Typography
-        variant="title1"
-        sx={{ background: "var(--bgColor-1)", padding: "1em 0" }}
-      >
-        Privacy Policy
-      </Typography>
+    <Box>
+      <Heading1BlueBackground text="Privacy Policy" />
+
       <Container>
         <p>
           Last updated: April 19th, 2023 <br />
@@ -56,7 +53,7 @@ function PrivacyPolicy() {
           })}
         </section>
       </Container>
-    </div>
+    </Box>
   );
 }
 

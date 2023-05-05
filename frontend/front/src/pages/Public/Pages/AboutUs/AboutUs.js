@@ -15,17 +15,19 @@ import cfa from "../../../../assets/images/CFA.png";
 import heatsmart from "../../../../assets/images/HeatSmart.png";
 import pcb from "../../../../assets/images/powercorp-boston.jpeg";
 import { useTheme } from "@emotion/react";
+import Heading1BlueBackground from "../../Components/Typography/Heading1BlueBackground";
 
 function AboutUs() {
   const theme = useTheme();
 
   return (
     <Box mb={3}>
-      <Box bgcolor="#eaf7fb" mb={2} padding={3} width="100%">
+      {/* <Box bgcolor="#eaf7fb" mb={2} padding={3} width="100%">
         <Typography sx={theme.typography.title2} textAlign="center">
           About the Boston Heat Pump Accelerator
         </Typography>
-      </Box>
+      </Box> */}
+      <Heading1BlueBackground text="About the Boston Heat Pump Accelerator" />
       <Container>
         <Stack direction="column" justifyContent="center" itemAlign="center">
           <Box mb={{ xs: 2, md: 6 }}>

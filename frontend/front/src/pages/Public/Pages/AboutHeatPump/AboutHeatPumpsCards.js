@@ -6,20 +6,21 @@ import {
   CardMedia,
   Link,
   Typography,
-  styled,
 } from "@mui/material";
-const CardTitle = styled(Typography)(({ theme }) => ({
-  [theme.breakpoints.down("lg")]: {
-    fontSize: "1.25rem",
-  },
-  [theme.breakpoints.up("lg")]: {
-    fontSize: "2.875rem",
-  },
-  fontFamily: "var(--font-family-1)",
-  fontWeight: 500,
-  color: "var(--bgColor-2)",
-  marginTop: "10px",
-}));
+import Heading3 from "../../Components/Typography/Heading3";
+
+// const CardTitle = styled(Typography)(({ theme }) => ({
+//   [theme.breakpoints.down("lg")]: {
+//     fontSize: "1.25rem",
+//   },
+//   [theme.breakpoints.up("lg")]: {
+//     fontSize: "2.875rem",
+//   },
+//   fontFamily: "var(--font-family-1)",
+//   fontWeight: 500,
+//   color: "var(--bgColor-2)",
+//   marginTop: "10px",
+// }));
 
 function AboutHeatPumpCards({
   mediaType,
@@ -56,15 +57,9 @@ function AboutHeatPumpCards({
       </Box>
       <Box sx={{ maxWidth: { lg: "586px" }, maxHeight: "auto" }}>
         <CardContent sx={{ padding: 0 }}>
-          <CardTitle variant="h4">{title}</CardTitle>
-          <Typography
-            sx={{
-              color: "var(--colot-trext-6)",
-              marginTop: "10px",
-              fontSize: { lg: "1.875rem" },
-              fontFamily: "var(--font-family-1)",
-            }}
-          >
+          <Heading3 text={title} />
+
+          <Typography mt={2} variant="body1">
             {body}
           </Typography>
         </CardContent>
@@ -80,12 +75,9 @@ function AboutHeatPumpCards({
               href={link}
               target="_blank"
               rel="noopener noreferrer"
+              variant="button"
               sx={{
-                textDecoration: "none",
-                fontSize: { xs: "0.75rem", lg: "1.875rem" },
-                fontWeight: 700,
-                color: "var(--bgColor-2)",
-                fontFamily: "var(--font-family-1)",
+                color: "var(--color-text-2)",
               }}
             >
               {linkDescription.toUpperCase()}
