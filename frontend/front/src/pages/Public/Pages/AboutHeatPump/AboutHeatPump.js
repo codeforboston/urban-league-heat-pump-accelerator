@@ -4,7 +4,7 @@ import streets from "../../../../assets/images/copywritingImages/StrengthenCommu
 import homeExterior from "../../../../assets/images/home-exterior.jpg";
 import AboutHeatPumpCards from "./AboutHeatPumpsCards";
 import Heading1BlueBackground from "../../Components/Typography/Heading1BlueBackground";
-import Heading2 from "../../Components/Typography/Heading2";
+import Heading1 from "../../Components/Typography/Heading1";
 
 const cardContent = [
   {
@@ -13,7 +13,7 @@ const cardContent = [
     title: "What is a Heat Pump?",
     body: "Check out this comprehensive article that Carrier, a heat pump manufacturer, has written up about what a heat pump is and how they work.",
     link: "https://www.carrier.com/residential/en/us/products/heat-pumps/what-is-a-heat-pump-how-does-it-work/",
-    linkDescription: "read article",
+    linkDescription: "Read Article",
   },
   {
     mediaType: "iframe",
@@ -37,22 +37,13 @@ const cardContent = [
 
 function AboutHeatPump() {
   return (
-    <Box>
+    <Box mb={6}>
       <Heading1BlueBackground text="About Heat Pumps" />
-      <Container
-      // disableGutters
-      // sx={{
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   gap: { xs: "20px", lg: "60px" },
-      //   maxWidth: { xs: "353px", lg: "1300px" },
-      //   marginTop: { xs: "20px", lg: "60px" },
-      //   paddingLeft: 0,
-      // }}
-      >
-        <Box mb={4}>
-          <Heading2 text="Learn how heat pumps work " />
-          <Heading2 text="and why they are right for you!" />
+      <Container>
+        <Box mb={4} mt={4}>
+          <Heading1 fontWeight="500" text="Learn how heat pumps work " />
+
+          <Heading1 fontWeight="500" text="and why they are right for you!" />
         </Box>
 
         <Box

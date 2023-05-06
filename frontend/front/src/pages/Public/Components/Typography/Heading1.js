@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 
-function Heading1({ text }) {
+function Heading1({ text, fontWeight = "600" }) {
   return (
     <Typography
       variant="h3"
@@ -9,8 +9,7 @@ function Heading1({ text }) {
         color: "var(--color-text-2)",
         display: "block",
         width: "100%",
-        letterSpacing: "-.03em",
-        fontWeight: "600",
+        fontWeight: { fontWeight },
       }}
     >
       {text}

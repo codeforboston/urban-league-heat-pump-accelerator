@@ -14,6 +14,19 @@ const theme = createTheme({
     },
   },
   typography: {
+    // body
+    body: {
+      display: "block",
+      margin: 0,
+      fontWeight: 400,
+      fontSize: "16px",
+      lineHeight: 1.5,
+      letterSpacing: "0.00938em",
+      "@media (min-width:900px)": {
+        fontSize: "18px",
+      },
+    },
+
     // h3
     titleHero: {
       fontFamily: "var(--font-family-1)",

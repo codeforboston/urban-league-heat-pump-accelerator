@@ -3,6 +3,7 @@
 /* Global Styles */
 .container-wrapper {
   background-color: var(--bgColor-5);
+  color: var(--color-text-3);
 }
 
 :root {
@@ -23,6 +24,9 @@
   --color-text-5: #CAF0F6; /* Hero Page */
   --color-text-6: #90e0ef;
   --color-text-7: #23B5D3; /* Hero Page */
+  
+  --color-text-8: #66d6FF; /* Hero Page */
+  --color-text-9: #FCFDFE; /* Hero Page */
 
   /* Background colors */
   --bgColor-1:  #CAF0FE; /* Background Testimonials, Button */

@@ -1,24 +1,26 @@
 import { Box, Typography, styled } from "@mui/material";
 
 const TitleContainer = styled(Box)({
-  background: "var(--bgColor-1)",
-  padding: "2em 0",
   textAlign: "center",
 });
 
-function Heading1BlueBackground({ text }) {
+function TitleHero({
+  text,
+  fontWeight = "500",
+  color = "var(--color-text-9)",
+}) {
   return (
     <TitleContainer mb={2}>
       <Typography
-        variant="h3"
+        variant="h2"
         sx={{
           fontFamily: "var(--font-family-1)",
+          color: { color },
+          // fontSize: "3rem",
           display: "block",
-          width: "100%",
-          letterSpacing: "-.03em",
-          textAlign: "center",
-          fontWeight: "600",
-          color: "var(--color-text-2)",
+          fontWeight: { fontWeight },
+          // lineHeight: "60px",
+          // letterSpacing: ".02rem",
         }}
       >
         {text}
@@ -27,4 +29,4 @@ function Heading1BlueBackground({ text }) {
   );
 }
 
-export default Heading1BlueBackground;
+export default TitleHero;

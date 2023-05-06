@@ -139,7 +139,7 @@ const CardBenefitsSection = () => {
                       <Typography
                         key={`p${i}`}
                         gutterBottom
-                        variant="body1"
+                        variant="body"
                         color="var(--color-text-3)"
                       >
                         {paragraph}

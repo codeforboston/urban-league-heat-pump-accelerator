@@ -1,8 +1,9 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box, Link } from "@mui/material";
+import { Typography, Box, Link, Stack } from "@mui/material";
 import ButtonWhite from "../../Components/Button/ButtonWhite";
 import AnimatedBox from "../../Components/AnimatedBox";
+import TitleHero from "../../Components/Typography/TitleHero";
 
 const HeroWrapper = styled("div")(({ theme, image }) => ({
   display: "flex",
@@ -71,13 +72,20 @@ const HeroPage = ({
               marginTop: { xs: "143px" },
             }}
           >
-            <Typography variant="h1">
+            {/* <Typography variant="titleHero">
               {title.toUpperCase()}
               <Typography variant="titleHeroBold">
                 {titleBold.toUpperCase()}
               </Typography>
-            </Typography>
-
+            </Typography> */}
+            <Stack>
+              <TitleHero text={title.toUpperCase()} />
+              <TitleHero
+                text={titleBold.toUpperCase()}
+                fontWeight="900"
+                color="var(--color-text-8)"
+              />
+            </Stack>
             <Typography variant="bodyHero" mt={6} mb={7}>
               {text1}
               {link !== "" && (
