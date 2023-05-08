@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography, CircularProgress, Snackbar, Alert } from "@mui/material";
 import React from "react";
 import { useGetSurveyorAssignmentQuery } from "../../../redux/surveyorViewApiSlice";
 import ListView from "./ListView";
@@ -8,11 +8,9 @@ const Dashboard = () => {
     useGetSurveyorAssignmentQuery();
 
   return (
-    <Box>
       <Box display={"flex"} justifyContent="center">
-        <ListView />
+        { isLoading ? <CircularProgress /> : <ListView /> }
       </Box>
-    </Box>
   );
 };
 
