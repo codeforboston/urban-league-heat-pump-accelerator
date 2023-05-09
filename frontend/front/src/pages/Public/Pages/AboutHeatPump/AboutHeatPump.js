@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import React from "react";
 import streets from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
 import homeExterior from "../../../../assets/images/home-exterior.jpg";

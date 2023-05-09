@@ -6,7 +6,6 @@ const TitleContainer = styled(Box)({
 
 const TitleSpan = styled("span")({
   color: "var(--color-text-8)",
-  fontWeight: "900",
 });
 
 function TitleHero({ text, titleBold }) {

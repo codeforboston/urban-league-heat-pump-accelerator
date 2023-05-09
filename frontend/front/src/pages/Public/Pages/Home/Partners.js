@@ -8,6 +8,7 @@ import codeForBostonLogo from "../../../../assets/images/CFB.png";
 import AnimatedBox from "../../Components/AnimatedBox";
 import ButtonDarkBklue from "../../Components/Button/ButtonDarkBlue";
 import Heading1 from "../../Components/Typography/Heading1";
+import pcb from "../../../../assets/images/powercorp-boston.jpeg";
 
 const Partners = () => {
   const partners = [
@@ -41,6 +42,12 @@ const Partners = () => {
       name: "Code For Boston",
       link: "https://www.codeforboston.org/",
     },
+    {
+      id: 6,
+      logo: pcb,
+      name: "City of Boston - PowerCorpsBOS (PCB)",
+      link: "https://www.boston.gov/departments/workforce-development/powercorpsbos",
+    },
   ];
 
   return (
@@ -62,6 +69,7 @@ const Partners = () => {
           alignItems="center"
           justifyContent="space-around"
           px={2}
+          gap={2}
         >
           {partners.map((partner) => (
             <Grid item key={partner.id}>
