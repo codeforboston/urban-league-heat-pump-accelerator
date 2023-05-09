@@ -14,12 +14,12 @@ import cfb from "../../../../assets/images/CFB.png";
 import cfa from "../../../../assets/images/CFA.png";
 import heatsmart from "../../../../assets/images/HeatSmart.png";
 import pcb from "../../../../assets/images/powercorp-boston.jpeg";
-import Heading1BlueBackground from "../../Components/Typography/Heading1BlueBackground";
+import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
 
 function AboutUs() {
   return (
     <Box mb={3}>
-      <Heading1BlueBackground text="About the Boston Heat Pump Accelerator" />
+      <Heading1BlueBgGround text="About the Boston Heat Pump Accelerator" />
       <Container>
         <Stack direction="column" justifyContent="center" itemAlign="center">
           <Box mb={{ xs: 2, md: 6 }}>

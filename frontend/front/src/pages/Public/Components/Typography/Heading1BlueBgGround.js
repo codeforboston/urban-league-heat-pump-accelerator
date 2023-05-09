@@ -6,7 +6,7 @@ const TitleContainer = styled(Box)({
   textAlign: "center",
 });
 
-function Heading1BlueBackground({ text }) {
+function Heading1BlueBgGround({ text }) {
   return (
     <TitleContainer mb={2}>
       <Typography
@@ -27,4 +27,4 @@ function Heading1BlueBackground({ text }) {
   );
 }
 
-export default Heading1BlueBackground;
+export default Heading1BlueBgGround;

@@ -3,7 +3,7 @@ import React from "react";
 import streets from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
 import homeExterior from "../../../../assets/images/home-exterior.jpg";
 import AboutHeatPumpCards from "./AboutHeatPumpsCards";
-import Heading1BlueBackground from "../../Components/Typography/Heading1BlueBackground";
+import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
 import Heading1 from "../../Components/Typography/Heading1";
 
 const cardContent = [
@@ -38,7 +38,7 @@ const cardContent = [
 function AboutHeatPump() {
   return (
     <Box mb={6}>
-      <Heading1BlueBackground text="About Heat Pumps" />
+      <Heading1BlueBgGround text="About Heat Pumps" />
       <Container>
         <Box mb={4} mt={4}>
           <Heading1 fontWeight="500" text="Learn how heat pumps work " />

@@ -2,12 +2,12 @@ import React from "react";
 import { Container, Divider, Typography, Box } from "@mui/material";
 import pageContent from "./privacyContent.json";
 import { sentenceAsLink } from "../../../../util/stringUtils";
-import Heading1BlueBackground from "../../Components/Typography/Heading1BlueBackground";
+import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
 
 function PrivacyPolicy() {
   return (
     <Box>
-      <Heading1BlueBackground text="Privacy Policy" />
+      <Heading1BlueBgGround text="Privacy Policy" />
 
       <Container>
         <p>
