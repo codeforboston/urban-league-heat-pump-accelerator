@@ -1,8 +1,8 @@
-group,region_code,surveyor_email
-"A1",1,"alice.abbott@test.com"
-"A2",1,"alice.abbott@test.com"
-"B",2,"bob.baker@test.com"
-"C",2,"charlotte.cooke@test.com"
-"D",2,"david.daley@test.com"
-"E1",3,"eve.earl@test.com"
-"E2",3,"eve.earl@test.com"
+group,region_code,geocode,surveyor_email
+"A1",1,"42.35493388720329, -71.07422031985483","alice.abbott@test.com"
+"A2",1,"42.364389744746916, -71.05387467871688","alice.abbott@test.com"
+"B",2,"42.349812944064155, -71.07827431974506","bob.baker@test.com"
+"C",2,"42.346832161360226, -71.09887315954676","charlotte.cooke@test.com"
+"D",2,"42.355290032901124, -71.05643327261072","david.daley@test.com"
+"E1",3,"42.30761689852922, -71.05838999633616","eve.earl@test.com"
+"E2",3,"42.3515931979639, -71.12065244008181","eve.earl@test.com"
