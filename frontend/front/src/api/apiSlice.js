@@ -5,7 +5,8 @@ const sortById = (a, b) => a.id - b.id;
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3001",
+    // baseUrl: "http://localhost:3001",
+    baseUrl: "https://testing-ibhy.onrender.com",
   }),
 
   tagTypes: [
@@ -208,7 +209,9 @@ export const apiSlice = createApi({
           body,
         };
       },
-      invalidatesTags: (result, error, arg) => [{ type: 'SurveyResponse', id: arg.id }]
+      invalidatesTags: (result, error, arg) => [
+        { type: "SurveyResponse", id: arg.id },
+      ],
     }),
     deleteSurveyResponse: builder.mutation({
       query: (id) => ({
@@ -246,7 +249,9 @@ export const apiSlice = createApi({
           body,
         };
       },
-      invalidatesTags: (result, error, arg) => [{ type: 'SurveyAnswer', id: arg.id }]
+      invalidatesTags: (result, error, arg) => [
+        { type: "SurveyAnswer", id: arg.id },
+      ],
     }),
     deleteSurveyAnswer: builder.mutation({
       query: (id) => ({
@@ -284,7 +289,9 @@ export const apiSlice = createApi({
         method: "PUT",
         body: assignment,
       }),
-      invalidatesTags: (result, error, arg) => [{ type: 'Assignment', id: arg.id }]
+      invalidatesTags: (result, error, arg) => [
+        { type: "Assignment", id: arg.id },
+      ],
     }),
     deleteAssignment: builder.mutation({
       query: (assignment) => ({
