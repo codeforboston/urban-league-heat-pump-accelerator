@@ -61,10 +61,12 @@ class HomesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def home_params
-    params.require(:home).permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type)
+    params.require(:home).permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type,
+                                 :assignment_id, :visit_order)
   end
 
   def search_params
-    params.permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type, :assignment_id)
+    params.permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type, :assignment_id,
+                  :visit_order)
   end
 end

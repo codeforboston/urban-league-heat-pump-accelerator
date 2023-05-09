@@ -1,8 +1,8 @@
-group,surveyor_email
-"A1","alice.abbott@test.com"
-"A2","alice.abbott@test.com"
-"B","bob.baker@test.com"
-"C","charlotte.cooke@test.com"
-"D","david.daley@test.com"
-"E1","eve.earl@test.com"
-"E2","eve.earl@test.com"
+group,region_code,surveyor_email
+"A1",1,"alice.abbott@test.com"
+"A2",1,"alice.abbott@test.com"
+"B",2,"bob.baker@test.com"
+"C",2,"charlotte.cooke@test.com"
+"D",2,"david.daley@test.com"
+"E1",3,"eve.earl@test.com"
+"E2",3,"eve.earl@test.com"

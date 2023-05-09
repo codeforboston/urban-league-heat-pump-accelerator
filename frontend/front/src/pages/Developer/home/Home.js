@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
-import { Typography, Box, Container, Button, Paper } from "@mui/material";
+import { Typography, Box, Container } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import Heatpump from "./Heatpump";
-import RtkTesting from "../rtkDat/RtkTesting";
-import { Link } from "react-router-dom";
 
-// import { fetchHomeData } from "../../../features/home/homeSlice";
+import LinkButton from "./LinkButton";
 
 const Home = () => {
   const { title } = useSelector((state) => {
@@ -33,32 +30,9 @@ const Home = () => {
         </Box>
 
         <Box display="flex">
-          <Box m={3}>
-            <Button color="inherit" component={Link} to="confirmation">
-              <Box
-                component={Paper}
-                width={200}
-                height={100}
-                p={1}
-                sx={{ bgcolor: "AliceBlue " }}
-              >
-                <Typography>Confirm Modal</Typography>
-              </Box>
-            </Button>
-          </Box>
-          <Box m={3}>
-            <Button color="inherit" component={Link} to="rtkq">
-              <Box
-                component={Paper}
-                width={200}
-                height={100}
-                p={1}
-                sx={{ bgcolor: "AliceBlue " }}
-              >
-                <Typography>React Tool Kit Querey Example</Typography>
-              </Box>
-            </Button>
-          </Box>
+          <LinkButton to="confirmation" text="Confirm Modal" />
+          <LinkButton to="rtkq" text="React Tool Kit Querey Example" />
+          <LinkButton to="map" text="Google Map with API key" />
         </Box>
       </Box>
     </Container>

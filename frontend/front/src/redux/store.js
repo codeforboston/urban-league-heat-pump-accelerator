@@ -5,8 +5,9 @@ import accountReducer from "../features/account/accountSlice";
 import contactReducer from "../features/contact/contactSlice";
 import navReducer from "../features/nav/navSlice";
 import loginReducer from "../features/login/loginSlice";
+import surveyorReducer from "../features/surveyor/surveyorSlice";
 // import { itemApi } from "./services";
-import { apiSlice } from "./apiSlice";
+import { apiSlice } from "../api/apiSlice";
 
 export const createStore = (options) =>
   configureStore({
@@ -17,6 +18,7 @@ export const createStore = (options) =>
       contact: contactReducer,
       nav: navReducer,
       login: loginReducer,
+      surveyor: surveyorReducer,
       // apis
       // [itemApi.reducerPath]: itemApi.reducer,
       [apiSlice.reducerPath]: apiSlice.reducer,

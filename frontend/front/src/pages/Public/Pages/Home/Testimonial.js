@@ -27,7 +27,7 @@ const items = [
 function Testimonial() {
   return (
     <Box
-      mb={16}
+      pb={8}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -39,11 +39,26 @@ function Testimonial() {
           width: "100%",
         }}
       >
-        <Carousel animation="slide" height="380px">
+        <Box sx={{ display: { xs: "block", lg: "none" } }}>
+          <Carousel animation="slide" height="380px">
+            {items.map((item, i) => (
+              <TestimonialItem key={i} item={item} />
+            ))}
+          </Carousel>
+        </Box>
+        <Box
+          animation="slide"
+          height="380px"
+          sx={{
+            display: { xs: "none", lg: "flex" },
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
           {items.map((item, i) => (
             <TestimonialItem key={i} item={item} />
           ))}
-        </Carousel>
+        </Box>
       </Box>
     </Box>
   );
@@ -67,13 +82,16 @@ function TestimonialItem(props) {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            padding: "15px",
-            background: "var(--bgColor-10)",
+            p: 3,
+            background: "var(--bgColor-11)",
             borderRadius: "10px",
             boxShadow: "var(--boxShadow-3)",
             color: "var(--color-text-2)",
             margin: "0 16px",
             height: "220px",
+            border: "var(--box-shadow-2)",
+            maxWidth: { lg: "500px" },
+            minWidth: { lg: "310px" },
           }}
         >
           <Typography variant="h6" mt={8}>
@@ -90,7 +108,7 @@ function TestimonialItem(props) {
             <Typography
               variant="body1"
               textAlign="center"
-              sx={{ color: "var(--color-text-3)", mb: 3 }}
+              sx={{ color: "var(--color-text-6)", mb: 3 }}
             >
               "{props.item.text}"
             </Typography>

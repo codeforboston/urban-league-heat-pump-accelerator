@@ -1,10 +1,20 @@
+import { useEffect } from "react";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const ButtonGetPumnp = ({ variant }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
-      <Button component={Link} to="getstarted" variant={variant}>
+      <Button
+        component={Link}
+        to="get-heat-pump"
+        variant={variant}
+        onClick={() => window.scrollTo(0, 0)}
+      >
         GET A HEAT PUMP
       </Button>
     </>

@@ -1,66 +1,52 @@
-import { Box, Grid, Typography, Stack, ButtonBase } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
-{
-}
-const data = [
-  "listview1",
-  "listview2",
-  "listview3",
-  "listview4",
-  "listview5",
-  "listview6",
-  "listview7",
-  "listview8",
-  "listview9",
-  "listview10",
-  "listview11",
-];
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import { useGetAssignmentsQuery } from "../../../api/apiSlice";
+import AssignmentUnit from "./AssignmentUnit";
 
 const ListView = () => {
-  const navigate = useNavigate();
+  const { data, isLoading, isSuccess } = useGetAssignmentsQuery();
 
-  const OnclickFx = () => {
-    navigate("/surveyor/house");
-  };
-  const itemMap = data.map((item) => {
-    return (
-      <Grid item xs={12} key={item}>
-        <ButtonBase sx={{ width: "100%" }} onClick={() => OnclickFx()}>
-          <Box pt={2} borderTop={1} px={2} sx={{ width: "100%" }}>
-            <Box textAlign='left'>
-              <Typography>12345 John Smith Way</Typography>
-              <Typography>John Smith</Typography>
+  let content;
 
-              <Box py={1}>
-                <Stack direction='row' spacing={1}>
-                  <Typography>Question:</Typography>
-                  <Typography sx={{ color: "green" }}>Completed</Typography>
-                </Stack>
-                <Stack direction='row' spacing={1}>
-                  <Typography>Evaluation:</Typography>
-                  <Typography sx={{ color: "orange" }}>Incomplete</Typography>
-                </Stack>
+  if (isLoading) {
+    content = <Box> Is loading</Box>;
+    console.log(data);
+  } else if (isSuccess) {
+    console.log(data);
+    content = (
+      <Box>
+        <Box my={3} display={"flex"} justifyContent="center">
+          <Typography variant="h4">Assignment</Typography>
+        </Box>
+        {data &&
+          data.map((item) => {
+            return (
+              <Box my={2} key={item.id}>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography variant="h5">Id: {item.id}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <AssignmentUnit data={item.homes} />
+                  </AccordionDetails>
+                </Accordion>
               </Box>
-            </Box>
-          </Box>
-        </ButtonBase>
-      </Grid>
+            );
+          })}
+      </Box>
     );
-  });
+  }
 
-  return (
-    <Grid
-      container
-      direction='column'
-      justifyContent='center'
-      alignItems='left'
-      mt={2}
-    >
-      {itemMap}
-    </Grid>
-  );
+  return content;
 };
 
 export default ListView;
