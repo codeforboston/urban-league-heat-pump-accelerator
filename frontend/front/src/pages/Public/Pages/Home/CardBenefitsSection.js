@@ -107,9 +107,9 @@ const CardBenefitsSection = () => {
           <Grid
             container
             key={card.id}
-            columnSpacing={{ xs: 0, sm: 1, lg: 0 }}
+            columnSpacing={{ xs: 0, sm: 1, md: 4 }}
             sx={{
-              p: { xs: 0, sm: 1, lg: 0 },
+              p: { xs: 0, sm: 1, md: 2 },
               flexDirection: {
                 md: `${index % 2 === 0 ? "row" : "row-reverse"}`,
                 xs: "row",
