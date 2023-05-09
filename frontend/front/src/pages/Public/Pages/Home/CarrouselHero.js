@@ -50,7 +50,7 @@ function CarrouselHero(props) {
       sx={{ height: { heroHeight }, minHeight: "100vh", position: "absolute" }}
     >
       <Carousel
-        // animation="fade"
+        animation="fade"
         stopAutoPlayOnHover={false}
         interval="8000"
         indicators={false}

@@ -4,26 +4,24 @@ const TitleContainer = styled(Box)({
   textAlign: "center",
 });
 
-function TitleHero({
-  text,
-  fontWeight = "500",
-  color = "var(--color-text-9)",
-}) {
+const TitleSpan = styled("span")({
+  color: "var(--color-text-8)",
+  fontWeight: "900",
+});
+
+function TitleHero({ text, titleBold }) {
   return (
     <TitleContainer mb={2}>
       <Typography
         variant="h2"
         sx={{
           fontFamily: "var(--font-family-1)",
-          color: { color },
-          // fontSize: "3rem",
+          color: "var(--color-text-9)",
           display: "block",
-          fontWeight: { fontWeight },
-          // lineHeight: "60px",
-          // letterSpacing: ".02rem",
+          fontWeight: 600,
         }}
       >
-        {text}
+        {text} <TitleSpan>{titleBold}</TitleSpan>
       </Typography>
     </TitleContainer>
   );

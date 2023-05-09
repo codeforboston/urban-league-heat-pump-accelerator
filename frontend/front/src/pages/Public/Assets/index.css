@@ -36,7 +36,7 @@
   --bgColor-5:  #FCFDFE; /* Background */
 
   /* Accent colors */
-  --accent-1: rgba(0, 0, 0, 0.4); /* image overlay */
+  --accent-1: rgba(0, 0, 0, 0.55); /* image overlay */
   --accent-2: rgba(202, 240, 254,0.8); /* Divider color */
 
   /* Box shadow */

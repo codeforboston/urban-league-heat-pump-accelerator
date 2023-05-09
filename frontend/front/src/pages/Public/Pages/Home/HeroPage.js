@@ -9,7 +9,7 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  minHeight: "300px",
+  minHeight: "350px",
   position: "relative",
   backgroundImage: `url(${image})`,
   backgroundSize: "cover",
@@ -26,10 +26,9 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     zIndex: 1,
   },
   "& .text-overlay": {
-    color: "var(--color-text-1)",
     margin: "0 auto",
     minWidth: "100vw",
-    minHeight: "300px",
+    minHeight: "350px",
     top: "143px",
     left: 0,
     right: 0,
@@ -61,18 +60,15 @@ const HeroPage = ({
                 alignItems: "center",
                 flexGrow: 1,
                 minHeight: "calc(100vh - 143px)",
+                pb: 4,
               }}
             >
-              <Box>
-                <Stack>
-                  <TitleHero text={title.toUpperCase()} />
-                  <TitleHero
-                    text={titleBold.toUpperCase()}
-                    fontWeight="900"
-                    color="var(--color-text-8)"
-                  />
-                </Stack>
-                <Typography variant="bodyHero">
+              <Box p={{ xs: 2, sm: 5 }}>
+                <TitleHero
+                  text={title.toUpperCase()}
+                  titleBold={titleBold.toUpperCase()}
+                />
+                <Typography variant="h6" sx={{ color: "var(--color-text-9)" }}>
                   {text1}
                   {link !== "" && (
                     <Link
@@ -81,7 +77,7 @@ const HeroPage = ({
                       rel="noopener"
                       underline="always"
                       sx={{
-                        color: "var(--color-text-1)",
+                        color: "var(--color-text-9)",
                         fontWeight: "var(--font-weight-2)",
                         textDecoration: "solid underline 3px",
                         textUnderlinePosition: "under",
