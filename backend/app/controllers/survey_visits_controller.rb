@@ -5,7 +5,7 @@ class SurveyVisitsController < ApplicationController
 
   # GET /survey_visits or /survey_visits.json
   def index
-    @survey_visits = SurveyVisit.all
+    @survey_visits = SurveyVisit.all.first(30)
   end
 
   # GET /survey_visits/1 or /survey_visits/1.json
