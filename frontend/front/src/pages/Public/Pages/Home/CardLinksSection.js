@@ -8,8 +8,8 @@ import {
   CardMedia,
   Grid,
 } from "@mui/material";
-import imageVoice from "../../../../assets/images/surveyor.jpg";
-import imageAbout from "../../../../assets/images/heat-pump-outside-home.jpg";
+import imageVoice from "../../../../assets/images/copywritingImages/add-your-voice.png";
+import imageAbout from "../../../../assets/images/copywritingImages/about-us.png";
 import ButtonDarkBklue from "../../Components/Button/ButtonDarkBlue";
 import Heading2 from "../../Components/Typography/Heading2";
 
@@ -17,7 +17,7 @@ import AnimatedBox from "../../Components/AnimatedBox";
 
 const CardLinks = styled("div")(({ theme }) => ({
   minWidth: "260px",
-  maxWidth: "480px",
+  maxWidth: "680px",
   borderRadius: "2%",
   padding: "1px 0",
   border: "var(--boder-color-1)",
@@ -76,7 +76,7 @@ const CardLinksSection = () => {
               <CardMedia
                 component="img"
                 sx={{
-                  width: { sm: "151px", xs: "25%" },
+                  width: { sm: "300px", xs: "25%" },
                   display: { xxs: "block", xs: "none" },
                 }}
                 image={detail.image}
