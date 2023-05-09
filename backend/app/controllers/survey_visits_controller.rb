@@ -61,6 +61,7 @@ class SurveyVisitsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def survey_visit_params
+    params.require(:survey_visit).permit(:user_id, :completed, :home_id)
   end
 
   def search_params
