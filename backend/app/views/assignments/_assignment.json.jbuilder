@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-json.extract! assignment, :id, :group, :region_code
+json.extract! assignment, :id, :group, :region_code, :geocode
 
 json.surveyor_ids do
   json.array!(assignment.surveyors.map { |s| s[:id] })
