@@ -7,7 +7,7 @@
       "check_name": "PermitAttributes",
       "message": "Potentially dangerous key allowed for mass assignment",
       "file": "app/controllers/surveyors_controller.rb",
-      "line": 68,
+      "line": 66,
       "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
       "code": "params.require(:surveyor).permit(:user_id, :firstname, :lastname, :email, :phone, :street_address, :geocode, :city, :zipcode, :state, :role, :status)",
       "render_path": null,
@@ -22,8 +22,31 @@
         915
       ],
       "note": "ignore for now, update in future after we add protections for the surveyors role field"
+    },
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 105,
+      "fingerprint": "b2353410cfc122b9baeaed2da8f366ab8b289d40754970aea423fbe411fed2a1",
+      "check_name": "PermitAttributes",
+      "message": "Potentially dangerous key allowed for mass assignment",
+      "file": "app/controllers/surveyors_controller.rb",
+      "line": 70,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params.permit(:city, :zipcode, :state, :role, :status)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "SurveyorsController",
+        "method": "search_params"
+      },
+      "user_input": ":role",
+      "confidence": "Medium",
+      "cwe_id": [
+        915
+      ],
+      "note": ""
     }
   ],
-  "updated": "2022-12-03 04:47:05 +0000",
-  "brakeman_version": "5.3.1"
+  "updated": "2023-05-09 02:38:10 +0000",
+  "brakeman_version": "5.4.1"
 }

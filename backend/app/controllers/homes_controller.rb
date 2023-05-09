@@ -5,7 +5,7 @@ class HomesController < ApplicationController
 
   # GET /homes or /homes.json
   def index
-    @homes = Home.all.first(30)
+    @homes = Home.where(search_params)
   end
 
   # GET /homes/1 or /homes/1.json
