@@ -6,7 +6,7 @@ class SurveyorsController < ApplicationController
 
   # GET /surveyors or /surveyors.json
   def index
-    @surveyors = Surveyor.where(search_params.slice(:city, :zipcode, :state, :role, :status))
+    @surveyors = Surveyor.where(search_params)
   end
 
   # GET /surveyors/1 or /surveyors/1.json
