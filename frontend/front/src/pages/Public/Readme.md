@@ -1,30 +1,28 @@
 
 ## User Stories
+### Surveyor User Stories
+- As a surveyor, I want to be able to login.
+- As a surveyor, I want to be able to change my password.
+- As a surveyor, I want to be able to login/logout successfully.
+- As a surveyor, I want to be able to access the surveyor dashboard after login.
+- As a surveyor, I want to be able to click on the incomplete address.
+- As a surveyor, I want to be able to generate a Google Map with all the incomplete addresses.
 
-**Surveyor User Stories:**
-- As a surveyor, I want to be able to easily locate the member login button on the website.
-- As a surveyor, I want to be able to securely login with my credentials.
-- As a surveyor, I want to be able to reset my password if I forget it.
-- As a surveyor, I want to be able to view my surveyor dashboard after login.
-- As a surveyor, I want to be able to quickly access and view incomplete addresses.
-- As a surveyor, I want to be able to generate a map with all incomplete addresses to streamline my work.
+### Admin User Stories (Admin will have all privileges edit|update|delete|view)
+- As an admin, I want to be able to login.
+- As an admin, I want to be able to change my password.
+- As an admin, I want to be able to login/logout successfully.
+- As an admin, I want to be able to access the admin dashboard after login.
+- As an admin, I want to be able to create, delete, edit, and view **authorized users with privileges.
+- As an admin, I want to be able to update, edit, view, and delete home addresses.
+- As an admin, I want to be able to update, edit, view, and delete surveyors.
+- As an admin, I want to be able to update, edit, view, and delete surveys.
 
-**Admin User Stories:**
-- As an admin, I want to be able to easily locate the admin login button on the website.
-- As an admin, I want to be able to securely login with my credentials.
-- As an admin, I want to be able to reset my password if I forget it.
-- As an admin, I want to be able to view the admin dashboard after login.
-- As an admin, I want to be able to create, edit, view, and delete Authorized  Users accounts with appropriate privileges.
-- As an admin, I want to be able to update, edit, view, and delete home addresses in the system.
-- As an admin, I want to be able to update, edit, view, and delete surveyors in the system.
-- As an admin, I want to be able to update, edit, view, and delete survey records in the system.
-
-**User Stories:**
-- As an Authorized, I want to be able to securely login with my credentials.
-- As an Authorized, I want to be able to reset my password if I forget it.
-- As an Authorized, I want to be able to view the information and functionality that the admin has given me access to.
-- As an Authorized, I want to be able to logout securely.
-
+### Authorized User Stories (User will have only the access the Admin gave to the user)
+- As an authorized user, I want to be able to login.
+- As an authorized user, I want to be able to change my password.
+- As an authorized user, I want to be able to login/logout successfully.
+- As an authorized user, I am not able to create new users.
 
 ## API Routes
 | Verb   | URI Pattern        | Request Body      | Headers   | Action              |
