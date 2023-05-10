@@ -4,7 +4,7 @@ const TitleContainer = styled(Box)({
   textAlign: "center",
 });
 
-const TitleSpan = styled("span")({
+const TitleSpan = styled("div")({
   color: "var(--color-text-8)",
 });
 
@@ -14,7 +14,7 @@ function TitleHero({ text, titleBold }) {
       <Typography
         variant="h2"
         sx={{
-          fontFamily: "var(--font-family-1)",
+          // fontFamily: "var(--font-family-1)",
           color: "var(--color-text-9)",
           display: "block",
           fontWeight: 600,

@@ -23,7 +23,7 @@ function AboutUs() {
       <Container>
         <Stack direction="column" justifyContent="center" itemAlign="center">
           <Box mb={{ xs: 2, md: 6 }}>
-            <Typography variant="body1">
+            <Typography variant="body">
               <b>The Boston Heat Pump Accelerator (BHPA)</b> works to support
               increased access for Boston homeowners to heat pumps and related
               resources, helping to reduce costs for residents, increase
@@ -52,7 +52,7 @@ function AboutUs() {
               />
 
               <Box>
-                <Typography variant="body1">
+                <Typography variant="body">
                   <b>The Urban League of Eastern Massachusetts (ULEM)</b> is the
                   sponsor of the BHPA effort. Since 1919, ULEM has delivered
                   workforce and economic development services and programs to
@@ -62,7 +62,7 @@ function AboutUs() {
                   National Urban League movement.{" "}
                 </Typography>
 
-                <Typography variant="body1">
+                <Typography variant="body">
                   The BHPA project is directed by ULEM Board Member Christopher
                   Scranton, in coordination with core partners, listed below.
                 </Typography>

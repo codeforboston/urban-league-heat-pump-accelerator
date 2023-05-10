@@ -21,7 +21,7 @@ const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
         />
 
         <Box>
-          <Typography variant="body1">
+          <Typography variant="body">
             <b>{partnerName}</b> {paragraphText}
           </Typography>
         </Box>
