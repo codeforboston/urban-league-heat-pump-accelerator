@@ -14,7 +14,7 @@ const Dashboard = () => {
           <Loader />
         ) : isError ? (
           <Snackbar open={isError}>
-            <Alert severity="error">{"Error submitting data"}</Alert>
+            <Alert severity="error">{"Error fetching surveyor assignment data"}</Alert>
           </Snackbar>
         ) : (
           <ListView />
