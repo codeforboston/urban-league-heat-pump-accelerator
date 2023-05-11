@@ -21,16 +21,6 @@ const Home = () => {
             <SearchIcon sx={{ fontSize: 30 }} />
           </IconButton>
         </Box>
-        <Box m={2}>
-          <Button
-            variant="contained"
-            component={Link}
-            startIcon={<AddIcon />}
-            to="createHome"
-          >
-            Create Survey
-          </Button>
-        </Box>
       </Box>
 
       <SurveyTable />
