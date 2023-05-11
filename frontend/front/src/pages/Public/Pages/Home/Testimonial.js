@@ -66,56 +66,54 @@ function Testimonial() {
 
 function TestimonialItem(props) {
   return (
-    <>
-      <AnimatedBox triggerOnce={false}>
-        <Avatar
-          src={props.item.avatarSrc}
-          sx={{
-            width: "112px",
-            height: "112px",
-            margin: "0 auto",
-            top: "67px",
-          }}
-        />
+    <Box>
+      <Avatar
+        src={props.item.avatarSrc}
+        sx={{
+          width: "112px",
+          height: "112px",
+          margin: "0 auto",
+          top: "67px",
+        }}
+      />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          p: 3,
+          background: "var(--bgColor-3)",
+          borderRadius: "10px",
+          boxShadow: "var(--boxShadow-3)",
+          color: "var(--color-text-2)",
+          margin: "0 16px",
+          height: "220px",
+          border: "var(--boder-color-1)",
+          maxWidth: { lg: "500px" },
+          minWidth: { lg: "310px" },
+        }}
+      >
+        <Typography variant="h6" mt={8}>
+          {props.item.name}
+        </Typography>
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            p: 3,
-            background: "var(--bgColor-3)",
-            borderRadius: "10px",
-            boxShadow: "var(--boxShadow-3)",
-            color: "var(--color-text-2)",
-            margin: "0 16px",
-            height: "220px",
-            border: "var(--boder-color-1)",
-            maxWidth: { lg: "500px" },
-            minWidth: { lg: "310px" },
+            justifyContent: "center",
+            height: "100%",
           }}
         >
-          <Typography variant="h6" mt={8}>
-            {props.item.name}
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              height: "100%",
-            }}
+          <Typography
+            variant="body1"
+            textAlign="center"
+            sx={{ color: "var(--color-text-3)", mb: 3 }}
           >
-            <Typography
-              variant="body1"
-              textAlign="center"
-              sx={{ color: "var(--color-text-3)", mb: 3 }}
-            >
-              "{props.item.text}"
-            </Typography>
-          </Box>
+            "{props.item.text}"
+          </Typography>
         </Box>
-      </AnimatedBox>
-    </>
+      </Box>
+    </Box>
   );
 }
 

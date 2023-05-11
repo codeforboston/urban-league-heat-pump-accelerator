@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import AnimatedBox from "../../Components/AnimatedBox";
 
 import Partners from "./Partners";
 import CardBenefitsSection from "./CardBenefitsSection";
@@ -18,10 +19,23 @@ const SectionWrapper = styled(Box)(({ theme, image }) => ({
 }));
 
 const Home = () => {
+  const [heroHeight, setHeroHeight] = useState("100vh");
+
+  useEffect(() => {
+    const handleResize = () => {
+      setHeroHeight(window.innerHeight);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <Box>
       {/* HERO */}
-      <CarrouselHero />
+      <Box sx={{ height: heroHeight }}>
+        <CarrouselHero />
+      </Box>
       <Container>
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
         <Box mt={16}>
@@ -41,7 +55,9 @@ const Home = () => {
           >
             <Heading1 text="Testimonials" />
           </Box>
-          <Testimonial />
+          <AnimatedBox triggerOnce={false}>
+            <Testimonial />
+          </AnimatedBox>
         </Box>
       </SectionWrapper>
 

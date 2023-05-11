@@ -123,7 +123,7 @@ const CardBenefitsSection = () => {
               />
             </Grid>
             <StyledGrid item sx={{ pt: { xs: 2, md: 0 } }} xs={12} sm={6}>
-              <AnimatedBox>
+              <AnimatedBox triggerOnce={false}>
                 <Box sx={{ p: { md: 4, xs: 0 } }}>
                   <Box pl={2}>
                     <Heading3 text={card.title} />

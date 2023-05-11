@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { styled } from "@mui/material/styles";
@@ -5,32 +6,25 @@ import { styled } from "@mui/material/styles";
 const StyledMotionDiv = styled(motion.div)(({ theme }) => ({
   "& .motion-div": {
     opacity: 0,
-    transform: "translateY(20px)",
   },
   "& .motion-div.visible": {
     opacity: 1,
-    transform: "translateY(0)",
-    transition: "all 0.5s ease-in-out",
+    transition: "opacity 0.5s ease-in-out",
   },
 }));
 
 function AnimatedBox({ triggerOnce = true, children }) {
   const [ref, inView] = useInView({
-    threshold: 0.5, // When 50% of the element is visible in the viewport
-    triggerOnce: triggerOnce, // if true, triggers the animation only once.
+    threshold: 0.5,
+    triggerOnce: triggerOnce,
   });
 
   const variants = {
     visible: {
       opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
     },
     hidden: {
       opacity: 0,
-      y: 50,
     },
   };
 
@@ -39,11 +33,18 @@ function AnimatedBox({ triggerOnce = true, children }) {
       ref={ref}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
-      // animate="visible"
-      variants={variants}
       className="motion-div"
     >
-      {children}
+      {React.Children.map(children, (child) => (
+        <motion.div
+          variants={variants}
+          className="motion-div"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+        >
+          {child}
+        </motion.div>
+      ))}
     </StyledMotionDiv>
   );
 }

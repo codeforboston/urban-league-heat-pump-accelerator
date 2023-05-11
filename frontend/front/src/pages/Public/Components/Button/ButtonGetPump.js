@@ -20,12 +20,12 @@ const ButtonGetPumnp = ({ variant }) => {
           fontSize: "1rem",
           height: "50px",
           fontWeight: "var(--font-weight-1)",
-          borderRadius: "1000px",
+          borderRadius: "50px",
           minWidth: 200,
           transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
           letterSpacing: "-.03em",
           "&:hover": {
-            background: "var(--accent-2)",
+            background: "var(--bgColor-1)",
           },
         }}
       >

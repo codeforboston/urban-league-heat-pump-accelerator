@@ -18,7 +18,7 @@ const ButtonWhite = ({ text, to, children }) => {
           height: "50px",
           color: "var(--color-text-2)",
           background: "var(--bgColor-3)",
-          borderRadius: "1000px",
+          borderRadius: "50px",
           "&:hover": {
             backgroundColor: "var(--bgColor-3)",
           },

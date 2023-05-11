@@ -4,6 +4,7 @@ const TitleContainer = styled(Box)({
   background: "var(--bgColor-1)",
   padding: "2em 0",
   textAlign: "center",
+  textShadow: "1px 1px 1px var(--color-text-5)",
 });
 
 function Heading1BlueBgGround({ text }) {
@@ -19,6 +20,7 @@ function Heading1BlueBgGround({ text }) {
           textAlign: "center",
           fontWeight: "600",
           color: "var(--color-text-2)",
+          textShadow: "1px 1px 1px var(--color-text-5)",
         }}
       >
         {text}

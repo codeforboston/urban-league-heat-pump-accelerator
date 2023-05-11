@@ -16,6 +16,7 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
 import ScrollToTopButton from "./Components/ScrollToTopButton";
+import ScrollEffect from "./Components/ScrollEffect";
 
 const PublicContainer = () => {
   return (
@@ -34,6 +35,7 @@ const PublicContainer = () => {
           >
             <Navbar />
             <Box>
+              <ScrollEffect />
               <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/about-us" element={<AboutUs />}></Route>
