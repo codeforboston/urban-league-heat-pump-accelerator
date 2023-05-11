@@ -11,7 +11,8 @@ const StyledMotionDiv = styled(motion.div)(({ theme }) => ({
   "& .motion-div.visible": {
     opacity: 1,
     scale: 1,
-    transition: "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+    transition:
+      "opacity 0.8s ease-in-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
   },
 }));
 
