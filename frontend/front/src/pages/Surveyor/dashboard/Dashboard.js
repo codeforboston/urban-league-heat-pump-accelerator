@@ -1,49 +1,28 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography, CircularProgress} from "@mui/material";
 import React from "react";
 import { useGetAssignmentsQuery } from "../../../api/apiSlice";
 import ListView from "./ListView";
+import Loader from "../../../components/Loader"
+import CustomSnackbar from "../../../components/CustomSnackbar"
 
 const Dashboard = () => {
   const { data, isLoading, isSuccess, isError, error } =
     useGetAssignmentsQuery();
 
-  let content = "no data";
-
-  if (isLoading) {
-    content = <Box> Is loading</Box>;
-  } else if (isSuccess) {
-    content = <Box>Status: Is successful</Box>;
-    console.log("dashboard", data);
-    // content = data.map((item) => {
-    //   return (
-    //     <Box key={item.id} border={1}>
-    //       <HomeItem data={item} />
-    //       <Button
-    //         onClick={() =>
-    //           updateHomeData({ ...item, completed: !item.completed })
-    //         }
-    //       >
-    //         Toggle Completed
-    //       </Button>
-    //       <Button onClick={() => deleteHomeData(item)}>delete</Button>
-    //     </Box>
-    //   );
-    // });
-  } else if (isError) {
-    content = <Box>{error.error}</Box>;
-  }
-
   return (
-    <Box>
-      <Box m={3} p={2}>
-        <Typography>Json Server api</Typography>
-        {content}
-      </Box>
-
       <Box display={"flex"} justifyContent="center">
-        <ListView />
+        {isLoading ? (
+          <Loader />
+        ) : isError ? (
+          <CustomSnackbar
+            open={isError}
+            message="Error fetching surveyor assignment data"
+            severity="error"
+          />
+        ) : (
+          <ListView />
+        )}
       </Box>
-    </Box>
   );
 };
 
