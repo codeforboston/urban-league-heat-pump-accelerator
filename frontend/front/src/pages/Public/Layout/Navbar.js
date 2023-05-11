@@ -157,7 +157,7 @@ function Navbar(props) {
               sx={{
                 mb: 3,
                 mt: 5,
-                maxWidth: "100%",
+                maxWidth: "300px",
                 "@media (max-width: 385px)": {
                   minWidth: "192px",
                 },
@@ -338,7 +338,7 @@ function Navbar(props) {
                     alt="logo"
                     sx={{
                       my: 2,
-                      maxWidth: "100%",
+                      maxWidth: "300px",
                       "@media (max-width: 385px)": {
                         minWidth: "192px",
                       },

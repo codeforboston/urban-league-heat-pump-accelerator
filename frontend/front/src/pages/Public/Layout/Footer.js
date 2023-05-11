@@ -69,7 +69,7 @@ const Footer = () => {
                 component="img"
                 alt="logo"
                 src={logoHeatPump}
-                sx={{ maxWidth: "100%" }}
+                sx={{ maxWidth: "300px" }}
               />
             </Link>
           </Grid>
@@ -280,7 +280,7 @@ const Footer = () => {
                 alt="logo"
                 src={logoHeatPump}
                 sx={{
-                  maxWidth: "100%",
+                  maxWidth: "300px",
                   "@media (max-width: 350px)": {
                     width: "250px",
                   },
