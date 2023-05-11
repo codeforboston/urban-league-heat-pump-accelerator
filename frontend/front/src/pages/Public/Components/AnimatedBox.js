@@ -1,15 +1,17 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { styled } from "@mui/material/styles";
+import React from "react";
 
 const StyledMotionDiv = styled(motion.div)(({ theme }) => ({
   "& .motion-div": {
     opacity: 0,
+    scale: 0.95,
   },
   "& .motion-div.visible": {
     opacity: 1,
-    transition: "opacity 0.5s ease-in-out",
+    scale: 1,
+    transition: "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
   },
 }));
 
@@ -22,9 +24,11 @@ function AnimatedBox({ triggerOnce = true, children }) {
   const variants = {
     visible: {
       opacity: 1,
+      scale: 1,
     },
     hidden: {
       opacity: 0,
+      scale: 0.95,
     },
   };
 
