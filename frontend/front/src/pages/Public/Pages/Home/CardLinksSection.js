@@ -17,7 +17,7 @@ import AnimatedBox from "../../Components/AnimatedBox";
 
 const CardLinks = styled("div")(({ theme }) => ({
   minWidth: "260px",
-  maxWidth: "680px",
+  maxWidth: { xs: "350px", sm: "680px" },
   borderRadius: "2%",
   padding: "1px 0",
   border: "var(--boder-color-1)",
@@ -72,11 +72,23 @@ const CardLinksSection = () => {
       {linkCards.map((detail) => (
         <AnimatedBox triggerOnce={false} key={detail.id}>
           <CardLinks>
-            <Card sx={{ display: "flex" }} id={detail.idCSS}>
+            <Card
+              sx={{
+                display: "flex",
+                flexDirection: { xs: "column", sm: "row" },
+                minWidth: "260px",
+                maxWidth: { xs: "468px", sm: "680px" },
+              }}
+              id={detail.idCSS}
+            >
               <CardMedia
                 component="img"
                 sx={{
-                  width: { sm: "300px", xs: "25%" },
+                  width: { xs: "100%", sm: "300px" },
+                  minWidth: "260px",
+                  maxWidth: { xs: "468px", sm: "680px" },
+                  backgroundSize: "cover",
+                  height: "auto",
                   display: { xxs: "block", xs: "none" },
                 }}
                 image={detail.image}
@@ -87,8 +99,8 @@ const CardLinksSection = () => {
                   <Box
                     id="survey-link-section"
                     sx={{
-                      maxHeight: "300px",
-                      minHeight: "270px",
+                      maxHeight: { xs: "auto", sm: "300px" },
+                      minHeight: { xs: "auto", sm: "270px" },
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "space-between",
@@ -98,7 +110,8 @@ const CardLinksSection = () => {
 
                     <Box
                       sx={{
-                        height: "140px",
+                        height: { xs: "auto", sm: "140px" },
+                        my: { xs: 2, sm: 0 },
                         color: "var(--color-text-3)",
                       }}
                     >
