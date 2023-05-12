@@ -38,7 +38,7 @@ const Home = () => {
       </Box>
       <Container>
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
-        <Box mt={16}>
+        <Box>
           <CardLinksSection />
         </Box>
       </Container>

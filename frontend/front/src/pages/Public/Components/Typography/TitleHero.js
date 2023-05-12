@@ -14,7 +14,6 @@ function TitleHero({ text, titleBold }) {
       <Typography
         variant="h2"
         sx={{
-          // fontFamily: "var(--font-family-1)",
           color: "var(--color-text-9)",
           display: "block",
           fontWeight: 600,
