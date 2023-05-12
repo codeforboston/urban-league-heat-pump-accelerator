@@ -1,7 +1,6 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Typography, Avatar, Box } from "@mui/material";
-import AnimatedBox from "../../Components/AnimatedBox";
 
 const items = [
   {
