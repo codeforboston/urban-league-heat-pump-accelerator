@@ -9,15 +9,15 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  Button,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import ButtonGetPump from "../Components/ButtonGetPump";
-import logoHeatPump from "../../../assets/images/logoHeatPump.png";
+import ButtonGetPump from "../Components/Button/ButtonGetPump";
+import logoHeatPump from "../../../assets/images/bhpa-logo.png";
 import { styled } from "@mui/material/styles";
 import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 import EmailIcon from "@mui/icons-material/Email";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import ButtonWhite from "../Components/Button/ButtonWhite";
 
 const footerItems = {
   "About BHPA": { link: "about-us" },
@@ -69,7 +69,7 @@ const Footer = () => {
                 component="img"
                 alt="logo"
                 src={logoHeatPump}
-                sx={{ maxWidth: "100%" }}
+                sx={{ maxWidth: "300px" }}
               />
             </Link>
           </Grid>
@@ -81,7 +81,7 @@ const Footer = () => {
             }}
             xs={12}
           >
-            <ButtonGetPump variant="getpump" />
+            <ButtonGetPump />
           </Grid>
 
           {/* BENEFITS OF HEAT PUMPS */}
@@ -150,7 +150,7 @@ const Footer = () => {
             sx={{
               pt: { xs: 1, lg: 0 },
               px: { lg: 2 },
-              borderLeft: { lg: "1px solid var(--accent-4)" },
+              borderLeft: { lg: "1px solid var(--accent-2)" },
               pl: { lg: 4 },
             }}
             xs={12}
@@ -187,7 +187,7 @@ const Footer = () => {
             sx={{
               pt: { xs: 2, lg: 0 },
               px: { lg: 2 },
-              borderLeft: { lg: "1px solid var(--accent-4)" },
+              borderLeft: { lg: "1px solid var(--accent-2)" },
               pl: { lg: 4 },
             }}
           >
@@ -238,7 +238,7 @@ const Footer = () => {
                     display: { xs: "none", lg: "block" },
                   }}
                 >
-                  <ButtonGetPump variant="getpump" />
+                  <ButtonGetPump />
                 </Box>
                 <Box
                   sx={{
@@ -246,15 +246,10 @@ const Footer = () => {
                     py: { xs: 0, lg: 2 },
                   }}
                 >
-                  <Button
-                    variant="blackBtn"
-                    sx={{ width: "200px", height: "50px" }}
-                    component={Link}
-                    to="/surveyor"
-                    onClick={() => window.scrollTo(0, 0)}
-                  >
-                    <LockOutlinedIcon sx={{ mr: 1 }} /> Member Login
-                  </Button>
+                  <ButtonWhite to="/surveyor">
+                    <LockOutlinedIcon sx={{ mr: 1 }} />
+                    Member Login
+                  </ButtonWhite>
                 </Box>
               </Box>
             </>
@@ -267,15 +262,10 @@ const Footer = () => {
             align="center"
             sx={{ pt: { xs: 4 }, display: { xs: "block", lg: "none" } }}
           >
-            <Button
-              variant="blackBtn"
-              component={Link}
-              to="/surveyor"
-              onClick={() => window.scrollTo(0, 0)}
-              sx={{ width: "200px", height: "50px" }}
-            >
-              <LockOutlinedIcon sx={{ mr: 1 }} /> Member Login
-            </Button>
+            <ButtonWhite to="/surveyor">
+              <LockOutlinedIcon sx={{ mr: 1 }} />
+              Member Login
+            </ButtonWhite>
           </Grid>
 
           {/* COPYRIGHT */}
@@ -290,7 +280,7 @@ const Footer = () => {
                 alt="logo"
                 src={logoHeatPump}
                 sx={{
-                  maxWidth: "100%",
+                  maxWidth: "300px",
                   "@media (max-width: 350px)": {
                     width: "250px",
                   },
@@ -300,7 +290,7 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} align="center">
-            <Divider sx={{ my: 2, backgroundColor: "var(--accent-4)" }} />
+            <Divider sx={{ my: 2, backgroundColor: "var(--accent-2)" }} />
             <Typography variant="caption" pt={1}>
               Copyright © {currentYear} | Boston Heat Pump Accelerator. {` `}
             </Typography>

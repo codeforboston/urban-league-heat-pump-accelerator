@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { styled } from "@mui/material/styles";
 import { Typography, Box, Link } from "@mui/material";
 
-import ButtonGetPump from "../../Components/ButtonGetPump";
+import ButtonGetPump from "../Button/ButtonGetPump";
 
 const HeroWrapper = styled("div")(({ theme }) => ({
   display: "flex",
@@ -40,7 +40,7 @@ const VideoContainer = styled("div")({
   height: "100%",
   width: "100%",
   opacity: 0.7,
-  background: "var(--bgColor-5)",
+  background: "var(--bgColor-1)",
   "& .component-video": {
     width: "100%",
     height: "100%",
@@ -63,13 +63,13 @@ const HeroVideo = ({
   videoBgGround,
 }) => {
   return (
-    <HeroWrapper sx={{ background: "var(--accent-3)" }}>
+    <HeroWrapper sx={{ background: "var(--accent-1)" }}>
       <Box className="text-wrapper" px={4}>
         <Box className="text-overlay">
           <Box sx={{ textShadow: "1px 1px 2px #000" }}>
             <Typography variant="titleHero">
-              {title.toUpperCase()}
-              <span className="hero-title-bold">{titleBold.toUpperCase()}</span>
+              {/* {title.toUpperCase()}
+              <span className="hero-title-bold">{titleBold.toUpperCase()}</span> */}
             </Typography>
 
             <Typography variant="bodyHero" mb={8} mt={2}>
@@ -85,10 +85,10 @@ const HeroVideo = ({
               {text2}
             </Typography>
           </Box>
-          <ButtonGetPump variant="getpump" />
+          <ButtonGetPump />
         </Box>
       </Box>
-
+      {/* 
       <VideoContainer className="component-video">
         <video
           autoPlay
@@ -98,7 +98,7 @@ const HeroVideo = ({
           poster="../../../../assets/images/videoCover.png"
           className="video-background"
         />
-      </VideoContainer>
+      </VideoContainer> */}
     </HeroWrapper>
   );
 };

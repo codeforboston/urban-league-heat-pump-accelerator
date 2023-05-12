@@ -6,10 +6,11 @@ import heatSmartLogo from "../../../../assets/images/HeatSmart.png";
 import codeForAmericaLogo from "../../../../assets/images/CFA.png";
 import codeForBostonLogo from "../../../../assets/images/CFB.png";
 import AnimatedBox from "../../Components/AnimatedBox";
-import ButtonCustom from "../../Components/ButtonCustom";
+import ButtonDarkBklue from "../../Components/Button/ButtonDarkBlue";
+import Heading1 from "../../Components/Typography/Heading1";
+import pcb from "../../../../assets/images/powercorp-boston.jpeg";
 
 const Partners = () => {
-  let title = "Our Partners";
   const partners = [
     {
       id: 1,
@@ -41,16 +42,25 @@ const Partners = () => {
       name: "Code For Boston",
       link: "https://www.codeforboston.org/",
     },
+    {
+      id: 6,
+      logo: pcb,
+      name: "City of Boston - PowerCorpsBOS (PCB)",
+      link: "https://www.boston.gov/departments/workforce-development/powercorpsbos",
+    },
   ];
 
   return (
     <Container>
       <Box
-        sx={{ display: "flex", justifyContent: "center", marginBottom: "1rem" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mb: 4,
+          textAlign: "center",
+        }}
       >
-        <Typography py={2} variant="title1">
-          {title}
-        </Typography>
+        <Heading1 text="Our Partners" />
       </Box>
 
       <AnimatedBox triggerOnce={false}>
@@ -59,6 +69,7 @@ const Partners = () => {
           alignItems="center"
           justifyContent="space-around"
           px={2}
+          gap={2}
         >
           {partners.map((partner) => (
             <Grid item key={partner.id}>
@@ -75,14 +86,14 @@ const Partners = () => {
             </Grid>
           ))}
           <Grid item pb={4} pt={1} mx={2}>
-            <Typography variant="body2" sx={{ color: "var(--color-text-6)" }}>
+            <Typography variant="body" sx={{ color: "var(--color-text-3)" }}>
               This initiative is a collaboration of Massachusetts government and
               nonprofit organizations working together to help{" "}
               <Link
                 href="https://www.masssave.com/residential/programs-and-services/income-based-offers/income-eligible-programs"
                 target="_blank"
                 rel="noopener"
-                sx={{ color: "var(--color-text-2)" }}
+                sx={{ color: "var(--color-text-4)" }}
               >
                 make heat pumps more available to low-income residents
               </Link>
@@ -90,7 +101,7 @@ const Partners = () => {
             </Typography>
           </Grid>
           <Grid item mt={2}>
-            <ButtonCustom text="Learn more" to="about-us" variant="customBtn" />
+            <ButtonDarkBklue text="Learn more" to="about-us" />
           </Grid>
         </Grid>
       </AnimatedBox>

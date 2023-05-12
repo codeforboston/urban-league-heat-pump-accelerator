@@ -1,8 +1,8 @@
-import { createTheme } from "@mui/material";
+import { createTheme, responsiveFontSizes } from "@mui/material";
 
 /* The custom colors palette is located in the Index.css file. */
 
-export const theme = createTheme({
+const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
@@ -14,10 +14,23 @@ export const theme = createTheme({
     },
   },
   typography: {
+    // body
+    body: {
+      display: "block",
+      margin: 0,
+      fontWeight: 400,
+      fontSize: "16px",
+      lineHeight: 1.5,
+      letterSpacing: "0.00938em",
+      "@media (min-width:900px)": {
+        fontSize: "18px",
+      },
+    },
+
     // h3
     titleHero: {
       fontFamily: "var(--font-family-1)",
-      color: "var(--color-text-4)",
+      color: "var(--color-text-6)",
       fontSize: "3rem",
       display: "block",
       fontWeight: "var(--font-weight-3)",
@@ -72,18 +85,7 @@ export const theme = createTheme({
       },
     },
     // h4
-    title1: {
-      fontFamily: "var(--font-family-1)",
-      display: "block",
-      width: "100%",
-      fontSize: "2rem",
-      letterSpacing: "-.03em",
-      textAlign: "center",
-      fontWeight: "700",
-      // "@media (max-width:600px)": {
-      //   fontSize: "2rem",
-      // },
-    },
+
     // h5
     title2: {
       fontFamily: "var(--font-family-1)",
@@ -115,7 +117,7 @@ export const theme = createTheme({
       lineHeight: "34px",
 
       margin: "0 auto",
-      borderBottom: "2px solid var(--color-text-3)",
+      borderBottom: "2px solid var(--color-text-6)",
       borderRadius: "2px",
       width: "fit-content",
 
@@ -134,86 +136,38 @@ export const theme = createTheme({
     },
   },
   components: {
-    MuiButton: {
-      variants: [
-        {
-          props: { variant: "getpump" },
-          style: {
-            fontSize: "1rem",
-            color: "var(--color-text-2)",
-            height: "50px",
-            fontWeight: "var(--font-weight-1)",
-            borderRadius: "1000px",
-            minWidth: 200,
-            transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-            letterSpacing: "-.03em",
-            background: "var(--accent-1)",
-            "&:hover": {
-              background: "var(--accent-1)",
-            },
-          },
-        },
-        {
-          props: { variant: "getpumpOutlined" },
-          style: {
-            fontSize: "1rem",
-            color: "var(--color-text-1)",
-            height: "50px",
-            borderRadius: "1000px",
-            minWidth: 200,
-            fontWeight: "var(--font-weight-1)",
-            transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-            boxShadow: "var(--box-shadow-1)",
-            letterSpacing: "-.03em",
-            "&:hover": {
-              transform: "scale(1.1)",
-              background: "var(--bgColor-10)",
-              color: "var(--color-text-2)",
-            },
-          },
-        },
-        {
-          props: { variant: "customBtn" },
-          style: {
-            color: "var(--color-text-1)",
-            height: "50px",
-            borderRadius: "1000px",
-            minWidth: 200,
-            backgroundColor: "var(--bgColor-3)",
-            "&:hover": {
-              backgroundColor: "var(--bgColor-3)",
-              textShadow: "1px 1px 2px #000",
-            },
-          },
-        },
-        {
-          props: { variant: "blackBtn" },
-          style: {
-            color: "var(--color-text-2)",
-            height: "50px",
-            borderRadius: "1000px",
-            background: "var(--bgColor-11)",
-            width: "200px",
-            "&:hover": {
-              backgroundColor: "var(--bgColor-11)",
-            },
-          },
-        },
-      ],
-    },
+    // MuiButton: {
+    //   variants: [
+    //     {
+    //       props: { variant: "whiteButton" },
+    //       style: {
+    //         color: "var(--color-text-2)",
+    //         height: "50px",
+    //         borderRadius: "1000px",
+    //         background: "var(--bgColor-3)",
+    //         width: "200px",
+    //         "&:hover": {
+    //           backgroundColor: "var(--bgColor-3)",
+    //         },
+    //       },
+    //     },
+    //   ],
+    // },
     MuiMenu: {
       styleOverrides: {
         paper: {
-          background: "var(--bgColor-5) !important",
+          background: "var(--bgColor-1) !important",
         },
       },
     },
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          color: "var(--color-text-6)",
+          color: "var(--color-text-3)",
         },
       },
     },
   },
 });
+
+export const responsiveTheme = responsiveFontSizes(theme);

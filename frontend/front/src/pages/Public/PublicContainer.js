@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider, Box, Stack } from "@mui/material";
-import { theme } from "./Assets/theme";
+import { responsiveTheme } from "./Assets/theme";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Navbar from "./Layout/Navbar";
@@ -11,7 +11,7 @@ import Faq from "./Pages/Faq";
 import BenefitsHeatPump from "./Pages/BenefitsHeatPump";
 import GetHeatPump from "./Pages/GetHeatPump";
 import AboutUs from "./Pages/AboutUs/AboutUs";
-import AboutHeatPump from "./Pages/AboutHeatPump";
+import AboutHeatPump from "./Pages/AboutHeatPump/AboutHeatPump";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
@@ -20,7 +20,7 @@ import ScrollToTopButton from "./Components/ScrollToTopButton";
 const PublicContainer = () => {
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={responsiveTheme}>
         <Box className="container-wrapper">
           <Stack
             direction="column"
@@ -29,7 +29,6 @@ const PublicContainer = () => {
               display: "flex",
               minHeight: "100vh",
               flexDirection: "column",
-              color: "var(--color-text-2)",
               fontSize: "16px",
             }}
           >

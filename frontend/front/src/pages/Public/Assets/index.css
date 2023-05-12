@@ -2,7 +2,8 @@
 
 /* Global Styles */
 .container-wrapper {
-  /* background-color: var(--bgColor-10); */
+  background-color: var(--bgColor-5);
+  color: var(--color-text-3);
 }
 
 :root {
@@ -15,43 +16,32 @@
   --font-weight-3: 900;
 
   /* Colors text*/
-  --color-text-1: #f9f9f9;
-  --color-text-2: #03045e;
-  --color-text-3: #0077b6;
-  --color-text-4: #90e0ef;
-  --color-text-5: #caf0f8;
-  --color-text-6: #070600;
-  --color-text-7: #23b5d3;
+  --color-text-1: #F7F7F7; /* text: navbar, footer, special cases */
+  --color-text-2: #00497A; /* titles */
+  --color-text-3: #0A0B0B; /* text body */
+  --color-text-4: #0000FF; /* links */
+  
+  --color-text-5: #CAF0F6; /* Hero Page */
+  --color-text-6: #90e0ef;
+  --color-text-7: #23B5D3; /* Hero Page */
+  
+  --color-text-8: #66d6FF; /* Hero Page */
+  --color-text-9: #FCFDFE; /* Hero Page */
 
   /* Background colors */
-  --bgColor-1: linear-gradient(
-    90deg,
-    #98c7d6 50%,
-    #72bede 100%
-  ); /* navbar - drawer*/
-  /* --bgColor-2: #72bede; */
-  --bgColor-2: #00497a;
-  --bgColor-3: #03045e;
-  --bgColor-4: #23b5d3;
-  --bgColor-5: #caf0f8;
-  --bgColor-6: #90e0ef;
-  --bgColor-7: #ea526f;
-  --bgColor-8: #efed6f;
-
-  --bgColor-10: #f6f6f6;
-  --bgColor-11: #f9f9f9;
-  --bgColor-12: #f7f7ff;
-  --bgColor-13: rgba(114, 190, 222, 0.5);
-  --bgColor-14: #eaf7fb;
+  --bgColor-1:  #CAF0FE; /* Background Testimonials, Button */
+  --bgColor-2: #00497A; /* Background /* Navbar, Footer, Button */
+  --bgColor-3:  #F9F9F9; /* Background Cards */
+  --bgColor-4:  #F7F7FF; /* Background Button */
+  --bgColor-5:  #FCFDFE; /* Background */
 
   /* Accent colors */
-  --accent-1: rgba(176, 232, 252, 0.9); /* image overlay*/
-  --accent-2: rgba(7, 6, 0, 0.1); /* image overlay*/
-  --accent-3: rgba(0, 0, 0, 0.4); /* image overlay*/
-  --accent-4: rgba(202, 240, 254, 0.8); /* Divider color */
+  --accent-1: rgba(0, 0, 0, 0.55); /* image overlay */
+  --accent-2: rgba(202, 240, 254,0.8); /* Divider color */
 
   /* Box shadow */
-  --box-shadow-1: inset 0 0 0 2px hsl(0deg 0% 100% / 30%); /* btn variant: "getpumpOutlined"*/
-  --box-shadow-2: 1px solid rgba(0, 0, 0, 0.12);
-  --box-shadow-3: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  --box-shadow-1: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Button Scroll Up Shadow */
+  
+  /* Border */
+  --boder-color-1: 1px solid rgba(0, 0, 0, 0.12); /* Border color cards */
 }

@@ -22,8 +22,8 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
-import ButtonGetPump from "../Components/ButtonGetPump";
-import logoHeatPump from "../../../assets/images/boston-heat-pump-logo.gif";
+import ButtonGetPump from "../Components/Button/ButtonGetPump";
+import logoHeatPump from "../../../assets/images/bhpa-logo.gif";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
@@ -157,7 +157,7 @@ function Navbar(props) {
               sx={{
                 mb: 3,
                 mt: 5,
-                maxWidth: "100%",
+                maxWidth: "300px",
                 "@media (max-width: 385px)": {
                   minWidth: "192px",
                 },
@@ -293,7 +293,7 @@ function Navbar(props) {
           ))}
         </List>
         <Box onClick={handleDrawerToggle}>
-          <ButtonGetPump variant="getpump" />
+          <ButtonGetPump />
         </Box>
       </Stack>
     </Box>
@@ -338,7 +338,7 @@ function Navbar(props) {
                     alt="logo"
                     sx={{
                       my: 2,
-                      maxWidth: "100%",
+                      maxWidth: "300px",
                       "@media (max-width: 385px)": {
                         minWidth: "192px",
                       },

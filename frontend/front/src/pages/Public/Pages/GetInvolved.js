@@ -10,7 +10,6 @@ const GetInvolved = () => {
         backgroundSize: "cover",
         backgroundPosition: "bottom",
         position: "relative",
-        zIndex: "-1",
         flexGrow: 1,
       }}
     >

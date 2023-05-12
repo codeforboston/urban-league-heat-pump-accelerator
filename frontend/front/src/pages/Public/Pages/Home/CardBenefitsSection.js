@@ -16,6 +16,8 @@ import imageTwo from "../../../../assets/images/heat-pump-outside-home.jpg";
 import liveMoreCom from "../../../../assets/images/copywritingImages/liveMoreCom.jpg";
 import strengthenCommunity from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
 import beEnvironmentally from "../../../../assets/images/copywritingImages/beEnvironmentally.jpg";
+import Heading1 from "../../Components/Typography/Heading1";
+import Heading3 from "../../Components/Typography/Heading3";
 
 const StyledGrid = styled(Grid)(() => ({
   display: "flex",
@@ -78,24 +80,18 @@ const CardBenefitsSection = () => {
             textAlign: "center",
           }}
         >
-          <Typography variant="title1">Benefits of Heat Pumps</Typography>
+          <Heading1 text="Benefits of Heat Pumps" />
           <Stack
             direction="row"
             justifyContent="center"
             alignItems="center"
             sx={{ mt: 1 }}
           >
-            <Typography
-              variant="subtitle2"
-              sx={{ color: "var(--color-text-6)" }}
-            >
+            <Typography variant="body" sx={{ color: "var(--color-text-3)" }}>
               Learn more about&nbsp;
             </Typography>
             <Link to="benefits-heat-pump">
-              <Typography
-                variant="subtitle2"
-                sx={{ color: "var(--color-text-2)" }}
-              >
+              <Typography variant="body" sx={{ color: "var(--color-text-2)" }}>
                 Benefits of Heat Pump
               </Typography>
             </Link>
@@ -105,9 +101,9 @@ const CardBenefitsSection = () => {
           <Grid
             container
             key={card.id}
-            columnSpacing={{ xs: 0, sm: 1, lg: 0 }}
+            columnSpacing={{ xs: 0, sm: 1, md: 4 }}
             sx={{
-              p: { xs: 0, sm: 1, lg: 0 },
+              p: { xs: 0, sm: 1, md: 2 },
               flexDirection: {
                 md: `${index % 2 === 0 ? "row" : "row-reverse"}`,
                 xs: "row",
@@ -127,18 +123,18 @@ const CardBenefitsSection = () => {
               />
             </Grid>
             <StyledGrid item sx={{ pt: { xs: 2, md: 0 } }} xs={12} sm={6}>
-              <AnimatedBox>
+              <AnimatedBox triggerOnce={false}>
                 <Box sx={{ p: { md: 4, xs: 0 } }}>
-                  <Typography pl={2} variant="title3">
-                    <span>{card.title}</span>
-                  </Typography>
+                  <Box pl={2}>
+                    <Heading3 text={card.title} />
+                  </Box>
                   <CardContent>
                     {card.paragraphs.map((paragraph, i) => (
                       <Typography
                         key={`p${i}`}
                         gutterBottom
-                        variant="body1"
-                        color="var(--color-text-6)"
+                        variant="body"
+                        color="var(--color-text-3)"
                       >
                         {paragraph}
                       </Typography>
@@ -150,7 +146,7 @@ const CardBenefitsSection = () => {
                         <Button
                           component={Link}
                           to={card.buttonLink}
-                          sx={{ color: "var(--color-text-4)" }}
+                          sx={{ color: "var(--color-text-6)" }}
                         >
                           {card.buttonText}
                         </Button>

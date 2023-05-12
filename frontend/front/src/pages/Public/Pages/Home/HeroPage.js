@@ -1,21 +1,22 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box, Link } from "@mui/material";
-import ButtonCustom from "../../Components/ButtonCustom";
+import { Typography, Box, Link, Stack } from "@mui/material";
+import ButtonWhite from "../../Components/Button/ButtonWhite";
 import AnimatedBox from "../../Components/AnimatedBox";
+import TitleHero from "../../Components/Typography/TitleHero";
 
 const HeroWrapper = styled("div")(({ theme, image }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  height: "100vh",
+  minHeight: "350px",
   position: "relative",
   backgroundImage: `url(${image})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   "& .text-wrapper": {
-    width: "100%",
+    width: "100vw",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -23,28 +24,17 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
     textAlign: "center",
     position: "relative",
     zIndex: 1,
-    paddingBottom: "143px",
   },
   "& .text-overlay": {
-    color: "var(--color-text-1)",
     margin: "0 auto",
-    maxWidth: "650px",
-    background: "var(--accent-3)",
-  },
-  [theme.breakpoints.up("lg")]: {
-    "& .text-overlay": {
-      maxWidth: "1000px",
-    },
-  },
-  [theme.breakpoints.up("xs")]: {
-    "& .text-overlay": {
-      borderRadius: "0",
-    },
-  },
-  [theme.breakpoints.up("md")]: {
-    "& .text-overlay": {
-      borderRadius: "5% 15% 5% 15%",
-    },
+    minWidth: "100vw",
+    minHeight: "350px",
+    top: "143px",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: "var(--accent-1)",
+    boxSizing: "border-box",
   },
 }));
 
@@ -60,54 +50,51 @@ const HeroPage = ({
   return (
     <HeroWrapper image={image}>
       <Box className="text-wrapper">
-        <AnimatedBox triggerOnce={false}>
-          <Box
-            className="text-overlay"
-            pt={8}
-            pb={9}
-            sx={{
-              px: { xs: 1, md: 4 },
-              pt: { xs: 8 },
-              marginTop: { xs: "143px" },
-            }}
-          >
-            <Typography variant="titleHero">
-              {title.toUpperCase()}
-              <Typography variant="titleHeroBold">
-                {titleBold.toUpperCase()}
-              </Typography>
-            </Typography>
+        <Box className="text-overlay">
+          <AnimatedBox triggerOnce={false}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-evenly",
+                alignItems: "center",
+                flexGrow: 1,
+                minHeight: "calc(100vh - 143px)",
+                pb: 4,
+              }}
+            >
+              <Box p={{ xs: 2, sm: 5 }}>
+                <TitleHero
+                  text={title.toUpperCase()}
+                  titleBold={titleBold.toUpperCase()}
+                />
+                <Typography variant="h6" sx={{ color: "var(--color-text-9)" }}>
+                  {text1}
+                  {link !== "" && (
+                    <Link
+                      href={link}
+                      target="_blank"
+                      rel="noopener"
+                      underline="always"
+                      sx={{
+                        color: "var(--color-text-9)",
+                        fontWeight: "var(--font-weight-2)",
+                        textDecoration: "solid underline 3px",
+                        textUnderlinePosition: "under",
+                        textDecorationColor: "var(--color-text-6)",
+                      }}
+                    >
+                      {textBold}
+                    </Link>
+                  )}
+                  {text2}
+                </Typography>
+              </Box>
 
-            <Typography variant="bodyHero" mt={6} mb={7}>
-              {text1}
-              {link !== "" && (
-                <Link
-                  href={link}
-                  target="_blank"
-                  rel="noopener"
-                  underline="always"
-                  sx={{
-                    color: "var(--color-text-1)",
-                    fontWeight: "var(--font-weight-2)",
-                    textDecoration: "solid underline 3px",
-                    textUnderlinePosition: "under",
-                    textDecorationColor: "var(--color-text-4)",
-                  }}
-                >
-                  {textBold}
-                </Link>
-              )}
-              {text2}
-            </Typography>
-
-            <ButtonCustom
-              text="Take the survey"
-              to="survey"
-              variant="blackBtn"
-              sx={{ width: "200px", height: "50px", textShadow: "none" }}
-            />
-          </Box>
-        </AnimatedBox>
+              <ButtonWhite text="Take the survey" to="survey" />
+            </Box>
+          </AnimatedBox>
+        </Box>
       </Box>
     </HeroWrapper>
   );

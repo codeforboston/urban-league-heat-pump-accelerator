@@ -8,18 +8,19 @@ import {
   CardMedia,
   Grid,
 } from "@mui/material";
-import imageVoice from "../../../../assets/images/surveyor.jpg";
-import imageAbout from "../../../../assets/images/heat-pump-outside-home.jpg";
-import ButtonCustom from "../../Components/ButtonCustom";
+import imageVoice from "../../../../assets/images/copywritingImages/add-your-voice.png";
+import imageAbout from "../../../../assets/images/copywritingImages/about-us.png";
+import ButtonDarkBklue from "../../Components/Button/ButtonDarkBlue";
+import Heading2 from "../../Components/Typography/Heading2";
 
 import AnimatedBox from "../../Components/AnimatedBox";
 
 const CardLinks = styled("div")(({ theme }) => ({
   minWidth: "260px",
-  maxWidth: "480px",
+  maxWidth: "680px",
   borderRadius: "2%",
   padding: "1px 0",
-  border: "var(--box-shadow-2)",
+  border: "var(--boder-color-1)",
   "& .links-wrapper": {
     "& h2": {
       fontSize: "1.5rem",
@@ -49,7 +50,6 @@ const CardLinksSection = () => {
       button: {
         text: "Take the survey",
         to: "survey",
-        variant: "customBtn",
       },
       idCSS: "survey-link-section",
       image: imageVoice,
@@ -61,7 +61,6 @@ const CardLinksSection = () => {
       button: {
         text: "Learn more",
         to: "about-us",
-        variant: "customBtn",
       },
       idCSS: "learnmore-link-section",
       image: imageAbout,
@@ -77,7 +76,7 @@ const CardLinksSection = () => {
               <CardMedia
                 component="img"
                 sx={{
-                  width: { sm: "151px", xs: "25%" },
+                  width: { sm: "300px", xs: "25%" },
                   display: { xxs: "block", xs: "none" },
                 }}
                 image={detail.image}
@@ -95,14 +94,12 @@ const CardLinksSection = () => {
                       justifyContent: "space-between",
                     }}
                   >
-                    <Typography py={2} variant="title2">
-                      {detail.title}
-                    </Typography>
+                    <Heading2 text={detail.title} />
 
                     <Box
                       sx={{
                         height: "140px",
-                        color: "var(--color-text-6)",
+                        color: "var(--color-text-3)",
                       }}
                     >
                       <Typography variant="body1">
@@ -116,10 +113,9 @@ const CardLinksSection = () => {
                         justifyContent: "flex-end",
                       }}
                     >
-                      <ButtonCustom
+                      <ButtonDarkBklue
                         text={detail.button.text}
                         to={detail.button.to}
-                        variant="customBtn"
                       />
                     </Box>
                   </Box>
