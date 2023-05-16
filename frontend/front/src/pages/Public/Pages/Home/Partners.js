@@ -14,39 +14,39 @@ const Partners = () => {
   const partners = [
     {
       id: 1,
-      logo: ulemLogo,
-      name: "Urban League of Eastern Massachusetts (ULEM)",
-      link: "https://www.ulem.org/",
-    },
-    {
-      id: 2,
-      logo: maCleanEnergyLogo,
-      name: "Massachusetts Clean Energy Center",
-      link: "https://www.masscec.com/",
-    },
-    {
-      id: 3,
-      logo: heatSmartLogo,
-      name: "HeatSmart Alliance",
-      link: "https://heatsmartalliance.org/",
-    },
-    {
-      id: 4,
       logo: codeForAmericaLogo,
       name: "Code For America",
       link: "https://codeforamerica.org/",
     },
     {
-      id: 5,
+      id: 2,
       logo: codeForBostonLogo,
       name: "Code For Boston",
       link: "https://www.codeforboston.org/",
     },
     {
-      id: 6,
+      id: 3,
       logo: pcb,
       name: "City of Boston - PowerCorpsBOS (PCB)",
       link: "https://www.boston.gov/departments/workforce-development/powercorpsbos",
+    },
+    {
+      id: 4,
+      logo: heatSmartLogo,
+      name: "HeatSmart Alliance",
+      link: "https://heatsmartalliance.org/",
+    },
+    {
+      id: 5,
+      logo: maCleanEnergyLogo,
+      name: "Massachusetts Clean Energy Center",
+      link: "https://www.masscec.com/",
+    },
+    {
+      id: 6,
+      logo: ulemLogo,
+      name: "Urban League of Eastern Massachusetts (ULEM)",
+      link: "https://www.ulem.org/",
     },
   ];
 
