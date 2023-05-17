@@ -108,21 +108,17 @@ RSpec.describe '/assignments', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          surveyor_ids: []
+        }
       end
 
-      it 'updates the requested assignment' do
+      it 'updates the assignment' do
         assignment = Assignment.create! valid_attributes
         patch assignment_url(assignment), params: { assignment: new_attributes }, as: :json
         assignment.reload
-        skip('Add assertions for updated state')
-      end
-
-      it 'redirects to the assignment' do
-        assignment = Assignment.create! valid_attributes
-        patch assignment_url(assignment), params: { assignment: new_attributes }, as: :json
-        assignment.reload
-        expect(response).to redirect_to(assignment_url(assignment))
+        expect(response).to be_successful
+        expect(JSON.parse(response.body)['surveyor_ids']).to match_array([])
       end
     end
 
