@@ -14,6 +14,7 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe '/assignments', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Assignment. As you add validations to Assignment, be sure to
@@ -108,21 +109,17 @@ RSpec.describe '/assignments', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          surveyor_ids: []
+        }
       end
 
-      it 'updates the requested assignment' do
+      it 'updates the assignment' do
         assignment = Assignment.create! valid_attributes
         patch assignment_url(assignment), params: { assignment: new_attributes }, as: :json
         assignment.reload
-        skip('Add assertions for updated state')
-      end
-
-      it 'redirects to the assignment' do
-        assignment = Assignment.create! valid_attributes
-        patch assignment_url(assignment), params: { assignment: new_attributes }, as: :json
-        assignment.reload
-        expect(response).to redirect_to(assignment_url(assignment))
+        expect(response).to be_successful
+        expect(JSON.parse(response.body)['surveyor_ids']).to match_array([])
       end
     end
 
@@ -147,3 +144,4 @@ RSpec.describe '/assignments', type: :request do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
