@@ -21,7 +21,9 @@ class SurveyVisitsController < ApplicationController
 
   # POST /survey_visits or /survey_visits.json
   def create
-    @survey_visit = SurveyVisit.new(survey_visit_params)
+    params_hash = survey_visit_params.to_h
+    params_hash[:survey_response_attributes][:ip] = request.ip if params_hash.key?(:survey_response_attributes)
+    @survey_visit = SurveyVisit.new(params_hash)
 
     respond_to do |format|
       if @survey_visit.save
