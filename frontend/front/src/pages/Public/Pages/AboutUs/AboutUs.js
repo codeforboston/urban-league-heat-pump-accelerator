@@ -44,8 +44,8 @@ function AboutUs() {
           <Box>
             <Stack
               direction="row"
-              alignItems={"center"}
-              justifyContent={"center"}
+              alignItems={{ xs: "center", md: "flex-start" }}
+              alignContent={"flex-start"}
               flexDirection={{ xs: "column", md: "row" }}
             >
               <Link
@@ -55,7 +55,8 @@ function AboutUs() {
                 target="_blank"
                 rel="noopener noreferrer"
                 width={220}
-                m={2}
+                mr={{ xs: 0, md: 2 }}
+                mb={{ xs: 2, md: 0 }}
               />
 
               <Box>
