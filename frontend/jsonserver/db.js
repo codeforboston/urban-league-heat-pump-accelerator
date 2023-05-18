@@ -1,5 +1,5 @@
 const assignments = require('./data/assignments_index.json');
-const homes = require('./data/homes_index.json');
+const homes = require('./data/homes.js');
 const users = require('./data/users.js');
 const surveys = require('./data/survey_index.json');
 const homesurvey = require('./data/homesurvey.js');
