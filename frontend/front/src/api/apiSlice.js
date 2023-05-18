@@ -5,8 +5,8 @@ const sortById = (a, b) => a.id - b.id;
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
   baseQuery: fetchBaseQuery({
-    // baseUrl: "http://localhost:3001",
-    baseUrl: "https://testing-ibhy.onrender.com",
+    baseUrl: "http://localhost:3001",
+    // baseUrl: "https://testing-ibhy.onrender.com",
   }),
 
   tagTypes: [
