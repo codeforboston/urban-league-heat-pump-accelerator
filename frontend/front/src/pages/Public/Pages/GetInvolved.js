@@ -16,7 +16,7 @@ const GetInvolved = () => {
       <Container sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
         <Stack direction="column">
           <Box textAlign="center" mt={6}>
-            <Typography variant="title4">BHPA CORE PARTNERS</Typography>
+            <Typography>BHPA CORE PARTNERS</Typography>
           </Box>
           <Box mt={6}>
             <Divider sx={{ width: "100%" }} />
