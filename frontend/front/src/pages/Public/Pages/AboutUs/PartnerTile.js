@@ -7,7 +7,6 @@ const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
       <Stack
         direction={{ xs: "column", md: "row" }}
         alignItems={{ xs: "center", md: "flex-start" }}
-        // justifyContent="flex-end"
       >
         <Link
           component="img"
