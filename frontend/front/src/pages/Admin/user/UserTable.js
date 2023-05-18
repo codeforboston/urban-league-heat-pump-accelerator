@@ -13,9 +13,9 @@ import { useGetSurveyorsQuery } from "../../../api/apiSlice";
 import { Box, CircularProgress } from "@mui/material";
 
 const columns = [
-  { id: "uid", label: "UserID", minWidth: 50 },
-  { id: "firstName", label: "First Name", minWidth: 50 },
-  { id: "lastName", label: "Last Name", minWidth: 50 },
+  { id: "id", label: "UserID", minWidth: 50 },
+  { id: "firstname", label: "First Name", minWidth: 50 },
+  { id: "lastname", label: "Last Name", minWidth: 50 },
   { id: "email", label: "Email", minWidth: 50 },
   { id: "phone", label: "Phone", minWidth: 50 },
   { id: "role", label: "Role", minWidth: 50 },
