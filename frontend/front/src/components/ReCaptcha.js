@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 const RECAPTCHA_SCRIPT_ID = "RECAPTCHA_SCRIPT";
 
@@ -33,8 +33,7 @@ export const useGetReCAPTCHAToken = ({ action }) => {
 
           resolve(recaptchaToken);
         } catch (err) {
-          // TODO: don't print the error once recaptcha actually works
-          console.error("ReCAPTCHA error", err);
+          console.error("Error obtaining ReCAPTCHA token!");
           resolve(null);
         }
       });
