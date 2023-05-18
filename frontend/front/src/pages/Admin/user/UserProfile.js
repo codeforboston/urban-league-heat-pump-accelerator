@@ -140,7 +140,7 @@ const UserProfile = () => {
               <TextField
                 disabled={!editMode}
                 onChange={onChange}
-                value={value}
+                value={surveyorData?.lastname || value}
                 label="Last Name"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -154,7 +154,7 @@ const UserProfile = () => {
               <TextField
                 disabled={!editMode}
                 onChange={onChange}
-                value={value}
+                value={surveyorData?.email || value}
                 label="Email"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -168,7 +168,7 @@ const UserProfile = () => {
               <TextField
                 disabled={!editMode}
                 onChange={onChange}
-                value={value}
+                value={surveyorData?.phone || value}
                 label="Phone"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -182,7 +182,7 @@ const UserProfile = () => {
               <TextField
                 disabled={!editMode}
                 onChange={onChange}
-                value={value}
+                value={surveyorData?.street_address || value}
                 label="Street Address"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -196,7 +196,7 @@ const UserProfile = () => {
               <TextField
                 disabled={!editMode}
                 onChange={onChange}
-                value={value}
+                value={surveyorData?.city || value}
                 label="City"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -210,7 +210,7 @@ const UserProfile = () => {
               <TextField
                 disabled={!editMode}
                 onChange={onChange}
-                value={value}
+                value={surveyorData?.zipcode || value}
                 label="Zip Code"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -224,7 +224,7 @@ const UserProfile = () => {
               <TextField
                 disabled={!editMode}
                 onChange={onChange}
-                value={value}
+                value={surveyorData?.state || value}
                 label="State"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
