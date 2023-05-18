@@ -9,6 +9,8 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useNavigate } from "react-router-dom";
+import { useGetSurveyorsQuery } from "../../../api/apiSlice";
+import { Box, CircularProgress } from "@mui/material";
 
 const columns = [
   { id: "uid", label: "UserID", minWidth: 50 },
@@ -20,9 +22,13 @@ const columns = [
   { id: "status", label: "Status", minWidth: 50 },
 ];
 
-const rows = [];
-
 const UserTable = () => {
+  const {
+    data: rows,
+    error: surveyorsError,
+    isLoading: isSurveyorsDataLoading,
+  } = useGetSurveyorsQuery();
+  console.log(rows);
   const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
@@ -40,6 +46,14 @@ const UserTable = () => {
   const onRowClick = (row) => {
     navigate(`userprofile/${row.uid}`);
   };
+
+  if (isSurveyorsDataLoading) {
+    return (
+      <Box display="flex" justifyContent="center">
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
