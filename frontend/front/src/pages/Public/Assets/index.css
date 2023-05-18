@@ -10,11 +10,6 @@
   /* Font Families */
   --font-family-1: "Lora", sans-serif;
 
-  /* Font Weights */
-  --font-weight-1: 600;
-  --font-weight-2: 800;
-  --font-weight-3: 900;
-
   /* Colors text*/
   --color-text-1: #F7F7F7; /* text: navbar, footer, special cases */
   --color-text-2: #00497A; /* titles */

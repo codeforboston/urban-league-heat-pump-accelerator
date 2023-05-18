@@ -46,7 +46,7 @@ const theme = createTheme({
     navLinks: {
       fontSize: "1.1rem",
       display: "block",
-      fontWeight: "var(--font-weight-1)",
+      fontWeight: 600,
       letterSpacing: "-.03em",
       textAlign: "center",
       color: "var(--color-text-1)",
