@@ -1,22 +1,26 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Typography, Avatar, Box } from "@mui/material";
+import nia from "../../../../assets/images/testimonials/nia.png";
 
 const items = [
   {
-    name: "John Doe",
-    text: "This product has changed my life. It's so easy to use and has made things so much more convenient.",
-    avatarSrc:
-      "https://images.unsplash.com/photo-1550525811-e5869dd03032?auto=format&fit=crop&w=400&h=400&q=60",
+    name: "Nia",
+    subtitle: "New Floor Mounted Air-Source Heat Pump",
+    text: `Mattapan resident Nia has cut her average electric bill in half since replacing her electric baseboards and window air-conditioners with air-source heat pumps. She says, 
+    “Wow, it blew my mind. Normally the bill is anywhere from $400 to $500, and it was more like $200. I was like, let me look at that again!”`,
+    avatarSrc: nia,
   },
   {
     name: "Jane Doe",
+    subtitle: "Vice Chairman, ACME Corp.",
     text: "I love this product. It's saved me so much time and hassle. I highly recommend it!",
     avatarSrc:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&h=400&q=60",
   },
   {
     name: "Jim Smith",
+    subtitle: "President, Foo Bars Inc.",
     text: "This is a game-changer. I can't imagine going back to my old ways. Thank you for this product!",
     avatarSrc:
       "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?auto=format&fit=crop&w=400&h=400&q=60",
@@ -39,7 +43,7 @@ function Testimonial() {
         }}
       >
         <Box sx={{ display: { xs: "block", lg: "none" } }}>
-          <Carousel animation="slide" height="380px">
+          <Carousel animation="slide" maxHeight="580px">
             {items.map((item, i) => (
               <TestimonialItem key={i} item={item} />
             ))}
@@ -86,7 +90,7 @@ function TestimonialItem(props) {
           boxShadow: "var(--boxShadow-3)",
           color: "var(--color-text-2)",
           margin: "0 16px",
-          height: "220px",
+          height: "auto",
           border: "var(--boder-color-1)",
           maxWidth: { lg: "500px" },
           minWidth: { lg: "310px" },
@@ -95,20 +99,24 @@ function TestimonialItem(props) {
         <Typography variant="h6" mt={8}>
           {props.item.name}
         </Typography>
+        <Typography variant="subtitle1">{props.item.subtitle}</Typography>
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            height: "100%",
           }}
         >
           <Typography
             variant="body1"
             textAlign="center"
-            sx={{ color: "var(--color-text-3)", mb: 3 }}
+            sx={{
+              color: "var(--color-text-3)",
+              height: { xs: "100%", sm: "180px" },
+              display: "flex",
+            }}
           >
-            "{props.item.text}"
+            {props.item.text}
           </Typography>
         </Box>
       </Box>
