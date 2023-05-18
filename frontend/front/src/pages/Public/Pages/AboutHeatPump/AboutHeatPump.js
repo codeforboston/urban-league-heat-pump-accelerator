@@ -37,7 +37,15 @@ const cardContent = [
 
 function AboutHeatPump() {
   return (
-    <Box mb={6}>
+    <Box
+      mb={6}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        minHeight: "calc(100vh - 560px)",
+      }}
+    >
       <Heading1BlueBgGround text="About Heat Pumps" />
       <Container>
         <Box mb={4} mt={4}>

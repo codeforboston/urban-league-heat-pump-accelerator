@@ -1,31 +1,28 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Typography, Divider, Stack, Container } from "@mui/material";
+import Heading1BlueBgGround from "../Components/Typography/Heading1BlueBgGround";
 
 const GetInvolved = () => {
   return (
     <Box
       sx={{
-        width: "100%",
-        height: "500px",
-        backgroundSize: "cover",
-        backgroundPosition: "bottom",
-        position: "relative",
-        flexGrow: 1,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        minHeight: "calc(100vh - 560px)",
       }}
     >
-      <Grid
-        container
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        sx={{ height: "100%" }}
-      >
-        <Grid item display="flex" flexDirection="column" alignItems="center">
-          <Typography variant="h4" mb={3} textAlign="center">
-            Get Involved
-          </Typography>
-        </Grid>
-      </Grid>
+      <Heading1BlueBgGround text="Get Involved" />
+      <Container sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
+        <Stack direction="column">
+          <Box textAlign="center" mt={6}>
+            <Typography variant="title4">BHPA CORE PARTNERS</Typography>
+          </Box>
+          <Box mt={6}>
+            <Divider sx={{ width: "100%" }} />
+          </Box>
+        </Stack>
+      </Container>
     </Box>
   );
 };

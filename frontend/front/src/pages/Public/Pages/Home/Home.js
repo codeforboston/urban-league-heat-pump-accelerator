@@ -31,7 +31,14 @@ const Home = () => {
     };
   }, []);
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        minHeight: "calc(100vh - 560px)",
+      }}
+    >
       {/* HERO */}
       <Box sx={{ height: heroHeight }}>
         <CarrouselHero />

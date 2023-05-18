@@ -92,7 +92,7 @@ const CardBenefitsSection = () => {
             </Typography>
             <Link to="benefits-heat-pump">
               <Typography variant="body" sx={{ color: "var(--color-text-2)" }}>
-                Benefits of Heat Pump
+                Benefits of Heat Pumps
               </Typography>
             </Link>
           </Stack>

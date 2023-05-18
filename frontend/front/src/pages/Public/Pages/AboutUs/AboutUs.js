@@ -18,7 +18,15 @@ import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGrou
 
 function AboutUs() {
   return (
-    <Box mb={3}>
+    <Box
+      mb={3}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        minHeight: "calc(100vh - 560px)",
+      }}
+    >
       <Heading1BlueBgGround text="About the Boston Heat Pump Accelerator" />
       <Container>
         <Stack direction="column" justifyContent="center" itemAlign="center">
@@ -47,7 +55,6 @@ function AboutUs() {
                 target="_blank"
                 rel="noopener noreferrer"
                 width={220}
-                // p={2}
                 m={2}
               />
 
