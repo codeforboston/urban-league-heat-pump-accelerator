@@ -2,15 +2,14 @@ import * as React from "react";
 
 import { Box, Button, MenuItem } from "@mui/material";
 
-import userData from "../../../dummyData/userSelection.json";
-import InputLabel from "@mui/material/InputLabel";
+import { DataGrid } from "@mui/x-data-grid";
 import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
-import RowData from "../../../dummyData/assignTable.json";
-import { DataGrid } from "@mui/x-data-grid";
 
-const rows = RowData;
+const rows = [];
+const userData = [];
 
 const AssignTable = () => {
   const navigate = useNavigate();

@@ -1,7 +1,0 @@
-{
-  "1":{"name": "superman", "age": "30","color": "blue","hometown": "metropolis" , "num":0},
-  "2":{"name": "batman", "age": "23","color": "yellow","hometown": "gotham","num":0},
-  "3":{"name": "spiderman", "age": "45","color": "red","hometown": "nyc","num":0},
-  "4":{"name": "captAmerica", "age": "56","color": "white","hometown": "nyc","num":0},
-  "5":{"name": "ironman", "age": "43","color": "gold","hometown": "nyc","num":0}
-}
