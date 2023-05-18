@@ -2,17 +2,13 @@
 
 Urban League Heat Pump Accelerator Project
 
-# Back folder
+# `jsonserver`
 
-Back folder is a mock node server for the frontend to do some testing.
+`jsonserver` contains the `json-server` local testing server.
 
-# Testing with Json-server
+# `front`
 
- json-server --watch src\dummyData\jsonServer.json --port 3500
-
-# Front folder
-
-Front folder is the frontend folder created by create react app.
+`front` contains the main front end application code.
 
 # Contact
 

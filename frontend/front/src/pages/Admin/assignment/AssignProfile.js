@@ -1,12 +1,12 @@
-import { Box, Button, Container, Typography } from "@mui/material";
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { DataGrid } from "@mui/x-data-grid";
-import AssignProfileTable from "../../../dummyData/assignProfileTable.json";
-import ContainerTitle from "../component/ContainerTitle";
+import { Box, Button, Typography } from "@mui/material";
 
-const rows = AssignProfileTable;
+import ContainerTitle from "../component/ContainerTitle";
+import { DataGrid } from "@mui/x-data-grid";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
+const rows = [];
 
 const AssignProfile = () => {
   const { aid } = useParams();

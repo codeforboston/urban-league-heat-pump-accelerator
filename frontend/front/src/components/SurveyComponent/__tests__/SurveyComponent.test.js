@@ -1,14 +1,16 @@
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import * as router from "react-router";
-import SurveyComponent from "../SurveyComponent";
 import * as apiSlice from "../../../api/apiSlice";
-import surveys from "../../../dummyData/jsonServerData/surveys";
-import homes from "../../../dummyData/jsonServerData/homes";
+import * as router from "react-router";
+
 import {
-  buildSurveyCacheKey,
   buildDefaultDataFromSurveyStructure,
+  buildSurveyCacheKey,
 } from "../../../util/surveyUtils";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+
+import React from "react";
+import SurveyComponent from "../SurveyComponent";
+import homes from "../../../../../jsonserver/data/homes_index.json";
+import surveys from "../../../../../jsonserver/data/survey_index.json";
 
 const DEFAULT_TEST_SURVEY = surveys[0];
 const DEFAULT_TEST_HOME = homes[0];
