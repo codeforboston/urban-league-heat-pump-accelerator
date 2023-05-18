@@ -89,7 +89,6 @@ const CardLinksSection = () => {
                   maxWidth: { xs: "468px", sm: "680px" },
                   backgroundSize: "cover",
                   height: "auto",
-                  display: { xxs: "block", xs: "none" },
                 }}
                 image={detail.image}
                 alt={detail.title}

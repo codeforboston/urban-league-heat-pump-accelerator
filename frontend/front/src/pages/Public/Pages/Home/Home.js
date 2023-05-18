@@ -19,7 +19,7 @@ const SectionWrapper = styled(Box)(({ theme, image }) => ({
 }));
 
 const Home = () => {
-  const [heroHeight, setHeroHeight] = useState("100vh");
+  const [heroHeight, setHeroHeight] = useState("calc(100vh-64px)");
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,7 +45,7 @@ const Home = () => {
       </Box>
       <Container>
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
-        <Box mt={8}>
+        <Box mt={{ xs: 4, sm: 0 }}>
           <CardLinksSection />
         </Box>
       </Container>
