@@ -68,7 +68,7 @@ export const apiSlice = createApi({
       ],
     }),
     getSurveyor: builder.query({
-      query: (surveyor) => `/surveyors/${surveyor.id}`,
+      query: (surveyor) => `/surveyors/${surveyor}`,
       providesTags: (result, error, arg) => [{ type: "Surveyor", id: arg }],
     }),
     createSurveyor: builder.mutation({
