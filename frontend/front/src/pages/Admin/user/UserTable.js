@@ -44,7 +44,6 @@ const UserTable = () => {
   };
 
   const onRowClick = (row) => {
-    console.log(row);
     navigate(`userprofile/${row.id}`);
   };
 
