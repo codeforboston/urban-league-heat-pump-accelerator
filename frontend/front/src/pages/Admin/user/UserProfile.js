@@ -1,11 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  TextField,
+  Typography,
+} from "@mui/material";
 import ConfirmationModal from "../../Developer/confirmModal/ConfirmationModal";
 import { useForm, Controller } from "react-hook-form";
+import { useGetSurveyorQuery } from "../../../api/apiSlice";
 
 const UserProfile = () => {
   const { uid } = useParams();
+  const {
+    data: surveyorData,
+    isLoading: isSurveyorDataLoading,
+    error: surveyorError,
+  } = useGetSurveyorQuery(uid);
   const [editMode, setEditMode] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
 
@@ -24,7 +36,7 @@ const UserProfile = () => {
   });
   const onSubmit = (data) => {
     setEditMode(false);
-  }
+  };
 
   // deleteModal
   const confirmDelete = () => {
@@ -56,15 +68,11 @@ const UserProfile = () => {
           DELETE
         </Button>
       </Box>
-    )
+    );
   } else {
     formControlButtons = (
       <Box pt={5} textAlign="right">
-        <Button
-          variant="outlined"
-          sx={{ ml: 2 }}
-          onClick={() => onSubmit()}
-        >
+        <Button variant="outlined" sx={{ ml: 2 }} onClick={() => onSubmit()}>
           SAVE
         </Button>
         <Button
@@ -76,7 +84,15 @@ const UserProfile = () => {
           CANCEL
         </Button>
       </Box>
-    )
+    );
+  }
+
+  if (isSurveyorDataLoading) {
+    return (
+      <Box display="flex" justifyContent="center">
+        <CircularProgress />
+      </Box>
+    );
   }
 
   return (
@@ -108,12 +124,12 @@ const UserProfile = () => {
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
-              disabled={!editMode}
-              onChange={onChange}
-              value={value}
-              label="First Name"
-              variant="standard"
-              sx={{ width: "95%", mx: 2, mt: 3 }}
+                disabled={!editMode}
+                onChange={onChange}
+                value={surveyorData?.firstname || value}
+                label="First Name"
+                variant="standard"
+                sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
@@ -122,12 +138,12 @@ const UserProfile = () => {
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
-              disabled={!editMode}
-              onChange={onChange}
-              value={value}
-              label="Last Name"
-              variant="standard"
-              sx={{ width: "95%", mx: 2, mt: 3 }}
+                disabled={!editMode}
+                onChange={onChange}
+                value={value}
+                label="Last Name"
+                variant="standard"
+                sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
@@ -136,12 +152,12 @@ const UserProfile = () => {
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
-              disabled={!editMode}
-              onChange={onChange}
-              value={value}
-              label="Email"
-              variant="standard"
-              sx={{ width: "95%", mx: 2, mt: 3 }}
+                disabled={!editMode}
+                onChange={onChange}
+                value={value}
+                label="Email"
+                variant="standard"
+                sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
@@ -150,12 +166,12 @@ const UserProfile = () => {
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
-              disabled={!editMode}
-              onChange={onChange}
-              value={value}
-              label="Phone"
-              variant="standard"
-              sx={{ width: "95%", mx: 2, mt: 3 }}
+                disabled={!editMode}
+                onChange={onChange}
+                value={value}
+                label="Phone"
+                variant="standard"
+                sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
@@ -164,12 +180,12 @@ const UserProfile = () => {
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
-              disabled={!editMode}
-              onChange={onChange}
-              value={value}
-              label="Street Address"
-              variant="standard"
-              sx={{ width: "95%", mx: 2, mt: 3 }}
+                disabled={!editMode}
+                onChange={onChange}
+                value={value}
+                label="Street Address"
+                variant="standard"
+                sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
@@ -178,12 +194,12 @@ const UserProfile = () => {
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
-              disabled={!editMode}
-              onChange={onChange}
-              value={value}
-              label="City"
-              variant="standard"
-              sx={{ width: "95%", mx: 2, mt: 3 }}
+                disabled={!editMode}
+                onChange={onChange}
+                value={value}
+                label="City"
+                variant="standard"
+                sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
@@ -192,12 +208,12 @@ const UserProfile = () => {
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
-              disabled={!editMode}
-              onChange={onChange}
-              value={value}
-              label="Zip Code"
-              variant="standard"
-              sx={{ width: "95%", mx: 2, mt: 3 }}
+                disabled={!editMode}
+                onChange={onChange}
+                value={value}
+                label="Zip Code"
+                variant="standard"
+                sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
@@ -206,23 +222,20 @@ const UserProfile = () => {
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
-              disabled={!editMode}
-              onChange={onChange}
-              value={value}
-              label="State"
-              variant="standard"
-              sx={{ width: "95%", mx: 2, mt: 3 }}
+                disabled={!editMode}
+                onChange={onChange}
+                value={value}
+                label="State"
+                variant="standard"
+                sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
 
           {/* BUTTONS */}
-          <Box sx={{ display: "flex", "justifyContent": "space-between" }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Box pt={5} textAlign="left">
-              <Button
-                variant="contained" sx={{ ml: 2 }}
-                disabled={editMode}
-              >
+              <Button variant="contained" sx={{ ml: 2 }} disabled={editMode}>
                 CHANGE PASSWORD
               </Button>
             </Box>
