@@ -16,12 +16,6 @@ import Heading2 from "../../Components/Typography/Heading2";
 import AnimatedBox from "../../Components/AnimatedBox";
 
 const CardLinks = styled("div")(({ theme }) => ({
-  // minWidth: "260px",
-  // maxWidth: { xs: "350px", sm: "680px" },
-  // borderRadius: "2%",
-  // background: "var(--bgColor-2)",
-  // padding: "1px 0",
-  // border: "var(--boder-color-1)",
   "& .links-wrapper": {
     "& h2": {
       fontSize: "1.5rem",
