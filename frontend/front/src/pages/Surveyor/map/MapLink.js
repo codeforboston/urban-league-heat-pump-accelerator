@@ -3,14 +3,13 @@ import {
   AccordionDetails,
   AccordionSummary,
   Button,
-  Container,
   List,
 } from "@mui/material";
-import { Box } from "@mui/system";
 import React, { useState } from "react";
-import MapUnit from "./MapLinkUnit";
-// import cluster from "../../../dummyData/homeDatacluster.json";
+
+import { Box } from "@mui/system";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import MapUnit from "./MapLinkUnit";
 
 function openGoogleMaps(locations) {
   const origin = locations[0];
