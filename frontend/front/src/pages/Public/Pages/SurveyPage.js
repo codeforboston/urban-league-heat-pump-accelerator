@@ -5,12 +5,12 @@ import {
   useCreateHomeMutation,
   useCreateSurveyVisitMutation,
 } from "../../../api/apiSlice";
-import { useGetReCAPTCHAToken } from "../../../components/ReCaptcha";
-import { ThanksForSubmission } from "../Components/ThanksForSubmission";
-import { PublicSurvey } from "../Components/PublicSurvey";
-import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
 import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import Heading1BlueBgGround from "../Components/Typography/Heading1BlueBgGround";
+import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
+import { PublicSurvey } from "../Components/PublicSurvey";
+import { ThanksForSubmission } from "../Components/ThanksForSubmission";
+import { useGetReCAPTCHAToken } from "../../../components/ReCaptcha";
 
 const STEP_ADDRESS = "PHASE_ADDRESS";
 const STEP_SURVEY = "PHASE_SURVEY";
@@ -22,7 +22,7 @@ const STEP_THANKS = "PHASE_THANKS";
  * This page should handle all API calls so that component switching is easier to control
  */
 export const SurveyPage = () => {
-  const getReCaptchaToken = useGetReCAPTCHAToken("submit");
+  const getReCaptchaToken = useGetReCAPTCHAToken("publicsurvey");
 
   const [
     createHome,

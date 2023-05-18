@@ -1,10 +1,10 @@
-import React from "react";
-import GoogleMap from "./GoogleMap";
-import cluster1 from "../../../dummyData/homeDataCluster1.json";
 import { Box, Container, Typography } from "@mui/material";
-import MapLink from "./MapLink";
 
-console.log(cluster1);
+import GoogleMap from "./GoogleMap";
+import MapLink from "./MapLink";
+import React from "react";
+
+const cluster1 = [];
 
 const locations = [
   { lat: 37.7749, lng: -122.4194 }, // San Francisco
