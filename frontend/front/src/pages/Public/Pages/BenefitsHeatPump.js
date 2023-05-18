@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Divider, Stack, Container } from "@mui/material";
+import Heading1BlueBgGround from "../Components/Typography/Heading1BlueBgGround";
 
 const LearnMore = () => {
   return (
@@ -11,9 +12,17 @@ const LearnMore = () => {
         minHeight: "calc(100vh - 560px)",
       }}
     >
-      <Typography variant="h4" mb={3} textAlign="center">
-        Benefits Heat Pump
-      </Typography>
+      <Heading1BlueBgGround text="Benefits of Heat Pumps" />
+      <Container sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
+        <Stack direction="column">
+          <Box textAlign="center" mt={6}>
+            text
+          </Box>
+          <Box mt={6}>
+            <Divider sx={{ width: "100%" }} />
+          </Box>
+        </Stack>
+      </Container>
     </Box>
   );
 };
