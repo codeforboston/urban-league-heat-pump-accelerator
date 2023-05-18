@@ -44,7 +44,8 @@ const UserTable = () => {
   };
 
   const onRowClick = (row) => {
-    navigate(`userprofile/${row.uid}`);
+    console.log(row);
+    navigate(`userprofile/${row.id}`);
   };
 
   if (isSurveyorsDataLoading) {
