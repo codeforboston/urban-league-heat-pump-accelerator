@@ -16,11 +16,6 @@ import Heading2 from "../../Components/Typography/Heading2";
 import AnimatedBox from "../../Components/AnimatedBox";
 
 const CardLinks = styled("div")(({ theme }) => ({
-  minWidth: "260px",
-  maxWidth: { xs: "350px", sm: "680px" },
-  borderRadius: "2%",
-  padding: "1px 0",
-  border: "var(--boder-color-1)",
   "& .links-wrapper": {
     "& h2": {
       fontSize: "1.5rem",
@@ -68,33 +63,34 @@ const CardLinksSection = () => {
   ];
 
   return (
-    <GridLinkWrapper container>
+    <GridLinkWrapper>
       {linkCards.map((detail) => (
-        <AnimatedBox triggerOnce={false} key={detail.id}>
-          <CardLinks>
-            <Card
+        <CardLinks>
+          <Card
+            sx={{
+              background: "var(--bgColor-3)",
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              minWidth: "260px",
+              maxWidth: { xs: "468px", sm: "680px" },
+              borderRadius: "2%",
+            }}
+            id={detail.idCSS}
+          >
+            <CardMedia
+              component="img"
               sx={{
-                display: "flex",
-                flexDirection: { xs: "column", sm: "row" },
+                width: { xs: "100%", sm: "300px" },
                 minWidth: "260px",
                 maxWidth: { xs: "468px", sm: "680px" },
+                backgroundSize: "cover",
+                height: "auto",
               }}
-              id={detail.idCSS}
-            >
-              <CardMedia
-                component="img"
-                sx={{
-                  width: { xs: "100%", sm: "300px" },
-                  minWidth: "260px",
-                  maxWidth: { xs: "468px", sm: "680px" },
-                  backgroundSize: "cover",
-                  height: "auto",
-                  display: { xxs: "block", xs: "none" },
-                }}
-                image={detail.image}
-                alt={detail.title}
-              />
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
+              image={detail.image}
+              alt={detail.title}
+            />
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <AnimatedBox triggerOnce={false} key={detail.id}>
                 <CardContent sx={{ flex: "1 0 auto" }}>
                   <Box
                     id="survey-link-section"
@@ -133,10 +129,10 @@ const CardLinksSection = () => {
                     </Box>
                   </Box>
                 </CardContent>
-              </Box>
-            </Card>
-          </CardLinks>
-        </AnimatedBox>
+              </AnimatedBox>
+            </Box>
+          </Card>
+        </CardLinks>
       ))}
     </GridLinkWrapper>
   );

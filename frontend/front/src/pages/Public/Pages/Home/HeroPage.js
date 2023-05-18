@@ -78,7 +78,7 @@ const HeroPage = ({
                       underline="always"
                       sx={{
                         color: "var(--color-text-9)",
-                        fontWeight: "var(--font-weight-2)",
+                        fontWeight: 800,
                         textDecoration: "solid underline 3px",
                         textUnderlinePosition: "under",
                         textDecorationColor: "var(--color-text-6)",

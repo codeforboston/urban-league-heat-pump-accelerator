@@ -5,10 +5,8 @@ const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
   return (
     <Box my={3}>
       <Stack
-        direction="row"
-        alignItems="center"
-        justifyContent="center"
-        flexDirection={{ xs: "column", md: "row" }}
+        direction={{ xs: "column", md: "row" }}
+        alignItems={{ xs: "center", md: "flex-start" }}
       >
         <Link
           component="img"
@@ -17,7 +15,8 @@ const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
           target="_blank"
           rel="noopener noreferrer"
           width={220}
-          m={2}
+          mr={{ xs: 0, md: 2 }}
+          mb={{ xs: 2, md: 0 }}
         />
 
         <Box>

@@ -54,7 +54,7 @@ const navbarItems = {
   SURVEY: { link: "survey" },
   "Learn More": {
     "Benefits of Heat Pumps": { link: "benefits-heat-pump" },
-    "About Heat Pump": { link: "about-heat-pump" },
+    "About Heat Pumps": { link: "about-heat-pump" },
     Testimonials: { link: "testimonial-section" },
     "About BHPA": { link: "about-us" },
   },

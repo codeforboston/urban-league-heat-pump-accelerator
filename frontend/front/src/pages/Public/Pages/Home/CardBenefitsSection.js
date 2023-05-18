@@ -29,7 +29,7 @@ const CardBenefitsSection = () => {
   const cards = [
     {
       id: 1,
-      title: "Live More Comfortably",
+      title: "Saving Money",
       paragraphs: [
         "Heat pumps can help you keep cool in summer and keep warm in winter. They are nearly silent, work continuously, and are reliable.",
       ],
@@ -92,7 +92,7 @@ const CardBenefitsSection = () => {
             </Typography>
             <Link to="benefits-heat-pump">
               <Typography variant="body" sx={{ color: "var(--color-text-2)" }}>
-                Benefits of Heat Pump
+                Benefits of Heat Pumps
               </Typography>
             </Link>
           </Stack>
