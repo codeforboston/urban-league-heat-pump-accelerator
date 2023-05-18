@@ -1,7 +1,9 @@
 import { Button, Container } from "@mui/material";
+
 import { Box } from "@mui/system";
 import React from "react";
-import cluster1 from "../../../dummyData/homeDataCluster1.json";
+
+const cluster1 = [];
 
 function openGoogleMaps(locations) {
   const origin = locations[0];

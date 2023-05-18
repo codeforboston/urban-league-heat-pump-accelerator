@@ -1,7 +1,7 @@
 import * as React from "react";
-import HouseData from "../../../dummyData/houseTable.json";
-import { useNavigate } from "react-router-dom";
+
 import { DataGrid } from "@mui/x-data-grid";
+import { useNavigate } from "react-router-dom";
 
 const columns = [
   { field: "id", headerName: "Id", width: 50 },
@@ -12,7 +12,7 @@ const columns = [
   { field: "completed", headerName: "Completed", width: 200 },
 ];
 
-const rows = HouseData;
+const rows = [];
 
 const HomeTable = () => {
   const navigate = useNavigate();
