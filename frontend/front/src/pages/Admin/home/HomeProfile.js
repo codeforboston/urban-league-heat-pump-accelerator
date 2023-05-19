@@ -19,8 +19,6 @@ const HomeProfile = () => {
     error: homeError,
   } = useGetHomeQuery(hid);
 
-  console.log(homeData);
-
   const [editMode, setEditMode] = useState(false);
 
   // Conditional Buttons

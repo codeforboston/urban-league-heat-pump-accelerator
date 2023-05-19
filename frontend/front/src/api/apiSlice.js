@@ -67,6 +67,14 @@ export const apiSlice = createApi({
         ...result.map(({ id }) => ({ type: "Surveyor", id })),
       ],
     }),
+    // getSurveyorsByAssignmentId: builder.query({
+    //   query: (assignment_id) => `/assignments/${assignment_id}`,
+    //   transformResponse: (res) => res.surveyor_ids,
+    //   providesTags: (result = [], error, arg) => [
+    //     "Surveyor",
+    //     ...result.map(({ id }) => ({ type: "Surveyor", id })),
+    //   ],
+    // }),
     getSurveyor: builder.query({
       query: (surveyor) => `/surveyors/${surveyor}`,
       providesTags: (result, error, arg) => [{ type: "Surveyor", id: arg }],
@@ -321,6 +329,7 @@ export const {
   useCreateSurveyorMutation,
   useGetSurveyorQuery,
   useGetSurveyorsQuery,
+  useGetSurveyorsByAssignmentIdQuery,
 
   // Home
   useDeleteHomeMutation,
