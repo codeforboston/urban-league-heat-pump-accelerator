@@ -1,21 +1,21 @@
 import { Box, Tooltip } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AssignmentLink({ id }) {
   // Tooltip functions
   const [open, setOpen] = useState(false);
-
   const handleClose = () => {
     setOpen(false);
   };
-
   const handleOpen = () => {
     setOpen(true);
   };
+
   return (
     <Tooltip
       sx={{
-        // width: "100%",
+        width: "100%",
         height: "100%",
       }}
       open={open}
@@ -24,7 +24,14 @@ export default function AssignmentLink({ id }) {
       title={`Go to assignment ${id}`}
       placement="top"
     >
-      <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          width: "100%",
+          height: "100%",
+        }}
+      >
         {id}
       </Box>
     </Tooltip>
