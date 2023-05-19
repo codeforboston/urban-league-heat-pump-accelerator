@@ -23,9 +23,20 @@ class SurveyVisitsController < ApplicationController
   def create
     @survey_visit = SurveyVisit.new(survey_visit_params)
 
+    # TODO: unpack reCAPTCHA user response token from request
+    # (perhaps from headers?)
+    actual_response_token = 'abc'
+    recaptcha_action = 'def'
+
     respond_to do |format|
       if @survey_visit.save
         format.json { render :show, status: :created, location: @survey_visit }
+
+        # If we have a survey_response, schedule the reCAPTCHA check
+        # in the background
+        unless @survey_visit.survey_response.nil?
+          CheckRecaptchaJob.perform_later @survey_visit.survey_response_id, actual_response_token, recaptcha_action
+        end
       else
         format.json { render json: @survey_visit.errors, status: :unprocessable_entity }
       end
