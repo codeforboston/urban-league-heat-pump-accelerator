@@ -1,4 +1,4 @@
-import { Box, Tooltip } from "@mui/material";
+import { Box, Button, Tooltip } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -22,18 +22,22 @@ export default function AssignmentLink({ id }) {
       onClose={handleClose}
       onOpen={handleOpen}
       title={`Go to assignment ${id}`}
-      placement="top"
+      placement="left"
+      className="goToAssignment"
     >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        {id}
-      </Box>
+      <Button variant="outlined" className="goToAssignment">
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+          }}
+          className="goToAssignment"
+        >
+          {id}
+        </Box>
+      </Button>
     </Tooltip>
   );
 }
