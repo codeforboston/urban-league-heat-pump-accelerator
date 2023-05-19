@@ -20,7 +20,7 @@ class SurveyVisitsController < ApplicationController
   def edit; end
 
   # POST /survey_visits or /survey_visits.json
-  def create
+  def create # rubocop:disable Metrics/MethodLength
     @survey_visit = SurveyVisit.new(survey_visit_params)
 
     # TODO: unpack reCAPTCHA user response token from request
