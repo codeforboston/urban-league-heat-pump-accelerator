@@ -32,8 +32,8 @@ const MapLinkUnit = ({ value }) => {
       <ListItemText
         primary={
           <Box>
-            <Box>{`${value.ST_NUM} ${value.ST_NAME}`}</Box>
-            <Box>{`${value.CITY} ${value.ZIPCODE}`}</Box>
+            <Box>{`${value.street_number} ${value.street_name}`}</Box>
+            <Box>{`${value.city} ${value.zip_code}`}</Box>
             <Box>
               {value.completed ? (
                 <Typography color="green">Completed</Typography>

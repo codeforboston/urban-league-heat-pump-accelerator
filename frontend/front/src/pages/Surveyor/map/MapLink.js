@@ -28,7 +28,7 @@ function openGoogleMaps(locations) {
 const MapLink = ({ homeData }) => {
   const [dashboardHomeData, setDashboardHomeData] = useState(homeData);
 
-  console.log(dashboardHomeData);
+  console.log(dashboardHomeData,"= dashboardHomeData");
 
   // loop through the item and push the lat and lng into geolocationArray
   const calGeoLocation = (item, geolocationArray) => {
