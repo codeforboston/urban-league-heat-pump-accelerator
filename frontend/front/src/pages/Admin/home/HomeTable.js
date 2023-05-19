@@ -64,8 +64,17 @@ const HomeTable = () => {
     );
   }
 
+  if (isHomesDataLoading) {
+    return (
+      <Box display="flex" justifyContent="center">
+        <CircularProgress />
+      </Box>
+    );
+  }
+
   return (
     <DataGrid
+      rows={homesData}
       rows={homesData}
       columns={columns}
       pageSize={20}
