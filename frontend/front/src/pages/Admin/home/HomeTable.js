@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import { DataGrid } from "@mui/x-data-grid";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useGetHomesQuery } from "../../../api/apiSlice";
-import { Box, CircularProgress, Tooltip } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import AssignmentLink from "./AssignmentLink";
 
 // Formats addresses
@@ -74,7 +74,6 @@ const HomeTable = () => {
 
   return (
     <DataGrid
-      rows={homesData}
       rows={homesData}
       columns={columns}
       pageSize={20}
