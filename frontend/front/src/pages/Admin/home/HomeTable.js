@@ -47,9 +47,13 @@ const HomeTable = () => {
   } = useGetHomesQuery();
   const navigate = useNavigate();
 
-  const onRowClick = (row, event, details) => {
-    if (event.target.dataset.field === "assignment_id") {
-      navigate(`admin/assignments/${row.getValue(row.id, "assignment_id")}`);
+  const onRowClick = (row, event) => {
+    console.log(event, event.target.dataset);
+    if (
+      event.target.dataset.field === "assignment_id" ||
+      event.target.parentElement.dataset.field === "assignment_id"
+    ) {
+      navigate(`/admin/assignments/${row.getValue(row.id, "assignment_id")}`);
     } else {
       navigate(`homeprofile/${row.id}`);
     }
