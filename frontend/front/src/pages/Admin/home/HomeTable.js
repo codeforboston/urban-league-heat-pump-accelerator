@@ -8,12 +8,12 @@ import { Box, CircularProgress } from "@mui/material";
 const getAddress = (params) => {
   let unit_number = "";
   if (params.getValue(params.id, "unit_number")) {
-    unit_number = params.getValue(params.id, "unit_number");
+    unit_number = `, Unit #${params.getValue(params.id, "unit_number")}`;
   }
   return `${params.getValue(params.id, "street_number")} ${params.getValue(
     params.id,
     "street_name"
-  )} ${unit_number && "Unit " + unit_number}`;
+  )}${unit_number && unit_number}`;
 };
 
 const columns = [
