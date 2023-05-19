@@ -31,11 +31,11 @@ const Nav = () => {
               <Typography variant='h6'>ACCOUNT</Typography>
             </Button>
           </Box>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Button color='inherit' component={Link} to='house'>
               <Typography variant='h6'>HOUSE PROFILE</Typography>
             </Button>
-          </Box>
+          </Box> */}
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Button color='inherit' component={Link} to=''>
               <Typography variant='h6'>LOGOUT</Typography>

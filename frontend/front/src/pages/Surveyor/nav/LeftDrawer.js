@@ -41,14 +41,14 @@ export default function TemporaryDrawer() {
             <ListItemText primary={"DASHBOARD"} />
           </ListItemButton>
         </ListItem>
-        <ListItem disablePadding>
+        {/* <ListItem disablePadding>
           <ListItemButton component={Link} to='house'>
             <ListItemIcon>
               <MailIcon />
             </ListItemIcon>
             <ListItemText primary={"HOUSE PROFILE"} />
           </ListItemButton>
-        </ListItem>
+        </ListItem> */}
         <ListItem disablePadding>
           <ListItemButton component={Link} to='account'>
             <ListItemIcon>
