@@ -23,6 +23,8 @@ class HomesController < ApplicationController
   def create
     @home = Home.new(home_params)
 
+    # TODO: set canonicalized flag
+
     respond_to do |format|
       if @home.save
         format.json { render :show, status: :created, location: @home }
@@ -34,6 +36,8 @@ class HomesController < ApplicationController
 
   # PATCH/PUT /homes/1 or /homes/1.json
   def update
+    # TODO: if change address, then should canonicalize after
+
     respond_to do |format|
       if @home.update(home_params)
         format.json { render :show, status: :ok, location: @home }
