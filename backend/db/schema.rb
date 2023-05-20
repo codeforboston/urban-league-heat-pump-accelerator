@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_09_010102) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_20_010659) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_010102) do
     t.datetime "updated_at", null: false
     t.bigint "assignment_id"
     t.integer "visit_order"
+    t.boolean "canonicalized", default: false, null: false
     t.index ["assignment_id", "visit_order"], name: "index_homes_on_assignment_id_and_visit_order", unique: true
     t.index ["assignment_id"], name: "index_homes_on_assignment_id"
   end

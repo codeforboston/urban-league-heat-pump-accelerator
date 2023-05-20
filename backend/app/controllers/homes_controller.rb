@@ -67,6 +67,6 @@ class HomesController < ApplicationController
 
   def search_params
     params.permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type, :assignment_id,
-                  :visit_order)
+                  :visit_order, :canonicalized)
   end
 end
