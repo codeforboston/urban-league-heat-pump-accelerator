@@ -2,8 +2,7 @@
 
 FactoryBot.define do
   factory :survey_visit do
-    user
-    completed { false }
+    surveyor
     home
   end
 end

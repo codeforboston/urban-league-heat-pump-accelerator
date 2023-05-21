@@ -21,7 +21,9 @@ class SurveyVisitsController < ApplicationController
 
   # POST /survey_visits or /survey_visits.json
   def create
-    @survey_visit = SurveyVisit.new(survey_visit_params)
+    params_hash = survey_visit_params.to_h
+    params_hash[:survey_response_attributes][:ip] = request.ip if params_hash.key?(:survey_response_attributes)
+    @survey_visit = SurveyVisit.new(params_hash)
 
     respond_to do |format|
       if @survey_visit.save
@@ -61,10 +63,13 @@ class SurveyVisitsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def survey_visit_params
-    params.require(:survey_visit).permit(:user_id, :completed, :home_id)
+    params.require(:survey_visit)
+          .permit(:surveyor_id, :home_id,
+                  survey_response_attributes: [:survey_id, :completed,
+                                               { survey_answers_attributes: %i[survey_question_id answer] }])
   end
 
   def search_params
-    params.permit(:user_id, :completed, :home_id)
+    params.permit(:surveyor_id, :home_id)
   end
 end
