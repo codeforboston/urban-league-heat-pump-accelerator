@@ -14,12 +14,12 @@ import Heading1 from "../../Components/Typography/Heading1";
 const SectionWrapper = styled(Box)(({ theme, image }) => ({
   background: "var(--bgColor-1)",
   paddingTop: "4em",
-  paddingBottom: "2.75rem",
+  paddingBottom: "4rem",
   clipPath: "polygon(0 10%,100% 0,100% 100%,0 100%)",
 }));
 
 const Home = () => {
-  const [heroHeight, setHeroHeight] = useState("100vh");
+  const [heroHeight, setHeroHeight] = useState("calc(100vh-64px)");
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,27 +31,35 @@ const Home = () => {
     };
   }, []);
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        minHeight: "calc(100vh - 560px)",
+      }}
+    >
       {/* HERO */}
       <Box sx={{ height: heroHeight }}>
         <CarrouselHero />
       </Box>
       <Container>
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
-        <Box>
+        <Box mt={8}>
           <CardLinksSection />
         </Box>
       </Container>
 
       {/* TESTIMONIALS */}
-      <SectionWrapper id="testimonial-section" my={16}>
-        <Box variant="sectionBackground" sx={{ padding: { xs: "0" } }}>
+      <SectionWrapper my={16} id="testimonial-section">
+        <Box sx={{ padding: { xs: "0" } }}>
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
               textAlign: "center",
             }}
+            id="testimonial-section"
           >
             <Heading1 text="Testimonials" />
           </Box>

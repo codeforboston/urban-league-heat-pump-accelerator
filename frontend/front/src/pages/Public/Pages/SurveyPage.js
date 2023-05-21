@@ -1,15 +1,16 @@
 import React, { useCallback, useMemo } from "react";
-import { Alert, Container, Snackbar, Stack } from "@mui/material";
+import { Alert, Container, Snackbar, Stack, Box } from "@mui/material";
 import { AddressValidatorComponent } from "../Components/AddressValidatorComponent";
 import {
   useCreateHomeMutation,
   useCreateSurveyVisitMutation,
 } from "../../../api/apiSlice";
-import { useGetReCAPTCHAToken } from "../../../components/ReCaptcha";
-import { ThanksForSubmission } from "../Components/ThanksForSubmission";
-import { PublicSurvey } from "../Components/PublicSurvey";
-import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
 import { HeatPumpFade } from "../../../components/HeatPumpFade";
+import Heading1BlueBgGround from "../Components/Typography/Heading1BlueBgGround";
+import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
+import { PublicSurvey } from "../Components/PublicSurvey";
+import { ThanksForSubmission } from "../Components/ThanksForSubmission";
+import { useGetReCAPTCHAToken } from "../../../components/ReCaptcha";
 
 const STEP_ADDRESS = "PHASE_ADDRESS";
 const STEP_SURVEY = "PHASE_SURVEY";
@@ -21,7 +22,7 @@ const STEP_THANKS = "PHASE_THANKS";
  * This page should handle all API calls so that component switching is easier to control
  */
 export const SurveyPage = () => {
-  const getReCaptchaToken = useGetReCAPTCHAToken("submit");
+  const getReCaptchaToken = useGetReCAPTCHAToken("publicsurvey");
 
   const [
     createHome,
@@ -74,43 +75,52 @@ export const SurveyPage = () => {
   }, [createHomeData, isSurveyVisitSuccess]);
 
   return (
-    <Container>
-      <Stack direction="column" alignItems="center" justifyContent="center">
-        <h1>TAKE THE SURVEY</h1>
-        <p>
-          Fill out this form to record your interest in installing a heat pump
-          for your home.
-        </p>
-        <p>
-          An ULHPA representative will contact you with more information about
-          the installation process.
-        </p>
-      </Stack>
-      <HeatPumpFade show={step === STEP_ADDRESS}>
-        <AddressValidatorComponent
-          onValidate={handleCreateHome}
-          isLoading={isCreateHomeLoading}
-        />
-      </HeatPumpFade>
-      <HeatPumpSlide show={step === STEP_SURVEY}>
-        <PublicSurvey
-          submitSurvey={handleAddSurveyVisit}
-          isLoading={isSurveyVisitLoading}
-          activeHome={createHomeData}
-        />
-      </HeatPumpSlide>
-      <HeatPumpSlide show={step === STEP_THANKS}>
-        <ThanksForSubmission />
-      </HeatPumpSlide>
-      {/* TODO: this should probably be a more specific error */}
-      <Snackbar open={!!createHomeError}>
-        <Alert severity="info">
-          {"Sorry, that address is not in our service area!"}
-        </Alert>
-      </Snackbar>
-      <Snackbar open={!!surveyVisitError}>
-        <Alert severity="error">{"Error submitting survey."}</Alert>
-      </Snackbar>
-    </Container>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        minHeight: "calc(100vh - 560px)",
+      }}
+    >
+      <Heading1BlueBgGround text="Take the Survey" />
+      <Container>
+        <Stack direction="column" alignItems="center" justifyContent="center">
+          <p>
+            Fill out this form to record your interest in installing a heat pump
+            for your home.
+          </p>
+          <p>
+            An ULHPA representative will contact you with more information about
+            the installation process.
+          </p>
+        </Stack>
+        <HeatPumpFade show={step === STEP_ADDRESS}>
+          <AddressValidatorComponent
+            onValidate={handleCreateHome}
+            isLoading={isCreateHomeLoading}
+          />
+        </HeatPumpFade>
+        <HeatPumpSlide show={step === STEP_SURVEY}>
+          <PublicSurvey
+            submitSurvey={handleAddSurveyVisit}
+            isLoading={isSurveyVisitLoading}
+            activeHome={createHomeData}
+          />
+        </HeatPumpSlide>
+        <HeatPumpSlide show={step === STEP_THANKS}>
+          <ThanksForSubmission />
+        </HeatPumpSlide>
+        {/* TODO: this should probably be a more specific error */}
+        <Snackbar open={!!createHomeError}>
+          <Alert severity="info">
+            {"Sorry, that address is not in our service area!"}
+          </Alert>
+        </Snackbar>
+        <Snackbar open={!!surveyVisitError}>
+          <Alert severity="error">{"Error submitting survey."}</Alert>
+        </Snackbar>
+      </Container>
+    </Box>
   );
 };

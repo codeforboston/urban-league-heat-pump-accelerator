@@ -6,7 +6,14 @@ import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGrou
 
 function PrivacyPolicy() {
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        minHeight: "calc(100vh - 560px)",
+      }}
+    >
       <Heading1BlueBgGround text="Privacy Policy" />
 
       <Container>
