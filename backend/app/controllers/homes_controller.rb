@@ -22,8 +22,7 @@ class HomesController < ApplicationController
   # POST /homes or /homes.json
   def create
     @home = Home.new(home_params)
-
-    # TODO: set canonicalized flag
+    @home.canonicalized = false
 
     respond_to do |format|
       if @home.save
@@ -36,11 +35,15 @@ class HomesController < ApplicationController
 
   # PATCH/PUT /homes/1 or /homes/1.json
   def update
-    # TODO: if change address, then should canonicalize after
+    unless home_params.keys.intersection(%w[street_number street_name unit_number city state
+                                            zip_code]).empty?
+      home_params[:canonicalized] = false
+    end
 
     respond_to do |format|
       if @home.update(home_params)
         format.json { render :show, status: :ok, location: @home }
+        # TODO: update
       else
         format.json { render json: @home.errors, status: :unprocessable_entity }
       end
@@ -64,6 +67,7 @@ class HomesController < ApplicationController
   end
 
   # Only allow a list of trusted parameters through.
+  # Do NOT permit "canonicalized" because this is something we set.
   def home_params
     params.require(:home).permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type,
                                  :assignment_id, :visit_order)
