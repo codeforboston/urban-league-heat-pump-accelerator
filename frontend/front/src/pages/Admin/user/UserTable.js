@@ -29,7 +29,6 @@ const UserTable = () => {
     error: surveyorsError,
     isLoading: isSurveyorsDataLoading,
   } = useGetSurveyorsQuery();
-  console.log(rows);
   const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
