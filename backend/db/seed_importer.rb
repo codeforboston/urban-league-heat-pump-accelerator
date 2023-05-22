@@ -76,6 +76,9 @@ module SeedImporter
         home = Home.new(data_hash.except(:assignment_group))
         home.assignment = Assignment.where(group: assignment_group).first
         home.save!
+
+        # Ensure home addresses have been canonicalized for later
+        CanonicalizeHomeAddressJob.perform_later home.id
       end
     end
 
