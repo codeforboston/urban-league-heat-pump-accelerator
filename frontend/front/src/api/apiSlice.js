@@ -5,8 +5,8 @@ const sortById = (a, b) => a.id - b.id;
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
   baseQuery: fetchBaseQuery({
-    // baseUrl: "http://localhost:3001",
-    baseUrl: "https://testing-ibhy.onrender.com",
+    baseUrl: "http://localhost:3001",
+    // baseUrl: "https://testing-ibhy.onrender.com",
   }),
 
   tagTypes: [
@@ -67,8 +67,16 @@ export const apiSlice = createApi({
         ...result.map(({ id }) => ({ type: "Surveyor", id })),
       ],
     }),
+    // getSurveyorsByAssignmentId: builder.query({
+    //   query: (assignment_id) => `/assignments/${assignment_id}`,
+    //   transformResponse: (res) => res.surveyor_ids,
+    //   providesTags: (result = [], error, arg) => [
+    //     "Surveyor",
+    //     ...result.map(({ id }) => ({ type: "Surveyor", id })),
+    //   ],
+    // }),
     getSurveyor: builder.query({
-      query: (surveyor) => `/surveyors/${surveyor.id}`,
+      query: (surveyor) => `/surveyors/${surveyor}`,
       providesTags: (result, error, arg) => [{ type: "Surveyor", id: arg }],
     }),
     createSurveyor: builder.mutation({
@@ -321,6 +329,7 @@ export const {
   useCreateSurveyorMutation,
   useGetSurveyorQuery,
   useGetSurveyorsQuery,
+  // useGetSurveyorsByAssignmentIdQuery,
 
   // Home
   useDeleteHomeMutation,
