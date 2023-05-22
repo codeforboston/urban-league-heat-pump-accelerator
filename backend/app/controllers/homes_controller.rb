@@ -27,7 +27,7 @@ class HomesController < ApplicationController
     respond_to do |format|
       if @home.save
         format.json { render :show, status: :created, location: @home }
-        CanonicalizeHomeAddressJob.perform_later @home.id
+        CanonicalizeAddressJob.perform_later @home.id
       else
         format.json { render json: @home.errors, status: :unprocessable_entity }
       end
@@ -47,7 +47,7 @@ class HomesController < ApplicationController
       if @home.update(home_params)
         format.json { render :show, status: :ok, location: @home }
 
-        CanonicalizeHomeAddressJob.perform_later @home.id unless @home.canonicalized?
+        CanonicalizeAddressJob.perform_later @home.id unless @home.canonicalized?
       else
         format.json { render json: @home.errors, status: :unprocessable_entity }
       end

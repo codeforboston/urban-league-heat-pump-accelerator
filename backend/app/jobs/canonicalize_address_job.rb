@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CanonicalizeHomeAddressJob < ApplicationJob
+class CanonicalizeAddressJob < ApplicationJob
   queue_as :default
 
   def perform(home_id)
