@@ -10,6 +10,7 @@ import {
 import ConfirmationModal from "../../Developer/confirmModal/ConfirmationModal";
 import { useForm, Controller } from "react-hook-form";
 import { useGetSurveyorQuery } from "../../../api/apiSlice";
+import Loader from "../../../components/Loader";
 
 const UserProfile = () => {
   const { uid } = useParams();
@@ -89,9 +90,7 @@ const UserProfile = () => {
 
   if (isSurveyorDataLoading) {
     return (
-      <Box display="flex" justifyContent="center">
-        <CircularProgress />
-      </Box>
+      <Loader/>
     );
   }
 
