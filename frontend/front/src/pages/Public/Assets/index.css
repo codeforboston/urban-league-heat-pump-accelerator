@@ -11,32 +11,32 @@
   --font-family-1: "Lora", sans-serif;
 
   /* Colors text*/
-  --color-text-1: #F7F7F7; /* text: navbar, footer, special cases */
-  --color-text-2: #00497A; /* titles */
-  --color-text-3: #0A0B0B; /* text body */
-  --color-text-4: #0000FF; /* links */
-  
-  --color-text-5: #CAF0F6; /* Hero Page */
+  --color-text-1: #f7f7f7; /* text: navbar, footer, special cases */
+  --color-text-2: #00497a; /* titles */
+  --color-text-3: #0a0b0b; /* text body */
+  --color-text-4: #0000ff; /* links */
+
+  --color-text-5: #caf0f6; /* Hero Page */
   --color-text-6: #90e0ef;
-  --color-text-7: #23B5D3; /* Hero Page */
-  
-  --color-text-8: #66d6FF; /* Hero Page */
-  --color-text-9: #FCFDFE; /* Hero Page */
+  --color-text-7: #23b5d3; /* Hero Page */
+
+  --color-text-8: #66d6ff; /* Hero Page */
+  --color-text-9: #fcfdfe; /* Hero Page */
 
   /* Background colors */
-  --bgColor-1:  #CAF0FE; /* Background Testimonials, Button */
-  --bgColor-2: #00497A; /* Background /* Navbar, Footer, Button */
-  --bgColor-3:  #F9F9F9; /* Background Cards */
-  --bgColor-4:  #F7F7FF; /* Background Button */
-  --bgColor-5:  #FCFDFE; /* Background */
+  --bgColor-1: #caf0fe; /* Background Testimonials, Button */
+  --bgColor-2: #00497a; /* Background /* Navbar, Footer, Button */
+  --bgColor-3: #f9f9f9; /* Background Cards */
+  --bgColor-4: #f7f7ff; /* Background Button */
+  --bgColor-5: #fcfdfe; /* Background */
 
   /* Accent colors */
   --accent-1: rgba(0, 0, 0, 0.55); /* image overlay */
-  --accent-2: rgba(202, 240, 254,0.8); /* Divider color */
+  --accent-2: rgba(202, 240, 254, 0.8); /* Divider color */
 
   /* Box shadow */
   --box-shadow-1: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Button Scroll Up Shadow */
-  
+
   /* Border */
   --boder-color-1: 1px solid rgba(0, 0, 0, 0.12); /* Border color cards */
 }

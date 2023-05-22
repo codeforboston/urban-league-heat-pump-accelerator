@@ -11,7 +11,7 @@ const DeveloperView = (props) => {
         component={Link}
         to={props.link}
       >
-        <Typography variant='h4'>Developer View</Typography>
+        <Typography variant="h4">Developer View</Typography>
       </Button>
     </Box>
   );

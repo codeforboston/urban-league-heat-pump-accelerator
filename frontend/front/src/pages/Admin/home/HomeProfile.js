@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  Box,
-  Button,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { useGetHomeQuery } from "../../../api/apiSlice";
 import Loader from "../../../../src/components/Loader.js";
 
@@ -61,7 +56,7 @@ const HomeProfile = () => {
   }
 
   if (isHomeDataLoading) {
-    return <Loader/>;
+    return <Loader />;
   }
 
   return (

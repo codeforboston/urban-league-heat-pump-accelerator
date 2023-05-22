@@ -28,17 +28,17 @@ const AboutUnit = (props) => {
       item
       xs={12}
       md={6}
-      display='flex'
-      justifyContent='center'
-      alignItems='center'
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
     >
       <Box
         width={200}
         height={"auto"}
         p={2}
-        display='flexColumn'
-        justifyContent='center'
-        alignItems='center'
+        display="flexColumn"
+        justifyContent="center"
+        alignItems="center"
         m={1}
         sx={{ backgroundColor: getRandomColor() }}
       >
@@ -47,9 +47,9 @@ const AboutUnit = (props) => {
         <Typography>Color: {props.item.color}</Typography>
         <Typography>Hometown: {props.item.hometown}</Typography>
 
-        <Box p={1} display='flex'>
+        <Box p={1} display="flex">
           <Button
-            variant='outlined'
+            variant="outlined"
             onClick={() => {
               dispatch(increaseByName(props.item.name));
             }}
@@ -60,7 +60,7 @@ const AboutUnit = (props) => {
             <Typography>{props.item.num}</Typography>
           </Box>
           <Button
-            variant='outlined'
+            variant="outlined"
             onClick={() => {
               if (props.item.num === 0) {
                 return;
@@ -73,7 +73,7 @@ const AboutUnit = (props) => {
         </Box>
         <Box p={1}>
           <Button
-            variant='outlined'
+            variant="outlined"
             onClick={() => {
               dispatch(deleteDataByName(props.item.name));
             }}

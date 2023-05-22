@@ -89,9 +89,7 @@ const UserProfile = () => {
   }
 
   if (isSurveyorDataLoading) {
-    return (
-      <Loader/>
-    );
+    return <Loader />;
   }
 
   return (

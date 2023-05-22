@@ -16,14 +16,13 @@ const SurveyProfile = () => {
   const navigate = useNavigate();
   const { uid: surveyVisitId } = useParams();
 
-  const { data: surveyVisit, error: surveyVisitError } = useGetSurveyVisitQuery(
-    surveyVisitId
-  );
+  const { data: surveyVisit, error: surveyVisitError } =
+    useGetSurveyVisitQuery(surveyVisitId);
 
-  const {
-    data: houseData,
-    error: houseError,
-  } = useGetHomeQuery(surveyVisit?.homeId, { skip: !surveyVisit });
+  const { data: houseData, error: houseError } = useGetHomeQuery(
+    surveyVisit?.homeId,
+    { skip: !surveyVisit }
+  );
   const [
     putSurveyVisit,
     { isLoading: isSurveyVisitPutLoading, error: surveyVisitPutError },
