@@ -1,6 +1,5 @@
 import * as React from "react";
 
-
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,6 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import { useNavigate } from "react-router-dom";
 import { useGetSurveyorsQuery } from "../../../api/apiSlice";
 import { Box, CircularProgress } from "@mui/material";
+import Loader from "../../../components/Loader";
 
 const columns = [
   { id: "id", label: "UserID", minWidth: 50 },
@@ -48,11 +48,7 @@ const UserTable = () => {
   };
 
   if (isSurveyorsDataLoading) {
-    return (
-      <Box display="flex" justifyContent="center">
-        <CircularProgress />
-      </Box>
-    );
+    return <Loader />;
   }
 
   return (
