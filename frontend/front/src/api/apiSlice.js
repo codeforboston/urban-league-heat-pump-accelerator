@@ -329,7 +329,7 @@ export const {
   useCreateSurveyorMutation,
   useGetSurveyorQuery,
   useGetSurveyorsQuery,
-  useGetSurveyorsByAssignmentIdQuery,
+  // useGetSurveyorsByAssignmentIdQuery,
 
   // Home
   useDeleteHomeMutation,
