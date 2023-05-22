@@ -7,7 +7,6 @@ import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
 import { SurveyPage } from "./Pages/SurveyPage";
 import GetInvolved from "./Pages/GetInvolved";
-import Faq from "./Pages/Faq";
 import BenefitsHeatPump from "./Pages/BenefitsHeatPump";
 import GetHeatPump from "./Pages/GetHeatPump";
 import AboutUs from "./Pages/AboutUs/AboutUs";
@@ -46,7 +45,6 @@ const PublicContainer = () => {
                   element={<BenefitsHeatPump />}
                 />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/faq" element={<Faq />} />
               </Routes>
             </Box>
             <ScrollToTopButton />

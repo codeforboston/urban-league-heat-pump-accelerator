@@ -6,6 +6,7 @@ const TitleContainer = styled(Box)({
 
 const TitleSpan = styled("div")({
   color: "var(--color-text-8)",
+  textShadow: "1px 1px 1px var(--color-text-5)",
 });
 
 function TitleHero({ text, titleBold }) {
@@ -17,6 +18,7 @@ function TitleHero({ text, titleBold }) {
           color: "var(--color-text-9)",
           display: "block",
           fontWeight: 600,
+          textShadow: "1px 1px 1px var(--color-text-5)",
         }}
       >
         {text} <TitleSpan>{titleBold}</TitleSpan>

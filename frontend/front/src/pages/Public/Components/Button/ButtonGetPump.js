@@ -19,7 +19,7 @@ const ButtonGetPumnp = ({ variant }) => {
           background: "var(--bgColor-1)",
           fontSize: "1rem",
           height: "50px",
-          fontWeight: "var(--font-weight-1)",
+          fontWeight: 600,
           borderRadius: "50px",
           minWidth: 200,
           transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
