@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from "react";
 
+export const RECAPTCHA_ACTION_PUBLIC_SURVEY = "publicsurvey";
 const RECAPTCHA_SCRIPT_ID = "RECAPTCHA_SCRIPT";
 
 /**
@@ -7,7 +8,7 @@ const RECAPTCHA_SCRIPT_ID = "RECAPTCHA_SCRIPT";
  * React hook that returns an async function that fetches a ReCAPTCHA token
  * This token can be passed to the back-end and used to verify the likelihood the user is human
  */
-export const useGetReCAPTCHAToken = ({ action }) => {
+export const useGetReCAPTCHAToken = (action) => {
   useEffect(() => {
     let script = document.getElementById(RECAPTCHA_SCRIPT_ID);
 
