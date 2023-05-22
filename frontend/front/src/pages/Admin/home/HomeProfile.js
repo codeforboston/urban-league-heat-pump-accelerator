@@ -80,7 +80,7 @@ const HomeProfile = () => {
           label="Street Number"
           variant="standard"
           sx={{ width: "95%", mx: 2, mt: 3 }}
-          value={homeData.street_number}
+          value={homeData?.street_number}
         />
         <TextField
           disabled={!editMode}
