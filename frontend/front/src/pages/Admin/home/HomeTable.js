@@ -48,7 +48,6 @@ const HomeTable = () => {
   const navigate = useNavigate();
 
   const onRowClick = (row, event) => {
-    console.log(event.target.parentElement.className);
     if (event.target.className.includes("goToAssignment")) {
       navigate(`/admin/assignments/${row.getValue(row.id, "assignment_id")}`);
     } else {
