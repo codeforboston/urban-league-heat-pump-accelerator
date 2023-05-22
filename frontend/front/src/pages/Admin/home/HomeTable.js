@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useGetHomesQuery } from "../../../api/apiSlice";
 import { Box, CircularProgress } from "@mui/material";
 import AssignmentLink from "./AssignmentLink";
+import Loader from "../../../components/Loader";
 
 // Formats addresses
 const getAddress = (params) => {
@@ -56,11 +57,7 @@ const HomeTable = () => {
   };
 
   if (isHomesDataLoading) {
-    return (
-      <Box display="flex" justifyContent="center">
-        <CircularProgress />
-      </Box>
-    );
+    return <Loader />;
   }
 
   return (
