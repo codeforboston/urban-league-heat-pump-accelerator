@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import {
   Box,
   Button,
-  CircularProgress,
   TextField,
   Typography,
 } from "@mui/material";
 import { useGetHomeQuery } from "../../../api/apiSlice";
+import Loader from "../../../../src/components/Loader.js";
 
 const HomeProfile = () => {
   const { hid } = useParams();
@@ -61,11 +61,7 @@ const HomeProfile = () => {
   }
 
   if (isHomeDataLoading) {
-    return (
-      <Box display="flex" justifyContent="center">
-        <CircularProgress />
-      </Box>
-    );
+    return <Loader/>;
   }
 
   return (
