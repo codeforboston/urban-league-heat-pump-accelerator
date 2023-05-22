@@ -34,6 +34,8 @@ class HomesController < ApplicationController
     end
   end
 
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   # PATCH/PUT /homes/1 or /homes/1.json
   def update
     # If we change anything in the address,
@@ -53,6 +55,8 @@ class HomesController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   # DELETE /homes/1 or /homes/1.json
   def destroy
