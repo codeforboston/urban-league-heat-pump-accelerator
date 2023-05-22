@@ -22,6 +22,7 @@ class HomesController < ApplicationController
   # POST /homes or /homes.json
   def create
     @home = Home.new(home_params)
+    # By definition, a new home's address has not been canonicalized.
     @home.canonicalized = false
 
     respond_to do |format|
