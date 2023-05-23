@@ -19,6 +19,36 @@ const SectionContainer = styled(Container)(({ theme }) => ({
   gap: "82px",
 }));
 
+const ContentGridContainer = styled(Box)(({ theme }) => ({
+  display: "grid",
+  gridTemplateColumns: "50px auto auto auto auto",
+  columnGap: "20px",
+  [theme.breakpoints.down("md")]: {
+    padding: "0px",
+  },
+  [theme.breakpoints.up("md")]: {
+    padding: "40px 34px",
+  },
+  background: "#FAFBFD",
+}));
+const SectionNumberLarge = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+  [theme.breakpoints.up("md")]: {
+    display: "block",
+    px: "12px",
+  },
+}));
+const SectionNumberSmall = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+  [theme.breakpoints.up("md")]: {
+    display: "none",
+  },
+}));
+
 const GetHeatPump = () => {
   return (
     <Box sx={{ mb: "53px" }}>
@@ -65,30 +95,21 @@ const GetHeatPump = () => {
         {/*Step 1 Section*/}
         <SectionContainer>
           {/*Section number for large screen/ hiddden for small screen */}
-          <Box sx={{ display: { xs: "none", md: "block" }, px: "12px" }}>
+          <SectionNumberLarge>
             <SectionNumber number={1} />
-          </Box>
-          {/*CSS Grid container */}
+          </SectionNumberLarge>
           <Container disableGutters>
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "auto auto auto auto auto",
-                columnGap: "30px",
-                py: { xs: "0px", md: "40px" },
-                px: { xs: "0px", md: "34px" },
-                background: "#FAFBFD",
-              }}
-            >
+            {/*CSS Grid container */}
+            <ContentGridContainer>
               {/*Section number for small screen/ hiddden for large screen */}
-              <Box sx={{ display: { xs: "block", md: "none" } }}>
+              <SectionNumberSmall>
                 <SectionNumber number={1} />
-              </Box>
+              </SectionNumberSmall>
               {/*section content*/}
               <Box
                 sx={{
                   pt: "13px",
-                  gridColumn: { xs: "2/span 3", md: "1/span 4" },
+                  gridColumn: { xs: "2/span 4", md: "1/span 4" },
                 }}
               >
                 <SectionTitle
@@ -96,34 +117,26 @@ const GetHeatPump = () => {
                 />
                 <Step1Section />
               </Box>
-            </Box>
+            </ContentGridContainer>
           </Container>
         </SectionContainer>
 
         {/*Step 2 Section*/}
         <SectionContainer>
           {/*Section number for large screen/ hiddden for small screen */}
-          <Box sx={{ display: { xs: "none", md: "block" } }}>
-            {/*number for large screen*/}
+          <SectionNumberLarge>
             <SectionNumber number={2} />
-          </Box>
+          </SectionNumberLarge>
           <Container disableGutters>
             {/*CSS Grid container */}
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "auto auto auto auto auto",
-                columnGap: "30px",
-                py: { xs: "0px", md: "40px" },
-                px: { xs: "0px", md: "34px" },
-                background: "#FAFBFD",
-              }}
-            >
+            <ContentGridContainer>
               {/*Section number for small screen/ hiddden for large screen */}
-              <Box sx={{ display: { xs: "block", md: "none" } }}>
+              <SectionNumberSmall
+                sx={{ display: { xs: "block", md: "none" }, width: "60px" }}
+              >
                 <SectionNumber number={2} />
-              </Box>
-              {/*section content*/}
+              </SectionNumberSmall>
+              {/*section Title*/}
               <Box
                 sx={{
                   pt: "13px",
@@ -135,6 +148,7 @@ const GetHeatPump = () => {
                   subtitle="(Optional but recommend)"
                 />
               </Box>
+              {/*section Button*/}
               <Box
                 sx={{
                   pt: "13px",
@@ -148,32 +162,24 @@ const GetHeatPump = () => {
                   sx={{ mt: "67px" }}
                 />
               </Box>
-            </Box>
+            </ContentGridContainer>
           </Container>
         </SectionContainer>
+
         {/*Step 3 Section*/}
         <SectionContainer>
           {/*Section number for large screen/ hiddden for small screen */}
-          <Box sx={{ display: { xs: "none", md: "block" } }}>
+          <SectionNumberLarge>
             <SectionNumber number={3} />
-          </Box>
+          </SectionNumberLarge>
           <Container disableGutters>
             {/*CSS Grid container */}
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "auto auto auto auto auto",
-                columnGap: "30px",
-                py: { xs: "0px", md: "40px" },
-                px: { xs: "0px", md: "34px" },
-                background: "#FAFBFD",
-              }}
-            >
+            <ContentGridContainer>
               {/*Section number for small screen/ hiddden for large screen */}
-              <Box sx={{ display: { xs: "block", md: "none" } }}>
+              <SectionNumberSmall>
                 <SectionNumber number={3} />
-              </Box>
-              {/*section content*/}
+              </SectionNumberSmall>
+              {/*section Title*/}
               <Box
                 sx={{
                   pt: "13px",
@@ -182,6 +188,7 @@ const GetHeatPump = () => {
               >
                 <SectionTitle title="Contact a Heat Pump Installer" />
               </Box>
+              {/*section Button*/}
               <Box
                 sx={{
                   pt: "13px",
@@ -195,7 +202,7 @@ const GetHeatPump = () => {
                   sx={{ mt: "67px" }}
                 />
               </Box>
-            </Box>
+            </ContentGridContainer>
           </Container>
         </SectionContainer>
       </Stack>
