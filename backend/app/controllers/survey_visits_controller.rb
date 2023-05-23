@@ -37,7 +37,7 @@ class SurveyVisitsController < ApplicationController
         # If we have a survey_response, schedule the reCAPTCHA check
         # in the background
         unless @survey_visit.survey_response.nil?
-          CheckRecaptchaJob.perform_later @survey_visit.survey_response_id, actual_response_token, recaptcha_action
+          CheckRecaptchaJob.perform_later @survey_visit.survey_response.id, actual_response_token, recaptcha_action
         end
       else
         format.json { render json: @survey_visit.errors, status: :unprocessable_entity }

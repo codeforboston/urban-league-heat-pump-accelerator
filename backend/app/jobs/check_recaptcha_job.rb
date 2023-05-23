@@ -5,20 +5,16 @@ require 'net/https'
 class CheckRecaptchaJob < ApplicationJob
   queue_as :default
 
+  include CheckRecaptcha
+
   def perform(survey_response_id, response_token, recaptcha_action)
+    # TODO: load actual key from config
     secret_key = 'abc'
 
-    uri = URI.parse("https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{response_token}")
-    response = Net::HTTP.get_response(uri)
-    json = JSON.parse(response.body)
-
-    # TODO: What to do if not successful validating?
-    # i.e. sucess == false or action doesn't match?
-    assert json['success'] == true
-    assert json['action'] == recaptcha_action
+    score = check_recaptcha secret_key, response_token, recaptcha_action
 
     survey_response = SurveyResponse.find(survey_response_id)
-    survey_response.score = json['score']
+    survey_response.score = score
     survey_response.save
   end
 end
