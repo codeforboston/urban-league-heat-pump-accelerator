@@ -7,6 +7,7 @@ const theme = createTheme({
     values: {
       xs: 0,
       xxs: 330, // Custom breakpoint
+      smm: 450, // Custom breakpoint
       sm: 600,
       md: 960,
       lg: 1280,
@@ -16,7 +17,7 @@ const theme = createTheme({
   typography: {
     // body
     body: {
-      display: "block",
+      // display: "block",
       margin: 0,
       fontWeight: 400,
       fontSize: "16px",

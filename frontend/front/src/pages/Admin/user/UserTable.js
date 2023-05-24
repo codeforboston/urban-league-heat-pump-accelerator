@@ -9,20 +9,26 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useNavigate } from "react-router-dom";
+import { useGetSurveyorsQuery } from "../../../api/apiSlice";
+import { Box, CircularProgress } from "@mui/material";
+import Loader from "../../../components/Loader";
 
 const columns = [
-  { id: "uid", label: "UserID", minWidth: 50 },
-  { id: "firstName", label: "First Name", minWidth: 50 },
-  { id: "lastName", label: "Last Name", minWidth: 50 },
+  { id: "id", label: "UserID", minWidth: 50 },
+  { id: "firstname", label: "First Name", minWidth: 50 },
+  { id: "lastname", label: "Last Name", minWidth: 50 },
   { id: "email", label: "Email", minWidth: 50 },
   { id: "phone", label: "Phone", minWidth: 50 },
   { id: "role", label: "Role", minWidth: 50 },
   { id: "status", label: "Status", minWidth: 50 },
 ];
 
-const rows = [];
-
 const UserTable = () => {
+  const {
+    data: rows,
+    error: surveyorsError,
+    isLoading: isSurveyorsDataLoading,
+  } = useGetSurveyorsQuery();
   const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
@@ -38,8 +44,12 @@ const UserTable = () => {
   };
 
   const onRowClick = (row) => {
-    navigate(`userprofile/${row.uid}`);
+    navigate(`userprofile/${row.id}`);
   };
+
+  if (isSurveyorsDataLoading) {
+    return <Loader />;
+  }
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
