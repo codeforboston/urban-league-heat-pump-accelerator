@@ -1,9 +1,9 @@
 import { Box, Grid, Typography } from "@mui/material";
-import { Container } from "@mui/system";
-import React from "react";
+
 import AdminView from "./AdminView";
-import DeveloperView from "./DeveloperView";
+import { Container } from "@mui/system";
 import PublicView from "./PublicView";
+import React from "react";
 import SurveyorsView from "./SurveyorView";
 
 const ViewMenu = () => {
@@ -33,7 +33,6 @@ const ViewMenu = () => {
               <SurveyorsView link="surveyor" />
               <PublicView link="public" />
               <AdminView link="admin" />
-              <DeveloperView link="dev" />
             </Box>
           </Box>
         </Box>

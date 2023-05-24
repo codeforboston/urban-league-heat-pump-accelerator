@@ -1,24 +1,25 @@
+import { Alert, Button, Stack } from "@mui/material";
 import React, {
+  forwardRef,
   useCallback,
   useEffect,
   useMemo,
   useState,
-  forwardRef,
 } from "react";
-import { useForm } from "react-hook-form";
-import { Button, Stack, Alert } from "@mui/material";
-import { HeatPumpDropdown } from "./HeatPumpDropdown";
-import ConfirmationModal from "../../pages/Developer/confirmModal/ConfirmationModal";
-import { useGetSurveyStructureQuery } from "../../api/apiSlice";
-import { HeatPumpTextField } from "./HeatPumpTextField";
-import { AddressComponent } from "../AddressUtils";
-import { useNavigate } from "react-router-dom";
 import {
-  buildSurveyCacheKey,
   buildDefaultDataFromSurveyStructure,
+  buildSurveyCacheKey,
 } from "../../util/surveyUtils";
-import { SurveyError } from "./SurveyStructureError";
+
+import { AddressComponent } from "../AddressUtils";
+import ConfirmationModal from "../../components/confirmationModal/ConfirmationModal";
+import { HeatPumpDropdown } from "./HeatPumpDropdown";
+import { HeatPumpTextField } from "./HeatPumpTextField";
 import Loader from "../Loader";
+import { SurveyError } from "./SurveyStructureError";
+import { useForm } from "react-hook-form";
+import { useGetSurveyStructureQuery } from "../../api/apiSlice";
+import { useNavigate } from "react-router-dom";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
