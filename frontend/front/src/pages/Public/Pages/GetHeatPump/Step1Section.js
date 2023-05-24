@@ -3,7 +3,7 @@ import { Link, Typography } from "@mui/material";
 function Step1Section() {
   return (
     <Typography
-      variant="body1"
+      variant="body"
       sx={{
         paddingLeft: "25px",
         color: "#0A0B0B",
