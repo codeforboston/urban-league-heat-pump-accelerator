@@ -65,7 +65,7 @@ const BenefitsHeatPumps = () => {
       <Heading1BlueBgGround text="Benefits of Heat Pumps" />
       <Container sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
         <Stack direction="column">
-          <Box mb={{ xs: 1, sm: 3 }}>
+          <Box mb={{ xs: 1, sm: 6 }} mt={{ xs: 1, sm: 2 }}>
             {isSmallerThanSmm ? (
               <Heading1
                 fontWeight="500"
