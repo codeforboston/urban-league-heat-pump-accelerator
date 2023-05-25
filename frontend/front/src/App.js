@@ -15,13 +15,13 @@ function App() {
         <Routes>
           <Route index element={<ViewMenu />} />
 
-          <Route path='surveyor/*' element={<SurveyorContainer />} />
+          <Route path="surveyor/*" element={<SurveyorContainer />} />
 
-          <Route path='public/*' element={<PublicContainer />} />
+          <Route path="public/*" element={<PublicContainer />} />
 
-          <Route path='dev/*' element={<DevContainer />} />
+          <Route path="dev/*" element={<DevContainer />} />
 
-          <Route path='admin/*' element={<AdminContainer />} />
+          <Route path="admin/*" element={<AdminContainer />} />
         </Routes>
       </BrowserRouter>
     </Box>

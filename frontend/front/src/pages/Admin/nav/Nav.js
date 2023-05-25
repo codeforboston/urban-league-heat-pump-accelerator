@@ -18,15 +18,15 @@ const Nav = () => {
   // const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='static'>
+      <AppBar position="static">
         <Toolbar>
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            <Button color='inherit' component={Link} to=''>
-              <Typography variant='h6'>ADMIN</Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Button color="inherit" component={Link} to="">
+              <Typography variant="h6">ADMIN</Typography>
             </Button>
           </Typography>
-          <Button color='inherit' component={Link} to=''>
-            <Typography variant='h6'>LOGOUT</Typography>
+          <Button color="inherit" component={Link} to="">
+            <Typography variant="h6">LOGOUT</Typography>
           </Button>
         </Toolbar>
       </AppBar>

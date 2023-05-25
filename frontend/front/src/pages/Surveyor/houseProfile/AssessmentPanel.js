@@ -8,38 +8,38 @@ const AssessmentPanel = () => {
     <>
       <Box>
         <QuestionUnit
-          question='Visited?'
-          choice1='Yes'
-          choice2='No'
-          choice3='NA'
+          question="Visited?"
+          choice1="Yes"
+          choice2="No"
+          choice3="NA"
         />
         <QuestionUnit
-          question='Talked with Owner?'
-          choice1='Yes'
-          choice2='No'
-          choice3='NA'
+          question="Talked with Owner?"
+          choice1="Yes"
+          choice2="No"
+          choice3="NA"
         />
         <QuestionUnit
-          question='Was Home?'
-          choice1='Yes'
-          choice2='No'
-          choice3='NA'
+          question="Was Home?"
+          choice1="Yes"
+          choice2="No"
+          choice3="NA"
         />
         <QuestionUnit
-          question='Interested?'
-          choice1='Yes'
-          choice2='No'
-          choice3='NA'
+          question="Interested?"
+          choice1="Yes"
+          choice2="No"
+          choice3="NA"
         />
 
         <QuestionUnit
-          question='What is the primary spoken language??'
-          choice1='English'
-          choice2='Spanish'
-          choice3='Mandarin'
+          question="What is the primary spoken language??"
+          choice1="English"
+          choice2="Spanish"
+          choice3="Mandarin"
         />
-        <Box textAlign='center' my={2}>
-          <Button variant='contained' size='large'>
+        <Box textAlign="center" my={2}>
+          <Button variant="contained" size="large">
             Save
           </Button>
         </Box>

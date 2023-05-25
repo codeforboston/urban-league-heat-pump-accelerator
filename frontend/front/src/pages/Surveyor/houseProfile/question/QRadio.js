@@ -101,7 +101,7 @@ const QuestionUnit = (props) => {
       <Box>
         <Typography>{props.question}</Typography>
       </Box>
-      <RadioGroup name='use-radio-group' defaultValue=''>
+      <RadioGroup name="use-radio-group" defaultValue="">
         {choice1}
         {choice2}
         {choice3}

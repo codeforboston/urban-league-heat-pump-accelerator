@@ -11,7 +11,7 @@ const PublicView = (props) => {
         component={Link}
         to={props.link}
       >
-        <Typography variant='h4'>Public View</Typography>
+        <Typography variant="h4">Public View</Typography>
       </Button>
     </Box>
   );
