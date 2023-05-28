@@ -3,7 +3,7 @@ import React from "react";
 import streets from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
 import homeExterior from "../../../../assets/images/home-exterior.jpg";
 // import cardContent from "./cardContent";
-import CardsSection from "./CardsSection";
+import CardsSection from "../../Components/CardsSection";
 import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
 import Heading1 from "../../Components/Typography/Heading1";
 
