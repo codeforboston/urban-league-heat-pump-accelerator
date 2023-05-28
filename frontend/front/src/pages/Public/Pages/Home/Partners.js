@@ -1,14 +1,14 @@
 import React from "react";
 import { Grid, Typography, Box, Link, Container } from "@mui/material";
-import ulemLogo from "../../../../assets/images/ULEM.png";
-import maCleanEnergyLogo from "../../../../assets/images/MACleanEnergy.png";
-import heatSmartLogo from "../../../../assets/images/HeatSmart.png";
-import codeForAmericaLogo from "../../../../assets/images/CFA.png";
-import codeForBostonLogo from "../../../../assets/images/CFB.png";
+import ulemLogo from "../../../../assets/images/partnersLogo/ULEM.png";
+import maCleanEnergyLogo from "../../../../assets/images/partnersLogo/MACleanEnergy.png";
+import heatSmartLogo from "../../../../assets/images/partnersLogo/HeatSmart.png";
+import codeForAmericaLogo from "../../../../assets/images/partnersLogo/CFA.png";
+import codeForBostonLogo from "../../../../assets/images/partnersLogo/CFB.png";
+import pcb from "../../../../assets/images/partnersLogo/powercorp-boston.jpeg";
 import AnimatedBox from "../../Components/AnimatedBox";
 import ButtonDarkBklue from "../../Components/Button/ButtonDarkBlue";
 import Heading1 from "../../Components/Typography/Heading1";
-import pcb from "../../../../assets/images/powercorp-boston.jpeg";
 
 const Partners = () => {
   const partners = [

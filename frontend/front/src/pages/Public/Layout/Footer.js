@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import ButtonGetPump from "../Components/Button/ButtonGetPump";
-import logoHeatPump from "../../../assets/images/bhpa-logo.png";
+import logoHeatPump from "../../../assets/images/bhpa-logos/bhpa-logo300px.png";
 import { styled } from "@mui/material/styles";
 import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 import EmailIcon from "@mui/icons-material/Email";
