@@ -1,11 +1,9 @@
 import { Box, Container } from "@mui/material";
 import React from "react";
-import streets from "../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
 import card1 from "../../../assets/images/copywritingImages/jason-goodman-NYMJYXfZG-g-unsplash.jpg";
 import card2 from "../../../assets/images/copywritingImages/kevin-grieve-MHsfcJD2RJw-unsplash.jpg";
 import card3 from "../../../assets/images/copywritingImages/erika-giraud-H6xKnDKrKDk-unsplash.jpg";
 import card4 from "../../../assets/images/copywritingImages/aubrey-odom--J0uMCDL2KQ-unsplash.jpg";
-// import cardContent from "./cardContent";
 import CardsSection from "../Components/CardsSection";
 import Heading1BlueBgGround from "../Components/Typography/Heading1BlueBgGround";
 import Heading1 from "../Components/Typography/Heading1";
