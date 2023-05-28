@@ -38,7 +38,17 @@ function CardsSection({
           <Typography variant="body">{body}</Typography>
         </CardContent>
         <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <Button href={link} size="large">
+          <Button
+            href={link}
+            size="large"
+            sx={{
+              color: "var(--color-text-2)",
+              textDecoration: "solid underline 1px",
+              textUnderlinePosition: "under",
+              textDecorationColor: "var(--color-text-2)",
+              textTransform: "none",
+            }}
+          >
             {linkDescription}
           </Button>
         </CardActions>
@@ -49,10 +59,8 @@ function CardsSection({
         image={mediaSource}
         sx={{
           backgroundSize: "contain",
-          //   maxHeight: { xs: "198px", lg: "300px" },
           maxHeight: "300px",
           minHeight: { xs: "198px", lg: "300px" },
-
           minWidth: "500px",
           maxWidth: { xs: "353px", lg: "500px" },
         }}

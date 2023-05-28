@@ -6,7 +6,7 @@ import Home from "./Pages/Home/Home";
 import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
 import { SurveyPage } from "./Pages/SurveyPage";
-import GetInvolved from "./Pages/GetInvolved/GetInvolved";
+import GetInvolved from "./Pages/GetInvolved";
 import GetHeatPump from "./Pages/GetHeatPump/GetHeatPump";
 import BenefitsHeatPumps from "./Pages/BenefitsHeatPumps";
 import AboutUs from "./Pages/AboutUs/AboutUs";
