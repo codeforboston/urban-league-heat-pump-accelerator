@@ -9,19 +9,6 @@ import {
 } from "@mui/material";
 import Heading3 from "../../Components/Typography/Heading3";
 
-// const CardTitle = styled(Typography)(({ theme }) => ({
-//   [theme.breakpoints.down("lg")]: {
-//     fontSize: "1.25rem",
-//   },
-//   [theme.breakpoints.up("lg")]: {
-//     fontSize: "2.875rem",
-//   },
-//   fontFamily: "var(--font-family-1)",
-//   fontWeight: 500,
-//   color: "var(--bgColor-2)",
-//   marginTop: "10px",
-// }));
-
 function AboutHeatPumpCards({
   mediaType,
   mediaSource,
@@ -44,13 +31,6 @@ function AboutHeatPumpCards({
     >
       <Box
         sx={{
-          //backgroundSize: "contain",
-          //maxHeight: { xs: "198px", lg: "300px" },
-          //minHeight: { xs: "198px", lg: "300px" },
-          //
-          //minWidth: { xs: "353px", lg: "500px" },
-          //maxWidth: { xs: "353px", lg: "500px" },
-
           order: { sm: "2" },
         }}
       >

@@ -1,10 +1,10 @@
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Container, Stack, useTheme, useMediaQuery } from "@mui/material";
 import React from "react";
 import heatpump from "../../../../assets/images/heatPump-outside.png";
 import ButtonDarkBlue from "../../Components/Button/ButtonDarkBlue";
 import Heading1 from "../../Components/Typography/Heading1";
 import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
-import Heading3 from "../../Components/Typography/Heading3";
+import Heading4 from "../../Components/Typography/Heading4";
 import AboutHeatPumpCards from "./AboutHeatPumpsCards";
 
 const cardContent = [
@@ -32,11 +32,13 @@ const cardContent = [
     mediaType: "iframe",
     mediaSource: "https://www.youtube.com/embed/Ep9zqk5bVaU",
     title: "What do other people say?",
-    body: "Hear what people involved with similar projects around the country are saying about their new heating/cooling systems.",
+    body: "Hear what someone else has to say about their experience getting a heat pump installed in their home.",
   },
 ];
 
 function AboutHeatPump() {
+  const theme = useTheme();
+  const isSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box
       mb={6}
@@ -49,11 +51,22 @@ function AboutHeatPump() {
     >
       <Heading1BlueBgGround text="About Heat Pumps" />
       <Container>
-        <Box mb={4} mt={4}>
-          <Heading1 fontWeight="500" text="Learn how heat pumps work " />
-          <Heading1 fontWeight="500" text="and why they are right for you!" />
+        <Box mb={{ xs: 1, sm: 6 }} mt={{ xs: 1, sm: 2 }}>
+          {isSmallerThanMd ? (
+            <Heading1
+              fontWeight="500"
+              text="Learn how heat pumps work and why they are right for you!"
+            />
+          ) : (
+            <>
+              <Heading1 fontWeight="500" text="Learn how heat pumps work " />
+              <Heading1
+                fontWeight="500"
+                text="and why they are right for you!"
+              />
+            </>
+          )}
         </Box>
-
         <Stack direction="column" spacing={{ xs: 4, lg: 8 }}>
           {cardContent.map((card, index) => {
             return (
@@ -71,8 +84,8 @@ function AboutHeatPump() {
         </Stack>
         <Stack alignItems="center" spacing="20px" marginTop="60px">
           <Box align="center">
-            <Heading3 text="Convinced a heat pump is for you?" />
-            <Heading3 text="Get started here!" />
+            <Heading4 text="Convinced a heat pump is for you?" />
+            <Heading4 text="Get started here!" />
           </Box>
           <ButtonDarkBlue text="GET A HEAT PUMP" to="/public/get-heat-pump" />
         </Stack>
