@@ -64,9 +64,10 @@ const CardLinksSection = () => {
 
   return (
     <GridLinkWrapper>
-      {linkCards.map((detail) => (
+      {linkCards.map((detail, index) => (
         <CardLinks>
           <Card
+            key={index}
             sx={{
               background: "var(--bgColor-3)",
               display: "flex",
@@ -90,7 +91,7 @@ const CardLinksSection = () => {
               alt={detail.title}
             />
             <Box sx={{ display: "flex", flexDirection: "column" }}>
-              <AnimatedBox triggerOnce={false} key={detail.id}>
+              <AnimatedBox triggerOnce={false}>
                 <CardContent sx={{ flex: "1 0 auto" }}>
                   <Box
                     id="survey-link-section"
