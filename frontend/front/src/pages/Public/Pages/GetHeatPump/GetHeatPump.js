@@ -133,7 +133,6 @@ const GetHeatPump = () => {
                   <Typography
                     variant="body"
                     sx={{
-                      // paddingLeft: { xs: "50px", md: "25px" },
                       color: "#0A0B0B",
                       lineHeight: { xs: "40px", md: "40px" },
                     }}

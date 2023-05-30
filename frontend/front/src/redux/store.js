@@ -23,4 +23,7 @@ export const createStore = (options) =>
     ...options,
   });
 
+// Assign the Redux store to a global property 'window.store'
+window.store = createStore();
+
 export const store = createStore();

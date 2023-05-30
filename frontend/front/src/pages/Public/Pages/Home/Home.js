@@ -52,7 +52,7 @@ const Home = () => {
 
       {/* TESTIMONIALS */}
       <SectionWrapper my={16} id="testimonial-section">
-        <Box sx={{ padding: { xs: "0" } }}>
+        <Box sx={{ padding: { xs: "0" }, height: "600px" }}>
           <Box
             sx={{
               display: "flex",
