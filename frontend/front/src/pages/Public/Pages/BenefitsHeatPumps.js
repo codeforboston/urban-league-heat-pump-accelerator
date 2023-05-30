@@ -25,25 +25,25 @@ const cardBenefits = [
     icon: moneyIcon,
     title: "Saving Money",
     body: "Air source heat pumps (ASHPs) can reduce electricity usage for heating by up to 50% compared to electrical furnaces and baseboard heaters. (Environmental Protection Agency - link). For cooling, ASHPs are roughly equivalent to “central air conditioning” and far more efficient than window AC units.Together, this can translate into homeowner savings of 20%-40% off of their annual heating and cooling bills. To compare your system and to see how much you could save, ",
-    link: "https://bhpa.vercel.app/public",
+    link: "https://www.masssave.com/residential/heating-comparison-calculator",
   },
   {
     icon: snowSunIcon,
     title: "Improved Heating & Cooling",
     body: "Heat pumps are an excellent way to heat and cool your home. They’re nearly silent, draw less electricity, and they are continuous: heat pumps’ continuous, low-level operation provides constant heating or cooling, eliminating the blasts of hot or cold that legacy systems usually create. To learn more about ASHP operation and benefits, ",
-    link: "https://bhpa.vercel.app/",
+    link: "https://goclean.masscec.com/clean-energy-solutions/air-source-heat-pumps",
   },
   {
     icon: communityIcon,
     title: "Strengthening Community",
     body: "Boston residents want to stay in their homes and keep their communities strong, even while facing challenges from rising costs. Switching to heat pumps can lower utility costs, reducing the financial challenge of staying in the community. By also adding active cooling capacity, ASHPs also improve the “housing resiliency” of entire neighborhoods as annual temperatures rise. With both energy bills and temperatures on the rise, housing resiliency is more important than ever to empower communities to stay strong and stay together. To learn more, ",
-    link: "https://bhpa.vercel.app/public",
+    link: "https://www.energy.gov/policy/articles/heat-pumps-keep-homes-warm-and-bills-low-winter",
   },
   {
     icon: heatIcon,
     title: "Reducing Carbon Emissions",
     body: "Heat pumps are highly efficient heating and cooling systems that are electrically-powered. As such, they become “cleaner” whenever the source of their electric power becomes cleaner. Gas or oil fueled heating/cooling cannot benefit in the same way. How much of a difference will switching to ASHPs make in your case? Find specifics on the climate impact of a switch to heat pumps, ",
-    link: "https://bhpa.vercel.app/public",
+    link: "https://goclean.masscec.com/clean-energy-solutions/",
   },
 ];
 

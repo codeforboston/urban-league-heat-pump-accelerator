@@ -3,6 +3,7 @@ import { Container, Divider, Typography, Box } from "@mui/material";
 import pageContent from "./privacyContent.json";
 import { sentenceAsLink } from "../../../../util/stringUtils";
 import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
+import Heading3 from "../../Components/Typography/Heading3";
 
 function PrivacyPolicy() {
   return (
@@ -31,9 +32,7 @@ function PrivacyPolicy() {
           personal information.**
         </Typography>
         <section style={{ padding: "1em 0" }}>
-          <Typography variant="h5" sx={{ textDecoration: "underline" }}>
-            Table of Contents
-          </Typography>
+          <Heading3 text="Table of Contents" />
           <ol>
             {pageContent.map((c, i) => (
               <li key={`privacyHeading${i}`} style={{ marginBottom: "0.5em" }}>
@@ -44,9 +43,9 @@ function PrivacyPolicy() {
         </section>
         <Divider />
         <section style={{ padding: "1em 0" }}>
-          <Typography variant="h5" sx={{ textDecoration: "underline" }}>
-            Privacy Summary
-          </Typography>
+          <Box mb={2}>
+            <Heading3 text="Privacy Summary" />
+          </Box>
           {pageContent.map((c, i) => {
             return (
               <div key={`privacy${i}`}>

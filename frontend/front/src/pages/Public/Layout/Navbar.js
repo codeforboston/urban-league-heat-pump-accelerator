@@ -201,7 +201,7 @@ function Navbar(props) {
                       }}
                     >
                       <Typography
-                        variant="navLinks"
+                        variant="navLinksMobile"
                         sx={{ display: "flex", justifyContent: "center" }}
                       >
                         {item}
@@ -212,7 +212,7 @@ function Navbar(props) {
               ) : (
                 <>
                   <ListItemButton
-                    variant="navLinks"
+                    variant="navLinksMobile"
                     component={Link}
                     to=""
                     onClick={handleClickMoreMobile}
@@ -243,7 +243,7 @@ function Navbar(props) {
                         sx={{ height: "20px" }}
                       >
                         <Typography
-                          variant="navLinks"
+                          variant="navLinksMobile"
                           sx={{
                             color: "var(--color-text-1)",
                             fontWeight: "500",
@@ -273,7 +273,7 @@ function Navbar(props) {
                               }}
                             >
                               <Typography
-                                variant="navLinks"
+                                variant="navLinksMobileDropdown"
                                 sx={{
                                   color: "var(--color-text-1)",
                                   fontWeight: "500",
@@ -329,7 +329,7 @@ function Navbar(props) {
               alignItems="center"
               wrap="nowrap"
             >
-              <Grid item sx={{ my: 2 }}>
+              <Grid item>
                 <Link to="">
                   <Box
                     component="img"

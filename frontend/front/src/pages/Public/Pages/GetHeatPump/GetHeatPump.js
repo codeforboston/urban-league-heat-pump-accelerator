@@ -65,11 +65,10 @@ const GetHeatPump = () => {
           {pageContent.map((data) => (
             <Grid
               container
-              spacing={10}
+              spacing={6}
               direction="row"
               justifyContent="center"
               alignItems="center"
-              mb={6}
               sx={{ minHeight: "325px" }}
               key={data.step}
             >
@@ -133,12 +132,16 @@ const GetHeatPump = () => {
                   <Typography
                     variant="body"
                     sx={{
-                      paddingLeft: { xs: "50px", md: "25px" },
                       color: "#0A0B0B",
                       lineHeight: { xs: "40px", md: "40px" },
                     }}
                   >
-                    <ol>
+                    <ol
+                      style={{
+                        margin: "0px",
+                        paddingLeft: "75px",
+                      }}
+                    >
                       {data.description.map((item, index) => (
                         <li
                           key={index}

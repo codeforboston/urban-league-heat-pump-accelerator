@@ -19,17 +19,17 @@ const SectionWrapper = styled(Box)(({ theme, image }) => ({
 }));
 
 const Home = () => {
-  const [heroHeight, setHeroHeight] = useState("calc(100vh-64px)");
+  // const [heroHeight, setHeroHeight] = useState("calc(100vh-64px)");
 
-  useEffect(() => {
-    const handleResize = () => {
-      setHeroHeight(window.innerHeight);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setHeroHeight(window.innerHeight);
+  //   };
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
   return (
     <Box
       sx={{
@@ -40,19 +40,20 @@ const Home = () => {
       }}
     >
       {/* HERO */}
-      <Box sx={{ height: heroHeight }}>
+      {/* <Box sx={{ height: heroHeight }}> */}
+      <Box>
         <CarrouselHero />
       </Box>
       <Container>
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
-        <Box mt={8}>
+        <Box mt={16}>
           <CardLinksSection />
         </Box>
       </Container>
 
       {/* TESTIMONIALS */}
       <SectionWrapper my={16} id="testimonial-section">
-        <Box sx={{ padding: { xs: "0" } }}>
+        <Box sx={{ padding: { xs: "0" }, height: "600px" }}>
           <Box
             sx={{
               display: "flex",

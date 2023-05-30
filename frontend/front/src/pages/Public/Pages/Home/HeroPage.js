@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box, Link, Stack } from "@mui/material";
+import { Typography, Box, Link } from "@mui/material";
 import ButtonWhite from "../../Components/Button/ButtonWhite";
 import AnimatedBox from "../../Components/AnimatedBox";
 import TitleHero from "../../Components/Typography/TitleHero";
@@ -56,14 +56,13 @@ const HeroPage = ({
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-evenly",
+                justifyContent: "center",
                 alignItems: "center",
-                flexGrow: 1,
+                gap: 8,
                 minHeight: "calc(100vh - 143px)",
-                pb: 4,
               }}
             >
-              <Box p={{ xs: 2, sm: 5 }}>
+              <Box>
                 <TitleHero
                   text={title.toUpperCase()}
                   titleBold={titleBold.toUpperCase()}
