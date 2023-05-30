@@ -51,6 +51,24 @@ const theme = createTheme({
       textAlign: "center",
       color: "var(--color-text-1)",
     },
+
+    navLinksMobile: {
+      fontSize: "1.5rem",
+      display: "block",
+      fontWeight: 600,
+      letterSpacing: "-.03em",
+      textAlign: "center",
+      color: "var(--color-text-1)",
+    },
+
+    navLinksMobileDropdown: {
+      fontSize: "1.4rem",
+      display: "block",
+      fontWeight: 600,
+      letterSpacing: "-.03em",
+      textAlign: "center",
+      color: "var(--color-text-1)",
+    },
   },
   components: {
     MuiMenu: {
