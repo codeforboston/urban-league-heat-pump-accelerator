@@ -41,7 +41,7 @@ const CardLinksSection = () => {
       id: 1,
       title: "Add Your Voice",
       paragraph:
-        "Tell us your thoughts and questions about heat pumps to a collection of homeowner's questions and thoughts about heat pumps.",
+        "Tell us your thoughts and questions about heat pumps to a collection of homeowner's thoughts and questions about heat pumps.",
       button: {
         text: "Take the survey",
         to: "survey",
