@@ -39,39 +39,38 @@ function AboutHeatPumpCards({
         flexDirection: { xs: "column", sm: "row" },
         alignItems: "center",
         gap: { sm: 5, lg: 10 },
+        backgroundColor: "transparent",
       }}
     >
       <Box
         sx={{
-          // backgroundSize: "contain",
-          // // maxHeight: { xs: "198px", lg: "367px" },
-          // // minHeight: { xs: "198px", lg: "367px" },
-
-          // minWidth: { xs: "353px", lg: "500px" },
-          // maxWidth: { xs: "353px", lg: "500px" },
+          //backgroundSize: "contain",
+          //maxHeight: { xs: "198px", lg: "300px" },
+          //minHeight: { xs: "198px", lg: "300px" },
+          //
+          //minWidth: { xs: "353px", lg: "500px" },
+          //maxWidth: { xs: "353px", lg: "500px" },
 
           order: { sm: "2" },
         }}
       >
         <CardMedia
           component={mediaType}
-          // height="100%"
-          // width="100%"
           src={mediaSource}
           sx={{
             backgroundSize: "contain",
+            backgroundColor: "transparent",
             maxHeight: { xs: "198px", lg: "300px" },
             minHeight: { xs: "198px", lg: "300px" },
-
             minWidth: { xs: "353px", lg: "500px" },
             maxWidth: { xs: "353px", lg: "500px" },
+            borderWidth: "0px",
           }}
         />
       </Box>
       <Box>
-        <CardContent sx={{ padding: 0 }}>
+        <CardContent sx={{ mt: "10px", padding: 0 }}>
           <Heading3 text={title} />
-
           <Typography mt={2} variant="body">
             {body}
           </Typography>
