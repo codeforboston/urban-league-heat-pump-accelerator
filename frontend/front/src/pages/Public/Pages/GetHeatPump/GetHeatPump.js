@@ -69,7 +69,6 @@ const GetHeatPump = () => {
               direction="row"
               justifyContent="center"
               alignItems="center"
-              // mb={3}
               sx={{ minHeight: "325px" }}
               key={data.step}
             >

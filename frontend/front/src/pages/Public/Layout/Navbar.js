@@ -329,7 +329,7 @@ function Navbar(props) {
               alignItems="center"
               wrap="nowrap"
             >
-              <Grid item sx={{ my: 2 }}>
+              <Grid item>
                 <Link to="">
                   <Box
                     component="img"
