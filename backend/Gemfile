@@ -29,3 +29,5 @@ group :development do
   gem 'smarter_csv'
   gem 'web-console'
 end
+
+gem "rack-cors", "~> 2.0"
