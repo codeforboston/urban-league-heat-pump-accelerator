@@ -3,9 +3,10 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { useNavigate } from "react-router-dom";
 import { useGetHomesQuery } from "../../../api/apiSlice";
-import { Box, CircularProgress } from "@mui/material";
+import { Box } from "@mui/material";
 import AssignmentLink from "./AssignmentLink";
 import Loader from "../../../components/Loader";
+import CustomSnackbar from "../../../components/CustomSnackbar";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -51,7 +52,7 @@ const HomeTable = () => {
 
   const {
     data: homesData,
-    error: homesError,
+    isError: isHomesError,
     isLoading: isHomesDataLoading,
   } = useGetHomesQuery();
   const navigate = useNavigate();
@@ -69,15 +70,25 @@ const HomeTable = () => {
   }
 
   return (
-    <DataGrid
-      rows={homesData}
-      columns={columns}
-      pageSize={20}
-      rowsPerPageOptions={[20]}
-      disableSelectionOnClick
-      autoHeight
-      onRowClick={onRowClick}
-    />
+    <Box>
+      {isHomesError ? (
+        <CustomSnackbar
+          open={isHomesError}
+          message="Error fetching surveyor assignment data"
+          severity="error"
+        />
+      ) : (
+        <DataGrid
+          rows={homesData}
+          columns={columns}
+          pageSize={20}
+          rowsPerPageOptions={[20]}
+          disableSelectionOnClick
+          autoHeight
+          onRowClick={onRowClick}
+        />
+      )}
+    </Box>
   );
 };
 
