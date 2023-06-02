@@ -74,7 +74,7 @@ const HomeTable = () => {
       {isHomesError ? (
         <CustomSnackbar
           open={isHomesError}
-          message="Error fetching surveyor assignment data"
+          message="Error fetching homes data."
           severity="error"
         />
       ) : (

@@ -56,7 +56,7 @@ const UserTable = () => {
       {isSurveyorsError ? (
         <CustomSnackbar
           open={isSurveyorsError}
-          message="Error fetching surveyor assignment data"
+          message="Error fetching Surveyors data."
           severity="error"
         />
       ) : (
