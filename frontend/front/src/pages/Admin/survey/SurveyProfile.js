@@ -25,11 +25,11 @@ const SurveyProfile = () => {
   );
   const [
     putSurveyVisit,
-    { isLoading: isSurveyVisitPutLoading, error: surveyVisitPutError },
+    { isLoading: isSurveyVisitPutLoading, isError: isSurveyVisitPutError },
   ] = useUpdateSurveyVisitMutation();
   const [
     deleteSurveyVisit,
-    { isLoading: isSurveyDeleteLoading, error: surveyVisitDeleteError },
+    { isLoading: isSurveyDeleteLoading, isError: isSurveyVisitDeleteError },
   ] = useDeleteSurveyVisitMutation();
 
   const title = useMemo(
@@ -74,6 +74,7 @@ const SurveyProfile = () => {
           submitSurvey={onSubmit}
           onDelete={onDelete}
           isLoading={isSurveyVisitPutLoading || isSurveyDeleteLoading}
+          isErrorSurvey={isSurveyVisitPutError || isSurveyVisitDeleteError}
         />
       ) : surveyVisitError || houseError ? (
         <SurveyError />

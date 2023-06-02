@@ -6,7 +6,7 @@ import React, {
   forwardRef,
 } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Stack, Alert, CircularProgress, Box } from "@mui/material";
+import { Button, Stack, Alert } from "@mui/material";
 import { HeatPumpDropdown } from "./HeatPumpDropdown";
 import ConfirmationModal from "../../pages/Developer/confirmModal/ConfirmationModal";
 import { useGetSurveyStructureQuery } from "../../api/apiSlice";
@@ -17,6 +17,8 @@ import {
   buildSurveyCacheKey,
   buildDefaultDataFromSurveyStructure,
 } from "../../util/surveyUtils";
+import { SurveyError } from "./SurveyStructureError";
+import Loader from "../Loader";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
@@ -31,6 +33,7 @@ const SurveyComponent = ({
   formDefault,
   surveyStructure,
   onDelete,
+  isErrorSurvey,
 }) => {
   const navigate = useNavigate();
 
@@ -227,7 +230,7 @@ const SurveyComponent = ({
             }
           })}
           <Stack direction="row" justifyContent="center" spacing={2}>
-            {isLoading && <CircularProgress />}
+            {isLoading && <Loader />}
             {isEditable
               ? isEditing
                 ? adminButtonsEditing()
@@ -244,8 +247,11 @@ const SurveyComponent = ({
 const SurveyComponentWrapper = forwardRef((props, ref) => {
   const { defaultData, surveyId, style, activeHome } = props;
 
-  const { data: surveyStructure, error: surveyStructureError } =
-    useGetSurveyStructureQuery(surveyId);
+  const {
+    data: surveyStructure,
+    isError: isSurveyError,
+    isLoading: isSurveyLoading,
+  } = useGetSurveyStructureQuery(surveyId);
 
   const formDefault = useMemo(() => {
     if (defaultData) {
@@ -259,22 +265,19 @@ const SurveyComponentWrapper = forwardRef((props, ref) => {
     return null;
   }, [defaultData, surveyStructure]);
 
+  if (isSurveyLoading) {
+    return <Loader />;
+  }
   return (
     <div ref={ref} style={style}>
-      {surveyStructure && formDefault && activeHome ? (
+      {!surveyStructure && formDefault && activeHome ? (
         <SurveyComponent
           {...props}
           surveyStructure={surveyStructure}
           formDefault={formDefault}
         />
-      ) : surveyStructureError ? (
-        <Alert severity="error">
-          {"Encountered an error while loading the survey."}
-        </Alert>
       ) : (
-        <Box display="flex" justifyContent="center">
-          <CircularProgress />
-        </Box>
+        isSurveyError && <SurveyError />
       )}
     </div>
   );
