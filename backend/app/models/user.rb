@@ -12,8 +12,8 @@ class User < ApplicationRecord
   def jwt_payload
     {
       'email' => email,
-      'role' => surveyor.role,
-      'surveyorId' => surveyor.id
+      'role' => surveyor&.role,
+      'surveyorId' => surveyor&.id
     }
   end
 end

@@ -2,6 +2,7 @@ import { selectCurrentUser, setLoginInfo } from "./loginSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import jwt_decode from "jwt-decode";
+import passwordGenerator from "generate-password-browser";
 import { useMemo } from "react";
 
 export const AUTHORIZATION_HEADER = "Authorization";
@@ -45,3 +46,7 @@ export const decodeJwt = (token) => {
   const { sub, email, role } = jwt_decode(token);
   return { id: sub, email, role };
 };
+
+export const generatePassword = () =>
+  // length 6 == shortest password devise will let you set
+  passwordGenerator.generate({ numbers: true, strict: true, length: 6 });
