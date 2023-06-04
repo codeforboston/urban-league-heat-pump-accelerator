@@ -108,7 +108,7 @@ export const apiSlice = createApi({
 
     /* Survey Endpoints */
     getSurveys: builder.query({
-      query: () => ({ url: "/surveys", method: "GET" }),
+      query: () => ({ url: "/surveys.json", method: "GET" }),
       transformResponse: (res) => res.sort(sortById),
       providesTags: (result = [], error, arg) => [
         "Survey",
@@ -117,7 +117,7 @@ export const apiSlice = createApi({
     }),
     getSurveyStructure: builder.query({
       query: (id) => ({
-        url: `/surveys/${id}`,
+        url: `/surveys/${id}.json`,
         method: "GET",
       }),
       providesTags: (result, error, arg) => [{ type: "Survey", id: arg }],
