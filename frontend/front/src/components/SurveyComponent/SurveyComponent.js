@@ -270,7 +270,7 @@ const SurveyComponentWrapper = forwardRef((props, ref) => {
   }
   return (
     <div ref={ref} style={style}>
-      {!surveyStructure && formDefault && activeHome ? (
+      {surveyStructure && formDefault && activeHome ? (
         <SurveyComponent
           {...props}
           surveyStructure={surveyStructure}
