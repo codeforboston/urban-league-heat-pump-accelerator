@@ -33,7 +33,6 @@ const SurveyComponent = ({
   formDefault,
   surveyStructure,
   onDelete,
-  isErrorSurvey,
 }) => {
   const navigate = useNavigate();
 
