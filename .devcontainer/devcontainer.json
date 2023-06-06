@@ -6,8 +6,7 @@
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
     "portsAttributes": {
         "3000": {
-            "label": "Application",
-            "onAutoForward": "openPreview"
+            "label": "Application"
         }
     },
     "customizations": {
@@ -15,6 +14,11 @@
             "openFiles": ["README.md"]
         }
     },
+	"hostRequirements": {
+		"cpus": 4,
+		"memory": "8gb",
+		"storage": "32gb"
+	},
     "onCreateCommand": "backend/bin/setup",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
