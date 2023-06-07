@@ -8,7 +8,7 @@ import AssignmentLink from "./AssignmentLink";
 import Loader from "../../../components/Loader";
 
 // Formats addresses
-const getAddress = (params) => {
+export const getAddress = (params) => {
   let unit_number = "";
   if (params.getValue(params.id, "unit_number")) {
     unit_number = `, Unit #${params.getValue(params.id, "unit_number")}`;
@@ -37,7 +37,15 @@ const HomeTable = () => {
       width: 200,
     },
     { field: "city", headerName: "City", width: 200 },
-    { field: "zip_code", headerName: "Zip Code", width: 200 },
+    {
+      field: "zip_code",
+      headerName: "Zip Code",
+      renderCell: (params) =>
+        params.row.zip_code.length === 5
+          ? params.row.zip_code
+          : `0${params.row.zip_code}`,
+      width: 200,
+    },
     { field: "completed", headerName: "Completed", width: 200 },
   ];
 
