@@ -88,7 +88,7 @@ const AssignTable = () => {
     // { field: "surveyed", headerName: "Surveyed", width: 110, flex: 1 },
     {
       field: "completed",
-      headerName: "Completed",
+      headerName: "Completion",
       width: 110,
       flex: 1,
       renderCell: (params) => {
