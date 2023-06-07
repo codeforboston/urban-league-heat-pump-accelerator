@@ -89,7 +89,7 @@ const Unassigned = () => {
   ];
 
   return (
-    <ContainerTitle name={"UNASSINGED"}>
+    <ContainerTitle name={"UNASSIGNED"}>
       <Box py={1} flexDirection="row" display="flex">
         <Box sx={{ minWidth: 200 }}>
           <FormControl fullWidth>

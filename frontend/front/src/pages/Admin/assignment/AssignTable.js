@@ -7,10 +7,12 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
-import { useGetAssignmentsQuery, useGetSurveyorsQuery } from "../../../api/apiSlice";
+import {
+  useGetAssignmentsQuery,
+  useGetSurveyorsQuery,
+} from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
-
 
 const userData = [];
 
@@ -61,30 +63,44 @@ const AssignTable = () => {
     { field: "id", headerName: "Id", maxWidth: 100, flex: 1 },
     {
       field: "surveyor_ids",
-      headerName: "Surveyors",
+      headerName: "Surveyor(s)",
       width: 150,
       flex: 1,
       renderCell: (params) => {
-        return params.row.surveyor_ids ? (
-          params.row.surveyor_ids.map((id) => {
-            const surveyor = surveyorsData.find(
-              (surveyor) => {
-                return surveyor.id === id
-              }
-            )
-            console.log(surveyor.firstname)
-          return <Button key={`surveyor-${id}`} onClick={() => handleNameClick(params.row.surveyor_ids)}>
-            {`${surveyor.lastname}, ${surveyor.firstname}`}
-          </Button>
-          })
-        ) : (
-          "Unassigned"
-        );
+        return params.row.surveyor_ids
+          ? params.row.surveyor_ids.map((id) => {
+              const surveyor = surveyorsData.find((surveyor) => {
+                return surveyor.id === id;
+              });
+              return (
+                <Button
+                  key={`surveyor-${id}`}
+                  onClick={() => handleNameClick(params.row.surveyor_ids)}
+                >
+                  {`${surveyor.lastname}, ${surveyor.firstname}`}
+                </Button>
+              );
+            })
+          : "Unassigned";
       },
     },
     // { field: "home", headerName: "Home", width: 110, flex: 1 },
     // { field: "surveyed", headerName: "Surveyed", width: 110, flex: 1 },
-    { field: "completed", headerName: "Completed", width: 110, flex: 1 },
+    {
+      field: "completed",
+      headerName: "Completed",
+      width: 110,
+      flex: 1,
+      renderCell: (params) => {
+        let completed = 0;
+        params.row.homes.forEach((home) => {
+          if (home?.completed === true) {
+            completed++;
+          }
+        });
+        return `${completed}/${params.row.homes.length}`;
+      },
+    },
     {
       field: "assignment",
       headerName: "Assignment",
@@ -103,76 +119,79 @@ const AssignTable = () => {
     },
   ];
 
-if (isAssignmentsDataLoading || isSurveyorsDataLoading) {
-  return <Loader/>
-}
+  if (isAssignmentsDataLoading || isSurveyorsDataLoading) {
+    return <Loader />;
+  }
 
   return (
     <Box>
-      {(isAssignmentsDataLoading || isSurveyorsDataLoading) ? (
-        <Loader/>
-      ) : (isAssignmentsError) ? (
+      {isAssignmentsDataLoading || isSurveyorsDataLoading ? (
+        <Loader />
+      ) : isAssignmentsError ? (
         <CustomSnackbar
           open={isAssignmentsError}
           message="Error fetching surveyor assignment data"
           severity="error"
         />
-      ) : ( isSurveyorsError) ? (
+      ) : isSurveyorsError ? (
         <CustomSnackbar
-          open={ isSurveyorsError}
+          open={isSurveyorsError}
           message="Error fetching surveyor user data"
           severity="error"
         />
       ) : (
-      <><Box py={3} flexDirection="row" display="flex">
-        <Box sx={{ minWidth: 200 }}>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={surveyor}
-              label="Surveyor"
-              onChange={handleChange}
+        <>
+          <Box py={3} flexDirection="row" display="flex">
+            <Box sx={{ minWidth: 200 }}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={surveyor}
+                  label="Surveyor"
+                  onChange={handleChange}
+                >
+                  {userData.map((item) => (
+                    <MenuItem key={item.id} value={item.id}>
+                      {item.firstName + " " + item.lastName}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
+            <Button
+              size="large"
+              sx={{ mb: 2.5, px: 3, py: 1.5, mx: 4 }}
+              variant="outlined"
+              onClick={handleAddSurveyor}
             >
-              {userData.map((item) => (
-                <MenuItem key={item.id} value={item.id}>
-                  {item.firstName + " " + item.lastName}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Box>
-        <Button
-          size="large"
-          sx={{ mb: 2.5, px: 3, py: 1.5, mx: 4 }}
-          variant="outlined"
-          onClick={handleAddSurveyor}
-        >
-          Add
-        </Button>
-        <Button
-          size="large"
-          sx={{ mb: 2.5, px: 3, py: 1.5, mx: 1 }}
-          variant="outlined"
-          onClick={handleRemoveSurveyor}
-        >
-          Remove
-        </Button>
-      </Box>
-      <Box sx={{ height: "100%", width: "100%" }}>
-        <DataGrid
-          rows={assignmentsData}
-          columns={columns}
-          pageSize={20}
-          rowsPerPageOptions={[20]}
-          disableSelectionOnClick
-          autoHeight
-          checkboxSelection
-          onSelectionModelChange={handleSelectionModelChange}
-          selectionModel={selectionModel}
-        />
-      </Box></>)}
+              Add
+            </Button>
+            <Button
+              size="large"
+              sx={{ mb: 2.5, px: 3, py: 1.5, mx: 1 }}
+              variant="outlined"
+              onClick={handleRemoveSurveyor}
+            >
+              Remove
+            </Button>
+          </Box>
+          <Box sx={{ height: "100%", width: "100%" }}>
+            <DataGrid
+              rows={assignmentsData}
+              columns={columns}
+              pageSize={20}
+              rowsPerPageOptions={[20]}
+              disableSelectionOnClick
+              autoHeight
+              checkboxSelection
+              onSelectionModelChange={handleSelectionModelChange}
+              selectionModel={selectionModel}
+            />
+          </Box>
+        </>
+      )}
     </Box>
   );
 };
