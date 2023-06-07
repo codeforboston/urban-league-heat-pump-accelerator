@@ -7,8 +7,10 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
+import { useGetAssignmentsQuery, useGetSurveyorsQuery } from "../../../api/apiSlice";
+import Loader from "../../../components/Loader";
 
-const rows = [];
+
 const userData = [];
 
 const AssignTable = () => {
@@ -41,25 +43,46 @@ const AssignTable = () => {
   const handleNameClick = (item) => {
     return navigate(`/admin/user/userprofile/${item}`);
   };
+
+  const {
+    data: assignmentsData,
+    error: assignmentsError,
+    isLoading: isAssignmentsDataLoading,
+  } = useGetAssignmentsQuery();
+
+  const {
+    data: surveyorsData,
+    error: surveyorsError,
+    isLoading: isSurveyorsDataLoading,
+  } = useGetSurveyorsQuery();
+
   const columns = [
     { field: "id", headerName: "Id", maxWidth: 100, flex: 1 },
     {
-      field: "surveyor",
-      headerName: "Surveyor",
+      field: "surveyor_ids",
+      headerName: "Surveyors",
       width: 150,
       flex: 1,
       renderCell: (params) => {
-        return params.row.assigned.userId ? (
-          <Button onClick={() => handleNameClick(params.row.assigned.userId)}>
-            {`${params.row.assigned.firstName} ${params.row.assigned.lastName}`}
+        return params.row.surveyor_ids ? (
+          params.row.surveyor_ids.map((id) => {
+            const surveyor = surveyorsData.find(
+              (surveyor) => {
+                return surveyor.id === id
+              }
+            )
+            console.log(surveyor.firstname)
+          return <Button key={`surveyor-${id}`} onClick={() => handleNameClick(params.row.surveyor_ids)}>
+            {`${surveyor.lastname}, ${surveyor.firstname}`}
           </Button>
+          })
         ) : (
           "Unassigned"
         );
       },
     },
-    { field: "home", headerName: "Home", width: 110, flex: 1 },
-    { field: "surveyed", headerName: "Surveyed", width: 110, flex: 1 },
+    // { field: "home", headerName: "Home", width: 110, flex: 1 },
+    // { field: "surveyed", headerName: "Surveyed", width: 110, flex: 1 },
     { field: "completed", headerName: "Completed", width: 110, flex: 1 },
     {
       field: "assignment",
@@ -78,6 +101,10 @@ const AssignTable = () => {
       ),
     },
   ];
+
+if (isAssignmentsDataLoading || isSurveyorsDataLoading) {
+  return <Loader/>
+}
 
   return (
     <Box>
@@ -119,7 +146,7 @@ const AssignTable = () => {
       </Box>
       <Box sx={{ height: "100%", width: "100%" }}>
         <DataGrid
-          rows={rows}
+          rows={assignmentsData}
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}
