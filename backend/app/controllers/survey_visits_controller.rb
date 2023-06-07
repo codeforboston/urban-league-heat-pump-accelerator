@@ -20,7 +20,7 @@ class SurveyVisitsController < ApplicationController
   def edit; end
 
   # POST /survey_visits or /survey_visits.json
-  def create # rubocop:disable Metrics/MethodLength
+  def create # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     params_hash = survey_visit_params.to_h
     params_hash[:survey_response_attributes][:ip] = request.ip if params_hash.key?(:survey_response_attributes)
     @survey_visit = SurveyVisit.new(params_hash)
