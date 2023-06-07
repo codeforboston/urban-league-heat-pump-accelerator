@@ -28,36 +28,22 @@ class HomesController < ApplicationController
     respond_to do |format|
       if @home.save
         format.json { render :show, status: :created, location: @home }
-        CanonicalizeAddressJob.perform_later @home.id
       else
         format.json { render json: @home.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
   # PATCH/PUT /homes/1 or /homes/1.json
   def update
-    # If we change anything in the address,
-    # we need to redo the canonicalization.
-    unless home_params.keys.intersection(%w[street_number street_name unit_number city state
-                                            zip_code]).empty?
-      home_params[:canonicalized] = false
-    end
-
     respond_to do |format|
       if @home.update(home_params)
         format.json { render :show, status: :ok, location: @home }
-
-        CanonicalizeAddressJob.perform_later @home.id unless @home.canonicalized?
       else
         format.json { render json: @home.errors, status: :unprocessable_entity }
       end
     end
   end
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
 
   # DELETE /homes/1 or /homes/1.json
   def destroy
