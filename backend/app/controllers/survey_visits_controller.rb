@@ -36,7 +36,7 @@ class SurveyVisitsController < ApplicationController
         # We only verify the reCAPTCHA token if the user is anonymous
         unless user_signed_in?
           actual_response_token = request.headers['Recaptcha-Token']
-          recaptcha_action = request.headers['Recaptcha-Token']
+          recaptcha_action = 'create_survey'
 
           # If we have a survey_response, schedule the reCAPTCHA check
           # in the background
