@@ -10,8 +10,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useNavigate } from "react-router-dom";
 import { useGetSurveyorsQuery } from "../../../api/apiSlice";
-import { Box, CircularProgress } from "@mui/material";
 import Loader from "../../../components/Loader";
+import CustomSnackbar from "../../../components/CustomSnackbar";
 
 const columns = [
   { id: "id", label: "UserID", minWidth: 50 },
@@ -26,7 +26,7 @@ const columns = [
 const UserTable = () => {
   const {
     data: rows,
-    error: surveyorsError,
+    isError: isSurveyorsError,
     isLoading: isSurveyorsDataLoading,
   } = useGetSurveyorsQuery();
   const navigate = useNavigate();
@@ -53,57 +53,62 @@ const UserTable = () => {
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: 800 }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={row.phone + row.name}
-                    onClick={() => onRowClick(row)}
-                    sx={{ cursor: "pointer" }}
-                  >
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
+      {isSurveyorsError ? (
+        <CustomSnackbar
+          open={isSurveyorsError}
+          message="Error fetching Surveyors data."
+          severity="error"
+        />
+      ) : (
+        <>
+          <TableContainer sx={{ maxHeight: 800 }}>
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                <TableRow>
+                  {columns.map((column) => (
+                    <TableCell
+                      key={column.id}
+                      align={column.align}
+                      style={{ minWidth: column.minWidth }}
+                    >
+                      {column.label}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row) => (
+                    <TableRow
+                      hover
+                      role="checkbox"
+                      tabIndex={-1}
+                      key={row.phone + row.name}
+                      onClick={() => onRowClick(row)}
+                      sx={{ cursor: "pointer" }}
+                    >
+                      {columns.map((column) => (
                         <TableCell key={column.id} align={column.align}>
-                          {value}
+                          {row[column.id]}
                         </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+                      ))}
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[10, 25, 100]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </>
+      )}
     </Paper>
   );
 };
