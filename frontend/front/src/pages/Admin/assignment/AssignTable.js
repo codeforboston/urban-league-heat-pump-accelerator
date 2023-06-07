@@ -9,6 +9,7 @@ import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
 import { useGetAssignmentsQuery, useGetSurveyorsQuery } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
+import CustomSnackbar from "../../../components/CustomSnackbar";
 
 
 const userData = [];
@@ -46,13 +47,13 @@ const AssignTable = () => {
 
   const {
     data: assignmentsData,
-    error: assignmentsError,
+    isError: isAssignmentsError,
     isLoading: isAssignmentsDataLoading,
   } = useGetAssignmentsQuery();
 
   const {
     data: surveyorsData,
-    error: surveyorsError,
+    isError: isSurveyorsError,
     isLoading: isSurveyorsDataLoading,
   } = useGetSurveyorsQuery();
 
@@ -108,7 +109,22 @@ if (isAssignmentsDataLoading || isSurveyorsDataLoading) {
 
   return (
     <Box>
-      <Box py={3} flexDirection="row" display="flex">
+      {(isAssignmentsDataLoading || isSurveyorsDataLoading) ? (
+        <Loader/>
+      ) : (isAssignmentsError) ? (
+        <CustomSnackbar
+          open={isAssignmentsError}
+          message="Error fetching surveyor assignment data"
+          severity="error"
+        />
+      ) : ( isSurveyorsError) ? (
+        <CustomSnackbar
+          open={ isSurveyorsError}
+          message="Error fetching surveyor user data"
+          severity="error"
+        />
+      ) : (
+      <><Box py={3} flexDirection="row" display="flex">
         <Box sx={{ minWidth: 200 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
@@ -156,7 +172,7 @@ if (isAssignmentsDataLoading || isSurveyorsDataLoading) {
           onSelectionModelChange={handleSelectionModelChange}
           selectionModel={selectionModel}
         />
-      </Box>
+      </Box></>)}
     </Box>
   );
 };
