@@ -3,7 +3,7 @@
 class CanonicalizeAddressJob < ApplicationJob
   queue_as :default
 
-  def perform(home_id) # rubocop:disable Metrics/MethodLength
+  def perform(home_id) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
     home = Home.find(home_id)
 
     # Extract details from home to send to service
@@ -24,10 +24,10 @@ class CanonicalizeAddressJob < ApplicationJob
     # Search for existing home record matching the canonicalized attributes
     combined_map = home_map.merge(change_map)
     existing_home = Home.where(combined_map).first
-    
+
     if existing_home.nil?
       # If cannot find, then update and no further changes needed
-    
+
       # Regardless whether changes are needed,
       # we want to set canonicalized to true
       change_map[:canonicalized] = true
@@ -35,10 +35,10 @@ class CanonicalizeAddressJob < ApplicationJob
     else
       # If find match, then move survey visits to old home and delete
       ActiveRecord::Base.transaction do
-        home.survey_visits.each { |sv|
+        home.survey_visits.each do |sv|
           sv.home = existing_home
           sv.save
-        }
+        end
         home.delete
       end
     end
