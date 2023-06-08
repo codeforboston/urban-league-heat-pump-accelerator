@@ -15,24 +15,27 @@ function GetInvolved() {
       mediaSource: card1,
       title: "Share with your community",
       body: "Let people know about the cost savings and other benefits they are missing out on by sharing this website on social media or through email. Download this social sharing kit for ideas!",
-      link: "https://www.google.com/",
       linkDescription: "Download social sharing kit",
+      linkDownload:
+        "https://drive.google.com/file/d/1N7icm2tQagkZrEkuviaYbaey2trLUE3r/view?usp=sharing",
     },
     {
       mediaType: "img",
       mediaSource: card2,
       title: "Post flyers at local businesses",
       body: "Do you know places like cafes, convenience stores, or community bulletin boards where people post local announcements? Print and share this information flyer around town!",
-      link: "https://www.google.com/",
       linkDescription: "Download informational flyer",
+      linkDownload:
+        "https://drive.google.com/file/d/1_C-PGYtTS98PD70v4XDydrnNGMT0DFQo/view?usp=sharing",
     },
     {
       mediaType: "img",
       mediaSource: card3,
       title: "Discuss with your community",
       body: "You can host any sort of event and share flyers about how to help your neighbors save money by getting a heat pump!",
-      link: "https://www.google.com/",
       linkDescription: "Download informational flyer",
+      linkDownload:
+        "https://drive.google.com/file/d/1_C-PGYtTS98PD70v4XDydrnNGMT0DFQo/view?usp=sharing",
     },
     {
       mediaType: "img",
@@ -76,8 +79,8 @@ function GetInvolved() {
                 mediaSource={card.mediaSource}
                 title={card.title}
                 body={card.body}
-                link={card.link}
                 linkDescription={card.linkDescription}
+                linkDownload={card.linkDownload}
               />
             );
           })}

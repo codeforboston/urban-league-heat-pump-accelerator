@@ -14,10 +14,13 @@ function CardsSection({
   mediaSource,
   title,
   body,
-  link,
   linkDescription,
+  linkDownload,
 }) {
-  console.log(mediaSource);
+  const handleDownloadPDF = () => {
+    window.open(linkDownload, "_blank");
+  };
+
   return (
     <Card
       sx={{
@@ -39,7 +42,6 @@ function CardsSection({
         </CardContent>
         <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Button
-            href={link}
             size="large"
             sx={{
               color: "var(--color-text-2)",
@@ -48,6 +50,7 @@ function CardsSection({
               textDecorationColor: "var(--color-text-2)",
               textTransform: "none",
             }}
+            onClick={handleDownloadPDF}
           >
             {linkDescription}
           </Button>
