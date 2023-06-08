@@ -18,9 +18,6 @@ import Unassigned from "./assignment/Unassigned";
 const AdminContainer = () => {
   return (
     <Box>
-      <Button color="inherit" component={Link} to="/">
-        <Typography>selection menu</Typography>
-      </Button>
       <Box>
         <Nav />
         <Routes>
