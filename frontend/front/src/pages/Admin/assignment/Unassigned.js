@@ -16,7 +16,6 @@ import { getAddress } from "../home/HomeTable";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 
-
 const Unassigned = () => {
   const navigate = useNavigate();
   const [assignment, setAssignment] = React.useState("");
@@ -159,6 +158,7 @@ const Unassigned = () => {
           sx={{ mb: 2.5, px: 3, py: 1.5, mx: 4 }}
           variant="outlined"
           onClick={handleSentTo}
+          disabled={assignment === ""}
         >
           Send To
         </Button>
