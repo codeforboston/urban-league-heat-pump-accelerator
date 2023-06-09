@@ -150,6 +150,9 @@ const Unassigned = () => {
                   {assignment.id}
                 </MenuItem>
               ))}
+              <MenuItem key="newAssignment" value="new assignment">
+                Create new...
+              </MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -160,7 +163,8 @@ const Unassigned = () => {
           onClick={handleSentTo}
           disabled={assignment === ""}
         >
-          Send To
+          Add Homes to {assignment === "new assignment" ? "" : "Assignment"}{" "}
+          {assignment}
         </Button>
       </Box>
       <div style={{ width: "100%" }}>
