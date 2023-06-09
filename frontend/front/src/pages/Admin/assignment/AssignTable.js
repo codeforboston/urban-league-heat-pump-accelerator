@@ -17,12 +17,13 @@ import CustomSnackbar from "../../../components/CustomSnackbar";
 const AssignTable = () => {
   const navigate = useNavigate();
   const [surveyor, setSurveyor] = React.useState("");
+  const [selectionModel, setSelectionModel] = React.useState([]);
 
+  // Event handlers
   const handleChange = (event) => {
     setSurveyor(event.target.value);
   };
 
-  const [selectionModel, setSelectionModel] = React.useState([]);
 
   const handleSelectionModelChange = (newSelection) => {
     setSelectionModel(newSelection);
@@ -45,6 +46,7 @@ const AssignTable = () => {
     return navigate(`/admin/user/userprofile/${item}`);
   };
 
+  // GET hooks
   const {
     data: assignmentsData,
     isError: isAssignmentsError,
@@ -57,6 +59,7 @@ const AssignTable = () => {
     isLoading: isSurveyorsDataLoading,
   } = useGetSurveyorsQuery();
 
+  // DataGrid columns
   const columns = [
     { field: "id", headerName: "Assign. Id", maxWidth: 100, flex: 1 },
     {
@@ -117,9 +120,6 @@ const AssignTable = () => {
     },
   ];
 
-  if (isAssignmentsDataLoading || isSurveyorsDataLoading) {
-    return <Loader />;
-  }
 
   return (
     <Box>
@@ -150,9 +150,9 @@ const AssignTable = () => {
                   label="Surveyor"
                   onChange={handleChange}
                 >
-                  {surveyorsData.map((item) => (
-                    <MenuItem key={item.id} value={item.id}>
-                      {item.firstname + " " + item.lastname}
+                  {surveyorsData.map((surveyor) => (
+                    <MenuItem key={surveyor.id} value={surveyor.id}>
+                      {surveyor.firstname + " " + surveyor.lastname}
                     </MenuItem>
                   ))}
                 </Select>
