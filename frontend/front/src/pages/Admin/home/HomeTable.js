@@ -51,7 +51,12 @@ const HomeTable = () => {
 
   const onRowClick = (row, event) => {
     if (event.target.className.includes("goToAssignment")) {
-      navigate(`/admin/assignments/${row.getValue(row.id, "assignment_id")}`);
+      navigate(
+        `/admin/assignment/assignProfile/${row.getValue(
+          row.id,
+          "assignment_id"
+        )}`
+      );
     } else {
       navigate(`homeprofile/${row.id}`);
     }
