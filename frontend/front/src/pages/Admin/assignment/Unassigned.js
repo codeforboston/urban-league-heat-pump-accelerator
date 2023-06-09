@@ -9,10 +9,13 @@ import React from "react";
 import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
 import {
+  useGetAssignmentsQuery,
   useGetUnassignedHomesQuery,
 } from "../../../api/apiSlice";
+import { getAddress } from "../home/HomeTable";
+import Loader from "../../../components/Loader";
+import CustomSnackbar from "../../../components/CustomSnackbar";
 
-const rows = [];
 
 const Unassigned = () => {
   const navigate = useNavigate();
@@ -39,26 +42,42 @@ const Unassigned = () => {
     );
   };
 
+  // GET hookes
   const {
     data: unassignedHomesData,
     isError: isUnassignedHomesError,
     isLoading: isUnassignedHomesDataLoading,
   } = useGetUnassignedHomesQuery();
 
-  console.log(unassignedHomesData);
+  const {
+    data: assignmentsData,
+    isError: isAssignmentsError,
+    isLoading: isAssignmentsDataLoading,
+  } = useGetAssignmentsQuery();
 
   const columns = [
     { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
 
-    { field: "address", headerName: "Address", width: 200 },
-    { field: "zipcode", headerName: "Zipcode", width: 120 },
+    {
+      field: "address",
+      valueGetter: getAddress,
+      headerName: "Address",
+      width: 200,
+    },
+    { field: "zip_code", headerName: "Zipcode", width: 120 },
     {
       field: "city",
       headerName: "City",
       width: 200,
       flex: 1,
     },
-    { field: "completed", headerName: "Completed", width: 200, flex: 1 },
+    {
+      field: "completed",
+      headerName: "Completed",
+      renderCell: (home) => (home?.completed === true ? "Yes" : "No"),
+      width: 200,
+      flex: 1,
+    },
     {
       field: "survey",
       headerName: "Survey",
@@ -100,7 +119,21 @@ const Unassigned = () => {
     },
   ];
 
-  return (
+  return isUnassignedHomesDataLoading || isAssignmentsDataLoading ? (
+    <Loader />
+  ) : isUnassignedHomesError ? (
+    <CustomSnackbar
+      open={isUnassignedHomesError}
+      message="Error fetching unassigned homes data"
+      severity="error"
+    />
+  ) : isAssignmentsError ? (
+    <CustomSnackbar
+      open={isAssignmentsError}
+      message="Error fetching assignments data"
+      severity="error"
+    />
+  ) : (
     <ContainerTitle name={"UNASSIGNED"}>
       <Box py={1} flexDirection="row" display="flex">
         <Box sx={{ minWidth: 200 }}>
@@ -113,16 +146,11 @@ const Unassigned = () => {
               label="Assignment"
               onChange={handleChangeAssignment}
             >
-              <MenuItem value={"0"}>0</MenuItem>
-              <MenuItem value={"1"}>1</MenuItem>
-              <MenuItem value={"2"}>2</MenuItem>
-              <MenuItem value={"3"}>3</MenuItem>
-              <MenuItem value={"4"}>4</MenuItem>
-              <MenuItem value={"5"}>5</MenuItem>
-              <MenuItem value={"6"}>6</MenuItem>
-              <MenuItem value={"7"}>7</MenuItem>
-              <MenuItem value={"8"}>8</MenuItem>
-              <MenuItem value={"9"}>9</MenuItem>
+              {assignmentsData.map((assignment) => (
+                <MenuItem key={assignment.id} value={assignment.id}>
+                  {assignment.id}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box>
@@ -137,7 +165,7 @@ const Unassigned = () => {
       </Box>
       <div style={{ width: "100%" }}>
         <DataGrid
-          rows={rows}
+          rows={unassignedHomesData}
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}
