@@ -14,8 +14,6 @@ import {
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 
-const userData = [];
-
 const AssignTable = () => {
   const navigate = useNavigate();
   const [surveyor, setSurveyor] = React.useState("");
@@ -77,7 +75,7 @@ const AssignTable = () => {
                   key={`surveyor-${id}`}
                   onClick={() => handleNameClick(params.row.surveyor_ids)}
                 >
-                  {`${surveyor.lastname}, ${surveyor.firstname}`}
+                  {`${surveyor.firstname} ${surveyor.lastname}`}
                 </Button>
               );
             })
@@ -152,9 +150,9 @@ const AssignTable = () => {
                   label="Surveyor"
                   onChange={handleChange}
                 >
-                  {userData.map((item) => (
+                  {surveyorsData.map((item) => (
                     <MenuItem key={item.id} value={item.id}>
-                      {item.firstName + " " + item.lastName}
+                      {item.firstname + " " + item.lastname}
                     </MenuItem>
                   ))}
                 </Select>
