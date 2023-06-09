@@ -8,6 +8,9 @@ import MenuItem from "@mui/material/MenuItem";
 import React from "react";
 import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
+import {
+  useGetUnassignedHomesQuery,
+} from "../../../api/apiSlice";
 
 const rows = [];
 
@@ -15,6 +18,7 @@ const Unassigned = () => {
   const navigate = useNavigate();
   const [assignment, setAssignment] = React.useState("");
 
+  // Event handlers
   const handleChangeAssignment = (event) => {
     setAssignment(event.target.value);
   };
@@ -34,6 +38,14 @@ const Unassigned = () => {
       "delete these home id from unassigned and send them to the assigned id location"
     );
   };
+
+  const {
+    data: unassignedHomesData,
+    isError: isUnassignedHomesError,
+    isLoading: isUnassignedHomesDataLoading,
+  } = useGetUnassignedHomesQuery();
+
+  console.log(unassignedHomesData);
 
   const columns = [
     { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },

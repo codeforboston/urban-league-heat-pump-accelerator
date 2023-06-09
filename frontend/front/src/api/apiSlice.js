@@ -29,6 +29,17 @@ export const apiSlice = createApi({
         ...result.map(({ id }) => ({ type: "Home", id })),
       ],
     }),
+    getUnassignedHomes: builder.query({
+      query: () => "/homes",
+      transformResponse: (res) =>
+        res
+          ? res.filter((home) => home.assignment_id === null).sort(sortById)
+          : [],
+      providesTags: (result = [], error, arg) => [
+        "Home",
+        ...result.map(({ id }) => ({ type: "Home", id })),
+      ],
+    }),
     getHome: builder.query({
       query: (id) => `/homes/${id}`,
       providesTags: (result, error, arg) => [{ type: "Home", id: arg }],
@@ -337,6 +348,7 @@ export const {
   useCreateHomeMutation,
   useGetHomeQuery,
   useGetHomesQuery,
+  useGetUnassignedHomesQuery,
 
   // Survey
   useDeleteSurveyMutation,
