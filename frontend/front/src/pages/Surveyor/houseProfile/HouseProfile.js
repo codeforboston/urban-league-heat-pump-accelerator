@@ -10,7 +10,7 @@ import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
 import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import {
   useGetHomeQuery,
-  useCreateSurveyVisitMutation
+  useCreateSurveyVisitMutation,
 } from "../../../api/apiSlice";
 import { SubmissionSuccess } from "../Components/SubmissionSuccess";
 import {
@@ -58,7 +58,7 @@ const HouseProfile = () => {
           surveyor_id: "1",
           survey_response_attributes: {
             survey_id: surveyId,
-            completed: true,
+            completed: "true",
             survey_answers_attributes: surveyAnswers,
           },
         },
