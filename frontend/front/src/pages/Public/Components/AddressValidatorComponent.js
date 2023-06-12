@@ -1,8 +1,9 @@
 import React, { forwardRef } from "react";
-import { Stack, Button, CircularProgress, Box } from "@mui/material";
+import { Stack, Button, Box } from "@mui/material";
 import { HeatPumpAddressField } from "../../../components/SurveyComponent/HeatPumpAddressField";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../../components/Loader";
 
 export const AddressValidatorComponent = forwardRef(
   (
@@ -41,7 +42,7 @@ export const AddressValidatorComponent = forwardRef(
           />
         </Box>
         <Stack direction="row" justifyContent="center" spacing={2} mb={5}>
-          {isLoading && <CircularProgress />}
+          {isLoading && <Loader/>}
           <Button variant="contained" type="submit">
             {"Verify"}
           </Button>
