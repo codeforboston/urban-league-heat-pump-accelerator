@@ -10,10 +10,13 @@ import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
 import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import {
   useGetHomeQuery,
-  useCreateSurveyVisitMutation,
+  useCreateSurveyVisitMutation
 } from "../../../api/apiSlice";
 import { SubmissionSuccess } from "../Components/SubmissionSuccess";
-import { SurveyorSurvey } from "../Components/SurveyorSurvey";
+import {
+  SURVEYOR_SURVEY_ID,
+  SurveyorSurvey,
+} from "../Components/SurveyorSurvey";
 import Loader from "../../../components/Loader";
 
 const STEP_LOADING = "PHASE_LOADING";
@@ -41,13 +44,26 @@ const HouseProfile = () => {
 
   const submitSurvey = useCallback(
     async (responses, surveyId) => {
-      return await addSurveyVisit({
-        responses,
-        homeId,
-        surveyId,
-        // TODO: probably remove this and handle on the back end
-        date: new Date().toISOString(),
+      const surveyAnswers = {};
+      Object.entries(responses).forEach(([key, value]) => {
+        surveyAnswers[key] = {
+          survey_question_id: key,
+          answer: value,
+        };
       });
+
+      const surveyVisit = await addSurveyVisit({
+        survey_visit: {
+          home_id: homeId,
+          surveyor_id: "1",
+          survey_response_attributes: {
+            survey_id: surveyId,
+            completed: true,
+            survey_answers_attributes: surveyAnswers,
+          },
+        },
+      });
+      return surveyVisit;
     },
     [addSurveyVisit, homeId]
   );
@@ -81,7 +97,7 @@ const HouseProfile = () => {
       </HeatPumpFade>
       <HeatPumpSlide show={step === STEP_THANKS}>
         <SubmissionSuccess
-          surveyId={surveyVisitData?.surveyId}
+          surveyId={SURVEYOR_SURVEY_ID}
           submissionId={surveyVisitData?.id}
         />
       </HeatPumpSlide>
