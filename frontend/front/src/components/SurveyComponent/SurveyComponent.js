@@ -185,7 +185,12 @@ const SurveyComponent = ({
       <AddressComponent home={activeHome} />
       <form
         onSubmit={handleSubmit(async (surveyData) => {
-          const { data } = await submitSurvey(surveyData, surveyId, clearCache);
+          const { data } = await submitSurvey(
+            surveyData,
+            surveyId,
+            activeHome,
+            clearCache
+          );
           if (!!data) {
             // clear cache data if survey submission succeeds
             clearCache();

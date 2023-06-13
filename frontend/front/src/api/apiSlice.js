@@ -160,11 +160,15 @@ export const apiSlice = createApi({
       providesTags: (result, error, arg) => [{ type: "SurveyVisit", id: arg }],
     }),
     createSurveyVisit: builder.mutation({
-      query: (surveyVisit) => ({
-        url: "/survey_visits",
-        method: "POST",
-        body: surveyVisit,
-      }),
+      query: ({ surveyVisit, recaptcha }) => {
+        const { surveyor_id } = surveyVisit.survey_visit;
+        return {
+          url: "/survey_visits",
+          method: "POST",
+          body: surveyVisit,
+          headers: surveyor_id === null && [[`Recaptcha-Token`, recaptcha]],
+        };
+      },
       invalidatesTags: ["SurveyVisit"],
     }),
     updateSurveyVisit: builder.mutation({

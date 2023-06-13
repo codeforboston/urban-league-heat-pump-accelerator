@@ -57,18 +57,34 @@ export const SurveyPage = () => {
   );
 
   const handleAddSurveyVisit = useCallback(
-    async (responses, surveyId) => {
-      const recaptcha = await getReCaptchaToken();
-      return await addSurveyVisit({
-        responses,
-        recaptcha,
-        surveyId,
-        homeId: createHomeData?.id,
-        // TODO: probably remove this and handle on the back end
-        date: new Date().toISOString(),
+    async (responses, surveyId, activeHome) => {
+      const recaptcha = await getReCaptchaToken("create_survey");
+
+      const surveyAnswers = {};
+      Object.entries(responses).forEach(([key, value]) => {
+        surveyAnswers[key] = {
+          survey_question_id: key,
+          answer: value,
+        };
       });
+
+      const surveyVisit = await addSurveyVisit({
+        surveyVisit: {
+          survey_visit: {
+            home_id: activeHome.id,
+            surveyor_id: null,
+            survey_response_attributes: {
+              survey_id: surveyId,
+              completed: "true",
+              survey_answers_attributes: surveyAnswers,
+            },
+          },
+        },
+        recaptcha,
+      });
+      return surveyVisit;
     },
-    [addSurveyVisit, createHomeData?.id, getReCaptchaToken]
+    [addSurveyVisit, getReCaptchaToken]
   );
 
   const step = useMemo(() => {
