@@ -9,3 +9,26 @@ export const buildDefaultDataFromSurveyStructure = (surveyStructure) =>
     }),
     {}
   );
+
+export const buildSurveyVisitData = (answers, homeId, surveyId, surveyorId) => {
+  // build answers object
+  const answersObject = {};
+  Object.entries(answers).forEach(([key, value]) => {
+    answersObject[key] = {
+      survey_question_id: key,
+      answer: value,
+    };
+  });
+
+  return {
+    survey_visit: {
+      home_id: homeId,
+      surveyor_id: surveyorId,
+      survey_response_attributes: {
+        survey_id: surveyId,
+        completed: "true",
+        survey_answers_attributes: answersObject,
+      },
+    },
+  };
+};

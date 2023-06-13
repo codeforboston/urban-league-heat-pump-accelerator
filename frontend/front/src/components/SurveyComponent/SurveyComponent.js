@@ -188,7 +188,7 @@ const SurveyComponent = ({
           const { data } = await submitSurvey(
             surveyData,
             surveyId,
-            activeHome,
+            activeHome.id,
             clearCache
           );
           if (!!data) {

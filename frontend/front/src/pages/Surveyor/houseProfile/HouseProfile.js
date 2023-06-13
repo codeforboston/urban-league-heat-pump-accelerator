@@ -6,7 +6,6 @@ import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import {
   useGetHomeQuery,
   useCreateSurveyVisitMutation,
-  useGetAssignmentQuery,
 } from "../../../api/apiSlice";
 import { SubmissionSuccess } from "../Components/SubmissionSuccess";
 import {
@@ -14,6 +13,7 @@ import {
   SurveyorSurvey,
 } from "../Components/SurveyorSurvey";
 import Loader from "../../../components/Loader";
+import { buildSurveyVisitData } from "../../../util/surveyUtils";
 
 const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
@@ -28,15 +28,6 @@ const HouseProfile = () => {
     error: homeError,
     isLoading: isHomeLoading,
   } = useGetHomeQuery(homeId);
-  // const assignmentId = homeData?.assignment_id;
-
-  // const {
-  //   data: assignmentData,
-  //   isError: isAssignmentError,
-  //   isLoading: isAssignmentLoading,
-  // } = useGetAssignmentQuery(assignmentId);
-  // const surveyorId = assignmentData?.surveyor_ids[0];
-  // console.log(surveyorId);
 
   const [
     addSurveyVisit,
@@ -49,27 +40,14 @@ const HouseProfile = () => {
   ] = useCreateSurveyVisitMutation();
 
   const submitSurvey = useCallback(
-    async (responses, surveyId) => {
-      const surveyAnswers = {};
-      Object.entries(responses).forEach(([key, value]) => {
-        surveyAnswers[key] = {
-          survey_question_id: key,
-          answer: value,
-        };
-      });
-
+    async (answers, surveyId) => {
       const surveyVisit = await addSurveyVisit({
-        surveyVisit: {
-          survey_visit: {
-            home_id: homeId,
-            surveyor_id: TEMPORARY_SURVEYOR_ID,
-            survey_response_attributes: {
-              survey_id: surveyId,
-              completed: "true",
-              survey_answers_attributes: surveyAnswers,
-            },
-          },
-        },
+        surveyVisit: buildSurveyVisitData(
+          answers,
+          homeId,
+          surveyId,
+          TEMPORARY_SURVEYOR_ID
+        ),
       });
       return surveyVisit;
     },
@@ -77,10 +55,7 @@ const HouseProfile = () => {
   );
 
   const step = useMemo(() => {
-    if (
-      isHomeLoading
-      // || isAssignmentLoading
-    ) {
+    if (isHomeLoading) {
       return STEP_LOADING;
     } else if (!homeData) {
       return STEP_HOME_ERROR;
@@ -88,12 +63,7 @@ const HouseProfile = () => {
       return STEP_THANKS;
     }
     return STEP_SURVEY;
-  }, [
-    homeData,
-    // isAssignmentLoading,
-    isHomeLoading,
-    isSurveyVisitSuccess,
-  ]);
+  }, [homeData, isHomeLoading, isSurveyVisitSuccess]);
 
   return (
     <Container>
@@ -123,9 +93,6 @@ const HouseProfile = () => {
       <Snackbar open={!!homeError}>
         <Alert severity="error">{"Error retrieving home data."}</Alert>
       </Snackbar>
-      {/* <Snackbar open={isAssignmentError}>
-        <Alert severity="error">{"Error retrieving assignment data."}</Alert>
-      </Snackbar> */}
     </Container>
   );
 };

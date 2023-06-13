@@ -15,6 +15,7 @@ import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
 import { PublicSurvey } from "../Components/PublicSurvey";
 import { ThanksForSubmission } from "../Components/ThanksForSubmission";
+import { buildSurveyVisitData } from "../../../util/surveyUtils";
 
 const STEP_ADDRESS = "PHASE_ADDRESS";
 const STEP_SURVEY = "PHASE_SURVEY";
@@ -57,29 +58,10 @@ export const SurveyPage = () => {
   );
 
   const handleAddSurveyVisit = useCallback(
-    async (responses, surveyId, activeHome) => {
+    async (answers, surveyId, homeId) => {
       const recaptcha = await getReCaptchaToken("create_survey");
-
-      const surveyAnswers = {};
-      Object.entries(responses).forEach(([key, value]) => {
-        surveyAnswers[key] = {
-          survey_question_id: key,
-          answer: value,
-        };
-      });
-
       const surveyVisit = await addSurveyVisit({
-        surveyVisit: {
-          survey_visit: {
-            home_id: activeHome.id,
-            surveyor_id: null,
-            survey_response_attributes: {
-              survey_id: surveyId,
-              completed: "true",
-              survey_answers_attributes: surveyAnswers,
-            },
-          },
-        },
+        surveyVisit: buildSurveyVisitData(answers, homeId, surveyId),
         recaptcha,
       });
       return surveyVisit;
