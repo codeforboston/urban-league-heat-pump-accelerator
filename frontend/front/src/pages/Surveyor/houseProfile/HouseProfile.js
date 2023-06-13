@@ -11,6 +11,7 @@ import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import {
   useGetHomeQuery,
   useCreateSurveyVisitMutation,
+  useGetAssignmentQuery,
 } from "../../../api/apiSlice";
 import { SubmissionSuccess } from "../Components/SubmissionSuccess";
 import {
@@ -31,6 +32,13 @@ const HouseProfile = () => {
     error: homesError,
     isLoading: isHomesLoading,
   } = useGetHomeQuery(homeId);
+  const assignmentId = homeData?.assignment_id;
+
+  const {
+    data: assignmentData,
+    isError: isAssignmentError,
+    isLoading: isAssignmentLoading,
+  } = useGetAssignmentQuery(assignmentId);
 
   const [
     addSurveyVisit,
