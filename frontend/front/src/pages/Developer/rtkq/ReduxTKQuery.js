@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   Chip,
-  CircularProgress,
   Container,
   Divider,
   Typography,
@@ -12,6 +11,7 @@ import { ItemAdder } from "./ItemAdder";
 import { ItemList } from "./ItemList";
 import { MiniModal } from "./MiniModal";
 import { itemApi } from "../../../redux/services";
+import Loader from "../../../components/Loader";
 
 export const ReduxTKQuery = () => {
   const [isListShown, setIsListShown] = useState(false);
@@ -46,7 +46,7 @@ export const ReduxTKQuery = () => {
           <Box>
             Fetching items
             <br />
-            <CircularProgress color="inherit" />
+            <Loader />
           </Box>
         }
       />
