@@ -19,6 +19,7 @@ const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
 const STEP_SURVEY = "PHASE_SURVEY";
 const STEP_THANKS = "PHASE_THANKS";
+const TEMPORARY_SURVEYOR_ID = 1; //need access to real surveyor id
 
 const HouseProfile = () => {
   const { id: homeId } = useParams();
@@ -61,7 +62,7 @@ const HouseProfile = () => {
         surveyVisit: {
           survey_visit: {
             home_id: homeId,
-            surveyor_id: 1,
+            surveyor_id: TEMPORARY_SURVEYOR_ID,
             survey_response_attributes: {
               survey_id: surveyId,
               completed: "true",
