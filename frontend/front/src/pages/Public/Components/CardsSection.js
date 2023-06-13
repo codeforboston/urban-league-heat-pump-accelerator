@@ -17,7 +17,6 @@ function CardsSection({
   link,
   linkDescription,
 }) {
-  console.log(mediaSource);
   return (
     <Card
       sx={{
