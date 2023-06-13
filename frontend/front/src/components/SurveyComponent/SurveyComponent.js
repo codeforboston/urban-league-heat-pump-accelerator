@@ -269,19 +269,22 @@ const SurveyComponentWrapper = forwardRef((props, ref) => {
     return null;
   }, [defaultData, surveyStructure]);
 
-  if (isSurveyLoading) {
-    return <Loader />;
-  }
   return (
     <div ref={ref} style={style}>
-      {surveyStructure && formDefault && activeHome ? (
-        <SurveyComponent
-          {...props}
-          surveyStructure={surveyStructure}
-          formDefault={formDefault}
-        />
+      {isSurveyLoading ? (
+        <Loader />
+      ) : isSurveyError ? (
+        <SurveyError />
       ) : (
-        isSurveyError && <SurveyError />
+        surveyStructure &&
+        formDefault &&
+        activeHome && (
+          <SurveyComponent
+            {...props}
+            surveyStructure={surveyStructure}
+            formDefault={formDefault}
+          />
+        )
       )}
     </div>
   );
