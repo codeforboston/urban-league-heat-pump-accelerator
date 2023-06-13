@@ -12,9 +12,6 @@ function Heading3({ text, icon = null, textDecoration = "none" }) {
               fontFamily: "var(--font-family-1)",
               color: "var(--color-text-2)",
               fontWeight: "600",
-              textDecoration: textDecoration,
-              textUnderlinePosition: "under",
-              textDecorationColor: "var(--color-text-2)",
             }}
           >
             {text}

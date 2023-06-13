@@ -5,14 +5,13 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import pageContent from "./privacyContent.json";
 import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
-import Heading3 from "../../Components/Typography/Heading3";
+import Heading2 from "../../Components/Typography/Heading2";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
   borderBottom: "2px solid var(--color-text-5)",
-  // borderTop: "3px solid var(--color-text-5)",
   "&:not(:last-child)": {
     // borderBottom: 0,
   },
@@ -69,7 +68,7 @@ function PrivacyPolicy() {
           personal information.**
         </Typography>
         <section>
-          <Heading3
+          <Heading2
             text="Table of Contents"
             textDecoration="solid underline 2px"
           />
