@@ -27,14 +27,15 @@ const HouseProfile = () => {
     error: homeError,
     isLoading: isHomeLoading,
   } = useGetHomeQuery(homeId);
-  const assignmentId = homeData?.assignment_id;
+  // const assignmentId = homeData?.assignment_id;
 
-  const {
-    data: assignmentData,
-    isError: isAssignmentError,
-    isLoading: isAssignmentLoading,
-  } = useGetAssignmentQuery(assignmentId);
-  const surveyorIds = assignmentData?.surveyor_ids;
+  // const {
+  //   data: assignmentData,
+  //   isError: isAssignmentError,
+  //   isLoading: isAssignmentLoading,
+  // } = useGetAssignmentQuery(assignmentId);
+  // const surveyorId = assignmentData?.surveyor_ids[0];
+  // console.log(surveyorId);
 
   const [
     addSurveyVisit,
@@ -60,7 +61,7 @@ const HouseProfile = () => {
         surveyVisit: {
           survey_visit: {
             home_id: homeId,
-            surveyor_id: surveyorIds[0],
+            surveyor_id: 1,
             survey_response_attributes: {
               survey_id: surveyId,
               completed: "true",
@@ -75,7 +76,10 @@ const HouseProfile = () => {
   );
 
   const step = useMemo(() => {
-    if (isHomeLoading || isAssignmentLoading) {
+    if (
+      isHomeLoading
+      // || isAssignmentLoading
+    ) {
       return STEP_LOADING;
     } else if (!homeData) {
       return STEP_HOME_ERROR;
@@ -83,7 +87,12 @@ const HouseProfile = () => {
       return STEP_THANKS;
     }
     return STEP_SURVEY;
-  }, [homeData, isAssignmentLoading, isHomeLoading, isSurveyVisitSuccess]);
+  }, [
+    homeData,
+    // isAssignmentLoading,
+    isHomeLoading,
+    isSurveyVisitSuccess,
+  ]);
 
   return (
     <Container>
@@ -113,9 +122,9 @@ const HouseProfile = () => {
       <Snackbar open={!!homeError}>
         <Alert severity="error">{"Error retrieving home data."}</Alert>
       </Snackbar>
-      <Snackbar open={isAssignmentError}>
+      {/* <Snackbar open={isAssignmentError}>
         <Alert severity="error">{"Error retrieving assignment data."}</Alert>
-      </Snackbar>
+      </Snackbar> */}
     </Container>
   );
 };
