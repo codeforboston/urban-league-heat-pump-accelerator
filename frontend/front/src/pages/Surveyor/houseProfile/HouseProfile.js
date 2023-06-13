@@ -1,8 +1,7 @@
 import {
   Alert,
-  Box,
   Container,
-  CircularProgress,
+
   Snackbar,
 } from "@mui/material";
 import React, { useCallback, useMemo } from "react";
@@ -15,6 +14,7 @@ import {
 } from "../../../api/apiSlice";
 import { SubmissionSuccess } from "../Components/SubmissionSuccess";
 import { SurveyorSurvey } from "../Components/SurveyorSurvey";
+import Loader from "../../../components/Loader";
 
 const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
@@ -65,11 +65,7 @@ const HouseProfile = () => {
 
   return (
     <Container>
-      {step === STEP_LOADING && (
-        <Box display="flex" justifyContent="center">
-          <CircularProgress />
-        </Box>
-      )}
+      {step === STEP_LOADING && <Loader />}
       <HeatPumpFade show={step === STEP_HOME_ERROR}>
         <Alert
           sx={{ margin: "1em" }}

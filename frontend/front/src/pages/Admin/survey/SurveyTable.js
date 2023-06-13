@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { CircularProgress, Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import {
   useGetSurveyVisitsQuery,
@@ -11,6 +10,7 @@ import {
 import { SurveyError } from "./SurveyError";
 import { houseToString } from "../../../components/AddressUtils";
 import { formatISODate } from "../../../components/DateUtils";
+import Loader from "../../../components/Loader";
 
 const COLUMNS = [
   { field: "id", headerName: "ID", flex: 1 },
@@ -61,11 +61,7 @@ const SurveyTable = () => {
   };
 
   if (isSurveyVisitLoading || isHouseDataLoading || isSurveyStructureLoading) {
-    return (
-      <Box display="flex" justifyContent="center">
-        <CircularProgress />
-      </Box>
-    );
+    return <Loader />;
   }
 
   if (surveyVisitError || houseError || surveyStructureError) {

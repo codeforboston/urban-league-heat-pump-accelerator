@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  Box,
-  Button,
-  CircularProgress,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import ConfirmationModal from "../../Developer/confirmModal/ConfirmationModal";
 import { useForm, Controller } from "react-hook-form";
 import { useGetSurveyorQuery } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
+import CustomSnackbar from "../../../components/CustomSnackbar";
 
 const UserProfile = () => {
   const { uid } = useParams();
   const {
     data: surveyorData,
     isLoading: isSurveyorDataLoading,
-    error: surveyorError,
+    isError: isSurveyorError,
   } = useGetSurveyorQuery(uid);
   const [editMode, setEditMode] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -92,6 +87,15 @@ const UserProfile = () => {
     return <Loader />;
   }
 
+  if (isSurveyorError) {
+    return (
+      <CustomSnackbar
+        open={isSurveyorError}
+        message="Error fetching surveyor data."
+        severity="error"
+      />
+    );
+  }
   return (
     <Box
       display="flex"
