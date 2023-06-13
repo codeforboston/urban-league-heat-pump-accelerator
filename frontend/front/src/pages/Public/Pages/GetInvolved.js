@@ -1,7 +1,7 @@
 import { Box, Container } from "@mui/material";
 import React from "react";
 import card1 from "../../../assets/images/copywritingImages/jason-goodman-NYMJYXfZG-g-unsplash.jpg";
-import card2 from "../../../assets/images/copywritingImages/kevin-grieve-MHsfcJD2RJw-unsplash.jpg";
+import card2 from "../../../assets/images/copywritingImages/todd-kent-iRKv_XiN--M-unsplash.jpg";
 import card3 from "../../../assets/images/copywritingImages/erika-giraud-H6xKnDKrKDk-unsplash.jpg";
 import card4 from "../../../assets/images/copywritingImages/aubrey-odom--J0uMCDL2KQ-unsplash.jpg";
 import CardsSection from "../Components/CardsSection";
@@ -51,7 +51,7 @@ function GetInvolved() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        minHeight: "calc(100vh - 560px)",
+        minHeight: "calc(100vh - 520px)",
       }}
     >
       <Heading1BlueBgGround text="Get Involved" />

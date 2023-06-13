@@ -17,6 +17,7 @@ function CardsSection({
   linkDescription,
   linkDownload,
 }) {
+
   const handleDownloadPDF = () => {
     const pdfUrl = linkDownload;
     const link = document.createElement("a");
@@ -24,6 +25,7 @@ function CardsSection({
     link.download = linkDescription;
     link.click();
   };
+
 
   return (
     <Card
