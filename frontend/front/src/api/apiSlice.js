@@ -166,7 +166,7 @@ export const apiSlice = createApi({
           url: "/survey_visits",
           method: "POST",
           body: surveyVisit,
-          headers: surveyor_id === null && [[`Recaptcha-Token`, recaptcha]],
+          headers: [[`Recaptcha-Token`, recaptcha]],
         };
       },
       invalidatesTags: ["SurveyVisit"],

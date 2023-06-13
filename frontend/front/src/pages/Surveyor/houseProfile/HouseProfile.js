@@ -1,9 +1,4 @@
-import {
-  Alert,
-  Container,
-
-  Snackbar,
-} from "@mui/material";
+import { Alert, Container, Snackbar } from "@mui/material";
 import React, { useCallback, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
@@ -29,8 +24,8 @@ const HouseProfile = () => {
   const { id: homeId } = useParams();
   const {
     data: homeData,
-    error: homesError,
-    isLoading: isHomesLoading,
+    error: homeError,
+    isLoading: isHomeLoading,
   } = useGetHomeQuery(homeId);
   const assignmentId = homeData?.assignment_id;
 
@@ -39,6 +34,7 @@ const HouseProfile = () => {
     isError: isAssignmentError,
     isLoading: isAssignmentLoading,
   } = useGetAssignmentQuery(assignmentId);
+  const surveyorIds = assignmentData?.surveyor_ids;
 
   const [
     addSurveyVisit,
@@ -61,13 +57,15 @@ const HouseProfile = () => {
       });
 
       const surveyVisit = await addSurveyVisit({
-        survey_visit: {
-          home_id: homeId,
-          surveyor_id: "1",
-          survey_response_attributes: {
-            survey_id: surveyId,
-            completed: "true",
-            survey_answers_attributes: surveyAnswers,
+        surveyVisit: {
+          survey_visit: {
+            home_id: homeId,
+            surveyor_id: surveyorIds[0],
+            survey_response_attributes: {
+              survey_id: surveyId,
+              completed: "true",
+              survey_answers_attributes: surveyAnswers,
+            },
           },
         },
       });
@@ -77,7 +75,7 @@ const HouseProfile = () => {
   );
 
   const step = useMemo(() => {
-    if (isHomesLoading) {
+    if (isHomeLoading || isAssignmentLoading) {
       return STEP_LOADING;
     } else if (!homeData) {
       return STEP_HOME_ERROR;
@@ -85,7 +83,7 @@ const HouseProfile = () => {
       return STEP_THANKS;
     }
     return STEP_SURVEY;
-  }, [homeData, isHomesLoading, isSurveyVisitSuccess]);
+  }, [homeData, isAssignmentLoading, isHomeLoading, isSurveyVisitSuccess]);
 
   return (
     <Container>
@@ -99,7 +97,7 @@ const HouseProfile = () => {
       <HeatPumpFade show={step === STEP_SURVEY}>
         <SurveyorSurvey
           submitSurvey={submitSurvey}
-          isLoading={isHomesLoading || isSurveyVisitLoading}
+          isLoading={isHomeLoading || isSurveyVisitLoading}
           activeHome={homeData}
         />
       </HeatPumpFade>
@@ -112,8 +110,11 @@ const HouseProfile = () => {
       <Snackbar open={!!surveyVisitError}>
         <Alert severity="error">{"Error submitting survey."}</Alert>
       </Snackbar>
-      <Snackbar open={!!homesError}>
+      <Snackbar open={!!homeError}>
         <Alert severity="error">{"Error retrieving home data."}</Alert>
+      </Snackbar>
+      <Snackbar open={isAssignmentError}>
+        <Alert severity="error">{"Error retrieving assignment data."}</Alert>
       </Snackbar>
     </Container>
   );
