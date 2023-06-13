@@ -1,9 +1,46 @@
-import React from "react";
-import { Container, Divider, Typography, Box, Link } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { Container, Typography, Box } from "@mui/material";
+import MuiAccordion from "@mui/material/Accordion";
+import MuiAccordionSummary from "@mui/material/AccordionSummary";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import pageContent from "./privacyContent.json";
-import { sentenceAsLink } from "../../../../util/stringUtils";
 import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
 import Heading3 from "../../Components/Typography/Heading3";
+import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+
+const Accordion = styled((props) => (
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+))(({ theme }) => ({
+  borderBottom: "2px solid var(--color-text-5)",
+  // borderTop: "3px solid var(--color-text-5)",
+  "&:not(:last-child)": {
+    // borderBottom: 0,
+  },
+  "&:before": {
+    display: "none",
+  },
+}));
+
+const AccordionSummary = styled((props) => (
+  <MuiAccordionSummary
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "0.9rem" }} />}
+    {...props}
+  />
+))(({ theme }) => ({
+  // backgroundColor: "var(--bgColor-3)",
+  flexDirection: "row-reverse",
+  "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+    transform: "rotate(90deg)",
+  },
+  "& .MuiAccordionSummary-content": {
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+  padding: theme.spacing(2),
+  // borderTop: "1px solid rgba(0, 0, 0, .125)",
+}));
 
 function PrivacyPolicy() {
   return (
@@ -12,7 +49,7 @@ function PrivacyPolicy() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        minHeight: "calc(100vh - 560px)",
+        minHeight: "calc(100vh - 520px)",
       }}
     >
       <Heading1BlueBgGround text="Privacy Policy" />
@@ -26,50 +63,39 @@ function PrivacyPolicy() {
           </i>{" "}
           has been updated.
         </Typography>
-        <Typography
-          variant="h5"
-          sx={{ color: "var(--color-text-10)", padding: "1em 0" }}
-        >
+        <Typography py={3} variant="h6" sx={{ color: "var(--color-text-10)" }}>
           **This privacy policy of the Boston Heat Pump Accelerator (BHPA) will
           help you better understand how we collect, share, and use your
           personal information.**
         </Typography>
-        <section style={{ padding: "1em 0" }}>
-          <Heading3 text="Table of Contents" textDecoration="underline" />
-          <ol>
+        <section>
+          <Heading3
+            text="Table of Contents"
+            textDecoration="solid underline 2px"
+          />
+          <Box mb={6} mt={1}>
             {pageContent.map((c, i) => (
-              <li key={`privacyHeading${i}`} style={{ marginBottom: "0.5em" }}>
-                <Link
-                  variant="body"
-                  sx={{ color: "var(--color-text-2)" }}
-                  href={`#${sentenceAsLink(c.heading)}`}
+              <Accordion key={`privacy${i}`}>
+                <AccordionSummary
+                  aria-controls="panel1d-content"
+                  id="panel1d-header"
                 >
-                  {c.heading}
-                </Link>
-              </li>
+                  <Typography
+                    variant="h6"
+                    sx={{ color: "var(--color-text-2)" }}
+                  >
+                    {c.heading}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography
+                    variant="body"
+                    dangerouslySetInnerHTML={{ __html: c.content }}
+                  />
+                </AccordionDetails>
+              </Accordion>
             ))}
-          </ol>
-        </section>
-        <Divider />
-        <section style={{ padding: "1em 0" }}>
-          <Box mb={2}>
-            <Heading3 text="Privacy Summary" textDecoration="underline" />
           </Box>
-          {pageContent.map((c, i) => {
-            return (
-              <div key={`privacy${i}`}>
-                <Typography
-                  variant="h6"
-                  id={sentenceAsLink(c.heading)}
-                  sx={{ color: "var(--color-text-2)" }}
-                >
-                  {c.heading}
-                </Typography>
-                {/* Using dangerouslySetInnerHTML here to get formatting for links. */}
-                <p dangerouslySetInnerHTML={{ __html: c.content }} />
-              </div>
-            );
-          })}
         </section>
       </Container>
     </Box>

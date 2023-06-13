@@ -13,6 +13,8 @@ function Heading3({ text, icon = null, textDecoration = "none" }) {
               color: "var(--color-text-2)",
               fontWeight: "600",
               textDecoration: textDecoration,
+              textUnderlinePosition: "under",
+              textDecorationColor: "var(--color-text-2)",
             }}
           >
             {text}
@@ -26,6 +28,8 @@ function Heading3({ text, icon = null, textDecoration = "none" }) {
             color: "var(--color-text-2)",
             fontWeight: "600",
             textDecoration: textDecoration,
+            textUnderlinePosition: "under",
+            textDecorationColor: "var(--color-text-2)",
           }}
         >
           {text}
