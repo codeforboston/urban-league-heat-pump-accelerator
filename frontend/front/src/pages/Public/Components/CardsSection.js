@@ -18,7 +18,11 @@ function CardsSection({
   linkDownload,
 }) {
   const handleDownloadPDF = () => {
-    window.open(linkDownload, "_blank");
+    const pdfUrl = linkDownload;
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = linkDescription;
+    link.click();
   };
 
   return (

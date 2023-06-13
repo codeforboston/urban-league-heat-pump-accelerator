@@ -7,6 +7,8 @@ import card4 from "../../../assets/images/copywritingImages/aubrey-odom--J0uMCDL
 import CardsSection from "../Components/CardsSection";
 import Heading1BlueBgGround from "../Components/Typography/Heading1BlueBgGround";
 import Heading1 from "../Components/Typography/Heading1";
+import SocialSharingKit from "../../../assets/pdfDownload/SocialSharingKit.pdf";
+import CommunityFlyer from "../../../assets/pdfDownload/CommunityFlyer.pdf";
 
 function GetInvolved() {
   const cardContent = [
@@ -16,8 +18,7 @@ function GetInvolved() {
       title: "Share with your community",
       body: "Let people know about the cost savings and other benefits they are missing out on by sharing this website on social media or through email. Download this social sharing kit for ideas!",
       linkDescription: "Download social sharing kit",
-      linkDownload:
-        "https://drive.google.com/file/d/1N7icm2tQagkZrEkuviaYbaey2trLUE3r/view?usp=sharing",
+      linkDownload: SocialSharingKit,
     },
     {
       mediaType: "img",
@@ -25,8 +26,7 @@ function GetInvolved() {
       title: "Post flyers at local businesses",
       body: "Do you know places like cafes, convenience stores, or community bulletin boards where people post local announcements? Print and share this information flyer around town!",
       linkDescription: "Download informational flyer",
-      linkDownload:
-        "https://drive.google.com/file/d/1_C-PGYtTS98PD70v4XDydrnNGMT0DFQo/view?usp=sharing",
+      linkDownload: CommunityFlyer,
     },
     {
       mediaType: "img",
@@ -34,8 +34,7 @@ function GetInvolved() {
       title: "Discuss with your community",
       body: "You can host any sort of event and share flyers about how to help your neighbors save money by getting a heat pump!",
       linkDescription: "Download informational flyer",
-      linkDownload:
-        "https://drive.google.com/file/d/1_C-PGYtTS98PD70v4XDydrnNGMT0DFQo/view?usp=sharing",
+      linkDownload: CommunityFlyer,
     },
     {
       mediaType: "img",
