@@ -30,11 +30,8 @@ export const apiSlice = createApi({
       ],
     }),
     getUnassignedHomes: builder.query({
-      query: () => "/homes",
-      transformResponse: (res) =>
-        res
-          ? res.filter((home) => home.assignment_id === null).sort(sortById)
-          : [],
+      query: () => "/homes?assignment_id",
+      transformResponse: (res) => (res ? res.sort(sortById) : []),
       providesTags: (result = [], error, arg) => [
         "Home",
         ...result.map(({ id }) => ({ type: "Home", id })),

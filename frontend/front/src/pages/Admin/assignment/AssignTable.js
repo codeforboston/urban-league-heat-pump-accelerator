@@ -85,8 +85,6 @@ const AssignTable = () => {
           : "Unassigned";
       },
     },
-    // { field: "home", headerName: "Home", width: 110, flex: 1 },
-    // { field: "surveyed", headerName: "Surveyed", width: 110, flex: 1 },
     {
       field: "completed",
       headerName: "Completion",

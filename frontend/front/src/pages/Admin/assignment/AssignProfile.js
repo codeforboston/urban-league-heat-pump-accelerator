@@ -22,7 +22,6 @@ const AssignProfile = () => {
     isError: isAssignmentError,
     isLoading: isAssignmentDataLoading,
   } = useGetAssignmentQuery(aid);
-  console.log(assignmentData);
 
   const {
     data: surveyorsData,
@@ -158,7 +157,9 @@ const AssignProfile = () => {
               <Button
                 variant="outlined"
                 color="primary"
-                onClick={() => navigate(`/admin/user/userprofile/1`)}
+                onClick={() =>
+                  navigate(`/admin/user/userprofile/${surveyor.id}`)
+                }
               >
                 {`${surveyor.lastname}, ${surveyor.firstname}`}
               </Button>
