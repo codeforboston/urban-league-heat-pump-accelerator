@@ -2,7 +2,7 @@ import accountReducer from "../features/account/accountSlice";
 import { apiSlice } from "../api/apiSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import contactReducer from "../features/contact/contactSlice";
-import loginReducer from "../features/login/loginSlice";
+import { loginReducer } from "../features/login/loginSlice";
 import navReducer from "../features/nav/navSlice";
 import surveyorReducer from "../features/surveyor/surveyorSlice";
 
@@ -22,5 +22,8 @@ export const createStore = (options) =>
       getDefaultMiddleware().concat(apiSlice.middleware),
     ...options,
   });
+
+// Assign the Redux store to a global property 'window.store'
+window.store = createStore();
 
 export const store = createStore();

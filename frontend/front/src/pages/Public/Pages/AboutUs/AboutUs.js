@@ -8,12 +8,12 @@ import {
   Container,
 } from "@mui/material";
 import PartnerTile from "./PartnerTile";
-import ulem from "../../../../assets/images/ULEM.png";
-import mcec from "../../../../assets/images/MACleanEnergy.png";
-import cfb from "../../../../assets/images/CFB.png";
-import cfa from "../../../../assets/images/CFA.png";
-import heatsmart from "../../../../assets/images/HeatSmart.png";
-import pcb from "../../../../assets/images/powercorp-boston.jpeg";
+import ulem from "../../../../assets/images/partnersLogo/ULEM.png";
+import mcec from "../../../../assets/images/partnersLogo/MACleanEnergy.png";
+import cfb from "../../../../assets/images/partnersLogo/CFB.png";
+import cfa from "../../../../assets/images/partnersLogo/CFA.png";
+import heatsmart from "../../../../assets/images/partnersLogo/HeatSmart.png";
+import pcb from "../../../../assets/images/partnersLogo/powercorp-boston.jpeg";
 import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
 
 function AboutUs() {
@@ -24,7 +24,7 @@ function AboutUs() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        minHeight: "calc(100vh - 560px)",
+        minHeight: "calc(100vh - 520px)",
       }}
     >
       <Heading1BlueBgGround text="About the Boston Heat Pump Accelerator" />

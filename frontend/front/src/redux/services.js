@@ -30,7 +30,7 @@ export const itemApi = createApi({
         };
       },
       // invalidatesTags automatically reruns GET query w/ same tags/keys if POST succeeds
-      invalidatesTags: [{ type: "Items", id: "LIST" }], 
+      invalidatesTags: [{ type: "Items", id: "LIST" }],
     }),
   }),
 });

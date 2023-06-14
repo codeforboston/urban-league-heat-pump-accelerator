@@ -24,11 +24,11 @@ export default function AccordionWrap() {
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
-          aria-controls='panel1bh-content'
-          id='panel1bh-header'
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
           sx={{ backgroundColor: "#1976d2", color: "white" }}
         >
-          <Typography variant='h5' sx={{ width: "50%", flexShrink: 0 }}>
+          <Typography variant="h5" sx={{ width: "50%", flexShrink: 0 }}>
             Core
           </Typography>
           <Typography sx={{ color: "white" }}>Incomplete</Typography>
@@ -44,11 +44,11 @@ export default function AccordionWrap() {
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
-          aria-controls='panel2bh-content'
-          id='panel2bh-header'
+          aria-controls="panel2bh-content"
+          id="panel2bh-header"
           sx={{ backgroundColor: "#1976d2", color: "white" }}
         >
-          <Typography variant='h5' sx={{ width: "50%", flexShrink: 0 }}>
+          <Typography variant="h5" sx={{ width: "50%", flexShrink: 0 }}>
             Question
           </Typography>
           <Typography sx={{ color: "white" }}>Incomplete</Typography>
@@ -64,11 +64,11 @@ export default function AccordionWrap() {
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
-          aria-controls='panel3bh-content'
-          id='panel3bh-header'
+          aria-controls="panel3bh-content"
+          id="panel3bh-header"
           sx={{ backgroundColor: "#1976d2", color: "white" }}
         >
-          <Typography variant='h5' sx={{ width: "50%", flexShrink: 0 }}>
+          <Typography variant="h5" sx={{ width: "50%", flexShrink: 0 }}>
             Assessment
           </Typography>
           <Typography sx={{ color: "white" }}>Incomplete </Typography>

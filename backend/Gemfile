@@ -9,8 +9,10 @@ gem 'bootsnap', require: false
 gem 'devise'
 gem 'devise-jwt'
 gem 'jbuilder'
+gem 'newrelic_rpm'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
+gem 'rack-cors', '~> 2.0'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 gem 'sprockets-rails'
 gem 'sucker_punch', '~> 3.0'
@@ -28,5 +30,6 @@ group :development do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'smarter_csv'
+  gem 'syntax_suggest'
   gem 'web-console'
 end

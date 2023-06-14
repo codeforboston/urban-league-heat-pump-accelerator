@@ -1,8 +1,8 @@
 // The back end export of homes_index.json caps out at 30 homes, which excludes many in assignments_index.json
 // This script creates the rest based on the assignments data
 
-const assignments = require('../data/assignments_index.json');
-const homes = require('../data/homes_index.json');
+const assignments = require("../data/assignments_index.json");
+const homes = require("../data/homes_index.json");
 
 const newHomes = new Map();
 

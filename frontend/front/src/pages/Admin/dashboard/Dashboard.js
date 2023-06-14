@@ -14,7 +14,7 @@ const Dashboard = () => {
         <Button
           variant="contained"
           size="large"
-          sx={{ width: 300, height: 100, m:2, fontSize: "1.5em" }}
+          sx={{ width: 300, height: 100, m: 2, fontSize: "1.5em" }}
           component={Link}
           to={"home"}
         >
@@ -23,7 +23,7 @@ const Dashboard = () => {
         <Button
           variant="contained"
           size="large"
-          sx={{ width: 300, height: 100, m:2, fontSize: "1.5em" }}
+          sx={{ width: 300, height: 100, m: 2, fontSize: "1.5em" }}
           component={Link}
           to={"user"}
         >
@@ -33,7 +33,7 @@ const Dashboard = () => {
         <Button
           variant="contained"
           size="large"
-          sx={{ width: 300, height: 100, m:2, fontSize: "1.5em" }}
+          sx={{ width: 300, height: 100, m: 2, fontSize: "1.5em" }}
           component={Link}
           to={"survey"}
         >
@@ -43,7 +43,7 @@ const Dashboard = () => {
         <Button
           variant="contained"
           size="large"
-          sx={{ width: 300, height: 100, m:2, fontSize: "1.5em" }}
+          sx={{ width: 300, height: 100, m: 2, fontSize: "1.5em" }}
           component={Link}
           to={"assignment"}
         >

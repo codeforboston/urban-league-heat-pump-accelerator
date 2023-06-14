@@ -10,7 +10,6 @@ const useModal = (confirmFunction = 0, cancelFunction = 0) => {
     handleOpen,
     handleClose,
     isOpen,
-
   };
 };
 

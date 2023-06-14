@@ -33,31 +33,31 @@ const ClearCartModal = (props) => {
 
   return (
     <Box>
-      <Button variant='outlined' onClick={handleOpen}>
+      <Button variant="outlined" onClick={handleOpen}>
         <Typography>Clear Cart</Typography>
       </Button>
       <Modal
         open={isOpen}
         onClose={handleClose}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
           <Box>
             <Box py={3}>
-              <Typography variant='h2'>Clear Cart</Typography>
+              <Typography variant="h2">Clear Cart</Typography>
             </Box>
 
             <Box
               p={3}
-              display='flex'
-              justifyContent='space-evenly'
-              alignItems='center'
+              display="flex"
+              justifyContent="space-evenly"
+              alignItems="center"
             >
-              <Button variant='contained' onClick={handleClearData}>
+              <Button variant="contained" onClick={handleClearData}>
                 YES
               </Button>
-              <Button variant='contained' onClick={handleClose}>
+              <Button variant="contained" onClick={handleClose}>
                 NO
               </Button>
             </Box>

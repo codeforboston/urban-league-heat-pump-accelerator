@@ -4,7 +4,7 @@ import React from "react";
 const Heatpump = () => {
   return (
     <Box p={3}>
-      <Typography variant='h1'>Heatpump</Typography>
+      <Typography variant="h1">Heatpump</Typography>
     </Box>
   );
 };

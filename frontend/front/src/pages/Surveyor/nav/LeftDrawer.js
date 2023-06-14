@@ -28,13 +28,13 @@ export default function TemporaryDrawer() {
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-      role='presentation'
+      role="presentation"
       onClick={toggleDrawer("left", false)}
       onKeyDown={toggleDrawer("left", false)}
     >
       <List>
         <ListItem disablePadding>
-          <ListItemButton component={Link} to='dashboard'>
+          <ListItemButton component={Link} to="dashboard">
             <ListItemIcon>
               <MailIcon />
             </ListItemIcon>
@@ -42,7 +42,7 @@ export default function TemporaryDrawer() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component={Link} to='house'>
+          <ListItemButton component={Link} to="house">
             <ListItemIcon>
               <MailIcon />
             </ListItemIcon>
@@ -50,7 +50,7 @@ export default function TemporaryDrawer() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component={Link} to='account'>
+          <ListItemButton component={Link} to="account">
             <ListItemIcon>
               <MailIcon />
             </ListItemIcon>

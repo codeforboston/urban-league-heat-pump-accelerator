@@ -152,6 +152,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_010659) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ip"
+    t.float "recaptcha_score"
     t.boolean "completed"
     t.index ["survey_id"], name: "index_survey_responses_on_survey_id"
     t.index ["survey_visit_id"], name: "index_survey_responses_on_survey_visit_id"

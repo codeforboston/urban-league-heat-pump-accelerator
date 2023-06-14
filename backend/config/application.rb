@@ -35,5 +35,10 @@ module UrbanLeagueHeatPumpAccelerator
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Configure Active Job to use sucker_punch backend
+    config.active_job.queue_adapter = :sucker_punch
+
+    config.autoload_paths += %W[#{config.root}/lib]
   end
 end

@@ -7,8 +7,8 @@ import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
 import { SurveyPage } from "./Pages/SurveyPage";
 import GetInvolved from "./Pages/GetInvolved";
-import BenefitsHeatPump from "./Pages/BenefitsHeatPump";
-import GetHeatPump from "./Pages/GetHeatPump";
+import GetHeatPump from "./Pages/GetHeatPump/GetHeatPump";
+import BenefitsHeatPumps from "./Pages/BenefitsHeatPumps";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import AboutHeatPump from "./Pages/AboutHeatPump/AboutHeatPump";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
@@ -42,7 +42,7 @@ const PublicContainer = () => {
                 <Route path="/get-involved" element={<GetInvolved />} />
                 <Route
                   path="/benefits-heat-pump"
-                  element={<BenefitsHeatPump />}
+                  element={<BenefitsHeatPumps />}
                 />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               </Routes>
