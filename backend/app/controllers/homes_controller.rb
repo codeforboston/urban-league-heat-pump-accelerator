@@ -24,6 +24,8 @@ class HomesController < ApplicationController
     @home = Home.new(home_params)
     # By definition, a new home's address has not been canonicalized.
     @home.canonicalized = false
+    # If the user isn't signed in and we're creating a new home, mark as user added
+    @home.user_added = true unless user_signed_in?
 
     respond_to do |format|
       if @home.save
