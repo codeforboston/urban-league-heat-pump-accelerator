@@ -22,6 +22,7 @@ module CheckRecaptcha
       return 0
     end
 
+    Rails.logger.info "Received reCAPTCHA score #{json['score']}"
     json['score']
   end
 end
