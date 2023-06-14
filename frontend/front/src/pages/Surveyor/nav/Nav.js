@@ -1,15 +1,13 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+
+import LeftDrawer from "./LeftDrawer";
 import { Link } from "react-router-dom";
 import React from "react";
-import LeftDrawer from "./LeftDrawer";
+import { useLogoutUserMutation } from "../../../api/apiSlice";
+
 const Nav = () => {
+  const [logout] = useLogoutUserMutation();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -37,8 +35,8 @@ const Nav = () => {
             </Button>
           </Box>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Button color="inherit" component={Link} to="">
-              <Typography variant="h6">LOGOUT</Typography>
+            <Button color="inherit" onClick={logout}>
+              <Typography variant="h6">LOG OUT</Typography>
             </Button>
           </Box>
         </Toolbar>

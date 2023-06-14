@@ -1,12 +1,23 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+import { AUTHORIZATION_HEADER } from "../features/login/loginUtils";
+
+const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:3000";
+
 const sortById = (a, b) => a.id - b.id;
 
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3000",
-    // baseUrl: "https://testing-ibhy.onrender.com",
+    baseUrl,
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().login.token;
+      // add auth to every request, if the token exists
+      if (token) {
+        headers.set(AUTHORIZATION_HEADER, token);
+      }
+      return headers;
+    },
   }),
 
   tagTypes: [
@@ -76,7 +87,7 @@ export const apiSlice = createApi({
     //   ],
     // }),
     getSurveyor: builder.query({
-      query: (surveyor) => `/surveyors/${surveyor}`,
+      query: (id) => `/surveyors/${id}`,
       providesTags: (result, error, arg) => [{ type: "Surveyor", id: arg }],
     }),
     createSurveyor: builder.mutation({
@@ -319,6 +330,22 @@ export const apiSlice = createApi({
         ...result.map(({ id }) => ({ type: "PropertyAssessment", id })),
       ],
     }),
+    //sessions section of the slice
+    loginUser: builder.mutation({
+      query: ({ email, password }) => ({
+        url: "/users/sign_in",
+        method: "POST",
+        // TODO: should this be hashed??
+        body: { user: { email, password } },
+      }),
+      invalidatesTags: ["Surveyor"],
+    }),
+    logoutUser: builder.mutation({
+      query: () => ({
+        url: "/users/sign_out",
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -337,6 +364,10 @@ export const {
   useCreateHomeMutation,
   useGetHomeQuery,
   useGetHomesQuery,
+
+  //Sessions
+  useLoginUserMutation,
+  useLogoutUserMutation,
 
   // Survey
   useDeleteSurveyMutation,
