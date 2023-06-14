@@ -11,7 +11,7 @@ const SurveyorView = (props) => {
         component={Link}
         to={props.link}
       >
-        <Typography variant='h4'>Surveyor View</Typography>
+        <Typography variant="h4">Surveyor View</Typography>
       </Button>
     </Box>
   );

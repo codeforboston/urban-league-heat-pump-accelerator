@@ -41,7 +41,7 @@ const CardLinksSection = () => {
       id: 1,
       title: "Add Your Voice",
       paragraph:
-        "Tell us your thoughts and questions about heat pumps to a collection of homeowner's questions and thoughts about heat pumps.",
+        "Tell us your thoughts and questions about heat pumps to a collection of homeowner's thoughts and questions about heat pumps.",
       button: {
         text: "Take the survey",
         to: "survey",
@@ -64,9 +64,10 @@ const CardLinksSection = () => {
 
   return (
     <GridLinkWrapper>
-      {linkCards.map((detail) => (
+      {linkCards.map((detail, index) => (
         <CardLinks>
           <Card
+            key={index}
             sx={{
               background: "var(--bgColor-3)",
               display: "flex",
@@ -90,7 +91,7 @@ const CardLinksSection = () => {
               alt={detail.title}
             />
             <Box sx={{ display: "flex", flexDirection: "column" }}>
-              <AnimatedBox triggerOnce={false} key={detail.id}>
+              <AnimatedBox triggerOnce={false}>
                 <CardContent sx={{ flex: "1 0 auto" }}>
                   <Box
                     id="survey-link-section"

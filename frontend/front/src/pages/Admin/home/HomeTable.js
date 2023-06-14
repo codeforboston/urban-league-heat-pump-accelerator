@@ -2,35 +2,116 @@ import * as React from "react";
 
 import { DataGrid } from "@mui/x-data-grid";
 import { useNavigate } from "react-router-dom";
+import { useGetHomesQuery } from "../../../api/apiSlice";
+import { Box, Button } from "@mui/material";
+import Loader from "../../../components/Loader";
+import CustomSnackbar from "../../../components/CustomSnackbar";
 
-const columns = [
-  { field: "id", headerName: "Id", width: 50 },
-  { field: "surveyor", headerName: "Surveyor", width: 200 },
-  { field: "address", headerName: "Address", width: 200 },
-  { field: "city", headerName: "City", width: 200 },
-  { field: "zipcode", headerName: "Zip Code", width: 200 },
-  { field: "completed", headerName: "Completed", width: 200 },
-];
-
-const rows = [];
+// Formats addresses
+const getAddress = (params) => {
+  let unit_number = "";
+  if (params.getValue(params.id, "unit_number")) {
+    unit_number = `, Unit #${params.getValue(params.id, "unit_number")}`;
+  }
+  return `${params.getValue(params.id, "street_number")} ${params.getValue(
+    params.id,
+    "street_name"
+  )}${unit_number && unit_number}`;
+};
 
 const HomeTable = () => {
+  const columns = [
+    { field: "id", headerName: "Id", width: 50 },
+    {
+      field: "address",
+      valueGetter: getAddress,
+      headerName: "Address",
+      width: 200,
+    },
+    {
+      field: "city",
+      headerName: "City",
+      minWidth: 100,
+      maxWidth: 200,
+      flex: 1,
+    },
+    {
+      field: "zip_code",
+      headerName: "Zip Code",
+      minWidth: 100,
+      maxWidth: 150,
+      flex: 0.8,
+    },
+    {
+      field: "completed",
+      headerName: "Completed",
+      renderCell: (params) => (params.row.completed === "true" ? "Yes" : "No"),
+      minWidth: 100,
+      maxWidth: 150,
+      flex: 0.8,
+    },
+    {
+      field: "assignment_id",
+      renderCell: (params) => (
+        <Button
+          variant="text"
+          color="primary"
+          size="small"
+          onClick={() => navigate(`assignProfile/${params.id}`)}
+        >
+          {params.row.assignment_id}
+        </Button>
+      ),
+      headerName: "Assignment",
+      width: 110,
+    },
+    {
+      field: "home",
+      renderCell: (params) => (
+        <Button
+          variant="text"
+          color="primary"
+          size="small"
+          onClick={() => navigate(`homeprofile/${params.row.id}`)}
+        >
+          View
+        </Button>
+      ),
+      headerName: "Home",
+      width: 80,
+    },
+  ];
+
+  const {
+    data: homesData,
+    isError: isHomesError,
+    isLoading: isHomesDataLoading,
+  } = useGetHomesQuery();
   const navigate = useNavigate();
 
-  const onRowClick = (row) => {
-    navigate(`homeprofile/${row.id}`);
-  };
+  if (isHomesDataLoading) {
+    return <Loader />;
+  }
 
   return (
-    <DataGrid
-      rows={rows}
-      columns={columns}
-      pageSize={20}
-      rowsPerPageOptions={[20]}
-      disableSelectionOnClick
-      autoHeight
-      onRowClick={onRowClick}
-    />
+    <Box>
+      {isHomesError ? (
+        <CustomSnackbar
+          open={isHomesError}
+          message="Error fetching homes data."
+          severity="error"
+        />
+      ) : (
+        <DataGrid
+          rows={homesData}
+          columns={columns}
+          pageSize={20}
+          rowsPerPageOptions={[20]}
+          disableSelectionOnClick
+          autoHeight
+        />
+      )}
+    </Box>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from "react";
-import { Box, CircularProgress, Container, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetHomeQuery,
@@ -11,26 +11,26 @@ import { SurveyError } from "./SurveyError";
 import { AdminSurvey } from "../component/AdminSurvey";
 import { houseToString } from "../../../components/AddressUtils";
 import { formatISODate } from "../../../components/DateUtils";
+import Loader from "../../../components/Loader";
 
 const SurveyProfile = () => {
   const navigate = useNavigate();
   const { uid: surveyVisitId } = useParams();
 
-  const { data: surveyVisit, error: surveyVisitError } = useGetSurveyVisitQuery(
-    surveyVisitId
-  );
+  const { data: surveyVisit, error: surveyVisitError } =
+    useGetSurveyVisitQuery(surveyVisitId);
 
-  const {
-    data: houseData,
-    error: houseError,
-  } = useGetHomeQuery(surveyVisit?.homeId, { skip: !surveyVisit });
+  const { data: houseData, error: houseError } = useGetHomeQuery(
+    surveyVisit?.homeId,
+    { skip: !surveyVisit }
+  );
   const [
     putSurveyVisit,
-    { isLoading: isSurveyVisitPutLoading, error: surveyVisitPutError },
+    { isLoading: isSurveyVisitPutLoading, isError: isSurveyVisitPutError },
   ] = useUpdateSurveyVisitMutation();
   const [
     deleteSurveyVisit,
-    { isLoading: isSurveyDeleteLoading, error: surveyVisitDeleteError },
+    { isLoading: isSurveyDeleteLoading, isError: isSurveyVisitDeleteError },
   ] = useDeleteSurveyVisitMutation();
 
   const title = useMemo(
@@ -75,13 +75,12 @@ const SurveyProfile = () => {
           submitSurvey={onSubmit}
           onDelete={onDelete}
           isLoading={isSurveyVisitPutLoading || isSurveyDeleteLoading}
+          isErrorSurvey={isSurveyVisitPutError || isSurveyVisitDeleteError}
         />
       ) : surveyVisitError || houseError ? (
         <SurveyError />
       ) : (
-        <Box display="flex" justifyContent="center">
-          <CircularProgress />
-        </Box>
+        <Loader />
       )}
     </Container>
   );

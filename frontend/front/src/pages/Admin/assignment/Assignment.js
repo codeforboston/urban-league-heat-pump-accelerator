@@ -1,18 +1,12 @@
 import React from "react";
 
-import {
-  Box,
-  Button,
-
-  Typography,
-} from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import AssignTable from "./AssignTable";
 import ContainerTitle from "../component/ContainerTitle";
 
 import { Link } from "react-router-dom";
 
 const Assignment = () => {
-
   return (
     <ContainerTitle name={"ASSIGNMENT"}>
       <Box my={2}>

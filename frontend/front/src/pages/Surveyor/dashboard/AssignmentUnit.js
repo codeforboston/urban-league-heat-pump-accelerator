@@ -166,6 +166,7 @@ const AssignmentUnit = (props) => {
                   primary={
                     <Box>
                       <Box>{`${value.street_number} ${value.street_name}`}</Box>
+                      {value?.unit_number && <Box>{`Unit ${value.unit_number}`}</Box>}
                       <Box>{`${value.city} ${value.zip_code}`}</Box>
                       <Box>
                         {value.completed ? (

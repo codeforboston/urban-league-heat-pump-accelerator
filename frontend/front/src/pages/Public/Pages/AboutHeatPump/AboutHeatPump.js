@@ -1,16 +1,17 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Stack, useTheme, useMediaQuery } from "@mui/material";
 import React from "react";
-import streets from "../../../../assets/images/copywritingImages/StrengthenCommunity.jpg";
-import homeExterior from "../../../../assets/images/home-exterior.jpg";
-import AboutHeatPumpCards from "./AboutHeatPumpsCards";
-import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
+import heatpump from "../../../../assets/images/heatPump-outside.png";
+import ButtonDarkBlue from "../../Components/Button/ButtonDarkBlue";
 import Heading1 from "../../Components/Typography/Heading1";
+import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
+import Heading4 from "../../Components/Typography/Heading4";
+import AboutHeatPumpCards from "./AboutHeatPumpsCards";
 
 const cardContent = [
   {
     mediaType: "img",
-    mediaSource: homeExterior,
-    title: "What is a Heat Pump?",
+    mediaSource: heatpump,
+    title: "What is a heat pump?",
     body: "Check out this comprehensive article that Carrier, a heat pump manufacturer, has written up about what a heat pump is and how they work.",
     link: "https://www.carrier.com/residential/en/us/products/heat-pumps/what-is-a-heat-pump-how-does-it-work/",
     linkDescription: "Read Article",
@@ -19,7 +20,7 @@ const cardContent = [
     mediaType: "iframe",
     mediaSource: "https://www.youtube.com/embed/iQaycSD5GWE",
     title: "How does a heat pump work?",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    body: "This Old House plumbing and heating expert Richard Tretheway instructs Kevin O’Connor on the basic principles of how a heat pump works.",
   },
   {
     mediaType: "iframe",
@@ -28,14 +29,16 @@ const cardContent = [
     body: "This video by Vox explains why heat pumps are better for the environment than fossil fuel heaters.",
   },
   {
-    mediaType: "img",
-    mediaSource: streets,
+    mediaType: "iframe",
+    mediaSource: "https://www.youtube.com/embed/Ep9zqk5bVaU",
     title: "What do other people say?",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    body: "Hear what someone else has to say about their experience getting a heat pump installed in their home.",
   },
 ];
 
 function AboutHeatPump() {
+  const theme = useTheme();
+  const isSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box
       mb={6}
@@ -43,24 +46,28 @@ function AboutHeatPump() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        minHeight: "calc(100vh - 560px)",
+        minHeight: "calc(100vh - 520px)",
       }}
     >
       <Heading1BlueBgGround text="About Heat Pumps" />
       <Container>
-        <Box mb={4} mt={4}>
-          <Heading1 fontWeight="500" text="Learn how heat pumps work " />
-
-          <Heading1 fontWeight="500" text="and why they are right for you!" />
+        <Box mb={{ xs: 1, sm: 6 }} mt={{ xs: 1, sm: 2 }}>
+          {isSmallerThanMd ? (
+            <Heading1
+              fontWeight="500"
+              text="Learn how heat pumps work and why they are right for you!"
+            />
+          ) : (
+            <>
+              <Heading1 fontWeight="500" text="Learn how heat pumps work " />
+              <Heading1
+                fontWeight="500"
+                text="and why they are right for you!"
+              />
+            </>
+          )}
         </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: { xs: "10px", lg: "60px" },
-          }}
-        >
+        <Stack direction="column" spacing={{ xs: 4, lg: 8 }}>
           {cardContent.map((card, index) => {
             return (
               <AboutHeatPumpCards
@@ -74,7 +81,14 @@ function AboutHeatPump() {
               />
             );
           })}
-        </Box>
+        </Stack>
+        <Stack alignItems="center" spacing="20px" marginTop="60px">
+          <Box align="center">
+            <Heading4 text="Convinced a heat pump is for you?" />
+            <Heading4 text="Get started here!" />
+          </Box>
+          <ButtonDarkBlue text="GET A HEAT PUMP" to="/public/get-heat-pump" />
+        </Stack>
       </Container>
     </Box>
   );

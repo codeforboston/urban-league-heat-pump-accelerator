@@ -7,6 +7,7 @@ const theme = createTheme({
     values: {
       xs: 0,
       xxs: 330, // Custom breakpoint
+      smm: 450, // Custom breakpoint
       sm: 600,
       md: 960,
       lg: 1280,
@@ -16,7 +17,6 @@ const theme = createTheme({
   typography: {
     // body
     body: {
-      display: "block",
       margin: 0,
       fontWeight: 400,
       fontSize: "16px",
@@ -44,7 +44,25 @@ const theme = createTheme({
     },
 
     navLinks: {
-      fontSize: "1.1rem",
+      fontSize: "1rem",
+      display: "block",
+      fontWeight: 600,
+      letterSpacing: "-.03em",
+      textAlign: "center",
+      color: "var(--color-text-1)",
+    },
+
+    navLinksMobile: {
+      fontSize: "1.5rem",
+      display: "block",
+      fontWeight: 600,
+      letterSpacing: "-.03em",
+      textAlign: "center",
+      color: "var(--color-text-1)",
+    },
+
+    navLinksMobileDropdown: {
+      fontSize: "1.4rem",
       display: "block",
       fontWeight: 600,
       letterSpacing: "-.03em",

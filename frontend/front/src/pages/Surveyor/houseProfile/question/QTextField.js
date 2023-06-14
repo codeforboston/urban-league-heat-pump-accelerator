@@ -9,9 +9,9 @@ const QTextField = (props) => {
       </Box>
       <Box pt={1}>
         <TextField
-          id='outlined-basic'
+          id="outlined-basic"
           // label='Outlined'
-          variant='outlined'
+          variant="outlined"
           sx={{ bgcolor: "white", border: 1, width: "100%" }}
         />
       </Box>
