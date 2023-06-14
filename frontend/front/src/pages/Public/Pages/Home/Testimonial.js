@@ -1,13 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import {
-  Typography,
-  Box,
-  Grid,
-  Paper,
-  Container,
-  CardMedia,
-} from "@mui/material";
+import { Typography, Box, Grid, Paper, Container } from "@mui/material";
 import Heading1 from "../../Components/Typography/Heading1";
 import Heading4 from "../../Components/Typography/Heading4";
 import nia from "../../../../assets/images/testimonials/nia2.png";
@@ -18,38 +11,15 @@ const Item = styled(Box)(({ theme }) => ({
   textAlign: "center",
 }));
 
-const ImageWrapper = styled(Box)(({ theme }) => ({
-  position: "relative",
-  width: "100%",
-  height: "100%",
-  overflow: "hidden",
-  "&:hover img": {
-    transform: "scale(1.1)",
-  },
-  "&:hover::after": {
-    content: '""',
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    boxShadow: `0 2px 8px ${theme.palette.grey[500]}`,
-    opacity: 0.5,
-  },
-}));
-
 const Testimonial = () => {
   return (
     <Container>
       <Paper
         sx={{ padding: { xs: "0" }, background: "var(--bgColor-1)" }}
-        // variant="outlined"
-        // square
         elevation={0}
       >
         <Grid
           container
-          // spacing={2}
           sx={{ height: "100%" }}
           direction={{ xs: "reverse-column", md: "row" }}
         >
@@ -72,7 +42,7 @@ const Testimonial = () => {
                 Hear what else people have to say about their heat pumps!
               </Typography>
               <Box>
-                <ButtonDarkBklue text="read more" to="about-us" />
+                <ButtonDarkBklue text="read more" to="testimonials" />
               </Box>
             </Item>
           </Grid>
