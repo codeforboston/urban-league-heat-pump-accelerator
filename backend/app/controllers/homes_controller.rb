@@ -23,7 +23,7 @@ class HomesController < ApplicationController
   def create
     @home = Home.new(home_params)
     # By definition, a new home's address has not been canonicalized.
-    @home.status = 'created'
+    @home.status = :uncanonicalized
     # If the user isn't signed in and we're creating a new home, mark as user added
     @home.user_added = true unless user_signed_in?
 

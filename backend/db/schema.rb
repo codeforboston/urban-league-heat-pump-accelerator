@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_020622) do
     t.datetime "updated_at", null: false
     t.bigint "assignment_id"
     t.integer "visit_order"
-    t.string "status", default: "uncanonicalized", null: false
+    t.integer "status", default: 0, null: false
     t.boolean "user_added", default: false, null: false
     t.index ["assignment_id", "visit_order"], name: "index_homes_on_assignment_id_and_visit_order", unique: true
     t.index ["assignment_id"], name: "index_homes_on_assignment_id"
