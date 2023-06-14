@@ -3,17 +3,24 @@
 require 'net/https'
 
 module CheckRecaptcha
-  def check_recaptcha(secret_key, response_token, recaptcha_action)
+  def check_recaptcha(secret_key, response_token, recaptcha_action) # rubocop:disable Metrics/MethodLength
     # Verify reCAPTCHA token per https://developers.google.com/recaptcha/docs/verify
     uri = URI.parse('https://www.google.com/recaptcha/api/siteverify')
 
     response = Net::HTTP.post(uri, 'secret' => secret_key, 'response' => response_token)
     json = JSON.parse(response.body)
 
-    # TODO: What to do if not successful validating?
-    # i.e. sucess == false or action doesn't match?
-    return 0 unless json['success']
-    return 0 if json['action'] != recaptcha_action
+    # If have invalid token, consider maximum spaminess
+    unless json['success']
+      Rails.logger.error 'Invalid reCAPTCHA token'
+      return 0
+    end
+
+    # If wrong action, then consider maximum spaminess
+    unless json['action'] == recaptcha_action
+      Rails.logger.error 'Incorrect reCAPTCHA action'
+      return 0
+    end
 
     json['score']
   end
