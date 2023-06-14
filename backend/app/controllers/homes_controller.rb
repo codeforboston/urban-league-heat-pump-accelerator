@@ -23,7 +23,7 @@ class HomesController < ApplicationController
   def create
     @home = Home.new(home_params)
     # By definition, a new home's address has not been canonicalized.
-    @home.canonicalized = false
+    @home.status = 'created'
     # If the user isn't signed in and we're creating a new home, mark as user added
     @home.user_added = true unless user_signed_in?
 
@@ -64,14 +64,14 @@ class HomesController < ApplicationController
   end
 
   # Only allow a list of trusted parameters through.
-  # Do NOT permit "canonicalized" because this is something we set.
+  # Do NOT permit "status" or "user-added" because this is something we set.
   def home_params
     params.require(:home).permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type,
                                  :assignment_id, :visit_order)
   end
 
   def search_params
-    params.permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type, :assignment_id,
-                  :visit_order, :canonicalized)
+    params.permit(:street_number, :street_name, :unit_number, :city, :state, :zip_code, :building_type, :status,
+                  :user_added, :assignment_id, :visit_order)
   end
 end

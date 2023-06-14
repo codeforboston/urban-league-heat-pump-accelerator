@@ -12,20 +12,20 @@ class Home < ApplicationRecord
   validates :visit_order, presence: true, if: :assignment_id
   validates :assignment_id, presence: true, if: :visit_order
 
-  before_save :update_canonicalized
+  before_save :update_status
 
   after_save do
-    CanonicalizeAddressJob.perform_later id unless canonicalized?
+    CanonicalizeAddressJob.perform_later id if status == 'uncanonicalized'
   end
 
   protected
 
-  def update_canonicalized
+  def update_status
     # If we change anything in the address,
     # we need to redo the canonicalization.
     unless changes.keys.intersection(%w[street_number street_name unit_number city state
                                         zip_code]).empty?
-      self.canonicalized = false
+      self.status = 'uncanonicalized'
     end
   end
 end
