@@ -241,6 +241,9 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sucker_punch (3.1.0)
+      concurrent-ruby (~> 1.0)
+    syntax_suggest (1.1.0)
     thor (1.2.1)
     timeout (0.3.2)
     tzinfo (2.0.6)
@@ -287,6 +290,8 @@ DEPENDENCIES
   rubocop-rails
   smarter_csv
   sprockets-rails
+  sucker_punch (~> 3.0)
+  syntax_suggest
   tzinfo-data
   web-console
 
