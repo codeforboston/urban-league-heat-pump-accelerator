@@ -71,7 +71,7 @@ const CardBenefitsSection = () => {
 
   return (
     <Container>
-      <Box pb={8} pt={4}>
+      <Box pb={8} pt={2}>
         <Box
           pb={4}
           sx={{
