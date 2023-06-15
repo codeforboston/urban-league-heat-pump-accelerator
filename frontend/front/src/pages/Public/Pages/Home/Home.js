@@ -1,12 +1,9 @@
 import React from "react";
 import { Box, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import AnimatedBox from "../../Components/AnimatedBox";
-
 import Partners from "./Partners";
 import CardBenefitsSection from "./CardBenefitsSection";
 import CardLinksSection from "./CardLinksSection";
-
 import CarrouselHero from "./CarrouselHero";
 import Testimonial from "./Testimonial";
 
