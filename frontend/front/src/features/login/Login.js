@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import { ROLE_ADMIN, ROLE_SURVEYOR } from "../../features/login/loginUtils";
 import React, { useMemo } from "react";
-import { useGetSurveyorQuery, useLoginUserMutation } from "../../api/apiSlice";
 
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { LoadingButton } from "@mui/lab";
@@ -20,15 +19,13 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Navigate } from "react-router-dom";
 import { selectCurrentUser } from "../../features/login/loginSlice";
 import { useForm } from "react-hook-form";
+import { useLoginUserMutation } from "../../api/apiSlice";
 import { useSelector } from "react-redux";
 
 const Login = () => {
   const currentUser = useSelector(selectCurrentUser);
   const [login, { isLoading: isLoginLoading, error: loginError }] =
     useLoginUserMutation();
-  const { data: surveyorProfile } = useGetSurveyorQuery(currentUser?.id, {
-    skip: !currentUser?.id,
-  });
 
   const errorMessage = useMemo(
     () =>
@@ -69,8 +66,8 @@ const Login = () => {
   }
 
   // redirect to proper dashboard if the user is logged in!
-  if (!!surveyorProfile) {
-    switch (surveyorProfile.role) {
+  if (!!currentUser) {
+    switch (currentUser.role) {
       case ROLE_SURVEYOR:
         return <Navigate to={routes.SURVEYOR_DASHBOARD_ROUTE} />;
       case ROLE_ADMIN:
