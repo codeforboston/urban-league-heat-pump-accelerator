@@ -8,7 +8,7 @@ import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 
 // Formats addresses
-const getAddress = (params) => {
+export const getAddress = (params) => {
   let unit_number = "";
   if (params.getValue(params.id, "unit_number")) {
     unit_number = `, Unit #${params.getValue(params.id, "unit_number")}`;
@@ -38,6 +38,10 @@ const HomeTable = () => {
     {
       field: "zip_code",
       headerName: "Zip Code",
+      renderCell: (params) =>
+        params.row.zip_code.length === 5
+          ? params.row.zip_code
+          : `0${params.row.zip_code}`,
       minWidth: 100,
       maxWidth: 150,
       flex: 0.8,
@@ -57,7 +61,11 @@ const HomeTable = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() => navigate(`assignProfile/${params.id}`)}
+          onClick={() =>
+            navigate(
+              `/admin/assignment/assignProfile/${params.row.assignment_id}`
+            )
+          }
         >
           {params.row.assignment_id}
         </Button>
