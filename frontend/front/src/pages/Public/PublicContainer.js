@@ -12,6 +12,7 @@ import BenefitsHeatPumps from "./Pages/BenefitsHeatPumps";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import AboutHeatPump from "./Pages/AboutHeatPump/AboutHeatPump";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
+import Testimonials from "./Pages/Testimonials";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
 import ScrollToTopButton from "./Components/ScrollToTopButton";
@@ -45,6 +46,7 @@ const PublicContainer = () => {
                   element={<BenefitsHeatPumps />}
                 />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/testimonials" element={<Testimonials />} />
               </Routes>
             </Box>
             <ScrollToTopButton />

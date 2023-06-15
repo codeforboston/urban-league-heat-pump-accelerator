@@ -143,6 +143,7 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
+    newrelic_rpm (9.2.2)
     nio4r (2.5.9)
     nokogiri (1.14.3-arm64-darwin)
       racc (~> 1.4)
@@ -240,6 +241,9 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sucker_punch (3.1.0)
+      concurrent-ruby (~> 1.0)
+    syntax_suggest (1.1.0)
     thor (1.2.1)
     timeout (0.3.2)
     tzinfo (2.0.6)
@@ -276,6 +280,7 @@ DEPENDENCIES
   devise-jwt
   factory_bot_rails
   jbuilder
+  newrelic_rpm
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors (~> 2.0)
@@ -285,6 +290,8 @@ DEPENDENCIES
   rubocop-rails
   smarter_csv
   sprockets-rails
+  sucker_punch (~> 3.0)
+  syntax_suggest
   tzinfo-data
   web-console
 

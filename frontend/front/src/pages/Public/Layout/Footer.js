@@ -1,23 +1,26 @@
-import React, { useEffect } from "react";
+import * as routes from "../../../routing/routes";
+
 import {
   Box,
-  Grid,
-  Toolbar,
-  Typography,
   Divider,
+  Grid,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
+  Toolbar,
+  Typography,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+
 import ButtonGetPump from "../Components/Button/ButtonGetPump";
-import logoHeatPump from "../../../assets/images/bhpa-logos/bhpa-logo300px.png";
-import { styled } from "@mui/material/styles";
-import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
+import ButtonWhite from "../Components/Button/ButtonWhite";
 import EmailIcon from "@mui/icons-material/Email";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import ButtonWhite from "../Components/Button/ButtonWhite";
+import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
+import logoHeatPump from "../../../assets/images/bhpa-logos/bhpa-logo300px.png";
+import { styled } from "@mui/material/styles";
 
 const footerItems = {
   "About BHPA": { link: "about-us" },
@@ -246,7 +249,7 @@ const Footer = () => {
                     py: { xs: 0, lg: 2 },
                   }}
                 >
-                  <ButtonWhite to="/surveyor">
+                  <ButtonWhite to={routes.LOGIN_ROUTE}>
                     <LockOutlinedIcon sx={{ mr: 1 }} />
                     Member Login
                   </ButtonWhite>
@@ -262,7 +265,7 @@ const Footer = () => {
             align="center"
             sx={{ pt: { xs: 4 }, display: { xs: "block", lg: "none" } }}
           >
-            <ButtonWhite to="/surveyor">
+            <ButtonWhite to={routes.LOGIN_ROUTE}>
               <LockOutlinedIcon sx={{ mr: 1 }} />
               Member Login
             </ButtonWhite>
