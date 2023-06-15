@@ -40,9 +40,7 @@ const Home = () => {
       {/* TESTIMONIALS */}
       <SectionWrapper my={16} id="testimonial-section">
         <Box sx={{ padding: { xs: "0" } }}>
-          <AnimatedBox triggerOnce={false}>
-            <Testimonial />
-          </AnimatedBox>
+          <Testimonial />
         </Box>
       </SectionWrapper>
 

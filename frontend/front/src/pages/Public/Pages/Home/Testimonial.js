@@ -1,10 +1,21 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box, Grid, Paper, Container } from "@mui/material";
+import {
+  Typography,
+  Box,
+  Grid,
+  Paper,
+  Container,
+  Avatar,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import Heading1 from "../../Components/Typography/Heading1";
 import Heading4 from "../../Components/Typography/Heading4";
 import nia from "../../../../assets/images/testimonials/nia2.png";
+import niaAvatar from "../../../../assets/images/testimonials/nia.png";
 import ButtonDarkBklue from "../../Components/Button/ButtonDarkBlue";
+import AnimatedBox from "../../Components/AnimatedBox";
 
 const Item = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),
@@ -12,59 +23,81 @@ const Item = styled(Box)(({ theme }) => ({
 }));
 
 const Testimonial = () => {
+  const theme = useTheme();
+  const isSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
-    <Container>
-      <Paper
-        sx={{ padding: { xs: "0" }, background: "var(--bgColor-1)" }}
-        elevation={0}
-      >
-        <Grid
-          container
-          sx={{ height: "100%" }}
-          direction={{ xs: "reverse-column", md: "row" }}
+    <AnimatedBox triggerOnce={false}>
+      <Container>
+        <Paper
+          sx={{ padding: { xs: "0" }, background: "var(--bgColor-1)" }}
+          elevation={0}
         >
-          <Grid item xs={12}>
-            <Item>
-              <Heading1 text="Testimonials" />
-            </Item>
+          <Grid
+            container
+            sx={{ height: "100%" }}
+            direction={{ xs: "reverse-column", md: "row" }}
+          >
+            <Grid item xs={12}>
+              <Item>
+                <Heading1 text="Testimonials" />
+              </Item>
+            </Grid>
+            {isSmallerThanMd && (
+              <Grid item xs={12} direction="column">
+                <Item sx={{ paddingBottom: 0 }}>
+                  <Avatar
+                    src={niaAvatar}
+                    sx={{
+                      width: "112px",
+                      height: "112px",
+                      margin: "0 auto",
+                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
+                    }}
+                  />
+                </Item>
+              </Grid>
+            )}
+            <Grid item md={8} direction="column">
+              <Item style={{ flexGrow: 1 }}>
+                <Typography variant="h4" px={{ xs: 0, md: 6 }}>
+                  “Wow, it blew my mind. Normally the bill is anywhere from $400
+                  to $500, and it was more like $200. I was like, let me look at
+                  that again!”
+                </Typography>
+                <Box pt={3}>
+                  <Heading4 text="Mattapan Resident, Nia" />
+                </Box>
+                <Typography py={6} variant="h6" sx={{ fontWeight: 400 }} px={1}>
+                  Hear what else people have to say about their heat pumps!
+                </Typography>
+                <Box>
+                  <ButtonDarkBklue text="read more" to="testimonials" />
+                </Box>
+              </Item>
+            </Grid>
+            {!isSmallerThanMd && (
+              <Grid item md={4}>
+                <Item>
+                  <Box
+                    component="img"
+                    sx={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: "2px",
+                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
+                    }}
+                    src={nia}
+                    alt={nia}
+                  />
+                </Item>
+              </Grid>
+            )}
           </Grid>
-          <Grid item md={8} direction="column">
-            <Item style={{ flexGrow: 1 }}>
-              <Typography variant="h4" px={{ xs: 0, md: 6 }}>
-                “Wow, it blew my mind. Normally the bill is anywhere from $400
-                to $500, and it was more like $200. I was like, let me look at
-                that again!”
-              </Typography>
-              <Box pt={3}>
-                <Heading4 text="Mattapan Resident, Nia" />
-              </Box>
-              <Typography py={6} variant="h6" sx={{ fontWeight: 400 }} px={1}>
-                Hear what else people have to say about their heat pumps!
-              </Typography>
-              <Box>
-                <ButtonDarkBklue text="read more" to="testimonials" />
-              </Box>
-            </Item>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Item>
-              <Box
-                component="img"
-                sx={{
-                  objectFit: "cover",
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "2px",
-                  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
-                }}
-                src={nia}
-                alt={nia}
-              />
-            </Item>
-          </Grid>
-        </Grid>
-      </Paper>
-    </Container>
+        </Paper>
+      </Container>
+    </AnimatedBox>
   );
 };
 
