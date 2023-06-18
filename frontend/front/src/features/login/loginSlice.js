@@ -6,9 +6,11 @@ import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 import { apiSlice } from "../../api/apiSlice";
 
+const initialState = { user: { id: null, email: null }, token: null };
+
 const loginSlice = createSlice({
   name: "login",
-  initialState: { user: null, token: null },
+  initialState,
   reducers: {
     setLoginInfo: (state, action) => {
       state.user = action.payload.user;
@@ -20,8 +22,9 @@ const loginSlice = createSlice({
     builder.addMatcher(
       apiSlice.endpoints.loginUser.matchFulfilled,
       (state, { payload, meta }) => {
-        const token =
-          meta.baseQueryMeta.response.headers.get(AUTHORIZATION_HEADER);
+        const token = meta.baseQueryMeta.response.headers.get(
+          AUTHORIZATION_HEADER
+        );
         state.token = token;
         state.user = payload;
         if (token) {
@@ -31,8 +34,8 @@ const loginSlice = createSlice({
     );
     // update state whenever user logs out successfully
     builder.addMatcher(apiSlice.endpoints.logoutUser.matchPending, (state) => {
-      state.user = null;
-      state.token = null;
+      state.user = initialState.user;
+      state.token = initialState.token;
       localStorage.removeItem(AUTH_TOKEN_LOCAL_STORAGE_KEY);
     });
   },
