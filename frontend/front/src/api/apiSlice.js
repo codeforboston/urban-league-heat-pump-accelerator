@@ -53,10 +53,11 @@ export const apiSlice = createApi({
       providesTags: (result, error, arg) => [{ type: "Home", id: arg }],
     }),
     createHome: builder.mutation({
-      query: (home) => ({
+      query: ({ home, recaptcha }) => ({
         url: `/homes`,
         method: "POST",
         body: home,
+        headers: [[`Recaptcha-Token`, recaptcha]],
       }),
       invalidatesTags: ["Home"],
     }),
@@ -179,13 +180,12 @@ export const apiSlice = createApi({
       providesTags: (result, error, arg) => [{ type: "SurveyVisit", id: arg }],
     }),
     createSurveyVisit: builder.mutation({
-      query: ({ surveyVisit, recaptcha }) => (
-          {url: "/survey_visits",
-          method: "POST",
-          body: surveyVisit,
-          headers: [[`Recaptcha-Token`, recaptcha]]}
-        )
-      ,
+      query: ({ surveyVisit, recaptcha }) => ({
+        url: "/survey_visits",
+        method: "POST",
+        body: surveyVisit,
+        headers: [[`Recaptcha-Token`, recaptcha]],
+      }),
       invalidatesTags: ["SurveyVisit"],
     }),
     updateSurveyVisit: builder.mutation({

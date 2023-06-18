@@ -51,8 +51,9 @@ export const SurveyPage = () => {
 
   const handleCreateHome = useCallback(
     async ({ address }) => {
-      const recaptcha = await getReCaptchaToken();
-      createHome({ ...address, recaptcha });
+      const recaptcha = await getReCaptchaToken("create_survey");
+      const home = await createHome({ home: { ...address }, recaptcha });
+      return home;
     },
     [createHome, getReCaptchaToken]
   );
