@@ -17,7 +17,6 @@ const Nav = () => {
 
   // const { title } = useSelector((state) => state.nav);
   const theme = useTheme();
-  console.log(theme);
   // const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
   return (
     <Box sx={{ flexGrow: 1 }}>

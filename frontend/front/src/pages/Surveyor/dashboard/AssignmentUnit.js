@@ -51,7 +51,6 @@ const AssignmentUnit = (props) => {
     }
 
     setChecked(newChecked);
-    console.log(checked);
   };
 
   // does a quick comparison by order
