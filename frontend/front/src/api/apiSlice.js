@@ -62,10 +62,10 @@ export const apiSlice = createApi({
       invalidatesTags: ["Home"],
     }),
     updateHome: builder.mutation({
-      query: (home) => ({
-        url: `/homes/${home.id}`,
+      query: ({ id, body }) => ({
+        url: `homes/${id}`,
         method: "PUT",
-        body: home,
+        body,
       }),
       invalidatesTags: (result, error, arg) => [{ type: "Home", id: arg.id }],
     }),
@@ -108,10 +108,10 @@ export const apiSlice = createApi({
       invalidatesTags: ["Surveyor"],
     }),
     updateSurveyor: builder.mutation({
-      query: ({ id, surveyor }) => ({
+      query: ({ id, body }) => ({
         url: `/surveyors/${id}`,
         method: "PUT",
-        body: surveyor,
+        body,
       }),
       invalidatesTags: (result, error, arg) => [
         { type: "Surveyor", id: arg.id },
@@ -151,10 +151,10 @@ export const apiSlice = createApi({
       invalidatesTags: ["Survey"],
     }),
     updateSurvey: builder.mutation({
-      query: (survey) => ({
-        url: `/surveys/${survey.id}`,
+      query: ({ id, body }) => ({
+        url: `/surveys/${id}`,
         method: "PUT",
-        body: survey,
+        body,
       }),
       invalidatesTags: (result, error, arg) => [{ type: "Survey", id: arg.id }],
     }),
@@ -189,13 +189,11 @@ export const apiSlice = createApi({
       invalidatesTags: ["SurveyVisit"],
     }),
     updateSurveyVisit: builder.mutation({
-      query: ({ id, body }) => {
-        return {
-          url: `/survey_visits/${id}`,
-          method: "PUT",
-          body,
-        };
-      },
+      query: ({ id, body }) => ({
+        url: `survey_visits/${id}`,
+        method: "PUT",
+        body,
+      }),
       invalidatesTags: (result, error, arg) => [
         { type: "SurveyVisit", id: arg.id },
       ],
@@ -231,13 +229,11 @@ export const apiSlice = createApi({
       invalidatesTags: ["SurveyResponse"],
     }),
     updateSurveyResponse: builder.mutation({
-      query: ({ id, body }) => {
-        return {
-          url: `/survey_responses/${id}`,
-          method: "PUT",
-          body,
-        };
-      },
+      query: ({ id, body }) => ({
+        url: `/survey_responses/${id}`,
+        method: "PUT",
+        body,
+      }),
       invalidatesTags: (result, error, arg) => [
         { type: "SurveyResponse", id: arg.id },
       ],
@@ -271,13 +267,11 @@ export const apiSlice = createApi({
       invalidatesTags: ["SurveyAnswer"],
     }),
     updateSurveyAnswer: builder.mutation({
-      query: ({ id, body }) => {
-        return {
-          url: `/survey_answers/${id}`,
-          method: "PUT",
-          body,
-        };
-      },
+      query: ({ id, body }) => ({
+        url: `/survey_answers/${id}`,
+        method: "PUT",
+        body,
+      }),
       invalidatesTags: (result, error, arg) => [
         { type: "SurveyAnswer", id: arg.id },
       ],
@@ -313,10 +307,10 @@ export const apiSlice = createApi({
       invalidatesTags: ["Assignment"],
     }),
     updateAssignment: builder.mutation({
-      query: (assignment) => ({
-        url: `/assignments/${assignment.id}`,
+      query: ({ id, body }) => ({
+        url: `/assignments/${id}`,
         method: "PUT",
-        body: assignment,
+        body,
       }),
       invalidatesTags: (result, error, arg) => [
         { type: "Assignment", id: arg.id },

@@ -65,7 +65,7 @@ const EditAccount = () => {
     async (values) => {
       const updatedAccount = await updateAccount({
         id,
-        surveyor: {
+        body: {
           surveyor: {
             firstname: values.firstName,
             lastname: values.lastName,
