@@ -8,12 +8,17 @@ import {
   useTheme,
 } from "@mui/material";
 
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useCallback } from "react";
 import { useLogoutUserMutation } from "../../../api/apiSlice";
 
 const Nav = () => {
+  const navigate = useNavigate();
   const [logout] = useLogoutUserMutation();
+  const handleLogout = useCallback(async () => {
+    await logout();
+    navigate("/");
+  });
 
   // const { title } = useSelector((state) => state.nav);
   const theme = useTheme();
@@ -28,7 +33,7 @@ const Nav = () => {
               <Typography variant="h6">ADMIN</Typography>
             </Button>
           </Typography>
-          <Button color="inherit" component={Link} onClick={logout}>
+          <Button color="inherit" component={Link} onClick={handleLogout}>
             <Typography variant="h6">LOG OUT</Typography>
           </Button>
         </Toolbar>
