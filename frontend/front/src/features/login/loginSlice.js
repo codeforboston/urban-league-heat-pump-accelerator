@@ -34,8 +34,7 @@ const loginSlice = createSlice({
     );
     // update state whenever user logs out successfully
     builder.addMatcher(apiSlice.endpoints.logoutUser.matchPending, (state) => {
-      state.user = initialState.user;
-      state.token = initialState.token;
+      state = initialState
       localStorage.removeItem(AUTH_TOKEN_LOCAL_STORAGE_KEY);
     });
   },

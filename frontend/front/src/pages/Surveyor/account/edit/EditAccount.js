@@ -80,7 +80,7 @@ const EditAccount = () => {
     [updateAccount, id]
   );
 
-  async function EditAccountForms(values) {
+  async function editAccountForms(values) {
     if (!values) return;
     handleUpdateAccount(values);
     reset();
@@ -109,7 +109,7 @@ const EditAccount = () => {
             <h2>Update Account Details?</h2>
           </Grid>
 
-          <form onSubmit={handleSubmit(EditAccountForms)}>
+          <form onSubmit={handleSubmit(editAccountForms)}>
             <TextField
               id="standard-basic"
               placeholder="Enter First Name"
@@ -221,7 +221,7 @@ const EditAccount = () => {
               type="submit"
               color="primary"
               variant="contained"
-              onClick={() => EditAccountForms}
+              onClick={() => editAccountForms}
               style={{
                 btnstyle,
                 borderRadius: "20px",
@@ -235,7 +235,7 @@ const EditAccount = () => {
               type="button"
               color="error"
               variant="contained"
-              onClick={() => EditAccountForms}
+              onClick={() => editAccountForms}
               style={{
                 btnstyle,
                 borderRadius: "20px",

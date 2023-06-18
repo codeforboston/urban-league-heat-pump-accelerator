@@ -30,7 +30,7 @@ const Account = () => {
       ) : isAccountDataError ? (
         <CustomSnackbar
           open={isAccountDataError}
-          message="Error fetching Surveyors data."
+          message="Error fetching account data."
           severity="error"
         />
       ) : (
