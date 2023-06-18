@@ -11,7 +11,7 @@ const cardContent = [
   {
     mediaType: "img",
     mediaSource: heatpump,
-    title: "What is a Heat Pump?",
+    title: "What is a heat pump?",
     body: "Check out this comprehensive article that Carrier, a heat pump manufacturer, has written up about what a heat pump is and how they work.",
     link: "https://www.carrier.com/residential/en/us/products/heat-pumps/what-is-a-heat-pump-how-does-it-work/",
     linkDescription: "Read Article",
@@ -46,7 +46,7 @@ function AboutHeatPump() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        minHeight: "calc(100vh - 560px)",
+        minHeight: "calc(100vh - 520px)",
       }}
     >
       <Heading1BlueBgGround text="About Heat Pumps" />

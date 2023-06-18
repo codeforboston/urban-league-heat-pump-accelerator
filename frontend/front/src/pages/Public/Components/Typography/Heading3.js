@@ -1,6 +1,6 @@
 import { Typography, Avatar, Stack } from "@mui/material";
 
-function Heading3({ text, icon = null }) {
+function Heading3({ text, icon = null, textDecoration = "none" }) {
   return (
     <>
       {icon !== null ? (
@@ -24,6 +24,9 @@ function Heading3({ text, icon = null }) {
             fontFamily: "var(--font-family-1)",
             color: "var(--color-text-2)",
             fontWeight: "600",
+            textDecoration: textDecoration,
+            textUnderlinePosition: "under",
+            textDecorationColor: "var(--color-text-2)",
           }}
         >
           {text}

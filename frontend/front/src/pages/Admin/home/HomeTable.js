@@ -3,13 +3,12 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { useNavigate } from "react-router-dom";
 import { useGetHomesQuery } from "../../../api/apiSlice";
-import { Box } from "@mui/material";
-import AssignmentLink from "./AssignmentLink";
+import { Box, Button } from "@mui/material";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 
 // Formats addresses
-const getAddress = (params) => {
+export const getAddress = (params) => {
   let unit_number = "";
   if (params.getValue(params.id, "unit_number")) {
     unit_number = `, Unit #${params.getValue(params.id, "unit_number")}`;
@@ -24,22 +23,71 @@ const HomeTable = () => {
   const columns = [
     { field: "id", headerName: "Id", width: 50 },
     {
-      field: "assignment_id",
-      renderCell: (params) => (
-        <AssignmentLink id={params.getValue(params.id, "assignment_id")} />
-      ),
-      headerName: "Assignment",
-      width: 200,
-    },
-    {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
       width: 200,
     },
-    { field: "city", headerName: "City", width: 200 },
-    { field: "zip_code", headerName: "Zip Code", width: 200 },
-    { field: "completed", headerName: "Completed", width: 200 },
+    {
+      field: "city",
+      headerName: "City",
+      minWidth: 100,
+      maxWidth: 200,
+      flex: 1,
+    },
+    {
+      field: "zip_code",
+      headerName: "Zip Code",
+      renderCell: (params) =>
+        params.row.zip_code.length === 5
+          ? params.row.zip_code
+          : `0${params.row.zip_code}`,
+      minWidth: 100,
+      maxWidth: 150,
+      flex: 0.8,
+    },
+    {
+      field: "completed",
+      headerName: "Completed",
+      renderCell: (params) => (params.row.completed === "true" ? "Yes" : "No"),
+      minWidth: 100,
+      maxWidth: 150,
+      flex: 0.8,
+    },
+    {
+      field: "assignment_id",
+      renderCell: (params) => (
+        <Button
+          variant="text"
+          color="primary"
+          size="small"
+          onClick={() =>
+            navigate(
+              `/admin/assignment/assignProfile/${params.row.assignment_id}`
+            )
+          }
+        >
+          {params.row.assignment_id}
+        </Button>
+      ),
+      headerName: "Assignment",
+      width: 110,
+    },
+    {
+      field: "home",
+      renderCell: (params) => (
+        <Button
+          variant="text"
+          color="primary"
+          size="small"
+          onClick={() => navigate(`homeprofile/${params.row.id}`)}
+        >
+          View
+        </Button>
+      ),
+      headerName: "Home",
+      width: 80,
+    },
   ];
 
   const {
@@ -48,14 +96,6 @@ const HomeTable = () => {
     isLoading: isHomesDataLoading,
   } = useGetHomesQuery();
   const navigate = useNavigate();
-
-  const onRowClick = (row, event) => {
-    if (event.target.className.includes("goToAssignment")) {
-      navigate(`/admin/assignments/${row.getValue(row.id, "assignment_id")}`);
-    } else {
-      navigate(`homeprofile/${row.id}`);
-    }
-  };
 
   if (isHomesDataLoading) {
     return <Loader />;
@@ -77,7 +117,6 @@ const HomeTable = () => {
           rowsPerPageOptions={[20]}
           disableSelectionOnClick
           autoHeight
-          onRowClick={onRowClick}
         />
       )}
     </Box>

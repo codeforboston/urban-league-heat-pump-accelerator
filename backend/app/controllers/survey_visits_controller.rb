@@ -20,14 +20,30 @@ class SurveyVisitsController < ApplicationController
   def edit; end
 
   # POST /survey_visits or /survey_visits.json
-  def create
+  def create # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     params_hash = survey_visit_params.to_h
     params_hash[:survey_response_attributes][:ip] = request.ip if params_hash.key?(:survey_response_attributes)
     @survey_visit = SurveyVisit.new(params_hash)
 
+    # If authenticated and have a survey response,
+    # always consider it trustworthy
+    @survey_visit.survey_response.recaptcha_score = 1.0 if user_signed_in? && !@survey_visit.survey_response.nil?
+
     respond_to do |format|
       if @survey_visit.save
         format.json { render :show, status: :created, location: @survey_visit }
+
+        # We only verify the reCAPTCHA token if the user is anonymous
+        unless user_signed_in?
+          actual_response_token = request.headers['Recaptcha-Token']
+          recaptcha_action = 'create_survey'
+
+          # If we have a survey_response, schedule the reCAPTCHA check
+          # in the background
+          unless @survey_visit.survey_response.nil?
+            CheckRecaptchaJob.perform_later @survey_visit.survey_response.id, actual_response_token, recaptcha_action
+          end
+        end
       else
         format.json { render json: @survey_visit.errors, status: :unprocessable_entity }
       end
