@@ -14,15 +14,18 @@ import {
 } from "../Components/SurveyorSurvey";
 import Loader from "../../../components/Loader";
 import { buildSurveyVisitData } from "../../../util/surveyUtils";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../../features/login/loginSlice";
 
 const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
 const STEP_SURVEY = "PHASE_SURVEY";
 const STEP_THANKS = "PHASE_THANKS";
-const TEMPORARY_SURVEYOR_ID = 1; //need access to real surveyor id
 
 const HouseProfile = () => {
   const { id: homeId } = useParams();
+  const { id: surveyorId } = useSelector(selectCurrentUser);
+
   const {
     data: homeData,
     error: homeError,
@@ -46,7 +49,7 @@ const HouseProfile = () => {
           answers,
           homeId,
           surveyId,
-          TEMPORARY_SURVEYOR_ID
+          surveyorId
         ),
       });
       return surveyVisit;
