@@ -12,11 +12,16 @@ const Account = () => {
   const { id: userId } = useSelector(selectCurrentUser);
 
   const {
-    data: accountData,
+    data: {
+      firstname: firstName,
+      lastname: lastName,
+      email,
+      street_address: address,
+      phone: phoneNumber,
+    },
     isError: isAccountDataError,
     isLoading: isAccountDataLoading,
   } = useGetSurveyorQuery(userId);
-
 
   return (
     <Box>
@@ -38,11 +43,11 @@ const Account = () => {
                 </Typography>
               </Box>
             </Grid>
-            <AccountDetail label="First Name" value={accountData.firstname} />
-            <AccountDetail label="Last Name" value={accountData.lastname} />
-            <AccountDetail label="Email" value={accountData.email} />
-            <AccountDetail label="Address" value={accountData.street_address} />
-            <AccountDetail label="Phone Number" value={accountData.phone} />
+            <AccountDetail label="First Name" value={firstName} />
+            <AccountDetail label="Last Name" value={lastName} />
+            <AccountDetail label="Email" value={email} />
+            <AccountDetail label="Address" value={address} />
+            <AccountDetail label="Phone Number" value={phoneNumber} />
           </Grid>
           <Grid container direction="column" rowSpacing={4}>
             <Grid item xs={12}>

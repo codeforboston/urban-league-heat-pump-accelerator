@@ -108,8 +108,8 @@ export const apiSlice = createApi({
       invalidatesTags: ["Surveyor"],
     }),
     updateSurveyor: builder.mutation({
-      query: (surveyor) => ({
-        url: `/surveyors/${surveyor.id}`,
+      query: ({ id, surveyor }) => ({
+        url: `/surveyors/${id}`,
         method: "PUT",
         body: surveyor,
       }),
