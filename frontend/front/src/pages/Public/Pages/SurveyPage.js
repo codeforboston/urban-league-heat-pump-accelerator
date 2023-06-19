@@ -15,6 +15,7 @@ import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
 import { PublicSurvey } from "../Components/PublicSurvey";
 import { ThanksForSubmission } from "../Components/ThanksForSubmission";
+import { buildSurveyVisitData } from "../../../util/surveyUtils";
 
 const STEP_ADDRESS = "PHASE_ADDRESS";
 const STEP_SURVEY = "PHASE_SURVEY";
@@ -50,25 +51,23 @@ export const SurveyPage = () => {
 
   const handleCreateHome = useCallback(
     async ({ address }) => {
-      const recaptcha = await getReCaptchaToken();
-      createHome({ ...address, recaptcha });
+      const recaptcha = await getReCaptchaToken("create_survey");
+      const home = await createHome({ home: { ...address }, recaptcha });
+      return home;
     },
     [createHome, getReCaptchaToken]
   );
 
   const handleAddSurveyVisit = useCallback(
-    async (responses, surveyId) => {
-      const recaptcha = await getReCaptchaToken();
-      return await addSurveyVisit({
-        responses,
+    async (answers, surveyId, homeId) => {
+      const recaptcha = await getReCaptchaToken("create_survey");
+      const surveyVisit = await addSurveyVisit({
+        surveyVisit: buildSurveyVisitData(answers, homeId, surveyId),
         recaptcha,
-        surveyId,
-        homeId: createHomeData?.id,
-        // TODO: probably remove this and handle on the back end
-        date: new Date().toISOString(),
       });
+      return surveyVisit;
     },
-    [addSurveyVisit, createHomeData?.id, getReCaptchaToken]
+    [addSurveyVisit, getReCaptchaToken]
   );
 
   const step = useMemo(() => {

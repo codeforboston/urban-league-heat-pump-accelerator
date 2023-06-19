@@ -185,7 +185,12 @@ const SurveyComponent = ({
       <AddressComponent home={activeHome} />
       <form
         onSubmit={handleSubmit(async (surveyData) => {
-          const { data } = await submitSurvey(surveyData, surveyId, clearCache);
+          const { data } = await submitSurvey(
+            surveyData,
+            surveyId,
+            activeHome.id,
+            clearCache
+          );
           if (!!data) {
             // clear cache data if survey submission succeeds
             clearCache();
@@ -264,19 +269,22 @@ const SurveyComponentWrapper = forwardRef((props, ref) => {
     return null;
   }, [defaultData, surveyStructure]);
 
-  if (isSurveyLoading) {
-    return <Loader />;
-  }
   return (
     <div ref={ref} style={style}>
-      {surveyStructure && formDefault && activeHome ? (
-        <SurveyComponent
-          {...props}
-          surveyStructure={surveyStructure}
-          formDefault={formDefault}
-        />
+      {isSurveyLoading ? (
+        <Loader />
+      ) : isSurveyError ? (
+        <SurveyError />
       ) : (
-        isSurveyError && <SurveyError />
+        surveyStructure &&
+        formDefault &&
+        activeHome && (
+          <SurveyComponent
+            {...props}
+            surveyStructure={surveyStructure}
+            formDefault={formDefault}
+          />
+        )
       )}
     </div>
   );

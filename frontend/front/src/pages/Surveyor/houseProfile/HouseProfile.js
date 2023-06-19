@@ -1,9 +1,4 @@
-import {
-  Alert,
-  Container,
-
-  Snackbar,
-} from "@mui/material";
+import { Alert, Container, Snackbar } from "@mui/material";
 import React, { useCallback, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
@@ -13,8 +8,14 @@ import {
   useCreateSurveyVisitMutation,
 } from "../../../api/apiSlice";
 import { SubmissionSuccess } from "../Components/SubmissionSuccess";
-import { SurveyorSurvey } from "../Components/SurveyorSurvey";
+import {
+  SURVEYOR_SURVEY_ID,
+  SurveyorSurvey,
+} from "../Components/SurveyorSurvey";
 import Loader from "../../../components/Loader";
+import { buildSurveyVisitData } from "../../../util/surveyUtils";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../../features/login/loginSlice";
 
 const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
@@ -23,10 +24,12 @@ const STEP_THANKS = "PHASE_THANKS";
 
 const HouseProfile = () => {
   const { id: homeId } = useParams();
+  const { id: surveyorId } = useSelector(selectCurrentUser);
+
   const {
     data: homeData,
-    error: homesError,
-    isLoading: isHomesLoading,
+    error: homeError,
+    isLoading: isHomeLoading,
   } = useGetHomeQuery(homeId);
 
   const [
@@ -40,20 +43,22 @@ const HouseProfile = () => {
   ] = useCreateSurveyVisitMutation();
 
   const submitSurvey = useCallback(
-    async (responses, surveyId) => {
-      return await addSurveyVisit({
-        responses,
-        homeId,
-        surveyId,
-        // TODO: probably remove this and handle on the back end
-        date: new Date().toISOString(),
+    async (answers, surveyId) => {
+      const surveyVisit = await addSurveyVisit({
+        surveyVisit: buildSurveyVisitData(
+          answers,
+          homeId,
+          surveyId,
+          surveyorId
+        ),
       });
+      return surveyVisit;
     },
     [addSurveyVisit, homeId]
   );
 
   const step = useMemo(() => {
-    if (isHomesLoading) {
+    if (isHomeLoading) {
       return STEP_LOADING;
     } else if (!homeData) {
       return STEP_HOME_ERROR;
@@ -61,7 +66,7 @@ const HouseProfile = () => {
       return STEP_THANKS;
     }
     return STEP_SURVEY;
-  }, [homeData, isHomesLoading, isSurveyVisitSuccess]);
+  }, [homeData, isHomeLoading, isSurveyVisitSuccess]);
 
   return (
     <Container>
@@ -75,20 +80,20 @@ const HouseProfile = () => {
       <HeatPumpFade show={step === STEP_SURVEY}>
         <SurveyorSurvey
           submitSurvey={submitSurvey}
-          isLoading={isHomesLoading || isSurveyVisitLoading}
+          isLoading={isHomeLoading || isSurveyVisitLoading}
           activeHome={homeData}
         />
       </HeatPumpFade>
       <HeatPumpSlide show={step === STEP_THANKS}>
         <SubmissionSuccess
-          surveyId={surveyVisitData?.surveyId}
+          surveyId={SURVEYOR_SURVEY_ID}
           submissionId={surveyVisitData?.id}
         />
       </HeatPumpSlide>
       <Snackbar open={!!surveyVisitError}>
         <Alert severity="error">{"Error submitting survey."}</Alert>
       </Snackbar>
-      <Snackbar open={!!homesError}>
+      <Snackbar open={!!homeError}>
         <Alert severity="error">{"Error retrieving home data."}</Alert>
       </Snackbar>
     </Container>
