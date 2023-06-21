@@ -2,10 +2,16 @@ import React from "react";
 import { Controller, useController } from "react-hook-form";
 import { TextField } from "@mui/material";
 
-export const HeatPumpPhoneField = ({ name, control, label, disabled }) => {
+export const HeatPumpPhoneField = ({
+  name,
+  control,
+  label,
+  disabled,
+  ...props
+}) => {
   const { formState } = useController({ name, control });
   const mainFieldError = formState.errors[name];
-
+  
   return (
     <Controller
       name={name}
@@ -21,11 +27,13 @@ export const HeatPumpPhoneField = ({ name, control, label, disabled }) => {
         <TextField
           id={`${name}-phoneNumber`}
           label={label}
+          type="tel"
           variant="standard"
           error={!!mainFieldError}
           helperText={!!mainFieldError && mainFieldError.message}
           disabled={disabled}
           {...field}
+          {...props}
         />
       )}
     />

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import Button from "@mui/material/Button";
-import { Grid, Paper, TextField, Box } from "@mui/material";
+import { Grid, Paper, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
@@ -11,12 +11,25 @@ import {
 } from "../../../../api/apiSlice";
 import Loader from "../../../../components/Loader";
 import CustomSnackbar from "../../../../components/CustomSnackbar";
+import { HeatPumpPhoneField } from "../../../../components/SurveyComponent/HeatPumpPhoneField";
+import { HeatPumpTextField } from "../../../../components/SurveyComponent/HeatPumpTextField";
+
+// Styles
+const verticalMargin = { margin: "10px 0" };
+const paperStyle = {
+  padding: 40,
+  display: "flex",
+  flexDirection: "column",
+  width: 280,
+  margin: "20px auto",
+};
 
 const EditAccount = () => {
   const navigate = useNavigate();
 
+  // Get account data
   const { id } = useSelector(selectCurrentUser);
-
+  // RTK Query
   const {
     data: {
       firstname: firstName,
@@ -38,29 +51,18 @@ const EditAccount = () => {
     },
   ] = useUpdateSurveyorMutation();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+  // react-hook-form
+  const { handleSubmit, control, reset } = useForm({
+    defaultValues: {
+      firstName,
+      lastName,
+      email,
+      address,
+      phoneNumber: phoneNumber,
+    },
+  });
 
-  const paperStyle = {
-    padding: 40,
-    display: "flex",
-    flexDirection: "column",
-    width: 280,
-    margin: "20px auto",
-  };
-
-  const btnstyle = { margin: "10px 0" };
-
-  const errorStyles = {
-    color: "rgb(239 68 68 / 1)",
-    fontSize: "0.875rem",
-    lineHeight: "1.25rem",
-  };
-
+  // Action handling
   const handleUpdateAccount = useCallback(
     async (values) => {
       const updatedAccount = await updateAccount({
@@ -70,7 +72,7 @@ const EditAccount = () => {
             firstname: values.firstName,
             lastname: values.lastName,
             phone: values.phoneNumber,
-            email,
+            email: values.email,
             street_address: values.address,
           },
         },
@@ -110,112 +112,46 @@ const EditAccount = () => {
           </Grid>
 
           <form onSubmit={handleSubmit(editAccountForms)}>
-            <TextField
-              id="standard-basic"
-              placeholder="Enter First Name"
-              type="text"
-              style={btnstyle}
+            <HeatPumpTextField
+              control={control}
               name="firstName"
-              fullWidth
               label="First Name"
-              variant="standard"
-              defaultValue={firstName}
-              {...register("firstName", {
-                required: {
-                  value: true,
-                  message: "Please Enter First Name",
-                },
-              })}
+              required="Please enter first name."
+              fullWidth
+              sx={verticalMargin}
             />
-            <span style={errorStyles}>{errors?.firstName?.message}</span>
-            <TextField
-              id="standard-basic"
-              placeholder="Enter Last Name"
-              type="text"
-              style={btnstyle}
+            <HeatPumpTextField
+              control={control}
               name="lastName"
-              fullWidth
               label="Last Name"
-              variant="standard"
-              defaultValue={lastName}
-              {...register("lastName", {
-                required: {
-                  value: true,
-                  message: "Please Enter Last Name",
-                },
-              })}
+              required="Please enter last name."
+              fullWidth
+              sx={verticalMargin}
             />
-            <span style={errorStyles}>{errors?.lastName?.message}</span>
-            <TextField
-              id="standard-basic"
-              placeholder="Enter Email"
-              type="email"
-              style={btnstyle}
+            <HeatPumpTextField
+              control={control}
               name="email"
+              label="Email Address"
+              required="Please enter email address."
               fullWidth
-              label="Email"
-              variant="standard"
-              defaultValue={email}
-              {...register("email", {
-                required: {
-                  value: true,
-                  message: "Please Enter Email",
-                },
-                pattern: {
-                  value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                  message: "Please enter a valid email",
-                },
-              })}
+              type="email"
+              sx={verticalMargin}
             />
-            <span style={errorStyles}>{errors?.email?.message}</span>
-            <TextField
-              id="standard-basic"
-              placeholder="Enter Address"
-              type="text"
-              style={btnstyle}
+            <HeatPumpTextField
+              control={control}
               name="address"
-              fullWidth
               label="Address"
-              variant="standard"
-              defaultValue={address}
-              {...register("address", {
-                required: {
-                  value: true,
-                  message: "Please Enter Address",
-                },
-              })}
-            />
-            <span style={errorStyles}>{errors?.address?.message}</span>
-            <TextField
-              id="standard-basic"
-              placeholder="Enter Phone Number"
-              type="tel"
-              style={btnstyle}
-              name="phoneNumber"
+              required="Please enter address."
               fullWidth
-              label="Phone Number"
-              variant="standard"
-              defaultValue={phoneNumber}
-              {...register("phoneNumber", {
-                required: {
-                  value: true,
-                  message: "Please Enter Phone Number",
-                },
-                pattern: {
-                  value: /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
-                  message: "Please enter a valid phone number.",
-                },
-                maxLength: {
-                  value: 17,
-                  message: "Phone number too long",
-                },
-                minLength: {
-                  value: 8,
-                  message: "Phone number too short",
-                },
-              })}
+              sx={verticalMargin}
             />
-            <span style={errorStyles}>{errors?.phoneNumber?.message}</span>
+            <HeatPumpPhoneField
+              name="phoneNumber"
+              control={control}
+              label="Phone Number"
+              fullWidth
+              sx={verticalMargin}
+            />
 
             <Button
               type="submit"
@@ -223,7 +159,7 @@ const EditAccount = () => {
               variant="contained"
               onClick={() => editAccountForms}
               style={{
-                btnstyle,
+                verticalMargin,
                 borderRadius: "20px",
                 marginTop: "20px",
               }}
@@ -237,7 +173,7 @@ const EditAccount = () => {
               variant="contained"
               onClick={() => editAccountForms}
               style={{
-                btnstyle,
+                verticalMargin,
                 borderRadius: "20px",
                 marginTop: "20px",
               }}
