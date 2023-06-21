@@ -5,10 +5,12 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments or /assignments.json
   def index
+    coll = Assignment.includes(homes: { survey_visits: :survey_response })
+
     @assignments = if search_params[:surveyor_id]
-                     Assignment.includes(homes: { survey_visits: :survey_response }).where({ surveyors: { id: search_params[:surveyor_id] } })
+                     coll.where({ surveyors: { id: search_params[:surveyor_id] } })
                    else
-                     Assignment.all
+                     coll.all
                    end
   end
 
