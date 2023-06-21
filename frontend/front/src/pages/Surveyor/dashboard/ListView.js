@@ -15,9 +15,7 @@ const ListView = () => {
 
   if (isLoading) {
     content = <Box> Is loading</Box>;
-    console.log(data);
   } else if (isSuccess) {
-    console.log(data);
     content = (
       <Box>
         <Box my={3} display={"flex"} justifyContent="center">
