@@ -8,7 +8,7 @@ class AssignmentsController < ApplicationController
     coll = Assignment.includes(homes: { survey_visits: :survey_response })
 
     @assignments = if search_params[:surveyor_id]
-                     coll.where({ surveyors: { id: search_params[:surveyor_id] } })
+                     coll.filter_by_surveyor [search_params[:surveyor_id]]
                    else
                      coll.all
                    end
