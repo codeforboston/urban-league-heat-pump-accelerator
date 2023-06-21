@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_19_150026) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_21_000051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -152,7 +152,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_19_150026) do
     t.datetime "updated_at", null: false
     t.string "ip"
     t.float "recaptcha_score"
-    t.boolean "completed"
     t.index ["survey_id"], name: "index_survey_responses_on_survey_id"
     t.index ["survey_visit_id"], name: "index_survey_responses_on_survey_visit_id"
   end
