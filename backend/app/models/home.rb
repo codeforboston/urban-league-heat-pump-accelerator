@@ -11,4 +11,8 @@ class Home < ApplicationRecord
   # Ensure visit_order has a value iff assignment_id does
   validates :visit_order, presence: true, if: :assignment_id
   validates :assignment_id, presence: true, if: :visit_order
+
+  def visited?
+    !survey_visits.empty?
+  end
 end
