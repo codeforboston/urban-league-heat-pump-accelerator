@@ -25,8 +25,8 @@ function SimpleDialog(props) {
       <Box p={1}>
         <DialogTitle textAlign={"center"}>
           <Box>
-            <Box>{`${selectedValue.ST_NUM} ${selectedValue.ST_NAME}`}</Box>
-            <Box>{`${selectedValue.CITY} ${selectedValue.ZIPCODE}`}</Box>
+            <Box>{`${selectedValue.street_number} ${selectedValue.street_name}`}</Box>
+            <Box>{`${selectedValue.city} ${selectedValue.zip_code}`}</Box>
           </Box>
         </DialogTitle>
         <List sx={{ pt: 0 }}>
