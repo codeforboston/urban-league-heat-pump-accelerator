@@ -1,35 +1,18 @@
-import {
-  Alert,
-  Avatar,
-  Box,
-  Button,
-  Checkbox,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemButton,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { Alert, Box, Button, List } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectedHome } from "../../../features/surveyor/surveyorSlice";
-import DialogMenu from "./DialogMenu";
 import OptionMenu from "./OptionMenu";
+import { useGetIsHomeCompletedQuery } from "../../../api/apiSlice";
+import { AssignmentHome } from "./AssignmentHome";
 
-const AssignmentUnit = (props) => {
-  const { data } = props;
-
+const AssignmentUnit = ({ data }) => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const OnclickFx = () => {
-    navigate("/surveyor/map");
-  };
-
-  const OnBtnClick = (value) => {
+  const onBtnClick = (value) => {
     navigate("/surveyor/house/" + value);
   };
 
@@ -77,27 +60,24 @@ const AssignmentUnit = (props) => {
     // ensure all the home elements are sorted by their order before sending it to google map
     // const sortedCheck = checked.sort(compareArrayByOrder);
     dispatch(selectedHome(sortedCheck));
-    OnclickFx();
+    navigate("/surveyor/map");
   };
 
-  const SelectAllIncompleted = () => {
-    const IncompletedArray = [];
-    data.forEach((item) => {
-      if (item.completed === false) {
-        IncompletedArray.push(item);
-      }
-    });
-
-    setChecked(IncompletedArray);
+  const incompletedList = [];
+  const selectAllIncompleted = () => {
+    setChecked(incompletedList);
   };
 
-  const HandleSelectAll = () => {
+  const handleSelectAll = () => {
     setChecked(data);
   };
 
-  const HandleDeselectAll = () => {
+  const handleDeselectAll = () => {
     setChecked([]);
   };
+
+  const isCompleted = useGetIsHomeCompletedQuery;
+
   return (
     <Box>
       <Box display="flex" justifyContent="space-around" p={3}>
@@ -107,9 +87,7 @@ const AssignmentUnit = (props) => {
       </Box>
       <Box pb={3}>
         {alert ? (
-          <Alert severity="error">
-            Please Select One Home To Genereate Map
-          </Alert>
+          <Alert severity="error">Please Select One Home To Generate Map</Alert>
         ) : null}
       </Box>
       <Box
@@ -119,9 +97,9 @@ const AssignmentUnit = (props) => {
         flexDirection="row"
       >
         <OptionMenu
-          handleSelectAll={HandleSelectAll}
-          handleDeselectAll={HandleDeselectAll}
-          handleSelectIncompleted={SelectAllIncompleted}
+          handleSelectAll={handleSelectAll}
+          handleDeselectAll={handleDeselectAll}
+          handleSelectIncompleted={selectAllIncompleted}
         />
       </Box>
       <List
@@ -132,58 +110,27 @@ const AssignmentUnit = (props) => {
           bgcolor: "background.paper",
         }}
       >
-        {data.map((value) => {
-          const labelId = `checkbox-list-secondary-label-${value}`;
-          return (
-            <ListItem
-              key={value.visit_order + value.street_number}
-              sx={{ pl: 0 }}
-              secondaryAction={
-                <Checkbox
-                  edge="end"
-                  onChange={handleToggle(value)}
-                  checked={checked.indexOf(value) !== -1}
-                  inputProps={{ "aria-labelledby": labelId }}
-                />
-              }
-            >
-              <ListItemButton onClick={() => OnBtnClick(value.id)}>
-                <ListItemAvatar>
-                  <Avatar
-                    sx={{
-                      border: 1,
-                      fontSize: "1.5em",
-                      bgcolor: "white",
-                      color: "black",
-                    }}
-                  >
-                    {value.visit_order}
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText
-                  id={labelId}
-                  primary={
-                    <Box>
-                      <Box>{`${value.street_number} ${value.street_name}`}</Box>
-                      {value?.unit_number && <Box>{`Unit ${value.unit_number}`}</Box>}
-                      <Box>{`${value.city} ${value.zip_code}`}</Box>
-                      <Box>
-                        {value.completed ? (
-                          <Typography color="green">Completed</Typography>
-                        ) : (
-                          <Typography color="red">Incompleted</Typography>
-                        )}
-                      </Box>
-                    </Box>
-                  }
-                />
-              </ListItemButton>
-              <Box pt={0.5} pl={1}>
-                <DialogMenu value={value} />
-              </Box>
-            </ListItem>
-          );
-        })}
+        {data &&
+          data.map((home) => {
+            const {
+              data: completed,
+              isLoading,
+              isError,
+              isSuccess,
+            } = isCompleted(home?.id);
+            isSuccess && !completed && incompletedList.push(home);
+            return (
+              <AssignmentHome
+                key={`assignmentHome-${home.id}`}
+                home={home}
+                completed={completed}
+                isLoading={isLoading}
+                isError={isError}
+                handleToggle={handleToggle}
+                checked={checked}
+              />
+            );
+          })}
       </List>
     </Box>
   );

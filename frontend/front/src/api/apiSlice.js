@@ -22,6 +22,7 @@ export const apiSlice = createApi({
 
   tagTypes: [
     "Home",
+    "HomeCompleted",
     "Surveyor",
     "Survey",
     "SurveyVisit",
@@ -46,6 +47,14 @@ export const apiSlice = createApi({
       providesTags: (result = [], error, arg) => [
         "Home",
         ...result.map(({ id }) => ({ type: "Home", id })),
+      ],
+    }),
+    getIsHomeCompleted: builder.query({
+      query: (homeId) => `/survey_visits?home_id=${homeId}`,
+      transformResponse: (res) =>
+        res ? (res.length > 0 ? true : false) : false,
+      providesTags: (result = [], error, arg) => [
+        { type: "HomeCompleted", id: arg },
       ],
     }),
     getHome: builder.query({
@@ -186,7 +195,7 @@ export const apiSlice = createApi({
         body: surveyVisit,
         headers: [[`Recaptcha-Token`, recaptcha]],
       }),
-      invalidatesTags: ["SurveyVisit"],
+      invalidatesTags: ["SurveyVisit", "HomeCompleted"],
     }),
     updateSurveyVisit: builder.mutation({
       query: ({ id, body }) => {
@@ -373,6 +382,7 @@ export const {
   useUpdateHomeMutation,
   useCreateHomeMutation,
   useGetHomeQuery,
+  useGetIsHomeCompletedQuery,
   useGetHomesQuery,
   useGetUnassignedHomesQuery,
 
