@@ -6,20 +6,12 @@ import {
   ListItemAvatar,
   ListItemButton,
   ListItemText,
-  Skeleton,
   Typography,
 } from "@mui/material";
 import DialogMenu from "./DialogMenu";
 import { useNavigate } from "react-router-dom";
 
-export const AssignmentHome = ({
-  home,
-  handleToggle,
-  checked,
-  completed,
-  isLoading,
-  isError,
-}) => {
+export const AssignmentHome = ({ home, handleToggle, checked }) => {
   const labelId = `checkbox-list-secondary-label-${home}`;
   const navigate = useNavigate();
   return (
@@ -60,11 +52,7 @@ export const AssignmentHome = ({
                   : `0${home?.zip_code}`
               }`}</Box>
               <Box>
-                {isLoading ? (
-                  <Skeleton />
-                ) : isError ? (
-                  <Typography color="yellow">Status unknown</Typography>
-                ) : completed ? (
+                {home.completed === "true" ? (
                   <Typography color="green">Completed</Typography>
                 ) : (
                   <Typography color="red">Incompleted</Typography>

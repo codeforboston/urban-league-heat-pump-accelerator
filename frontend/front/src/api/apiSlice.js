@@ -49,14 +49,6 @@ export const apiSlice = createApi({
         ...result.map(({ id }) => ({ type: "Home", id })),
       ],
     }),
-    getIsHomeCompleted: builder.query({
-      query: (homeId) => `/survey_visits?home_id=${homeId}`,
-      transformResponse: (res) =>
-        res ? (res.length > 0 ? true : false) : false,
-      providesTags: (result = [], error, arg) => [
-        { type: "HomeCompleted", id: arg },
-      ],
-    }),
     getHome: builder.query({
       query: (id) => `/homes/${id}`,
       providesTags: (result, error, arg) => [{ type: "Home", id: arg }],
@@ -381,7 +373,6 @@ export const {
   useUpdateHomeMutation,
   useCreateHomeMutation,
   useGetHomeQuery,
-  useGetIsHomeCompletedQuery,
   useGetHomesQuery,
   useGetUnassignedHomesQuery,
 

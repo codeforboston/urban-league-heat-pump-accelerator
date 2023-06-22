@@ -4,17 +4,12 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectedHome } from "../../../features/surveyor/surveyorSlice";
 import OptionMenu from "./OptionMenu";
-import { useGetIsHomeCompletedQuery } from "../../../api/apiSlice";
 import { AssignmentHome } from "./AssignmentHome";
 
 const AssignmentUnit = ({ data }) => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-
-  const onBtnClick = (value) => {
-    navigate("/surveyor/house/" + value);
-  };
 
   const [checked, setChecked] = useState([]);
 
@@ -64,6 +59,7 @@ const AssignmentUnit = ({ data }) => {
   };
 
   const incompletedList = [];
+  
   const selectAllIncompleted = () => {
     setChecked(incompletedList);
   };
@@ -75,8 +71,6 @@ const AssignmentUnit = ({ data }) => {
   const handleDeselectAll = () => {
     setChecked([]);
   };
-
-  const isCompleted = useGetIsHomeCompletedQuery;
 
   return (
     <Box>
@@ -112,20 +106,11 @@ const AssignmentUnit = ({ data }) => {
       >
         {data &&
           data.map((home) => {
-            const {
-              data: completed,
-              isLoading,
-              isError,
-              isSuccess,
-            } = isCompleted(home?.id);
-            isSuccess && !completed && incompletedList.push(home);
+            home.completed !== "true" && incompletedList.push(home);
             return (
               <AssignmentHome
                 key={`assignmentHome-${home.id}`}
                 home={home}
-                completed={completed}
-                isLoading={isLoading}
-                isError={isError}
                 handleToggle={handleToggle}
                 checked={checked}
               />
