@@ -8,13 +8,19 @@ import { Link } from "react-router-dom";
 import { useGetUnassignedHomesQuery } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { useGoToBreadcrumb } from "../../../util/useGoToBreadcrumb";
 
 const Assignment = () => {
+  const goToBreadcrumb = useGoToBreadcrumb();
+
   const {
     data: unassignedHomesData,
     isError: isUnassignedHomesError,
     isLoading: isUnassignedHomesDataLoading,
   } = useGetUnassignedHomesQuery();
+
+  const handleUnassignedLink = () =>
+    goToBreadcrumb("unassigned", { url: "/admin/assignment/unassigned" });
 
   return isUnassignedHomesDataLoading ? (
     <Loader />
@@ -27,7 +33,7 @@ const Assignment = () => {
   ) : (
     <ContainerTitle name={"ASSIGNMENT"}>
       <Box my={2}>
-        <Button component={Link} to={"unassigned"} variant={"outlined"}>
+        <Button onClick={() => handleUnassignedLink()} variant={"outlined"}>
           <Typography variant="h6">
             Unassigned Homes: {unassignedHomesData.length}
           </Typography>

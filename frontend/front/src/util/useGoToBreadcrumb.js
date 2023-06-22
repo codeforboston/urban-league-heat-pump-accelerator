@@ -7,6 +7,7 @@ export const useGoToBreadcrumb = () => {
   const navigate = useNavigate();
 
   return function (type, data) {
+    console.log(type, data);
     //   Set params
     let url;
     let description;
@@ -28,8 +29,8 @@ export const useGoToBreadcrumb = () => {
         description = `${data?.firstname} ${data.lastname}`;
         break;
       default:
-        url = "/";
-        description = "home";
+        url = data.url;
+        description = data.description || type;
         break;
     }
 
