@@ -18,9 +18,11 @@ import {
   pushBreadcrumb,
   setBreadcrumbs,
 } from "../../../features/breadcrumb/breadcrumbSlice";
+import { usePushBreadcrumb } from "../../../util/usePushBreadcrumb";
 
 const AssignTable = () => {
   const dispatch = useDispatch();
+  const crumb = usePushBreadcrumb();
   dispatch(
     setBreadcrumbs([
       { url: "/admin/dashboard", description: "dashboard" },
@@ -57,15 +59,7 @@ const AssignTable = () => {
     return navigate(`/admin/user/userprofile/${item}`);
   };
 
-  const handleAssignmentLink = (data) => {
-    dispatch(
-      pushBreadcrumb({
-        url: `/admin/assignment/assignProfile/${data.id}`,
-        description: `assignment #${data.id}`,
-      })
-    );
-    navigate(`/admin/assignment/assignProfile/${data.id}`);
-  };
+  const handleAssignmentLink = (data) => crumb("assignment", data);
 
   // GET hooks
   const {
