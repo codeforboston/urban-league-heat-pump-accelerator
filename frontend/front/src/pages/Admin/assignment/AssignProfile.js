@@ -12,14 +12,11 @@ import {
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import { getAddress } from "../home/HomeTable";
-import { useDispatch } from "react-redux";
-import { pushBreadcrumb } from "../../../features/breadcrumb/breadcrumbSlice";
 import { useGoToBreadcrumb } from "../../../util/useGoToBreadcrumb";
 
 const AssignProfile = () => {
   const { aid } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const goToBreadcrumb = useGoToBreadcrumb();
 
   const {

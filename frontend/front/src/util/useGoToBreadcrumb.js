@@ -6,15 +6,16 @@ export const useGoToBreadcrumb = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  //   Push breadcrumb and navigate to page
   return function (type, data) {
     //   Set params
     let url;
     let description;
     switch (type) {
       case "assignment":
-        url = `/admin/assignment/assignProfile/${data.id}`;
-        description = `assignment #${data.id}`;
+        url = `/admin/assignment/assignProfile/${
+          data.assignment_id || data.id
+        }`;
+        description = `assignment ${data.assignment_id || data.id}`;
         break;
       case "home":
         url = `/admin/home/homeprofile/${data.id}`;
@@ -28,6 +29,7 @@ export const useGoToBreadcrumb = () => {
         break;
     }
 
+    //   Push breadcrumb and navigate to page
     dispatch(
       pushBreadcrumb({
         url,

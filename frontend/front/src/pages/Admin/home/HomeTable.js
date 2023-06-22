@@ -11,6 +11,7 @@ import {
   pushBreadcrumb,
   setBreadcrumbs,
 } from "../../../features/breadcrumb/breadcrumbSlice";
+import { useGoToBreadcrumb } from "../../../util/useGoToBreadcrumb";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -26,6 +27,8 @@ export const getAddress = (params) => {
 
 const HomeTable = () => {
   const dispatch = useDispatch();
+  const goToBreadcrumb = useGoToBreadcrumb();
+
   dispatch(
     setBreadcrumbs([
       { url: "/admin/dashboard", description: "dashboard" },
@@ -33,27 +36,9 @@ const HomeTable = () => {
     ])
   );
 
-  const handleHomeLink = (data) => {
-    dispatch(
-      pushBreadcrumb({
-        url: `/admin/home/homeprofile/${data.id}`,
-        description: `${data?.street_number} ${data.street_name} ${
-          data?.unit_number && "#" + data.unit_number
-        }`,
-      })
-    );
-    navigate(`/admin/home/homeProfile/${data.id}`);
-  };
+  const handleHomeLink = (data) => goToBreadcrumb("home", data);
 
-  const handleAssignmentLink = (data) => {
-    dispatch(
-      pushBreadcrumb({
-        url: `/admin/assignment/assignProfile/${data.assignment_id}`,
-        description: `assignment #${data.assignment_id}`,
-      })
-    );
-    navigate(`/admin/assignment/assignProfile/${data.assignment_id}`);
-  };
+  const handleAssignmentLink = (data) => goToBreadcrumb("assignment", data);
 
   const columns = [
     { field: "id", headerName: "Id", width: 50 },
