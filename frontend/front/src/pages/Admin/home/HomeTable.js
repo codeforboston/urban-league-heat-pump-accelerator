@@ -7,10 +7,7 @@ import { Box, Button } from "@mui/material";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import { useDispatch } from "react-redux";
-import {
-  pushBreadcrumb,
-  setBreadcrumbs,
-} from "../../../features/breadcrumb/breadcrumbSlice";
+import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
 import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 // Formats addresses
