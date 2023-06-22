@@ -17,9 +17,6 @@ const breadcrumbSlice = createSlice({
         ];
       }
     },
-    popBreadcrumb: (state) => {
-      state.links = state.links.splice(0, -1);
-    },
     setBreadcrumbs: (state, action) => {
       state.links = [...action.payload];
     },
@@ -28,7 +25,6 @@ const breadcrumbSlice = createSlice({
 
 export const {
   pushBreadcrumb,
-  popBreadcrumb,
   setBreadcrumbs,
 } = breadcrumbSlice.actions;
 export const selectBreadcrumbs = (state) => state.breadcrumbs.links;

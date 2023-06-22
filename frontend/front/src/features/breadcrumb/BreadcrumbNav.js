@@ -1,8 +1,7 @@
-import { Breadcrumbs, Link, Paper, Stack } from "@mui/material";
+import { Breadcrumbs, Link, Stack } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import {
-  popBreadcrumb,
   selectBreadcrumbs,
   setBreadcrumbs,
 } from "./breadcrumbSlice";
