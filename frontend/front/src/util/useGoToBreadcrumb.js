@@ -7,7 +7,6 @@ export const useGoToBreadcrumb = () => {
   const navigate = useNavigate();
 
   return function (type, data) {
-    console.log(type, data);
     //   Set params
     let url;
     let description;
