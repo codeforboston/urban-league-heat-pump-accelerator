@@ -3,15 +3,20 @@ import "./App.css";
 import * as routes from "./routing/routes";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  ROLE_ADMIN,
+  ROLE_SURVEYOR,
+  useLocallyStoredJWT,
+} from "./features/login/loginUtils";
 
 import AdminContainer from "./pages/Admin/AdminContainer";
 import Box from "@mui/material/Box";
 import DevContainer from "./pages/Developer/DevContainer";
 import Login from "./features/login/Login";
+import { ProtectedRoute } from "./routing/ProtectedRoute";
 import PublicContainer from "./pages/Public/PublicContainer";
 import SurveyorContainer from "./pages/Surveyor/SurveyorContainer";
 import ViewMenu from "./pages/viewMenu/ViewMenu";
-import { useLocallyStoredJWT } from "./features/login/loginUtils";
 
 function App() {
   // update jwt
@@ -25,7 +30,11 @@ function App() {
 
           <Route
             path={`${routes.SURVEYOR_ROUTE}/*`}
-            element={<SurveyorContainer />}
+            element={
+              <ProtectedRoute allowedRoles={[ROLE_SURVEYOR, ROLE_ADMIN]}>
+                <SurveyorContainer />
+              </ProtectedRoute>
+            }
           />
 
           <Route
@@ -37,7 +46,11 @@ function App() {
 
           <Route
             path={`${routes.ADMIN_ROUTE}/*`}
-            element={<AdminContainer />}
+            element={
+              <ProtectedRoute allowedRoles={[ROLE_ADMIN]}>
+                <AdminContainer />
+              </ProtectedRoute>
+            }
           />
           <Route path={`${routes.LOGIN_ROUTE}`} element={<Login />} />
         </Routes>

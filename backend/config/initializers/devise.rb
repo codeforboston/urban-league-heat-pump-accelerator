@@ -314,9 +314,16 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.jwt_secret_key
+    jwt.secret = ENV['JWT_SECRET_KEY'] || Rails.application.credentials.jwt_secret_key
     jwt.dispatch_requests = [['POST', %r{^/login$}]]
     jwt.revocation_requests = [['DELETE', %r{^/logout$}]]
     jwt.expiration_time = 1.year.to_i
+  end
+
+  # turn off sessions for user in light of
+  # "Your application has sessions disabled. To write to the session you must first configure a session store"
+  # https://github.com/waiting-for-dev/devise-jwt/issues/235#issuecomment-1475410637
+  config.warden do |warden|
+    warden.scope_defaults :user, store: false
   end
 end

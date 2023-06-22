@@ -339,7 +339,6 @@ export const apiSlice = createApi({
       query: ({ email, password }) => ({
         url: "/users/sign_in",
         method: "POST",
-        // TODO: should this be hashed??
         body: { user: { email, password } },
       }),
       invalidatesTags: ["Surveyor"],
