@@ -11,7 +11,7 @@ import {
   pushBreadcrumb,
   setBreadcrumbs,
 } from "../../../features/breadcrumb/breadcrumbSlice";
-import { useGoToBreadcrumb } from "../../../util/useGoToBreadcrumb";
+import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 // Formats addresses
 export const getAddress = (params) => {

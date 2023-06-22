@@ -15,7 +15,7 @@ import {
 import { getAddress } from "../home/HomeTable";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
-import { useGoToBreadcrumb } from "../../../util/useGoToBreadcrumb";
+import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 const Unassigned = () => {
   const navigate = useNavigate();

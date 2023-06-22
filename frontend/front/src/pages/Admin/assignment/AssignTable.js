@@ -15,7 +15,7 @@ import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import { useDispatch } from "react-redux";
 import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
-import { useGoToBreadcrumb } from "../../../util/useGoToBreadcrumb";
+import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 const AssignTable = () => {
   const dispatch = useDispatch();

@@ -8,11 +8,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { useNavigate } from "react-router-dom";
 import { useGetSurveyorsQuery } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
-import { useGoToBreadcrumb } from "../../../util/useGoToBreadcrumb";
+import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 import { useDispatch } from "react-redux";
 import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
 
@@ -94,7 +93,7 @@ const UserTable = () => {
                       hover
                       role="checkbox"
                       tabIndex={-1}
-                      key={row.phone + row.name}
+                      key={`row-${row.id}`}
                       onClick={() => onRowClick(row)}
                       sx={{ cursor: "pointer" }}
                     >

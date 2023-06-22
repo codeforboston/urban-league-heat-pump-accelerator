@@ -4,7 +4,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { useGetHomeQuery } from "../../../api/apiSlice";
 import Loader from "../../../../src/components/Loader.js";
 import CustomSnackbar from "../../../components/CustomSnackbar";
-
+import { AdminBackButton } from "../../Surveyor/Components/AdminBackButton";
 
 const HomeProfile = () => {
   const { hid } = useParams();
@@ -58,7 +58,13 @@ const HomeProfile = () => {
   }
 
   return (
-    <>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="column"
+    >
+      <AdminBackButton url="/admin/home" description="homes" />
       {isHomeDataLoading ? (
         <Loader />
       ) : isHomeDataError ? (
@@ -68,12 +74,7 @@ const HomeProfile = () => {
           message="Error loading data for this home"
         />
       ) : (
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-        >
+        <>
           <Box width={500} mt={5}>
             <Box sx={{ bgcolor: "primary.main", color: "white" }} p={1}>
               <Typography variant="h5">Home Profile: {hid}</Typography>
@@ -154,9 +155,9 @@ const HomeProfile = () => {
               {deleteButton}
             </Box>
           </Box>
-        </Box>
+        </>
       )}
-    </>
+    </Box>
   );
 };
 

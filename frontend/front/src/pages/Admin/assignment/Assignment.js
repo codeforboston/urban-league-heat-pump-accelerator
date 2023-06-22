@@ -3,12 +3,10 @@ import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import AssignTable from "./AssignTable";
 import ContainerTitle from "../component/ContainerTitle";
-
-import { Link } from "react-router-dom";
 import { useGetUnassignedHomesQuery } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
-import { useGoToBreadcrumb } from "../../../util/useGoToBreadcrumb";
+import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 const Assignment = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
@@ -31,7 +29,7 @@ const Assignment = () => {
       severity="error"
     />
   ) : (
-    <ContainerTitle name={"ASSIGNMENT"}>
+    <ContainerTitle name={"Assignments"}>
       <Box my={2}>
         <Button onClick={() => handleUnassignedLink()} variant={"outlined"}>
           <Typography variant="h6">
