@@ -6,6 +6,7 @@ import { useGetHomesQuery } from "../../../api/apiSlice";
 import { Box, Button } from "@mui/material";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { formatZipcode } from "../../../util/stringUtils";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -21,12 +22,13 @@ export const getAddress = (params) => {
 
 const HomeTable = () => {
   const columns = [
-    { field: "id", headerName: "Id", width: 50 },
+    { field: "id", headerName: "Id", minWidth: 80 },
     {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
-      width: 200,
+      minWidth: 200,
+      flex: 1,
     },
     {
       field: "city",
@@ -38,12 +40,9 @@ const HomeTable = () => {
     {
       field: "zip_code",
       headerName: "Zip Code",
-      renderCell: (params) =>
-        params.row.zip_code.length === 5
-          ? params.row.zip_code
-          : `0${params.row.zip_code}`,
+      renderCell: (params) => formatZipcode(params.row.zip_code),
       minWidth: 100,
-      maxWidth: 150,
+      maxWidth: 100,
       flex: 0.8,
     },
     {
@@ -86,7 +85,7 @@ const HomeTable = () => {
         </Button>
       ),
       headerName: "Home",
-      width: 80,
+      maxWidth: 80,
     },
   ];
 

@@ -15,6 +15,7 @@ import {
 import { getAddress } from "../home/HomeTable";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { formatZipcode } from "../../../util/stringUtils";
 
 const Unassigned = () => {
   const navigate = useNavigate();
@@ -61,43 +62,20 @@ const Unassigned = () => {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
-      width: 200,
+      minWidth: 200,
+      flex: 1,
     },
-    { field: "zip_code", headerName: "Zipcode", width: 120 },
+    {
+      field: "zip_code",
+      renderCell: (params) => formatZipcode(params.row.zip_code),
+      headerName: "Zipcode",
+      width: 120,
+    },
     {
       field: "city",
       headerName: "City",
       width: 200,
       flex: 1,
-    },
-    {
-      field: "completed",
-      headerName: "Completed",
-      renderCell: (home) => (home?.completed === true ? "Yes" : "No"),
-      width: 200,
-      flex: 1,
-    },
-    {
-      field: "survey",
-      headerName: "Survey",
-      width: 200,
-      flex: 1,
-      renderCell: (params) => {
-        return params.row.surveyId ? (
-          <Button
-            variant="text"
-            color="primary"
-            size="small"
-            onClick={() =>
-              navigate(`/admin/survey/surveyprofile/${params.row.surveyId}`)
-            }
-          >
-            View
-          </Button>
-        ) : (
-          "No Survey"
-        );
-      },
     },
     {
       field: "hid",
@@ -118,8 +96,7 @@ const Unassigned = () => {
     },
   ];
 
-  return isUnassignedIncompleteHomesDataLoading ||
-    isAssignmentsDataLoading  ? (
+  return isUnassignedIncompleteHomesDataLoading || isAssignmentsDataLoading ? (
     <Loader />
   ) : isUnassignedIncompleteHomesError ? (
     <CustomSnackbar
