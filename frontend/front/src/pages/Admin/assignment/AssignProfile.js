@@ -12,10 +12,13 @@ import {
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import { getAddress } from "../home/HomeTable";
+import { useDispatch } from "react-redux";
+import { pushBreadcrumb } from "../../../features/breadcrumb/breadcrumbSlice";
 
 const AssignProfile = () => {
   const { aid } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     data: assignmentData,
@@ -34,6 +37,18 @@ const AssignProfile = () => {
         assignmentData?.surveyor_ids.includes(surveyor.id)
       )
     : "Unassigned";
+
+  const handleHomeLink = (data) => {
+    dispatch(
+      pushBreadcrumb({
+        url: `/admin/home/homeprofile/${data.id}`,
+        description: `${data?.street_number} ${data.street_name} ${
+          data?.unit_number && "#" + data.unit_number
+        }`,
+      })
+    );
+    navigate(`/admin/home/homeProfile/${data.id}`);
+  };
 
   const columns = [
     { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
@@ -97,7 +112,7 @@ const AssignProfile = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() => navigate(`/admin/home/homeprofile/${params.row.id}`)}
+          onClick={() => handleHomeLink(params.row)}
         >
           View
         </Button>

@@ -13,8 +13,20 @@ import {
 } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { useDispatch } from "react-redux";
+import {
+  pushBreadcrumb,
+  setBreadcrumbs,
+} from "../../../features/breadcrumb/breadcrumbSlice";
 
 const AssignTable = () => {
+  const dispatch = useDispatch();
+  dispatch(
+    setBreadcrumbs([
+      { url: "/admin/dashboard", description: "dashboard" },
+      { url: "/admin/assignment", description: "assignments" },
+    ])
+  );
   const navigate = useNavigate();
   const [surveyor, setSurveyor] = React.useState("");
   const [selectionModel, setSelectionModel] = React.useState([]);
@@ -23,7 +35,6 @@ const AssignTable = () => {
   const handleChange = (event) => {
     setSurveyor(event.target.value);
   };
-
 
   const handleSelectionModelChange = (newSelection) => {
     setSelectionModel(newSelection);
@@ -44,6 +55,17 @@ const AssignTable = () => {
   };
   const handleNameClick = (item) => {
     return navigate(`/admin/user/userprofile/${item}`);
+  };
+
+  const handleAssignmentLink = (data) => {
+    console.log(data);
+    dispatch(
+      pushBreadcrumb({
+        url: `/admin/assignment/assignProfile/${data.id}`,
+        description: `assignment #${data.id}`,
+      })
+    );
+    navigate(`/admin/assignment/assignProfile/${data.id}`);
   };
 
   // GET hooks
@@ -110,14 +132,13 @@ const AssignTable = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() => navigate(`assignProfile/${params.id}`)}
+          onClick={() => handleAssignmentLink(params.row)}
         >
           View
         </Button>
       ),
     },
   ];
-
 
   return (
     <Box>

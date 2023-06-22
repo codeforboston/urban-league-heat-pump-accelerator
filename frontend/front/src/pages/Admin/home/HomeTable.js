@@ -6,6 +6,11 @@ import { useGetHomesQuery } from "../../../api/apiSlice";
 import { Box, Button } from "@mui/material";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { useDispatch } from "react-redux";
+import {
+  pushBreadcrumb,
+  setBreadcrumbs,
+} from "../../../features/breadcrumb/breadcrumbSlice";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -20,6 +25,36 @@ export const getAddress = (params) => {
 };
 
 const HomeTable = () => {
+  const dispatch = useDispatch();
+  dispatch(
+    setBreadcrumbs([
+      { url: "/admin/dashboard", description: "dashboard" },
+      { url: "/admin/home", description: "homes" },
+    ])
+  );
+
+  const handleHomeLink = (data) => {
+    dispatch(
+      pushBreadcrumb({
+        url: `/admin/home/homeprofile/${data.id}`,
+        description: `${data?.street_number} ${data.street_name} ${
+          data?.unit_number && "#" + data.unit_number
+        }`,
+      })
+    );
+    navigate(`/admin/home/homeProfile/${data.id}`);
+  };
+
+  const handleAssignmentLink = (data) => {
+    dispatch(
+      pushBreadcrumb({
+        url: `/admin/assignment/assignProfile/${data.assignment_id}`,
+        description: `assignment #${data.assignment_id}`,
+      })
+    );
+    navigate(`/admin/assignment/assignProfile/${data.assignment_id}`);
+  };
+
   const columns = [
     { field: "id", headerName: "Id", width: 50 },
     {
@@ -61,11 +96,7 @@ const HomeTable = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() =>
-            navigate(
-              `/admin/assignment/assignProfile/${params.row.assignment_id}`
-            )
-          }
+          onClick={() => handleAssignmentLink(params.row)}
         >
           {params.row.assignment_id}
         </Button>
@@ -80,7 +111,7 @@ const HomeTable = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() => navigate(`homeprofile/${params.row.id}`)}
+          onClick={() => handleHomeLink(params.row)}
         >
           View
         </Button>
