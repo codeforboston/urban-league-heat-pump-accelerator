@@ -5,22 +5,22 @@ import AssignTable from "./AssignTable";
 import ContainerTitle from "../component/ContainerTitle";
 
 import { Link } from "react-router-dom";
-import { useGetUnassignedHomesQuery } from "../../../api/apiSlice";
+import { useGetUnassignedIncompleteHomesQuery } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 
 const Assignment = () => {
   const {
-    data: unassignedHomesData,
-    isError: isUnassignedHomesError,
-    isLoading: isUnassignedHomesDataLoading,
-  } = useGetUnassignedHomesQuery();
+    data: unassignedIncompleteHomesData,
+    isError: isUnassignedIncompleteHomesError,
+    isLoading: isUnassignedIncompleteHomesDataLoading,
+  } = useGetUnassignedIncompleteHomesQuery();
 
-  return isUnassignedHomesDataLoading ? (
+  return isUnassignedIncompleteHomesDataLoading ? (
     <Loader />
-  ) : isUnassignedHomesError ? (
+  ) : isUnassignedIncompleteHomesError ? (
     <CustomSnackbar
-      open={isUnassignedHomesError}
+      open={isUnassignedIncompleteHomesError}
       message="Error fetching unassigned homes data"
       severity="error"
     />
@@ -29,7 +29,7 @@ const Assignment = () => {
       <Box my={2}>
         <Button component={Link} to={"unassigned"} variant={"outlined"}>
           <Typography variant="h6">
-            Unassigned Homes: {unassignedHomesData.length}
+            Unassigned Homes: {unassignedIncompleteHomesData.length}
           </Typography>
         </Button>
       </Box>

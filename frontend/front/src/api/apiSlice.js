@@ -25,7 +25,7 @@ export const apiSlice = createApi({
     "Surveyor",
     "Survey",
     "SurveyVisit",
-    "PublicSurveyVisit",
+    // "PublicSurveyVisit",
     "SurveyResponse",
     "SurveyAnswer",
     "Assignment",
@@ -41,8 +41,8 @@ export const apiSlice = createApi({
         ...result.map(({ id }) => ({ type: "Home", id })),
       ],
     }),
-    getUnassignedHomes: builder.query({
-      query: () => "/homes?assignment_id",
+    getUnassignedIncompleteHomes: builder.query({
+      query: () => "/homes?assignment_id&completed",
       transformResponse: (res) => (res ? res.sort(sortById) : []),
       providesTags: (result = [], error, arg) => [
         "Home",
@@ -180,19 +180,18 @@ export const apiSlice = createApi({
       query: (id) => ({ url: `/survey_visits/${id}`, method: "GET" }),
       providesTags: (result, error, arg) => [{ type: "SurveyVisit", id: arg }],
     }),
-    getPublicSurveyVisits: builder.query({
-      query: () => ({
-        url: `/survey_visits?surveyor_id`,
-        transformResponse: (res) => {
-          return res.map((surveyVisit) => surveyVisit.id);
-        },
-        method: "GET",
-      }),
-      providesTags: (result, error, arg) => [
-        { type: "PublicSurveyVisit", id: arg },
-      ],
-    }),
-
+    // getPublicSurveyVisits: builder.query({
+    //   query: () => ({
+    //     url: `/survey_visits?surveyor_id`,
+    //     transformResponse: (res) => {
+    //       return res.map((surveyVisit) => surveyVisit.id);
+    //     },
+    //     method: "GET",
+    //   }),
+    //   providesTags: (result, error, arg) => [
+    //     { type: "PublicSurveyVisit", id: arg },
+    //   ],
+    // }),
     createSurveyVisit: builder.mutation({
       query: ({ surveyVisit, recaptcha }) => ({
         url: "/survey_visits",
@@ -387,7 +386,7 @@ export const {
   useCreateHomeMutation,
   useGetHomeQuery,
   useGetHomesQuery,
-  useGetUnassignedHomesQuery,
+  useGetUnassignedIncompleteHomesQuery,
 
   //Sessions
   useLoginUserMutation,
@@ -405,7 +404,7 @@ export const {
   useUpdateSurveyVisitMutation,
   useDeleteSurveyVisitMutation,
   useGetSurveyVisitsQuery,
-  useGetPublicSurveyVisitsQuery,
+  // useGetPublicSurveyVisitsQuery,
   useGetSurveyVisitQuery,
 
   // Survey response
