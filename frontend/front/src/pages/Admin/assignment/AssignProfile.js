@@ -37,7 +37,8 @@ const AssignProfile = () => {
       )
     : "Unassigned";
 
-  const handleHomeLink = (data) => goToBreadcrumb("home", data);
+  const handleUserLink = (user) => goToBreadcrumb("user", user);
+  const handleHomeLink = (home) => goToBreadcrumb("home", home);
 
   const columns = [
     { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
@@ -83,9 +84,7 @@ const AssignProfile = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() =>
-            navigate(`/admin/survey/surveyprofile/${params.row.surveyId}`)
-          }
+          onClick={() => handleUserLink(params.row)}
         >
           View
         </Button>

@@ -46,17 +46,18 @@ const AssignTable = () => {
       selectionModel
     );
   };
+
   const handleRemoveSurveyor = () => {
     console.log(
       `remove ${surveyor} from this selected assignment id`,
       selectionModel
     );
   };
-  const handleNameClick = (item) => {
-    return navigate(`/admin/user/userprofile/${item}`);
-  };
 
-  const handleAssignmentLink = (data) => goToBreadcrumb("assignment", data);
+  const handleUserLink = (user) => goToBreadcrumb("user", user);
+  
+  const handleAssignmentLink = (assignment) =>
+    goToBreadcrumb("assignment", assignment);
 
   // GET hooks
   const {
@@ -88,7 +89,7 @@ const AssignTable = () => {
               return (
                 <Button
                   key={`surveyor-${id}`}
-                  onClick={() => handleNameClick(params.row.surveyor_ids)}
+                  onClick={() => handleUserLink(surveyor)}
                 >
                   {`${surveyor.firstname} ${surveyor.lastname}`}
                 </Button>

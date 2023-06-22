@@ -36,9 +36,10 @@ const HomeTable = () => {
     ])
   );
 
-  const handleHomeLink = (data) => goToBreadcrumb("home", data);
+  const handleHomeLink = (home) => goToBreadcrumb("home", home);
 
-  const handleAssignmentLink = (data) => goToBreadcrumb("assignment", data);
+  const handleAssignmentLink = (assignment) =>
+    goToBreadcrumb("assignment", assignment);
 
   const columns = [
     { field: "id", headerName: "Id", width: 50 },

@@ -12,6 +12,9 @@ import { useNavigate } from "react-router-dom";
 import { useGetSurveyorsQuery } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { useGoToBreadcrumb } from "../../../util/useGoToBreadcrumb";
+import { useDispatch } from "react-redux";
+import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
 
 const columns = [
   { id: "id", label: "UserID", minWidth: 50 },
@@ -24,12 +27,21 @@ const columns = [
 ];
 
 const UserTable = () => {
+  const dispatch = useDispatch();
+  const goToBreadcrumb = useGoToBreadcrumb();
+
+  dispatch(
+    setBreadcrumbs([
+      { url: "/admin/dashboard", description: "dashboard" },
+      { url: "/admin/user", description: "users" },
+    ])
+  );
+
   const {
     data: rows,
     isError: isSurveyorsError,
     isLoading: isSurveyorsDataLoading,
   } = useGetSurveyorsQuery();
-  const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -43,9 +55,7 @@ const UserTable = () => {
     setPage(0);
   };
 
-  const onRowClick = (row) => {
-    navigate(`userprofile/${row.id}`);
-  };
+  const onRowClick = (row) => goToBreadcrumb("user", row);
 
   if (isSurveyorsDataLoading) {
     return <Loader />;

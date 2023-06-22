@@ -13,15 +13,19 @@ export const useGoToBreadcrumb = () => {
     switch (type) {
       case "assignment":
         url = `/admin/assignment/assignProfile/${
-          data.assignment_id || data.id
+          data?.assignment_id || data?.id
         }`;
-        description = `assignment ${data.assignment_id || data.id}`;
+        description = `assignment ${data?.assignment_id || data?.id}`;
         break;
       case "home":
-        url = `/admin/home/homeprofile/${data.id}`;
-        description = `${data?.street_number} ${data.street_name} ${
+        url = `/admin/home/homeProfile/${data?.id}`;
+        description = `${data?.street_number} ${data?.street_name} ${
           data?.unit_number && "#" + data.unit_number
         }`;
+        break;
+      case "user":
+        url = `/admin/user/userProfile/${data?.user_id}`;
+        description = `${data?.firstname} ${data.lastname}`;
         break;
       default:
         url = "/";
