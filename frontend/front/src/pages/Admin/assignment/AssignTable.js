@@ -58,7 +58,6 @@ const AssignTable = () => {
   };
 
   const handleAssignmentLink = (data) => {
-    console.log(data);
     dispatch(
       pushBreadcrumb({
         url: `/admin/assignment/assignProfile/${data.id}`,
