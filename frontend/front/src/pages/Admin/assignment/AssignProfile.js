@@ -14,11 +14,13 @@ import CustomSnackbar from "../../../components/CustomSnackbar";
 import { getAddress } from "../home/HomeTable";
 import { useDispatch } from "react-redux";
 import { pushBreadcrumb } from "../../../features/breadcrumb/breadcrumbSlice";
+import { useGoToBreadcrumb } from "../../../util/useGoToBreadcrumb";
 
 const AssignProfile = () => {
   const { aid } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const goToBreadcrumb = useGoToBreadcrumb();
 
   const {
     data: assignmentData,
@@ -38,17 +40,7 @@ const AssignProfile = () => {
       )
     : "Unassigned";
 
-  const handleHomeLink = (data) => {
-    dispatch(
-      pushBreadcrumb({
-        url: `/admin/home/homeprofile/${data.id}`,
-        description: `${data?.street_number} ${data.street_name} ${
-          data?.unit_number && "#" + data.unit_number
-        }`,
-      })
-    );
-    navigate(`/admin/home/homeProfile/${data.id}`);
-  };
+  const handleHomeLink = (data) => goToBreadcrumb("home", data);
 
   const columns = [
     { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
