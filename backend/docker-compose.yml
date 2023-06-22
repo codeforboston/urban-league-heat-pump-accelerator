@@ -1,10 +1,11 @@
 services:
   server:
     environment:
-      DATABASE_URL: "postgres://postgres:password123@db"
+      DATABASE_URL: 'postgres://postgres:password123@db'
+      JWT_SECRET_KEY: '${JWT_SECRET_KEY}'
     build: .
     ports:
-      - "3000:3000"
+      - '3000:3000'
     links:
       - db
     depends_on:
