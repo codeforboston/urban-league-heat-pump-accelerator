@@ -14,15 +14,12 @@ import {
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import { useDispatch } from "react-redux";
-import {
-  pushBreadcrumb,
-  setBreadcrumbs,
-} from "../../../features/breadcrumb/breadcrumbSlice";
-import { usePushBreadcrumb } from "../../../util/usePushBreadcrumb";
+import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
+import { useGoToBreadcrumb } from "../../../util/useGoToBreadcrumb";
 
 const AssignTable = () => {
   const dispatch = useDispatch();
-  const crumb = usePushBreadcrumb();
+  const goToBreadcrumb = useGoToBreadcrumb();
   dispatch(
     setBreadcrumbs([
       { url: "/admin/dashboard", description: "dashboard" },
@@ -59,7 +56,7 @@ const AssignTable = () => {
     return navigate(`/admin/user/userprofile/${item}`);
   };
 
-  const handleAssignmentLink = (data) => crumb("assignment", data);
+  const handleAssignmentLink = (data) => goToBreadcrumb("assignment", data);
 
   // GET hooks
   const {
