@@ -99,6 +99,11 @@ export const apiSlice = createApi({
       query: (id) => `/surveyors/${id}`,
       providesTags: (result, error, arg) => [{ type: "Surveyor", id: arg }],
     }),
+    getSurveyorByEmail: builder.query({
+      query: (email) => `/surveyors?email=${email}`,
+      transformResponse: (res) => res ? res[0] : null,
+      providesTags: (result, error, arg) => [{ type: "Surveyor", id: arg }],
+    }),
     createSurveyor: builder.mutation({
       query: (surveyor) => ({
         url: `/surveyors`,
@@ -359,6 +364,7 @@ export const {
   useCreateSurveyorMutation,
   useGetSurveyorQuery,
   useGetSurveyorsQuery,
+  useGetSurveyorByEmailQuery,
   // useGetSurveyorsByAssignmentIdQuery,
 
   // Home

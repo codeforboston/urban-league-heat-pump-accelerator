@@ -4,24 +4,18 @@ import AccountDetail from "./AccountDetail";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../../features/login/loginSlice";
-import { useGetSurveyorQuery } from "../../../api/apiSlice";
+import { useGetSurveyorByEmailQuery } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 
 const Account = () => {
-  const { id: userId } = useSelector(selectCurrentUser);
+  const { email } = useSelector(selectCurrentUser);
 
   const {
-    data: {
-      firstname: firstName,
-      lastname: lastName,
-      email,
-      street_address: address,
-      phone: phoneNumber,
-    },
+    data: accountData,
     isError: isAccountDataError,
     isLoading: isAccountDataLoading,
-  } = useGetSurveyorQuery(userId);
+  } = useGetSurveyorByEmailQuery(email);
 
   return (
     <Box>
@@ -43,11 +37,11 @@ const Account = () => {
                 </Typography>
               </Box>
             </Grid>
-            <AccountDetail label="First Name" value={firstName} />
-            <AccountDetail label="Last Name" value={lastName} />
-            <AccountDetail label="Email" value={email} />
-            <AccountDetail label="Address" value={address} />
-            <AccountDetail label="Phone Number" value={phoneNumber} />
+            <AccountDetail label="First Name" value={accountData.firstname} />
+            <AccountDetail label="Last Name" value={accountData.lastname} />
+            <AccountDetail label="Email" value={accountData.email} />
+            <AccountDetail label="Address" value={accountData.street_address} />
+            <AccountDetail label="Phone Number" value={accountData.phone} />
           </Grid>
           <Grid container direction="column" rowSpacing={4}>
             <Grid item xs={12}>
