@@ -1,6 +1,7 @@
 import {
   AUTHORIZATION_HEADER,
   AUTH_TOKEN_LOCAL_STORAGE_KEY,
+  decodeJwt,
 } from "./loginUtils";
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
@@ -23,7 +24,7 @@ const loginSlice = createSlice({
         const token =
           meta.baseQueryMeta.response.headers.get(AUTHORIZATION_HEADER);
         state.token = token;
-        state.user = payload;
+        state.user = decodeJwt(token);
         if (token) {
           localStorage.setItem(AUTH_TOKEN_LOCAL_STORAGE_KEY, token);
         }
