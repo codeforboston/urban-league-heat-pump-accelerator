@@ -5,11 +5,12 @@ import { DataGrid } from "@mui/x-data-grid";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
 import {
   useGetAssignmentsQuery,
+  useGetPublicSurveyVisitsQuery,
   useGetUnassignedHomesQuery,
 } from "../../../api/apiSlice";
 import { getAddress } from "../home/HomeTable";
@@ -19,6 +20,7 @@ import CustomSnackbar from "../../../components/CustomSnackbar";
 const Unassigned = () => {
   const navigate = useNavigate();
   const [assignment, setAssignment] = React.useState("");
+  const [unassignedNonpublicHomes, setUnassignedNonpublicHomes] = useState([]);
 
   // Event handlers
   const handleChangeAssignment = (event) => {
@@ -53,6 +55,33 @@ const Unassigned = () => {
     isError: isAssignmentsError,
     isLoading: isAssignmentsDataLoading,
   } = useGetAssignmentsQuery();
+
+  const {
+    data: publicSurveyVisitsData,
+    isError: isPublicSurveyVisitsError,
+    isLoading: isPublicSurveyVisitsDataLoading,
+  } = useGetPublicSurveyVisitsQuery();
+
+  useEffect(() => {
+    if (
+      isUnassignedHomesDataLoading ||
+      isPublicSurveyVisitsDataLoading ||
+      unassignedNonpublicHomes.length
+    )
+      return;
+    const filteredHomes = unassignedHomesData.filter((home) =>
+      publicSurveyVisitsData.find(
+        (surveyVisit) => surveyVisit.home_id !== home.id
+      )
+    );
+    setUnassignedNonpublicHomes(filteredHomes);
+  }, [
+    isUnassignedHomesDataLoading,
+    isPublicSurveyVisitsDataLoading,
+    unassignedHomesData,
+    publicSurveyVisitsData,
+    unassignedNonpublicHomes,
+  ]);
 
   const columns = [
     { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
@@ -118,7 +147,9 @@ const Unassigned = () => {
     },
   ];
 
-  return isUnassignedHomesDataLoading || isAssignmentsDataLoading ? (
+  return isUnassignedHomesDataLoading ||
+    isAssignmentsDataLoading ||
+    isPublicSurveyVisitsDataLoading ? (
     <Loader />
   ) : isUnassignedHomesError ? (
     <CustomSnackbar
@@ -130,6 +161,12 @@ const Unassigned = () => {
     <CustomSnackbar
       open={isAssignmentsError}
       message="Error fetching assignments data"
+      severity="error"
+    />
+  ) : isPublicSurveyVisitsError ? (
+    <CustomSnackbar
+      open={isPublicSurveyVisitsError}
+      message="Error fetching public survey visit data"
       severity="error"
     />
   ) : (
@@ -169,7 +206,7 @@ const Unassigned = () => {
       </Box>
       <div style={{ width: "100%" }}>
         <DataGrid
-          rows={unassignedHomesData}
+          rows={unassignedNonpublicHomes}
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}

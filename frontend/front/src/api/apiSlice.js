@@ -25,6 +25,7 @@ export const apiSlice = createApi({
     "Surveyor",
     "Survey",
     "SurveyVisit",
+    "PublicSurveyVisit",
     "SurveyResponse",
     "SurveyAnswer",
     "Assignment",
@@ -179,6 +180,19 @@ export const apiSlice = createApi({
       query: (id) => ({ url: `/survey_visits/${id}`, method: "GET" }),
       providesTags: (result, error, arg) => [{ type: "SurveyVisit", id: arg }],
     }),
+    getPublicSurveyVisits: builder.query({
+      query: () => ({
+        url: `/survey_visits?surveyor_id`,
+        transformResponse: (res) => {
+          return res.map((surveyVisit) => surveyVisit.id);
+        },
+        method: "GET",
+      }),
+      providesTags: (result, error, arg) => [
+        { type: "PublicSurveyVisit", id: arg },
+      ],
+    }),
+
     createSurveyVisit: builder.mutation({
       query: ({ surveyVisit, recaptcha }) => ({
         url: "/survey_visits",
@@ -391,6 +405,7 @@ export const {
   useUpdateSurveyVisitMutation,
   useDeleteSurveyVisitMutation,
   useGetSurveyVisitsQuery,
+  useGetPublicSurveyVisitsQuery,
   useGetSurveyVisitQuery,
 
   // Survey response
