@@ -22,7 +22,6 @@ export const apiSlice = createApi({
 
   tagTypes: [
     "Home",
-    "HomeCompleted",
     "Surveyor",
     "Survey",
     "SurveyVisit",
@@ -187,7 +186,7 @@ export const apiSlice = createApi({
         body: surveyVisit,
         headers: [[`Recaptcha-Token`, recaptcha]],
       }),
-      invalidatesTags: ["SurveyVisit", "HomeCompleted"],
+      invalidatesTags: ["SurveyVisit"],
     }),
     updateSurveyVisit: builder.mutation({
       query: ({ id, body }) => {
