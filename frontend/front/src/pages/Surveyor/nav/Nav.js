@@ -1,12 +1,17 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 
 import LeftDrawer from "./LeftDrawer";
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useCallback } from "react";
 import { useLogoutUserMutation } from "../../../api/apiSlice";
 
 const Nav = () => {
+  const navigate = useNavigate();
   const [logout] = useLogoutUserMutation();
+  const handleLogout = useCallback(async () => {
+    await logout();
+    navigate("/");
+  });
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -35,7 +40,7 @@ const Nav = () => {
             </Button>
           </Box>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Button color="inherit" onClick={logout}>
+            <Button color="inherit" onClick={handleLogout}>
               <Typography variant="h6">LOG OUT</Typography>
             </Button>
           </Box>

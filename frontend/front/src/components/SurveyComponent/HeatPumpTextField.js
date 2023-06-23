@@ -8,6 +8,7 @@ export const HeatPumpTextField = ({
   label,
   disabled,
   required,
+  ...props
 }) => {
   const { formState } = useController({ name, control });
 
@@ -17,7 +18,7 @@ export const HeatPumpTextField = ({
       control={control}
       rules={
         required && {
-          required: { value: true, message: "This field is required!" },
+          required: { value: true, message: required },
         }
       }
       render={({ field }) => (
@@ -31,6 +32,7 @@ export const HeatPumpTextField = ({
           }
           disabled={disabled}
           {...field}
+          {...props}
         />
       )}
     />

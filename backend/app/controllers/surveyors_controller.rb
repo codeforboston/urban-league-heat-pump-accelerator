@@ -67,6 +67,6 @@ class SurveyorsController < ApplicationController
   end
 
   def search_params
-    params.permit(:city, :zipcode, :state, :role, :status)
+    params.permit(:city, :zipcode, :state, :role, :status, :email)
   end
 end

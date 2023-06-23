@@ -1,4 +1,3 @@
-import accountReducer from "../features/account/accountSlice";
 import { apiSlice } from "../api/apiSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import contactReducer from "../features/contact/contactSlice";
@@ -9,7 +8,6 @@ import surveyorReducer from "../features/surveyor/surveyorSlice";
 export const createStore = (options) =>
   configureStore({
     reducer: {
-      account: accountReducer,
       contact: contactReducer,
       nav: navReducer,
       login: loginReducer,

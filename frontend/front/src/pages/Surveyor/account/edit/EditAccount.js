@@ -1,205 +1,191 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Button from "@mui/material/Button";
-import { Grid, Paper, TextField, Box } from "@mui/material";
+import { Grid, Paper, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { setAccount } from "../../../../features/account/accountSlice";
+import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
+import { selectCurrentUser } from "../../../../features/login/loginSlice";
+import {
+  useGetSurveyorQuery,
+  useUpdateSurveyorMutation,
+} from "../../../../api/apiSlice";
+import Loader from "../../../../components/Loader";
+import CustomSnackbar from "../../../../components/CustomSnackbar";
+import { HeatPumpPhoneField } from "../../../../components/SurveyComponent/HeatPumpPhoneField";
+import { HeatPumpTextField } from "../../../../components/SurveyComponent/HeatPumpTextField";
+
+// Styles
+const verticalMargin = { margin: "10px 0" };
+const paperStyle = {
+  padding: 40,
+  display: "flex",
+  flexDirection: "column",
+  width: 280,
+  margin: "20px auto",
+};
 
 const EditAccount = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // Get account data
+  const { id } = useSelector(selectCurrentUser);
+  // RTK Query
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+    data: {
+      firstname: firstName,
+      lastname: lastName,
+      email,
+      street_address: address,
+      phone: phoneNumber,
+    },
+    isError: isAccountDataError,
+    isLoading: isAccountDataLoading,
+  } = useGetSurveyorQuery(id);
 
-  const { firstName, lastName, email, address, phoneNumber } = useSelector(
-    (state) => state.account
+  const [
+    updateAccount,
+    {
+      data: accountUpdateResult,
+      isError: isUpdateAccountError,
+      isLoading: isUpdatingAccount,
+    },
+  ] = useUpdateSurveyorMutation();
+
+  // react-hook-form
+  const { handleSubmit, control, reset } = useForm({
+    defaultValues: {
+      firstName,
+      lastName,
+      email,
+      address,
+      phoneNumber: phoneNumber,
+    },
+  });
+
+  // Action handling
+  const handleUpdateAccount = useCallback(
+    async (values) => {
+      const updatedAccount = await updateAccount({
+        id,
+        body: {
+          surveyor: {
+            firstname: values.firstName,
+            lastname: values.lastName,
+            phone: values.phoneNumber,
+            email: values.email,
+            street_address: values.address,
+          },
+        },
+      });
+      return updatedAccount;
+    },
+    [updateAccount, id]
   );
 
-  const paperStyle = {
-    padding: 40,
-
-    display: "flex",
-    flexDirection: "column",
-    width: 280,
-    margin: "20px auto",
-  };
-
-  const btnstyle = { margin: "10px 0" };
-
-  const errorStyles = {
-    color: "rgb(239 68 68 / 1)",
-    fontSize: "0.875rem",
-    lineHeight: "1.25rem",
-  };
-
-  async function EditAccountForms(values) {
+  async function editAccountForms(values) {
     if (!values) return;
-
-    dispatch(
-      setAccount({
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        address: values.address,
-        phoneNumber: values.phoneNumber,
-      })
-    );
-
+    handleUpdateAccount(values);
     reset();
-
     navigate("../account");
   }
 
   return (
     <Box>
-      <Paper elevation={5} style={paperStyle}>
-        <Grid align="center">
-          <h2>Update Account Details?</h2>
-        </Grid>
+      {isAccountDataLoading || isUpdatingAccount ? (
+        <Loader />
+      ) : isAccountDataError ? (
+        <CustomSnackbar
+          open={isAccountDataError}
+          message="Error fetching account data."
+          severity="error"
+        />
+      ) : isUpdateAccountError ? (
+        <CustomSnackbar
+          open={isUpdateAccountError}
+          message="Error updating account data."
+          severity="error"
+        />
+      ) : (
+        <Paper elevation={5} style={paperStyle}>
+          <Grid align="center">
+            <h2>Update Account Details?</h2>
+          </Grid>
 
-        <form onSubmit={handleSubmit(EditAccountForms)}>
-          <TextField
-            id="standard-basic"
-            placeholder="Enter First Name"
-            type="text"
-            style={btnstyle}
-            name="firstName"
-            fullWidth
-            label="First Name"
-            variant="standard"
-            defaultValue={firstName}
-            {...register("firstName", {
-              required: {
-                value: true,
-                message: "Please Enter First Name",
-              },
-            })}
-          />
-          <span style={errorStyles}>{errors?.firstName?.message}</span>
-          <TextField
-            id="standard-basic"
-            placeholder="Enter Last Name"
-            type="text"
-            style={btnstyle}
-            name="lastName"
-            fullWidth
-            label="Last Name"
-            variant="standard"
-            defaultValue={lastName}
-            {...register("lastName", {
-              required: {
-                value: true,
-                message: "Please Enter Last Name",
-              },
-            })}
-          />
-          <span style={errorStyles}>{errors?.lastName?.message}</span>
-          <TextField
-            id="standard-basic"
-            placeholder="Enter Email"
-            type="email"
-            style={btnstyle}
-            name="email"
-            fullWidth
-            label="Email"
-            variant="standard"
-            defaultValue={email}
-            {...register("email", {
-              required: {
-                value: true,
-                message: "Please Enter Email",
-              },
-              pattern: {
-                value:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: "Please enter a valid email",
-              },
-            })}
-          />
-          <span style={errorStyles}>{errors?.email?.message}</span>
-          <TextField
-            id="standard-basic"
-            placeholder="Enter Address"
-            type="text"
-            style={btnstyle}
-            name="address"
-            fullWidth
-            label="Address"
-            variant="standard"
-            defaultValue={address}
-            {...register("address", {
-              required: {
-                value: true,
-                message: "Please Enter Address",
-              },
-            })}
-          />
-          <span style={errorStyles}>{errors?.address?.message}</span>
-          <TextField
-            id="standard-basic"
-            placeholder="Enter Phone Number"
-            type="tel"
-            style={btnstyle}
-            name="phoneNumber"
-            fullWidth
-            label="Phone Number"
-            variant="standard"
-            defaultValue={phoneNumber}
-            {...register("phoneNumber", {
-              required: {
-                value: true,
-                message: "Please Enter Phone Number",
-              },
-              maxLength: {
-                value: 11,
-                message: "Phone number too long",
-              },
-              minLength: {
-                value: 8,
-                message: "Phone number too short",
-              },
-            })}
-          />
-          <span style={errorStyles}>{errors?.phoneNumber?.message}</span>
+          <form onSubmit={handleSubmit(editAccountForms)}>
+            <HeatPumpTextField
+              control={control}
+              name="firstName"
+              label="First Name"
+              required="Please enter first name."
+              fullWidth
+              sx={verticalMargin}
+            />
+            <HeatPumpTextField
+              control={control}
+              name="lastName"
+              label="Last Name"
+              required="Please enter last name."
+              fullWidth
+              sx={verticalMargin}
+            />
+            <HeatPumpTextField
+              control={control}
+              name="email"
+              label="Email Address"
+              required="Please enter email address."
+              fullWidth
+              type="email"
+              sx={verticalMargin}
+            />
+            <HeatPumpTextField
+              control={control}
+              name="address"
+              label="Address"
+              required="Please enter address."
+              fullWidth
+              sx={verticalMargin}
+            />
+            <HeatPumpPhoneField
+              name="phoneNumber"
+              control={control}
+              label="Phone Number"
+              fullWidth
+              sx={verticalMargin}
+            />
 
-          <Button
-            type="submit"
-            color="primary"
-            variant="contained"
-            onClick={() => EditAccountForms}
-            style={{
-              btnstyle,
-              borderRadius: "20px",
-              marginTop: "20px",
-            }}
-            fullWidth
-          >
-            Save
-          </Button>
-          <Button
-            type="button"
-            color="error"
-            variant="contained"
-            onClick={() => EditAccountForms}
-            style={{
-              btnstyle,
-              borderRadius: "20px",
-              marginTop: "20px",
-            }}
-            fullWidth
-            component={Link}
-            to="../account"
-          >
-            Cancel
-          </Button>
-        </form>
-      </Paper>
+            <Button
+              type="submit"
+              color="primary"
+              variant="contained"
+              onClick={() => editAccountForms}
+              style={{
+                verticalMargin,
+                borderRadius: "20px",
+                marginTop: "20px",
+              }}
+              fullWidth
+            >
+              Save
+            </Button>
+            <Button
+              type="button"
+              color="error"
+              variant="contained"
+              onClick={() => editAccountForms}
+              style={{
+                verticalMargin,
+                borderRadius: "20px",
+                marginTop: "20px",
+              }}
+              fullWidth
+              component={Link}
+              to="../account"
+            >
+              Cancel
+            </Button>
+          </form>
+        </Paper>
+      )}
     </Box>
   );
 };
