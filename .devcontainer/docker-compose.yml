@@ -16,8 +16,6 @@ services:
     network_mode: service:db
 
     environment:
-      DATABASE_URL: postgresql://postgres:postgres@localhost/postgres
-
     # Uncomment the next line to use a non-root user for all processes.
     # user: vscode
 
@@ -31,9 +29,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
       - ./create-db-user.sql:/docker-entrypoint-initdb.d/create-db-user.sql
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: password
 
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
