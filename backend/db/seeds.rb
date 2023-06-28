@@ -15,4 +15,4 @@ require_relative 'seed_importer'
 include SeedImporter
 # rubocop:enable Style/MixinUsage
 
-SeedImporter.import_seed_data(Rails.configuration.seed_data_path)
+SeedImporter.import_seed_data(Rails.configuration.seed_data_path, '../data-analysis/clustered_ordered_parcels.csv')
