@@ -13,8 +13,19 @@ import {
 } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { useDispatch } from "react-redux";
+import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
+import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 const AssignTable = () => {
+  const dispatch = useDispatch();
+  const goToBreadcrumb = useGoToBreadcrumb();
+  dispatch(
+    setBreadcrumbs([
+      { url: "/admin/dashboard", description: "dashboard" },
+      { url: "/admin/assignment", description: "assignments" },
+    ])
+  );
   const navigate = useNavigate();
   const [surveyor, setSurveyor] = React.useState("");
   const [selectionModel, setSelectionModel] = React.useState([]);
@@ -23,7 +34,6 @@ const AssignTable = () => {
   const handleChange = (event) => {
     setSurveyor(event.target.value);
   };
-
 
   const handleSelectionModelChange = (newSelection) => {
     setSelectionModel(newSelection);
@@ -36,15 +46,18 @@ const AssignTable = () => {
       selectionModel
     );
   };
+
   const handleRemoveSurveyor = () => {
     console.log(
       `remove ${surveyor} from this selected assignment id`,
       selectionModel
     );
   };
-  const handleNameClick = (item) => {
-    return navigate(`/admin/user/userprofile/${item}`);
-  };
+
+  const handleUserLink = (user) => goToBreadcrumb("user", user);
+  
+  const handleAssignmentLink = (assignment) =>
+    goToBreadcrumb("assignment", assignment);
 
   // GET hooks
   const {
@@ -76,7 +89,7 @@ const AssignTable = () => {
               return (
                 <Button
                   key={`surveyor-${id}`}
-                  onClick={() => handleNameClick(params.row.surveyor_ids)}
+                  onClick={() => handleUserLink(surveyor)}
                 >
                   {`${surveyor.firstname} ${surveyor.lastname}`}
                 </Button>
@@ -110,14 +123,13 @@ const AssignTable = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() => navigate(`assignProfile/${params.id}`)}
+          onClick={() => handleAssignmentLink(params.row)}
         >
           View
         </Button>
       ),
     },
   ];
-
 
   return (
     <Box>

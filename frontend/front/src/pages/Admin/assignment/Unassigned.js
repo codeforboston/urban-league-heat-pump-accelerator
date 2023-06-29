@@ -15,9 +15,12 @@ import {
 import { getAddress } from "../home/HomeTable";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 const Unassigned = () => {
   const navigate = useNavigate();
+  const goToBreadcrumb = useGoToBreadcrumb();
+
   const [assignment, setAssignment] = React.useState("");
 
   // Event handlers
@@ -40,6 +43,8 @@ const Unassigned = () => {
       "delete these home id from unassigned and send them to the assigned id location"
     );
   };
+
+  const handleHomeLink = (home) => goToBreadcrumb("home", home);
 
   // GET hookes
   const {
@@ -104,13 +109,12 @@ const Unassigned = () => {
       headerName: "Home",
       width: 150,
       flex: 1,
-
       renderCell: (params) => (
         <Button
           variant="text"
           color="primary"
           size="small"
-          onClick={() => navigate(`/admin/home/homeprofile/${params.row.id}`)}
+          onClick={() => handleHomeLink(params.row)}
         >
           View
         </Button>

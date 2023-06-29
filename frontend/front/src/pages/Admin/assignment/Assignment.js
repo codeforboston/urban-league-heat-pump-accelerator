@@ -3,18 +3,22 @@ import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import AssignTable from "./AssignTable";
 import ContainerTitle from "../component/ContainerTitle";
-
-import { Link } from "react-router-dom";
 import { useGetUnassignedHomesQuery } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 const Assignment = () => {
+  const goToBreadcrumb = useGoToBreadcrumb();
+
   const {
     data: unassignedHomesData,
     isError: isUnassignedHomesError,
     isLoading: isUnassignedHomesDataLoading,
   } = useGetUnassignedHomesQuery();
+
+  const handleUnassignedLink = () =>
+    goToBreadcrumb("unassigned", { url: "/admin/assignment/unassigned" });
 
   return isUnassignedHomesDataLoading ? (
     <Loader />
@@ -25,9 +29,9 @@ const Assignment = () => {
       severity="error"
     />
   ) : (
-    <ContainerTitle name={"ASSIGNMENT"}>
+    <ContainerTitle name={"Assignments"}>
       <Box my={2}>
-        <Button component={Link} to={"unassigned"} variant={"outlined"}>
+        <Button onClick={() => handleUnassignedLink()} variant={"outlined"}>
           <Typography variant="h6">
             Unassigned Homes: {unassignedHomesData.length}
           </Typography>

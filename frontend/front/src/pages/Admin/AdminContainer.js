@@ -15,12 +15,14 @@ import SurveyProfile from "./survey/SurveyProfile";
 import Unassigned from "./assignment/Unassigned";
 import User from "./user/User";
 import UserProfile from "./user/UserProfile";
+import { BreadcrumbNav } from "../../features/breadcrumb/BreadcrumbNav";
 
 const AdminContainer = () => {
   return (
     <Box>
       <Box>
         <Nav />
+        <BreadcrumbNav />
         <Routes>
           <Route path="/*" element={<Dashboard />}></Route>
           <Route path="home" element={<Home />}></Route>
