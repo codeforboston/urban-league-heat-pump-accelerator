@@ -5,6 +5,7 @@ import contactReducer from "../features/contact/contactSlice";
 import { loginReducer } from "../features/login/loginSlice";
 import navReducer from "../features/nav/navSlice";
 import surveyorReducer from "../features/surveyor/surveyorSlice";
+import { breadcrumbsReducer } from "../features/breadcrumb/breadcrumbSlice";
 
 export const createStore = (options) =>
   configureStore({
@@ -12,6 +13,7 @@ export const createStore = (options) =>
       account: accountReducer,
       contact: contactReducer,
       nav: navReducer,
+      breadcrumbs: breadcrumbsReducer,
       login: loginReducer,
       surveyor: surveyorReducer,
       // apis

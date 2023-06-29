@@ -8,13 +8,19 @@ import { Link } from "react-router-dom";
 import { useGetUnassignedIncompleteHomesQuery } from "../../../api/apiSlice";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 const Assignment = () => {
+  const goToBreadcrumb = useGoToBreadcrumb();
+
   const {
     data: unassignedIncompleteHomesData,
     isError: isUnassignedIncompleteHomesError,
     isLoading: isUnassignedIncompleteHomesDataLoading,
   } = useGetUnassignedIncompleteHomesQuery();
+
+  const handleUnassignedLink = () =>
+    goToBreadcrumb("unassigned", { url: "/admin/assignment/unassigned" });
 
   return isUnassignedIncompleteHomesDataLoading ? (
     <Loader />
@@ -25,9 +31,9 @@ const Assignment = () => {
       severity="error"
     />
   ) : (
-    <ContainerTitle name={"ASSIGNMENT"}>
+    <ContainerTitle name={"Assignments"}>
       <Box my={2}>
-        <Button component={Link} to={"unassigned"} variant={"outlined"}>
+        <Button onClick={() => handleUnassignedLink()} variant={"outlined"}>
           <Typography variant="h6">
             Unassigned Homes: {unassignedIncompleteHomesData.length}
           </Typography>

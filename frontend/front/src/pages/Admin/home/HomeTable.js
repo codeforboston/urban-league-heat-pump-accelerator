@@ -6,6 +6,9 @@ import { useGetHomesQuery } from "../../../api/apiSlice";
 import { Box, Button } from "@mui/material";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { useDispatch } from "react-redux";
+import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
+import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -20,6 +23,21 @@ export const getAddress = (params) => {
 };
 
 const HomeTable = () => {
+  const dispatch = useDispatch();
+  const goToBreadcrumb = useGoToBreadcrumb();
+
+  dispatch(
+    setBreadcrumbs([
+      { url: "/admin/dashboard", description: "dashboard" },
+      { url: "/admin/home", description: "homes" },
+    ])
+  );
+
+  const handleHomeLink = (home) => goToBreadcrumb("home", home);
+
+  const handleAssignmentLink = (assignment) =>
+    goToBreadcrumb("assignment", assignment);
+
   const columns = [
     { field: "id", headerName: "Id", minWidth: 80 },
     {
@@ -58,11 +76,7 @@ const HomeTable = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() =>
-            navigate(
-              `/admin/assignment/assignProfile/${params.row.assignment_id}`
-            )
-          }
+          onClick={() => handleAssignmentLink(params.row)}
         >
           {params.row.assignment_id}
         </Button>
@@ -77,7 +91,7 @@ const HomeTable = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() => navigate(`homeprofile/${params.row.id}`)}
+          onClick={() => handleHomeLink(params.row)}
         >
           View
         </Button>
