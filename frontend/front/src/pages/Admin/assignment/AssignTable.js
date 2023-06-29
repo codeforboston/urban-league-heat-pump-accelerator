@@ -25,7 +25,7 @@ const AssignTable = () => {
       { url: "/admin/assignment", description: "assignments" },
     ])
   );
-  
+
   const [surveyor, setSurveyor] = React.useState("");
   const [selectionModel, setSelectionModel] = React.useState([]);
 
@@ -84,7 +84,7 @@ const AssignTable = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() => navigate(`assignProfile/${params.id}`)}
+          onClick={() => handleAssignmentLink(params.row)}
         >
           View
         </Button>
