@@ -72,10 +72,6 @@ const AssignProfile = () => {
     {
       field: "zip_code",
       headerName: "Zipcode",
-      renderCell: (params) =>
-        params.row.zip_code.length === 5
-          ? params.row.zip_code
-          : `0${params.row.zip_code}`,
       maxWidth: 100,
     },
     {

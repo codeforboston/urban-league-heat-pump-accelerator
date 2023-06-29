@@ -10,7 +10,7 @@ import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
 import {
   useGetAssignmentsQuery,
-  useGetUnassignedHomesQuery,
+  useGetUnassignedIncompleteHomesQuery,
 } from "../../../api/apiSlice";
 import { getAddress } from "../home/HomeTable";
 import Loader from "../../../components/Loader";
@@ -48,10 +48,10 @@ const Unassigned = () => {
 
   // GET hookes
   const {
-    data: unassignedHomesData,
-    isError: isUnassignedHomesError,
-    isLoading: isUnassignedHomesDataLoading,
-  } = useGetUnassignedHomesQuery();
+    data: unassignedIncompleteHomesData,
+    isError: isUnassignedIncompleteHomesError,
+    isLoading: isUnassignedIncompleteHomesDataLoading,
+  } = useGetUnassignedIncompleteHomesQuery();
 
   const {
     data: assignmentsData,
@@ -66,43 +66,19 @@ const Unassigned = () => {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
-      width: 200,
+      minWidth: 200,
+      flex: 1,
     },
-    { field: "zip_code", headerName: "Zipcode", width: 120 },
+    {
+      field: "zip_code",
+      headerName: "Zipcode",
+      width: 120,
+    },
     {
       field: "city",
       headerName: "City",
       width: 200,
       flex: 1,
-    },
-    {
-      field: "completed",
-      headerName: "Completed",
-      renderCell: (home) => (home?.completed === true ? "Yes" : "No"),
-      width: 200,
-      flex: 1,
-    },
-    {
-      field: "survey",
-      headerName: "Survey",
-      width: 200,
-      flex: 1,
-      renderCell: (params) => {
-        return params.row.surveyId ? (
-          <Button
-            variant="text"
-            color="primary"
-            size="small"
-            onClick={() =>
-              navigate(`/admin/survey/surveyprofile/${params.row.surveyId}`)
-            }
-          >
-            View
-          </Button>
-        ) : (
-          "No Survey"
-        );
-      },
     },
     {
       field: "hid",
@@ -122,11 +98,11 @@ const Unassigned = () => {
     },
   ];
 
-  return isUnassignedHomesDataLoading || isAssignmentsDataLoading ? (
+  return isUnassignedIncompleteHomesDataLoading || isAssignmentsDataLoading ? (
     <Loader />
-  ) : isUnassignedHomesError ? (
+  ) : isUnassignedIncompleteHomesError ? (
     <CustomSnackbar
-      open={isUnassignedHomesError}
+      open={isUnassignedIncompleteHomesError}
       message="Error fetching unassigned homes data"
       severity="error"
     />
@@ -173,7 +149,7 @@ const Unassigned = () => {
       </Box>
       <div style={{ width: "100%" }}>
         <DataGrid
-          rows={unassignedHomesData}
+          rows={unassignedIncompleteHomesData}
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}
