@@ -7,22 +7,32 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import { useGetAssignmentsQuery } from "../../../api/apiSlice";
 import AssignmentUnit from "./AssignmentUnit";
+import Loader from "../../../components/Loader";
+import CustomSnackbar from "../../../components/CustomSnackbar";
 
 const ListView = () => {
-  const { data, isLoading, isSuccess } = useGetAssignmentsQuery();
+  const {
+    data: assignmentsData,
+    isLoadingAssignments,
+    isAssignmentsError,
+  } = useGetAssignmentsQuery();
 
-  let content;
-
-  if (isLoading) {
-    content = <Box> Is loading</Box>;
-  } else if (isSuccess) {
-    content = (
-      <Box>
-        <Box my={3} display={"flex"} justifyContent="center">
-          <Typography variant="h4">Assignment</Typography>
-        </Box>
-        {data &&
-          data.map((item) => {
+  return (
+    <>
+      {isLoadingAssignments ? (
+        <Loader />
+      ) : isAssignmentsError ? (
+        <CustomSnackbar
+          open={isAssignmentsError}
+          message="Error fetching assignments data."
+          severity="error"
+        />
+      ) : (
+        <Box>
+          <Box my={3} display={"flex"} justifyContent="center">
+            <Typography variant="h4">Assignment</Typography>
+          </Box>
+          {assignmentsData.map((item) => {
             return (
               <Box my={2} key={item.id}>
                 <Accordion>
@@ -40,11 +50,10 @@ const ListView = () => {
               </Box>
             );
           })}
-      </Box>
-    );
-  }
-
-  return content;
+        </Box>
+      )}
+    </>
+  );
 };
 
 export default ListView;

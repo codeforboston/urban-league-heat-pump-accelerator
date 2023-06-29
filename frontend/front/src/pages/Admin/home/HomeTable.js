@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import { DataGrid } from "@mui/x-data-grid";
-import { useNavigate } from "react-router-dom";
 import { useGetHomesQuery } from "../../../api/apiSlice";
 import { Box, Button } from "@mui/material";
 import Loader from "../../../components/Loader";
@@ -106,7 +105,6 @@ const HomeTable = () => {
     isError: isHomesError,
     isLoading: isHomesDataLoading,
   } = useGetHomesQuery();
-  const navigate = useNavigate();
 
   if (isHomesDataLoading) {
     return <Loader />;

@@ -6,7 +6,6 @@ import { DataGrid } from "@mui/x-data-grid";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
-import { useNavigate } from "react-router-dom";
 import {
   useGetAssignmentsQuery,
   useGetSurveyorsQuery,
@@ -26,7 +25,7 @@ const AssignTable = () => {
       { url: "/admin/assignment", description: "assignments" },
     ])
   );
-  const navigate = useNavigate();
+  
   const [surveyor, setSurveyor] = React.useState("");
   const [selectionModel, setSelectionModel] = React.useState([]);
 
