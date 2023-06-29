@@ -55,7 +55,7 @@ const AssignTable = () => {
   };
 
   const handleUserLink = (user) => goToBreadcrumb("user", user);
-  
+
   const handleAssignmentLink = (assignment) =>
     goToBreadcrumb("assignment", assignment);
 
@@ -75,6 +75,37 @@ const AssignTable = () => {
   // DataGrid columns
   const columns = [
     { field: "id", headerName: "Assign. Id", maxWidth: 100, flex: 1 },
+    {
+      field: "assignment",
+      headerName: "Assignment",
+      minWidth: 110,
+      flex: 1,
+      renderCell: (params) => (
+        <Button
+          variant="text"
+          color="primary"
+          size="small"
+          onClick={() => navigate(`assignProfile/${params.id}`)}
+        >
+          View
+        </Button>
+      ),
+    },
+    {
+      field: "completed",
+      headerName: "Completion",
+      width: 110,
+      flex: 1,
+      renderCell: (params) => {
+        let completed = 0;
+        params.row.homes.forEach((home) => {
+          if (home?.completed === true) {
+            completed++;
+          }
+        });
+        return `${completed}/${params.row.homes.length}`;
+      },
+    },
     {
       field: "surveyor_ids",
       headerName: "Surveyor(s)",
@@ -97,37 +128,6 @@ const AssignTable = () => {
             })
           : "Unassigned";
       },
-    },
-    {
-      field: "completed",
-      headerName: "Completion",
-      width: 110,
-      flex: 1,
-      renderCell: (params) => {
-        let completed = 0;
-        params.row.homes.forEach((home) => {
-          if (home?.completed === true) {
-            completed++;
-          }
-        });
-        return `${completed}/${params.row.homes.length}`;
-      },
-    },
-    {
-      field: "assignment",
-      headerName: "Assignment",
-      width: 110,
-      flex: 1,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="primary"
-          size="small"
-          onClick={() => handleAssignmentLink(params.row)}
-        >
-          View
-        </Button>
-      ),
     },
   ];
 
