@@ -1,7 +1,11 @@
 import { Box, Button, Stack } from "@mui/material";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  dispatch(setBreadcrumbs([]));
   return (
     <Box
       textAlign="center"
