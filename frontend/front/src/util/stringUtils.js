@@ -6,8 +6,3 @@ export const sentenceAsLink = (string) => {
     .map((s) => s.replace(/[^\w\s]/g, "").toLowerCase())
     .join("-");
 };
-
-// Mostly used to prepend 0xxxx zipcodes with a 0 instead of displaying as a 4 digit number.
-export const formatZipcode = (zipCode) => {
-  return zipCode.length === 5 ? zipCode : `0${zipCode}`;
-};

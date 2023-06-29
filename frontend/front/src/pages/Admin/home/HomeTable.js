@@ -6,7 +6,6 @@ import { useGetHomesQuery } from "../../../api/apiSlice";
 import { Box, Button } from "@mui/material";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
-import { formatZipcode } from "../../../util/stringUtils";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -40,7 +39,6 @@ const HomeTable = () => {
     {
       field: "zip_code",
       headerName: "Zip Code",
-      renderCell: (params) => formatZipcode(params.row.zip_code),
       minWidth: 100,
       maxWidth: 100,
       flex: 0.8,

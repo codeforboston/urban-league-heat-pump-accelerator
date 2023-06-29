@@ -15,7 +15,6 @@ import {
 import { getAddress } from "../home/HomeTable";
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
-import { formatZipcode } from "../../../util/stringUtils";
 
 const Unassigned = () => {
   const navigate = useNavigate();
@@ -67,7 +66,6 @@ const Unassigned = () => {
     },
     {
       field: "zip_code",
-      renderCell: (params) => formatZipcode(params.row.zip_code),
       headerName: "Zipcode",
       width: 120,
     },

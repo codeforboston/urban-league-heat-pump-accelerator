@@ -12,7 +12,6 @@ import {
 import Loader from "../../../components/Loader";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import { getAddress } from "../home/HomeTable";
-import { formatZipcode } from "../../../util/stringUtils";
 
 const AssignProfile = () => {
   const { aid } = useParams();
@@ -50,7 +49,6 @@ const AssignProfile = () => {
     {
       field: "zip_code",
       headerName: "Zipcode",
-      renderCell: (params) => formatZipcode(params.row.zip_code),
       maxWidth: 100,
     },
     {
