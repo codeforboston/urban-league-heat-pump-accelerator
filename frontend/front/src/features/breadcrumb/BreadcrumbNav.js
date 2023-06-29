@@ -1,6 +1,6 @@
 import { Breadcrumbs, Link, Stack, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useParams } from "react-router-dom";
 import { selectBreadcrumbs, setBreadcrumbs } from "./breadcrumbSlice";
 
 export const BreadcrumbNav = () => {
@@ -17,8 +17,11 @@ export const BreadcrumbNav = () => {
     dispatch(setBreadcrumbs(links));
   };
 
+  const params = useParams();
+  console.log(params);
+
   return (
-    <Stack justifyContent="center" alignItems="center" width="100%" mt="10px">
+    <Stack m="10px">
       <Breadcrumbs separator=">">
         {links.map((link, index) =>
           index === links.length - 1 ? (

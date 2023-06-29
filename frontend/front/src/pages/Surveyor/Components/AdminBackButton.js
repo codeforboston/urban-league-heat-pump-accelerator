@@ -11,7 +11,7 @@ export const AdminBackButton = ({ url, description }) => {
     <Button
       component={Link}
       to={url}
-      sx={{ mt: "10px", gap: "5px", justifyContent: "center" }}
+      sx={{ gap: "5px", justifyContent: "center" }}
     >
       <ArrowBack />
       All {description}
