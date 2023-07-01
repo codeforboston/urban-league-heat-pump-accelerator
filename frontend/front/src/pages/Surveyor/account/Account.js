@@ -1,10 +1,11 @@
-import { Box, Button, Grid, Stack } from "@mui/material";
-import React from "react";
+import { Box, Button, Stack } from "@mui/material";
+
 import AccountDetail from "./AccountDetail";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import ContainerTitle from "../../Admin/component/ContainerTitle";
 import { BackButton } from "../Components/BackButton";
+import ContainerTitle from "../../Admin/component/ContainerTitle";
+import { Link } from "react-router-dom";
+import React from "react";
+import { useSelector } from "react-redux";
 
 const Account = () => {
   const { firstName, lastName, email, address, phoneNumber } = useSelector(

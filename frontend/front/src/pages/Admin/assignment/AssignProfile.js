@@ -23,7 +23,7 @@ const AssignProfile = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
   const dispatch = useDispatch();
   const thereAreBreadcrumbs = useSelector(selectBreadcrumbs).length;
-  
+
   if (!thereAreBreadcrumbs) {
     dispatch(
       setBreadcrumbs([
@@ -141,54 +141,54 @@ const AssignProfile = () => {
   ];
 
   return (
-      <ContainerTitle name={`Assignment ${aid}`}>
-        {isAssignmentDataLoading || isSurveyorsDataLoading ? (
-          <Loader />
-        ) : isAssignmentError ? (
-          <CustomSnackbar
-            open={isAssignmentError}
-            message="Error fetching surveyor assignment data"
-            severity="error"
-          />
-        ) : isSurveyorsError ? (
-          <CustomSnackbar
-            open={isSurveyorsError}
-            message="Error fetching surveyors data"
-            severity="error"
-          />
-        ) : (
-          <Box>
-            <Box
-              py={3}
-              display="flex"
-              justifyContent="flex-start"
-              alignItems="center"
-            >
-              <Typography variant="h5" sx={{ mr: 3 }}>
-                Assigned Surveyor(s):
-              </Typography>
-              {surveyors.map((surveyor) => (
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  onClick={() => handleUserLink(surveyor)}
-                >
-                  {`${surveyor.lastname}, ${surveyor.firstname}`}
-                </Button>
-              ))}
-            </Box>
-            <div style={{ width: "100%" }}>
-              <DataGrid
-                rows={assignmentData.homes}
-                columns={columns}
-                pageSize={20}
-                rowsPerPageOptions={[20]}
-                autoHeight
-              />
-            </div>
+    <ContainerTitle name={`Assignment ${aid}`}>
+      {isAssignmentDataLoading || isSurveyorsDataLoading ? (
+        <Loader />
+      ) : isAssignmentError ? (
+        <CustomSnackbar
+          open={isAssignmentError}
+          message="Error fetching surveyor assignment data"
+          severity="error"
+        />
+      ) : isSurveyorsError ? (
+        <CustomSnackbar
+          open={isSurveyorsError}
+          message="Error fetching surveyors data"
+          severity="error"
+        />
+      ) : (
+        <Box>
+          <Box
+            py={3}
+            display="flex"
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <Typography variant="h5" sx={{ mr: 3 }}>
+              Assigned Surveyor(s):
+            </Typography>
+            {surveyors.map((surveyor) => (
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={() => handleUserLink(surveyor)}
+              >
+                {`${surveyor.lastname}, ${surveyor.firstname}`}
+              </Button>
+            ))}
           </Box>
-        )}
-      </ContainerTitle>
+          <div style={{ width: "100%" }}>
+            <DataGrid
+              rows={assignmentData.homes}
+              columns={columns}
+              pageSize={20}
+              rowsPerPageOptions={[20]}
+              autoHeight
+            />
+          </div>
+        </Box>
+      )}
+    </ContainerTitle>
   );
 };
 

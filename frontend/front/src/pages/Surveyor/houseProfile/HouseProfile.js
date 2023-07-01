@@ -1,21 +1,22 @@
 import { Alert, Container, Snackbar } from "@mui/material";
 import React, { useCallback, useMemo } from "react";
-import { useParams } from "react-router-dom";
-import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
-import { HeatPumpFade } from "../../../components/HeatPumpFade";
-import {
-  useGetHomeQuery,
-  useCreateSurveyVisitMutation,
-} from "../../../api/apiSlice";
-import { SubmissionSuccess } from "../Components/SubmissionSuccess";
 import {
   SURVEYOR_SURVEY_ID,
   SurveyorSurvey,
 } from "../Components/SurveyorSurvey";
+import {
+  useCreateSurveyVisitMutation,
+  useGetHomeQuery,
+} from "../../../api/apiSlice";
+
+import { HeatPumpFade } from "../../../components/HeatPumpFade";
+import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
 import Loader from "../../../components/Loader";
+import { SubmissionSuccess } from "../Components/SubmissionSuccess";
 import { buildSurveyVisitData } from "../../../util/surveyUtils";
-import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../../features/login/loginSlice";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
@@ -54,7 +55,7 @@ const HouseProfile = () => {
       });
       return surveyVisit;
     },
-    [addSurveyVisit, homeId]
+    [addSurveyVisit, homeId, surveyorId]
   );
 
   const step = useMemo(() => {

@@ -32,7 +32,12 @@
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test-style": "yarn lint && yarn prettier",
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix .",
+    "prettier": "prettier --check .",
+    "prettier-write": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -51,5 +56,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "prettier": "^2.8.8"
   }
 }

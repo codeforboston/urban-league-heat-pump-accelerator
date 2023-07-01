@@ -20,7 +20,7 @@ const UserProfile = () => {
   const [deleteModal, setDeleteModal] = useState(false);
 
   // react-hook-forms
-  const { handleSubmit, reset, control } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",

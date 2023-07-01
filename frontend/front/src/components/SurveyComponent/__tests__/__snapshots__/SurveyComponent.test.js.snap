@@ -27,7 +27,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
     </div>
     <form>
       <div
-        class="css-nv9q2p-MuiStack-root"
+        class="MuiStack-root css-nv9q2p-MuiStack-root"
       >
         <div
           class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -41,7 +41,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           </label>
           <div
             aria-labelledby="1-dropdown-label"
-            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-67qocj-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
+            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
               aria-expanded="false"
@@ -60,6 +60,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             </div>
             <input
               aria-hidden="true"
+              aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="1"
               tabindex="-1"
@@ -90,7 +91,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           </label>
           <div
             aria-labelledby="2-dropdown-label"
-            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-67qocj-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
+            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
               aria-expanded="false"
@@ -109,6 +110,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             </div>
             <input
               aria-hidden="true"
+              aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="2"
               tabindex="-1"
@@ -140,7 +142,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             If yes, how far have you taken your interest in heat pumps?
           </label>
           <div
-            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root"
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
           >
             <input
               aria-invalid="false"
@@ -164,7 +166,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           </label>
           <div
             aria-labelledby="4-dropdown-label"
-            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-67qocj-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
+            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
               aria-expanded="false"
@@ -183,6 +185,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             </div>
             <input
               aria-hidden="true"
+              aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="4"
               tabindex="-1"
@@ -213,7 +216,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           </label>
           <div
             aria-labelledby="5-dropdown-label"
-            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-67qocj-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
+            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
               aria-expanded="false"
@@ -232,6 +235,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             </div>
             <input
               aria-hidden="true"
+              aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="5"
               tabindex="-1"
@@ -262,7 +266,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           </label>
           <div
             aria-labelledby="6-dropdown-label"
-            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-67qocj-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
+            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
               aria-expanded="false"
@@ -281,6 +285,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             </div>
             <input
               aria-hidden="true"
+              aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="6"
               tabindex="-1"
@@ -312,7 +317,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             If yes, please confirm your name
           </label>
           <div
-            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root"
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
           >
             <input
               aria-invalid="false"
@@ -337,7 +342,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             If yes, please confirm your email address
           </label>
           <div
-            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root"
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
           >
             <input
               aria-invalid="false"
@@ -362,7 +367,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             If yes, please confirm your phone number
           </label>
           <div
-            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root"
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
           >
             <input
               aria-invalid="false"
@@ -386,7 +391,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           </label>
           <div
             aria-labelledby="10-dropdown-label"
-            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-67qocj-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
+            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
               aria-expanded="false"
@@ -405,6 +410,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             </div>
             <input
               aria-hidden="true"
+              aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="10"
               tabindex="-1"
@@ -436,7 +442,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             If other, please specify
           </label>
           <div
-            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root"
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
           >
             <input
               aria-invalid="false"
@@ -460,7 +466,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           </label>
           <div
             aria-labelledby="12-dropdown-label"
-            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-67qocj-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
+            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
               aria-expanded="false"
@@ -479,6 +485,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             </div>
             <input
               aria-hidden="true"
+              aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="12"
               tabindex="-1"
@@ -510,7 +517,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             If other, please specify
           </label>
           <div
-            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root"
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
           >
             <input
               aria-invalid="false"
@@ -534,7 +541,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           </label>
           <div
             aria-labelledby="14-dropdown-label"
-            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-67qocj-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
+            class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
               aria-expanded="false"
@@ -553,6 +560,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             </div>
             <input
               aria-hidden="true"
+              aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="14"
               tabindex="-1"
@@ -584,7 +592,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             If yes, please confirm your name
           </label>
           <div
-            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root"
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
           >
             <input
               aria-invalid="false"
@@ -609,7 +617,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             If yes, please confirm your email address
           </label>
           <div
-            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root"
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
           >
             <input
               aria-invalid="false"
@@ -634,7 +642,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             If yes, please confirm your phone number
           </label>
           <div
-            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root"
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
           >
             <input
               aria-invalid="false"
@@ -647,7 +655,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           </div>
         </div>
         <div
-          class="css-1clyo4s-MuiStack-root"
+          class="MuiStack-root css-1clyo4s-MuiStack-root"
         >
           <button
             class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"
