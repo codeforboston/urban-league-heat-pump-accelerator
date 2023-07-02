@@ -1,4 +1,4 @@
-lStart Guide By Dat Nguyen email: datguy7@gmail.com
+Start Guide By Dat Nguyen email: datguy7@gmail.com
 
 To run this Front-End only react application, you need VSCode IDE.
 download here: https://code.visualstudio.com/
@@ -129,42 +129,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-######################################################################################################################
 
-From Randy DAbbraccio 6.22.2023
-
-To build a Docker container in a LINUX system and run it:
-
-Git clone repo
-
-Goto /frontent/front and run yarn install
-
-Run 'npm run build' to make a production version
-
-Goto new /build folder
-
-Install Docker code if not already
-
-Make a Dockerfile and put the following in it:
-
-"
-# grab nginx image running on alpine linux
-FROM nginx:stable-alpine
-
-# update and add dependencies
-RUN apk update && apk upgrade && apk add openssl curl ca-certificates
-
-# copy contents of build folder to default folder in container
-COPY . /usr/share/nginx/html
-
-# start nginx server
-CMD ["nginx", "-g", "daemon off;"]
-"
-
-Run command 'docker build .' in the /build folder where the Dockerfile is located
-
-It should return a message like : Successfully built b38edc2a3e . Note the IMAGE ID e.g. b38edc2a3e
-
-Run command 'docker run -p 3001:80 b38edc2a3e' with your newly built IMAGE ID.
-
-Open browser with 'localhost:3001' and it should come up. Make sure your backend server is up too :)
