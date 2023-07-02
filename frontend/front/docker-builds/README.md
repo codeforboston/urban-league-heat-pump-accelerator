@@ -5,8 +5,18 @@ There are two options here: A)run the provided Docker container or B) Build a ne
 
 For A) 
 
+Docker needs to installed and working.
 
+Goto /frontend/front/docker-builds folder in the terminal
 
+Run 'docker load < cfb-frontend-1.tar'. Success should message ~loading layers and
+something like 'Loaded image: cfb-frontend-1:latest'
+
+Run container with 'docker run -p 3001:80 cfb-frontend-1'
+
+See if it runs in your browser as 'localhost:3001'
+
+###
 
 For B)
 
@@ -32,4 +42,11 @@ Run command 'docker run -p 3001:80 b38edc2a3e' with your newly built IMAGE ID.
 
 Open browser with 'localhost:3001' and it should come up. Make sure your backend server is up too :)
 
+
+###
+
 Optional: to see if the production build was good you can run 'serve -s build' after the build and take note of the localhost PORT it provides. Try it in your browser.
+
+
+See whats running in docker with 'docker ps'
+Stop docker container with 'docker stop containername'
