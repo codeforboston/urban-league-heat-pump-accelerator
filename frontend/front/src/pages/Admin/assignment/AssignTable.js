@@ -6,6 +6,10 @@ import {
   useGetSurveyorsQuery,
   useRemoveAssignmentsFromSurveyorMutation,
 } from "../../../api/apiSlice";
+import {
+  useGoToBreadcrumb,
+  useInitBreadcrumbs,
+} from "../../../hooks/breadcrumbHooks";
 
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import { DataGrid } from "@mui/x-data-grid";
@@ -13,19 +17,14 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Loader from "../../../components/Loader";
 import Select from "@mui/material/Select";
-import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
 import { useDispatch } from "react-redux";
-import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 const AssignTable = () => {
-  const dispatch = useDispatch();
   const goToBreadcrumb = useGoToBreadcrumb();
-  dispatch(
-    setBreadcrumbs([
-      { url: "/admin/dashboard", description: "dashboard" },
-      { url: "/admin/assignment", description: "assignments" },
-    ])
-  );
+  useInitBreadcrumbs([
+    { url: "/admin/dashboard", description: "dashboard" },
+    { url: "/admin/assignment", description: "assignments" },
+  ]);
 
   const [selectedSurveyor, setSelectedSurveyor] = useState("");
   const [selectedAssignments, setSelectedAssignments] = useState([]);

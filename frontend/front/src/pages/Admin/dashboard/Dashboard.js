@@ -1,11 +1,17 @@
 import { Box, Button, Stack } from "@mui/material";
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+
 import { Link } from "react-router-dom";
 import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
+import { useDispatch } from "react-redux";
+
 const Dashboard = () => {
   const dispatch = useDispatch();
-  dispatch(setBreadcrumbs([]));
+
+  useEffect(() => {
+    dispatch(setBreadcrumbs([]));
+  }, [dispatch]);
+
   return (
     <Box
       textAlign="center"

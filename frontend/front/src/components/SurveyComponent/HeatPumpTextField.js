@@ -10,6 +10,7 @@ export const HeatPumpTextField = ({
   disabled,
   required,
   type,
+  readOnly,
 }) => {
   const { formState } = useController({ name, control });
 
@@ -58,6 +59,7 @@ export const HeatPumpTextField = ({
           }
           disabled={disabled}
           type={inputType}
+          inputProps={{ readOnly }}
           {...field}
         />
       )}

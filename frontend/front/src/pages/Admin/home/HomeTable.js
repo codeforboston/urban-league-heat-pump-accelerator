@@ -1,13 +1,14 @@
-import * as React from "react";
-
-import { DataGrid } from "@mui/x-data-grid";
-import { useGetHomesQuery } from "../../../api/apiSlice";
 import { Box, Button } from "@mui/material";
-import Loader from "../../../components/Loader";
+import {
+  useGoToBreadcrumb,
+  useInitBreadcrumbs,
+} from "../../../hooks/breadcrumbHooks";
+
 import CustomSnackbar from "../../../components/CustomSnackbar";
-import { useDispatch } from "react-redux";
-import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
-import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
+import { DataGrid } from "@mui/x-data-grid";
+import Loader from "../../../components/Loader";
+import React from "react";
+import { useGetHomesQuery } from "../../../api/apiSlice";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -22,15 +23,12 @@ export const getAddress = (params) => {
 };
 
 const HomeTable = () => {
-  const dispatch = useDispatch();
   const goToBreadcrumb = useGoToBreadcrumb();
 
-  dispatch(
-    setBreadcrumbs([
-      { url: "/admin/dashboard", description: "dashboard" },
-      { url: "/admin/home", description: "homes" },
-    ])
-  );
+  useInitBreadcrumbs([
+    { url: "/admin/dashboard", description: "dashboard" },
+    { url: "/admin/home", description: "homes" },
+  ]);
 
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
 
