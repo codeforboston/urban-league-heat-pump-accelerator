@@ -1,13 +1,12 @@
-import { Box, Button, Grid, Typography, CircularProgress } from "@mui/material";
-import React from "react";
-import { useGetAssignmentsQuery } from "../../../api/apiSlice";
+import { Box } from "@mui/material";
+import CustomSnackbar from "../../../components/CustomSnackbar";
 import ListView from "./ListView";
 import Loader from "../../../components/Loader";
-import CustomSnackbar from "../../../components/CustomSnackbar";
+import React from "react";
+import { useGetAssignmentsQuery } from "../../../api/apiSlice";
 
 const Dashboard = () => {
-  const { data, isLoading, isSuccess, isError, error } =
-    useGetAssignmentsQuery();
+  const { isLoading, isError } = useGetAssignmentsQuery();
 
   return (
     <Box display={"flex"} justifyContent="center">

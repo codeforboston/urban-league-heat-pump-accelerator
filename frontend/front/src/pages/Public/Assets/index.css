@@ -22,7 +22,7 @@
 
   --color-text-8: #66d6ff; /* Hero Page */
   --color-text-9: #fcfdfe; /* Hero Page */
-  --color-text-10: #D0312D; /* Hero Page */
+  --color-text-10: #d0312d; /* Hero Page */
 
   /* Background colors */
   --bgColor-1: #caf0fe; /* Background Testimonials, Button */
@@ -32,7 +32,7 @@
   --bgColor-5: #fcfdfe; /* Background */
 
   /* Accent colors */
-  --accent-1: rgba(0, 0, 0, 0.40); /* image overlay */
+  --accent-1: rgba(0, 0, 0, 0.4); /* image overlay */
   --accent-2: rgba(202, 240, 254, 0.8); /* Divider color */
 
   /* Box shadow */

@@ -59,7 +59,7 @@ const AssignmentUnit = ({ data }) => {
   };
 
   const incompletedList = [];
-  
+
   const selectAllIncompleted = () => {
     setChecked(incompletedList);
   };

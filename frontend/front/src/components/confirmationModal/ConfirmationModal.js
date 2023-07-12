@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { Divider } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -28,11 +29,12 @@ const ConfirmationModal = (props) => {
       >
         <Box sx={style}>
           <Box>
-            <Box py={3}>
-              <Typography variant="h2">{props.title}</Typography>
+            <Box>
+              <Typography variant="h5">{props.title}</Typography>
             </Box>
+            <Divider />
             <Box py={3}>
-              <Typography variant="h4">{props.message}</Typography>
+              <Typography variant="body1">{props.message}</Typography>
             </Box>
 
             <Box
@@ -41,11 +43,19 @@ const ConfirmationModal = (props) => {
               justifyContent="space-evenly"
               alignItems="center"
             >
-              <Button variant="contained" onClick={props.handleConfirm}>
-                YES
+              <Button
+                variant="contained"
+                onClick={props.handleCancel}
+                color="primary"
+              >
+                {props.cancelBtnText ? props.cancelBtnText : "no"}
               </Button>
-              <Button variant="contained" onClick={props.handleCancel}>
-                NO
+              <Button
+                variant="contained"
+                onClick={props.handleConfirm}
+                color="error"
+              >
+                {props.confirmBtnText ? props.confirmBtnText : "yes"}
               </Button>
             </Box>
           </Box>

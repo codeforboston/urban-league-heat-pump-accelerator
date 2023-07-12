@@ -11,7 +11,6 @@ import {
 
 import AdminContainer from "./pages/Admin/AdminContainer";
 import Box from "@mui/material/Box";
-import DevContainer from "./pages/Developer/DevContainer";
 import Login from "./features/login/Login";
 import { ProtectedRoute } from "./routing/ProtectedRoute";
 import PublicContainer from "./pages/Public/PublicContainer";
@@ -41,8 +40,6 @@ function App() {
             path={`${routes.PUBLIC_ROUTE}/*`}
             element={<PublicContainer />}
           />
-
-          <Route path={`${routes.DEV_ROUTE}/*`} element={<DevContainer />} />
 
           <Route
             path={`${routes.ADMIN_ROUTE}/*`}

@@ -23,10 +23,7 @@ const breadcrumbSlice = createSlice({
   },
 });
 
-export const {
-  pushBreadcrumb,
-  setBreadcrumbs,
-} = breadcrumbSlice.actions;
+export const { pushBreadcrumb, setBreadcrumbs } = breadcrumbSlice.actions;
 export const selectBreadcrumbs = (state) => state.breadcrumbs.links;
 
 export const breadcrumbsReducer = breadcrumbSlice.reducer;

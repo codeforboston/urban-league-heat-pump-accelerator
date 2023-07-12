@@ -1,12 +1,4 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Toolbar,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 
 import { Link } from "react-router-dom";
 import React from "react";
@@ -15,9 +7,6 @@ import { useLogoutUserMutation } from "../../../api/apiSlice";
 const Nav = () => {
   const [logout] = useLogoutUserMutation();
 
-  // const { title } = useSelector((state) => state.nav);
-  const theme = useTheme();
-  // const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">

@@ -1,9 +1,9 @@
 import * as React from "react";
+
+import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Box } from "@mui/material";
-import { Close } from "@mui/icons-material";
 
 const OptionMenu = (props) => {
   const { handleSelectAll, handleDeselectAll, handleSelectIncompleted } = props;

@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import ConfirmationModal from "../../Developer/confirmModal/ConfirmationModal";
-import { useForm, Controller } from "react-hook-form";
-import { useGetSurveyorQuery } from "../../../api/apiSlice";
-import Loader from "../../../components/Loader";
-import CustomSnackbar from "../../../components/CustomSnackbar";
+import { Controller, useForm } from "react-hook-form";
+import React, { useState } from "react";
+
 import { AdminBackButton } from "../../Surveyor/Components/AdminBackButton";
+import ConfirmationModal from "../../../components/confirmationModal/ConfirmationModal";
+import CustomSnackbar from "../../../components/CustomSnackbar";
+import Loader from "../../../components/Loader";
+import { useGetSurveyorQuery } from "../../../api/apiSlice";
+import { useParams } from "react-router-dom";
 
 const UserProfile = () => {
   const { uid } = useParams();
@@ -19,7 +20,7 @@ const UserProfile = () => {
   const [deleteModal, setDeleteModal] = useState(false);
 
   // react-hook-forms
-  const { handleSubmit, reset, control } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",

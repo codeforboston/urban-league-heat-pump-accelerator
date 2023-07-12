@@ -1,24 +1,22 @@
 import { Box, Button } from "@mui/material";
-
-import ContainerTitle from "../component/ContainerTitle";
-import { DataGrid } from "@mui/x-data-grid";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import React from "react";
-import Select from "@mui/material/Select";
-import { useNavigate } from "react-router-dom";
 import {
   useGetAssignmentsQuery,
   useGetUnassignedIncompleteHomesQuery,
 } from "../../../api/apiSlice";
-import { getAddress } from "../home/HomeTable";
-import Loader from "../../../components/Loader";
+
+import ContainerTitle from "../component/ContainerTitle";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { DataGrid } from "@mui/x-data-grid";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Loader from "../../../components/Loader";
+import MenuItem from "@mui/material/MenuItem";
+import React from "react";
+import Select from "@mui/material/Select";
+import { getAddress } from "../home/HomeTable";
 import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 const Unassigned = () => {
-  const navigate = useNavigate();
   const goToBreadcrumb = useGoToBreadcrumb();
 
   const [assignment, setAssignment] = React.useState("");
