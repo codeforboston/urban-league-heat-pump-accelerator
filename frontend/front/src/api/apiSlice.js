@@ -356,6 +356,13 @@ export const apiSlice = createApi({
         method: "DELETE",
       }),
     }),
+    createUser: builder.mutation({
+      query: ({ email, password }) => ({
+        url: "/users",
+        method: "POST",
+        body: { user: { email, password } },
+      }),
+    }),
   }),
 });
 
@@ -379,6 +386,7 @@ export const {
   //Sessions
   useLoginUserMutation,
   useLogoutUserMutation,
+  useCreateUserMutation,
 
   // Survey
   useDeleteSurveyMutation,
