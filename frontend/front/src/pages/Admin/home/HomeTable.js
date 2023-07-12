@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useGetHomesQuery } from "../../../api/apiSlice";
 import { Box, Button } from "@mui/material";
 import Loader from "../../../components/Loader";
@@ -41,7 +41,12 @@ const HomeTable = () => {
     { field: "id", headerName: "Id", minWidth: 80 },
     {
       field: "address",
-      valueGetter: getAddress,
+
+      // this needs fixing
+      valueGetter: (params) => {
+        return params.value
+      },
+      // valueGetter: getAddress,
       headerName: "Address",
       minWidth: 200,
       flex: 1,
@@ -125,7 +130,17 @@ const HomeTable = () => {
           pageSize={20}
           rowsPerPageOptions={[20]}
           disableSelectionOnClick
+          disableColumnFilter
+          disableDensitySelector
+          disableColumnsMenu
           autoHeight
+          slots={{ toolbar: GridToolbar }}
+          slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+            quickFilterProps: { debounceMs: 500 },
+          },
+        }}
         />
       )}
     </Box>
