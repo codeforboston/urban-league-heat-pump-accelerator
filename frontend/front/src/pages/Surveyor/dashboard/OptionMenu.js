@@ -52,10 +52,10 @@ const OptionMenu = (props) => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={SelectAllAndClose}>SELECT ALL</MenuItem>
+        <MenuItem onClick={SelectAllAndClose}>SELECT NEXT 10</MenuItem>
         <MenuItem onClick={DeselectAllAndClose}>DESELECT ALL</MenuItem>
         <MenuItem onClick={SelectIncompletedAndClose}>
-          SELECT INCOMPLETED
+          SELECT NEXT 10 INCOMPLETE
         </MenuItem>
       </Menu>
     </Box>

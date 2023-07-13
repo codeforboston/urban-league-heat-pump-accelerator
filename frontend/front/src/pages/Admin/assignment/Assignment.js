@@ -30,7 +30,7 @@ const Assignment = () => {
     />
   ) : (
     <ContainerTitle name={"Assignments"}>
-      <Box my={2}>
+      <Box>
         <Button onClick={() => handleUnassignedLink()} variant={"outlined"}>
           <Typography variant="h6">
             Unassigned Homes: {unassignedIncompleteHomesData.length}

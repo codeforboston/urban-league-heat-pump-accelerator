@@ -128,12 +128,12 @@ const Login = () => {
             })}
           />
           <span style={errorStyles}>{errors?.password?.message}</span>
-          <div style={{ marginTop: "5px" }}>
+          {/* <div style={{ marginTop: "5px" }}>
             <FormControlLabel
               control={<Checkbox color="primary" {...register("remember")} />}
               label="Remember me"
             />
-          </div>
+          </div> */}
           <LoadingButton
             loading={isLoginLoading}
             type="submit"
