@@ -11,15 +11,18 @@ import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 
 // Formats addresses
 export const getAddress = (params) => {
-  let unit_number = "";
-  if (params.getValue(params.id, "unit_number")) {
-    unit_number = `, Unit #${params.getValue(params.id, "unit_number")}`;
-  }
-  return `${params.getValue(params.id, "street_number")} ${params.getValue(
-    params.id,
-    "street_name"
-  )}${unit_number && unit_number}`;
+
+  let adrs = params.row
+
+  return adrs.street_number + " " +
+         adrs.street_name + " " 
 };
+
+const getApt = (params) => {
+
+  return params.row.unit_number
+
+}
 
 const HomeTable = () => {
   const dispatch = useDispatch();
@@ -38,19 +41,28 @@ const HomeTable = () => {
     goToBreadcrumb("assignment", assignment);
 
   const columns = [
-    { field: "id", headerName: "Id", minWidth: 80 },
+    { field: "id", 
+      headerName: "ID", 
+      minWidth: 50,
+      flex: .7
+    },
     {
       field: "address",
-
-      // this needs fixing
-      valueGetter: (params) => {
-        return params.value
-      },
-      // valueGetter: getAddress,
+      valueGetter: getAddress,
       headerName: "Address",
       minWidth: 200,
       flex: 1,
     },
+
+    {
+    field: "apartment",
+    valueGetter: getApt,
+    headerName: "Apt. No.",
+    minWidth: 100,
+    maxWidth: 200,
+    flex: .5,
+    },
+
     {
       field: "city",
       headerName: "City",
