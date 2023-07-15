@@ -136,11 +136,11 @@ const HomeTable = () => {
           autoHeight
           slots={{ toolbar: GridToolbar }}
           slotProps={{
-          toolbar: {
-            showQuickFilter: true,
-            quickFilterProps: { debounceMs: 500 },
-          },
-        }}
+            toolbar: {
+              showQuickFilter: true,
+              quickFilterProps: { debounceMs: 500 },
+            },
+          }}
         />
       )}
     </Box>

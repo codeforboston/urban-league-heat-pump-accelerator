@@ -15,16 +15,18 @@ import { useNavigate } from "react-router-dom";
 import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
 import { useDispatch } from "react-redux";
 import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
+import { DataGrid,GridToolbar } from "@mui/x-data-grid";
 
 const columns = [
-  { id: "id", label: "UserID", minWidth: 50 },
-  { id: "firstname", label: "First Name", minWidth: 50 },
-  { id: "lastname", label: "Last Name", minWidth: 50 },
-  { id: "email", label: "Email", minWidth: 50 },
-  { id: "phone", label: "Phone", minWidth: 50 },
-  { id: "role", label: "Role", minWidth: 50 },
-  { id: "status", label: "Status", minWidth: 50 },
+  {field: "id", headerName: "User ID", flex: 1},
+  {field: "firstname", headerName: "First Name", flex: 1 },
+  {field: "lastname", headerName: "Last Name", flex: 1 },
+  {field: "email", headerName: "Email", flex: 2 },
+  {field: "phone", headerName: "Phone", flex: 1 },
+  {field: "role", headerName: "Role", flex: 1 },
+  {field: "status", headerName: "Status", flex: 1 },
 ];
+
 
 const UserTable = () => {
   const dispatch = useDispatch();
@@ -71,7 +73,27 @@ const UserTable = () => {
         />
       ) : (
         <>
-          <TableContainer sx={{ maxHeight: 800 }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={20}
+            rowsPerPageOptions={[20]}
+            disableSelectionOnClick
+            autoHeight
+            onRowClick={onRowClick}
+            disableColumnFilter
+            disableDensitySelector
+            disableColumnsMenu
+            autoHeight
+            slots={{ toolbar: GridToolbar }}
+            slotProps={{
+              toolbar: {
+                showQuickFilter: true,
+                quickFilterProps: { debounceMs: 500 },
+              },
+            }}
+          />
+          {/* <TableContainer sx={{ maxHeight: 800 }}>
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
@@ -107,8 +129,8 @@ const UserTable = () => {
                   ))}
               </TableBody>
             </Table>
-          </TableContainer>
-          <TablePagination
+          </TableContainer> */}
+          {/* <TablePagination
             rowsPerPageOptions={[10, 25, 100]}
             component="div"
             count={rows.length}
@@ -116,7 +138,7 @@ const UserTable = () => {
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
-          />
+          /> */}
         </>
       )}
     </Paper>
