@@ -1,46 +1,21 @@
-From Randy DAbbraccio 7.1.2023
+From Randy DAbbraccio 7.16.2023
 ###
 
-There are two options here: A)run the provided Docker container or B) Build a new frontend and build a new Docker container.
-
-For A) 
-
-Docker needs to installed and working.
-
-Goto /frontend/front/docker-builds folder in the terminal
-
-Run 'docker load < cfb-frontend-1.tar'. Success should message ~loading layers and
-something like 'Loaded image: cfb-frontend-1:latest'
-
-Run container with 'docker run -p 3001:80 cfb-frontend-1'
-
-See if it runs in your browser as 'localhost:3001'
-
-###
-
-For B)
-
-This is for a Linux system thus far and Docker, Node.js, and Yarn (package manager) will need to be installed prior.
+! This is for a Linux system thus far! Docker, Node.js, and Yarn (package manager) will need to be installed prior.
 
 Steps:
 
 Git a new repo of the project or use your finished local code
 
-Goto /frontent/front and run 'yarn install' (if newly downloaded)
+Goto /frontend/front and run 'yarn install' (if newly downloaded)
 
-Run 'npm run build' to make a production version
+Goto .../frontend/front/docker-builds folder
 
-Goto new /build folder
+Run file with './build_start.sh'  (this was written in Linux using BASH shell and needs 'execute' permission).
+It should create a new production build using npm, then create a new Docker container
+and run it.
 
-Move the Dockerfile from this folder '/docker-builds into the new /front/build folder
-
-Run command 'docker build .' in the /front/build folder where the Dockerfile is located
-
-It should return a message like : 'Successfully built b38edc2a3e'. Note the IMAGE ID e.g. b38edc2a3e
-
-Run command 'docker run -p 3001:80 b38edc2a3e' with your newly built IMAGE ID.
-
-Open browser with 'localhost:3001' and it should come up. Make sure your backend server is up too :)
+Open browser with 'localhost:3001' and it should come up. Make sure your backend server is up too :) 
 
 
 ###
