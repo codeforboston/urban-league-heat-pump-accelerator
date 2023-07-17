@@ -72,7 +72,11 @@ const Testimonial = () => {
                   Hear what else people have to say about their heat pumps!
                 </Typography>
                 <Box>
-                  <ButtonDarkBklue text="read more" to="testimonials" />
+                  <ButtonDarkBklue
+                    text="read more"
+                    to="https://goclean.masscec.com/customer-story/peter-installs-an-air-source-heat-pump-system/?utm_medium=cpc&utm_source=google&utm_campaign=brand"
+                    externalLink={true}
+                  />
                 </Box>
               </Item>
             </Grid>
