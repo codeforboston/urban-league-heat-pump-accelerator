@@ -24,25 +24,25 @@ function CarrouselHero(props) {
         <HeroPage
           title="Boston Residents Can "
           titleBold="Save Money with Heat Pumps"
-          text1="Heat pumps can help you "
-          textBold="save money"
-          text2=" on your home heating and cooling costs."
+          text1="Make your home heating and cooling "
+          textBold="less costly"
+          text2="."
           image={imageHeroFirst}
           link="https://www.masssave.com/residential/programs-and-services/income-based-offers/income-eligible-programs"
         />
       ),
     },
-    {
-      component: (
-        <HeroPage
-          title="BOSTON RESIDENTS CAN "
-          titleBold="BENEFIT FROM HEAT PUMPS"
-          text1="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
-          image={imageHeroSecond}
-          backColor="var(--bgColor-1)"
-        />
-      ),
-    },
+    // {
+    //   component: (
+    //     <HeroPage
+    //       title="BOSTON RESIDENTS CAN "
+    //       titleBold="BENEFIT FROM HEAT PUMPS"
+    //       text1="Heat pumps are effective, continuous, nearly silent and extremely energy efficient."
+    //       image={imageHeroSecond}
+    //       backColor="var(--bgColor-1)"
+    //     />
+    //   ),
+    // },
   ];
 
   return (
@@ -54,6 +54,7 @@ function CarrouselHero(props) {
         stopAutoPlayOnHover={false}
         interval="8000"
         indicators={false}
+        cycleNavigation={false}
         // autoPlay={false}
       >
         {items.map((item, i) => (
