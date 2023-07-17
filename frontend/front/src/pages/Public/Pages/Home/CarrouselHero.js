@@ -46,9 +46,7 @@ function CarrouselHero(props) {
   ];
 
   return (
-    <div
-      sx={{ height: { heroHeight }, minHeight: "100vh", position: "absolute" }}
-    >
+    <div>
       <Carousel
         animation="fade"
         stopAutoPlayOnHover={false}
@@ -56,6 +54,11 @@ function CarrouselHero(props) {
         indicators={false}
         cycleNavigation={false}
         // autoPlay={false}
+        styles={{
+          height: { heroHeight },
+          minHeight: "100vh",
+          position: "absolute",
+        }}
       >
         {items.map((item, i) => (
           <Item key={i} item={item} alt={item.alt} />
