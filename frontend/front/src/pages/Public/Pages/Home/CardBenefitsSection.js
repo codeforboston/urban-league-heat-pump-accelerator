@@ -87,12 +87,16 @@ const CardBenefitsSection = () => {
             alignItems="center"
             sx={{ mt: 1 }}
           >
-            <Typography variant="body" sx={{ color: "var(--color-text-3)" }}>
-              Learn more about&nbsp;
+            <Typography
+              variant="body"
+              sx={{ color: "var(--color-text-3)", display: "inline-block" }}
+            >
+              Learn more about
             </Typography>
             <Link to="benefits-heat-pump">
               <Typography variant="body" sx={{ color: "var(--color-text-2)" }}>
-                Benefits of Heat Pumps
+                <span style={{ textDecoration: "none" }}>&nbsp;</span>Benefits
+                of Heat Pumps&nbsp;
               </Typography>
             </Link>
           </Stack>
