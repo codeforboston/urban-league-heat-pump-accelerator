@@ -1,14 +1,20 @@
-import { Snackbar, Alert } from "@mui/material";
+import { Alert, Snackbar } from "@mui/material";
+
+import { useState } from "react";
 
 function CustomSnackbar({
-  open,
-  onClose,
   message = "This is an error Snackbar",
   severity = "error",
 }) {
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
-    <Snackbar open={open} autoHideDuration={6000} onClose={onClose}>
-      <Alert onClose={onClose} severity={severity}>
+    <Snackbar
+      open={isOpen}
+      autoHideDuration={6000}
+      onClose={() => setIsOpen(false)}
+    >
+      <Alert severity={severity} onClose={() => setIsOpen(false)}>
         {message}
       </Alert>
     </Snackbar>

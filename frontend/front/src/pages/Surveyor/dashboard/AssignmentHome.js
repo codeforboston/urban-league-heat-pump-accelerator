@@ -8,12 +8,18 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import DialogMenu from "./DialogMenu";
+
 import { useNavigate } from "react-router-dom";
 
-export const AssignmentHome = ({ home, handleToggle, checked }) => {
+export const AssignmentHome = ({
+  home,
+  handleToggle,
+  checked,
+  selectionCap,
+}) => {
   const labelId = `checkbox-list-secondary-label-${home}`;
   const navigate = useNavigate();
+
   return (
     <ListItem
       key={home?.visit_order + home?.street_number}
@@ -22,8 +28,9 @@ export const AssignmentHome = ({ home, handleToggle, checked }) => {
         <Checkbox
           edge="end"
           onChange={handleToggle(home)}
-          checked={checked.indexOf(home) !== -1}
+          checked={checked}
           inputProps={{ "aria-labelledby": labelId }}
+          disabled={selectionCap && !checked}
         />
       }
     >
@@ -55,16 +62,16 @@ export const AssignmentHome = ({ home, handleToggle, checked }) => {
                 {home.completed === "true" ? (
                   <Typography color="green">Completed</Typography>
                 ) : (
-                  <Typography color="red">Incompleted</Typography>
+                  <Typography color="red">Incomplete</Typography>
                 )}
               </Box>
             </Box>
           }
         />
       </ListItemButton>
-      <Box pt={0.5} pl={1}>
+      {/* <Box pt={0.5} pl={1}>
         <DialogMenu value={home} />
-      </Box>
+      </Box> */}
     </ListItem>
   );
 };

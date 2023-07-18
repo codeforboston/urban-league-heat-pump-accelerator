@@ -1,7 +1,8 @@
 import { Breadcrumbs, Link, Stack, Typography } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { Link as RouterLink, useParams } from "react-router-dom";
 import { selectBreadcrumbs, setBreadcrumbs } from "./breadcrumbSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+import { Link as RouterLink } from "react-router-dom";
 
 export const BreadcrumbNav = () => {
   const dispatch = useDispatch();
@@ -16,9 +17,6 @@ export const BreadcrumbNav = () => {
     }
     dispatch(setBreadcrumbs(links));
   };
-
-  const params = useParams();
-  console.log(params);
 
   return (
     <Stack m="10px">

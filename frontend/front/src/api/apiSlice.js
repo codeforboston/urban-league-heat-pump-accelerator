@@ -187,7 +187,8 @@ export const apiSlice = createApi({
         body: surveyVisit,
         headers: [[`Recaptcha-Token`, recaptcha]],
       }),
-      invalidatesTags: ["SurveyVisit"],
+      // invalidate Assignment so that the dashboard updates appropriately
+      invalidatesTags: ["SurveyVisit", "Assignment"],
     }),
     updateSurveyVisit: builder.mutation({
       query: ({ id, body }) => {
@@ -301,6 +302,23 @@ export const apiSlice = createApi({
         ...result.map(({ id }) => ({ type: "Assignment", id })),
       ],
     }),
+    getAssignmentsForSurveyor: builder.query({
+      query: (surveyorId) => `/assignments?surveyor_id=${surveyorId}`,
+      transformResponse: (res) =>
+        res
+          ? res
+              .map((a) => ({
+                ...a,
+                // derive assignment completeness from home completeness
+                completed: a.homes.some((h) => h.completed === true),
+              }))
+              .sort(sortById)
+          : [],
+      providesTags: (result = [], error, arg) => [
+        "Assignment",
+        ...result.map(({ id }) => ({ type: "Assignment", id })),
+      ],
+    }),
     getAssignment: builder.query({
       query: (id) => `/assignments/${id}`,
       providesTags: (result, error, arg) => [{ type: "Assignment", id: arg }],
@@ -321,6 +339,32 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: (result, error, arg) => [
         { type: "Assignment", id: arg.id },
+      ],
+    }),
+    addAssignmentsToSurveyor: builder.mutation({
+      query: ({ surveyorId, assignmentIds }) => ({
+        url: "/assignments_surveyors",
+        method: "POST",
+        body: { surveyor_id: surveyorId, assignment_ids: assignmentIds },
+      }),
+      invalidatesTags: (result, error, arg) => [
+        "Assignment",
+        "Surveyor",
+        ...arg.assignmentIds.map((a) => ({ type: "Assignment", id: a })),
+        { type: "Surveyor", id: arg.surveyorId },
+      ],
+    }),
+    removeAssignmentsFromSurveyor: builder.mutation({
+      query: ({ surveyorId, assignmentIds }) => ({
+        url: "/assignments_surveyors",
+        method: "DELETE",
+        body: { surveyor_id: surveyorId, assignment_ids: assignmentIds },
+      }),
+      invalidatesTags: (result, error, arg) => [
+        "Assignment",
+        "Surveyor",
+        ...arg.assignmentIds.map((a) => ({ type: "Assignment", id: a })),
+        { type: "Surveyor", id: arg.surveyorId },
       ],
     }),
     deleteAssignment: builder.mutation({
@@ -421,7 +465,11 @@ export const {
   useUpdateAssignmentMutation,
   useDeleteAssignmentMutation,
   useGetAssignmentsQuery,
+  useGetAssignmentsForSurveyorQuery,
   useGetAssignmentQuery,
+
+  useAddAssignmentsToSurveyorMutation,
+  useRemoveAssignmentsFromSurveyorMutation,
 
   // Property assessments
   useGetPropertyAssessmentsQuery,

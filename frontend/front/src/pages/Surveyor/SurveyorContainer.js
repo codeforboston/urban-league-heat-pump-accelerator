@@ -18,11 +18,11 @@ const SurveyorContainer = () => {
       {isLoggedIn ? <Nav /> : ""}
       <Box sx={{ maxWidth: "800px" }} m="auto">
         <Routes>
-          <Route path="/*" element={<Navigate to="/surveyor/dashboard" />} />
           <Route path="dashboard" element={<Dashboard />}></Route>
           <Route path="account" element={<Account />}></Route>
           <Route path="account/edit" element={<EditAccount />}></Route>
           <Route path="house/:id" element={<HouseProfile />}></Route>
+          <Route path="/*" element={<Navigate to="/surveyor/dashboard" />} />
         </Routes>
       </Box>
     </Box>
