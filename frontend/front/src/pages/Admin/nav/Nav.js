@@ -11,11 +11,14 @@ const Nav = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 1 }}>
             <Button color="inherit" component={Link} to="">
-              <Typography variant="h6">ADMIN</Typography>
+              <Typography variant="h6">DASHBOARD</Typography>
             </Button>
-          </Typography>
+            <Button color="inherit" component={Link} to="/surveyor/dashboard">
+              <Typography variant="h7">SURVEYOR MODE</Typography>
+            </Button>
+          </Box>
           <Button color="inherit" component={Link} onClick={logout}>
             <Typography variant="h6">LOG OUT</Typography>
           </Button>

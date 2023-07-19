@@ -48,3 +48,7 @@ export const selectIsLoggedIn = createSelector(
   [selectCurrentUser],
   (user) => !!user
 );
+export const selectCurrentUserEmail = createSelector(
+  [selectCurrentUser],
+  (user) => user?.email || null
+);
