@@ -92,4 +92,4 @@ end
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/MethodLength
-# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Metrics/PerceivedComplexit
