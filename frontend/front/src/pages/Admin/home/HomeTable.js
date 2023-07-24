@@ -25,12 +25,7 @@ const HomeTable = () => {
   const dispatch = useDispatch();
   const goToBreadcrumb = useGoToBreadcrumb();
 
-  dispatch(
-    setBreadcrumbs([
-      { url: "/admin/dashboard", description: "dashboard" },
-      { url: "/admin/home", description: "homes" },
-    ])
-  );
+  dispatch(setBreadcrumbs([{ url: "/admin/home", description: "homes" }]));
 
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
 

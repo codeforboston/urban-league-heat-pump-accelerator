@@ -21,10 +21,7 @@ const AssignTable = () => {
   const dispatch = useDispatch();
   const goToBreadcrumb = useGoToBreadcrumb();
   dispatch(
-    setBreadcrumbs([
-      { url: "/admin/dashboard", description: "dashboard" },
-      { url: "/admin/assignment", description: "assignments" },
-    ])
+    setBreadcrumbs([{ url: "/admin/assignment", description: "assignments" }])
   );
 
   const [selectedSurveyor, setSelectedSurveyor] = useState("");

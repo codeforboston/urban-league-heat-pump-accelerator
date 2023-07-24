@@ -30,12 +30,7 @@ const UserTable = () => {
   const dispatch = useDispatch();
   const goToBreadcrumb = useGoToBreadcrumb();
 
-  dispatch(
-    setBreadcrumbs([
-      { url: "/admin/dashboard", description: "dashboard" },
-      { url: "/admin/user", description: "users" },
-    ])
-  );
+  dispatch(setBreadcrumbs([{ url: "/admin/user", description: "users" }]));
 
   const {
     data: rows,

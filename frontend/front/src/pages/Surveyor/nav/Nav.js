@@ -32,7 +32,7 @@ const Nav = () => {
             </Button>
 
             {userIsAdmin && (
-              <Button color="inherit" component={Link} to="/admin/dashboard">
+              <Button color="inherit" component={Link} to="/admin">
                 <Typography variant="h7" component="div">
                   ADMIN MODE
                 </Typography>

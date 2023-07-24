@@ -27,7 +27,6 @@ const AssignProfile = () => {
   if (!thereAreBreadcrumbs) {
     dispatch(
       setBreadcrumbs([
-        { url: "/admin/dashboard", description: "dashboard" },
         { url: "/admin/assignment", description: "assignments" },
         {
           url: `/admin/assignment/assignProfile/${aid}`,
