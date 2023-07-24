@@ -13,6 +13,7 @@ import Loader from "../../../components/Loader";
 import { SurveyError } from "../survey/SurveyError";
 import { formatISODate } from "../../../components/DateUtils";
 import { houseToString } from "../../../components/AddressUtils";
+import { withAdminPrefix, ADMIN_SURVEY } from "../../../routing/routes";
 
 const SurveyProfile = () => {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ const SurveyProfile = () => {
 
   const onDelete = useCallback(() => {
     deleteSurveyVisit(surveyVisitId);
-    navigate("/admin/survey");
+    navigate(withAdminPrefix(ADMIN_SURVEY));
   }, [deleteSurveyVisit, surveyVisitId, navigate]);
 
   return (

@@ -13,6 +13,7 @@ import {
   useGetSurveyVisitsQuery,
 } from "../../../api/apiSlice";
 import { useNavigate } from "react-router-dom";
+import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -30,10 +31,10 @@ const HomeTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
   const navigate = useNavigate();
 
-  useInitBreadcrumbs([
-    { url: "/admin/dashboard", description: "dashboard" },
-    { url: "/admin/home", description: "homes" },
-  ]);
+  useInitBreadcrumbs(
+    [{ url: withAdminPrefix(ADMIN_HOME), description: "homes" }],
+    true
+  );
 
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
   const handleUserLink = (visit) => navigate("/admin/survey/visit/" + visit);
