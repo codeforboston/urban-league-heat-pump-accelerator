@@ -10,6 +10,7 @@ import React from "react";
 import { selectCurrentUserEmail } from "../../../features/login/loginSlice";
 import { useLogoutUserMutation } from "../../../api/apiSlice";
 import { useSelector } from "react-redux";
+import { ADMIN_ROUTE } from "../../../routing/routes";
 
 const Nav = () => {
   const [logout] = useLogoutUserMutation();
@@ -32,7 +33,7 @@ const Nav = () => {
             </Button>
 
             {userIsAdmin && (
-              <Button color="inherit" component={Link} to="/admin/dashboard">
+              <Button color="inherit" component={Link} to={ADMIN_ROUTE}>
                 <Typography variant="h7" component="div">
                   ADMIN MODE
                 </Typography>

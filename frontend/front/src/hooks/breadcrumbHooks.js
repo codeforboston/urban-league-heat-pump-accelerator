@@ -54,13 +54,13 @@ export const useGoToBreadcrumb = () => {
   };
 };
 
-export const useInitBreadcrumbs = (breadcrumbs) => {
+export const useInitBreadcrumbs = (breadcrumbs, overwrite) => {
   const dispatch = useDispatch();
   const thereAreBreadcrumbs = useSelector(selectBreadcrumbsExist);
 
   useEffect(() => {
-    if (!thereAreBreadcrumbs) {
+    if (!thereAreBreadcrumbs || overwrite) {
       dispatch(setBreadcrumbs(breadcrumbs));
     }
-  }, [dispatch, breadcrumbs, thereAreBreadcrumbs]);
+  }, [dispatch, breadcrumbs, thereAreBreadcrumbs, overwrite]);
 };

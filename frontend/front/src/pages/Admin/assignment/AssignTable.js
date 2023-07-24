@@ -17,13 +17,14 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Loader from "../../../components/Loader";
 import Select from "@mui/material/Select";
+import { ADMIN_ASSIGNMENT, withAdminPrefix } from "../../../routing/routes";
 
 const AssignTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
-  useInitBreadcrumbs([
-    { url: "/admin/dashboard", description: "dashboard" },
-    { url: "/admin/assignment", description: "assignments" },
-  ]);
+  useInitBreadcrumbs(
+    [{ url: withAdminPrefix(ADMIN_ASSIGNMENT), description: "assignments" }],
+    true
+  );
 
   const [selectedSurveyor, setSelectedSurveyor] = useState("");
   const [selectedAssignments, setSelectedAssignments] = useState([]);

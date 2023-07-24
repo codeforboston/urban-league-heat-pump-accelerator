@@ -8,6 +8,7 @@ import Loader from "../../../components/Loader";
 import { SurveyError } from "./SurveyError";
 import { formatISODate } from "../../../components/DateUtils";
 import { useGetSurveysQuery } from "../../../api/apiSlice";
+import { ADMIN_SURVEY, withAdminPrefix } from "../../../routing/routes";
 
 const COLUMNS = [
   { field: "id", headerName: "ID", flex: 1 },
@@ -19,10 +20,10 @@ const COLUMNS = [
 const SurveyTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
 
-  useInitBreadcrumbs([
-    { url: "/admin/dashboard", description: "dashboard" },
-    { url: "/admin/survey", description: "surveys" },
-  ]);
+  useInitBreadcrumbs(
+    [{ url: withAdminPrefix(ADMIN_SURVEY), description: "surveys" }],
+    true
+  );
 
   const {
     data: surveyData,

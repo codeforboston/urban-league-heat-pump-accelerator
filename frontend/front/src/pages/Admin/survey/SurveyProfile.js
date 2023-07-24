@@ -7,15 +7,19 @@ import { SurveyEditorForm } from "./SurveyEditorForm";
 import { useGetSurveyStructureQuery } from "../../../api/apiSlice";
 import { useInitBreadcrumbs } from "../../../hooks/breadcrumbHooks";
 import { useParams } from "react-router-dom";
+import {
+  adminSurveyEdit,
+  ADMIN_SURVEY,
+  withAdminPrefix,
+} from "../../../routing/routes";
 
 const SurveyProfile = () => {
   const { uid: surveyVisitId } = useParams();
 
   useInitBreadcrumbs([
-    { url: "/admin/dashboard", description: "dashboard" },
-    { url: "/admin/survey", description: "surveys" },
+    { url: withAdminPrefix(ADMIN_SURVEY), description: "surveys" },
     {
-      url: `/admin/survey/edit/${surveyVisitId}`,
+      url: withAdminPrefix(adminSurveyEdit(surveyVisitId)),
       description: `survey ${surveyVisitId}`,
     },
   ]);
