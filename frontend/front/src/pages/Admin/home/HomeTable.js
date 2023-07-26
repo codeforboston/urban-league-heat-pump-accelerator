@@ -9,6 +9,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../../../components/Loader";
 import React from "react";
 import { useGetHomesQuery } from "../../../api/apiSlice";
+import { useHomesWithCompleted } from "../../../hooks/useHomesWithCompleted";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -61,7 +62,7 @@ const HomeTable = () => {
     {
       field: "completed",
       headerName: "Completed",
-      renderCell: (params) => (params.row.completed === "true" ? "Yes" : "No"),
+      renderCell: (params) => (params.row.completed === true ? "Yes ✅" : "No"),
       minWidth: 100,
       maxWidth: 150,
       flex: 0.8,
@@ -104,6 +105,8 @@ const HomeTable = () => {
     isLoading: isHomesDataLoading,
   } = useGetHomesQuery();
 
+  const homesWithCompleted = useHomesWithCompleted(homesData);
+
   if (isHomesDataLoading) {
     return <Loader />;
   }
@@ -118,7 +121,7 @@ const HomeTable = () => {
         />
       ) : (
         <DataGrid
-          rows={homesData}
+          rows={homesWithCompleted}
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}

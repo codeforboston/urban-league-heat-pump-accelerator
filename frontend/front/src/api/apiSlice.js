@@ -310,7 +310,7 @@ export const apiSlice = createApi({
               .map((a) => ({
                 ...a,
                 // derive assignment completeness from home completeness
-                completed: a.homes.some((h) => h.completed === true),
+                completed: a.homes.every((h) => h.completed === true),
               }))
               .sort(sortById)
           : [],
