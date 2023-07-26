@@ -122,7 +122,7 @@ const HomeTable = () => {
   ];
 
   const {
-    data: fetchedHomesData,
+    data: homesData,
     isError: isFetchedHomesError,
     isLoading: isHomesDataLoading,
   } = useGetHomesQuery();
@@ -132,20 +132,8 @@ const HomeTable = () => {
     isLoading: isSurveyVisitsDataLoading,
   } = useGetSurveyVisitsQuery();
 
-  let homesData = [];
-
-  if (surveyVisitsData && fetchedHomesData) {
-    homesData = Object.values(fetchedHomesData).map((home) => {
-      const visit = surveyVisitsData.find((visit) => visit.home_id === home.id);
-      if (visit) {
-        return { ...home, completed: true, survey_id: visit.id };
-      }
-      return home;
-    });
-  }
-
   const isDataReady =
-    !isHomesDataLoading && !isSurveyVisitsDataLoading && fetchedHomesData;
+    !isHomesDataLoading && !isSurveyVisitsDataLoading && homesData;
 
   if (!isDataReady) {
     return <Loader />;
