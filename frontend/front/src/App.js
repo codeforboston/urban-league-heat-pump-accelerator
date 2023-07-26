@@ -2,7 +2,7 @@ import "./App.css";
 
 import * as routes from "./routing/routes";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import {
   ROLE_ADMIN,
   ROLE_SURVEYOR,
@@ -15,7 +15,6 @@ import Login from "./features/login/Login";
 import { ProtectedRoute } from "./routing/ProtectedRoute";
 import PublicContainer from "./pages/Public/PublicContainer";
 import SurveyorContainer from "./pages/Surveyor/SurveyorContainer";
-import ViewMenu from "./pages/viewMenu/ViewMenu";
 
 function App() {
   // update jwt
@@ -25,7 +24,7 @@ function App() {
     <Box>
       <BrowserRouter>
         <Routes>
-          <Route index element={<ViewMenu />} />
+          <Route index element={<Navigate to={routes.PUBLIC_ROUTE} />} />
 
           <Route
             path={`${routes.SURVEYOR_ROUTE}/*`}
