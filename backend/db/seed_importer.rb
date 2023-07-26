@@ -73,16 +73,19 @@ module SeedImporter
     SmarterCSV.process(File.join(clustered_ordered_parcels), options) do |chunk|
       chunk.each do |data_hash|
         key_mapping = {
-          ST_NUM: :street_number,
-          ST_NAME: :street_name,
-          UNIT_NUM: :unit_number,
-          CITY: :city,
-          ZIPCODE: :zip_code,
-          LU_DESC: :building_type,
+          st_num: :street_number,
+          st_name: :street_name,
+          unit_num: :unit_number,
+          zipcode: :zip_code,
+          lu_desc: :building_type,
           cluster: :assignment_id,
-          ORDER: :visit_order
+          order: :visit_order
         }
-        home = Home.new(data_hash.transform_keys(key_mapping).slice(key_mapping.values))
+        home = Home.new(data_hash.transform_keys(key_mapping).slice(*Home.new.attributes.symbolize_keys.keys))
+        home.state = "MA" if home.state.blank?
+        if home.zip_code.length == 4
+          home.zip_code = "0" + home.zip_code
+        end
         home.save!
       end
     end
