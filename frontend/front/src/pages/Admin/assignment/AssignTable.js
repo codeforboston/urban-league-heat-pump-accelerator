@@ -51,17 +51,19 @@ const AssignTable = () => {
     isLoading: isSurveyorsDataLoading,
   } = useGetSurveyorsQuery();
 
+  const assignmentsWithCompleted = useAssignmentsWithCompleted(assignmentsData);
+
   const tableData = useMemo(
     () =>
-      assignmentsData && surveyorsData
-        ? assignmentsData.map((a) => ({
+      assignmentsWithCompleted && surveyorsData
+        ? assignmentsWithCompleted.map((a) => ({
             ...a,
             surveyorData: a.surveyor_ids.map((id) =>
               surveyorsData.find((s) => s.id === id)
             ),
           }))
         : [],
-    [assignmentsData, surveyorsData]
+    [assignmentsWithCompleted, surveyorsData]
   );
 
   const [

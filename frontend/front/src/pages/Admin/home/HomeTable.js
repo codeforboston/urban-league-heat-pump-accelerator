@@ -76,6 +76,7 @@ const HomeTable = () => {
     {
       field: "completed",
       headerName: "Completed",
+<<<<<<< HEAD
       renderCell: (params) =>
         params.row.completed === true ? (
           <Button
@@ -90,6 +91,9 @@ const HomeTable = () => {
         ) : (
           "No"
         ),
+=======
+      renderCell: (params) => (params.row.completed === true ? "Yes ✅" : "No"),
+>>>>>>> bf45d58 (438: query survey_visits to mark things completed)
       minWidth: 100,
       maxWidth: 150,
       flex: 0.8,
@@ -137,6 +141,7 @@ const HomeTable = () => {
     isLoading: isSurveyVisitsDataLoading,
   } = useGetSurveyVisitsQuery();
 
+<<<<<<< HEAD
   const homeIdToSurveyVisitIdMap = surveyVisitsData
     ? surveyVisitsData.reduce((acc, visit) => {
         return { ...acc, [visit.home_id]: visit.id };
@@ -147,6 +152,11 @@ const HomeTable = () => {
     !isHomesDataLoading && !isSurveyVisitsDataLoading && homesData;
 
   if (!isDataReady) {
+=======
+  const homesWithCompleted = useHomesWithCompleted(homesData);
+
+  if (isHomesDataLoading) {
+>>>>>>> bf45d58 (438: query survey_visits to mark things completed)
     return <Loader />;
   }
 
@@ -159,6 +169,7 @@ const HomeTable = () => {
           severity="error"
         />
       ) : (
+<<<<<<< HEAD
         <>
           {isSurveyVisitsError && (
             <CustomSnackbar
@@ -176,6 +187,16 @@ const HomeTable = () => {
             autoHeight
           />
         </>
+=======
+        <DataGrid
+          rows={homesWithCompleted}
+          columns={columns}
+          pageSize={20}
+          rowsPerPageOptions={[20]}
+          disableSelectionOnClick
+          autoHeight
+        />
+>>>>>>> bf45d58 (438: query survey_visits to mark things completed)
       )}
     </Box>
   );
