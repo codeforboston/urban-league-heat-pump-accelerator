@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const breadcrumbSlice = createSlice({
   name: "breadcrumbs",
@@ -27,3 +27,8 @@ export const { pushBreadcrumb, setBreadcrumbs } = breadcrumbSlice.actions;
 export const selectBreadcrumbs = (state) => state.breadcrumbs.links;
 
 export const breadcrumbsReducer = breadcrumbSlice.reducer;
+
+export const selectBreadcrumbsExist = createSelector(
+  [selectBreadcrumbs],
+  (b) => b.length > 0
+);

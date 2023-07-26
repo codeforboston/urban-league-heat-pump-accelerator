@@ -1,5 +1,11 @@
-import { useDispatch } from "react-redux";
-import { pushBreadcrumb } from "../features/breadcrumb/breadcrumbSlice";
+import {
+  pushBreadcrumb,
+  selectBreadcrumbsExist,
+  setBreadcrumbs,
+} from "../features/breadcrumb/breadcrumbSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const useGoToBreadcrumb = () => {
@@ -27,6 +33,10 @@ export const useGoToBreadcrumb = () => {
         url = `/admin/user/userProfile/${data?.user_id}`;
         description = `${data?.firstname} ${data.lastname}`;
         break;
+      case "surveyEdit":
+        url = `/admin/survey/edit/${data.id}`;
+        description = `Survey ${data.id}`;
+        break;
       default:
         url = data.url;
         description = data.description || type;
@@ -42,4 +52,15 @@ export const useGoToBreadcrumb = () => {
     );
     navigate(url);
   };
+};
+
+export const useInitBreadcrumbs = (breadcrumbs) => {
+  const dispatch = useDispatch();
+  const thereAreBreadcrumbs = useSelector(selectBreadcrumbsExist);
+
+  useEffect(() => {
+    if (!thereAreBreadcrumbs) {
+      dispatch(setBreadcrumbs(breadcrumbs));
+    }
+  }, [dispatch, breadcrumbs, thereAreBreadcrumbs]);
 };
