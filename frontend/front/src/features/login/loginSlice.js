@@ -25,7 +25,7 @@ const loginSlice = createSlice({
           meta.baseQueryMeta.response.headers.get(AUTHORIZATION_HEADER);
         state.token = token;
         state.user = decodeJwt(token);
-        if (token) {
+        if (meta.arg.originalArgs.remember) {
           localStorage.setItem(AUTH_TOKEN_LOCAL_STORAGE_KEY, token);
         }
       }
