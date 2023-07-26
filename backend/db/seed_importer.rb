@@ -82,10 +82,8 @@ module SeedImporter
           order: :visit_order
         }
         home = Home.new(data_hash.transform_keys(key_mapping).slice(*Home.new.attributes.symbolize_keys.keys))
-        home.state = "MA" if home.state.blank?
-        if home.zip_code.length == 4
-          home.zip_code = "0" + home.zip_code
-        end
+        home.state = 'MA' if home.state.blank?
+        home.zip_code = "0#{home.zip_code}" if home.zip_code.length == 4
         home.save!
       end
     end
@@ -95,4 +93,3 @@ end
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/MethodLength
-# rubocop:enable Metrics/PerceivedComplexit
