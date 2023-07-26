@@ -10,6 +10,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Loader from "../../../components/Loader";
 import { useAssignmentsForCurrentUser } from "../../../hooks/useDataForSurveyor";
 import { useSearchParams } from "react-router-dom";
+import { useAssignmentsWithCompleted } from "../../../hooks/useHomesWithCompleted";
 
 const ListView = () => {
   const {
@@ -18,14 +19,18 @@ const ListView = () => {
     error: isAssignmentsError,
   } = useAssignmentsForCurrentUser();
 
+  const assignmentsWithCompleted = useAssignmentsWithCompleted(assignmentsData);
+
   const [openAccordion, setOpenAccordion] = useState();
 
   const [searchParams] = useSearchParams();
 
   // open the accordion of the first incomplete assignment when the page opens
   useEffect(() => {
-    setOpenAccordion((assignmentsData || []).find((a) => !a.completed)?.id);
-  }, [assignmentsData]);
+    setOpenAccordion(
+      (assignmentsWithCompleted || []).find((a) => !a.completed)?.id
+    );
+  }, [assignmentsWithCompleted]);
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -49,12 +54,12 @@ const ListView = () => {
         <Box>
           <Stack my={3} alignItems="center">
             <Typography variant="h4">Your Assignments</Typography>
-            {(!assignmentsData || assignmentsData.length === 0) && (
+            {(!assignmentsWithCompleted || assignmentsData.length === 0) && (
               <Typography variant="h5">No assignments found.</Typography>
             )}
           </Stack>
 
-          {assignmentsData?.map((item, i) => {
+          {assignmentsWithCompleted?.map((item, i) => {
             return (
               <Box my={2} key={item.id}>
                 <Accordion
