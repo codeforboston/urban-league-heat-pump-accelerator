@@ -48,7 +48,10 @@ const AssignProfile = () => {
     : "Unassigned";
 
   const handleUserLink = (user) => goToBreadcrumb("user", user);
-  const handleHomeLink = (home) => goToBreadcrumb("home", home);
+  const handleHomeLink = (home) => {
+    console.log(home);
+    goToBreadcrumb("home", home);
+  };
 
   const columns = [
     // { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
@@ -57,9 +60,23 @@ const AssignProfile = () => {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
-      minWidth: 200,
-      maxWidth: 300,
-      flex: 1.5,
+      minWidth: 300,
+      // maxWidth: 300,
+      // flex: 1.5,
+      renderCell: (params) => (
+        <Box minWidth="max-content" m={0}>
+          <Button
+            onClick={() => handleHomeLink(params.row)}
+            sx={{
+              textAlign: "left",
+              minWidth: "max-content",
+              padding: 0,
+            }}
+          >
+            {params.value}
+          </Button>
+        </Box>
+      ),
     },
     {
       field: "zip_code",
@@ -91,22 +108,6 @@ const AssignProfile = () => {
           color="primary"
           size="small"
           onClick={() => handleUserLink(params.row)}
-        >
-          View
-        </Button>
-      ),
-    },
-    {
-      field: "hid",
-      headerName: "Home",
-      minWidth: 50,
-      maxWidth: 80,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="primary"
-          size="small"
-          onClick={() => handleHomeLink(params.row)}
         >
           View
         </Button>

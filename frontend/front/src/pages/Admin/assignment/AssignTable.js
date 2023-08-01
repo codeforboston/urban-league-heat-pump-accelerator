@@ -125,7 +125,6 @@ const AssignTable = () => {
     {
       field: "surveyorData",
       headerName: "Surveyor(s)",
-      // width: 150,
       flex: 1,
       renderCell: (params) => {
         return params.row.surveyorData ? (
@@ -142,8 +141,6 @@ const AssignTable = () => {
                   key={`surveyor-${surveyor.id}`}
                   onClick={() => handleUserLink(surveyor)}
                   sx={{
-                    // justifyContent: "flex-start",
-                    // alignItems: "flex-start",
                     textAlign: "left",
                     minWidth: "max-content",
                   }}
