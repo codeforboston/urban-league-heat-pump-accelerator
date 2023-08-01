@@ -102,12 +102,26 @@ const AssignTable = () => {
 
   const handleUserLink = (user) => goToBreadcrumb("user", user);
 
-  const handleRowClick = (assignment) => {
+  const handleAssignmentLink = (assignment) => {
     goToBreadcrumb("assignment", assignment);
   };
   // DataGrid columns
   const columns = [
-    { field: "id", headerName: "Id #", maxWidth: 50, flex: 1 },
+    {
+      field: "id",
+      headerName: "Id #",
+      maxWidth: 50,
+      flex: 1,
+      renderCell: (params) => (
+        <Button
+          variant="outlined"
+          onClick={() => handleAssignmentLink(params.row)}
+          sx={{ minWidth: "fit-content", width: "auto" }}
+        >
+          {params.row.id}
+        </Button>
+      ),
+    },
     {
       field: "surveyorData",
       headerName: "Surveyor(s)",
@@ -217,7 +231,7 @@ const AssignTable = () => {
           checkboxSelection
           onSelectionModelChange={handleSelectionModelChange}
           selectionModel={selectedAssignments}
-          onRowClick={(params) => handleRowClick(params.row)}
+          // onRowClick={(params) => handleRowClick(params.row)}
         />
       </Box>
     </Box>
