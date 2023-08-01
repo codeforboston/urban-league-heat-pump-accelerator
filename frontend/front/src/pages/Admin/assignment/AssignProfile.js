@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import {
   useGetAssignmentQuery,
   useGetSurveyorsQuery,
@@ -51,7 +51,7 @@ const AssignProfile = () => {
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
 
   const columns = [
-    { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
+    // { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
     { field: "visit_order", headerName: "Visit order", maxWidth: 100, flex: 1 },
     {
       field: "address",
@@ -150,25 +150,28 @@ const AssignProfile = () => {
         />
       ) : (
         <Box>
-          <Box
+          <Stack
             py={3}
-            display="flex"
             justifyContent="flex-start"
-            alignItems="center"
+            alignItems="flex-start"
+            gap={1}
+            direction={["column", "row"]}
           >
             <Typography variant="h5" sx={{ mr: 3 }}>
               Assigned Surveyor(s):
             </Typography>
-            {surveyors.map((surveyor) => (
-              <Button
-                variant="outlined"
-                color="primary"
-                onClick={() => handleUserLink(surveyor)}
-              >
-                {`${surveyor.lastname}, ${surveyor.firstname}`}
-              </Button>
-            ))}
-          </Box>
+            <Box display="flex" gap={1}>
+              {surveyors.map((surveyor) => (
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => handleUserLink(surveyor)}
+                >
+                  {`${surveyor.lastname}, ${surveyor.firstname}`}
+                </Button>
+              ))}
+            </Box>
+          </Stack>
           <div style={{ width: "100%" }}>
             <DataGrid
               rows={assignmentData.homes}
