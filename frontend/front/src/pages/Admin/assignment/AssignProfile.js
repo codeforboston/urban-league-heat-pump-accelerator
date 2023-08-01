@@ -156,7 +156,7 @@ const AssignProfile = () => {
             justifyContent="flex-start"
             alignItems="flex-start"
             gap={1}
-            direction={["column", "row"]}
+            direction={["column", null, null, "row"]}
           >
             <Typography variant="h5" sx={{ mr: 3 }}>
               Assigned Surveyor(s):
@@ -164,6 +164,7 @@ const AssignProfile = () => {
             <Box display="flex" gap={1}>
               {surveyors.map((surveyor) => (
                 <Button
+                  key={surveyor.id}
                   variant="outlined"
                   color="primary"
                   onClick={() => handleUserLink(surveyor)}

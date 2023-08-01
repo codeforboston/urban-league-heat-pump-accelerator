@@ -2,7 +2,7 @@ import { createTheme, responsiveFontSizes } from "@mui/material";
 
 /* The custom colors palette is located in the Index.css file. */
 
-const adminTheme = createTheme({
+let adminTheme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
@@ -14,12 +14,15 @@ const adminTheme = createTheme({
       xl: 1920,
     },
   },
+});
+
+adminTheme = createTheme(adminTheme, {
   typography: {
     h3: {
-      fontSize: ["2rem", "2rem", "3rem"],
+      [adminTheme.breakpoints.down("sm")]: { fontSize: "2.5rem" },
+      [adminTheme.breakpoints.down("smm")]: { fontSize: "2rem" },
     },
   },
-  components: {},
 });
 
 export default adminTheme;

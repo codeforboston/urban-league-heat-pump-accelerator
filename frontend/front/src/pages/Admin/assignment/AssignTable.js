@@ -196,7 +196,12 @@ const AssignTable = () => {
         <CustomSnackbar message="Error removing assignment" severity="error" />
       )}
 
-      <Stack direction={["column", "row"]} spacing={1} py={3} gap={1}>
+      <Stack
+        direction={["column", null, null, "row"]}
+        spacing={1}
+        py={3}
+        gap={1}
+      >
         <Box sx={{ minWidth: 200 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
