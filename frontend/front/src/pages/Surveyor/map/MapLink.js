@@ -26,6 +26,8 @@ function openGoogleMaps(locations) {
 }
 
 const MapLink = ({ homeData }) => {
+  // no idea what this is used for...
+  // eslint-disable-next-line no-unused-vars
   const [dashboardHomeData, setDashboardHomeData] = useState(homeData);
 
   console.log(dashboardHomeData);

@@ -65,6 +65,8 @@ SimpleDialog.propTypes = {
 
 export default function DialogMenu(props) {
   const [open, setOpen] = React.useState(false);
+  // no idea what this is used for...
+  // eslint-disable-next-line no-unused-vars
   const [selectedValue, setSelectedValue] = React.useState(props.value);
 
   const handleClickOpen = () => {
