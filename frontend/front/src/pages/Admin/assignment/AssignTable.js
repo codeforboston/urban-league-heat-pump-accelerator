@@ -17,7 +17,6 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Loader from "../../../components/Loader";
 import Select from "@mui/material/Select";
-import { useDispatch } from "react-redux";
 
 const AssignTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
@@ -108,25 +107,36 @@ const AssignTable = () => {
   };
   // DataGrid columns
   const columns = [
-    { field: "id", headerName: "Id #", maxWidth: 100, flex: 1 },
+    { field: "id", headerName: "Id #", maxWidth: 50, flex: 1 },
     {
       field: "surveyorData",
       headerName: "Surveyor(s)",
-      width: 150,
+      // width: 150,
       flex: 1,
       renderCell: (params) => {
-        return params.row.surveyorData
-          ? params.row.surveyorData.map((surveyor) => {
+        return params.row.surveyorData ? (
+          <Stack maxWidth="100%" justifyContent="flex-start">
+            {params.row.surveyorData.map((surveyor) => {
               return (
                 <Button
                   key={`surveyor-${surveyor.id}`}
                   onClick={() => handleUserLink(surveyor)}
+                  sx={{
+                    // justifyContent: "flex-start",
+                    // alignItems: "flex-start",
+                    textAlign: "left",
+                    width: "max-content",
+                    maxWidth: "100%",
+                  }}
                 >
                   {`${surveyor.firstname} ${surveyor.lastname}`}
                 </Button>
               );
-            })
-          : "Unassigned";
+            })}
+          </Stack>
+        ) : (
+          "Unassigned"
+        );
       },
     },
     {
@@ -201,6 +211,7 @@ const AssignTable = () => {
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}
+          getRowHeight={() => "auto"}
           disableSelectionOnClick
           autoHeight
           checkboxSelection
