@@ -24,8 +24,8 @@ export const useGoToBreadcrumb = () => {
         }`;
         break;
       case "user":
-        url = `/admin/user/userProfile/${data?.user_id}`;
-        description = `${data?.firstname} ${data.lastname}`;
+        url = `/admin/user/userProfile/${data?.row.user_id}`;
+        description = `${data?.row.firstname} ${data.row.lastname}`;
         break;
       default:
         url = data.url;
