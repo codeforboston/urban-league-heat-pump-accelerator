@@ -129,7 +129,13 @@ const AssignTable = () => {
       flex: 1,
       renderCell: (params) => {
         return params.row.surveyorData ? (
-          <Stack maxWidth="100%" justifyContent="flex-start">
+          <Stack
+            direction="row"
+            maxWidth="100%"
+            justifyContent="flex-start"
+            overflow="scroll"
+            flexWrap="wrap"
+          >
             {params.row.surveyorData.map((surveyor) => {
               return (
                 <Button
@@ -139,8 +145,7 @@ const AssignTable = () => {
                     // justifyContent: "flex-start",
                     // alignItems: "flex-start",
                     textAlign: "left",
-                    width: "max-content",
-                    maxWidth: "100%",
+                    minWidth: "max-content",
                   }}
                 >
                   {`${surveyor.firstname} ${surveyor.lastname}`}
@@ -156,7 +161,8 @@ const AssignTable = () => {
     {
       field: "completed",
       headerName: "Completion",
-      width: 110,
+      width: "min-content",
+      maxWidth: 110,
       flex: 1,
       renderCell: (params) => {
         let completed = 0;
@@ -193,7 +199,7 @@ const AssignTable = () => {
         <CustomSnackbar message="Error removing assignment" severity="error" />
       )}
 
-      <Stack direction="row" spacing={1} py={3}>
+      <Stack direction={["column", "row"]} spacing={1} py={3} gap={1}>
         <Box sx={{ minWidth: 200 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
@@ -212,12 +218,18 @@ const AssignTable = () => {
             </Select>
           </FormControl>
         </Box>
-        <Button size="large" variant="outlined" onClick={handleAddSurveyor}>
-          Add
-        </Button>
-        <Button size="large" variant="outlined" onClick={handleRemoveSurveyor}>
-          Remove
-        </Button>
+        <Stack direction="row" gap={1}>
+          <Button size="large" variant="outlined" onClick={handleAddSurveyor}>
+            Add
+          </Button>
+          <Button
+            size="large"
+            variant="outlined"
+            onClick={handleRemoveSurveyor}
+          >
+            Remove
+          </Button>
+        </Stack>
       </Stack>
       <Box sx={{ height: "100%", width: "100%" }}>
         <DataGrid
