@@ -19,7 +19,12 @@ const Nav = () => {
               <Typography variant="h7">SURVEYOR MODE</Typography>
             </Button>
           </Box>
-          <Button color="inherit" component={Link} onClick={logout}>
+          <Button
+            color="inherit"
+            component={Link}
+            onClick={logout}
+            sx={{ minWidth: "max-content" }}
+          >
             <Typography variant="h6">LOG OUT</Typography>
           </Button>
         </Toolbar>
