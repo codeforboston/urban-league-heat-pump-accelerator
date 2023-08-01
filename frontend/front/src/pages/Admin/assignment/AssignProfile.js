@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import {
   useGetAssignmentQuery,
   useGetSurveyorsQuery,
@@ -48,18 +48,32 @@ const AssignProfile = () => {
     : "Unassigned";
 
   const handleUserLink = (user) => goToBreadcrumb("user", user);
-  const handleHomeLink = (home) => goToBreadcrumb("home", home);
+  const handleHomeLink = (home) => {
+    goToBreadcrumb("home", home);
+  };
 
   const columns = [
-    { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
     { field: "visit_order", headerName: "Visit order", maxWidth: 100, flex: 1 },
     {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
-      minWidth: 200,
-      maxWidth: 300,
-      flex: 1.5,
+      minWidth: 300,
+
+      renderCell: (params) => (
+        <Box minWidth="max-content" m={0}>
+          <Button
+            onClick={() => handleHomeLink(params.row)}
+            sx={{
+              textAlign: "left",
+              minWidth: "max-content",
+              padding: 0,
+            }}
+          >
+            {params.value}
+          </Button>
+        </Box>
+      ),
     },
     {
       field: "zip_code",
@@ -91,22 +105,6 @@ const AssignProfile = () => {
           color="primary"
           size="small"
           onClick={() => handleUserLink(params.row)}
-        >
-          View
-        </Button>
-      ),
-    },
-    {
-      field: "hid",
-      headerName: "Home",
-      minWidth: 50,
-      maxWidth: 80,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="primary"
-          size="small"
-          onClick={() => handleHomeLink(params.row)}
         >
           View
         </Button>
@@ -150,25 +148,29 @@ const AssignProfile = () => {
         />
       ) : (
         <Box>
-          <Box
+          <Stack
             py={3}
-            display="flex"
             justifyContent="flex-start"
-            alignItems="center"
+            alignItems="flex-start"
+            gap={1}
+            direction={["column", null, null, "row"]}
           >
             <Typography variant="h5" sx={{ mr: 3 }}>
               Assigned Surveyor(s):
             </Typography>
-            {surveyors.map((surveyor) => (
-              <Button
-                variant="outlined"
-                color="primary"
-                onClick={() => handleUserLink(surveyor)}
-              >
-                {`${surveyor.lastname}, ${surveyor.firstname}`}
-              </Button>
-            ))}
-          </Box>
+            <Box display="flex" gap={1}>
+              {surveyors.map((surveyor) => (
+                <Button
+                  key={surveyor.id}
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => handleUserLink(surveyor)}
+                >
+                  {`${surveyor.lastname}, ${surveyor.firstname}`}
+                </Button>
+              ))}
+            </Box>
+          </Stack>
           <div style={{ width: "100%" }}>
             <DataGrid
               rows={assignmentData.homes}
