@@ -22,7 +22,7 @@ import adminTheme from "../Public/Assets/adminTheme";
 const AdminContainer = () => {
   return (
     <ThemeProvider theme={adminTheme}>
-      <Box>
+      <Box mb={"36px"}>
         <Box>
           <Nav />
           <BreadcrumbNav />
