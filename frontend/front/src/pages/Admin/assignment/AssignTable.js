@@ -103,43 +103,12 @@ const AssignTable = () => {
 
   const handleUserLink = (user) => goToBreadcrumb("user", user);
 
-  const handleAssignmentLink = (assignment) =>
+  const handleRowClick = (assignment) => {
     goToBreadcrumb("assignment", assignment);
-
+  };
   // DataGrid columns
   const columns = [
-    { field: "id", headerName: "Assign. Id", maxWidth: 100, flex: 1 },
-    {
-      field: "assignment",
-      headerName: "Assignment",
-      minWidth: 110,
-      flex: 1,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="primary"
-          size="small"
-          onClick={() => handleAssignmentLink(params.row)}
-        >
-          View
-        </Button>
-      ),
-    },
-    {
-      field: "completed",
-      headerName: "Completion",
-      width: 110,
-      flex: 1,
-      renderCell: (params) => {
-        let completed = 0;
-        params.row.homes.forEach((home) => {
-          if (home?.completed === true) {
-            completed++;
-          }
-        });
-        return `${completed}/${params.row.homes.length}`;
-      },
-    },
+    { field: "id", headerName: "Id #", maxWidth: 100, flex: 1 },
     {
       field: "surveyorData",
       headerName: "Surveyor(s)",
@@ -158,6 +127,21 @@ const AssignTable = () => {
               );
             })
           : "Unassigned";
+      },
+    },
+    {
+      field: "completed",
+      headerName: "Completion",
+      width: 110,
+      flex: 1,
+      renderCell: (params) => {
+        let completed = 0;
+        params.row.homes.forEach((home) => {
+          if (home?.completed === true) {
+            completed++;
+          }
+        });
+        return `${completed}/${params.row.homes.length}`;
       },
     },
   ];
@@ -222,6 +206,7 @@ const AssignTable = () => {
           checkboxSelection
           onSelectionModelChange={handleSelectionModelChange}
           selectionModel={selectedAssignments}
+          onRowClick={(params) => handleRowClick(params.row)}
         />
       </Box>
     </Box>
