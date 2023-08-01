@@ -13,7 +13,6 @@ import TableRow from "@mui/material/TableRow";
 import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
 import { useDispatch } from "react-redux";
 import { useGetSurveyorsQuery } from "../../../api/apiSlice";
-import { useNavigate } from "react-router-dom";
 import { useGoToBreadcrumb } from "../../../hooks/breadcrumbHooks";
 
 const columns = [

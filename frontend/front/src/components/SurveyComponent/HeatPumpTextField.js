@@ -30,7 +30,7 @@ export const HeatPumpTextField = ({
     // whether or not email is automatically validated seems to depend on the browser
     if (type === "email") {
       ruleList.pattern = {
-        value: /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/,
+        value: /^[\w\-.]+@([\w-]+\.)+[\w-]{2,}$/,
         message: "Invalid email address.",
       };
     }
