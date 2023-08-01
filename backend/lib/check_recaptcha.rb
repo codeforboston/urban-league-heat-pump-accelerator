@@ -3,7 +3,7 @@
 require 'net/https'
 
 module CheckRecaptcha
-  def check_recaptcha(secret_key, response_token, recaptcha_action) # rubocop:disable Metrics/MethodLength
+  def check_recaptcha(secret_key, response_token, recaptcha_action)
     # Verify reCAPTCHA token per https://developers.google.com/recaptcha/docs/verify
     uri = URI.parse('https://www.google.com/recaptcha/api/siteverify')
 

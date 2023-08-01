@@ -20,7 +20,6 @@ class SurveyResponsesController < ApplicationController
   def edit; end
 
   # POST /survey_responses or /survey_responses.json
-  # rubocop:disable Metrics/MethodLength
   def create
     params_hash = survey_response_params.to_h
     params_hash[:ip] = request.ip
@@ -37,7 +36,6 @@ class SurveyResponsesController < ApplicationController
       end
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   # PATCH/PUT /survey_responses/1 or /survey_responses/1.json
   def update
