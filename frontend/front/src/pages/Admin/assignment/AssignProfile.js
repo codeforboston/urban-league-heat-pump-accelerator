@@ -54,15 +54,13 @@ const AssignProfile = () => {
   };
 
   const columns = [
-    // { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
     { field: "visit_order", headerName: "Visit order", maxWidth: 100, flex: 1 },
     {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
       minWidth: 300,
-      // maxWidth: 300,
-      // flex: 1.5,
+
       renderCell: (params) => (
         <Box minWidth="max-content" m={0}>
           <Button
