@@ -24,7 +24,7 @@ const cardBenefits = [
   {
     icon: moneyIcon,
     title: "Saving Money",
-    body: "Air source heat pumps (ASHPs) can reduce electricity usage for heating by up to 50% compared to electrical furnaces and baseboard heaters. (Environmental Protection Agency - link). For cooling, ASHPs are roughly equivalent to “central air conditioning” and far more efficient than window AC units. Together, this can translate into homeowner savings of 20%-40% off of their annual heating and cooling bills. To compare your system and to see how much you could save, ",
+    body: "Air source heat pumps (ASHPs) can reduce electricity usage for heating by up to 50% compared to electrical furnaces and baseboard heaters. For cooling, ASHPs are roughly equivalent to “central air conditioning” and far more efficient than window AC units. Together, this can translate into homeowner savings of 20%-40% off of their annual heating and cooling bills. To compare your system and to see how much you could save, ",
     link: "https://www.masssave.com/residential/heating-comparison-calculator",
   },
   {
@@ -65,7 +65,7 @@ const BenefitsHeatPumps = () => {
       <Heading1BlueBgGround text="Benefits of Heat Pumps" />
       <Container sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
         <Stack direction="column">
-          <Box mb={{ xs: 1, sm: 6 }} mt={{ xs: 1, sm: 2 }}>
+          {/* <Box mb={{ xs: 1, sm: 6 }} mt={{ xs: 1, sm: 2 }}>
             {isSmallerThanSmm ? (
               <Heading1
                 fontWeight="500"
@@ -77,7 +77,7 @@ const BenefitsHeatPumps = () => {
                 <Heading1 fontWeight="500" text="switching to a heat pump" />
               </>
             )}
-          </Box>
+          </Box> */}
           <Box>
             {cardBenefits.map((card) => (
               <Box mb={{ xs: 3, sm: 6 }}>

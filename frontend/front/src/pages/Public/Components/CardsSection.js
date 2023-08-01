@@ -3,7 +3,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardMedia,
   Button,
   Typography,
 } from "@mui/material";
@@ -16,13 +15,57 @@ function CardsSection({
   body,
   linkDescription,
   linkDownload,
+  link,
 }) {
-  const handleDownloadPDF = () => {
-    const pdfUrl = linkDownload;
-    const link = document.createElement("a");
-    link.href = pdfUrl;
-    link.download = linkDescription;
-    link.click();
+  const handleClick = () => {
+    if (link) {
+      const externalLink = document.createElement("a");
+      externalLink.href = link;
+      externalLink.target = "_blank";
+      externalLink.rel = "noopener noreferrer";
+      externalLink.click();
+    } else {
+      const pdfUrl = linkDownload;
+      const downloadLink = document.createElement("a");
+      downloadLink.href = pdfUrl;
+      downloadLink.download = linkDescription;
+      downloadLink.click();
+    }
+  };
+
+  const renderMedia = () => {
+    if (mediaType === "img") {
+      return (
+        <Box
+          component="img"
+          alt={title}
+          src={mediaSource}
+          sx={{
+            backgroundSize: "contain",
+            height: { xs: "200px", sm: "300px", md: "300px", lg: "300px" },
+            minWidth: "500px",
+            maxWidth: { xs: "353px", lg: "500px" },
+          }}
+        />
+      );
+    } else if (mediaType === "iframe") {
+      return (
+        <Box
+          component="iframe"
+          title={title}
+          src={mediaSource}
+          sx={{
+            width: "100%",
+            height: { xs: "200px", sm: "300px", md: "300px", lg: "300px" },
+            border: "none",
+            minWidth: "500px",
+            maxWidth: { xs: "353px", lg: "500px" },
+          }}
+        />
+      );
+    } else {
+      return null;
+    }
   };
 
   return (
@@ -35,13 +78,17 @@ function CardsSection({
       }}
     >
       <Box
-        sx={{ display: "flex", flexDirection: "column", mr: { xs: 0, sm: 2 } }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          mr: { xs: 0, sm: 2 },
+        }}
       >
         <CardContent>
           <Box mb={2}>
             <Heading3 text={title} />
           </Box>
-
           <Typography variant="body">{body}</Typography>
         </CardContent>
         <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
@@ -54,24 +101,13 @@ function CardsSection({
               textDecorationColor: "var(--color-text-2)",
               textTransform: "none",
             }}
-            onClick={handleDownloadPDF}
+            onClick={handleClick}
           >
             {linkDescription}
           </Button>
         </CardActions>
       </Box>
-      <CardMedia
-        component="img"
-        alt={title}
-        image={mediaSource}
-        sx={{
-          backgroundSize: "contain",
-          maxHeight: "300px",
-          minHeight: { xs: "198px", lg: "300px" },
-          minWidth: "500px",
-          maxWidth: { xs: "353px", lg: "500px" },
-        }}
-      />
+      {renderMedia()}
     </Card>
   );
 }
