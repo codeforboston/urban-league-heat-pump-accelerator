@@ -36,8 +36,6 @@ class CanonicalizeAddressJob < ApplicationJob
     end
     match_to_use = exact_match.empty? ? result.first : exact_match.first
 
-    debugger
-
     if match_to_use
       change_map = {}
       if change_map[:street_number] != match_to_use['housenumber'].to_s
