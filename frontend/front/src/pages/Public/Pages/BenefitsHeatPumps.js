@@ -24,7 +24,7 @@ const cardBenefits = [
   {
     icon: moneyIcon,
     title: "Saving Money",
-    body: "Air source heat pumps (ASHPs) can reduce electricity usage for heating by up to 50% compared to electrical furnaces and baseboard heaters. For cooling, ASHPs are roughly equivalent to “central air conditioning” and far more efficient than window AC units. Together, this can translate into homeowner savings of 20%-40% off of their annual heating and cooling bills. To compare your system and to see how much you could save, ",
+    body: "Air source heat pumps (ASHPs) can reduce electricity usage for heating by up to 50% compared to electrical furnaces and baseboard heaters (source). For cooling, ASHPs are roughly equivalent to “central air conditioning” and far more efficient than window AC units. Together, this can translate into homeowner savings of 20%-40% off of their annual heating and cooling bills. To compare your system and to see how much you could save, ",
     link: "https://www.masssave.com/residential/heating-comparison-calculator",
   },
   {
