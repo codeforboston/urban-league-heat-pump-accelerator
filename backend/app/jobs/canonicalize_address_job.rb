@@ -15,11 +15,40 @@ class CanonicalizeAddressJob < ApplicationJob
       state: home.state,
       zip_code: home.zip_code
     }
-    # TODO: update with real call
-    # change_map = CanonicalizeAddressHelper.canonicalize_address home_map
-    # change_map = {:unit_number => 60}
-    change_map = {}
-    # change_map = nil
+
+    conn = Faraday.new(
+      url: 'https://pelias.mapc.org',
+      headers: { 'Content-Type' => 'application/json' }
+    )
+    response = conn.get('/v1/search/structured',
+                        {
+                          'address': "#{home_map[:street_number]} #{home_map[:street_name]}",
+                          'locality': home_map[:city],
+                          'region': home_map[:state],
+                          'country': 'USA',
+                          'postalcode': home_map[:zip_code]
+                        })
+    result = JSON.parse(response.body)['features']
+
+    exact_match = result.select do |feature|
+      feature['properties']['housenumber'] == home_map['street_number'] &&
+        feature['properties']['street'] == home_map['street_name']
+    end
+    match_to_use = exact_match.empty? ? result.first : exact_match.first
+
+    debugger
+
+    if match_to_use
+      change_map = {}
+      if change_map[:street_number] != match_to_use['housenumber'].to_s
+        change_map[:street_number] = match_to_use['housenumber'].to_s
+      end
+      change_map[:city] = match_to_use['locality'] if change_map[:city] != match_to_use['locality']
+      change_map[:state] = match_to_use['region'] if change_map[:state] != match_to_use['region']
+      change_map[:zip_code] = match_to_use['postalcode'] if change_map[:zip_code] != match_to_use['postalcode']
+    else
+      change_map = nil
+    end
 
     if change_map.nil?
       # Lookup failed - the address was not recognized
