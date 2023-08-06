@@ -3,7 +3,10 @@ services:
     environment:
       DATABASE_URL: 'postgres://postgres:password123@db'
       JWT_SECRET_KEY: '${JWT_SECRET_KEY}'
-    build: .
+    build:
+      dockerfile: ./backend/Dockerfile
+      # set context to repo root so that the data can be passed in
+      context: ../
     ports:
       - '3000:3000'
     links:
