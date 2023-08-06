@@ -7,5 +7,5 @@ export const generateMapsLink = (locations) => {
     .map((location) => `${location.latitude},${location.longitude}`)
     .join("|");
 
-  return `https://www.google.com/maps/dir/?api=1&origin=${origin.lat},${origin.lng}&destination=${destination.lat},${destination.lng}&waypoints=${waypoints}&travelmode=walking`;
+  return `https://www.google.com/maps/dir/?api=1&destination=${destination.latitude},${destination.longitude}&waypoints=${waypoints}&travelmode=walking`;
 };
