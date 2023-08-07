@@ -13,7 +13,14 @@ import {
   useGetSurveyVisitsQuery,
 } from "../../../api/apiSlice";
 import { useNavigate } from "react-router-dom";
+
 import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
+
+import {
+  useGetHomesQuery,
+  useGetSurveyVisitsQuery,
+} from "../../../api/apiSlice";
+import { useNavigate } from "react-router-dom";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -81,7 +88,7 @@ const HomeTable = () => {
             size="small"
             onClick={() => handleUserLink(params.row.survey_id)}
           >
-            Yes
+            Yes ✅
           </Button>
         ) : (
           "No"
