@@ -16,13 +16,4 @@ let adminTheme = createTheme({
   },
 });
 
-adminTheme = createTheme(adminTheme, {
-  typography: {
-    h3: {
-      [adminTheme.breakpoints.down("sm")]: { fontSize: "2.5rem" },
-      [adminTheme.breakpoints.down("smm")]: { fontSize: "2rem" },
-    },
-  },
-});
-
 export default responsiveFontSizes(adminTheme);
