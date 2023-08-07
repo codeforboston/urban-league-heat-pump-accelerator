@@ -49,7 +49,6 @@ const AssignProfile = () => {
 
   const handleUserLink = (user) => goToBreadcrumb("user", user);
   const handleHomeLink = (home) => {
-    console.log(home);
     goToBreadcrumb("home", home);
   };
 

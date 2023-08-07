@@ -25,4 +25,4 @@ adminTheme = createTheme(adminTheme, {
   },
 });
 
-export default adminTheme;
+export default responsiveFontSizes(adminTheme);

@@ -133,6 +133,7 @@ const AssignTable = () => {
             maxWidth="100%"
             justifyContent="flex-start"
             overflow="scroll"
+            sx={{ overflowY: "auto", overflowX: "auto" }}
             flexWrap="wrap"
           >
             {params.row.surveyorData.map((surveyor) => {
@@ -245,7 +246,6 @@ const AssignTable = () => {
           checkboxSelection
           onSelectionModelChange={handleSelectionModelChange}
           selectionModel={selectedAssignments}
-          // onRowClick={(params) => handleRowClick(params.row)}
         />
       </Box>
     </Box>
