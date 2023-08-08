@@ -100,8 +100,6 @@ const HomeProfile = () => {
     }
   }, [homeData, reset]);
 
-  console.log(isDirty);
-
   // Conditional Buttons
   let editButton, deleteButton, saveButton;
   if (!editMode) {
