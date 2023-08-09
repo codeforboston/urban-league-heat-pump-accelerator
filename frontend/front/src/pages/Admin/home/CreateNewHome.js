@@ -1,11 +1,12 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { Controller, useForm } from "react-hook-form";
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
 
 const CreateNewHome = () => {
   const navigate = useNavigate();
-  const { handleSubmit, reset, control } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       streetNumber: "",
       address: "",

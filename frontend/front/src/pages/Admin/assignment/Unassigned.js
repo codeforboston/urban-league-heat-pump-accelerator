@@ -1,23 +1,24 @@
 import { Box, Button } from "@mui/material";
+import {
+  useGetAssignmentsQuery,
+  useGetUnassignedIncompleteHomesQuery,
+} from "../../../api/apiSlice";
 
 import ContainerTitle from "../component/ContainerTitle";
+import CustomSnackbar from "../../../components/CustomSnackbar";
 import { DataGrid } from "@mui/x-data-grid";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
+import Loader from "../../../components/Loader";
 import MenuItem from "@mui/material/MenuItem";
 import React from "react";
 import Select from "@mui/material/Select";
-import { useNavigate } from "react-router-dom";
-import {
-  useGetAssignmentsQuery,
-  useGetUnassignedHomesQuery,
-} from "../../../api/apiSlice";
 import { getAddress } from "../home/HomeTable";
-import Loader from "../../../components/Loader";
-import CustomSnackbar from "../../../components/CustomSnackbar";
+import { useGoToBreadcrumb } from "../../../hooks/breadcrumbHooks";
 
 const Unassigned = () => {
-  const navigate = useNavigate();
+  const goToBreadcrumb = useGoToBreadcrumb();
+
   const [assignment, setAssignment] = React.useState("");
 
   // Event handlers
@@ -41,12 +42,14 @@ const Unassigned = () => {
     );
   };
 
+  const handleHomeLink = (home) => goToBreadcrumb("home", home);
+
   // GET hookes
   const {
-    data: unassignedHomesData,
-    isError: isUnassignedHomesError,
-    isLoading: isUnassignedHomesDataLoading,
-  } = useGetUnassignedHomesQuery();
+    data: unassignedIncompleteHomesData,
+    isError: isUnassignedIncompleteHomesError,
+    isLoading: isUnassignedIncompleteHomesDataLoading,
+  } = useGetUnassignedIncompleteHomesQuery();
 
   const {
     data: assignmentsData,
@@ -61,9 +64,14 @@ const Unassigned = () => {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
-      width: 200,
+      minWidth: 200,
+      flex: 1,
     },
-    { field: "zip_code", headerName: "Zipcode", width: 120 },
+    {
+      field: "zip_code",
+      headerName: "Zipcode",
+      width: 120,
+    },
     {
       field: "city",
       headerName: "City",
@@ -71,46 +79,16 @@ const Unassigned = () => {
       flex: 1,
     },
     {
-      field: "completed",
-      headerName: "Completed",
-      renderCell: (home) => (home?.completed === true ? "Yes" : "No"),
-      width: 200,
-      flex: 1,
-    },
-    {
-      field: "survey",
-      headerName: "Survey",
-      width: 200,
-      flex: 1,
-      renderCell: (params) => {
-        return params.row.surveyId ? (
-          <Button
-            variant="text"
-            color="primary"
-            size="small"
-            onClick={() =>
-              navigate(`/admin/survey/surveyprofile/${params.row.surveyId}`)
-            }
-          >
-            View
-          </Button>
-        ) : (
-          "No Survey"
-        );
-      },
-    },
-    {
       field: "hid",
       headerName: "Home",
       width: 150,
       flex: 1,
-
       renderCell: (params) => (
         <Button
           variant="text"
           color="primary"
           size="small"
-          onClick={() => navigate(`/admin/home/homeprofile/${params.row.id}`)}
+          onClick={() => handleHomeLink(params.row)}
         >
           View
         </Button>
@@ -118,11 +96,11 @@ const Unassigned = () => {
     },
   ];
 
-  return isUnassignedHomesDataLoading || isAssignmentsDataLoading ? (
+  return isUnassignedIncompleteHomesDataLoading || isAssignmentsDataLoading ? (
     <Loader />
-  ) : isUnassignedHomesError ? (
+  ) : isUnassignedIncompleteHomesError ? (
     <CustomSnackbar
-      open={isUnassignedHomesError}
+      open={isUnassignedIncompleteHomesError}
       message="Error fetching unassigned homes data"
       severity="error"
     />
@@ -169,7 +147,7 @@ const Unassigned = () => {
       </Box>
       <div style={{ width: "100%" }}>
         <DataGrid
-          rows={unassignedHomesData}
+          rows={unassignedIncompleteHomesData}
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}

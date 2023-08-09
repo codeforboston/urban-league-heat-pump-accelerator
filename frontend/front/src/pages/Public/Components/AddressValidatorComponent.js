@@ -42,7 +42,7 @@ export const AddressValidatorComponent = forwardRef(
           />
         </Box>
         <Stack direction="row" justifyContent="center" spacing={2} mb={5}>
-          {isLoading && <Loader/>}
+          {isLoading && <Loader />}
           <Button variant="contained" type="submit">
             {"Verify"}
           </Button>

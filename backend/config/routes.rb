@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :survey_responses, except: [:edit]
   resources :survey_questions
   resources :surveys
+  resource :assignments_surveyors
 
   devise_for :users, controllers: {
     sessions: 'users/sessions'

@@ -1,21 +1,17 @@
 import { Alert, Container, Snackbar } from "@mui/material";
-import React, { useCallback, useMemo } from "react";
-import { useParams } from "react-router-dom";
-import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
-import { HeatPumpFade } from "../../../components/HeatPumpFade";
+import React, { useCallback, useEffect, useMemo } from "react";
 import {
-  useGetHomeQuery,
   useCreateSurveyVisitMutation,
+  useGetHomeQuery,
 } from "../../../api/apiSlice";
-import { SubmissionSuccess } from "../Components/SubmissionSuccess";
-import {
-  SURVEYOR_SURVEY_ID,
-  SurveyorSurvey,
-} from "../Components/SurveyorSurvey";
+import { useNavigate, useParams } from "react-router-dom";
+
+import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import Loader from "../../../components/Loader";
+import { SurveyorSurvey } from "../Components/SurveyorSurvey";
 import { buildSurveyVisitData } from "../../../util/surveyUtils";
-import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../../features/login/loginSlice";
+import { useSelector } from "react-redux";
 
 const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
@@ -23,6 +19,7 @@ const STEP_SURVEY = "PHASE_SURVEY";
 const STEP_THANKS = "PHASE_THANKS";
 
 const HouseProfile = () => {
+  const navigate = useNavigate();
   const { id: homeId } = useParams();
   const { id: surveyorId } = useSelector(selectCurrentUser);
 
@@ -38,9 +35,14 @@ const HouseProfile = () => {
       isLoading: isSurveyVisitLoading,
       error: surveyVisitError,
       isSuccess: isSurveyVisitSuccess,
-      data: surveyVisitData,
     },
   ] = useCreateSurveyVisitMutation();
+
+  useEffect(() => {
+    if (isSurveyVisitSuccess) {
+      navigate(`/surveyor/dashboard?success=${homeId}`);
+    }
+  }, [homeId, isSurveyVisitSuccess, navigate]);
 
   const submitSurvey = useCallback(
     async (answers, surveyId) => {
@@ -54,7 +56,7 @@ const HouseProfile = () => {
       });
       return surveyVisit;
     },
-    [addSurveyVisit, homeId]
+    [addSurveyVisit, homeId, surveyorId]
   );
 
   const step = useMemo(() => {
@@ -84,12 +86,6 @@ const HouseProfile = () => {
           activeHome={homeData}
         />
       </HeatPumpFade>
-      <HeatPumpSlide show={step === STEP_THANKS}>
-        <SubmissionSuccess
-          surveyId={SURVEYOR_SURVEY_ID}
-          submissionId={surveyVisitData?.id}
-        />
-      </HeatPumpSlide>
       <Snackbar open={!!surveyVisitError}>
         <Alert severity="error">{"Error submitting survey."}</Alert>
       </Snackbar>

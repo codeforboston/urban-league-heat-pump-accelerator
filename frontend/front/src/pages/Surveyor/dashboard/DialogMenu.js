@@ -1,18 +1,20 @@
 import * as React from "react";
-import PropTypes from "prop-types";
+
+import { Box, Button, IconButton } from "@mui/material";
+
 import Avatar from "@mui/material/Avatar";
+import ClearIcon from "@mui/icons-material/Clear";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import DialogTitle from "@mui/material/DialogTitle";
-import Dialog from "@mui/material/Dialog";
-import { blue } from "@mui/material/colors";
-import { Box, Button, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import ClearIcon from "@mui/icons-material/Clear";
-import DeleteIcon from "@mui/icons-material/Delete";
+import PropTypes from "prop-types";
+import { blue } from "@mui/material/colors";
+
 function SimpleDialog(props) {
   const { handleClose, selectedValue, open } = props;
 
@@ -63,6 +65,8 @@ SimpleDialog.propTypes = {
 
 export default function DialogMenu(props) {
   const [open, setOpen] = React.useState(false);
+  // no idea what this is used for...
+  // eslint-disable-next-line no-unused-vars
   const [selectedValue, setSelectedValue] = React.useState(props.value);
 
   const handleClickOpen = () => {

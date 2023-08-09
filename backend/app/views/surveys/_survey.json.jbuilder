@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-json.extract! survey, :id, :title
+json.extract! survey, :id, :title, :updated_at
 json.survey_questions do
   json.array!(survey.survey_questions.sort_by do |el|
                 el[:display_order]

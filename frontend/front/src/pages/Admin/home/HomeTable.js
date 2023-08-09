@@ -1,11 +1,14 @@
-import * as React from "react";
-
-import { DataGrid } from "@mui/x-data-grid";
-import { useNavigate } from "react-router-dom";
-import { useGetHomesQuery } from "../../../api/apiSlice";
 import { Box, Button } from "@mui/material";
-import Loader from "../../../components/Loader";
+import {
+  useGoToBreadcrumb,
+  useInitBreadcrumbs,
+} from "../../../hooks/breadcrumbHooks";
+
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { DataGrid } from "@mui/x-data-grid";
+import Loader from "../../../components/Loader";
+import React from "react";
+import { useGetHomesQuery } from "../../../api/apiSlice";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -20,13 +23,26 @@ export const getAddress = (params) => {
 };
 
 const HomeTable = () => {
+  const goToBreadcrumb = useGoToBreadcrumb();
+
+  useInitBreadcrumbs([
+    { url: "/admin/dashboard", description: "dashboard" },
+    { url: "/admin/home", description: "homes" },
+  ]);
+
+  const handleHomeLink = (home) => goToBreadcrumb("home", home);
+
+  const handleAssignmentLink = (assignment) =>
+    goToBreadcrumb("assignment", assignment);
+
   const columns = [
-    { field: "id", headerName: "Id", width: 50 },
+    { field: "id", headerName: "Id", minWidth: 80 },
     {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
-      width: 200,
+      minWidth: 200,
+      flex: 1,
     },
     {
       field: "city",
@@ -38,12 +54,8 @@ const HomeTable = () => {
     {
       field: "zip_code",
       headerName: "Zip Code",
-      renderCell: (params) =>
-        params.row.zip_code.length === 5
-          ? params.row.zip_code
-          : `0${params.row.zip_code}`,
       minWidth: 100,
-      maxWidth: 150,
+      maxWidth: 100,
       flex: 0.8,
     },
     {
@@ -61,11 +73,7 @@ const HomeTable = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() =>
-            navigate(
-              `/admin/assignment/assignProfile/${params.row.assignment_id}`
-            )
-          }
+          onClick={() => handleAssignmentLink(params.row)}
         >
           {params.row.assignment_id}
         </Button>
@@ -80,13 +88,13 @@ const HomeTable = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() => navigate(`homeprofile/${params.row.id}`)}
+          onClick={() => handleHomeLink(params.row)}
         >
           View
         </Button>
       ),
       headerName: "Home",
-      width: 80,
+      maxWidth: 80,
     },
   ];
 
@@ -95,7 +103,6 @@ const HomeTable = () => {
     isError: isHomesError,
     isLoading: isHomesDataLoading,
   } = useGetHomesQuery();
-  const navigate = useNavigate();
 
   if (isHomesDataLoading) {
     return <Loader />;

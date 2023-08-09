@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import CustomSnackbar from "../../../components/CustomSnackbar";
+import Loader from "../../../components/Loader";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,10 +10,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { useNavigate } from "react-router-dom";
+import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
+import { useDispatch } from "react-redux";
 import { useGetSurveyorsQuery } from "../../../api/apiSlice";
-import Loader from "../../../components/Loader";
-import CustomSnackbar from "../../../components/CustomSnackbar";
+import { useGoToBreadcrumb } from "../../../hooks/breadcrumbHooks";
 
 const columns = [
   { id: "id", label: "UserID", minWidth: 50 },
@@ -24,12 +26,21 @@ const columns = [
 ];
 
 const UserTable = () => {
+  const dispatch = useDispatch();
+  const goToBreadcrumb = useGoToBreadcrumb();
+
+  dispatch(
+    setBreadcrumbs([
+      { url: "/admin/dashboard", description: "dashboard" },
+      { url: "/admin/user", description: "users" },
+    ])
+  );
+
   const {
     data: rows,
     isError: isSurveyorsError,
     isLoading: isSurveyorsDataLoading,
   } = useGetSurveyorsQuery();
-  const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -43,9 +54,7 @@ const UserTable = () => {
     setPage(0);
   };
 
-  const onRowClick = (row) => {
-    navigate(`userprofile/${row.id}`);
-  };
+  const onRowClick = (row) => goToBreadcrumb("user", row);
 
   if (isSurveyorsDataLoading) {
     return <Loader />;
@@ -84,7 +93,7 @@ const UserTable = () => {
                       hover
                       role="checkbox"
                       tabIndex={-1}
-                      key={row.phone + row.name}
+                      key={`row-${row.id}`}
                       onClick={() => onRowClick(row)}
                       sx={{ cursor: "pointer" }}
                     >

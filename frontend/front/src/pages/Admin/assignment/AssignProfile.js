@@ -1,21 +1,33 @@
 import { Box, Button, Typography } from "@mui/material";
-
-import ContainerTitle from "../component/ContainerTitle";
-import { DataGrid } from "@mui/x-data-grid";
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import {
   useGetAssignmentQuery,
   useGetSurveyorsQuery,
 } from "../../../api/apiSlice";
-import Loader from "../../../components/Loader";
+import {
+  useGoToBreadcrumb,
+  useInitBreadcrumbs,
+} from "../../../hooks/breadcrumbHooks";
+
+import ContainerTitle from "../component/ContainerTitle";
 import CustomSnackbar from "../../../components/CustomSnackbar";
+import { DataGrid } from "@mui/x-data-grid";
+import Loader from "../../../components/Loader";
+import React from "react";
 import { getAddress } from "../home/HomeTable";
+import { useParams } from "react-router-dom";
 
 const AssignProfile = () => {
   const { aid } = useParams();
-  const navigate = useNavigate();
+  const goToBreadcrumb = useGoToBreadcrumb();
+
+  useInitBreadcrumbs([
+    { url: "/admin/dashboard", description: "dashboard" },
+    { url: "/admin/assignment", description: "assignments" },
+    {
+      url: `/admin/assignment/assignProfile/${aid}`,
+      description: `assignment ${aid}`,
+    },
+  ]);
 
   const {
     data: assignmentData,
@@ -35,6 +47,9 @@ const AssignProfile = () => {
       )
     : "Unassigned";
 
+  const handleUserLink = (user) => goToBreadcrumb("user", user);
+  const handleHomeLink = (home) => goToBreadcrumb("home", home);
+
   const columns = [
     { field: "id", headerName: "HomeId", maxWidth: 100, flex: 1 },
     { field: "visit_order", headerName: "Visit order", maxWidth: 100, flex: 1 },
@@ -49,10 +64,6 @@ const AssignProfile = () => {
     {
       field: "zip_code",
       headerName: "Zipcode",
-      renderCell: (params) =>
-        params.row.zip_code.length === 5
-          ? params.row.zip_code
-          : `0${params.row.zip_code}`,
       maxWidth: 100,
     },
     {
@@ -79,9 +90,7 @@ const AssignProfile = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() =>
-            navigate(`/admin/survey/surveyprofile/${params.row.surveyId}`)
-          }
+          onClick={() => handleUserLink(params.row)}
         >
           View
         </Button>
@@ -97,7 +106,7 @@ const AssignProfile = () => {
           variant="text"
           color="primary"
           size="small"
-          onClick={() => navigate(`/admin/home/homeprofile/${params.row.id}`)}
+          onClick={() => handleHomeLink(params.row)}
         >
           View
         </Button>
@@ -124,7 +133,7 @@ const AssignProfile = () => {
   ];
 
   return (
-    <ContainerTitle>
+    <ContainerTitle name={`Assignment ${aid}`}>
       {isAssignmentDataLoading || isSurveyorsDataLoading ? (
         <Loader />
       ) : isAssignmentError ? (
@@ -140,10 +149,7 @@ const AssignProfile = () => {
           severity="error"
         />
       ) : (
-        <>
-          <Box textAlign="center" m={5}>
-            <Typography variant="h3">Assignment Id: {aid}</Typography>
-          </Box>
+        <Box>
           <Box
             py={3}
             display="flex"
@@ -157,9 +163,7 @@ const AssignProfile = () => {
               <Button
                 variant="outlined"
                 color="primary"
-                onClick={() =>
-                  navigate(`/admin/user/userprofile/${surveyor.id}`)
-                }
+                onClick={() => handleUserLink(surveyor)}
               >
                 {`${surveyor.lastname}, ${surveyor.firstname}`}
               </Button>
@@ -174,7 +178,7 @@ const AssignProfile = () => {
               autoHeight
             />
           </div>
-        </>
+        </Box>
       )}
     </ContainerTitle>
   );

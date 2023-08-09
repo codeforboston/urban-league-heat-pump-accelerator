@@ -103,7 +103,7 @@ function Navbar(props) {
         aria-controls={open ? "fade-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        onMouseEnter={handleClickMore}
+        onClick={handleClickMore} // Changed from onMouseEnter to onClick
         endIcon={<KeyboardArrowDownIcon />}
         sx={{ color: "var(--color-text-1)" }}
       >
@@ -119,14 +119,7 @@ function Navbar(props) {
         onClose={handleCloseMore}
         TransitionComponent={Fade}
       >
-        <Box
-          onMouseEnter={() => {
-            handleClickMore();
-          }}
-          onMouseLeave={() => {
-            handleCloseMore();
-          }}
-        >
+        <Box>
           {Object.keys(navbarItems[item]).map((subItem, index) => (
             <MenuItem
               key={subItem}
