@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_14_020622) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_12_003916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,6 +43,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_020622) do
     t.integer "visit_order"
     t.integer "status", default: 0, null: false
     t.boolean "user_added", default: false, null: false
+    t.integer "bedroom_score"
+    t.integer "floor_score"
+    t.string "geometry"
+    t.integer "heat_type_score"
+    t.string "latitude"
+    t.integer "living_space_frag_score"
+    t.decimal "living_space_fragmentation"
+    t.string "longitude"
+    t.integer "map_par_id"
+    t.decimal "space_between_houses"
+    t.integer "total_score_x"
+    t.string "yr_built_category"
+    t.integer "yr_built_score"
     t.index ["assignment_id", "visit_order"], name: "index_homes_on_assignment_id_and_visit_order", unique: true
     t.index ["assignment_id"], name: "index_homes_on_assignment_id"
   end
@@ -53,75 +66,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_020622) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["jti"], name: "index_jwt_denylists_on_jti"
-  end
-
-  create_table "property_assessments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "pid"
-    t.bigint "cm_id"
-    t.bigint "gis_id"
-    t.string "st_num"
-    t.string "st_name"
-    t.integer "unit_num"
-    t.string "city"
-    t.string "zipcode"
-    t.integer "bldg_seq"
-    t.integer "num_bldgs"
-    t.integer "luc"
-    t.string "lu", limit: 2
-    t.string "lu_desc"
-    t.string "bldg_type"
-    t.boolean "own_occ"
-    t.string "owner"
-    t.string "mail_addressee"
-    t.string "mail_address"
-    t.string "mail_city"
-    t.string "mail_state"
-    t.string "mail_zipcode"
-    t.float "res_floor"
-    t.integer "cd_floor"
-    t.integer "res_units"
-    t.integer "com_units"
-    t.integer "rc_units"
-    t.integer "land_sf"
-    t.integer "gross_area"
-    t.integer "living_area"
-    t.integer "land_value"
-    t.integer "bldg_value"
-    t.integer "total_value"
-    t.integer "gross_tax"
-    t.integer "yr_built"
-    t.integer "yr_remodel"
-    t.string "structure_class"
-    t.string "roof_structure"
-    t.string "roof_cover"
-    t.string "int_wall"
-    t.string "ext_finished"
-    t.integer "int_cond"
-    t.integer "ext_cond"
-    t.integer "overall_cond"
-    t.integer "bed_rms"
-    t.integer "full_bth"
-    t.integer "hlf_bth"
-    t.integer "kitchen"
-    t.integer "tt_rms"
-    t.string "bdrm_cond"
-    t.string "bthrm_style1"
-    t.string "bthrm_style2"
-    t.string "bthrm_style3"
-    t.string "kitchen_type"
-    t.string "kitchen_style1"
-    t.string "kitchen_style2"
-    t.string "kitchen_style3"
-    t.string "heat_type"
-    t.string "heat_fuel"
-    t.string "ac_type"
-    t.integer "fire_place"
-    t.string "orientation"
-    t.integer "num_parking"
-    t.string "prop_view"
-    t.boolean "corner_unit"
   end
 
   create_table "survey_answers", force: :cascade do |t|

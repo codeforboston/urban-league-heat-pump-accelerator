@@ -1,9 +1,9 @@
 import * as React from "react";
+
+import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Box } from "@mui/material";
-import { Close } from "@mui/icons-material";
 
 const OptionMenu = (props) => {
   const { handleSelectAll, handleDeselectAll, handleSelectIncompleted } = props;
@@ -52,10 +52,10 @@ const OptionMenu = (props) => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={SelectAllAndClose}>SELECT ALL</MenuItem>
+        <MenuItem onClick={SelectAllAndClose}>SELECT NEXT 10</MenuItem>
         <MenuItem onClick={DeselectAllAndClose}>DESELECT ALL</MenuItem>
         <MenuItem onClick={SelectIncompletedAndClose}>
-          SELECT INCOMPLETED
+          SELECT NEXT 10 INCOMPLETE
         </MenuItem>
       </Menu>
     </Box>

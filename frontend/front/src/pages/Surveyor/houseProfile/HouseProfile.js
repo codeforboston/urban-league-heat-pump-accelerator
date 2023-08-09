@@ -1,20 +1,17 @@
+import { Alert, Container, Snackbar } from "@mui/material";
+import React, { useCallback, useEffect, useMemo } from "react";
 import {
-  Alert,
-  Container,
-
-  Snackbar,
-} from "@mui/material";
-import React, { useCallback, useMemo } from "react";
-import { useParams } from "react-router-dom";
-import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
-import { HeatPumpFade } from "../../../components/HeatPumpFade";
-import {
-  useGetHomeQuery,
   useCreateSurveyVisitMutation,
+  useGetHomeQuery,
 } from "../../../api/apiSlice";
-import { SubmissionSuccess } from "../Components/SubmissionSuccess";
-import { SurveyorSurvey } from "../Components/SurveyorSurvey";
+import { useNavigate, useParams } from "react-router-dom";
+
+import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import Loader from "../../../components/Loader";
+import { SurveyorSurvey } from "../Components/SurveyorSurvey";
+import { buildSurveyVisitData } from "../../../util/surveyUtils";
+import { selectCurrentUser } from "../../../features/login/loginSlice";
+import { useSelector } from "react-redux";
 
 const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
@@ -22,11 +19,14 @@ const STEP_SURVEY = "PHASE_SURVEY";
 const STEP_THANKS = "PHASE_THANKS";
 
 const HouseProfile = () => {
+  const navigate = useNavigate();
   const { id: homeId } = useParams();
+  const { id: surveyorId } = useSelector(selectCurrentUser);
+
   const {
     data: homeData,
-    error: homesError,
-    isLoading: isHomesLoading,
+    error: homeError,
+    isLoading: isHomeLoading,
   } = useGetHomeQuery(homeId);
 
   const [
@@ -35,25 +35,32 @@ const HouseProfile = () => {
       isLoading: isSurveyVisitLoading,
       error: surveyVisitError,
       isSuccess: isSurveyVisitSuccess,
-      data: surveyVisitData,
     },
   ] = useCreateSurveyVisitMutation();
 
+  useEffect(() => {
+    if (isSurveyVisitSuccess) {
+      navigate(`/surveyor/dashboard?success=${homeId}`);
+    }
+  }, [homeId, isSurveyVisitSuccess, navigate]);
+
   const submitSurvey = useCallback(
-    async (responses, surveyId) => {
-      return await addSurveyVisit({
-        responses,
-        homeId,
-        surveyId,
-        // TODO: probably remove this and handle on the back end
-        date: new Date().toISOString(),
+    async (answers, surveyId) => {
+      const surveyVisit = await addSurveyVisit({
+        surveyVisit: buildSurveyVisitData(
+          answers,
+          homeId,
+          surveyId,
+          surveyorId
+        ),
       });
+      return surveyVisit;
     },
-    [addSurveyVisit, homeId]
+    [addSurveyVisit, homeId, surveyorId]
   );
 
   const step = useMemo(() => {
-    if (isHomesLoading) {
+    if (isHomeLoading) {
       return STEP_LOADING;
     } else if (!homeData) {
       return STEP_HOME_ERROR;
@@ -61,7 +68,7 @@ const HouseProfile = () => {
       return STEP_THANKS;
     }
     return STEP_SURVEY;
-  }, [homeData, isHomesLoading, isSurveyVisitSuccess]);
+  }, [homeData, isHomeLoading, isSurveyVisitSuccess]);
 
   return (
     <Container>
@@ -75,20 +82,14 @@ const HouseProfile = () => {
       <HeatPumpFade show={step === STEP_SURVEY}>
         <SurveyorSurvey
           submitSurvey={submitSurvey}
-          isLoading={isHomesLoading || isSurveyVisitLoading}
+          isLoading={isHomeLoading || isSurveyVisitLoading}
           activeHome={homeData}
         />
       </HeatPumpFade>
-      <HeatPumpSlide show={step === STEP_THANKS}>
-        <SubmissionSuccess
-          surveyId={surveyVisitData?.surveyId}
-          submissionId={surveyVisitData?.id}
-        />
-      </HeatPumpSlide>
       <Snackbar open={!!surveyVisitError}>
         <Alert severity="error">{"Error submitting survey."}</Alert>
       </Snackbar>
-      <Snackbar open={!!homesError}>
+      <Snackbar open={!!homeError}>
         <Alert severity="error">{"Error retrieving home data."}</Alert>
       </Snackbar>
     </Container>

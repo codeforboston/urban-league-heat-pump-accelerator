@@ -1,7 +1,10 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
-import React from "react";
+import { Box, Button, Stack } from "@mui/material";
+
 import AccountDetail from "./AccountDetail";
+import { BackButton } from "../Components/BackButton";
+import ContainerTitle from "../../Admin/component/ContainerTitle";
 import { Link } from "react-router-dom";
+import React from "react";
 import { useSelector } from "react-redux";
 
 const Account = () => {
@@ -9,23 +12,18 @@ const Account = () => {
     (state) => state.account
   );
   return (
-    <Box>
-      <Grid container direction="column" rowSpacing={1}>
-        <Grid item xs={12}>
-          <Box display="flex" px={2} pt={3}>
-            <Typography variant="h2" component="h2">
-              My Account
-            </Typography>
-          </Box>
-        </Grid>
-        <AccountDetail label="First Name" value={firstName} />
-        <AccountDetail label="Last Name" value={lastName} />
-        <AccountDetail label="Email" value={email} />
-        <AccountDetail label="Address" value={address} />
-        <AccountDetail label="Phone Number" value={phoneNumber} />
-      </Grid>
-      <Grid container direction="column" rowSpacing={4}>
-        <Grid item xs={12}>
+    <>
+      <BackButton url="/surveyor/dashboard" description="dashboard" />
+      <ContainerTitle name="My Account">
+        <Stack direction="column" gap={1}>
+          <AccountDetail label="First Name" value={firstName} />
+          <AccountDetail label="Last Name" value={lastName} />
+          <AccountDetail label="Email" value={email} />
+          <AccountDetail label="Address" value={address} />
+          <AccountDetail label="Phone Number" value={phoneNumber} />
+        </Stack>
+
+        <Stack direction="column">
           <Box display="flex" mt={3} mb={2} px={2}>
             <Button variant="contained" component={Link} to="edit">
               Edit
@@ -37,9 +35,9 @@ const Account = () => {
               Request New Assignment
             </Button>
           </Box>
-        </Grid>
-      </Grid>
-    </Box>
+        </Stack>
+      </ContainerTitle>
+    </>
   );
 };
 

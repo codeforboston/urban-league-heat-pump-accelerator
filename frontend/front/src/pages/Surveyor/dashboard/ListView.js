@@ -1,39 +1,78 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
+import { Box, Stack, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import { useGetAssignmentsQuery } from "../../../api/apiSlice";
 import AssignmentUnit from "./AssignmentUnit";
+import CustomSnackbar from "../../../components/CustomSnackbar";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Loader from "../../../components/Loader";
+import { useAssignmentsForCurrentUser } from "../../../hooks/useDataForSurveyor";
+import { useSearchParams } from "react-router-dom";
 
 const ListView = () => {
-  const { data, isLoading, isSuccess } = useGetAssignmentsQuery();
+  const {
+    data: assignmentsData,
+    isLoading: isLoadingAssignments,
+    error: isAssignmentsError,
+  } = useAssignmentsForCurrentUser();
 
-  let content;
+  const [openAccordion, setOpenAccordion] = useState();
 
-  if (isLoading) {
-    content = <Box> Is loading</Box>;
-    console.log(data);
-  } else if (isSuccess) {
-    console.log(data);
-    content = (
-      <Box>
-        <Box my={3} display={"flex"} justifyContent="center">
-          <Typography variant="h4">Assignment</Typography>
-        </Box>
-        {data &&
-          data.map((item) => {
+  const [searchParams] = useSearchParams();
+
+  // open the accordion of the first incomplete assignment when the page opens
+  useEffect(() => {
+    setOpenAccordion((assignmentsData || []).find((a) => !a.completed)?.id);
+  }, [assignmentsData]);
+
+  return (
+    <Box sx={{ width: "100%" }}>
+      {!!isAssignmentsError && (
+        <CustomSnackbar
+          message="Error fetching assignments data."
+          severity="error"
+        />
+      )}
+      {searchParams.has("success") && (
+        <CustomSnackbar
+          severity="success"
+          message={`Successfully submitted survey for home ${searchParams.get(
+            "success"
+          )}`}
+        />
+      )}
+      {isLoadingAssignments ? (
+        <Loader />
+      ) : (
+        <Box>
+          <Stack my={3} alignItems="center">
+            <Typography variant="h4">Your Assignments</Typography>
+            {(!assignmentsData || assignmentsData.length === 0) && (
+              <Typography variant="h5">No assignments found.</Typography>
+            )}
+          </Stack>
+
+          {assignmentsData?.map((item, i) => {
             return (
               <Box my={2} key={item.id}>
-                <Accordion>
+                <Accordion
+                  expanded={openAccordion === item.id}
+                  onChange={() =>
+                    openAccordion === item.id
+                      ? setOpenAccordion(null)
+                      : setOpenAccordion(item.id)
+                  }
+                >
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                   >
-                    <Typography variant="h5">Id: {item.id}</Typography>
+                    <Typography variant="h5">
+                      {`${item.completed ? "✅" : ""} Assignment ${i + 1}`}
+                    </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <AssignmentUnit data={item.homes} />
@@ -42,11 +81,10 @@ const ListView = () => {
               </Box>
             );
           })}
-      </Box>
-    );
-  }
-
-  return content;
+        </Box>
+      )}
+    </Box>
+  );
 };
 
 export default ListView;

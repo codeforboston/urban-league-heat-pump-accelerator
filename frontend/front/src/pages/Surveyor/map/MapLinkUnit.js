@@ -5,6 +5,7 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+
 import { Box } from "@mui/system";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +39,7 @@ const MapLinkUnit = ({ value }) => {
               {value.completed ? (
                 <Typography color="green">Completed</Typography>
               ) : (
-                <Typography color="red">Incompleted</Typography>
+                <Typography color="red">Incomplete</Typography>
               )}
             </Box>
           </Box>

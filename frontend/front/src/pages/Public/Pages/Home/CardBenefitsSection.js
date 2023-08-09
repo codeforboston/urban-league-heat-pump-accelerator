@@ -31,7 +31,7 @@ const CardBenefitsSection = () => {
       id: 1,
       title: "Saving Money",
       paragraphs: [
-        "Heat pumps can help you keep cool in summer and keep warm in winter. They are nearly silent, work continuously, and are reliable.",
+        "Heat pumps are so energy efficient that they can lead to significant savings on monthly utility bills and lower maintenance, repair and replacement costs.",
       ],
       image: liveMoreCom,
       buttonText: "",
@@ -39,9 +39,9 @@ const CardBenefitsSection = () => {
     },
     {
       id: 2,
-      title: "Improve Heating and Cooling",
+      title: "Experience The All In One Comfort",
       paragraphs: [
-        "Heat pumps are effective, continuous, nearly silent and extremely energy efficient. Rather than provide blasts of hot or cold air, heat pumps provide continuous, low-level operation.",
+        "Heat pumps can help you keep cool in the summer and warm in the winter. They are efficient, nearly silent, and convenient, providing comfort throughout the home.",
       ],
       image: imageTwo,
       buttonText: "",
@@ -59,9 +59,9 @@ const CardBenefitsSection = () => {
     },
     {
       id: 4,
-      title: "Be Environmentally Friendly",
+      title: "Environmentally Friendly ",
       paragraphs: [
-        "To help address climate change, we all need to reduce our greenhouse gas emissions. Heat pumps can help because they are powered by electricity rather than fossil fuels. Because they handle both cooling and heating, you can have one rather than two systems for a comfortable home.",
+        "Heat pumps use electricity that can be produced by renewable sources, making them much more eco-friendly than gas or oil-fueled systems. With a single “green-powered” unit that heats and cools, your home’s carbon footprint is as low as it can go.",
       ],
       image: beEnvironmentally,
       buttonText: "",
@@ -71,7 +71,7 @@ const CardBenefitsSection = () => {
 
   return (
     <Container>
-      <Box pb={8} pt={4}>
+      <Box pb={8} pt={2}>
         <Box
           pb={4}
           sx={{
@@ -87,12 +87,15 @@ const CardBenefitsSection = () => {
             alignItems="center"
             sx={{ mt: 1 }}
           >
-            <Typography variant="body" sx={{ color: "var(--color-text-3)" }}>
-              Learn more about&nbsp;
+            <Typography
+              variant="body"
+              sx={{ color: "var(--color-text-3)", display: "inline-block" }}
+            >
+              Learn more about
             </Typography>
-            <Link to="benefits-heat-pump">
-              <Typography variant="body" sx={{ color: "var(--color-text-2)" }}>
-                Benefits of Heat Pumps
+            <Link to="benefits-heat-pump" style={{ textDecoration: "none" }}>
+              <Typography variant="body" sx={{ color: "var(--color-text-4)" }}>
+                &nbsp;Benefits of Heat Pumps
               </Typography>
             </Link>
           </Stack>

@@ -2,7 +2,7 @@ import { selectCurrentUser, setLoginInfo } from "./loginSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import jwt_decode from "jwt-decode";
-import { useGetSurveyorQuery } from "../../api/apiSlice";
+import passwordGenerator from "generate-password-browser";
 import { useMemo } from "react";
 
 export const AUTHORIZATION_HEADER = "Authorization";
@@ -18,16 +18,10 @@ export const ROLE_DATA_VIEW = "date_viewer";
  */
 export const useUserHasRoles = (allowedRoles) => {
   const currentUser = useSelector(selectCurrentUser);
-  const { data: surveyorProfile } = useGetSurveyorQuery(currentUser?.id, {
-    skip: !currentUser?.id,
-  });
 
   return useMemo(
-    () =>
-      surveyorProfile?.role
-        ? allowedRoles.includes(surveyorProfile.role)
-        : false,
-    [allowedRoles, surveyorProfile?.role]
+    () => (currentUser?.role ? allowedRoles.includes(currentUser.role) : false),
+    [allowedRoles, currentUser?.role]
   );
 };
 
@@ -44,7 +38,15 @@ export const useLocallyStoredJWT = () => {
     return;
   }
 
-  // "sub" = "subject", aka the user id
-  const { sub } = jwt_decode(token);
-  dispatch(setLoginInfo({ token, user: { id: sub } }));
+  dispatch(setLoginInfo({ token, user: decodeJwt(token) }));
 };
+
+export const decodeJwt = (token) => {
+  // "sub" = "subject", aka the user id
+  const { sub, email, role } = jwt_decode(token);
+  return { id: sub, email, role };
+};
+
+export const generatePassword = () =>
+  // length 6 == shortest password devise will let you set
+  passwordGenerator.generate({ numbers: true, strict: true, length: 6 });

@@ -1,70 +1,54 @@
 import React, { useMemo } from "react";
-
-import { useNavigate } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import {
-  useGetSurveyVisitsQuery,
-  useGetHomesQuery,
-  useGetSurveysQuery,
-} from "../../../api/apiSlice";
-import { SurveyError } from "./SurveyError";
-import { houseToString } from "../../../components/AddressUtils";
-import { formatISODate } from "../../../components/DateUtils";
+  useGoToBreadcrumb,
+  useInitBreadcrumbs,
+} from "../../../hooks/breadcrumbHooks";
 import Loader from "../../../components/Loader";
+import { SurveyError } from "./SurveyError";
+import { formatISODate } from "../../../components/DateUtils";
+import { useGetSurveysQuery } from "../../../api/apiSlice";
 
 const COLUMNS = [
   { field: "id", headerName: "ID", flex: 1 },
-  { field: "surveyName", headerName: "Survey", flex: 3 },
-  { field: "homeName", headerName: "Address", flex: 5 },
-  { field: "date", headerName: "Survey Date", flex: 3 },
+  { field: "title", headerName: "Title", flex: 3 },
+  { field: "questionCount", headerName: "Questions", flex: 2 },
+  { field: "lastUpdated", headerName: "Last Updated", flex: 3 },
 ];
 
-const createTableData = (surveyVisitData, surveyStructureData, houseData) => {
-  return surveyVisitData.map((d) => ({
-    id: d.id,
-    surveyName: surveyStructureData.find((s) => `${s.id}` === `${d.surveyId}`)
-      ?.title,
-    homeName: houseToString(houseData.find((h) => `${h.id}` === `${d.homeId}`)),
-    date: formatISODate(d.date),
-  }));
-};
-
 const SurveyTable = () => {
-  const navigate = useNavigate();
+  const goToBreadcrumb = useGoToBreadcrumb();
+
+  useInitBreadcrumbs([
+    { url: "/admin/dashboard", description: "dashboard" },
+    { url: "/admin/survey", description: "surveys" },
+  ]);
 
   const {
-    data: surveyVisitData,
-    error: surveyVisitError,
-    isLoading: isSurveyVisitLoading,
-  } = useGetSurveyVisitsQuery();
-  const {
-    data: houseData,
-    error: houseError,
-    isLoading: isHouseDataLoading,
-  } = useGetHomesQuery();
-  const {
-    data: surveyStructureData,
-    error: surveyStructureError,
-    isLoading: isSurveyStructureLoading,
+    data: surveyData,
+    error: surveyError,
+    isLoading: isSurveysLoading,
   } = useGetSurveysQuery();
 
   const tableData = useMemo(
     () =>
-      surveyVisitData && surveyStructureData && houseData
-        ? createTableData(surveyVisitData, surveyStructureData, houseData)
-        : [],
-    [houseData, surveyStructureData, surveyVisitData]
+      surveyData?.map((s) => ({
+        ...s,
+        questionCount: s.survey_questions.length,
+        lastUpdated: formatISODate(s.updated_at),
+      })) || [],
+    [surveyData]
   );
 
   const onRowClick = (row) => {
-    navigate(`${row.id}`);
+    goToBreadcrumb("surveyEdit", row);
   };
 
-  if (isSurveyVisitLoading || isHouseDataLoading || isSurveyStructureLoading) {
+  if (isSurveysLoading) {
     return <Loader />;
   }
 
-  if (surveyVisitError || houseError || surveyStructureError) {
+  if (surveyError) {
     return <SurveyError />;
   }
 

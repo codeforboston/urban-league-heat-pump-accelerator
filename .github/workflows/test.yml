@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  test:
+  test-backend:
     env:
       RAILS_ENV: test
       BUNDLE_GEMFILE: ${{ github.workspace }}/backend/Gemfile
@@ -33,7 +33,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        ports: ["5432:5432"]
+        ports: ['5432:5432']
 
     steps:
       - name: Git checkout
@@ -58,13 +58,28 @@ jobs:
       - name: Run tests
         run: bundle exec rspec
 
+  test-ui:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend/front
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: yarn
+      - name: Run linters
+        run: yarn test-style
+      - name: Run tests
+        run: yarn test
+
   build_image:
     name: Build Image
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: backend
-    needs: [test]
+    needs: [test-backend]
     steps:
       - name: Check out code
         uses: actions/checkout@v3

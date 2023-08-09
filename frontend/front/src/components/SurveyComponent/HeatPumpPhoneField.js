@@ -1,5 +1,6 @@
-import React from "react";
 import { Controller, useController } from "react-hook-form";
+
+import React from "react";
 import { TextField } from "@mui/material";
 
 export const HeatPumpPhoneField = ({ name, control, label, disabled }) => {
@@ -11,6 +12,7 @@ export const HeatPumpPhoneField = ({ name, control, label, disabled }) => {
       name={name}
       control={control}
       rules={{
+        // type="tel" does not validate automatically
         required: { value: true, message: "This field is required!" },
         pattern: {
           value: /^\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})$/,
@@ -25,6 +27,7 @@ export const HeatPumpPhoneField = ({ name, control, label, disabled }) => {
           error={!!mainFieldError}
           helperText={!!mainFieldError && mainFieldError.message}
           disabled={disabled}
+          type="tel"
           {...field}
         />
       )}

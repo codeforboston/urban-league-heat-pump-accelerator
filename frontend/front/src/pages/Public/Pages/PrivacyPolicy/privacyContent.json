@@ -17,7 +17,7 @@
   },
   {
     "heading": "What data exactly does the City of Boston have about me and my property?",
-    "content": "The City of Boston's Property Assessor's database is easy to use. To learn more about the data that the city has, feel free to look up the address in question in their database here [<a href='https://www.cityofboston.gov/assessing/search/'>LINK</a>]"
+    "content": "The City of Boston's Property Assessor's database is easy to use. To learn more about the data that the city has, feel free to look up the address in question in their database here [<a href='https://www.cityofboston.gov/assessing/search/' target='_blank' rel='noopener noreferrer'>LINK</a>]"
   },
   {
     "heading": "What data about me and my property was used in this project? [and it harmed/reduced/invaded my privacy...]",
