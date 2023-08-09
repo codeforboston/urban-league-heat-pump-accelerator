@@ -3,7 +3,7 @@
 class CanonicalizeAddressJob < ApplicationJob
   queue_as :default
 
-  def perform(home_id) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
+  def perform(home_id) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
     home = Home.find(home_id)
 
     # Extract details from home to send to service
