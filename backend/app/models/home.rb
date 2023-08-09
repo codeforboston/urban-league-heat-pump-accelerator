@@ -14,6 +14,16 @@ class Home < ApplicationRecord
   validates :visit_order, presence: true, if: :assignment_id
   validates :assignment_id, presence: true, if: :visit_order
 
+  def visited?
+    !survey_visits.empty?
+  end
+
+  def completed?
+    # We consider a home completed if any of its survey_visits
+    # have an associated survey_response
+    survey_visits.any? { |sv| !sv.survey_response.nil? }
+  end
+
   before_save :update_status
 
   after_save do
@@ -30,15 +40,5 @@ class Home < ApplicationRecord
                                         zip_code]).empty?
       self.status = :uncanonicalized
     end
-  end
-
-  def visited?
-    !survey_visits.empty?
-  end
-
-  def completed?
-    # We consider a home completed if any of its survey_visits
-    # have an associated survey_response
-    survey_visits.any? { |sv| !sv.survey_response.nil? }
   end
 end
