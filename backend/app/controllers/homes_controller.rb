@@ -5,7 +5,7 @@ class HomesController < ApplicationController
 
   # GET /homes or /homes.json
   def index
-    @homes = Home.where(search_params)
+    @homes = Home.includes(survey_visits: :survey_response).where(search_params)
   end
 
   # GET /homes/1 or /homes/1.json
@@ -60,7 +60,7 @@ class HomesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_home
-    @home = Home.find(params[:id])
+    @home = Home.includes(survey_visits: :survey_response).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

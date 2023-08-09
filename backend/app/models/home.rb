@@ -31,4 +31,14 @@ class Home < ApplicationRecord
       self.status = :uncanonicalized
     end
   end
+
+  def visited?
+    !survey_visits.empty?
+  end
+
+  def completed?
+    # We consider a home completed if any of its survey_visits
+    # have an associated survey_response
+    survey_visits.any? { |sv| !sv.survey_response.nil? }
+  end
 end
