@@ -10,5 +10,5 @@ json.homes do
   json.array!(assignment.homes.sort_by do |h|
                 h[:visit_order]
               end, :id, :street_number, :street_name, :unit_number, :city, :state, :zip_code,
-              :building_type, :visit_order, :visited?, :completed?)
+              :building_type, :visit_order, :visited?, :completed?, :latitude, :longitude)
 end
