@@ -17,7 +17,6 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Loader from "../../../components/Loader";
 import Select from "@mui/material/Select";
-import { useAssignmentsWithCompleted } from "../../../hooks/useHomesWithCompleted";
 
 const AssignTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
@@ -51,19 +50,17 @@ const AssignTable = () => {
     isLoading: isSurveyorsDataLoading,
   } = useGetSurveyorsQuery();
 
-  const assignmentsWithCompleted = useAssignmentsWithCompleted(assignmentsData);
-
   const tableData = useMemo(
     () =>
-      assignmentsWithCompleted && surveyorsData
-        ? assignmentsWithCompleted.map((a) => ({
+      assignmentsData && surveyorsData
+        ? assignmentsData.map((a) => ({
             ...a,
             surveyorData: a.surveyor_ids.map((id) =>
               surveyorsData.find((s) => s.id === id)
             ),
           }))
         : [],
-    [assignmentsWithCompleted, surveyorsData]
+    [assignmentsData, surveyorsData]
   );
 
   const [

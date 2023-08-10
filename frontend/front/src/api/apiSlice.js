@@ -187,8 +187,12 @@ export const apiSlice = createApi({
         body: surveyVisit,
         headers: [[`Recaptcha-Token`, recaptcha]],
       }),
-      // invalidate Assignment so that the dashboard updates appropriately
-      invalidatesTags: ["SurveyVisit", "Assignment"],
+      // invalidate Assignment and Home so that the dashboard updates appropriately
+      invalidatesTags: (result, error, arg) => [
+        "SurveyVisit",
+        "Assignment",
+        { type: "Home", id: arg.surveyVisit.home_id },
+      ],
     }),
     updateSurveyVisit: builder.mutation({
       query: ({ id, body }) => {
