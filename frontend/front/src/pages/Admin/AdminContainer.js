@@ -12,7 +12,8 @@ import HomeProfile from "./home/HomeProfile";
 import Nav from "./nav/Nav";
 import React from "react";
 import Survey from "./survey/Survey";
-import SurveyProfile from "./survey/SurveyProfile";
+import SurveyEditor from "./survey/SurveyProfile";
+import SurveyVisit from "./home/SurveyVisitProfile";
 import Unassigned from "./assignment/Unassigned";
 import User from "./user/User";
 import UserProfile from "./user/UserProfile";
@@ -32,7 +33,8 @@ const AdminContainer = () => {
           <Route path="user/userprofile/:uid" element={<UserProfile />}></Route>
           <Route path="user/createUser" element={<CreateNewUser />}></Route>
           <Route path="survey" element={<Survey />}></Route>
-          <Route path="survey/:uid" element={<SurveyProfile />}></Route>
+          <Route path="survey/edit/:uid" element={<SurveyEditor />}></Route>
+          <Route path="survey/visit/:uid" element={<SurveyVisit />}></Route>
           <Route path="assignment" element={<Assignment />}></Route>
           <Route
             path="assignment/assignProfile/:aid"

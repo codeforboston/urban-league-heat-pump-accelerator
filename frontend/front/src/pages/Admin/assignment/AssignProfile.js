@@ -1,41 +1,33 @@
 import { Box, Button, Typography } from "@mui/material";
-
-import ContainerTitle from "../component/ContainerTitle";
-import { DataGrid } from "@mui/x-data-grid";
-import React from "react";
-import { useParams } from "react-router-dom";
 import {
   useGetAssignmentQuery,
   useGetSurveyorsQuery,
 } from "../../../api/apiSlice";
-import Loader from "../../../components/Loader";
-import CustomSnackbar from "../../../components/CustomSnackbar";
-import { getAddress } from "../home/HomeTable";
-import { useGoToBreadcrumb } from "../../../hooks/useGoToBreadcrumb";
-import { useDispatch, useSelector } from "react-redux";
 import {
-  selectBreadcrumbs,
-  setBreadcrumbs,
-} from "../../../features/breadcrumb/breadcrumbSlice";
+  useGoToBreadcrumb,
+  useInitBreadcrumbs,
+} from "../../../hooks/breadcrumbHooks";
+
+import ContainerTitle from "../component/ContainerTitle";
+import CustomSnackbar from "../../../components/CustomSnackbar";
+import { DataGrid } from "@mui/x-data-grid";
+import Loader from "../../../components/Loader";
+import React from "react";
+import { getAddress } from "../home/HomeTable";
+import { useParams } from "react-router-dom";
 
 const AssignProfile = () => {
   const { aid } = useParams();
   const goToBreadcrumb = useGoToBreadcrumb();
-  const dispatch = useDispatch();
-  const thereAreBreadcrumbs = useSelector(selectBreadcrumbs).length;
 
-  if (!thereAreBreadcrumbs) {
-    dispatch(
-      setBreadcrumbs([
-        { url: "/admin/dashboard", description: "dashboard" },
-        { url: "/admin/assignment", description: "assignments" },
-        {
-          url: `/admin/assignment/assignProfile/${aid}`,
-          description: `assignment ${aid}`,
-        },
-      ])
-    );
-  }
+  useInitBreadcrumbs([
+    { url: "/admin/dashboard", description: "dashboard" },
+    { url: "/admin/assignment", description: "assignments" },
+    {
+      url: `/admin/assignment/assignProfile/${aid}`,
+      description: `assignment ${aid}`,
+    },
+  ]);
 
   const {
     data: assignmentData,

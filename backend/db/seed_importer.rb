@@ -9,7 +9,7 @@ require 'smarter_csv'
 
 #   Seed importer provides a reusable function to import a csv file
 module SeedImporter
-  def import_seed_data(path)
+  def import_seed_data(path, clustered_ordered_parcels)
     options = { downcase_header: true, verbose: true }
 
     # Seed survey
@@ -70,18 +70,21 @@ module SeedImporter
     end
 
     # Seed homes
-    SmarterCSV.process(File.join(path, 'test_homes.csv'), options) do |chunk|
+    SmarterCSV.process(File.join(clustered_ordered_parcels), options) do |chunk|
       chunk.each do |data_hash|
-        assignment_group = data_hash[:assignment_group]
-        home = Home.new(data_hash.except(:assignment_group))
-        home.assignment = Assignment.where(group: assignment_group).first
+        key_mapping = {
+          st_num: :street_number,
+          st_name: :street_name,
+          unit_num: :unit_number,
+          zipcode: :zip_code,
+          lu_desc: :building_type,
+          cluster: :assignment_id,
+          order: :visit_order
+        }
+        home = Home.new(data_hash.transform_keys(key_mapping).slice(*Home.new.attributes.symbolize_keys.keys))
+        home.state = 'MA' if home.state.blank?
+        home.zip_code = "0#{home.zip_code}" if home.zip_code.length == 4
         home.save!
-      end
-    end
-
-    SmarterCSV.process(File.join(path, 'test_seeds.csv'), options) do |chunk|
-      chunk.each do |data_hash|
-        PropertyAssessment.create!(data_hash)
       end
     end
   end
@@ -90,4 +93,3 @@ end
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/MethodLength
-# rubocop:enable Metrics/PerceivedComplexity

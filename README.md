@@ -50,3 +50,7 @@ After this you can visit in your regular web browser http://localhost:3000/assig
 * /surveys.json
 * /survey_responses.json
 * /survey_questions.json
+
+## Frontend setup
+
+See the README.md at [./frontend/front](./frontend/front) for notes on running the frontend code.

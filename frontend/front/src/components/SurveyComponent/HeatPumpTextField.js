@@ -10,6 +10,7 @@ export const HeatPumpTextField = ({
   disabled,
   required,
   type,
+  readOnly,
 }) => {
   const { formState } = useController({ name, control });
 
@@ -29,7 +30,7 @@ export const HeatPumpTextField = ({
     // whether or not email is automatically validated seems to depend on the browser
     if (type === "email") {
       ruleList.pattern = {
-        value: /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/,
+        value: /^[\w\-.]+@([\w-]+\.)+[\w-]{2,}$/,
         message: "Invalid email address.",
       };
     }
@@ -58,6 +59,7 @@ export const HeatPumpTextField = ({
           }
           disabled={disabled}
           type={inputType}
+          inputProps={{ readOnly }}
           {...field}
         />
       )}

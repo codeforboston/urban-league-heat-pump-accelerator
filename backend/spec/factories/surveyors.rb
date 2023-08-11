@@ -5,7 +5,7 @@ FactoryBot.define do
     user
     firstname { 'John' }
     lastname { 'Smith' }
-    email { 'johnsmith@example.com' }
+    sequence(:email) { |n| "person#{n}@example.com" }
     phone { '1234567890' }
     street_address { '123 First Street' }
     geocode { '40.714224,-73.961452' }
