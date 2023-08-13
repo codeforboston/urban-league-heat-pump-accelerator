@@ -8,9 +8,9 @@ import CustomSnackbar from "../../../components/CustomSnackbar";
 import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../../../components/Loader";
 import React from "react";
-import { 
-  useGetHomesQuery, 
-  useGetSurveyVisitsQuery
+import {
+  useGetHomesQuery,
+  useGetSurveyVisitsQuery,
 } from "../../../api/apiSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -36,16 +36,16 @@ const HomeTable = () => {
   ]);
 
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
-  const handleUserLink = (visit) => navigate('/admin/survey/visit/' + visit) 
+  const handleUserLink = (visit) => navigate("/admin/survey/visit/" + visit);
 
   const handleAssignmentLink = (assignment) =>
     goToBreadcrumb("assignment", assignment);
 
   const columns = [
     {
-      field: "id", 
-      headerName: "Id", 
-      minWidth: 80 
+      field: "id",
+      headerName: "Id",
+      minWidth: 80,
     },
     {
       field: "address",
@@ -71,15 +71,20 @@ const HomeTable = () => {
     {
       field: "completed",
       headerName: "Completed",
-      renderCell: (params) => (params.row.completed === true ? <Button
-        variant="text"
-        sx={{minWidth: "unset", padding: '0px'}}
-        color="primary"
-        size="small"
-        onClick={() => handleUserLink(params.row.survey_id)}
-      >
-        Yes
-      </Button> : "No"),
+      renderCell: (params) =>
+        params.row.completed === true ? (
+          <Button
+            variant="text"
+            sx={{ minWidth: "unset", padding: "0px" }}
+            color="primary"
+            size="small"
+            onClick={() => handleUserLink(params.row.survey_id)}
+          >
+            Yes
+          </Button>
+        ) : (
+          "No"
+        ),
       minWidth: 100,
       maxWidth: 150,
       flex: 0.8,
@@ -125,22 +130,23 @@ const HomeTable = () => {
     data: surveyVisitsData,
     isError: isSurveyVisitsError,
     isLoading: isSurveyVisitsDataLoading,
-  } = useGetSurveyVisitsQuery()
+  } = useGetSurveyVisitsQuery();
 
   let homesData = [];
 
   if (surveyVisitsData && fetchedHomesData) {
-    homesData = Object.values(fetchedHomesData).map(home => {
-      const visit = surveyVisitsData.find(visit => visit.home_id === home.id);
+    homesData = Object.values(fetchedHomesData).map((home) => {
+      const visit = surveyVisitsData.find((visit) => visit.home_id === home.id);
       if (visit) {
         return { ...home, completed: true, survey_id: visit.id };
       }
       return home;
     });
   }
-  
-  const isDataReady = !isHomesDataLoading && !isSurveyVisitsDataLoading && fetchedHomesData
-  
+
+  const isDataReady =
+    !isHomesDataLoading && !isSurveyVisitsDataLoading && fetchedHomesData;
+
   if (!isDataReady) {
     return <Loader />;
   }
@@ -160,18 +166,18 @@ const HomeTable = () => {
               open={isSurveyVisitsError}
               message="Error fetching Survey Visits data."
               severity="error"
-            />)}
-            <DataGrid
-              rows={homesData}
-              columns={columns}
-              pageSize={20}
-              rowsPerPageOptions={[20]}
-              disableSelectionOnClick
-              autoHeight
             />
+          )}
+          <DataGrid
+            rows={homesData}
+            columns={columns}
+            pageSize={20}
+            rowsPerPageOptions={[20]}
+            disableSelectionOnClick
+            autoHeight
+          />
         </>
-      )
-}
+      )}
     </Box>
   );
 };
