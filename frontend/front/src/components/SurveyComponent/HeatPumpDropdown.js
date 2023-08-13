@@ -6,7 +6,13 @@ import {
   MenuItem,
   InputLabel,
 } from "@mui/material";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 /**
  * A radio group to be used with react-hook-form
@@ -21,20 +27,18 @@ export const HeatPumpDropdown = ({
 }) => {
   const { field: groupField, formState } = useController({ name, control });
 
-  const labelFormRef = useRef(null)
-  const [_, setResizeTrigger] = useState(0)
+  const labelFormRef = useRef(null);
+  const [_, setResizeTrigger] = useState(0);
 
   useEffect(() => {
-    const refresh = () => setResizeTrigger(prev => prev+1)
-    
-    refresh()
+    const refresh = () => setResizeTrigger((prev) => prev + 1);
 
-    window.addEventListener('resize', refresh)
-      
-    return () => window.removeEventListener('resize', refresh)
+    refresh();
 
-  })
-  
+    window.addEventListener("resize", refresh);
+
+    return () => window.removeEventListener("resize", refresh);
+  });
 
   const otherFieldName = `${name}/other`;
   const showOtherInput = useMemo(
@@ -52,14 +56,21 @@ export const HeatPumpDropdown = ({
     (field) => {
       return (
         <FormControl fullWidth error={!!mainFieldError}>
-          <InputLabel id={`${name}-dropdown-label`} sx={{whiteSpace: "normal"}}>
-            <div ref={labelFormRef} style={{paddingRight: '20px'}}>
-               {label}
+          <InputLabel
+            id={`${name}-dropdown-label`}
+            sx={{ whiteSpace: "normal" }}
+          >
+            <div ref={labelFormRef} style={{ paddingRight: "20px" }}>
+              {label}
             </div>
           </InputLabel>
           <Select
             label={label}
-            sx={{height: labelFormRef.current?.scrollHeight ? `${labelFormRef.current?.scrollHeight + 30}px` : null}}
+            sx={{
+              height: labelFormRef.current?.scrollHeight
+                ? `${labelFormRef.current?.scrollHeight + 30}px`
+                : null,
+            }}
             name={`${name}-dropdown`}
             aria-labelledby={`${name}-dropdown-label`}
             variant="filled"
