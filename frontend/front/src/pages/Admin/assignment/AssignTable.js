@@ -136,7 +136,9 @@ const AssignTable = () => {
             completed++;
           }
         });
-        return `${completed}/${params.row.homes.length}`;
+        return `${completed}/${params.row.homes.length} ${
+          completed === params.row.homes.length && completed > 0 ? "✅" : ""
+        }`;
       },
     },
     {

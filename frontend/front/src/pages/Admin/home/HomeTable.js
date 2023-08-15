@@ -61,7 +61,7 @@ const HomeTable = () => {
     {
       field: "completed",
       headerName: "Completed",
-      renderCell: (params) => (params.row.completed === "true" ? "Yes" : "No"),
+      renderCell: (params) => (params.row.completed === true ? "Yes ✅" : "No"),
       minWidth: 100,
       maxWidth: 150,
       flex: 0.8,
