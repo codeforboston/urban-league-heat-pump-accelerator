@@ -8,17 +8,17 @@ const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
         direction={{ xs: "column", md: "row" }}
         alignItems={{ xs: "center", md: "flex-start" }}
       >
-        <Link
-          component="img"
-          src={image}
-          href={website}
-          target="_blank"
-          rel="noopener noreferrer"
-          width={220}
-          mr={{ xs: 0, md: 2 }}
-          mb={{ xs: 2, md: 0 }}
-        />
-
+        <Link href={website} target="_blank" rel="noopener">
+          <Box
+            component="img"
+            src={image}
+            target="_blank"
+            rel="noopener noreferrer"
+            width={220}
+            mr={{ xs: 0, md: 2 }}
+            mb={{ xs: 2, md: 0 }}
+          />
+        </Link>
         <Box>
           <Typography variant="body">
             <b>{partnerName}</b> {paragraphText}
