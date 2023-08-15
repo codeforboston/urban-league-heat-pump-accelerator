@@ -48,17 +48,15 @@ function AboutUs() {
               alignContent={"flex-start"}
               flexDirection={{ xs: "column", md: "row" }}
             >
-              <Link
-                component="img"
-                src={ulem}
-                href={"https://www.ulem.org/"}
-                target="_blank"
-                rel="noopener noreferrer"
-                width={220}
-                mr={{ xs: 0, md: 2 }}
-                mb={{ xs: 2, md: 0 }}
-              />
-
+              <Link href="https://www.ulem.org/" target="_blank" rel="noopener">
+                <Box
+                  component="img"
+                  src={ulem}
+                  width={220}
+                  mr={{ xs: 0, md: 2 }}
+                  mb={{ xs: 2, md: 0 }}
+                />
+              </Link>
               <Box>
                 <Typography variant="body">
                   <b>The Urban League of Eastern Massachusetts (ULEM)</b> is the
