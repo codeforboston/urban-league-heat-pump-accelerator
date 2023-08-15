@@ -21,7 +21,18 @@ const PartnerTile = ({ partnerName, paragraphText, image, website }) => {
         </Link>
         <Box>
           <Typography variant="body">
-            <b>{partnerName}</b> {paragraphText}
+            <Link
+              href={website}
+              sx={{
+                color: "inherit",
+                textDecoration: "none",
+              }}
+              target="_blank"
+              rel="noopener"
+            >
+              <b>{partnerName}</b>
+            </Link>{" "}
+            {paragraphText}
           </Typography>
         </Box>
       </Stack>
