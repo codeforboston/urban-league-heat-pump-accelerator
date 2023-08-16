@@ -9,6 +9,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../../../components/Loader";
 import React from "react";
 import { useGetHomesQuery } from "../../../api/apiSlice";
+import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -25,10 +26,10 @@ export const getAddress = (params) => {
 const HomeTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
 
-  useInitBreadcrumbs([
-    { url: "/admin/dashboard", description: "dashboard" },
-    { url: "/admin/home", description: "homes" },
-  ]);
+  useInitBreadcrumbs(
+    [{ url: withAdminPrefix(ADMIN_HOME), description: "homes" }],
+    true
+  );
 
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
 
@@ -75,7 +76,7 @@ const HomeTable = () => {
     {
       field: "completed",
       headerName: "Completed",
-      renderCell: (params) => (params.row.completed === "true" ? "Yes" : "No"),
+      renderCell: (params) => (params.row.completed === true ? "Yes ✅" : "No"),
       minWidth: 100,
       maxWidth: 150,
       flex: 0.8,

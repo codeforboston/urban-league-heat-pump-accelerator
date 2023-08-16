@@ -15,16 +15,20 @@ import Loader from "../../../components/Loader";
 import React from "react";
 import { getAddress } from "../home/HomeTable";
 import { useParams } from "react-router-dom";
+import {
+  adminAssignmentProfile,
+  ADMIN_ASSIGNMENT,
+  withAdminPrefix,
+} from "../../../routing/routes";
 
 const AssignProfile = () => {
   const { aid } = useParams();
   const goToBreadcrumb = useGoToBreadcrumb();
 
   useInitBreadcrumbs([
-    { url: "/admin/dashboard", description: "dashboard" },
-    { url: "/admin/assignment", description: "assignments" },
+    { url: withAdminPrefix(ADMIN_ASSIGNMENT), description: "assignments" },
     {
-      url: `/admin/assignment/assignProfile/${aid}`,
+      url: withAdminPrefix(adminAssignmentProfile(aid)),
       description: `assignment ${aid}`,
     },
   ]);

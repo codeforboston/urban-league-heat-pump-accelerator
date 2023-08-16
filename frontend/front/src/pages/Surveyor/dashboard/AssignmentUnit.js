@@ -59,7 +59,11 @@ const AssignmentUnit = ({ data }) => {
       <Stack direction="row" spacing={2}>
         <Button
           variant="contained"
-          onClick={() => generateGoogleMap(checked)}
+          onClick={() =>
+            generateGoogleMap(
+              checked.map((id) => data.find((d) => d.id === id))
+            )
+          }
           disabled={checked.length === 0}
         >
           GENERATE MAP
