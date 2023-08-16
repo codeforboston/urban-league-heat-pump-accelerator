@@ -4,7 +4,7 @@ RUN apk update && apk upgrade && apk add build-base libpq-dev postgresql-client 
 RUN adduser -S rails -G root
 USER rails
 WORKDIR /usr/src/app
-COPY Gemfile Gemfile.lock ./
+COPY backend/Gemfile backend/Gemfile.lock ./
 
 RUN chmod -R 775 /usr/src/app
 RUN chown -R rails:root /usr/src/app
