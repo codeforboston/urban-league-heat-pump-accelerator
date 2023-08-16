@@ -14,6 +14,5 @@ RUN bundle lock --add-platform x86_64-linux
 RUN bundle install
 
 EXPOSE 3000
-RUN chmod +x start.sh
 
 ENTRYPOINT ["sh", "start.sh"]
