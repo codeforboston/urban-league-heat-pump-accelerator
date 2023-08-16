@@ -113,7 +113,7 @@ const UserProfile = () => {
             title="Confirm Delete"
             message="Please confirm to delete this user."
           />
-          <Box width={500} mt={5}>
+          <Box maxWidth={500} mt={5}>
             <Box sx={{ bgcolor: "primary.main", color: "white" }} p={1}>
               <Typography variant="h5">User Profile: {uid}</Typography>
               {/* Could add user ID to header. */}
