@@ -76,7 +76,7 @@ const HomeProfile = () => {
         />
       ) : (
         <>
-          <Box width={500} mt={5}>
+          <Box maxWidth={500} mt={5}>
             <Box sx={{ bgcolor: "primary.main", color: "white" }} p={1}>
               <Typography variant="h5">Home Profile: {hid}</Typography>
             </Box>

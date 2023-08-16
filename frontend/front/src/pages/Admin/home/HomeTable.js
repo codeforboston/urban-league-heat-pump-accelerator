@@ -56,8 +56,23 @@ const HomeTable = () => {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
-      minWidth: 200,
-      flex: 1,
+      minWidth: 300,
+      // maxWidth: 300,
+      // flex: 1.5,
+      renderCell: (params) => (
+        <Box minWidth="max-content" m={0}>
+          <Button
+            onClick={() => handleHomeLink(params.row)}
+            sx={{
+              textAlign: "left",
+              minWidth: "max-content",
+              padding: 0,
+            }}
+          >
+            {params.value}
+          </Button>
+        </Box>
+      ),
     },
     {
       field: "city",
@@ -108,21 +123,6 @@ const HomeTable = () => {
       ),
       headerName: "Assignment",
       width: 110,
-    },
-    {
-      field: "home",
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="primary"
-          size="small"
-          onClick={() => handleHomeLink(params.row)}
-        >
-          View
-        </Button>
-      ),
-      headerName: "Home",
-      maxWidth: 80,
     },
   ];
 
