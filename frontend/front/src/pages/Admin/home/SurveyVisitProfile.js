@@ -3,6 +3,8 @@ import React, { useCallback, useMemo } from "react";
 import {
   useDeleteSurveyVisitMutation,
   useGetHomeQuery,
+  useGetSurveyAnswersQuery,
+  useGetSurveyResponseQuery,
   useGetSurveyVisitQuery,
   useUpdateSurveyVisitMutation,
 } from "../../../api/apiSlice";
@@ -20,11 +22,28 @@ const SurveyProfile = () => {
 
   const { data: surveyVisit, error: surveyVisitError } =
     useGetSurveyVisitQuery(surveyVisitId);
+  // console.log({ surveyVisit });
 
   const { data: houseData, error: houseError } = useGetHomeQuery(
-    surveyVisit?.homeId,
+    surveyVisit?.home_id,
     { skip: !surveyVisit }
   );
+  // console.log({ houseData });
+
+  const { data: surveyResponse, error: surveyResponseError } =
+    useGetSurveyResponseQuery(surveyVisit?.id, { skip: !surveyVisit });
+  // console.log({ surveyResponse });
+  // survey_id
+
+  const { data: allAnswers, error: allanswersError } = useGetSurveyAnswersQuery(
+    { skip: !surveyResponse }
+  );
+  // console.log({ allAnswers });
+  const surveyAnswers = allAnswers?.filter(
+    (answer) => answer.survey_response_id === surveyResponse?.id
+  );
+  // console.log({ surveyAnswers });
+
   const [
     putSurveyVisit,
     { isLoading: isSurveyVisitPutLoading, isError: isSurveyVisitPutError },
@@ -70,9 +89,9 @@ const SurveyProfile = () => {
       </Typography>
       {surveyVisit && houseData ? (
         <AdminSurvey
-          defaultData={surveyVisit.responses}
+          defaultData={surveyAnswers}
           activeHome={houseData}
-          surveyId={surveyVisit.surveyId}
+          surveyId={surveyVisit.id}
           submitSurvey={onSubmit}
           onDelete={onDelete}
           isLoading={isSurveyVisitPutLoading || isSurveyDeleteLoading}

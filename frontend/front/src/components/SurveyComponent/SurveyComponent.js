@@ -7,6 +7,7 @@ import React, {
   useState,
 } from "react";
 import {
+  buildDataFromSurveyAnswers,
   buildDefaultDataFromSurveyStructure,
   buildSurveyCacheKey,
 } from "../../util/surveyUtils";
@@ -69,11 +70,11 @@ const SurveyComponent = ({
   // useEffect to set the default data for the form
   // add in cached data here instead of in formDefault so that clicking "clear" doesn't treat the cache as default
   useEffect(() => {
-    const cacheOrDefault = cachedData || formDefault;
+    const cacheOrDefault = isEditable && !isEditing ? formDefault : cachedData;
     if (cacheOrDefault) {
       reset(cacheOrDefault);
     }
-  }, [cachedData, formDefault, reset]);
+  }, [cachedData, formDefault, reset, isEditable, isEditing]);
 
   useEffect(() => {
     // function passed to watch is executed every time the form data changes
@@ -260,7 +261,10 @@ const SurveyComponentWrapper = forwardRef((props, ref) => {
 
   const formDefault = useMemo(() => {
     if (defaultData) {
-      return defaultData;
+      return buildDataFromSurveyAnswers(defaultData);
+      // const res = buildDataFromSurveyAnswers(defaultData);
+      // console.log({ res });
+      // return res;
     }
 
     if (surveyStructure) {
