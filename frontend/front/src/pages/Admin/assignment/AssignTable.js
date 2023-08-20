@@ -178,21 +178,53 @@ const AssignTable = () => {
     {
       field: "surveyorData",
       headerName: "Surveyor(s)",
-      width: 150,
       flex: 1,
       renderCell: (params) => {
-        return params.row.surveyorData
-          ? params.row.surveyorData.map((surveyor) => {
+        return params.row.surveyorData ? (
+          <Stack
+            direction="row"
+            maxWidth="100%"
+            justifyContent="flex-start"
+            overflow="scroll"
+            sx={{ overflowY: "auto", overflowX: "auto" }}
+            flexWrap="wrap"
+          >
+            {params.row.surveyorData.map((surveyor) => {
               return (
                 <Button
                   key={`surveyor-${surveyor.id}`}
                   onClick={() => handleUserLink(surveyor)}
+                  sx={{
+                    textAlign: "left",
+                    minWidth: "max-content",
+                  }}
                 >
                   {`${surveyor.firstname} ${surveyor.lastname}`}
                 </Button>
               );
-            })
-          : "Unassigned";
+            })}
+          </Stack>
+        ) : (
+          "Unassigned"
+        );
+      },
+    },
+    {
+      field: "completed",
+      headerName: "Completion",
+      width: "min-content",
+      maxWidth: 110,
+      flex: 1,
+      renderCell: (params) => {
+        let completed = 0;
+        params.row.homes.forEach((home) => {
+          if (home?.completed === true) {
+            completed++;
+          }
+        });
+        return `${completed}/${params.row.homes.length} ${
+          completed === params.row.homes.length && completed > 0 ? "✅" : ""
+        }`;
       },
     },
   ];
