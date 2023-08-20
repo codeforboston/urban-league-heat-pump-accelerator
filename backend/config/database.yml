@@ -84,7 +84,7 @@ test:
 #
 production:
   <<: *default
-  database: urban_league_heat_pump_accelerator_production
-  username: urban_league_heat_pump_accelerator
-  password: <%= ENV["URBAN_LEAGUE_HEAT_PUMP_ACCELERATOR_PASSWORD"] %>
-  host: <%= ENV["URBAN_LEAGUE_HEAT_PUMP_ACCELERATOR_HOST"] %>
+  database: boston_heat_pump_accelerator_production
+  username: boston_heat_pump_accelerator
+  password: <%= ENV["BOSTON_HEAT_PUMP_ACCELERATOR_PASSWORD"] %>
+  host: <%= ENV["BOSTON_HEAT_PUMP_ACCELERATOR_HOST"] %>
