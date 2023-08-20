@@ -9,10 +9,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../../../components/Loader";
 import React from "react";
 
-import {
-  useGetHomesQuery,
-  useGetSurveyVisitsQuery,
-} from "../../../api/apiSlice";
+import { useGetHomesQuery } from "../../../api/apiSlice";
 import { useNavigate } from "react-router-dom";
 import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 
@@ -40,7 +37,7 @@ const HomeTable = () => {
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
 
   const handleUserLink = (home) => {
-    navigate("/admin/survey/visit/" + homeIdToSurveyVisitIdMap[home.id]);
+    navigate("/admin/survey/visit/" + home.survey_visit_ids[0]);
   };
 
   const handleAssignmentLink = (assignment) =>
@@ -128,54 +125,31 @@ const HomeTable = () => {
 
   const {
     data: homesData,
-    isError: isFetchedHomesError,
+    isError: isHomesError,
     isLoading: isHomesDataLoading,
   } = useGetHomesQuery();
-  const {
-    data: surveyVisitsData,
-    isError: isSurveyVisitsError,
-    isLoading: isSurveyVisitsDataLoading,
-  } = useGetSurveyVisitsQuery();
 
-  const homeIdToSurveyVisitIdMap = surveyVisitsData
-    ? surveyVisitsData.reduce((acc, visit) => {
-        return { ...acc, [visit.home_id]: visit.id };
-      }, {})
-    : {};
-
-  const isDataReady =
-    !isHomesDataLoading && !isSurveyVisitsDataLoading && homesData;
-
-  if (!isDataReady) {
+  if (isHomesDataLoading) {
     return <Loader />;
   }
 
   return (
     <Box>
-      {isFetchedHomesError ? (
+      {isHomesError ? (
         <CustomSnackbar
-          open={isFetchedHomesError}
+          open={isHomesError}
           message="Error fetching homes data."
           severity="error"
         />
       ) : (
-        <>
-          {isSurveyVisitsError && (
-            <CustomSnackbar
-              open={isSurveyVisitsError}
-              message="Error fetching Survey Visits data."
-              severity="error"
-            />
-          )}
-          <DataGrid
-            rows={homesData}
-            columns={columns}
-            pageSize={20}
-            rowsPerPageOptions={[20]}
-            disableSelectionOnClick
-            autoHeight
-          />
-        </>
+        <DataGrid
+          rows={homesData}
+          columns={columns}
+          pageSize={20}
+          rowsPerPageOptions={[20]}
+          disableSelectionOnClick
+          autoHeight
+        />
       )}
     </Box>
   );
