@@ -16,12 +16,6 @@ import { useNavigate } from "react-router-dom";
 
 import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 
-import {
-  useGetHomesQuery,
-  useGetSurveyVisitsQuery,
-} from "../../../api/apiSlice";
-import { useNavigate } from "react-router-dom";
-
 // Formats addresses
 export const getAddress = (params) => {
   let unit_number = "";
@@ -44,7 +38,10 @@ const HomeTable = () => {
   );
 
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
-  const handleUserLink = (visit) => navigate("/admin/survey/visit/" + visit);
+
+  const handleUserLink = (home) => {
+    navigate("/admin/survey/visit/" + homeIdToSurveyVisitIdMap[home.id]);
+  };
 
   const handleAssignmentLink = (assignment) =>
     goToBreadcrumb("assignment", assignment);
@@ -86,7 +83,7 @@ const HomeTable = () => {
             sx={{ minWidth: "unset", padding: "0px" }}
             color="primary"
             size="small"
-            onClick={() => handleUserLink(params.row.survey_id)}
+            onClick={() => handleUserLink(params.row)}
           >
             Yes ✅
           </Button>
@@ -139,6 +136,12 @@ const HomeTable = () => {
     isError: isSurveyVisitsError,
     isLoading: isSurveyVisitsDataLoading,
   } = useGetSurveyVisitsQuery();
+
+  const homeIdToSurveyVisitIdMap = surveyVisitsData
+    ? surveyVisitsData.reduce((acc, visit) => {
+        return { ...acc, [visit.home_id]: visit.id };
+      }, {})
+    : {};
 
   const isDataReady =
     !isHomesDataLoading && !isSurveyVisitsDataLoading && homesData;
