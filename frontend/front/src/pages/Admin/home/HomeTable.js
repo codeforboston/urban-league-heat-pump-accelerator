@@ -8,13 +8,7 @@ import CustomSnackbar from "../../../components/CustomSnackbar";
 import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../../../components/Loader";
 import React from "react";
-import {
-  useGetHomesQuery,
-  useGetSurveyVisitsQuery,
-} from "../../../api/apiSlice";
-import { useNavigate } from "react-router-dom";
 
-import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 import {
   useGetHomesQuery,
   useGetSurveyVisitsQuery,
