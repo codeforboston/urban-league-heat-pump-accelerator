@@ -137,7 +137,7 @@ export const apiSlice = createApi({
       ],
     }),
     getSurveyStructure: builder.query({
-      query: (id) => ({
+      query: (id = 1) => ({
         url: `/surveys/${id}`,
         method: "GET",
       }),

@@ -3,8 +3,6 @@ import React, { useCallback, useMemo } from "react";
 import {
   useDeleteSurveyVisitMutation,
   useGetHomeQuery,
-  useGetSurveyAnswersQuery,
-  useGetSurveyResponseQuery,
   useGetSurveyVisitQuery,
   useUpdateSurveyVisitMutation,
 } from "../../../api/apiSlice";
@@ -19,30 +17,15 @@ import { houseToString } from "../../../components/AddressUtils";
 const SurveyProfile = () => {
   const navigate = useNavigate();
   const { uid: surveyVisitId } = useParams();
-
   const { data: surveyVisit, error: surveyVisitError } =
     useGetSurveyVisitQuery(surveyVisitId);
-  // console.log({ surveyVisit });
 
   const { data: houseData, error: houseError } = useGetHomeQuery(
     surveyVisit?.home_id,
     { skip: !surveyVisit }
   );
-  // console.log({ houseData });
 
-  const { data: surveyResponse, error: surveyResponseError } =
-    useGetSurveyResponseQuery(surveyVisit?.id, { skip: !surveyVisit });
-  // console.log({ surveyResponse });
-  // survey_id
-
-  const { data: allAnswers, error: allanswersError } = useGetSurveyAnswersQuery(
-    { skip: !surveyResponse }
-  );
-  // console.log({ allAnswers });
-  const surveyAnswers = allAnswers?.filter(
-    (answer) => answer.survey_response_id === surveyResponse?.id
-  );
-  // console.log({ surveyAnswers });
+  const surveyAnswers = surveyVisit?.survey_response?.survey_answers;
 
   const [
     putSurveyVisit,
