@@ -84,7 +84,7 @@ const SurveyProfile = () => {
         <AdminSurvey
           defaultData={surveyAnswers}
           activeHome={houseData}
-          surveyId={surveyVisit.id}
+          surveyId={surveyVisit.survey_response.survey_id}
           submitSurvey={onSubmit}
           onDelete={onDelete}
           isLoading={isSurveyVisitPutLoading || isSurveyDeleteLoading}
