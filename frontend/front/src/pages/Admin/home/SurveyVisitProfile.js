@@ -14,6 +14,7 @@ import { SurveyError } from "../survey/SurveyError";
 import { formatISODate } from "../../../components/DateUtils";
 import { houseToString } from "../../../components/AddressUtils";
 import { withAdminPrefix, ADMIN_SURVEY } from "../../../routing/routes";
+import { buildDataFromSurveyAnswers } from "../../../util/surveyUtils";
 
 const SurveyProfile = () => {
   const navigate = useNavigate();
@@ -26,7 +27,15 @@ const SurveyProfile = () => {
     { skip: !surveyVisit }
   );
 
-  const surveyAnswers = surveyVisit?.survey_response?.survey_answers;
+  const surveyAnswers = useMemo(
+    () =>
+      surveyVisit?.survey_response
+        ? buildDataFromSurveyAnswers(
+            surveyVisit?.survey_response?.survey_answers
+          )
+        : [],
+    [surveyVisit]
+  );
 
   const [
     putSurveyVisit,

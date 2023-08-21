@@ -7,7 +7,6 @@ import React, {
   useState,
 } from "react";
 import {
-  buildDataFromSurveyAnswers,
   buildDefaultDataFromSurveyStructure,
   buildSurveyCacheKey,
 } from "../../util/surveyUtils";
@@ -262,7 +261,7 @@ const SurveyComponentWrapper = forwardRef((props, ref) => {
 
   const formDefault = useMemo(() => {
     if (defaultData) {
-      return buildDataFromSurveyAnswers(defaultData);
+      return defaultData;
     }
 
     if (surveyStructure) {
