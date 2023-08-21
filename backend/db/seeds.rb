@@ -17,5 +17,5 @@ include SeedImporter
 
 unless Rails.env.test?
   SeedImporter.import_seed_data('lib/seeds/',
-                                '../data-analysis/clustered_ordered_parcels.csv')
+                                'lib/seeds/clustered_ordered_parcels.csv')
 end
