@@ -70,11 +70,12 @@ const SurveyComponent = ({
   // useEffect to set the default data for the form
   // add in cached data here instead of in formDefault so that clicking "clear" doesn't treat the cache as default
   useEffect(() => {
-    const cacheOrDefault = isEditable && !isEditing ? formDefault : cachedData;
+    const cacheOrDefault = cachedData || formDefault;
+
     if (cacheOrDefault) {
       reset(cacheOrDefault);
     }
-  }, [cachedData, formDefault, reset, isEditable, isEditing]);
+  }, [cachedData, formDefault, reset]);
 
   useEffect(() => {
     // function passed to watch is executed every time the form data changes
