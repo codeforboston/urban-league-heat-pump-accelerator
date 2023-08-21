@@ -28,7 +28,7 @@ function CarrouselHero(props) {
           textBold="less costly"
           text2="."
           image={imageHeroFirst}
-          link="https://www.masssave.com/residential/programs-and-services/income-based-offers/income-eligible-programs"
+          link="https://www.cenhud.com/en/my-energy/save-energy-money/energy-calculators/fuel-switching-calculator/"
         />
       ),
     },
@@ -53,7 +53,7 @@ function CarrouselHero(props) {
         interval="8000"
         indicators={false}
         cycleNavigation={false}
-        // autoPlay={false}
+        autoPlay={false}
         styles={{
           height: { heroHeight },
           minHeight: "100vh",

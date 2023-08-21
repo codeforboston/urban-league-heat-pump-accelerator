@@ -10,10 +10,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { setBreadcrumbs } from "../../../features/breadcrumb/breadcrumbSlice";
-import { useDispatch } from "react-redux";
 import { useGetSurveyorsQuery } from "../../../api/apiSlice";
-import { useGoToBreadcrumb } from "../../../hooks/breadcrumbHooks";
+import {
+  useGoToBreadcrumb,
+  useInitBreadcrumbs,
+} from "../../../hooks/breadcrumbHooks";
+import { ADMIN_USER, withAdminPrefix } from "../../../routing/routes";
 
 const columns = [
   { id: "id", label: "UserID", minWidth: 50 },
@@ -26,14 +28,11 @@ const columns = [
 ];
 
 const UserTable = () => {
-  const dispatch = useDispatch();
   const goToBreadcrumb = useGoToBreadcrumb();
 
-  dispatch(
-    setBreadcrumbs([
-      { url: "/admin/dashboard", description: "dashboard" },
-      { url: "/admin/user", description: "users" },
-    ])
+  useInitBreadcrumbs(
+    [{ url: withAdminPrefix(ADMIN_USER), description: "users" }],
+    true
   );
 
   const {

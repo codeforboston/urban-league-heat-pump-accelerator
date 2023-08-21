@@ -59,8 +59,8 @@ export const AssignmentHome = ({
                   : `0${home?.zip_code}`
               }`}</Box>
               <Box>
-                {home.completed === "true" ? (
-                  <Typography color="green">Completed</Typography>
+                {home.completed === true ? (
+                  <Typography color="green">{"Completed ✅"}</Typography>
                 ) : (
                   <Typography color="red">Incomplete</Typography>
                 )}

@@ -12,14 +12,16 @@ const Nav = () => {
       <AppBar position="static">
         <Toolbar>
           <Box sx={{ flexGrow: 1 }}>
-            <Button color="inherit" component={Link} to="">
-              <Typography variant="h6">DASHBOARD</Typography>
-            </Button>
             <Button color="inherit" component={Link} to="/surveyor/dashboard">
               <Typography variant="h7">SURVEYOR MODE</Typography>
             </Button>
           </Box>
-          <Button color="inherit" component={Link} onClick={logout}>
+          <Button
+            color="inherit"
+            component={Link}
+            onClick={logout}
+            sx={{ minWidth: "max-content" }}
+          >
             <Typography variant="h6">LOG OUT</Typography>
           </Button>
         </Toolbar>

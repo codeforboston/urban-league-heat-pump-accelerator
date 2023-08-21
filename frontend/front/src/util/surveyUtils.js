@@ -34,7 +34,6 @@ export const buildSurveyVisitData = (answers, homeId, surveyId, surveyorId) => {
       surveyor_id: surveyorId,
       survey_response_attributes: {
         survey_id: surveyId,
-        completed: "true",
         survey_answers_attributes: answersObject,
       },
     },

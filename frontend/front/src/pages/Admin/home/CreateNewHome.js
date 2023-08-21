@@ -4,6 +4,8 @@ import { Controller, useForm } from "react-hook-form";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import { withAdminPrefix, ADMIN_HOME } from "../../../routing/routes";
+
 const CreateNewHome = () => {
   const navigate = useNavigate();
   const { handleSubmit, control } = useForm({
@@ -18,7 +20,7 @@ const CreateNewHome = () => {
   const onSubmit = (data) => console.log(data);
 
   const handleCancel = () => {
-    navigate("/admin/home");
+    navigate(withAdminPrefix(ADMIN_HOME));
   };
 
   return (
