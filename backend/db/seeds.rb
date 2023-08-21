@@ -16,6 +16,6 @@ include SeedImporter
 # rubocop:enable Style/MixinUsage
 
 unless Rails.env.test?
-  SeedImporter.import_seed_data(Rails.configuration.seed_data_path,
+  SeedImporter.import_seed_data('lib/seeds/',
                                 '../data-analysis/clustered_ordered_parcels.csv')
 end

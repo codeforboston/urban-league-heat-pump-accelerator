@@ -14,6 +14,5 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }, defaults: { format: :json }
-  resources :property_assessments, only: [:index]
-  root 'property_assessments#index'
+  root 'homes#index'
 end
