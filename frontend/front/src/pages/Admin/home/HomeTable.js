@@ -37,7 +37,7 @@ const HomeTable = () => {
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
 
   const handleUserLink = (home) => {
-    navigate("/admin/survey/visit/" + home.survey_visit_ids[0]);
+    navigate(`/admin/survey/visit/${home.survey_visit_ids[0]}`);
   };
 
   const handleAssignmentLink = (assignment) =>
@@ -89,7 +89,7 @@ const HomeTable = () => {
       field: "completed",
       headerName: "Completed",
       renderCell: (params) =>
-        params.row.completed === true ? (
+        params.row.completed ? (
           <Button
             variant="text"
             sx={{ minWidth: "unset", padding: "0px" }}
