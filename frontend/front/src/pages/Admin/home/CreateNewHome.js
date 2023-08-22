@@ -5,6 +5,8 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCreateHomeMutation } from "../../../api/apiSlice";
 
+import { withAdminPrefix, ADMIN_HOME } from "../../../routing/routes";
+
 const CreateNewHome = () => {
   const navigate = useNavigate();
   const { handleSubmit, control, reset } = useForm({
@@ -31,7 +33,7 @@ const CreateNewHome = () => {
     createHome(homeData);
   };
   const handleCancel = () => {
-    navigate("/admin/home");
+    navigate(withAdminPrefix(ADMIN_HOME));
   };
 
   useEffect(() => {
