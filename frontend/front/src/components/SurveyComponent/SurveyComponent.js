@@ -251,13 +251,13 @@ const SurveyComponent = ({
 
 // makes sure data fetching happens BEFORE the form is loaded, so that the form hook can be initialized with the correct default data
 const SurveyComponentWrapper = forwardRef((props, ref) => {
-  const { defaultData, style, activeHome } = props;
+  const { defaultData, style, activeHome, surveyId } = props;
 
   const {
     data: surveyStructure,
     isError: isSurveyError,
     isLoading: isSurveyLoading,
-  } = useGetSurveyStructureQuery();
+  } = useGetSurveyStructureQuery(surveyId);
 
   const formDefault = useMemo(() => {
     if (defaultData) {

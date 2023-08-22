@@ -27,6 +27,14 @@ const SurveyProfile = () => {
     { skip: !surveyVisit }
   );
 
+  const title = useMemo(
+    () =>
+      surveyVisit && houseData
+        ? `${houseToString(houseData)} ${formatISODate(surveyVisit.date)}`
+        : "Loading...",
+    [houseData, surveyVisit]
+  );
+
   const surveyAnswers = useMemo(
     () =>
       surveyVisit?.survey_response
@@ -45,14 +53,6 @@ const SurveyProfile = () => {
     deleteSurveyVisit,
     { isLoading: isSurveyDeleteLoading, isError: isSurveyVisitDeleteError },
   ] = useDeleteSurveyVisitMutation();
-
-  const title = useMemo(
-    () =>
-      surveyVisit && houseData
-        ? `${houseToString(houseData)} ${formatISODate(surveyVisit.date)}`
-        : "Loading...",
-    [houseData, surveyVisit]
-  );
 
   const onSubmit = useCallback(
     async (responses, surveyId) => {
