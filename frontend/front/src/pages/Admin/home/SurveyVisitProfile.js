@@ -14,26 +14,18 @@ import { SurveyError } from "../survey/SurveyError";
 import { formatISODate } from "../../../components/DateUtils";
 import { houseToString } from "../../../components/AddressUtils";
 import { withAdminPrefix, ADMIN_SURVEY } from "../../../routing/routes";
+import { buildDataFromSurveyAnswers } from "../../../util/surveyUtils";
 
 const SurveyProfile = () => {
   const navigate = useNavigate();
   const { uid: surveyVisitId } = useParams();
-
   const { data: surveyVisit, error: surveyVisitError } =
     useGetSurveyVisitQuery(surveyVisitId);
 
   const { data: houseData, error: houseError } = useGetHomeQuery(
-    surveyVisit?.homeId,
+    surveyVisit?.home_id,
     { skip: !surveyVisit }
   );
-  const [
-    putSurveyVisit,
-    { isLoading: isSurveyVisitPutLoading, isError: isSurveyVisitPutError },
-  ] = useUpdateSurveyVisitMutation();
-  const [
-    deleteSurveyVisit,
-    { isLoading: isSurveyDeleteLoading, isError: isSurveyVisitDeleteError },
-  ] = useDeleteSurveyVisitMutation();
 
   const title = useMemo(
     () =>
@@ -42,6 +34,25 @@ const SurveyProfile = () => {
         : "Loading...",
     [houseData, surveyVisit]
   );
+
+  const surveyAnswers = useMemo(
+    () =>
+      surveyVisit?.survey_response
+        ? buildDataFromSurveyAnswers(
+            surveyVisit?.survey_response?.survey_answers
+          )
+        : [],
+    [surveyVisit]
+  );
+
+  const [
+    putSurveyVisit,
+    { isLoading: isSurveyVisitPutLoading, isError: isSurveyVisitPutError },
+  ] = useUpdateSurveyVisitMutation();
+  const [
+    deleteSurveyVisit,
+    { isLoading: isSurveyDeleteLoading, isError: isSurveyVisitDeleteError },
+  ] = useDeleteSurveyVisitMutation();
 
   const onSubmit = useCallback(
     async (responses, surveyId) => {
@@ -71,9 +82,9 @@ const SurveyProfile = () => {
       </Typography>
       {surveyVisit && houseData ? (
         <AdminSurvey
-          defaultData={surveyVisit.responses}
+          defaultData={surveyAnswers}
           activeHome={houseData}
-          surveyId={surveyVisit.surveyId}
+          surveyId={surveyVisit.survey_response.survey_id}
           submitSurvey={onSubmit}
           onDelete={onDelete}
           isLoading={isSurveyVisitPutLoading || isSurveyDeleteLoading}

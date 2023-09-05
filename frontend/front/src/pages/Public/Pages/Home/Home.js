@@ -41,13 +41,6 @@ const Home = () => {
         </Box>
       </SectionWrapper>
 
-      {/* PARTNERS LOGO */}
-      <Box id="our-partners-section">
-        <Box mb={8} mt={8} sx={{ padding: { xs: "0" } }}>
-          <Partners />
-        </Box>
-      </Box>
-
       {/* CARDS BENEFITS */}
       <Box
         mt={16}
@@ -56,6 +49,13 @@ const Home = () => {
         }}
       >
         <CardBenefitsSection />
+      </Box>
+
+      {/* PARTNERS LOGO */}
+      <Box id="our-partners-section">
+        <Box mb={8} mt={8} sx={{ padding: { xs: "0" } }}>
+          <Partners />
+        </Box>
       </Box>
     </Box>
   );
