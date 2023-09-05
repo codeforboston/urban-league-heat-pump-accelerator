@@ -1,7 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box, Link } from "@mui/material";
-import ButtonWhite from "../../Components/Button/ButtonWhite";
+import { Typography, Box, Link, Button } from "@mui/material";
 import AnimatedBox from "../../Components/AnimatedBox";
 import TitleHero from "../../Components/Typography/TitleHero";
 
@@ -90,10 +89,26 @@ const HeroPage = ({
                 </Typography>
               </Box>
 
-              <ButtonWhite
-                text="Benefits of heat pumps"
+              <Button
+                component={Link}
                 to="benefits-heat-pump"
-              />
+                onClick={() => window.scrollTo(0, 0)}
+                sx={{
+                  width: "auto",
+                  minWidth: "200px",
+                  maxWidth: "250px",
+                  height: "50px",
+                  color: "var(--color-text-2)",
+                  background: "var(--bgColor-3)",
+                  borderRadius: "50px",
+                  px: 2,
+                  "&:hover": {
+                    backgroundColor: "var(--bgColor-3)",
+                  },
+                }}
+              >
+                Benefits of heat pumps
+              </Button>
             </Box>
           </AnimatedBox>
         </Box>
