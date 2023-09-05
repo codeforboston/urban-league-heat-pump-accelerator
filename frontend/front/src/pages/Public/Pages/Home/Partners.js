@@ -7,7 +7,6 @@ import codeForAmericaLogo from "../../../../assets/images/partnersLogo/CFA.png";
 import codeForBostonLogo from "../../../../assets/images/partnersLogo/CFB.png";
 import pcb from "../../../../assets/images/partnersLogo/powercorp-boston.jpeg";
 import AnimatedBox from "../../Components/AnimatedBox";
-import ButtonDarkBklue from "../../Components/Button/ButtonDarkBlue";
 import Heading1 from "../../Components/Typography/Heading1";
 
 const Partners = () => {
@@ -103,9 +102,6 @@ const Partners = () => {
               </Link>
               .
             </Typography>
-          </Grid>
-          <Grid item mt={2}>
-            <ButtonDarkBklue text="Learn more" to="about-us" />
           </Grid>
         </Grid>
       </AnimatedBox>
