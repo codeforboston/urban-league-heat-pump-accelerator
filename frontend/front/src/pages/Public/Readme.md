@@ -25,8 +25,3 @@
 - As an authorized user, I want to be able to login.
 - As an authorized user, I want to be able to change my password.
 - As an authorized user, I want to be able to login/logout successfully.
-<<<<<<< HEAD
-- As an authorized user, I am not able to create new users.
-=======
-- As an authorized user, I am not able to create new users
->>>>>>> main
