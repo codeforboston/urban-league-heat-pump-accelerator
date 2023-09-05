@@ -22,16 +22,28 @@ function CarrouselHero(props) {
     {
       component: (
         <HeroPage
-          title="Boston Residents Can "
-          titleBold="Save Money with Heat Pumps"
-          text1="Make your home heating and cooling "
-          textBold="less costly"
+          title="Save money on your "
+          titleBold="heating and cooling bills"
+          text1="You may be able to get incentives to install a heat pump, a type of heating and cooling system that will  "
+          textBold="lower your utility bills"
           text2="."
           image={imageHeroFirst}
           link="https://www.cenhud.com/en/my-energy/save-energy-money/energy-calculators/fuel-switching-calculator/"
         />
       ),
     },
+    //   component: (
+    //     <HeroPage
+    //       title="Boston Residents Can "
+    //       titleBold="Save Money with Heat Pumps"
+    //       text1="Make your home heating and cooling "
+    //       textBold="less costly"
+    //       text2="."
+    //       image={imageHeroFirst}
+    //       link="https://www.cenhud.com/en/my-energy/save-energy-money/energy-calculators/fuel-switching-calculator/"
+    //     />
+    //   ),
+    // },
     // {
     //   component: (
     //     <HeroPage

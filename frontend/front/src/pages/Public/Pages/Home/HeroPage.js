@@ -90,7 +90,10 @@ const HeroPage = ({
                 </Typography>
               </Box>
 
-              <ButtonWhite text="Take the survey" to="survey" />
+              <ButtonWhite
+                text="Benefits of heat pumps"
+                to="benefits-heat-pump"
+              />
             </Box>
           </AnimatedBox>
         </Box>

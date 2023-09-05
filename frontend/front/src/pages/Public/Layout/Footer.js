@@ -27,7 +27,6 @@ const footerItems = {
   "About Heat Pumps": { link: "about-heat-pump" },
   "Benefits of Heat Pumps": { link: "benefits-heat-pump" },
   "Get Involved": { link: "get-involved" },
-  "Our Partners": { link: "our-partners-section" },
   Testimonials: { link: "testimonial-section" },
 };
 

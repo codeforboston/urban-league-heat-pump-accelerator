@@ -66,7 +66,7 @@ const Testimonial = () => {
                   that again!”
                 </Typography>
                 <Box pt={3}>
-                  <Heading4 text="Mattapan Resident, Nia" />
+                  <Heading4 text="Nia, Mattapan Resident" />
                 </Box>
                 <Typography py={6} variant="h6" sx={{ fontWeight: 400 }} px={1}>
                   Hear what else people have to say about their heat pumps!
