@@ -36,8 +36,8 @@ const FooterWrapper = styled("div")(({ theme }) => ({
   color: "var(--color-text-1)",
   position: "relative",
   "& .subtitle-footer": {
-    fontWeight: "bold",
-    textDecoration: "underline",
+    fontWeight: "700",
+    textDecoration: "none",
   },
 }));
 
@@ -87,7 +87,7 @@ const Footer = () => {
             <ButtonGetPump />
           </Grid>
 
-          {/* BENEFITS OF HEAT PUMPS */}
+          {/* LEARN MORE */}
           <Grid
             item
             sx={{
@@ -140,6 +140,9 @@ const Footer = () => {
                       sx={{
                         color: "var(--color-text-1)",
                       }}
+                      primaryTypographyProps={{
+                        fontWeight: "300",
+                      }}
                     />
                   </ListItemButton>
                 </ListItem>
@@ -166,7 +169,12 @@ const Footer = () => {
 
               <ListItem sx={{ py: { xs: 0, lg: 0 }, px: 0 }}>
                 <ListItemButton
-                  sx={{ py: 0, px: 0, textAlign: { xs: "center", lg: "left" } }}
+                  sx={{
+                    py: 0,
+                    px: 0,
+                    textAlign: { xs: "center", lg: "left" },
+                    fontWeight: "300",
+                  }}
                   component={Link}
                   to="privacy-policy"
                   onClick={() => window.scrollTo(0, 0)}
@@ -176,13 +184,16 @@ const Footer = () => {
                     sx={{
                       color: "var(--color-text-1)",
                     }}
+                    primaryTypographyProps={{
+                      fontWeight: "300",
+                    }}
                   />
                 </ListItemButton>
               </ListItem>
             </List>
           </Grid>
 
-          {/* GET IN TOUCH */}
+          {/* CONTACT US   */}
           <Grid
             item
             xs={12}
@@ -195,8 +206,8 @@ const Footer = () => {
             }}
           >
             <>
-              <Typography className="subtitle-footer">
-                Get to Know Us
+              <Typography className="subtitle-footer" pb={1}>
+                Contact Us
               </Typography>
               <Box>
                 <Box
@@ -211,7 +222,11 @@ const Footer = () => {
                   <PermPhoneMsgIcon sx={{ mr: 1 }} />
                   <a
                     href="tel:617-635-4500"
-                    style={{ textDecoration: "none", color: "inherit" }}
+                    style={{
+                      textDecoration: "none",
+                      color: "inherit",
+                      fontWeight: "300",
+                    }}
                   >
                     617-635-4500
                   </a>
@@ -229,7 +244,11 @@ const Footer = () => {
                   <EmailIcon sx={{ mr: 1 }} />
                   <a
                     href="mailto:help@bostonhpa.org"
-                    style={{ textDecoration: "none", color: "inherit" }}
+                    style={{
+                      textDecoration: "none",
+                      color: "inherit",
+                      fontWeight: "300",
+                    }}
                   >
                     help@bostonhpa.org
                   </a>
