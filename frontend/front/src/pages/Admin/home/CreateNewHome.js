@@ -4,18 +4,18 @@ import { Controller, useForm } from "react-hook-form";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCreateHomeMutation } from "../../../api/apiSlice";
-
-import { withAdminPrefix, ADMIN_HOME } from "../../../routing/routes";
+import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 
 const CreateNewHome = () => {
   const navigate = useNavigate();
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
-      streetNumber: "",
-      streetName: "",
-      unitNumber: "",
+      street_number: "",
+      street_name: "",
+      unit_number: "",
       city: "",
-      zipCode: "",
+      state: "",
+      zip_code: "",
     },
   });
 
@@ -23,14 +23,7 @@ const CreateNewHome = () => {
     useCreateHomeMutation();
 
   const onSubmit = async (data) => {
-    const homeData = {
-      streetNumber: data.streetNumber,
-      streetName: data.streetName,
-      unit_number: data.unitumber,
-      city: data.city,
-      zipCode: data.zipCode,
-    };
-    createHome(homeData);
+    createHome({ home: data });
   };
   const handleCancel = () => {
     navigate(withAdminPrefix(ADMIN_HOME));
@@ -55,65 +48,78 @@ const CreateNewHome = () => {
         </Box>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
-            name={"streetNumber"}
+            name="street_number"
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
                 onChange={onChange}
                 value={value}
-                label={"Street Number"}
+                label="Street Number"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
           <Controller
-            name={"streetName"}
+            name="street_name"
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
                 onChange={onChange}
                 value={value}
-                label={"Street Name"}
+                label="Street Name"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
           <Controller
-            name={"unitNumber"}
+            name="unit_number"
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
                 onChange={onChange}
                 value={value}
-                label={"Unit Number"}
+                label="Unit Number"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
           <Controller
-            name={"city"}
+            name="city"
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
                 onChange={onChange}
                 value={value}
-                label={"City"}
+                label="City"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
               />
             )}
           />
           <Controller
-            name={"zipCode"}
+            name="state"
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField
                 onChange={onChange}
                 value={value}
-                label={"Zip Code"}
+                label="State"
+                variant="standard"
+                sx={{ width: "95%", mx: 2, mt: 3 }}
+              />
+            )}
+          />
+          <Controller
+            name="zip_code"
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+                onChange={onChange}
+                value={value}
+                label="Zip Code"
                 variant="standard"
                 sx={{ width: "95%", mx: 2, mt: 3 }}
               />
@@ -129,8 +135,9 @@ const CreateNewHome = () => {
               variant="outlined"
               sx={{ ml: 2 }}
               onClick={handleSubmit(onSubmit)}
+              disabled={isLoading ? true : false}
             >
-              {isLoading ? "Creating" : "Create"}
+              {isLoading ? "Saving" : "Save"}
             </Button>
             <Button
               variant="outlined"
