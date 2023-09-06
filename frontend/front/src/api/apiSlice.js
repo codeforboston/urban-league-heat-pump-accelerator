@@ -187,8 +187,12 @@ export const apiSlice = createApi({
         body: surveyVisit,
         headers: [[`Recaptcha-Token`, recaptcha]],
       }),
-      // invalidate Assignment so that the dashboard updates appropriately
-      invalidatesTags: ["SurveyVisit", "Assignment"],
+      // invalidate Assignment and Home so that the dashboard updates appropriately
+      invalidatesTags: (result, error, arg) => [
+        "SurveyVisit",
+        "Assignment",
+        { type: "Home", id: arg.surveyVisit.home_id },
+      ],
     }),
     updateSurveyVisit: builder.mutation({
       query: ({ id, body }) => {
@@ -310,7 +314,7 @@ export const apiSlice = createApi({
               .map((a) => ({
                 ...a,
                 // derive assignment completeness from home completeness
-                completed: a.homes.some((h) => h.completed === true),
+                completed: a.homes.every((h) => h.completed === true),
               }))
               .sort(sortById)
           : [],

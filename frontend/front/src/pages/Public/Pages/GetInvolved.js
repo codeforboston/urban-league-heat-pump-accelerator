@@ -56,12 +56,12 @@ function GetInvolved() {
     >
       <Heading1BlueBgGround text="Get Involved" />
       <Container>
-        <Box mb={{ xs: 1, sm: 6 }} mt={{ xs: 1, sm: 2 }}>
+        {/* <Box mb={{ xs: 1, sm: 6 }} mt={{ xs: 1, sm: 2 }}>
           <Heading1
             fontWeight="500"
             text="Serve your community and spread the word about the Boston Heat Pump Accelerator!"
           />
-        </Box>
+        </Box> */}
 
         <Box
           sx={{

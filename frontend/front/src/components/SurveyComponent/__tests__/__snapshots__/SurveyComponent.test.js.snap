@@ -27,7 +27,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
     </div>
     <form>
       <div
-        class="MuiStack-root css-nv9q2p-MuiStack-root"
+        class="MuiStack-root css-1pfonex-MuiStack-root"
       >
         <div
           class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -655,7 +655,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-1clyo4s-MuiStack-root"
+          class="MuiStack-root css-14w1sp1-MuiStack-root"
         >
           <button
             class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"

@@ -8,6 +8,7 @@ import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
 import { useGetSurveyorQuery } from "../../../api/apiSlice";
 import { useParams } from "react-router-dom";
+import { ADMIN_USER, withAdminPrefix } from "../../../routing/routes";
 
 const UserProfile = () => {
   const { uid } = useParams();
@@ -92,7 +93,7 @@ const UserProfile = () => {
       alignItems="center"
       flexDirection="column"
     >
-      <AdminBackButton description="users" url="/admin/user" />
+      <AdminBackButton description="users" url={withAdminPrefix(ADMIN_USER)} />
       {isSurveyorDataLoading ? (
         <Loader />
       ) : isSurveyorError ? (
@@ -112,7 +113,7 @@ const UserProfile = () => {
             title="Confirm Delete"
             message="Please confirm to delete this user."
           />
-          <Box width={500} mt={5}>
+          <Box maxWidth={500} mt={5}>
             <Box sx={{ bgcolor: "primary.main", color: "white" }} p={1}>
               <Typography variant="h5">User Profile: {uid}</Typography>
               {/* Could add user ID to header. */}

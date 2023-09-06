@@ -9,6 +9,14 @@ export const buildDefaultDataFromSurveyStructure = (surveyStructure) =>
     }),
     {}
   );
+export const buildDataFromSurveyAnswers = (surveyAnswers) =>
+  surveyAnswers.reduce(
+    (prev, curr) => ({
+      ...prev,
+      [curr.survey_question_id]: curr.answer,
+    }),
+    {}
+  );
 
 export const buildSurveyVisitData = (answers, homeId, surveyId, surveyorId) => {
   // build answers object
@@ -26,7 +34,6 @@ export const buildSurveyVisitData = (answers, homeId, surveyId, surveyorId) => {
       surveyor_id: surveyorId,
       survey_response_attributes: {
         survey_id: surveyId,
-        completed: "true",
         survey_answers_attributes: answersObject,
       },
     },

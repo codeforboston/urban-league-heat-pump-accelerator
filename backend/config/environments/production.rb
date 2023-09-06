@@ -87,6 +87,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  config.seed_data_path = 'lib/seeds/download/boston_fy2022_pa.csv'
 end

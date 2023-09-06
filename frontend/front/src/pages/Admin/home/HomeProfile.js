@@ -5,6 +5,7 @@ import { useGetHomeQuery } from "../../../api/apiSlice";
 import Loader from "../../../../src/components/Loader.js";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import { AdminBackButton } from "../../Surveyor/Components/AdminBackButton";
+import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 
 const HomeProfile = () => {
   const { hid } = useParams();
@@ -64,7 +65,7 @@ const HomeProfile = () => {
       alignItems="center"
       flexDirection="column"
     >
-      <AdminBackButton url="/admin/home" description="homes" />
+      <AdminBackButton url={withAdminPrefix(ADMIN_HOME)} description="homes" />
       {isHomeDataLoading ? (
         <Loader />
       ) : isHomeDataError ? (
@@ -75,7 +76,7 @@ const HomeProfile = () => {
         />
       ) : (
         <>
-          <Box width={500} mt={5}>
+          <Box maxWidth={500} mt={5}>
             <Box sx={{ bgcolor: "primary.main", color: "white" }} p={1}>
               <Typography variant="h5">Home Profile: {hid}</Typography>
             </Box>

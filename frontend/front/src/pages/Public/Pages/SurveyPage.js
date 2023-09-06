@@ -31,6 +31,12 @@ export const SurveyPage = () => {
     RECAPTCHA_ACTION_PUBLIC_SURVEY
   );
 
+  // this ought to just be a global constant but that made it untestable
+  const publicSurveyEnabled = useMemo(
+    () => process.env.REACT_APP_PUBLIC_SURVEY_ENABLED === "true",
+    []
+  );
+
   const [
     createHome,
     {
@@ -79,18 +85,15 @@ export const SurveyPage = () => {
     return STEP_SURVEY;
   }, [createHomeData, isSurveyVisitSuccess]);
 
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        minHeight: "calc(100vh - 520px)",
-      }}
-    >
-      <Heading1BlueBgGround text="Take the Survey" />
-      <Container>
-        <Stack direction="column" alignItems="center" justifyContent="center">
+  const pageContent = useCallback(
+    () => (
+      <>
+        <Stack
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          data-testid="publicSurveyInfoMessage"
+        >
           <p>
             Fill out this form to record your interest in installing a heat pump
             for your home.
@@ -125,6 +128,38 @@ export const SurveyPage = () => {
         <Snackbar open={!!surveyVisitError}>
           <Alert severity="error">{"Error submitting survey."}</Alert>
         </Snackbar>
+      </>
+    ),
+    [
+      createHomeData,
+      createHomeError,
+      handleAddSurveyVisit,
+      handleCreateHome,
+      isCreateHomeLoading,
+      isSurveyVisitLoading,
+      step,
+      surveyVisitError,
+    ]
+  );
+
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        minHeight: "calc(100vh - 520px)",
+      }}
+    >
+      <Heading1BlueBgGround text="Take the Survey" />
+      <Container>
+        {publicSurveyEnabled ? (
+          pageContent()
+        ) : (
+          <div data-testid="publicSurveyUnderConstruction">
+            <h2>Public survey is under construction!</h2>
+          </div>
+        )}
       </Container>
     </Box>
   );

@@ -17,13 +17,14 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Loader from "../../../components/Loader";
 import Select from "@mui/material/Select";
+import { ADMIN_ASSIGNMENT, withAdminPrefix } from "../../../routing/routes";
 
 const AssignTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
-  useInitBreadcrumbs([
-    { url: "/admin/dashboard", description: "dashboard" },
-    { url: "/admin/assignment", description: "assignments" },
-  ]);
+  useInitBreadcrumbs(
+    [{ url: withAdminPrefix(ADMIN_ASSIGNMENT), description: "assignments" }],
+    true
+  );
 
   const [selectedSurveyor, setSelectedSurveyor] = useState("");
   const [selectedAssignments, setSelectedAssignments] = useState([]);
@@ -102,32 +103,65 @@ const AssignTable = () => {
 
   const handleUserLink = (user) => goToBreadcrumb("user", user);
 
-  const handleAssignmentLink = (assignment) =>
+  const handleAssignmentLink = (assignment) => {
     goToBreadcrumb("assignment", assignment);
-
+  };
   // DataGrid columns
   const columns = [
-    { field: "id", headerName: "Assign. Id", maxWidth: 100, flex: 1 },
     {
-      field: "assignment",
-      headerName: "Assignment",
-      minWidth: 110,
+      field: "id",
+      headerName: "Id #",
+      maxWidth: 50,
       flex: 1,
       renderCell: (params) => (
         <Button
-          variant="text"
-          color="primary"
-          size="small"
+          variant="outlined"
           onClick={() => handleAssignmentLink(params.row)}
+          sx={{ minWidth: "fit-content", width: "auto" }}
         >
-          View
+          {params.row.id}
         </Button>
       ),
     },
     {
+      field: "surveyorData",
+      headerName: "Surveyor(s)",
+      flex: 1,
+      renderCell: (params) => {
+        return params.row.surveyorData ? (
+          <Stack
+            direction="row"
+            maxWidth="100%"
+            justifyContent="flex-start"
+            overflow="scroll"
+            sx={{ overflowY: "auto", overflowX: "auto" }}
+            flexWrap="wrap"
+          >
+            {params.row.surveyorData.map((surveyor) => {
+              return (
+                <Button
+                  key={`surveyor-${surveyor.id}`}
+                  onClick={() => handleUserLink(surveyor)}
+                  sx={{
+                    textAlign: "left",
+                    minWidth: "max-content",
+                  }}
+                >
+                  {`${surveyor.firstname} ${surveyor.lastname}`}
+                </Button>
+              );
+            })}
+          </Stack>
+        ) : (
+          "Unassigned"
+        );
+      },
+    },
+    {
       field: "completed",
       headerName: "Completion",
-      width: 110,
+      width: "min-content",
+      maxWidth: 110,
       flex: 1,
       renderCell: (params) => {
         let completed = 0;
@@ -136,27 +170,9 @@ const AssignTable = () => {
             completed++;
           }
         });
-        return `${completed}/${params.row.homes.length}`;
-      },
-    },
-    {
-      field: "surveyorData",
-      headerName: "Surveyor(s)",
-      width: 150,
-      flex: 1,
-      renderCell: (params) => {
-        return params.row.surveyorData
-          ? params.row.surveyorData.map((surveyor) => {
-              return (
-                <Button
-                  key={`surveyor-${surveyor.id}`}
-                  onClick={() => handleUserLink(surveyor)}
-                >
-                  {`${surveyor.firstname} ${surveyor.lastname}`}
-                </Button>
-              );
-            })
-          : "Unassigned";
+        return `${completed}/${params.row.homes.length} ${
+          completed === params.row.homes.length && completed > 0 ? "✅" : ""
+        }`;
       },
     },
   ];
@@ -184,7 +200,12 @@ const AssignTable = () => {
         <CustomSnackbar message="Error removing assignment" severity="error" />
       )}
 
-      <Stack direction="row" spacing={1} py={3}>
+      <Stack
+        direction={["column", null, null, "row"]}
+        spacing={1}
+        py={3}
+        gap={1}
+      >
         <Box sx={{ minWidth: 200 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
@@ -203,12 +224,18 @@ const AssignTable = () => {
             </Select>
           </FormControl>
         </Box>
-        <Button size="large" variant="outlined" onClick={handleAddSurveyor}>
-          Add
-        </Button>
-        <Button size="large" variant="outlined" onClick={handleRemoveSurveyor}>
-          Remove
-        </Button>
+        <Stack direction="row" gap={1}>
+          <Button size="large" variant="outlined" onClick={handleAddSurveyor}>
+            Add
+          </Button>
+          <Button
+            size="large"
+            variant="outlined"
+            onClick={handleRemoveSurveyor}
+          >
+            Remove
+          </Button>
+        </Stack>
       </Stack>
       <Box sx={{ height: "100%", width: "100%" }}>
         <DataGrid
@@ -216,6 +243,7 @@ const AssignTable = () => {
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}
+          getRowHeight={() => "auto"}
           disableSelectionOnClick
           autoHeight
           checkboxSelection

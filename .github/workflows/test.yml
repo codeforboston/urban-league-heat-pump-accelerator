@@ -67,7 +67,7 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v3
       - name: install dependencies
-        run: yarn
+        run: yarn --immutable
       - name: Run linters
         run: yarn test-style
       - name: Run tests
@@ -78,7 +78,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: backend
+        working-directory: .
     needs: [test-backend]
     steps:
       - name: Check out code
@@ -106,4 +106,4 @@ jobs:
           ECR_REPOSITORY: urban-league-heat-pump-accelerator
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker buildx build --platform linux/arm64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . --push
+          docker buildx build --platform linux/arm64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f ./backend/Dockerfile . --push

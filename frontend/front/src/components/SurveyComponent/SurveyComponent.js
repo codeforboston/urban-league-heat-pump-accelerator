@@ -70,6 +70,7 @@ const SurveyComponent = ({
   // add in cached data here instead of in formDefault so that clicking "clear" doesn't treat the cache as default
   useEffect(() => {
     const cacheOrDefault = cachedData || formDefault;
+
     if (cacheOrDefault) {
       reset(cacheOrDefault);
     }
@@ -250,7 +251,7 @@ const SurveyComponent = ({
 
 // makes sure data fetching happens BEFORE the form is loaded, so that the form hook can be initialized with the correct default data
 const SurveyComponentWrapper = forwardRef((props, ref) => {
-  const { defaultData, surveyId, style, activeHome } = props;
+  const { defaultData, style, activeHome, surveyId } = props;
 
   const {
     data: surveyStructure,
