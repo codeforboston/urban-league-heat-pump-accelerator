@@ -10,5 +10,6 @@ RUN yarn build
 
 # Stage 2: Copy the JS React SPA into the Nginx HTML directory
 FROM nginxinc/nginx-unprivileged:stable-alpine
+COPY --from=builder /usr/src/app/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
