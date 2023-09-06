@@ -41,6 +41,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_003916) do
     t.datetime "updated_at", null: false
     t.bigint "assignment_id"
     t.integer "visit_order"
+    t.integer "status", default: 0, null: false
+    t.boolean "user_added", default: false, null: false
     t.integer "bedroom_score"
     t.integer "floor_score"
     t.string "geometry"
