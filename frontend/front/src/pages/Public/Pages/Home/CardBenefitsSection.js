@@ -29,7 +29,7 @@ const CardBenefitsSection = () => {
   const cards = [
     {
       id: 1,
-      title: "Saving Money",
+      title: "Lower energy bills",
       paragraphs: [
         "Heat pumps are so energy efficient that they can lead to significant savings on monthly utility bills and lower maintenance, repair and replacement costs.",
       ],
@@ -39,7 +39,7 @@ const CardBenefitsSection = () => {
     },
     {
       id: 2,
-      title: "Experience The All In One Comfort",
+      title: "Comfort at home",
       paragraphs: [
         "The same heat pump that helps to cool in the summer can then provide warmth in the winter- it's one system that is efficient, quiet, and convenient, providing comfort throughout the home.",
       ],
