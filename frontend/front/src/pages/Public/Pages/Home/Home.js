@@ -35,27 +35,27 @@ const Home = () => {
       </Container>
 
       {/* TESTIMONIALS */}
-      <SectionWrapper my={16} id="testimonial-section">
+      <SectionWrapper mt={16} id="testimonial-section">
         <Box sx={{ padding: { xs: "0" } }}>
           <Testimonial />
         </Box>
       </SectionWrapper>
+
+      {/* CARDS BENEFITS */}
+      <Box
+        sx={{
+          background: "var(--bgColor-3)",
+          pt: 12,
+        }}
+      >
+        <CardBenefitsSection />
+      </Box>
 
       {/* PARTNERS LOGO */}
       <Box id="our-partners-section">
         <Box mb={8} mt={8} sx={{ padding: { xs: "0" } }}>
           <Partners />
         </Box>
-      </Box>
-
-      {/* CARDS BENEFITS */}
-      <Box
-        mt={16}
-        sx={{
-          background: "var(--bgColor-3)",
-        }}
-      >
-        <CardBenefitsSection />
       </Box>
     </Box>
   );

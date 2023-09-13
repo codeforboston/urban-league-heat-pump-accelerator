@@ -4,6 +4,7 @@ function Heading2({ text, textDecoration = "none" }) {
   return (
     <Typography
       variant="h4"
+      gutterBottom
       sx={{
         fontFamily: "var(--font-family-1)",
         color: "var(--color-text-2)",
@@ -11,6 +12,7 @@ function Heading2({ text, textDecoration = "none" }) {
         textDecoration: textDecoration,
         textUnderlinePosition: "under",
         textDecorationColor: "var(--color-text-2)",
+        textTransform: "capitalize",
       }}
     >
       {text}

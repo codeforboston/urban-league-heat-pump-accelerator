@@ -33,7 +33,6 @@ function GetInvolved() {
       mediaSource: card3,
       title: "Discuss with your community",
       body: "You can host any sort of event and share flyers about how to help your neighbors save money by getting a heat pump!",
-      linkDescription: "Download informational flyer",
       linkDownload: CommunityFlyer,
     },
     {
