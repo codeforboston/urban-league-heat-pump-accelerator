@@ -41,7 +41,7 @@ const CardBenefitsSection = () => {
       id: 2,
       title: "Experience The All In One Comfort",
       paragraphs: [
-        "Heat pumps can help you keep cool in the summer and warm in the winter. They are efficient, nearly silent, and convenient, providing comfort throughout the home.",
+        "The same heat pump that helps to cool in the summer can then provide warmth in the winter- it's one system that is efficient, quiet, and convenient, providing comfort throughout the home.",
       ],
       image: imageTwo,
       buttonText: "",
@@ -49,9 +49,9 @@ const CardBenefitsSection = () => {
     },
     {
       id: 3,
-      title: "Strengthen Community",
+      title: "Stronger communities",
       paragraphs: [
-        "Because heat pumps can lower your utility bills, they can help seniors and low-income residents stay in their homes longer.",
+        "By helping to lower utility bills, heat pumps can lower the cost of living for residents, which in turn can support residents living on fixed- or low-incomes to remain in their homes longer, strengthening communities.",
       ],
       image: strengthenCommunity,
       buttonText: "",
@@ -59,9 +59,9 @@ const CardBenefitsSection = () => {
     },
     {
       id: 4,
-      title: "Environmentally Friendly ",
+      title: "Cleaner air",
       paragraphs: [
-        "Heat pumps use electricity that can be produced by renewable sources, making them much more eco-friendly than gas or oil-fueled systems. With a single “green-powered” unit that heats and cools, your home’s carbon footprint is as low as it can go.",
+        "Heat pumps use electricity that can be produced by renewable sources. As the grid becomes more green, heat pumps become much more eco-friendly than gas or oil-fueled systems. With a single “green-powered” unit that heats and cools, your home’s carbon footprint is as low as it can go.",
       ],
       image: beEnvironmentally,
       buttonText: "",
@@ -91,7 +91,7 @@ const CardBenefitsSection = () => {
               variant="body"
               sx={{ color: "var(--color-text-3)", display: "inline-block" }}
             >
-              Learn more about
+              Learn more about the
             </Typography>
             <Link to="benefits-heat-pump" style={{ textDecoration: "none" }}>
               <Typography variant="body" sx={{ color: "var(--color-text-4)" }}>
