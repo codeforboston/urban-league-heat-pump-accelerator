@@ -8,7 +8,9 @@ import CustomSnackbar from "../../../components/CustomSnackbar";
 import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../../../components/Loader";
 import React from "react";
+
 import { useGetHomesQuery } from "../../../api/apiSlice";
+import { useNavigate } from "react-router-dom";
 import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 
 // Formats addresses
@@ -25,6 +27,7 @@ export const getAddress = (params) => {
 
 const HomeTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
+  const navigate = useNavigate();
 
   useInitBreadcrumbs(
     [{ url: withAdminPrefix(ADMIN_HOME), description: "homes" }],
@@ -33,10 +36,19 @@ const HomeTable = () => {
 
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
 
+  const handleUserLink = (home) => {
+    navigate(`/admin/survey/visit/${home.survey_visit_ids[0]}`);
+  };
+
   const handleAssignmentLink = (assignment) =>
     goToBreadcrumb("assignment", assignment);
 
   const columns = [
+    {
+      field: "id",
+      headerName: "Id",
+      minWidth: 80,
+    },
     {
       field: "address",
       valueGetter: getAddress,
@@ -76,7 +88,20 @@ const HomeTable = () => {
     {
       field: "completed",
       headerName: "Completed",
-      renderCell: (params) => (params.row.completed === true ? "Yes ✅" : "No"),
+      renderCell: (params) =>
+        params.row.completed ? (
+          <Button
+            variant="text"
+            sx={{ minWidth: "unset", padding: "0px" }}
+            color="primary"
+            size="small"
+            onClick={() => handleUserLink(params.row)}
+          >
+            Yes ✅
+          </Button>
+        ) : (
+          "No"
+        ),
       minWidth: 100,
       maxWidth: 150,
       flex: 0.8,

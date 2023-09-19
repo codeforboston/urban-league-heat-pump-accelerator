@@ -18,7 +18,7 @@ const theme = createTheme({
     // body
     body: {
       margin: 0,
-      fontWeight: 400,
+      // fontWeight: 400,
       fontSize: "16px",
       lineHeight: 1.5,
       letterSpacing: "0.00938em",
