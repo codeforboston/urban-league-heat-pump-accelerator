@@ -214,6 +214,7 @@ const SurveyComponent = ({
                       label: o,
                     }))}
                     disabled={isDisabled}
+                    disableFancyLabel
                   />
                 );
               case "text":
@@ -224,6 +225,7 @@ const SurveyComponent = ({
                     name={`${q.id}`}
                     label={q.text}
                     disabled={isDisabled}
+                    disableFancyLabel
                   />
                 );
               default:

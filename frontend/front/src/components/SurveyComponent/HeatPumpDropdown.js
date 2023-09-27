@@ -5,6 +5,7 @@ import {
   Select,
   MenuItem,
   InputLabel,
+  FormLabel,
 } from "@mui/material";
 import React, { useCallback, useMemo } from "react";
 
@@ -18,16 +19,21 @@ export const HeatPumpDropdown = ({
   label,
   disabled,
   required,
+  enableOtherField,
+  disableFancyLabel,
 }) => {
+  const Label = disableFancyLabel ? FormLabel : InputLabel;
+
   const { field: groupField, formState } = useController({ name, control });
 
   const otherFieldName = `${name}/other`;
   const showOtherInput = useMemo(
     () =>
+      enableOtherField &&
       groupField.value &&
       typeof groupField.value == "string" &&
       groupField.value.toLowerCase() === "other",
-    [groupField]
+    [enableOtherField, groupField]
   );
 
   const mainFieldError = formState.errors[name];
@@ -37,13 +43,17 @@ export const HeatPumpDropdown = ({
     (field) => {
       return (
         <FormControl fullWidth error={!!mainFieldError}>
-          <InputLabel id={`${name}-dropdown-label`}>{label}</InputLabel>
+          <Label id={`${name}-dropdown-label`} htmlFor={`${name}-dropdown`}>
+            {label}
+          </Label>
           <Select
-            label={label}
             name={`${name}-dropdown`}
             aria-labelledby={`${name}-dropdown-label`}
             variant="filled"
             disabled={disabled}
+            inputProps={{
+              id: `${name}-dropdown`,
+            }}
             {...field}
           >
             {options.map((option) => (
