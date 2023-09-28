@@ -16,12 +16,14 @@ import { ProtectedRoute } from "./routing/ProtectedRoute";
 import PublicContainer from "./pages/Public/PublicContainer";
 import SurveyorContainer from "./pages/Surveyor/SurveyorContainer";
 
+const ONELINK_LANGUAGE_BAR_HEIGHT = "36px";
+
 function App() {
   // update jwt
   useLocallyStoredJWT();
 
   return (
-    <Box>
+    <Box sx={{ paddingBottom: ONELINK_LANGUAGE_BAR_HEIGHT }}>
       <BrowserRouter>
         <Routes>
           <Route index element={<Navigate to={routes.PUBLIC_ROUTE} />} />
