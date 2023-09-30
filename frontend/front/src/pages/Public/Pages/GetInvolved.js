@@ -39,7 +39,9 @@ function GetInvolved() {
       mediaType: "img",
       mediaSource: card4,
       title: "Share with your local legislators",
-      body: "Assist your neighbors in transitioning towards cheaper and cleaner energy by seeking local initiatives and communicating with your elected representatives to express your preference for heat pumps.",
+      body: "Assist your neighbors in transitioning towards cheaper and cleaner energy by seeking local initiatives and communicating with your elected representatives to express your preference for heat pumps. Use the following free service to get contact info for a call, email, or letter to your elected representatives:",
+      linkDescription: "Contact your elected officials",
+      link: "https://www.usa.gov/elected-officials",
     },
   ];
 
@@ -79,6 +81,7 @@ function GetInvolved() {
                 body={card.body}
                 linkDescription={card.linkDescription}
                 linkDownload={card.linkDownload}
+                link={card.link}
               />
             );
           })}
