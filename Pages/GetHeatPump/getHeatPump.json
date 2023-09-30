@@ -1,0 +1,38 @@
+[
+  {
+    "step": "1",
+    "title": "Get Details About Your Home Heating/Cooling Needs",
+    "subtitle": "",
+    "description": [
+      "Square footage",
+      "How many floors",
+      "Current HVAC system",
+      "Current utility bills/usage",
+      {
+        "text": "Estimate Your savings ",
+        "link": {
+          "text": "with this link calculator",
+          "url": "https://www.cenhud.com/en/my-energy/save-energy-money/energy-calculators/fuel-switching-calculator/"
+        }
+      }
+    ],
+    "textButton": "",
+    "linkButton": ""
+  },
+  {
+    "step": "2",
+    "title": "Talk with a Heat Pump Coach",
+    "subtitle": "(Optional but recommend)",
+    "description": [],
+    "textButton": "REQUEST A COACH",
+    "linkButton": "https://heatsmartalliance.org/request-a-coach-2/"
+  },
+  {
+    "step": "3",
+    "title": "Get Details About Your Home Heating/Cooling Needs",
+    "subtitle": "",
+    "description": [],
+    "textButton": "RESOURCES",
+    "linkButton": "https://heatsmartalliance.org/resources/"
+  }
+]
