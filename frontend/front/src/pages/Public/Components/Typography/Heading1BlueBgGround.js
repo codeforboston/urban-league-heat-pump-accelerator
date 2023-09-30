@@ -9,7 +9,7 @@ const TitleContainer = styled(Box)({
 
 function Heading1BlueBgGround({ text }) {
   return (
-    <TitleContainer mb={2}>
+    <TitleContainer mb={5}>
       <Typography
         variant="h3"
         sx={{
