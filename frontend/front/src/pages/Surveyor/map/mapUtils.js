@@ -7,7 +7,7 @@ export const generateMapsLink = (locations) => {
       .map((location) => `&daddr=${location.latitude},${location.longitude}`)
       .join("");
 
-    return `maps://?&daddr=${destination.latitude},${destination.longitude}${waypoints}`;
+    return `maps://?&daddr=${destination.latitude},${destination.longitude}${waypoints}&dirflg=w`;
   } else {
     const waypoints = locations
       .slice(0, -1)
