@@ -1,16 +1,19 @@
 import * as React from "react";
 
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LogoutIcon from "@mui/icons-material/Logout";
+import MenuIcon from "@mui/icons-material/Menu";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Drawer from "@mui/material/Drawer";
-import { Link } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
+import { Link } from "react-router-dom";
+import { useLogoutUserMutation } from "../../../api/apiSlice";
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -19,6 +22,7 @@ export default function TemporaryDrawer() {
     bottom: false,
     right: false,
   });
+  const [logout] = useLogoutUserMutation();
 
   const toggleDrawer = (anchor, open) => (event) => {
     setState({ ...state, [anchor]: open });
@@ -35,32 +39,24 @@ export default function TemporaryDrawer() {
         <ListItem disablePadding>
           <ListItemButton component={Link} to="dashboard">
             <ListItemIcon>
-              <MailIcon />
+              <SpaceDashboardIcon />
             </ListItemIcon>
             <ListItemText primary={"DASHBOARD"} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component={Link} to="house">
-            <ListItemIcon>
-              <MailIcon />
-            </ListItemIcon>
-            <ListItemText primary={"HOUSE PROFILE"} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
           <ListItemButton component={Link} to="account">
             <ListItemIcon>
-              <MailIcon />
+              <AccountCircleIcon />
             </ListItemIcon>
             <ListItemText primary={"ACCOUNT"} />
           </ListItemButton>
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={logout}>
             <ListItemIcon>
-              <MailIcon />
+              <LogoutIcon />
             </ListItemIcon>
             <ListItemText primary={"LOGOUT"} />
           </ListItemButton>
