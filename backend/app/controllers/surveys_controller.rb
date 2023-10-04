@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SurveysController < ApplicationController
-  AVAILABLE_LANGUAGES = %w(en es)
+  AVAILABLE_LANGUAGES = %w(en es fr-ht pt-br)
   before_action :set_survey, only: %i[show edit update destroy]
 
   # GET /surveys or /surveys.json
@@ -11,7 +11,11 @@ class SurveysController < ApplicationController
 
   # GET /surveys/1 or /surveys/1.json
   def show
-    @language_code = http_accept_language.preferred_language_from(AVAILABLE_LANGUAGES)
+    @language_code = if params[:langPref].present?
+      params[:langPref]
+    else
+      http_accept_language.preferred_language_from(AVAILABLE_LANGUAGES)
+    end
   end
 
   # GET /surveys/new

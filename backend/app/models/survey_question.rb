@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SurveyQuestion < ApplicationRecord
+  AVAILABLE_LANGUAGES = %w(en es fr-ht pt-br)
   belongs_to :survey
   enum response_type: { radio: 0, text: 1 }
   has_many :localized_survey_questions
@@ -8,15 +9,13 @@ class SurveyQuestion < ApplicationRecord
 
   validates :display_order, uniqueness: { scope: :survey_id }
 
-  after_initialize do
-    @language_code ||= 'en'
+  def text(language_code)
+    raise StandardError, 'Needs language code' unless AVAILABLE_LANGUAGES.include?(language_code)
+    localized_survey_questions.find_by(language_code: language_code).text
   end
 
-  def text
-    localized_survey_questions.find_by(language_code: @language_code).text
-  end
-
-  def response_options
-    localized_survey_questions.find_by(language_code: @language_code).response_options
+  def response_options(language_code)
+    raise StandardError, 'Needs language code' unless AVAILABLE_LANGUAGES.include?(language_code)
+    localized_survey_questions.find_by(language_code: language_code).response_options
   end
 end
