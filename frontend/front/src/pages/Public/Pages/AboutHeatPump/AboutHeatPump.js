@@ -1,4 +1,4 @@
-import { Box, Container, Stack, useTheme, useMediaQuery } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import React from "react";
 import heatpump from "../../../../assets/images/heatPump-outside.png";
 import ButtonDarkBlue from "../../Components/Button/ButtonDarkBlue";
@@ -36,7 +36,6 @@ const cardContent = [
 ];
 
 function AboutHeatPump() {
-  const theme = useTheme();
   // const isSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box
