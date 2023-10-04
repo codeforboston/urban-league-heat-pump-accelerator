@@ -2,10 +2,8 @@ import { Box, Container, Stack, useTheme, useMediaQuery } from "@mui/material";
 import React from "react";
 import heatpump from "../../../../assets/images/heatPump-outside.png";
 import ButtonDarkBlue from "../../Components/Button/ButtonDarkBlue";
-import Heading1 from "../../Components/Typography/Heading1";
 import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
 import Heading4 from "../../Components/Typography/Heading4";
-import AboutHeatPumpCards from "./AboutHeatPumpsCards";
 import CardsSection from "../../Components/CardsSection";
 
 const cardContent = [
@@ -39,7 +37,7 @@ const cardContent = [
 
 function AboutHeatPump() {
   const theme = useTheme();
-  const isSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
+  // const isSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box
       mb={6}
