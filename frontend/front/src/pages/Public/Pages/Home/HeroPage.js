@@ -70,7 +70,7 @@ const HeroPage = ({
                 />
                 <Typography
                   variant="h6"
-                  sx={{ color: "var(--color-text-9)", px: 20 }}
+                  sx={{ color: "var(--color-text-9)", px: { xs: 1, md: 20 } }}
                 >
                   {text1}
                   {link !== "" && (
