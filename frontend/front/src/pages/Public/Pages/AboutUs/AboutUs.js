@@ -14,6 +14,7 @@ import cfb from "../../../../assets/images/partnersLogo/CFB.png";
 import cfa from "../../../../assets/images/partnersLogo/CFA.png";
 import heatsmart from "../../../../assets/images/partnersLogo/HeatSmart.png";
 import pcb from "../../../../assets/images/partnersLogo/powercorp-boston.jpeg";
+import moc from "../../../../assets/images/partnersLogo/moc.png";
 import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
 
 function AboutUs() {
@@ -121,6 +122,13 @@ function AboutUs() {
             partnerName="City of Boston - PowerCorpsBOS (PCB)"
             paragraphText="is a green jobs program that provides young adults with training, career readiness support, and connections to employers in the green industry. PCB provided support to the BHPA surveying effort."
             image={pcb}
+            website="https://www.boston.gov/departments/workforce-development/powercorpsbos"
+          />
+          <Divider sx={{ width: "100%" }} />
+          <PartnerTile
+            partnerName="The Mass Open Cloud (MOC)"
+            paragraphText="is a laboratory for cloud research and innovation. Since its creation in 2013, with support from the Mass Tech Collaborative, it has provided a production cloud that has enabled innovation by a broad community of industry and research partners, used by thousands of students and researchers, and supported tens of millions of dollars in associated research grants that have resulted in contributions to open source software and hundreds of publications."
+            image={moc}
             website="https://www.boston.gov/departments/workforce-development/powercorpsbos"
           />
         </Stack>
