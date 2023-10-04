@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider, Box, Stack } from "@mui/material";
 import { responsiveTheme } from "./Assets/theme";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
@@ -17,6 +17,56 @@ import "animate.css/animate.min.css";
 import ScrollToTopButton from "./Components/ScrollToTopButton";
 
 const PublicContainer = () => {
+  // Initialize language from localStorage or set to "en-us" by default
+  const [lang, setLang] = useState(localStorage.getItem("langPref") || "en-us");
+  // State to track if the page has been reloaded
+  const [isReloaded, setIsReloaded] = useState(false);
+  // Get the current location object from react-router
+  const location = useLocation();
+
+  // Log the current language whenever it changes
+  useEffect(() => {
+    console.log("lang", lang);
+  }, [lang]);
+
+  // Effect to handle language changes based on URL query parameter
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    // Get the language preference from the URL query parameter "langPref"
+    let queryLang = params.get("langPref");
+
+    // Check the current path
+    const isPublicRoute = window.location.pathname.includes("/public");
+
+    // If queryLang is not set, then set it to "en-us"
+    if (!queryLang && isPublicRoute) {
+      queryLang = localStorage.getItem("langPref") || "en-us";
+      const newUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?langPref=${queryLang}`;
+      window.history.replaceState({ path: newUrl }, "", newUrl);
+
+      // If the page has not been reloaded yet, reload it once
+      if (!isReloaded) {
+        // Set isReloaded to true to avoid multiple reloads
+        setIsReloaded(true);
+
+        window.location.reload();
+      }
+    }
+
+    // If it's the public route, remove langPref from the URL
+    if (!isPublicRoute) {
+      const newUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
+      window.history.replaceState({ path: newUrl }, "", newUrl);
+    }
+
+    // If the language from the URL is different than the current state, update the state
+    if (queryLang && queryLang !== lang) {
+      setLang(queryLang);
+    }
+
+    localStorage.setItem("langPref", lang);
+  }, [location.search, lang, isReloaded]);
+
   return (
     <>
       <ThemeProvider theme={responsiveTheme}>
