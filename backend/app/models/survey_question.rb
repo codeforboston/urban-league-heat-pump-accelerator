@@ -9,7 +9,7 @@ class SurveyQuestion < ApplicationRecord
   validates :display_order, uniqueness: { scope: :survey_id }
 
   after_initialize do
-    @language ||= 'en'
+    @language_code ||= 'en'
   end
 
   def text

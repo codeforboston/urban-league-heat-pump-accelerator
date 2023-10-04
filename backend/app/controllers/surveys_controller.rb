@@ -11,7 +11,7 @@ class SurveysController < ApplicationController
 
   # GET /surveys/1 or /surveys/1.json
   def show
-    @language = http_accept_language.preferred_language_from(AVAILABLE_LANGUAGES)
+    @language_code = http_accept_language.preferred_language_from(AVAILABLE_LANGUAGES)
   end
 
   # GET /surveys/new
