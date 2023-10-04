@@ -1,5 +1,9 @@
 import { Typography } from "@mui/material";
 
+function capitalizeFirstLetterOnly(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
 function Heading2({ text, textDecoration = "none" }) {
   return (
     <Typography
@@ -12,10 +16,10 @@ function Heading2({ text, textDecoration = "none" }) {
         textDecoration: textDecoration,
         textUnderlinePosition: "under",
         textDecorationColor: "var(--color-text-2)",
-        textTransform: "capitalize",
+        textTransform: "initial",
       }}
     >
-      {text}
+      {capitalizeFirstLetterOnly(text)}
     </Typography>
   );
 }

@@ -6,6 +6,7 @@ import heatSmartLogo from "../../../../assets/images/partnersLogo/HeatSmart.png"
 import codeForAmericaLogo from "../../../../assets/images/partnersLogo/CFA.png";
 import codeForBostonLogo from "../../../../assets/images/partnersLogo/CFB.png";
 import pcb from "../../../../assets/images/partnersLogo/powercorp-boston.jpeg";
+import moc from "../../../../assets/images/partnersLogo/moc.png";
 import AnimatedBox from "../../Components/AnimatedBox";
 import Heading1 from "../../Components/Typography/Heading1";
 
@@ -38,11 +39,17 @@ const Partners = () => {
     {
       id: 5,
       logo: maCleanEnergyLogo,
-      name: "Massachusetts Clean Energy Center",
+      name: "MOC Alliance",
       link: "https://www.masscec.com/",
     },
     {
       id: 6,
+      logo: moc,
+      name: "Massachusetts Clean Energy Center",
+      link: "https://massopen.cloud/",
+    },
+    {
+      id: 7,
       logo: ulemLogo,
       name: "Urban League of Eastern Massachusetts (ULEM)",
       link: "https://www.ulem.org/",
