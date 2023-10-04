@@ -209,7 +209,7 @@ const Footer = () => {
                 Contact Us
               </Typography>
               <Box>
-                <Box
+                {/* <Box
                   variant="navLinks"
                   sx={{
                     display: "flex",
@@ -229,7 +229,7 @@ const Footer = () => {
                   >
                     617-635-4500
                   </a>
-                </Box>
+                </Box> */}
                 <Box
                   variant="navLinks"
                   pt={1}
