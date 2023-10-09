@@ -20,10 +20,8 @@ export const createStore = (options) =>
     // adding the api middleware enables caching, invalidation, polling and other features of `rtk-query`
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(apiSlice.middleware),
+    devTools: process.env.NODE_ENV !== "production",
     ...options,
   });
-
-// Assign the Redux store to a global property 'window.store'
-window.store = createStore();
 
 export const store = createStore();
