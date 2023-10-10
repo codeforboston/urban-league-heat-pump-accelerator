@@ -5,13 +5,19 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-const OptionMenu = (props) => {
-  const { handleSelectAll, handleDeselectAll, handleSelectIncompleted } = props;
+const OptionMenu = ({
+  handleSelectAll,
+  handleDeselectAll,
+  handleSelectIncompleted,
+  handleShowIncomplete,
+  showOnlyIncomplete,
+}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -29,6 +35,10 @@ const OptionMenu = (props) => {
   const SelectIncompletedAndClose = () => {
     handleSelectIncompleted();
     handleClose();
+  };
+
+  const showIncomplete = () => {
+    handleShowIncomplete();
   };
 
   return (
@@ -56,6 +66,11 @@ const OptionMenu = (props) => {
         <MenuItem onClick={DeselectAllAndClose}>DESELECT ALL</MenuItem>
         <MenuItem onClick={SelectIncompletedAndClose}>
           SELECT NEXT 10 INCOMPLETE
+        </MenuItem>
+        <MenuItem onClick={showIncomplete}>
+          {showOnlyIncomplete
+            ? "SHOW All ASSIGNMENTS"
+            : "SHOW ONLY INCOMPLETE ASSIGNMENTS"}
         </MenuItem>
       </Menu>
     </Box>

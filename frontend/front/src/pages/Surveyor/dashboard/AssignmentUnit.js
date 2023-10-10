@@ -23,6 +23,7 @@ const generateGoogleMap = (checked) => {
 };
 
 const AssignmentUnit = ({ data }) => {
+  const [showOnlyIncomplete, setShowOnlyIncomplete] = useState(false);
   const [checked, setChecked] = useState([]);
   const checkedSet = useMemo(() => new Set(checked), [checked]);
 
@@ -53,6 +54,9 @@ const AssignmentUnit = ({ data }) => {
   const handleDeselectAll = useCallback(() => {
     setChecked([]);
   }, []);
+  const handleShowIncomplete = useCallback(() => {
+    setShowOnlyIncomplete((prev) => !prev);
+  }, []);
 
   return (
     <Box>
@@ -72,6 +76,8 @@ const AssignmentUnit = ({ data }) => {
           handleSelectAll={handleSelectAll}
           handleDeselectAll={handleDeselectAll}
           handleSelectIncompleted={selectAllIncompleted}
+          handleShowIncomplete={handleShowIncomplete}
+          showOnlyIncomplete={showOnlyIncomplete}
         />
       </Stack>
       <List
@@ -80,15 +86,17 @@ const AssignmentUnit = ({ data }) => {
           width: "100%",
         }}
       >
-        {(data || []).map((home) => (
-          <AssignmentHome
-            key={`assignmentHome-${home.id}`}
-            home={home}
-            handleToggle={handleToggle}
-            checked={checkedSet.has(home.id)}
-            selectionCap={checkedSet.size >= 10}
-          />
-        ))}
+        {(data || []).map((home) =>
+          showOnlyIncomplete && home.completed ? null : (
+            <AssignmentHome
+              key={`assignmentHome-${home.id}`}
+              home={home}
+              handleToggle={handleToggle}
+              checked={checkedSet.has(home.id)}
+              selectionCap={checkedSet.size >= 10}
+            />
+          )
+        )}
       </List>
     </Box>
   );
