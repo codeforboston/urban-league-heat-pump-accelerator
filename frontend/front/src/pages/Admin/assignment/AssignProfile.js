@@ -1,6 +1,7 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import {
   useGetAssignmentQuery,
+  useGetHomesQuery,
   useGetSurveyorsQuery,
 } from "../../../api/apiSlice";
 import {
@@ -14,7 +15,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../../../components/Loader";
 import React from "react";
 import { getAddress } from "../home/HomeTable";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   adminAssignmentProfile,
   ADMIN_ASSIGNMENT,
@@ -24,6 +25,7 @@ import {
 const AssignProfile = () => {
   const { aid } = useParams();
   const goToBreadcrumb = useGoToBreadcrumb();
+  const navigate = useNavigate();
 
   useInitBreadcrumbs([
     { url: withAdminPrefix(ADMIN_ASSIGNMENT), description: "assignments" },
@@ -45,12 +47,23 @@ const AssignProfile = () => {
     isLoading: isSurveyorsDataLoading,
   } = useGetSurveyorsQuery();
 
+  const { data: homesData } = useGetHomesQuery();
+
   const surveyors = surveyorsData
     ? surveyorsData.filter((surveyor) =>
         assignmentData?.surveyor_ids.includes(surveyor.id)
       )
     : "Unassigned";
 
+  const handleSurveyLink = (home) => {
+    const homeData = homesData.find((homeData) => homeData.id === home.id);
+    const surveyVisitIds =
+      homeData.survey_visit_ids.length > 0
+        ? homeData.survey_visit_ids[0]
+        : null;
+
+    navigate(`/admin/survey/visit/${surveyVisitIds}`);
+  };
   const handleUserLink = (user) => goToBreadcrumb("user", user);
   const handleHomeLink = (home) => {
     goToBreadcrumb("home", home);
@@ -103,16 +116,18 @@ const AssignProfile = () => {
       headerName: "Survey",
       minWidth: 50,
       maxWidth: 80,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="primary"
-          size="small"
-          onClick={() => handleUserLink(params.row)}
-        >
-          View
-        </Button>
-      ),
+      renderCell: (params) =>
+        params.row.completed ? (
+          <Button
+            variant="text"
+            sx={{ minWidth: "unset", padding: "0px" }}
+            color="primary"
+            size="small"
+            onClick={() => handleSurveyLink(params.row)}
+          >
+            VIEW
+          </Button>
+        ) : null,
     },
     {
       field: "unassign",
