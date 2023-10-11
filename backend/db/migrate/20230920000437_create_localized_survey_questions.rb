@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateLocalizedSurveyQuestions < ActiveRecord::Migration[7.0]
   def change
     create_table :localized_survey_questions do |t|
@@ -8,7 +10,10 @@ class CreateLocalizedSurveyQuestions < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    remove_column :survey_questions, :text, :text
-    remove_column :survey_questions, :response_options, :string, array: true
+
+    change_table :survey_questions, bulk: true do |t|
+      t.remove :text, type: :text
+      t.remove :response_options, type: :string, array: true
+    end
   end
 end

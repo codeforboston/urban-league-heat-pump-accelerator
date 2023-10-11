@@ -25,16 +25,17 @@ module SeedImporter
       chunk.each do |data_hash|
         data_hash[:response_options] =
           (data_hash[:response_options].nil? ? [] : data_hash[:response_options].split('/', -1))
-          fixed_data_hash = {
-            display_order: data_hash[:display_order],
-            response_type: data_hash[:response_type],
-            localized_survey_questions: [
-              LocalizedSurveyQuestion.new({
-              text: data_hash[:text],
-              response_options: data_hash[:response_options],
-              language_code: 'en'
-            })]
-          }
+        fixed_data_hash = {
+          display_order: data_hash[:display_order],
+          response_type: data_hash[:response_type],
+          localized_survey_questions: [
+            LocalizedSurveyQuestion.new({
+                                          text: data_hash[:text],
+                                          response_options: data_hash[:response_options],
+                                          language_code: 'en'
+                                        })
+          ]
+        }
         question = SurveyQuestion.new(fixed_data_hash)
         question.survey = survey
         question.save!

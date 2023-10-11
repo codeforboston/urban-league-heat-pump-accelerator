@@ -12,7 +12,6 @@ json.survey_questions @survey.survey_questions.sort_by(&:display_order) do |sq|
 end
 json.url survey_url(survey, format: :json)
 
-
 # json.attachments @message.attachments do |attachment|
 #   json.filename attachment.filename
 #   json.url url_for(attachment)
