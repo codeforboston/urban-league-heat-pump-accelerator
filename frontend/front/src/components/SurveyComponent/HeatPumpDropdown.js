@@ -5,14 +5,9 @@ import {
   Select,
   MenuItem,
   InputLabel,
+  FormLabel,
 } from "@mui/material";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useMemo } from "react";
 
 /**
  * A radio group to be used with react-hook-form
@@ -24,29 +19,21 @@ export const HeatPumpDropdown = ({
   label,
   disabled,
   required,
+  enableOtherField,
+  disableFancyLabel,
 }) => {
+  const Label = disableFancyLabel ? FormLabel : InputLabel;
+
   const { field: groupField, formState } = useController({ name, control });
-
-  const labelFormRef = useRef(null);
-  const [_, setResizeTrigger] = useState(0);
-
-  useEffect(() => {
-    const refresh = () => setResizeTrigger((prev) => prev + 1);
-
-    refresh();
-
-    window.addEventListener("resize", refresh);
-
-    return () => window.removeEventListener("resize", refresh);
-  });
 
   const otherFieldName = `${name}/other`;
   const showOtherInput = useMemo(
     () =>
+      enableOtherField &&
       groupField.value &&
       typeof groupField.value == "string" &&
       groupField.value.toLowerCase() === "other",
-    [groupField]
+    [enableOtherField, groupField]
   );
 
   const mainFieldError = formState.errors[name];
@@ -56,25 +43,17 @@ export const HeatPumpDropdown = ({
     (field) => {
       return (
         <FormControl fullWidth error={!!mainFieldError}>
-          <InputLabel
-            id={`${name}-dropdown-label`}
-            sx={{ whiteSpace: "normal" }}
-          >
-            <div ref={labelFormRef} style={{ paddingRight: "20px" }}>
-              {label}
-            </div>
-          </InputLabel>
+          <Label id={`${name}-dropdown-label`} htmlFor={`${name}-dropdown`}>
+            {label}
+          </Label>
           <Select
-            label={label}
-            sx={{
-              height: labelFormRef.current?.scrollHeight
-                ? `${labelFormRef.current?.scrollHeight + 30}px`
-                : null,
-            }}
             name={`${name}-dropdown`}
             aria-labelledby={`${name}-dropdown-label`}
             variant="filled"
             disabled={disabled}
+            inputProps={{
+              id: `${name}-dropdown`,
+            }}
             {...field}
           >
             {options.map((option) => (

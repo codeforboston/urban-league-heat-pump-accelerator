@@ -13,12 +13,11 @@ import {
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
-
 import ButtonGetPump from "../Components/Button/ButtonGetPump";
 import ButtonWhite from "../Components/Button/ButtonWhite";
 import EmailIcon from "@mui/icons-material/Email";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
+// import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 import logoHeatPump from "../../../assets/images/bhpa-logos/bhpa-logo300px.png";
 import { styled } from "@mui/material/styles";
 
@@ -209,7 +208,7 @@ const Footer = () => {
                 Contact Us
               </Typography>
               <Box>
-                <Box
+                {/* <Box
                   variant="navLinks"
                   sx={{
                     display: "flex",
@@ -229,7 +228,7 @@ const Footer = () => {
                   >
                     617-635-4500
                   </a>
-                </Box>
+                </Box> */}
                 <Box
                   variant="navLinks"
                   pt={1}

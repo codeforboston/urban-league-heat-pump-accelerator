@@ -91,11 +91,24 @@ const CardBenefitsSection = () => {
               variant="body"
               sx={{ color: "var(--color-text-3)", display: "inline-block" }}
             >
-              Learn more about the
+              Learn more about the&nbsp;
             </Typography>
             <Link to="benefits-heat-pump" style={{ textDecoration: "none" }}>
-              <Typography variant="body" sx={{ color: "var(--color-text-4)" }}>
-                &nbsp;Benefits of Heat Pumps
+              <Typography
+                variant="body"
+                sx={{
+                  color: "var(--color-text-3) !important",
+                  textDecoration: "underline",
+                  textDecorationColor: "rgba(25, 118, 210, 0.4);",
+                  textDecorationThickness: "1px",
+                  textUnderlineOffset: "2px",
+                  ":hover": {
+                    textDecorationColor: "var(--color-text-3)",
+                    textDecorationThickness: "1px",
+                  },
+                }}
+              >
+                Benefits of Heat Pumps
               </Typography>
             </Link>
           </Stack>
