@@ -286,8 +286,13 @@ function Navbar(props) {
             </div>
           ))}
         </List>
-        <Box onClick={handleDrawerToggle}>
-          <ButtonGetPump />
+        <Box>
+          <Box onClick={handleDrawerToggle}>
+            <ButtonGetPump />
+          </Box>
+          <Box sx={{ mt: 2 }}>
+            <LangPrefDropdown />
+          </Box>
         </Box>
       </Stack>
     </Box>
@@ -341,7 +346,7 @@ function Navbar(props) {
                 </Link>
               </Grid>
               <Grid item>
-                <Box sx={{ display: { xs: "none", md: "block" } }}>
+                <Box sx={{ display: { xs: "none", lg: "block" } }}>
                   <Stack spacing={2} direction="row">
                     {Object.keys(navbarItems).map((item) => (
                       <div key={item}>
@@ -362,12 +367,18 @@ function Navbar(props) {
                         )}
                       </div>
                     ))}
-                    <LangPrefDropdown />
                   </Stack>
                 </Box>
               </Grid>
-              <Box sx={{ display: { xs: "none", md: "block" } }}>
-                <Grid item>
+              <Box
+                sx={{
+                  display: { xs: "none", lg: "flex" },
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                }}
+              >
+                <LangPrefDropdown />
+                <Grid item ml={2}>
                   <ButtonGetPump
                     variant="getpump"
                     onClick={handleDrawerToggle}
@@ -382,7 +393,7 @@ function Navbar(props) {
                 size="large"
                 sx={{
                   ml: 2,
-                  display: { md: "none" },
+                  display: { lg: "none" },
                   color: "#ffffff",
                   justifyContent: "flex-start",
                 }}
@@ -408,7 +419,7 @@ function Navbar(props) {
               keepMounted: true, // Better open performance on mobile.
             }}
             sx={{
-              display: { xs: "block", md: "none" },
+              display: { xs: "block", lg: "none" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
