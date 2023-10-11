@@ -27,6 +27,7 @@ import logoHeatPump from "../../../assets/images/bhpa-logos/bhpa-logo300px.gif";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
+import LangPrefDropdown from "../Components/LangPrefDropdown";
 
 // import { red, green, blue, yellow, orange } from "@mui/material/colors";
 const Root = styled("div")(({ theme }) => ({
@@ -103,7 +104,7 @@ function Navbar(props) {
         aria-controls={open ? "fade-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        onClick={handleClickMore} // Changed from onMouseEnter to onClick
+        onClick={handleClickMore}
         endIcon={<KeyboardArrowDownIcon />}
         sx={{ color: "var(--color-text-1)" }}
       >
@@ -361,6 +362,7 @@ function Navbar(props) {
                         )}
                       </div>
                     ))}
+                    <LangPrefDropdown />
                   </Stack>
                 </Box>
               </Grid>
