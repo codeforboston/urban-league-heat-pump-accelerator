@@ -1,58 +1,60 @@
 {
-  "public-home": {
-    "hero": {
-      "title": "Economize dinheiro em suas ",
-      "titleBold": "contas de aquecimento e resfriamento",
-      "text1": "Você pode receber incentivos para instalar uma bomba de calor, um tipo de sistema de aquecimento e resfriamento que pode ",
-      "textBold": "reduzir suas contas de serviços públicos",
-      "text2": ".",
-      "button": "Benefícios das bombas de calor"
-    },
-    "cardLinksSection": {
-      "title": "O que é uma bomba de calor?",
-      "paragraph": "Uma bomba de calor é um sistema energeticamente eficiente que aquece a sua casa no inverno e a arrefece no verão.",
-      "button": "Faça a pesquisa",
-      "item1": {
+  "public": {
+    "home": {
+      "hero": {
+        "title": "Economize dinheiro em suas ",
+        "titleBold": "contas de aquecimento e resfriamento",
+        "text1": "Você pode receber incentivos para instalar uma bomba de calor, um tipo de sistema de aquecimento e resfriamento que pode ",
+        "link": "reduzir suas contas de serviços públicos",
+        "text2": ".",
+        "button": "Benefícios das bombas de calor"
+      },
+      "cardLinksSection": {
         "title": "O que é uma bomba de calor?",
         "paragraph": "Uma bomba de calor é um sistema energeticamente eficiente que aquece a sua casa no inverno e a arrefece no verão.",
-        "button": "Faça a pesquisa"
+        "button": "Faça a pesquisa",
+        "item1": {
+          "title": "O que é uma bomba de calor?",
+          "paragraph": "Uma bomba de calor é um sistema energeticamente eficiente que aquece a sua casa no inverno e a arrefece no verão.",
+          "button": "Faça a pesquisa"
+        },
+        "item2": {
+          "title": "Sobre nós",
+          "paragraph": "O Boston Heat Pump Accelerator é uma iniciativa da Urban League of Eastern Massachusetts, em parceria com organizações locais e nacionais.",
+          "button": "Saiba mais"
+        }
       },
-      "item2": {
-        "title": "Sobre nós",
-        "paragraph": "O Boston Heat Pump Accelerator é uma iniciativa da Urban League of Eastern Massachusetts, em parceria com organizações locais e nacionais.",
-        "button": "Saiba mais"
+      "testimonials": {
+        "heading1": "Depoimentos",
+        "text1": "“Uau, me surpreendeu. Normalmente, a conta varia de US$400 a US$500, e era mais parecido com US$200. Eu pensei: \"Deixe-me olhar para isso novamente!\"",
+        "text2": "Histórias de outros residentes de Massachusetts sobre as suas bombas de calor."
+      },
+      "cardBenefitsSection": {
+        "link": "Benefícios das bombas de calor",
+        "subtitle1": "Saiba mais sobre o",
+        "heading1": "Benefícios das bombas de calor",
+        "item1": {
+          "title": "Contas de energia mais baixas",
+          "text1": "As bombas de calor são tão eficientes em termos energéticos que podem gerar economias significativas nas contas mensais de serviços públicos e reduzir custos de manutenção, reparo e substituição."
+        },
+        "item2": {
+          "text1": "A mesma bomba de calor que ajuda a resfriar no verão pode fornecer calor no inverno – é um sistema eficiente, silencioso e conveniente, proporcionando conforto em toda a casa.",
+          "title": "Conforto em casa"
+        },
+        "item3": {
+          "title": "Comunidades mais fortes",
+          "text1": "Ao ajudar a reduzir as contas de serviços públicos, as bombas de calor podem reduzir o custo de vida dos residentes, o que, por sua vez, pode ajudar os residentes que vivem com rendimentos fixos ou baixos a permanecerem nas suas casas por mais tempo, fortalecendo as comunidades."
+        },
+        "item4": {
+          "title": "Ar mais limpo",
+          "text1": "As bombas de calor utilizam eletricidade que pode ser produzida por fontes renováveis. \nÀ medida que a rede se torna mais verde, as bombas de calor tornam-se muito mais ecológicas do que os sistemas alimentados a gás ou petróleo. \nCom uma única unidade “alimentada de forma ecológica” que aquece e arrefece, a pegada de carbono da sua casa é a mais baixa possível."
+        }
+      },
+      "partners": {
+        "heading1": "Nossos parceiros",
+        "text1": "O Boston Heat Pump Accelerator é uma iniciativa da Urban League of Eastern Massachusetts, em parceria com organizações locais e nacionais.",
+        "link": "Saiba mais"
       }
-    },
-    "testimonials": {
-      "heading1": "Depoimentos",
-      "text1": "“Uau, me surpreendeu. Normalmente, a conta varia de US$400 a US$500, e era mais parecido com US$200. Eu pensei: \"Deixe-me olhar para isso novamente!\"",
-      "text2": "Histórias de outros residentes de Massachusetts sobre as suas bombas de calor."
-    },
-    "cardBenefitsSection": {
-      "subtitle2": "Benefícios das bombas de calor",
-      "subtitle1": "Saiba mais sobre o",
-      "heading1": "Benefícios das bombas de calor",
-      "item1": {
-        "title": "Contas de energia mais baixas",
-        "text1": "As bombas de calor são tão eficientes em termos energéticos que podem gerar economias significativas nas contas mensais de serviços públicos e reduzir custos de manutenção, reparo e substituição."
-      },
-      "item2": {
-        "text1": "A mesma bomba de calor que ajuda a resfriar no verão pode fornecer calor no inverno – é um sistema eficiente, silencioso e conveniente, proporcionando conforto em toda a casa.",
-        "title": "Conforto em casa"
-      },
-      "item3": {
-        "title": "Comunidades mais fortes",
-        "text1": "Ao ajudar a reduzir as contas de serviços públicos, as bombas de calor podem reduzir o custo de vida dos residentes, o que, por sua vez, pode ajudar os residentes que vivem com rendimentos fixos ou baixos a permanecerem nas suas casas por mais tempo, fortalecendo as comunidades."
-      },
-      "item4": {
-        "title": "Ar mais limpo",
-        "text1": "As bombas de calor utilizam eletricidade que pode ser produzida por fontes renováveis. \nÀ medida que a rede se torna mais verde, as bombas de calor tornam-se muito mais ecológicas do que os sistemas alimentados a gás ou petróleo. \nCom uma única unidade “alimentada de forma ecológica” que aquece e arrefece, a pegada de carbono da sua casa é a mais baixa possível."
-      }
-    },
-    "partners": {
-      "heading1": "Nossos parceiros",
-      "text1": "O Boston Heat Pump Accelerator é uma iniciativa da Urban League of Eastern Massachusetts, em parceria com organizações locais e nacionais.",
-      "link": "Saiba mais"
     }
   }
 }

@@ -42,10 +42,10 @@ const CardLinksSection = () => {
   const linkCards = [
     {
       id: 1,
-      title: t("public-home.cardLinksSection.item1.title"),
-      paragraph: t("public-home.cardLinksSection.item1.paragraph"),
+      title: t("public.home.cardLinksSection.item1.title"),
+      paragraph: t("public.home.cardLinksSection.item1.paragraph"),
       button: {
-        text: t("public-home.cardLinksSection.item1.button"),
+        text: t("public.home.cardLinksSection.item1.button"),
         to: "survey",
       },
       idCSS: "survey-link-section",
@@ -53,10 +53,10 @@ const CardLinksSection = () => {
     },
     {
       id: 2,
-      title: t("public-home.cardLinksSection.item2.title"),
-      paragraph: t("public-home.cardLinksSection.item2.paragraph"),
+      title: t("public.home.cardLinksSection.item2.title"),
+      paragraph: t("public.home.cardLinksSection.item2.paragraph"),
       button: {
-        text: t("public-home.cardLinksSection.item2.button"),
+        text: t("public.home.cardLinksSection.item2.button"),
         to: "about-us",
       },
       idCSS: "learnmore-link-section",

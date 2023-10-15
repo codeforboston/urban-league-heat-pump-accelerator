@@ -69,7 +69,7 @@ const Partners = () => {
           textAlign: "center",
         }}
       >
-        <Heading1 text={t("public-home.partners.heading1")} />
+        <Heading1 text={t("public.home.partners.heading1")} />
       </Box>
 
       <AnimatedBox triggerOnce={false}>
@@ -100,14 +100,14 @@ const Partners = () => {
               sx={{ color: "var(--color-text-3)" }}
               textAlign={{ xs: "center", sm: "left" }}
             >
-              {t("public-home.partners.text1")}{" "}
+              {t("public.home.partners.text1")}{" "}
               <Link
                 href="https://www.masssave.com/residential/programs-and-services/income-based-offers/income-eligible-programs"
                 target="_blank"
                 rel="noopener"
                 sx={{ color: "var(--color-text-3)" }}
               >
-                {t("public-home.partners.link")}
+                {t("public.home.partners.link")}
               </Link>
               .
             </Typography>

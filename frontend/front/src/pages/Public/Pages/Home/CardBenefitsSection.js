@@ -32,32 +32,32 @@ const CardBenefitsSection = () => {
   const cards = [
     {
       id: 1,
-      title: t("public-home.cardBenefitsSection.item1.title"),
-      paragraphs: [t("public-home.cardBenefitsSection.item1.text1")],
+      title: t("public.home.cardBenefitsSection.item1.title"),
+      paragraphs: [t("public.home.cardBenefitsSection.item1.text1")],
       image: liveMoreCom,
       buttonText: "",
       buttonLink: "",
     },
     {
       id: 2,
-      title: t("public-home.cardBenefitsSection.item2.title"),
-      paragraphs: [t("public-home.cardBenefitsSection.item2.text1")],
+      title: t("public.home.cardBenefitsSection.item2.title"),
+      paragraphs: [t("public.home.cardBenefitsSection.item2.text1")],
       image: imageTwo,
       buttonText: "",
       buttonLink: "",
     },
     {
       id: 3,
-      title: t("public-home.cardBenefitsSection.item3.title"),
-      paragraphs: [t("public-home.cardBenefitsSection.item3.text1")],
+      title: t("public.home.cardBenefitsSection.item3.title"),
+      paragraphs: [t("public.home.cardBenefitsSection.item3.text1")],
       image: strengthenCommunity,
       buttonText: "",
       buttonLink: "",
     },
     {
       id: 4,
-      title: t("public-home.cardBenefitsSection.item4.title"),
-      paragraphs: [t("public-home.cardBenefitsSection.item4.text1")],
+      title: t("public.home.cardBenefitsSection.item4.title"),
+      paragraphs: [t("public.home.cardBenefitsSection.item4.text1")],
       image: beEnvironmentally,
       buttonText: "",
       buttonLink: "",
@@ -75,7 +75,7 @@ const CardBenefitsSection = () => {
             textAlign: "center",
           }}
         >
-          <Heading1 text={t("public-home.cardBenefitsSection.heading1")} />
+          <Heading1 text={t("public.home.cardBenefitsSection.heading1")} />
           <Stack
             direction="row"
             justifyContent="center"
@@ -86,7 +86,7 @@ const CardBenefitsSection = () => {
               variant="body"
               sx={{ color: "var(--color-text-3)", display: "inline-block" }}
             >
-              {t("public-home.cardBenefitsSection.subtitle1")}&nbsp;
+              {t("public.home.cardBenefitsSection.subtitle1")}&nbsp;
             </Typography>
             <Link to="benefits-heat-pump" style={{ textDecoration: "none" }}>
               <Typography
@@ -103,7 +103,7 @@ const CardBenefitsSection = () => {
                   },
                 }}
               >
-                {t("public-home.cardBenefitsSection.subtitle2")}
+                {t("public.home.cardBenefitsSection.link")}
               </Typography>
             </Link>
           </Stack>

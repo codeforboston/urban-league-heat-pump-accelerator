@@ -30,11 +30,11 @@ const Home = () => {
       {/* HERO */}
       <Box>
         <HeroPage
-          title={t("public-home.hero.title")}
-          titleBold={t("public-home.hero.titleBold")}
-          text1={t("public-home.hero.text1")}
-          textBold={t("public-home.hero.textBold")}
-          text2={t("public-home.hero.text2")}
+          title={t("public.home.hero.title")}
+          titleBold={t("public.home.hero.titleBold")}
+          text1={t("public.home.hero.text1")}
+          textBold={t("public.home.hero.link")}
+          text2={t("public.home.hero.text2")}
           image={imageHeroFirst}
           link="https://www.cenhud.com/en/my-energy/save-energy-money/energy-calculators/fuel-switching-calculator/"
         />

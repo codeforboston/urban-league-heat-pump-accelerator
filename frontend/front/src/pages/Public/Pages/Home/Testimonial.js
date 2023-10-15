@@ -43,7 +43,7 @@ const Testimonial = () => {
           >
             <Grid item xs={12}>
               <Item>
-                <Heading1 text={t("public-home.testimonials.heading1")} />
+                <Heading1 text={t("public.home.testimonials.heading1")} />
               </Item>
             </Grid>
             {isSmallerThanMd && (
@@ -64,13 +64,13 @@ const Testimonial = () => {
             <Grid item md={8} direction="column">
               <Item style={{ flexGrow: 1 }}>
                 <Typography variant="h4" px={{ xs: 0, md: 6 }}>
-                  {t("public-home.testimonials.text1")}
+                  {t("public.home.testimonials.text1")}
                 </Typography>
                 <Box pt={3}>
                   <Heading4 text="Nia, Mattapan Resident" />
                 </Box>
                 <Typography py={6} variant="h6" sx={{ fontWeight: 400 }} px={1}>
-                  {t("public-home.testimonials.text2")}
+                  {t("public.home.testimonials.text2")}
                 </Typography>
                 <Box>
                   <ButtonDarkBklue

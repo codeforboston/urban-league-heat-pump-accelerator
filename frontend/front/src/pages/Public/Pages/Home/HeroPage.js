@@ -104,9 +104,9 @@ const HeroPage = ({
                 to="/public/benefits-heat-pump"
                 onClick={() => window.scrollTo(0, 0)}
                 sx={{
-                  width: "auto",
-                  minWidth: "200px",
-                  maxWidth: "250px",
+                  width: "100%",
+                  minWidth: 200,
+                  maxWidth: 350,
                   height: "50px",
                   color: "var(--color-text-2)",
                   background: "var(--bgColor-3)",
@@ -117,7 +117,7 @@ const HeroPage = ({
                   },
                 }}
               >
-                {t("public-home.hero.button")}
+                {t("public.home.hero.button")}
               </Button>
             </Box>
           </AnimatedBox>
