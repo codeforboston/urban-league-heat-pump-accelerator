@@ -10,16 +10,28 @@ const LangPrefDropdown = () => {
   } = useTranslation();
 
   const [anchorMore, setAnchorMore] = useState(null);
-  const [langDisplay, setLangDisplay] = useState("English"); // ["English", "Portuguese", "Spanish", "French"]
+  const [langDisplay, setLangDisplay] = useState("English");
   const [currentLanguage, setCurrentLanguage] = useState(language);
 
   useEffect(() => {
+    // Read the langPref from localStorage
+    const storedLangPref = localStorage.getItem("langPref");
+
+    // If it exists, set the language
+    if (storedLangPref) {
+      changeLanguage(storedLangPref);
+    } else {
+      // If it doesn't exist, set it to 'en-us'
+      localStorage.setItem("langPref", "en-us");
+    }
+
     const langMap = {
-      en: "English",
-      pt: "Portuguese",
-      es: "Spanish",
-      fr: "French",
+      "en-us": "English",
+      "pt-br": "Portuguese",
+      "es-xm": "Spanish",
+      "fr-ht": "French",
     };
+
     setLangDisplay(langMap[language]);
   }, [language]);
 
@@ -32,16 +44,30 @@ const LangPrefDropdown = () => {
   const handleCloseMore = () => setAnchorMore(null);
 
   const langsPref = {
-    English: "en",
-    Portuguese: "pt",
-    Spanish: "es",
-    French: "fr",
+    English: "en-us",
+    Portuguese: "pt-br",
+    Spanish: "es-xm",
+    French: "fr-ht",
   };
 
   const handleChangeLanguage = (lang, display) => {
     setCurrentLanguage(lang);
     changeLanguage(lang);
-    console.log(lang);
+
+    // Update localStorage
+    localStorage.setItem("langPref", lang);
+
+    // Update URL query param
+    if (lang !== "en-us") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("langPref", lang);
+      window.history.replaceState({}, "", url);
+    } else {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("langPref");
+      window.history.replaceState({}, "", url);
+    }
+
     setLangDisplay(display);
   };
 
@@ -56,7 +82,9 @@ const LangPrefDropdown = () => {
         endIcon={<KeyboardArrowDownIcon />}
         sx={{ color: "var(--color-text-1)" }}
       >
-        <Typography variant="navLinks">{langDisplay}</Typography>
+        <Typography variant="navLinks">
+          {langDisplay === undefined ? "English" : langDisplay}
+        </Typography>
       </Button>
 
       <Menu
@@ -74,9 +102,10 @@ const LangPrefDropdown = () => {
             <MenuItem
               key={lang}
               variant="navLinks"
-              onClick={() => (
-                handleChangeLanguage(langsPref[lang], lang), handleCloseMore()
-              )}
+              onClick={() => {
+                handleChangeLanguage(langsPref[lang], lang);
+                handleCloseMore();
+              }}
             >
               {lang}
             </MenuItem>
