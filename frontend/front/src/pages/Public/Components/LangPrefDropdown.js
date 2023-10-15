@@ -28,7 +28,7 @@ const LangPrefDropdown = () => {
     const langMap = {
       "en-us": "English",
       "pt-br": "Portuguese",
-      "es-xm": "Spanish",
+      "es-416": "Spanish",
       "fr-ht": "French",
     };
 
@@ -46,7 +46,7 @@ const LangPrefDropdown = () => {
   const langsPref = {
     English: "en-us",
     Portuguese: "pt-br",
-    Spanish: "es-xm",
+    Spanish: "es-416",
     French: "fr-ht",
   };
 

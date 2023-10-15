@@ -1,0 +1,58 @@
+{
+  "public-home": {
+    "hero": {
+      "title": "Ahorre dinero en sus ",
+      "titleBold": "FACTURAS DE CALEFACCIÓN Y REFRIGERACIÓN",
+      "text1": "Es posible que pueda obtener incentivos para instalar una bomba de calor, un tipo de sistema de calefacción y refrigeración que puede ",
+      "textBold": "reducir sus facturas de servicios",
+      "text2": ".",
+      "button": "Ventajas de las bombas de calor"
+    },
+    "cardLinksSection": {
+      "title": "",
+      "paragraph": "Una bomba de calor es un sistema energéticamente eficiente que calienta su hogar en invierno y lo enfría en verano.",
+      "button": "Toma la encuesta",
+      "item1": {
+        "title": "¿Qué es una bomba de calor?",
+        "paragraph": "Una bomba de calor es un sistema energéticamente eficiente que calienta su hogar en invierno y lo enfría en verano.",
+        "button": "Toma la encuesta"
+      },
+      "item2": {
+        "title": "Sobre nosotros",
+        "paragraph": "El Acelerador de Bombas de Calor de Boston es una iniciativa de la Urban League of Eastern Massachusetts, en asociación con organizaciones locales y nacionales.",
+        "button": "Más información"
+      }
+    },
+    "testimonials": {
+      "heading1": "Testimonios",
+      "text1": "“Guau, me ha deslumbrado la mente. Normalmente, la factura oscila entre $400 y $500, y era más bien de $200. Yo estaba así, ¡déjeme volver a verlo!”",
+      "text2": "Historias de otros residentes de Massachusetts sobre sus bombas de calor."
+    },
+    "cardBenefitsSection": {
+      "subtitle2": "Beneficios de las bombas de calor",
+      "subtitle1": "Obtenga más información sobre el",
+      "heading1": "Beneficios de las bombas de calor",
+      "item1": {
+        "title": "Facturas de energía más bajas",
+        "text1": "Las bombas de calor son tan eficientes energéticamente que pueden generar ahorros significativos en las facturas mensuales de servicios públicos y reducir los costos de mantenimiento, reparación y reemplazo."
+      },
+      "item2": {
+        "text1": "La misma bomba de calor que ayuda a enfriar en verano puede proporcionar calor en invierno; es un sistema eficiente, silencioso y conveniente que brinda comodidad en toda la casa.",
+        "title": "Comodidad en casa"
+      },
+      "item3": {
+        "title": "Comunidades más fuertes",
+        "text1": "Al ayudar a reducir las facturas de servicios públicos, las bombas de calor pueden reducir el costo de vida de los residentes, lo que a su vez puede ayudar a los residentes que viven con ingresos fijos o bajos a permanecer en sus hogares por más tiempo, fortaleciendo a las comunidades."
+      },
+      "item4": {
+        "title": "Aire más limpio",
+        "text1": "Las bombas de calor utilizan electricidad que puede producirse a partir de fuentes renovables. \nA medida que la red se vuelve más ecológica, las bombas de calor se vuelven mucho más ecológicas que los sistemas que funcionan con gas o petróleo. \nCon una sola unidad “de energía verde” que calienta y enfría, la huella de carbono de su hogar es la más baja posible."
+      }
+    },
+    "partners": {
+      "heading1": "Nuestros compañeros",
+      "text1": "El Acelerador de Bombas de Calor de Boston es una iniciativa de la Urban League of Eastern Massachusetts, en asociación con organizaciones locales y nacionales.",
+      "link": "Más información"
+    }
+  }
+}

@@ -1,20 +1,19 @@
-import React from "react";
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
-import enTranslations from "../Locale/en.json";
-import ptTranslations from "../Locale/pt.json";
-import esTranslations from "../Locale/es.json";
-import frTranslations from "../Locale/fr.json";
+import enTranslations from "../locales/en.json";
+import ptTranslations from "../locales/pt-BR.json";
+import esTranslations from "../locales/es-419.json";
+import frTranslations from "../locales/fr-HT.json";
 
 i18next
-  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(initReactI18next) // passes i18next down to react-i18next
   .init({
     debug: true,
     resources: {
-      en: { ...enTranslations }, // English - United States
-      pt: { ...ptTranslations }, // Portuguese - Brazil
-      es: { ...esTranslations }, // Spanish - Latin America
-      fr: { ...frTranslations }, // French - Haiti
+      en: { translation: { ...enTranslations } }, // English - United States
+      pt: { translation: { ...ptTranslations } }, // Portuguese - Brazil
+      es: { translation: { ...esTranslations } }, // Spanish - Latin America
+      fr: { translation: { ...frTranslations } }, // French - Haiti
     },
     lng: "en", // default language
   });

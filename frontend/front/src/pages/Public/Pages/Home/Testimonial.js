@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { styled } from "@mui/material/styles";
 import {
   Typography,
@@ -26,6 +27,8 @@ const Testimonial = () => {
   const theme = useTheme();
   const isSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
 
+  const { t } = useTranslation();
+
   return (
     <AnimatedBox triggerOnce={false}>
       <Container>
@@ -40,7 +43,7 @@ const Testimonial = () => {
           >
             <Grid item xs={12}>
               <Item>
-                <Heading1 text="Testimonials" />
+                <Heading1 text={t("public-home.testimonials.heading1")} />
               </Item>
             </Grid>
             {isSmallerThanMd && (
@@ -61,16 +64,13 @@ const Testimonial = () => {
             <Grid item md={8} direction="column">
               <Item style={{ flexGrow: 1 }}>
                 <Typography variant="h4" px={{ xs: 0, md: 6 }}>
-                  “Wow, it blew my mind. Normally the bill is anywhere from $400
-                  to $500, and it was more like $200. I was like, let me look at
-                  that again!”
+                  {t("public-home.testimonials.text1")}
                 </Typography>
                 <Box pt={3}>
                   <Heading4 text="Nia, Mattapan Resident" />
                 </Box>
                 <Typography py={6} variant="h6" sx={{ fontWeight: 400 }} px={1}>
-                  Stories from other Massachusetts residents about their heat
-                  pumps.
+                  {t("public-home.testimonials.text2")}
                 </Typography>
                 <Box>
                   <ButtonDarkBklue

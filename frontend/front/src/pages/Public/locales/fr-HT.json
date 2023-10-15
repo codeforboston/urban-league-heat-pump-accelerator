@@ -1,0 +1,58 @@
+{
+  "public-home": {
+    "hero": {
+      "title": "Économisez de l'argent sur vos ",
+      "titleBold": "FACTURES DE CHAUFFAGE ET DE REFROIDISSEMENT",
+      "text1": "Vous pourrez peut-être obtenir des incitations pour installer une pompe à chaleur, un type de système de chauffage et de refroidissement qui peut ",
+      "textBold": "réduire vos factures de services publics",
+      "text2": ".",
+      "button": "Avantages des pompes à chaleur"
+    },
+    "cardLinksSection": {
+      "title": "Qu'est-ce qu'une pompe à chaleur ?",
+      "paragraph": "Une thermopompe est un système économe en énergie qui chauffe votre maison en hiver et la rafraîchit en été.",
+      "button": "Participer à l'enquête",
+      "item1": {
+        "title": "Qu'est-ce qu'une pompe à chaleur ?",
+        "paragraph": "Une thermopompe est un système économe en énergie qui chauffe votre maison en hiver et la rafraîchit en été.",
+        "button": "Participer à l'enquête"
+      },
+      "item2": {
+        "title": "À propos de nous",
+        "paragraph": "Le Boston Heat Pump Accelerator est une initiative de l’Urban League of Eastern Massachusetts, en partenariat avec des organisations locales et nationales.",
+        "button": "En Savoir Plus"
+      }
+    },
+    "testimonials": {
+      "heading1": "Témoignages",
+      "text1": "« Waouh, ça m’a fait sauter d’esprit. Normalement, la facture va de400 $ à500$, et elle s’élevait plus à200$. J’étais comme, permettez-moi de revoir ça ! »",
+      "text2": "Histoires d'autres résidents du Massachusetts sur leurs pompes à chaleur."
+    },
+    "cardBenefitsSection": {
+      "subtitle2": "Avantages des pompes à chaleur",
+      "subtitle1": "En savoir plus sur le",
+      "heading1": "Avantages des pompes à chaleur",
+      "item1": {
+        "title": "Des factures d’énergie réduites",
+        "text1": "Les pompes à chaleur sont si économes en énergie qu'elles peuvent entraîner des économies significatives sur les factures mensuelles de services publics et réduire les coûts d'entretien, de réparation et de remplacement."
+      },
+      "item2": {
+        "text1": "La même thermopompe qui aide à rafraîchir en été peut ensuite fournir de la chaleur en hiver. Il s'agit d'un système efficace, silencieux et pratique, offrant un confort dans toute la maison.",
+        "title": "Confort à la maison"
+      },
+      "item3": {
+        "title": "Des communautés plus fortes",
+        "text1": "En contribuant à réduire les factures de services publics, les pompes à chaleur peuvent réduire le coût de la vie des résidents, ce qui peut à son tour aider les résidents vivant avec des revenus fixes ou faibles à rester plus longtemps dans leur logement, renforçant ainsi les communautés."
+      },
+      "item4": {
+        "title": "Un air plus pur",
+        "text1": "Les pompes à chaleur utilisent de l'électricité qui peut être produite par des sources renouvelables. \nÀ mesure que le réseau devient plus vert, les pompes à chaleur deviennent beaucoup plus écologiques que les systèmes alimentés au gaz ou au mazout. \nAvec une seule unité « alimentée verte » qui chauffe et refroidit, l’empreinte carbone de votre maison est aussi faible que possible."
+      }
+    },
+    "partners": {
+      "heading1": "Nos partenaires",
+      "text1": "Le Boston Heat Pump Accelerator est une initiative de l’Urban League of Eastern Massachusetts, en partenariat avec des organisations locales et nationales.",
+      "link": "En savoir plus"
+    }
+  }
+}

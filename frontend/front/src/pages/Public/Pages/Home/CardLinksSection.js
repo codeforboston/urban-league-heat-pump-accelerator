@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { styled } from "@mui/material/styles";
 import {
   Typography,
@@ -36,14 +37,15 @@ const GridLinkWrapper = styled(Grid)(({ theme }) => ({
 }));
 
 const CardLinksSection = () => {
+  const { t } = useTranslation();
+
   const linkCards = [
     {
       id: 1,
-      title: "What is a heat pump?",
-      paragraph:
-        "A heat pump is an energy-efficient system that heats your home in the winter, and cools your home in the summer.",
+      title: t("public-home.cardLinksSection.item1.title"),
+      paragraph: t("public-home.cardLinksSection.item1.paragraph"),
       button: {
-        text: "Take the survey",
+        text: t("public-home.cardLinksSection.item1.button"),
         to: "survey",
       },
       idCSS: "survey-link-section",
@@ -51,11 +53,10 @@ const CardLinksSection = () => {
     },
     {
       id: 2,
-      title: "About Us",
-      paragraph:
-        "The Boston Heat Pump Accelerator is an initiative of the Urban League of Eastern Massachusetts, in partnership with local and national organizations.",
+      title: t("public-home.cardLinksSection.item2.title"),
+      paragraph: t("public-home.cardLinksSection.item2.paragraph"),
       button: {
-        text: "Learn more",
+        text: t("public-home.cardLinksSection.item2.button"),
         to: "about-us",
       },
       idCSS: "learnmore-link-section",

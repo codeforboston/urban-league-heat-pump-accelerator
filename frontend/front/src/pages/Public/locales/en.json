@@ -1,0 +1,54 @@
+{
+  "public-home": {
+    "hero": {
+      "title": "Save money on your ",
+      "titleBold": "heating and cooling bills",
+      "text1": "You may be able to get incentives to install a heat pump, a type of heating and cooling system that can  ",
+      "textBold": "lower your utility bills",
+      "text2": ".",
+      "button": "Benefits of heat pumps"
+    },
+    "cardLinksSection": {
+      "item1": {
+        "title": "What is a heat pump?",
+        "paragraph": "A heat pump is an energy-efficient system that heats your home in the winter, and cools your home in the summer.",
+        "button": "Take the survey"
+      },
+      "item2": {
+        "title": "About Us",
+        "paragraph": "The Boston Heat Pump Accelerator is an initiative of the Urban League of Eastern Massachusetts, in partnership with local and national organizations.",
+        "button": "Learn more"
+      }
+    },
+    "testimonials": {
+      "heading1": "Testimonials",
+      "text1": "“Wow, it blew my mind. Normally the bill is anywhere from $400 to $500, and it was more like $200. I was like, let me look at that again!”"
+    },
+    "cardBenefitsSection": {
+      "heading1": "Benefits of Heat Pumps",
+      "subtitle1": "Learn more about the",
+      "subtitle2": "Benefits of Heat Pumps",
+      "item1": {
+        "title": "Lower energy bills",
+        "text1": "Heat pumps are so energy efficient that they can lead to significant savings on monthly utility bills and lower maintenance, repair and replacement costs."
+      },
+      "item2": {
+        "title": "Comfort at home",
+        "text1": "The same heat pump that helps to cool in the summer can then provide warmth in the winter- it's one system that is efficient, quiet, and convenient, providing comfort throughout the home."
+      },
+      "item3": {
+        "title": "Stronger communities",
+        "text1": "By helping to lower utility bills, heat pumps can lower the cost of living for residents, which in turn can support residents living on fixed- or low-incomes to remain in their homes longer, strengthening communities."
+      },
+      "item4": {
+        "title": "Cleaner air",
+        "text1": "Heat pumps use electricity that can be produced by renewable sources. As the grid becomes more green, heat pumps become much more eco-friendly than gas or oil-fueled systems. With a single “green-powered” unit that heats and cools, your home’s carbon footprint is as low as it can go."
+      }
+    },
+    "partners": {
+      "heading1": "Our Partners",
+      "text1": "The Boston Heat Pump Accelerator is an initiative of the Urban League of Eastern Massachusetts, in partnership with local and national organizations.",
+      "link": "Learn more"
+    }
+  }
+}
