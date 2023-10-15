@@ -2,25 +2,17 @@ import React, { useState } from "react";
 import { Box, Menu, MenuItem, Fade, Button, Typography } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 
-const langsPref = {
-  English: {
-    lang: "en-us",
-  },
-  French: {
-    lang: "fr-ht",
-  },
-  Portuguese: {
-    lang: "pt-br",
-  },
-  Spanish: {
-    lang: "es-xm",
-  },
-};
+const LangPrefDropdown = () => {
+  const {
+    i18n: { changeLanguage, language },
+  } = useTranslation();
 
-const LangPrefDropdown = ({ setLangPref = "en-us" }) => {
   const [anchorMore, setAnchorMore] = useState(null);
+  const [langDisplay, setLangDisplay] = useState("English"); // ["English", "Portuguese", "Spanish", "French"]
+  const [currentLanguage, setCurrentLanguage] = useState(language);
+
   const open = Boolean(anchorMore);
 
   const handleClickMore = (event) => {
@@ -29,12 +21,18 @@ const LangPrefDropdown = ({ setLangPref = "en-us" }) => {
 
   const handleCloseMore = () => setAnchorMore(null);
 
-  const handleLangSelect = (selectedLang) => {
-    setLangPref(selectedLang);
-    handleCloseMore();
+  const langsPref = {
+    English: "en",
+    Portuguese: "pt",
+    Spanish: "es",
+    French: "fr",
+  };
 
-    // Define the language for i18next
-    i18next.changeLanguage(langsPref[selectedLang].lang);
+  const handleChangeLanguage = (lang, display) => {
+    setCurrentLanguage(lang);
+    changeLanguage(lang);
+    console.log(lang);
+    setLangDisplay(display);
   };
 
   return (
@@ -48,9 +46,7 @@ const LangPrefDropdown = ({ setLangPref = "en-us" }) => {
         endIcon={<KeyboardArrowDownIcon />}
         sx={{ color: "var(--color-text-1)" }}
       >
-        <Typography variant="navLinks">
-          {langsPref[setLangPref] ? langsPref[setLangPref].lang : "English"}
-        </Typography>
+        <Typography variant="navLinks">{langDisplay}</Typography>
       </Button>
 
       <Menu
@@ -68,7 +64,7 @@ const LangPrefDropdown = ({ setLangPref = "en-us" }) => {
             <MenuItem
               key={lang}
               variant="navLinks"
-              onClick={() => handleLangSelect(lang)}
+              onClick={() => handleChangeLanguage(langsPref[lang], lang)}
             >
               {lang}
             </MenuItem>

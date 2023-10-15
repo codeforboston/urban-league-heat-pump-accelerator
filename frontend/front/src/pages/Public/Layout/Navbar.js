@@ -290,7 +290,7 @@ function Navbar(props) {
           <Box onClick={handleDrawerToggle}>
             <ButtonGetPump />
           </Box>
-          <Box sx={{ mt: 2 }}>
+          <Box sx={{ mt: 4 }}>
             <LangPrefDropdown />
           </Box>
         </Box>
@@ -370,6 +370,10 @@ function Navbar(props) {
                   </Stack>
                 </Box>
               </Grid>
+
+              {/* Removed this button from the navbar */}
+              <LangPrefDropdown />
+
               <Box
                 sx={{
                   display: { xs: "none", lg: "flex" },

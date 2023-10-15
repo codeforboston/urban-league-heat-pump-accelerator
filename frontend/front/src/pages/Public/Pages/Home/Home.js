@@ -1,11 +1,13 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Box, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Partners from "./Partners";
 import CardBenefitsSection from "./CardBenefitsSection";
 import CardLinksSection from "./CardLinksSection";
-import CarrouselHero from "./CarrouselHero";
 import Testimonial from "./Testimonial";
+import HeroPage from "./HeroPage";
+import imageHeroFirst from "../../../../assets/images/copywritingImages/Eric-Richards-unedited-3-EDITED.webp";
 
 const SectionWrapper = styled(Box)(({ theme, image }) => ({
   background: "var(--bgColor-1)",
@@ -14,6 +16,8 @@ const SectionWrapper = styled(Box)(({ theme, image }) => ({
 }));
 
 const Home = () => {
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={{
@@ -25,7 +29,15 @@ const Home = () => {
     >
       {/* HERO */}
       <Box>
-        <CarrouselHero />
+        <HeroPage
+          title={t("public-home.hero.title")}
+          titleBold={t("public-home.hero.titleBold")}
+          text1={t("public-home.hero.text1")}
+          textBold={t("public-home.hero.textBold")}
+          text2={t("public-home.hero.text2")}
+          image={imageHeroFirst}
+          link="https://www.cenhud.com/en/my-energy/save-energy-money/energy-calculators/fuel-switching-calculator/"
+        />
       </Box>
       <Container>
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
