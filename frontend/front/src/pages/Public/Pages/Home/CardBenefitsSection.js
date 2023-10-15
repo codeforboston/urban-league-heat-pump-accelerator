@@ -10,6 +10,7 @@ import {
   Stack,
   Container,
 } from "@mui/material";
+import { Link as MuiLink } from "@mui/material";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import AnimatedBox from "../../Components/AnimatedBox";
@@ -87,25 +88,25 @@ const CardBenefitsSection = () => {
               sx={{ color: "var(--color-text-3)", display: "inline-block" }}
             >
               {t("public.home.cardBenefitsSection.subtitle1")}&nbsp;
-            </Typography>
-            <Link to="benefits-heat-pump" style={{ textDecoration: "none" }}>
-              <Typography
-                variant="body"
-                sx={{
-                  color: "var(--color-text-3) !important",
-                  textDecoration: "underline",
-                  textDecorationColor: "rgba(25, 118, 210, 0.4);",
-                  textDecorationThickness: "1px",
-                  textUnderlineOffset: "2px",
-                  ":hover": {
-                    textDecorationColor: "var(--color-text-3)",
+              <Link to="benefits-heat-pump" style={{ textDecoration: "none" }}>
+                <MuiLink
+                  variant="body"
+                  sx={{
+                    color: "var(--color-text-3) !important",
+                    textDecoration: "underline",
+                    textDecorationColor: "rgba(25, 118, 210, 0.4);",
                     textDecorationThickness: "1px",
-                  },
-                }}
-              >
-                {t("public.home.cardBenefitsSection.link")}
-              </Typography>
-            </Link>
+                    textUnderlineOffset: "2px",
+                    ":hover": {
+                      textDecorationColor: "var(--color-text-3)",
+                      textDecorationThickness: "1px",
+                    },
+                  }}
+                >
+                  {t("public.home.cardBenefitsSection.link")}
+                </MuiLink>
+              </Link>
+            </Typography>
           </Stack>
         </Box>
         {cards.map((card, index) => (
@@ -123,17 +124,25 @@ const CardBenefitsSection = () => {
           >
             <Grid item xs={12} sm={6}>
               <Box
-                component="img"
                 sx={{
-                  backgroundSize: "fit",
                   width: "100%",
-                  height: "100%",
+                  height: { xs: "100%", sm: "auto", md: "100%" },
                 }}
-                src={card.image}
-                alt={card.title}
-              />
+              >
+                <Box
+                  component="img"
+                  sx={{
+                    objectFit: "cover", // ou "contain"
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  src={card.image}
+                  alt={card.title}
+                />
+              </Box>
             </Grid>
-            <StyledGrid item sx={{ pt: { xs: 2, md: 0 } }} xs={12} sm={6}>
+
+            <StyledGrid item sx={{ pt: { xs: 2, sm: 0 } }} xs={12} sm={6}>
               <AnimatedBox triggerOnce={false}>
                 <Box sx={{ p: { md: 4, xs: 0 } }}>
                   <Box pl={2}>

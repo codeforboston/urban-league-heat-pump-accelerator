@@ -87,8 +87,10 @@ const CardLinksSection = () => {
                 width: { xs: "100%", sm: "300px" },
                 minWidth: "260px",
                 maxWidth: { xs: "468px", sm: "680px" },
-                backgroundSize: "cover",
-                height: "auto",
+                // backgroundSize: "cover",
+                objectFit: { xs: "cover", sm: "cover" },
+                objectPosition: "50% 50%",
+                height: { xs: "250px", sm: "auto" },
               }}
               image={detail.image}
               alt={detail.title}
@@ -99,7 +101,8 @@ const CardLinksSection = () => {
                   <Box
                     id="survey-link-section"
                     sx={{
-                      maxHeight: { xs: "auto", sm: "300px" },
+                      height: "100%",
+                      maxHeight: { xs: "auto", sm: "370px" },
                       minHeight: { xs: "auto", sm: "270px" },
                       display: "flex",
                       flexDirection: "column",
@@ -110,8 +113,8 @@ const CardLinksSection = () => {
 
                     <Box
                       sx={{
-                        height: { xs: "auto", sm: "140px" },
-                        my: { xs: 2, sm: 0 },
+                        // height: { xs: "auto", sm: "140px" },
+                        my: { xs: 2, sm: 2 },
                         color: "var(--color-text-3)",
                       }}
                     >
