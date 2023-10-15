@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
+import { useTranslation } from "react-i18next";
 import { Typography, Box, Button } from "@mui/material";
 import AnimatedBox from "../../Components/AnimatedBox";
 import TitleHero from "../../Components/Typography/TitleHero";
@@ -48,6 +49,7 @@ const HeroPage = ({
   text2,
   image,
 }) => {
+  const { t } = useTranslation();
   return (
     <HeroWrapper image={image}>
       <Box className="text-wrapper">
@@ -112,7 +114,7 @@ const HeroPage = ({
                   },
                 }}
               >
-                Benefits of heat pumps
+                {t("public-home.hero.button")}
               </Button>
             </Box>
           </AnimatedBox>
