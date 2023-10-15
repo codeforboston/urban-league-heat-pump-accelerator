@@ -62,7 +62,10 @@ const HeroPage = ({
                 justifyContent: "center",
                 alignItems: "center",
                 gap: 8,
-                minHeight: "calc(100vh - 143px)",
+                minHeight: "calc(100vh - 122px)",
+                "@media (max-width: 385px)": {
+                  minHeight: "calc(100vh - 90px)",
+                },
               }}
             >
               <Box>

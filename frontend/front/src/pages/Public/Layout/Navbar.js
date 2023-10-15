@@ -141,7 +141,7 @@ function Navbar(props) {
   const drawer = (
     <Box sx={{ textAlign: "center" }}>
       <Stack direction="row" alignItems="center" justifyContent="center">
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, mx: 2 }}>
           <Link to="" onClick={handleDrawerToggle}>
             <Box
               component="img"
@@ -151,17 +151,20 @@ function Navbar(props) {
               sx={{
                 mb: 3,
                 mt: 5,
+                width: "100%",
                 maxWidth: "300px",
-                "@media (max-width: 385px)": {
-                  minWidth: "192px",
-                },
+                minWidth: "150px",
               }}
             />
           </Link>
         </Box>
         <Button
           onClick={handleDrawerToggle}
-          sx={{ position: "absolute", right: 0, mt: 2 }}
+          sx={{
+            position: { xxs: "relative", sm: "absolute" },
+            right: 8,
+            mt: 2,
+          }}
         >
           <CloseIcon
             sx={{
@@ -337,10 +340,9 @@ function Navbar(props) {
                     alt="logo"
                     sx={{
                       my: 2,
+                      width: "100%",
                       maxWidth: "300px",
-                      "@media (max-width: 385px)": {
-                        minWidth: "192px",
-                      },
+                      minWidth: "192px",
                     }}
                   />
                 </Link>
@@ -372,7 +374,7 @@ function Navbar(props) {
               </Grid>
 
               {/* Removed this button from the navbar */}
-              <LangPrefDropdown />
+              {/* <LangPrefDropdown /> */}
 
               <Box
                 sx={{
