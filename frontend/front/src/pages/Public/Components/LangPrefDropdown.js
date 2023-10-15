@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Menu, MenuItem, Fade, Button, Typography } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -12,6 +12,16 @@ const LangPrefDropdown = () => {
   const [anchorMore, setAnchorMore] = useState(null);
   const [langDisplay, setLangDisplay] = useState("English"); // ["English", "Portuguese", "Spanish", "French"]
   const [currentLanguage, setCurrentLanguage] = useState(language);
+
+  useEffect(() => {
+    const langMap = {
+      en: "English",
+      pt: "Portuguese",
+      es: "Spanish",
+      fr: "French",
+    };
+    setLangDisplay(langMap[language]);
+  }, [language]);
 
   const open = Boolean(anchorMore);
 
@@ -64,7 +74,9 @@ const LangPrefDropdown = () => {
             <MenuItem
               key={lang}
               variant="navLinks"
-              onClick={() => handleChangeLanguage(langsPref[lang], lang)}
+              onClick={() => (
+                handleChangeLanguage(langsPref[lang], lang), handleCloseMore()
+              )}
             >
               {lang}
             </MenuItem>
