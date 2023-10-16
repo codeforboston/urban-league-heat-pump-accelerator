@@ -77,7 +77,10 @@
         "creole": "criollo (Haití)"
       },
       "button-get-heat-pump": "CONSIGUE UNA BOMBA DE CALOR",
-      "all-rights-reserved": "Reservados todos los derechos."
+      "all-rights-reserved": "Reservados todos los derechos.",
+      "source": "fuente",
+      "click-here": "haga clic aquí",
+      "take-the-survey": "Toma la encuesta"
     },
     "footer": {
       "legal": "Legal",
@@ -88,6 +91,30 @@
     "survey": {
       "heading1BlueBgGround": "Realice la encuesta",
       "under-construction": "¡La encuesta pública está en construcción!"
+    },
+    "benefits-heat-pump": {
+      "cardBenefits": {
+        "item1": {
+          "title": "Facturas de servicios públicos más bajas",
+          "body1": "Las bombas de calor de fuente de aire (ASHP) pueden reducir el uso de electricidad para calefacción hasta en un 50% en comparación con los hornos eléctricos y los calentadores de zócalo (",
+          "body2": "Para la refrigeración, los ASHP son aproximadamente equivalentes al \"aire acondicionado central\" y mucho más eficientes que las unidades de aire acondicionado de ventana. \nEn conjunto, esto puede traducirse en ahorros para los propietarios del 20 % al 40 % en sus facturas anuales de calefacción y refrigeración. \nPara comparar su sistema y ver cuánto podría ahorrar. "
+        },
+        "item2": {
+          "title": "Mejor calefacción",
+          "body1": "Las bombas de calor son una excelente manera de calentar y enfriar su hogar. \nSon casi silenciosas, consumen menos electricidad y son continuas: el funcionamiento continuo y de bajo nivel de las bombas de calor proporciona calefacción o refrigeración constante, eliminando las ráfagas de calor o frío que suelen crear los sistemas heredados. \nPara obtener más información sobre el funcionamiento y los beneficios de ASHP. "
+        },
+        "item3": {
+          "title": "Comunidades más fuertes",
+          "body1": "Los residentes de Boston quieren permanecer en sus hogares y mantener fuertes a sus comunidades, incluso cuando enfrentan los desafíos del aumento de los costos. \nCambiar a bombas de calor puede reducir los costos de servicios públicos, reduciendo el desafío financiero de permanecer en la comunidad. \nAl agregar también capacidad de enfriamiento activo, los ASHP también mejoran la “resiliencia de la vivienda” de vecindarios enteros a medida que aumentan las temperaturas anuales. \nCon el aumento de las facturas de energía y las temperaturas, la resiliencia de la vivienda es más importante que nunca para capacitar a las comunidades para que se mantengan fuertes y unidas. \nAprender más."
+        },
+        "item4": {
+          "title": "Menores emisiones de carbono",
+          "body1": "Las bombas de calor son sistemas de calefacción y refrigeración altamente eficientes que funcionan con electricidad. \nComo tales, se vuelven “más limpios” cuando la fuente de su energía eléctrica se vuelve más limpia. \nLa calefacción/refrigeración alimentada por gas o petróleo no puede beneficiarse de la misma manera. \n¿Qué diferencia supondrá en su caso cambiar a ASHP? \nEncuentre detalles sobre el impacto climático de un cambio a bombas de calor. "
+        }
+      },
+      "text1": "¡Queremos escuchar tus opiniones!",
+      "text2": "Queremos escuchar tus",
+      "text3": "opiniones!"
     }
   }
 }

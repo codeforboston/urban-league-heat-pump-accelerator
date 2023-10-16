@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Typography,
@@ -19,43 +20,44 @@ import heatIcon from "../../../assets/images/Icons/heat.png";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import ButtonDarkBlue from "../Components/Button/ButtonDarkBlue";
 
-const cardBenefits = [
-  {
-    icon: moneyIcon,
-    title: "Lower utility bills",
-    body: "Air source heat pumps (ASHPs) can reduce electricity usage for heating by up to 50% compared to electrical furnaces and baseboard heaters (",
-    bodyLink:
-      "https://www.amerenmissourisavings.com/hvac-air-source-heat-pump-education-flyer/",
-    body2:
-      "). For cooling, ASHPs are roughly equivalent to “central air conditioning” and far more efficient than window AC units. Together, this can translate into homeowner savings of 20%-40% off of their annual heating and cooling bills. To compare your system and to see how much you could save, ",
-    link: "https://www.masssave.com/residential/heating-comparison-calculator",
-  },
-  {
-    icon: snowSunIcon,
-    title: "Better Heating & Cooling",
-    body: "Heat pumps are an excellent way to heat and cool your home. They’re nearly silent, draw less electricity, and they are continuous: heat pumps’ continuous, low-level operation provides constant heating or cooling, eliminating the blasts of hot or cold that legacy systems usually create. To learn more about ASHP operation and benefits, ",
-    bodyLink: "",
-    link: "https://goclean.masscec.com/clean-energy-solutions/air-source-heat-pumps",
-  },
-  {
-    icon: communityIcon,
-    title: "Stronger Communities",
-    body: "Boston residents want to stay in their homes and keep their communities strong, even while facing challenges from rising costs. Switching to heat pumps can lower utility costs, reducing the financial challenge of staying in the community. By also adding active cooling capacity, ASHPs also improve the “housing resiliency” of entire neighborhoods as annual temperatures rise. With both energy bills and temperatures on the rise, housing resiliency is more important than ever to empower communities to stay strong and stay together. To learn more, ",
-    bodyLink: "",
-    link: "https://www.energy.gov/policy/articles/heat-pumps-keep-homes-warm-and-bills-low-winter",
-  },
-  {
-    icon: heatIcon,
-    title: "Lower Carbon Emissions",
-    body: "Heat pumps are highly efficient heating and cooling systems that are electrically-powered. As such, they become “cleaner” whenever the source of their electric power becomes cleaner. Gas or oil fueled heating/cooling cannot benefit in the same way. How much of a difference will switching to ASHPs make in your case? Find specifics on the climate impact of a switch to heat pumps, ",
-    bodyLink: "",
-    link: "https://goclean.masscec.com/clean-energy-solutions/",
-  },
-];
-
 const BenefitsHeatPumps = () => {
   const theme = useTheme();
   const isSmallerThanSm = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const { t } = useTranslation();
+
+  const cardBenefits = [
+    {
+      icon: moneyIcon,
+      title: t("public.benefits-heat-pump.cardBenefits.item1.title"),
+      body: t("public.benefits-heat-pump.cardBenefits.item1.body1"),
+      bodyLink:
+        "https://www.amerenmissourisavings.com/hvac-air-source-heat-pump-education-flyer/",
+      body2: `). ${t("public.benefits-heat-pump.cardBenefits.item1.body2")}`,
+      link: "https://www.masssave.com/residential/heating-comparison-calculator",
+    },
+    {
+      icon: snowSunIcon,
+      title: t("public.benefits-heat-pump.cardBenefits.item2.title"),
+      body: t("public.benefits-heat-pump.cardBenefits.item2.body1"),
+      bodyLink: "",
+      link: "https://goclean.masscec.com/clean-energy-solutions/air-source-heat-pumps",
+    },
+    {
+      icon: communityIcon,
+      title: t("public.benefits-heat-pump.cardBenefits.item3.title"),
+      body: t("public.benefits-heat-pump.cardBenefits.item3.body1"),
+      bodyLink: "",
+      link: "https://www.energy.gov/policy/articles/heat-pumps-keep-homes-warm-and-bills-low-winter",
+    },
+    {
+      icon: heatIcon,
+      title: t("public.benefits-heat-pump.cardBenefits.item4.title"),
+      body: t("public.benefits-heat-pump.cardBenefits.item4.body1"),
+      bodyLink: "",
+      link: "https://goclean.masscec.com/clean-energy-solutions/",
+    },
+  ];
 
   return (
     <Box
@@ -67,7 +69,9 @@ const BenefitsHeatPumps = () => {
         minHeight: "calc(100vh - 520px)",
       }}
     >
-      <Heading1BlueBgGround text="Benefits of Heat Pumps" />
+      <Heading1BlueBgGround
+        text={t("public.global-labels.learn-more.items.benefits-heat-pumps")}
+      />
       <Container sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
         <Stack direction="column">
           <Box>
@@ -112,27 +116,30 @@ const BenefitsHeatPumps = () => {
                               textDecorationColor: "var(--color-text-3)",
                             }}
                           >
-                            source
+                            {t("public.global-labels.source")}
                           </Link>
                           {card.body2}
                         </>
                       )}
                       {card.link !== "" && (
-                        <Link
-                          href={card.link}
-                          target="_blank"
-                          rel="noopener"
-                          underline="always"
-                          variant="body"
-                          sx={{
-                            color: "var(--color-text-3)",
-                            textDecoration: "solid underline 1px",
-                            textUnderlinePosition: "under",
-                            textDecorationColor: "var(--color-text-3)",
-                          }}
-                        >
-                          click here.
-                        </Link>
+                        <span>
+                          <Link
+                            href={card.link}
+                            target="_blank"
+                            rel="noopener"
+                            underline="always"
+                            variant="body"
+                            sx={{
+                              color: "var(--color-text-3)",
+                              textDecoration: "solid underline 1px",
+                              textUnderlinePosition: "under",
+                              textDecorationColor: "var(--color-text-3)",
+                            }}
+                          >
+                            {t("public.global-labels.click-here")}
+                          </Link>
+                          .
+                        </span>
                       )}
                     </Typography>
                   </Box>
@@ -148,13 +155,14 @@ const BenefitsHeatPumps = () => {
             >
               <Box>
                 {isSmallerThanSm ? (
-                  <Heading4 text=" We want to hear your opinions!" />
+                  <Heading4 text={t("public.benefits-heat-pump.text1")} />
                 ) : (
                   <Typography
                     variant="button"
                     sx={{ color: "var(--color-text-2)" }}
                   >
-                    We want to hear your <br /> opinions!
+                    {t("public.benefits-heat-pump.text2")}
+                    <br /> {t("public.benefits-heat-pump.text3")}
                     <Icon
                       component={ArrowRightAltIcon}
                       pl={4}
@@ -167,7 +175,10 @@ const BenefitsHeatPumps = () => {
                   </Typography>
                 )}
               </Box>
-              <ButtonDarkBlue text="Take the survey" to="/public/survey" />
+              <ButtonDarkBlue
+                text={t("public.global-labels.take-the-survey")}
+                to="/public/survey"
+              />
             </Stack>
           </Box>
         </Stack>

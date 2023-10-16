@@ -21,6 +21,7 @@ function Heading1BlueBgGround({ text }) {
           fontWeight: "600",
           color: "var(--color-text-2)",
           textShadow: "1px 1px 1px var(--color-text-5)",
+          textTransform: "capitalize",
         }}
       >
         {text}

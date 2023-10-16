@@ -258,3 +258,47 @@ reviews:
             suggestion: ''
             type: approve
             time: '2023-10-16T20:55:56.927Z'
+  public.benefits-heat-pump.text2:
+    locales:
+      pt-BR:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: uWsVO3VUJzQ5vLsZB8HwW
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-16T22:42:24.795Z'
+      ht:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: TT5QzNS5bGUJPwxnp2bHA
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-16T22:43:07.437Z'
+      es-419:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: uHX7yK6V0595EOnzzlbi8
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-16T22:43:16.320Z'
+  public.benefits-heat-pump.text3:
+    locales:
+      ht:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: 342jM5AMjuemch-QDVetP
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-16T22:44:32.924Z'

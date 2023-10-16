@@ -30,6 +30,7 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
   "& .text-overlay": {
     margin: "0 auto",
     // minWidth: "100vw",
+    width: "calc(100vw - 18px)",
     minHeight: "350px",
     top: "143px",
     left: 0,
