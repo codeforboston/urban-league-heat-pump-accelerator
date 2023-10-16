@@ -1,4 +1,5 @@
 import React from "react";
+import * as router from "react-router";
 import { SurveyPage } from "../SurveyPage";
 import { render, screen } from "@testing-library/react";
 import * as apiSlice from "../../../../api/apiSlice";
@@ -17,6 +18,8 @@ describe("Public Survey Page", () => {
     jest
       .spyOn(apiSlice, "useGetSurveyStructureQuery")
       .mockImplementation(() => ({}));
+
+    jest.spyOn(router, "useNavigate").mockImplementation(() => jest.fn());
 
     jest.resetModules();
     process.env = { ...OLD_ENV };
