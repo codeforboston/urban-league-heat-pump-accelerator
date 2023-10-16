@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Box, Menu, MenuItem, Fade, Button, Typography } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -13,6 +14,9 @@ const LangPrefDropdown = () => {
   const [anchorMore, setAnchorMore] = useState(null);
   const [langDisplay, setLangDisplay] = useState("English");
   const [currentLanguage, setCurrentLanguage] = useState(language);
+  // const [isReloaded, setIsReloaded] = useState(false);
+
+  const location = useLocation();
 
   const langMap = {
     "en-us": `🇺🇸 ${t("public.global-labels.locales.english")}`,
@@ -22,47 +26,66 @@ const LangPrefDropdown = () => {
   };
 
   useEffect(() => {
-    // Read the langPref from localStorage
-    const storedLangPref = localStorage.getItem("langPref");
+    // Get query params from current URL
+    const params = new URLSearchParams(window.location.search);
+    let queryLang = params.get("langPref");
+    // Check if current route is a 'public' route
+    const isPublicRoute = window.location.pathname.includes("public");
 
-    // If it exists, set the language
-    if (storedLangPref) {
-      changeLanguage(storedLangPref);
-    } else {
-      // If it doesn't exist, set it to 'en-us'
-      localStorage.setItem("langPref", "en-us");
+    if (isPublicRoute) {
+      // Get language preference from localStorage or default to 'en-us'
+      queryLang = localStorage.getItem("langPref") || "en-us";
+      const url = new URL(window.location.href);
+
+      // Update or remove 'langPref' query param based on language
+      if (queryLang !== "en-us") {
+        url.searchParams.set("langPref", queryLang);
+      } else {
+        url.searchParams.delete("langPref");
+      }
+
+      // Update the browser history
+      window.history.replaceState({ path: url.toString() }, "", url.toString());
     }
 
-    setLangDisplay(langMap[language]);
-  }, [language]);
+    // Update language state if queryLang is different
+    if (queryLang && queryLang !== currentLanguage) {
+      setCurrentLanguage(queryLang);
+      changeLanguage(queryLang);
+      localStorage.setItem("langPref", queryLang);
+    }
+  }, [location, currentLanguage]);
 
+  // Determine if the language menu should be open
   const open = Boolean(anchorMore);
 
+  // Handle click to open language menu
   const handleClickMore = (event) => {
     setAnchorMore(event.currentTarget);
   };
 
+  // Close language menu
   const handleCloseMore = () => setAnchorMore(null);
 
+  // Change language and update localStorage and URL
   const handleChangeLanguage = (lang, display) => {
     setCurrentLanguage(lang);
     changeLanguage(lang);
-
-    // Update localStorage
     localStorage.setItem("langPref", lang);
 
-    // Update URL query param
     const url = new URL(window.location.href);
 
+    // Update or remove 'langPref' query param based on route and language
     if (url.pathname.includes("public")) {
       if (lang !== "en-us") {
         url.searchParams.set("langPref", lang);
       } else {
         url.searchParams.delete("langPref");
       }
-      window.history.replaceState({}, "", url);
+      window.history.replaceState({}, "", url.toString());
     }
 
+    // Update displayed language
     setLangDisplay(langMap[lang]);
   };
 
