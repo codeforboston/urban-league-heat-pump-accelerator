@@ -91,6 +91,14 @@ const LangPrefDropdown = () => {
         open={open}
         onClose={handleCloseMore}
         TransitionComponent={Fade}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
       >
         <Box>
           {Object.keys(langMap).map((lang) => (
