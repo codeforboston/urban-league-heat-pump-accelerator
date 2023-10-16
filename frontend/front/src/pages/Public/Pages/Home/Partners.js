@@ -77,7 +77,6 @@ const Partners = () => {
           container
           alignItems="center"
           justifyContent="space-around"
-          px={2}
           gap={2}
         >
           {partners.map((partner) => (

@@ -68,7 +68,7 @@ const HeroPage = ({
                 },
               }}
             >
-              <Box>
+              <Box px={0.5}>
                 <TitleHero
                   text={title.toUpperCase()}
                   titleBold={titleBold.toUpperCase()}

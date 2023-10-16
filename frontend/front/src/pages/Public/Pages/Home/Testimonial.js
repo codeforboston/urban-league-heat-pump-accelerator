@@ -42,9 +42,9 @@ const Testimonial = () => {
             direction={{ xs: "reverse-column", md: "row" }}
           >
             <Grid item xs={12}>
-              <Item>
+              <Box sx={{ p: 2, textAlign: "center" }}>
                 <Heading1 text={t("public.home.testimonials.heading1")} />
-              </Item>
+              </Box>
             </Grid>
             {isSmallerThanMd && (
               <Grid item xs={12} direction="column">
@@ -62,7 +62,7 @@ const Testimonial = () => {
               </Grid>
             )}
             <Grid item md={8} direction="column">
-              <Item style={{ flexGrow: 1 }}>
+              <Box sx={{ flexGrow: 1, px: 2, textAlign: "center", pt: 3 }}>
                 <Typography variant="h4" px={{ xs: 0, md: 6 }}>
                   {t("public.home.testimonials.text1")}
                 </Typography>
@@ -73,7 +73,7 @@ const Testimonial = () => {
                     )}`}
                   />
                 </Box>
-                <Typography py={6} variant="h6" sx={{ fontWeight: 400 }} px={1}>
+                <Typography py={6} variant="h6" sx={{ fontWeight: 400 }}>
                   {t("public.home.testimonials.text2")}
                 </Typography>
                 <Box>
@@ -83,7 +83,7 @@ const Testimonial = () => {
                     externalLink={true}
                   />
                 </Box>
-              </Item>
+              </Box>
             </Grid>
             {!isSmallerThanMd && (
               <Grid item md={4}>
