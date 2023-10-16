@@ -58,29 +58,32 @@
         "link": "Más información"
       }
     },
-    "layout": {
-      "navbar": {
-        "survey": "encuesta",
-        "learn-more": {
-          "value": "Aprende más",
-          "items": {
-            "testimonials": "Testimonios",
-            "about-us": "Acerca de las bombas de calor",
-            "about-bhpa": "Acerca de BHPA",
-            "benefits-heat-pumps": "Beneficios de las bombas de calor"
-          }
-        },
-        "get-involved": "INVOLUCRARSE"
-      }
-    },
-    "components": {
-      "button-get-heat-pump": "CONSIGUE UNA BOMBA DE CALOR",
+    "global-labels": {
+      "survey": "encuesta",
+      "learn-more": {
+        "value": "Aprende más",
+        "items": {
+          "benefits-heat-pumps": "Beneficios de las bombas de calor",
+          "about-us": "Acerca de las bombas de calor",
+          "testimonials": "Testimonios",
+          "about-bhpa": "Acerca de BHPA"
+        }
+      },
+      "get-involved": "Involucrarse",
       "locales": {
-        "english": "Inglés (Estados Unidos)",
+        "english": "Inglés Estados Unidos)",
         "portuguese": "Portugués (Brasil)",
         "spanish": "Español (Latinoamérica)",
         "creole": "criollo (Haití)"
-      }
+      },
+      "button-get-heat-pump": "CONSIGUE UNA BOMBA DE CALOR",
+      "all-rights-reserved": "Reservados todos los derechos."
+    },
+    "footer": {
+      "legal": "Legal",
+      "privacy-and-data-policy": "\nPolítica de Privacidad y Datos",
+      "contact-us": "Contáctenos",
+      "member-login": "Acceso de miembro"
     }
   }
 }

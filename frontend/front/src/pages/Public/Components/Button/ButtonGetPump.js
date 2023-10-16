@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const ButtonGetPumnp = ({ variant }) => {
+const ButtonGetPumnp = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const ButtonGetPumnp = ({ variant }) => {
           },
         }}
       >
-        {t("public.components.button-get-heat-pump")}
+        {t("public.global-labels.button-get-heat-pump")}
       </Button>
     </>
   );

@@ -55,29 +55,32 @@
         "link": "Learn more"
       }
     },
-    "layout": {
-      "navbar": {
-        "survey": "survey",
-        "learn-more": {
-          "value": "Learn More",
-          "items": {
-            "benefits-heat-pumps": "Benefits of Heat Pumps",
-            "about-us": "About Heat Pumps",
-            "testimonials": "Testimonials",
-            "about-bhpa": "About BHPA"
-          }
-        },
-        "get-involved": "GET INVOLVED"
-      }
-    },
-    "components": {
+    "global-labels": {
+      "survey": "survey",
+      "learn-more": {
+        "value": "Learn More",
+        "items": {
+          "benefits-heat-pumps": "Benefits of Heat Pumps",
+          "about-us": "About Heat Pumps",
+          "testimonials": "Testimonials",
+          "about-bhpa": "About BHPA"
+        }
+      },
+      "get-involved": "Get Involved",
       "button-get-heat-pump": "GET A HEAT PUMP",
       "locales": {
         "english": "English (United States)",
         "portuguese": "Portuguese (Brazil)",
         "spanish": "Spanish (Latin America)",
         "creole": "Creole (Haiti)"
-      }
+      },
+      "all-rights-reserved": "All Rights Reserved."
+    },
+    "footer": {
+      "legal": "Legal",
+      "privacy-and-data-policy": "Privacy & Data Policy",
+      "contact-us": "Contact Us",
+      "member-login": "Member Login"
     }
   }
 }

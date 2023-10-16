@@ -58,29 +58,32 @@
         "link": "Aprann plis"
       }
     },
-    "layout": {
-      "navbar": {
-        "survey": "sondaj",
-        "learn-more": {
-          "value": "Aprann plis",
-          "items": {
-            "testimonials": "Temwayaj",
-            "about-bhpa": "Konsènan BHPA",
-            "benefits-heat-pumps": "Benefis ki genyen nan ponp chalè",
-            "about-us": "Konsènan Ponp Chalè"
-          }
-        },
-        "get-involved": "PATISIPE"
-      }
-    },
-    "components": {
-      "button-get-heat-pump": "JWENN YON PONP CHALÈ",
+    "global-labels": {
+      "survey": "sondaj",
+      "learn-more": {
+        "value": "Aprann plis",
+        "items": {
+          "benefits-heat-pumps": "Benefis ki genyen nan ponp chalè",
+          "about-us": "Konsènan Ponp Chalè",
+          "testimonials": "Temwayaj",
+          "about-bhpa": "Konsènan BHPA"
+        }
+      },
+      "get-involved": "Patisipe",
       "locales": {
         "english": "Angle (Etazini)",
         "portuguese": "Pòtigè (Brezil)",
         "spanish": "Panyòl (Amerik Latin)",
         "creole": "Kreyòl (Ayiti)"
-      }
+      },
+      "button-get-heat-pump": "JWENN YON PONP CHALÈ",
+      "all-rights-reserved": "Tout dwa rezève."
+    },
+    "footer": {
+      "legal": "Legal",
+      "privacy-and-data-policy": "Politik Privasite ak Donee",
+      "contact-us": "Kontakte nou",
+      "member-login": "Login manm"
     }
   }
 }

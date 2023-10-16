@@ -15,10 +15,10 @@ const LangPrefDropdown = () => {
   const [currentLanguage, setCurrentLanguage] = useState(language);
 
   const langMap = {
-    "en-us": `🇺🇸 ${t("public.components.locales.english")}`,
-    "pt-br": `🇧🇷 ${t("public.components.locales.portuguese")}`,
-    "es-us": `🇪🇸 ${t("public.components.locales.spanish")}`,
-    "ht-cr": `🇭🇹 ${t("public.components.locales.creole")}`,
+    "en-us": `🇺🇸 ${t("public.global-labels.locales.english")}`,
+    "pt-br": `🇧🇷 ${t("public.global-labels.locales.portuguese")}`,
+    "es-us": `🇪🇸 ${t("public.global-labels.locales.spanish")}`,
+    "ht-cr": `🇭🇹 ${t("public.global-labels.locales.creole")}`,
   };
 
   useEffect(() => {

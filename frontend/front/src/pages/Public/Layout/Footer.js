@@ -1,5 +1,5 @@
 import * as routes from "../../../routing/routes";
-
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Divider,
@@ -17,16 +17,19 @@ import ButtonGetPump from "../Components/Button/ButtonGetPump";
 import ButtonWhite from "../Components/Button/ButtonWhite";
 import EmailIcon from "@mui/icons-material/Email";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-// import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 import logoHeatPump from "../../../assets/images/bhpa-logos/bhpa-logo300px.png";
 import { styled } from "@mui/material/styles";
 
 const footerItems = {
-  "About BHPA": { link: "about-us" },
-  "About Heat Pumps": { link: "about-heat-pump" },
-  "Benefits of Heat Pumps": { link: "benefits-heat-pump" },
-  "Get Involved": { link: "get-involved" },
-  Testimonials: { link: "testimonial-section" },
+  "public.global-labels.learn-more.items.about-bhpa": { link: "about-us" },
+  "public.global-labels.learn-more.items.about-us": { link: "about-heat-pump" },
+  "public.global-labels.learn-more.items.benefits-heat-pumps": {
+    link: "benefits-heat-pump",
+  },
+  "public.global-labels.get-involved": { link: "get-involved" },
+  "public.global-labels.learn-more.items.testimonials": {
+    link: "testimonial-section",
+  },
 };
 
 const FooterWrapper = styled("div")(({ theme }) => ({
@@ -46,6 +49,7 @@ const Footer = () => {
 
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
   return (
     <FooterWrapper sx={{ px: { xl: "18%" } }}>
       <Toolbar>
@@ -97,7 +101,7 @@ const Footer = () => {
           >
             <List variant="caption">
               <Typography className="subtitle-footer" pb={1}>
-                Learn More
+                {t("public.global-labels.learn-more.value")}
               </Typography>
               {Object.keys(footerItems).map((item) => (
                 <ListItem key={item} sx={{ pt: { xs: 0, lg: 0 }, px: 0 }}>
@@ -134,12 +138,13 @@ const Footer = () => {
                     }
                   >
                     <ListItemText
-                      primary={item}
+                      primary={t(item)}
                       sx={{
                         color: "var(--color-text-1)",
                       }}
                       primaryTypographyProps={{
                         fontWeight: "300",
+                        textTransform: "capitalize",
                       }}
                     />
                   </ListItemButton>
@@ -162,7 +167,7 @@ const Footer = () => {
           >
             <List variant="caption">
               <Typography className="subtitle-footer" pb={1}>
-                Legal
+                {t("public.footer.legal")}
               </Typography>
 
               <ListItem sx={{ py: { xs: 0, lg: 0 }, px: 0 }}>
@@ -178,7 +183,7 @@ const Footer = () => {
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   <ListItemText
-                    primary="Privacy & Data Policy"
+                    primary={t("public.footer.privacy-and-data-policy")}
                     sx={{
                       color: "var(--color-text-1)",
                     }}
@@ -205,7 +210,7 @@ const Footer = () => {
           >
             <>
               <Typography className="subtitle-footer" pb={1}>
-                Contact Us
+                {t("public.footer.contact-us")}
               </Typography>
               <Box>
                 {/* <Box
@@ -268,7 +273,7 @@ const Footer = () => {
                 >
                   <ButtonWhite to={routes.LOGIN_ROUTE}>
                     <LockOutlinedIcon sx={{ mr: 1 }} />
-                    Member Login
+                    {t("public.footer.member-login")}
                   </ButtonWhite>
                 </Box>
               </Box>
@@ -284,7 +289,7 @@ const Footer = () => {
           >
             <ButtonWhite to={routes.LOGIN_ROUTE}>
               <LockOutlinedIcon sx={{ mr: 1 }} />
-              Member Login
+              {t("public.footer.member-login")}
             </ButtonWhite>
           </Grid>
 
@@ -315,7 +320,7 @@ const Footer = () => {
               Copyright © {currentYear} | Boston Heat Pump Accelerator. {` `}
             </Typography>
             <Typography align="center" variant="caption" pt={1}>
-              All Rights Reserved.
+              {t("public.global-labels.all-rights-reserved")}
             </Typography>
           </Grid>
         </Grid>

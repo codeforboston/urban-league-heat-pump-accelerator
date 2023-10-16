@@ -39,31 +39,31 @@ function Navbar(props) {
   const { t } = useTranslation();
 
   const navbarItems = {
-    SURVEY: { link: "survey", value: t("public.layout.navbar.survey") },
+    SURVEY: { link: "survey", value: t("public.global-labels.survey") },
     "Learn More": {
-      value: t("public.layout.navbar.learn-more.value"),
+      value: t("public.global-labels.learn-more.value"),
       items: {
         "Benefits of Heat Pumps": {
           link: "benefits-heat-pump",
-          value: t("public.layout.navbar.learn-more.items.benefits-heat-pumps"),
+          value: t("public.global-labels.learn-more.items.benefits-heat-pumps"),
         },
         "About Heat Pumps": {
           link: "about-heat-pump",
-          value: t("public.layout.navbar.learn-more.items.about-us"),
+          value: t("public.global-labels.learn-more.items.about-us"),
         },
         Testimonials: {
           link: "testimonial-section",
-          value: t("public.layout.navbar.learn-more.items.testimonials"),
+          value: t("public.global-labels.learn-more.items.testimonials"),
         },
         "About BHPA": {
           link: "about-us",
-          value: t("public.layout.navbar.learn-more.items.about-bhpa"),
+          value: t("public.global-labels.learn-more.items.about-bhpa"),
         },
       },
     },
     getInvolved: {
       link: "get-involved",
-      value: t("public.layout.navbar.get-involved"),
+      value: t("public.global-labels.get-involved"),
     },
   };
 
