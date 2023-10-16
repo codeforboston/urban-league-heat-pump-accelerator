@@ -3,13 +3,12 @@ name: Deploy
 on:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
   workflow_dispatch:
-  push:
-    # Edit to the branch(es) you want to build and deploy on each push.
-    branches: ['main']
+  release:
+    types: [published]
 
 env:
   REACT_APP_PUBLIC_SURVEY_ENABLED: 'false'
-  REACT_APP_API_URL: https://bhpa-backend-boston-heat-pump-accelerator-dbab1b.apps.shift.nerc.mghpcc.org
+  REACT_APP_API_URL: https://api.bostonhpa.org
 
 jobs:
   deploy-server:
