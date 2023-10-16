@@ -1,8 +1,11 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const ButtonGetPumnp = ({ variant }) => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -29,7 +32,7 @@ const ButtonGetPumnp = ({ variant }) => {
           },
         }}
       >
-        GET A HEAT PUMP
+        {t("public.components.button-get-heat-pump")}
       </Button>
     </>
   );

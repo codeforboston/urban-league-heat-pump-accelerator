@@ -6,12 +6,20 @@ import { useTranslation } from "react-i18next";
 
 const LangPrefDropdown = () => {
   const {
+    t,
     i18n: { changeLanguage, language },
   } = useTranslation();
 
   const [anchorMore, setAnchorMore] = useState(null);
   const [langDisplay, setLangDisplay] = useState("English");
   const [currentLanguage, setCurrentLanguage] = useState(language);
+
+  const langMap = {
+    "en-us": t("public.components.locales.english"),
+    "pt-br": t("public.components.locales.portuguese"),
+    "es-us": t("public.components.locales.spanish"),
+    "ht-cr": "Creole (Haiti)",
+  };
 
   useEffect(() => {
     // Read the langPref from localStorage
@@ -25,13 +33,6 @@ const LangPrefDropdown = () => {
       localStorage.setItem("langPref", "en-us");
     }
 
-    const langMap = {
-      "en-us": "English",
-      "pt-br": "Portuguese",
-      "es-416": "Spanish",
-      "fr-ht": "French",
-    };
-
     setLangDisplay(langMap[language]);
   }, [language]);
 
@@ -43,13 +44,6 @@ const LangPrefDropdown = () => {
 
   const handleCloseMore = () => setAnchorMore(null);
 
-  const langsPref = {
-    English: "en-us",
-    Portuguese: "pt-br",
-    Spanish: "es-416",
-    French: "fr-ht",
-  };
-
   const handleChangeLanguage = (lang, display) => {
     setCurrentLanguage(lang);
     changeLanguage(lang);
@@ -58,17 +52,18 @@ const LangPrefDropdown = () => {
     localStorage.setItem("langPref", lang);
 
     // Update URL query param
-    if (lang !== "en-us") {
-      const url = new URL(window.location.href);
-      url.searchParams.set("langPref", lang);
-      window.history.replaceState({}, "", url);
-    } else {
-      const url = new URL(window.location.href);
-      url.searchParams.delete("langPref");
+    const url = new URL(window.location.href);
+
+    if (url.pathname.includes("public")) {
+      if (lang !== "en-us") {
+        url.searchParams.set("langPref", lang);
+      } else {
+        url.searchParams.delete("langPref");
+      }
       window.history.replaceState({}, "", url);
     }
 
-    setLangDisplay(display);
+    setLangDisplay(langMap[lang]);
   };
 
   return (
@@ -83,7 +78,7 @@ const LangPrefDropdown = () => {
         sx={{ color: "var(--color-text-1)" }}
       >
         <Typography variant="navLinks">
-          {langDisplay === undefined ? "English" : langDisplay}
+          {langDisplay === undefined ? "English" : language}
         </Typography>
       </Button>
 
@@ -98,16 +93,16 @@ const LangPrefDropdown = () => {
         TransitionComponent={Fade}
       >
         <Box>
-          {Object.keys(langsPref).map((lang) => (
+          {Object.keys(langMap).map((lang) => (
             <MenuItem
               key={lang}
               variant="navLinks"
               onClick={() => {
-                handleChangeLanguage(langsPref[lang], lang);
+                handleChangeLanguage(lang, langMap[lang]);
                 handleCloseMore();
               }}
             >
-              {lang}
+              {langMap[lang]}
             </MenuItem>
           ))}
         </Box>

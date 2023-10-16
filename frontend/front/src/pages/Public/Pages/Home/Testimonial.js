@@ -67,14 +67,18 @@ const Testimonial = () => {
                   {t("public.home.testimonials.text1")}
                 </Typography>
                 <Box pt={3}>
-                  <Heading4 text="Nia, Mattapan Resident" />
+                  <Heading4
+                    text={`Nia, Mattapan ${t(
+                      "public.home.testimonials.text3"
+                    )}`}
+                  />
                 </Box>
                 <Typography py={6} variant="h6" sx={{ fontWeight: 400 }} px={1}>
                   {t("public.home.testimonials.text2")}
                 </Typography>
                 <Box>
                   <ButtonDarkBklue
-                    text="read more"
+                    text={t("public.home.testimonials.button")}
                     to="https://goclean.masscec.com/customer-story/peter-installs-an-air-source-heat-pump-system/?utm_medium=cpc&utm_source=google&utm_campaign=brand"
                     externalLink={true}
                   />

@@ -27,7 +27,9 @@
       "testimonials": {
         "heading1": "Depoimentos",
         "text1": "“Uau, me surpreendeu. Normalmente, a conta varia de US$400 a US$500, e era mais parecido com US$200. Eu pensei: \"Deixe-me olhar para isso novamente!\"",
-        "text2": "Histórias de outros residentes de Massachusetts sobre as suas bombas de calor."
+        "text2": "Histórias de outros residentes de Massachusetts sobre as suas bombas de calor.",
+        "button": "Leia Mais",
+        "text3": "Residente"
       },
       "cardBenefitsSection": {
         "link": "Benefícios das bombas de calor",
@@ -54,6 +56,30 @@
         "heading1": "Nossos parceiros",
         "text1": "O Boston Heat Pump Accelerator é uma iniciativa da Urban League of Eastern Massachusetts, em parceria com organizações locais e nacionais.",
         "link": "Saiba mais"
+      }
+    },
+    "layout": {
+      "navbar": {
+        "survey": "enquete",
+        "learn-more": {
+          "value": "Saiba Mais",
+          "items": {
+            "testimonials": "Depoimentos",
+            "about-us": "Sobre bombas de calor",
+            "about-bhpa": "Sobre a BHPA",
+            "benefits-heat-pumps": "Benefícios das bombas de calor"
+          }
+        },
+        "get-involved": "ENVOLVER-SE"
+      }
+    },
+    "components": {
+      "button-get-heat-pump": "OBTENHA UMA BOMBA DE CALOR",
+      "locales": {
+        "english": "Inglês (Estados Unidos)",
+        "portuguese": "Português (Brasil)",
+        "spanish": "Espanhol (América Latina)",
+        "creole": "Crioulo (Haiti)"
       }
     }
   }

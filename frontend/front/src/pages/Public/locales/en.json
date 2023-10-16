@@ -23,7 +23,10 @@
       },
       "testimonials": {
         "heading1": "Testimonials",
-        "text1": "“Wow, it blew my mind. Normally the bill is anywhere from $400 to $500, and it was more like $200. I was like, let me look at that again!”"
+        "text1": "“Wow, it blew my mind. Normally the bill is anywhere from $400 to $500, and it was more like $200. I was like, let me look at that again!”",
+        "text2": "Stories from other Massachusetts residents about their heat pumps.",
+        "button": "read more",
+        "text3": "Resident"
       },
       "cardBenefitsSection": {
         "heading1": "Benefits of Heat Pumps",
@@ -50,6 +53,30 @@
         "heading1": "Our Partners",
         "text1": "The Boston Heat Pump Accelerator is an initiative of the Urban League of Eastern Massachusetts, in partnership with local and national organizations.",
         "link": "Learn more"
+      }
+    },
+    "layout": {
+      "navbar": {
+        "survey": "survey",
+        "learn-more": {
+          "value": "Learn More",
+          "items": {
+            "benefits-heat-pumps": "Benefits of Heat Pumps",
+            "about-us": "About Heat Pumps",
+            "testimonials": "Testimonials",
+            "about-bhpa": "About BHPA"
+          }
+        },
+        "get-involved": "GET INVOLVED"
+      }
+    },
+    "components": {
+      "button-get-heat-pump": "GET A HEAT PUMP",
+      "locales": {
+        "english": "English (United States)",
+        "portuguese": "Portuguese (Brazil)",
+        "spanish": "Spanish (Latin America)",
+        "creole": "Creole (Haiti)"
       }
     }
   }

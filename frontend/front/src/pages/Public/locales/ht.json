@@ -1,0 +1,86 @@
+{
+  "public": {
+    "home": {
+      "hero": {
+        "title": "Ekonomize lajan sou ou",
+        "titleBold": "bòdwo chofaj ak refwadisman",
+        "text1": "Ou ka kapab jwenn ankourajman pou enstale yon ponp chalè, yon kalite sistèm chofaj ak refwadisman ki kapab",
+        "link": "bese bòdwo sèvis piblik ou yo",
+        "text2": ".",
+        "button": "Benefis nan ponp chalè"
+      },
+      "cardLinksSection": {
+        "title": "",
+        "paragraph": "",
+        "button": "",
+        "item1": {
+          "title": "Ki sa ki se yon ponp chalè?",
+          "paragraph": "Yon ponp chalè se yon sistèm enèji efikas ki chofe kay ou nan sezon fredi a, ak refwadi kay ou an ete.",
+          "button": "Pran sondaj la"
+        },
+        "item2": {
+          "title": "Sou nou",
+          "paragraph": "Boston Heat Pump Accelerator se yon inisyativ Lig Urban nan Lès Massachusetts, an patenarya ak òganizasyon lokal ak nasyonal.",
+          "button": "Aprann plis"
+        }
+      },
+      "testimonials": {
+        "heading1": "Temwayaj",
+        "text1": "\"Wow, sa te soufle tèt mwen. \nNòmalman bòdwo a se nenpòt kote nan $ 400 a $ 500, epi li te plis tankou $ 200. \nMwen te tankou, kite m 'gade sa ankò!\"",
+        "text2": "Istwa lòt rezidan Massachusetts sou ponp chalè yo.",
+        "button": "li piplis",
+        "text3": "Rezidan"
+      },
+      "cardBenefitsSection": {
+        "link": "Benefis ki genyen nan ponp chalè",
+        "subtitle1": "Aprann plis sou la",
+        "heading1": "Benefis ki genyen nan ponp chalè",
+        "item1": {
+          "title": "Pi ba bòdwo enèji",
+          "text1": "Ponp chalè yo tèlman efikas nan enèji ke yo ka mennen nan gwo ekonomi sou bòdwo sèvis piblik chak mwa ak pi ba pri antretyen, reparasyon ak ranplasman."
+        },
+        "item2": {
+          "text1": "Menm ponp chalè a ki ede refwadi nan sezon lete an ka bay chalè nan sezon fredi a - li se yon sistèm ki efikas, trankil, ak pratik, bay konfò nan tout kay la.",
+          "title": "Konfò lakay ou"
+        },
+        "item3": {
+          "title": "Pi fò kominote yo",
+          "text1": "Lè yo ede bese bòdwo sèvis piblik yo, ponp chalè yo kapab bese pri lavi pou rezidan yo, sa k ap ede rezidan k ap viv sou revni fiks oswa ki ba yo rete lakay yo pi lontan, sa ki ka ranfòse kominote yo."
+        },
+        "item4": {
+          "title": "Pi pwòp lè",
+          "text1": "Ponp chalè sèvi ak elektrisite ki ka pwodwi pa sous renouvlab. \nKòm kadriyaj la vin pi vèt, ponp chalè vin pi plis ekolojik pase sistèm gaz oswa lwil oliv. \nAvèk yon sèl inite \"vèt ki mache ak pisans\" ki chofe ak refwadi, anprint kabòn lakay ou a osi ba ke li kapab ale."
+        }
+      },
+      "partners": {
+        "heading1": "Patnè nou yo",
+        "text1": "Boston Heat Pump Accelerator se yon inisyativ Lig Urban nan Lès Massachusetts, an patenarya ak òganizasyon lokal ak nasyonal.",
+        "link": "Aprann plis"
+      }
+    },
+    "layout": {
+      "navbar": {
+        "survey": "sondaj",
+        "learn-more": {
+          "value": "Aprann plis",
+          "items": {
+            "testimonials": "Temwayaj",
+            "about-bhpa": "Konsènan BHPA",
+            "benefits-heat-pumps": "Benefis ki genyen nan ponp chalè",
+            "about-us": "Konsènan Ponp Chalè"
+          }
+        },
+        "get-involved": "PATISIPE"
+      }
+    },
+    "components": {
+      "button-get-heat-pump": "JWENN YON PONP CHALÈ",
+      "locales": {
+        "english": "Angle (Etazini)",
+        "portuguese": "Pòtigè (Brezil)",
+        "spanish": "Panyòl (Amerik Latin)",
+        "creole": "Kreyòl (Ayiti)"
+      }
+    }
+  }
+}

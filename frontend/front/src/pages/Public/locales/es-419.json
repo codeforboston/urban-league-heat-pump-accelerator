@@ -27,7 +27,9 @@
       "testimonials": {
         "heading1": "Testimonios",
         "text1": "“Guau, me ha deslumbrado la mente. Normalmente, la factura oscila entre $400 y $500, y era más bien de $200. Yo estaba así, ¡déjeme volver a verlo!”",
-        "text2": "Historias de otros residentes de Massachusetts sobre sus bombas de calor."
+        "text2": "Historias de otros residentes de Massachusetts sobre sus bombas de calor.",
+        "button": "leer más",
+        "text3": "Residente"
       },
       "cardBenefitsSection": {
         "link": "Beneficios de las bombas de calor",
@@ -54,6 +56,30 @@
         "heading1": "Nuestros compañeros",
         "text1": "El Acelerador de Bombas de Calor de Boston es una iniciativa de la Urban League of Eastern Massachusetts, en asociación con organizaciones locales y nacionales.",
         "link": "Más información"
+      }
+    },
+    "layout": {
+      "navbar": {
+        "survey": "encuesta",
+        "learn-more": {
+          "value": "Aprende más",
+          "items": {
+            "testimonials": "Testimonios",
+            "about-us": "Acerca de las bombas de calor",
+            "about-bhpa": "Acerca de BHPA",
+            "benefits-heat-pumps": "Beneficios de las bombas de calor"
+          }
+        },
+        "get-involved": "INVOLUCRARSE"
+      }
+    },
+    "components": {
+      "button-get-heat-pump": "CONSIGUE UNA BOMBA DE CALOR",
+      "locales": {
+        "english": "Inglés (Estados Unidos)",
+        "portuguese": "Portugués (Brasil)",
+        "spanish": "Español (Latinoamérica)",
+        "creole": "criollo (Haití)"
       }
     }
   }

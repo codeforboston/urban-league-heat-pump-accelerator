@@ -3,17 +3,18 @@ import { initReactI18next } from "react-i18next";
 import enTranslations from "../locales/en.json";
 import ptTranslations from "../locales/pt-BR.json";
 import esTranslations from "../locales/es-419.json";
-import frTranslations from "../locales/fr-HT.json";
+import htTranslations from "../locales/ht.json";
 
+// configuration for i18next library
 i18next
   .use(initReactI18next) // passes i18next down to react-i18next
   .init({
     debug: true,
     resources: {
       en: { translation: { ...enTranslations } }, // English - United States
-      pt: { translation: { ...ptTranslations } }, // Portuguese - Brazil
+      "pt-BR": { translation: { ...ptTranslations } }, // Portuguese - Brazil
       es: { translation: { ...esTranslations } }, // Spanish - Latin America
-      fr: { translation: { ...frTranslations } }, // French - Haiti
+      ht: { translation: { ...htTranslations } }, // Haitian Creole - Haiti
     },
     lng: "en", // default language
   });
