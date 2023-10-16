@@ -84,6 +84,10 @@
       "privacy-and-data-policy": "Politik Privasite ak Donee",
       "contact-us": "Kontakte nou",
       "member-login": "Login manm"
+    },
+    "survey": {
+      "heading1BlueBgGround": "Pran Sondaj la",
+      "under-construction": "Sondaj piblik an konstriksyon!"
     }
   }
 }

@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Alert, Box, Container, Snackbar, Stack } from "@mui/material";
 import {
   RECAPTCHA_ACTION_PUBLIC_SURVEY,
@@ -27,6 +28,8 @@ const STEP_THANKS = "PHASE_THANKS";
  * This page should handle all API calls so that component switching is easier to control
  */
 export const SurveyPage = () => {
+  const { t } = useTranslation();
+
   const getReCaptchaToken = useGetReCAPTCHAToken(
     RECAPTCHA_ACTION_PUBLIC_SURVEY
   );
@@ -151,14 +154,17 @@ export const SurveyPage = () => {
         minHeight: "calc(100vh - 520px)",
       }}
     >
-      <Heading1BlueBgGround text="Take the Survey" />
+      <Heading1BlueBgGround text={t("public.survey.heading1BlueBgGround")} />
       <Container>
         {publicSurveyEnabled ? (
           pageContent()
         ) : (
-          <div data-testid="publicSurveyUnderConstruction">
-            <h2>Public survey is under construction!</h2>
-          </div>
+          <Box
+            sx={{ textAlign: "center" }}
+            data-testid="publicSurveyUnderConstruction"
+          >
+            <h2>{t("public.survey.under-construction")}</h2>
+          </Box>
         )}
       </Container>
     </Box>

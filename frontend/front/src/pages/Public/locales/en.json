@@ -81,6 +81,10 @@
       "privacy-and-data-policy": "Privacy & Data Policy",
       "contact-us": "Contact Us",
       "member-login": "Member Login"
+    },
+    "survey": {
+      "heading1BlueBgGround": "Take the Survey",
+      "under-construction": "Public survey is under construction!"
     }
   }
 }

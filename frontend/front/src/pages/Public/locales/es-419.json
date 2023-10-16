@@ -84,6 +84,10 @@
       "privacy-and-data-policy": "\nPolítica de Privacidad y Datos",
       "contact-us": "Contáctenos",
       "member-login": "Acceso de miembro"
+    },
+    "survey": {
+      "heading1BlueBgGround": "Realice la encuesta",
+      "under-construction": "¡La encuesta pública está en construcción!"
     }
   }
 }
