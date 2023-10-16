@@ -20,9 +20,9 @@ const LangPrefDropdown = () => {
 
   const langMap = {
     "en-us": `🇺🇸 ${t("public.global-labels.locales.english")}`,
+    "ht-cr": `🇭🇹 ${t("public.global-labels.locales.creole")}`,
     "pt-br": `🇧🇷 ${t("public.global-labels.locales.portuguese")}`,
     "es-us": `🇪🇸 ${t("public.global-labels.locales.spanish")}`,
-    "ht-cr": `🇭🇹 ${t("public.global-labels.locales.creole")}`,
   };
 
   useEffect(() => {
