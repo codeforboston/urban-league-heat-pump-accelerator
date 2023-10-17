@@ -4,11 +4,6 @@ const TitleContainer = styled(Box)({
   textAlign: "center",
 });
 
-const TitleSpan = styled("div")({
-  color: "var(--color-text-8)",
-  textShadow: "1px 1px 1px var(--color-text-5)",
-});
-
 function TitleHero({ text, titleBold }) {
   return (
     <TitleContainer mb={2}>
@@ -21,7 +16,15 @@ function TitleHero({ text, titleBold }) {
           textShadow: "1px 1px 1px var(--color-text-5)",
         }}
       >
-        {text} <TitleSpan>{titleBold}</TitleSpan>
+        {text} <br />
+        <span
+          style={{
+            color: "var(--color-text-8)",
+            textShadow: "1px 1px 1px var(--color-text-5)",
+          }}
+        >
+          {titleBold}
+        </span>
       </Typography>
     </TitleContainer>
   );

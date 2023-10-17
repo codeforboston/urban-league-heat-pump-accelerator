@@ -68,7 +68,10 @@ const HeroPage = ({
                   text={title.toUpperCase()}
                   titleBold={titleBold.toUpperCase()}
                 />
-                <Typography variant="h6" sx={{ color: "var(--color-text-9)" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ color: "var(--color-text-9)", px: { xs: 1, md: 20 } }}
+                >
                   {text1}
                   {link !== "" && (
                     <MuiLink
