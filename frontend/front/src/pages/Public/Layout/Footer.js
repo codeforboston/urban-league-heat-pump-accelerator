@@ -20,17 +20,28 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import logoHeatPump from "../../../assets/images/bhpa-logos/bhpa-logo300px.png";
 import { styled } from "@mui/material/styles";
 
-const footerItems = {
-  "public.global-labels.learn-more.items.about-bhpa": { link: "about-us" },
-  "public.global-labels.learn-more.items.about-us": { link: "about-heat-pump" },
-  "public.global-labels.learn-more.items.benefits-heat-pumps": {
+const getFooterItems = () => ({
+  aboutBHPA: {
+    link: "about-us",
+    value: "public.global-labels.learn-more.items.about-bhpa",
+  },
+  aboutUs: {
+    link: "about-heat-pump",
+    value: "public.global-labels.learn-more.items.about-us",
+  },
+  benefitsHeatPumps: {
     link: "benefits-heat-pump",
+    value: "public.global-labels.learn-more.items.benefits-heat-pumps",
   },
-  "public.global-labels.get-involved": { link: "get-involved" },
-  "public.global-labels.learn-more.items.testimonials": {
+  getInvolved: {
+    link: "get-involved",
+    value: "public.global-labels.get-involved",
+  },
+  testimonials: {
     link: "testimonial-section",
+    value: "public.global-labels.learn-more.items.testimonials",
   },
-};
+});
 
 const FooterWrapper = styled("div")(({ theme }) => ({
   background: "var(--bgColor-2)",
@@ -50,6 +61,8 @@ const Footer = () => {
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
   const { t } = useTranslation();
+  const footerItems = getFooterItems();
+
   return (
     <FooterWrapper sx={{ px: { xl: "18%" } }}>
       <Toolbar>
@@ -111,18 +124,10 @@ const Footer = () => {
                       px: 0,
                       textAlign: { xs: "center", lg: "left" },
                     }}
-                    component={
-                      item === "Our Partners" || item === "Testimonials"
-                        ? "button"
-                        : Link
-                    }
-                    to={
-                      item === "Our Partners" || item === "Testimonials"
-                        ? null
-                        : footerItems[item].link
-                    }
+                    component={item === "testimonials" ? "button" : Link}
+                    to={item === "testimonials" ? null : footerItems[item].link}
                     onClick={
-                      item === "Our Partners" || item === "Testimonials"
+                      item === "Our Partners" || item === "testimonials"
                         ? () => {
                             navigate("/public");
                             setTimeout(() => {
@@ -138,7 +143,7 @@ const Footer = () => {
                     }
                   >
                     <ListItemText
-                      primary={t(item)}
+                      primary={t(footerItems[item].value)}
                       sx={{
                         color: "var(--color-text-1)",
                       }}
@@ -213,27 +218,6 @@ const Footer = () => {
                 {t("public.footer.contact-us")}
               </Typography>
               <Box>
-                {/* <Box
-                  variant="navLinks"
-                  sx={{
-                    display: "flex",
-                    alignItem: "flex-center",
-                    justifyContent: { xs: "center", lg: "flex-start" },
-                    pt: { xs: 1, lg: 2 },
-                  }}
-                >
-                  <PermPhoneMsgIcon sx={{ mr: 1 }} />
-                  <a
-                    href="tel:617-635-4500"
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: "300",
-                    }}
-                  >
-                    617-635-4500
-                  </a>
-                </Box> */}
                 <Box
                   variant="navLinks"
                   pt={1}

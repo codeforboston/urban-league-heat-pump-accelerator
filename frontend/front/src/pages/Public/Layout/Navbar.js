@@ -31,43 +31,44 @@ import LangPrefDropdown from "../Components/LangPrefDropdown";
 
 const drawerWidth = "100%";
 
+const getNavbarItems = () => ({
+  SURVEY: { link: "survey", value: "public.global-labels.survey" },
+  LearnMore: {
+    value: "public.global-labels.learn-more.value",
+    items: {
+      BenefitsofHeatPumps: {
+        link: "benefits-heat-pump",
+        value: "public.global-labels.learn-more.items.benefits-heat-pumps",
+      },
+      AboutHeatPumps: {
+        link: "about-heat-pump",
+        value: "public.global-labels.learn-more.items.about-us",
+      },
+      Testimonials: {
+        link: "testimonial-section",
+        value: "public.global-labels.learn-more.items.testimonials",
+      },
+      AboutBHPA: {
+        link: "about-us",
+        value: "public.global-labels.learn-more.items.about-bhpa",
+      },
+    },
+  },
+  getInvolved: {
+    link: "get-involved",
+    value: "public.global-labels.get-involved",
+  },
+});
+
 function Navbar(props) {
   const [anchorMore, setAnchorMore] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMoreMobile, setOpenMoreMobile] = useState(false);
 
+  const { window } = props;
   const { t } = useTranslation();
 
-  const navbarItems = {
-    SURVEY: { link: "survey", value: t("public.global-labels.survey") },
-    "Learn More": {
-      value: t("public.global-labels.learn-more.value"),
-      items: {
-        "Benefits of Heat Pumps": {
-          link: "benefits-heat-pump",
-          value: t("public.global-labels.learn-more.items.benefits-heat-pumps"),
-        },
-        "About Heat Pumps": {
-          link: "about-heat-pump",
-          value: t("public.global-labels.learn-more.items.about-us"),
-        },
-        Testimonials: {
-          link: "testimonial-section",
-          value: t("public.global-labels.learn-more.items.testimonials"),
-        },
-        "About BHPA": {
-          link: "about-us",
-          value: t("public.global-labels.learn-more.items.about-bhpa"),
-        },
-      },
-    },
-    getInvolved: {
-      link: "get-involved",
-      value: t("public.global-labels.get-involved"),
-    },
-  };
-
-  const { window } = props;
+  const navbarItems = getNavbarItems(t);
 
   const navigate = useNavigate();
 
@@ -109,7 +110,7 @@ function Navbar(props) {
         sx={{ color: "var(--color-text-1)" }}
       >
         <Typography variant="navLinks">
-          {navbarItems[item].value || item}
+          {t(navbarItems[item].value) || item}
         </Typography>
       </Button>
       <Menu
@@ -123,22 +124,18 @@ function Navbar(props) {
         TransitionComponent={Fade}
       >
         <Box>
-          {Object.keys(navbarItems["Learn More"].items).map(
-            (subItem, index) => (
-              <MenuItem
-                key={index}
-                variant="navLinks"
-                onClick={() => {
-                  handleNavigation(
-                    navbarItems["Learn More"].items[subItem].link
-                  );
-                  handleCloseMore();
-                }}
-              >
-                {t(navbarItems["Learn More"].items[subItem].value)}
-              </MenuItem>
-            )
-          )}
+          {Object.keys(navbarItems.LearnMore.items).map((subItem, index) => (
+            <MenuItem
+              key={index}
+              variant="navLinks"
+              onClick={() => {
+                handleNavigation(navbarItems.LearnMore.items[subItem].link);
+                handleCloseMore();
+              }}
+            >
+              {t(navbarItems.LearnMore.items[subItem].value)}
+            </MenuItem>
+          ))}
         </Box>
       </Menu>
     </>
@@ -190,7 +187,7 @@ function Navbar(props) {
         <List variant="navLinks">
           {Object.keys(navbarItems).map((item) => (
             <div key={item}>
-              {item !== "Learn More" ? (
+              {item !== "LearnMore" ? (
                 <ListItem disablePadding onClick={handleDrawerToggle}>
                   <ListItemButton
                     sx={{ textAlign: "center" }}
@@ -207,7 +204,7 @@ function Navbar(props) {
                         variant="navLinksMobile"
                         sx={{ display: "flex", justifyContent: "center" }}
                       >
-                        {navbarItems[item].value.toUpperCase()}
+                        {t(navbarItems[item].value).toUpperCase()}
                       </Typography>
                     </ListItemText>
                   </ListItemButton>
@@ -252,7 +249,7 @@ function Navbar(props) {
                             fontWeight: "500",
                           }}
                         >
-                          {navbarItems[item].value.toUpperCase()}
+                          {t(navbarItems[item].value).toUpperCase()}
                         </Typography>
                       </Button>
                     </ListItemText>
@@ -370,7 +367,7 @@ function Navbar(props) {
                 <Stack spacing={2} direction="row">
                   {Object.keys(navbarItems).map((item) => (
                     <div key={item}>
-                      {item === "Learn More" ? (
+                      {item === "LearnMore" ? (
                         desktopNavLink(navbarItems, item)
                       ) : (
                         <Button component={Link} to={navbarItems[item].link}>
@@ -381,7 +378,7 @@ function Navbar(props) {
                               fontWeight: "500",
                             }}
                           >
-                            {navbarItems[item].value}
+                            {t(navbarItems[item].value)}
                           </Typography>
                         </Button>
                       )}

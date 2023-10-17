@@ -30,7 +30,7 @@ function AboutUs() {
     >
       <Heading1BlueBgGround text="About the Boston Heat Pump Accelerator" />
       <Container>
-        <Stack direction="column" justifyContent="center" itemAlign="center">
+        <Stack direction="column" justifyContent="center">
           <Box mb={{ xs: 2, md: 6 }}>
             <Typography variant="body">
               <b>The Boston Heat Pump Accelerator (BHPA)</b> works to support

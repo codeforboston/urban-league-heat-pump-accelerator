@@ -47,7 +47,7 @@ const Testimonial = () => {
               </Box>
             </Grid>
             {isSmallerThanMd && (
-              <Grid item xs={12} direction="column">
+              <Grid item xs={12}>
                 <Item sx={{ paddingBottom: 0 }}>
                   <Avatar
                     src={niaAvatar}
@@ -61,7 +61,7 @@ const Testimonial = () => {
                 </Item>
               </Grid>
             )}
-            <Grid item md={8} direction="column">
+            <Grid item md={8}>
               <Box sx={{ flexGrow: 1, px: 2, textAlign: "center", pt: 3 }}>
                 <Typography variant="h4" px={{ xs: 0, md: 6 }}>
                   {t("public.home.testimonials.text1")}

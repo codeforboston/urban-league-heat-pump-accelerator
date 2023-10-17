@@ -88,24 +88,24 @@ const CardBenefitsSection = () => {
               sx={{ color: "var(--color-text-3)", display: "inline-block" }}
             >
               {t("public.home.cardBenefitsSection.subtitle1")}&nbsp;
-              <Link to="benefits-heat-pump" style={{ textDecoration: "none" }}>
-                <MuiLink
-                  variant="body"
-                  sx={{
-                    color: "var(--color-text-3) !important",
-                    textDecoration: "underline",
-                    textDecorationColor: "rgba(25, 118, 210, 0.4);",
+              <MuiLink
+                component={Link}
+                to="benefits-heat-pump"
+                variant="body"
+                sx={{
+                  color: "var(--color-text-3) !important",
+                  textDecoration: "underline",
+                  textDecorationColor: "rgba(25, 118, 210, 0.4);",
+                  textDecorationThickness: "1px",
+                  textUnderlineOffset: "2px",
+                  ":hover": {
+                    textDecorationColor: "var(--color-text-3)",
                     textDecorationThickness: "1px",
-                    textUnderlineOffset: "2px",
-                    ":hover": {
-                      textDecorationColor: "var(--color-text-3)",
-                      textDecorationThickness: "1px",
-                    },
-                  }}
-                >
-                  {t("public.home.cardBenefitsSection.link")}
-                </MuiLink>
-              </Link>
+                  },
+                }}
+              >
+                {t("public.home.cardBenefitsSection.link")}
+              </MuiLink>
             </Typography>
           </Stack>
         </Box>

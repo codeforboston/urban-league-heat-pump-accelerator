@@ -66,10 +66,9 @@ const CardLinksSection = () => {
 
   return (
     <GridLinkWrapper>
-      {linkCards.map((detail, index) => (
-        <CardLinks>
+      {linkCards.map((detail) => (
+        <CardLinks key={detail.id}>
           <Card
-            key={index}
             sx={{
               background: "var(--bgColor-3)",
               display: "flex",

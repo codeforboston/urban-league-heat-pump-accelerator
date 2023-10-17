@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { ThemeProvider, Box, Stack } from "@mui/material";
 import { responsiveTheme } from "./Assets/theme";
 import { Route, Routes } from "react-router-dom";
@@ -19,7 +19,7 @@ import "./Libs/i18n";
 
 const PublicContainer = () => {
   return (
-    <>
+    <Suspense fallback="...loading">
       <ThemeProvider theme={responsiveTheme}>
         <Box className="container-wrapper">
           <Stack
@@ -53,7 +53,7 @@ const PublicContainer = () => {
           </Stack>
         </Box>
       </ThemeProvider>
-    </>
+    </Suspense>
   );
 };
 
