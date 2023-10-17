@@ -3,6 +3,7 @@ import React, { useCallback, useMemo } from "react";
 import {
   useDeleteSurveyVisitMutation,
   useGetHomeQuery,
+  useGetSurveyStructureQuery,
   useGetSurveyVisitQuery,
   useUpdateSurveyVisitMutation,
 } from "../../../api/apiSlice";
@@ -19,6 +20,7 @@ import { buildDataFromSurveyAnswers } from "../../../util/surveyUtils";
 const SurveyProfile = () => {
   const navigate = useNavigate();
   const { uid: surveyVisitId } = useParams();
+
   const { data: surveyVisit, error: surveyVisitError } =
     useGetSurveyVisitQuery(surveyVisitId);
 
@@ -26,6 +28,11 @@ const SurveyProfile = () => {
     surveyVisit?.home_id,
     { skip: !surveyVisit }
   );
+
+  const { data: { survey_questions: surveyQuestions } = {} } =
+    useGetSurveyStructureQuery(surveyVisit?.survey_response?.survey_id, {
+      skip: !surveyVisit,
+    });
 
   const title = useMemo(
     () =>
@@ -39,10 +46,11 @@ const SurveyProfile = () => {
     () =>
       surveyVisit?.survey_response
         ? buildDataFromSurveyAnswers(
-            surveyVisit?.survey_response?.survey_answers
+            surveyVisit?.survey_response?.survey_answers,
+            surveyQuestions?.length
           )
         : [],
-    [surveyVisit]
+    [surveyVisit, surveyQuestions]
   );
 
   const [

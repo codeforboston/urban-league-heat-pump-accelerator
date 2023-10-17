@@ -1,7 +1,7 @@
 import { Controller, useController } from "react-hook-form";
 import React, { useMemo } from "react";
 
-import { TextField } from "@mui/material";
+import { FormControl, TextField, FormLabel } from "@mui/material";
 
 export const HeatPumpTextField = ({
   name,
@@ -11,6 +11,7 @@ export const HeatPumpTextField = ({
   required,
   type,
   readOnly,
+  disableFancyLabel,
 }) => {
   const { formState } = useController({ name, control });
 
@@ -49,19 +50,29 @@ export const HeatPumpTextField = ({
       control={control}
       rules={rules}
       render={({ field }) => (
-        <TextField
-          data-testid={name}
-          label={label}
-          variant="standard"
-          error={!!formState.errors[name]}
-          helperText={
-            !!formState.errors[name] && formState.errors[name].message
-          }
-          disabled={disabled}
-          type={inputType}
-          inputProps={{ readOnly }}
-          {...field}
-        />
+        <FormControl fullWidth>
+          {disableFancyLabel && (
+            <FormLabel
+              id={`${name}-textField-label`}
+              htmlFor={`${name}-textField`}
+            >
+              {label}
+            </FormLabel>
+          )}
+          <TextField
+            data-testid={name}
+            label={disableFancyLabel ? undefined : label}
+            variant="standard"
+            error={!!formState.errors[name]}
+            helperText={
+              !!formState.errors[name] && formState.errors[name].message
+            }
+            disabled={disabled}
+            type={inputType}
+            inputProps={{ readOnly, id: `${name}-textField` }}
+            {...field}
+          />
+        </FormControl>
       )}
     />
   );
