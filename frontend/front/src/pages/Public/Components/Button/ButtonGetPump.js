@@ -24,6 +24,7 @@ const ButtonGetPumnp = () => {
           height: "50px",
           fontWeight: 600,
           borderRadius: "50px",
+          width: "auto",
           minWidth: 200,
           transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
           letterSpacing: "-.03em",
