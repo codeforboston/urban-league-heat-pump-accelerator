@@ -389,7 +389,7 @@ function Navbar(props) {
             </Grid>
 
             {/* Removed this button from the navbar */}
-            <Box
+            {/* <Box
               sx={{
                 position: "fixed",
                 zIndex: 999999,
@@ -398,7 +398,7 @@ function Navbar(props) {
               }}
             >
               <LangPrefDropdown />
-            </Box>
+            </Box> */}
 
             <Box
               sx={{
