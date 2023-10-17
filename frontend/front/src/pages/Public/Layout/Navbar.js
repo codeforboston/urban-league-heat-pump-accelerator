@@ -68,7 +68,7 @@ function Navbar(props) {
   const { window } = props;
   const { t } = useTranslation();
 
-  const navbarItems = getNavbarItems(t);
+  const navbarItems = getNavbarItems();
 
   const navigate = useNavigate();
 
