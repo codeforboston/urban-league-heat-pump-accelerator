@@ -2,7 +2,6 @@ name: Deploy
 
 on:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
-  workflow_dispatch:
   release:
     types: [published]
 
@@ -13,7 +12,6 @@ env:
 jobs:
   deploy-server:
     uses: ./.github/workflows/deploy.yml
-    needs: [test-backend]
     with:
       app: bhpa-backend
       context: backend
@@ -21,7 +19,6 @@ jobs:
     secrets: inherit
   deploy-website:
     uses: ./.github/workflows/deploy.yml
-    needs: [test-ui]
     with:
       app: bhpa-frontend
       context: frontend/front
