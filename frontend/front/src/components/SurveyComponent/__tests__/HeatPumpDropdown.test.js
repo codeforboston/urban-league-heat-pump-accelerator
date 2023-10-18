@@ -49,7 +49,7 @@ describe("HeatPumpDropdown", () => {
   it("enableOtherField=true shows other field when 'other' is selected", () => {
     render(<FormWrapper q={{ ...OTHER_FIELD, enableOtherField: true }} />);
 
-    fireEvent.mouseDown(screen.getByRole("button"));
+    fireEvent.mouseDown(screen.getByRole("combobox"));
     const options = within(screen.getByRole("listbox"));
     fireEvent.click(options.getByText("Other"));
 
@@ -59,7 +59,7 @@ describe("HeatPumpDropdown", () => {
   it("enableOtherField=false hides other field when 'other' is selected", () => {
     render(<FormWrapper q={OTHER_FIELD} />);
 
-    fireEvent.mouseDown(screen.getByRole("button"));
+    fireEvent.mouseDown(screen.getByRole("combobox"));
     const options = within(screen.getByRole("listbox"));
     fireEvent.click(options.getByText("Other"));
 

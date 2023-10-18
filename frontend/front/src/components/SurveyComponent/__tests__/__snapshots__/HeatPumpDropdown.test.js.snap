@@ -17,12 +17,13 @@ exports[`HeatPumpDropdown disableFancyLabel=true renders different label 1`] = `
       class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
     >
       <div
+        aria-controls=":r4:"
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-labelledby="mui-component-select-1"
         class="MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input"
         id="mui-component-select-1"
-        role="button"
+        role="combobox"
         tabindex="0"
       >
         <span
@@ -62,7 +63,7 @@ exports[`HeatPumpDropdown renders as expected 1`] = `
     class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
   >
     <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink="false"
       for="1-dropdown"
       id="1-dropdown-label"
@@ -74,12 +75,13 @@ exports[`HeatPumpDropdown renders as expected 1`] = `
       class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
     >
       <div
+        aria-controls=":r0:"
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-labelledby="mui-component-select-1"
         class="MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input"
         id="mui-component-select-1"
-        role="button"
+        role="combobox"
         tabindex="0"
       >
         <span

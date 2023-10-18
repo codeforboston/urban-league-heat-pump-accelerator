@@ -44,12 +44,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
+              aria-controls=":r24:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-1"
               class="MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input"
               id="mui-component-select-1"
-              role="button"
+              role="combobox"
               tabindex="0"
             >
               <span
@@ -95,12 +96,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
+              aria-controls=":r25:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-2"
               class="MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input"
               id="mui-component-select-2"
-              role="button"
+              role="combobox"
               tabindex="0"
             >
               <span
@@ -174,12 +176,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
+              aria-controls=":r27:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-4"
               class="MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input"
               id="mui-component-select-4"
-              role="button"
+              role="combobox"
               tabindex="0"
             >
               <span
@@ -225,12 +228,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
+              aria-controls=":r28:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-5"
               class="MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input"
               id="mui-component-select-5"
-              role="button"
+              role="combobox"
               tabindex="0"
             >
               <span
@@ -276,12 +280,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
+              aria-controls=":r29:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-6"
               class="MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input"
               id="mui-component-select-6"
-              role="button"
+              role="combobox"
               tabindex="0"
             >
               <span
@@ -411,12 +416,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
+              aria-controls=":r2d:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-10"
               class="MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input"
               id="mui-component-select-10"
-              role="button"
+              role="combobox"
               tabindex="0"
             >
               <span
@@ -490,12 +496,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
+              aria-controls=":r2f:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-12"
               class="MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input"
               id="mui-component-select-12"
-              role="button"
+              role="combobox"
               tabindex="0"
             >
               <span
@@ -569,12 +576,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
+              aria-controls=":r2h:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-14"
               class="MuiSelect-select MuiSelect-filled MuiInputBase-input MuiFilledInput-input css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input"
               id="mui-component-select-14"
-              role="button"
+              role="combobox"
               tabindex="0"
             >
               <span
