@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
+  workflow_dispatch:
+  release:
+    types: [published]
+
+env:
+  REACT_APP_PUBLIC_SURVEY_ENABLED: 'false'
+  REACT_APP_API_URL: https://api.bostonhpa.org
+
+jobs:
+  deploy-server:
+    uses: ./.github/workflows/deploy.yml
+    needs: [test-backend]
+    with:
+      app: bhpa-backend
+      context: backend
+      port: 3000
+    secrets: inherit
+  deploy-website:
+    uses: ./.github/workflows/deploy.yml
+    needs: [test-ui]
+    with:
+      app: bhpa-frontend
+      context: frontend/front
+      port: 8080
+    secrets:
+      build-args: |
+        REACT_APP_RECAPTCHA_KEY=${{ secrets.REACT_APP_RECAPTCHA_KEY }}
+        REACT_APP_PUBLIC_SURVEY_ENABLED=${{ env.REACT_APP_PUBLIC_SURVEY_ENABLED }}
+        REACT_APP_API_URL=${{ env.REACT_APP_API_URL }}
