@@ -11,14 +11,14 @@ env:
 
 jobs:
   deploy-server:
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/openshift.yml
     with:
       app: bhpa-backend
       context: backend
       port: 3000
     secrets: inherit
   deploy-website:
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/openshift.yml
     with:
       app: bhpa-frontend
       context: frontend/front
