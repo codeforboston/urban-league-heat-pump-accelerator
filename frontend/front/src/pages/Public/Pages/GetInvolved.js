@@ -1,5 +1,6 @@
 import { Box, Container } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import card1 from "../../../assets/images/copywritingImages/jason-goodman-NYMJYXfZG-g-unsplash.jpg";
 import card2 from "../../../assets/images/copywritingImages/todd-kent-iRKv_XiN--M-unsplash.jpg";
 import card3 from "../../../assets/images/copywritingImages/erika-giraud-H6xKnDKrKDk-unsplash.jpg";
@@ -10,11 +11,13 @@ import SocialSharingKit from "../../../assets/pdfDownload/SocialSharingKit.pdf";
 import CommunityFlyer from "../../../assets/pdfDownload/CommunityFlyer.pdf";
 
 function GetInvolved() {
+  const { t } = useTranslation();
+
   const cardContent = [
     {
       mediaType: "img",
       mediaSource: card1,
-      title: "Share with your community",
+      title: t("public.getInvolved.title1"),
       body: "Let your neighbors know about the savings and other benefits of heat pumps. Share this website on social media or through email.",
       linkDescription: "Download social sharing kit",
       linkDownload: SocialSharingKit,

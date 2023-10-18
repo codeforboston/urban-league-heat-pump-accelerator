@@ -19,8 +19,7 @@ import "./Libs/i18n";
 
 const PublicContainer = () => {
   return (
-    <>
-      {/* // <Suspense fallback="...loading"> */}
+    <Suspense fallback="...loading">
       <ThemeProvider theme={responsiveTheme}>
         <Box className="container-wrapper">
           <Stack
@@ -54,8 +53,7 @@ const PublicContainer = () => {
           </Stack>
         </Box>
       </ThemeProvider>
-      {/* </Suspense> */}
-    </>
+    </Suspense>
   );
 };
 
