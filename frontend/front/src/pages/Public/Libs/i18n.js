@@ -6,7 +6,6 @@ import enTranslations from "../locales/en.json";
 import ptTranslations from "../locales/pt-BR.json";
 import esTranslations from "../locales/es-419.json";
 import htTranslations from "../locales/ht.json";
-import jpTranslations from "../locales/jp.json";
 
 // configuration for i18next library
 // if (!i18next.isInitialized) {
@@ -22,7 +21,6 @@ i18next
       "pt-BR": { translation: { ...ptTranslations } }, // Portuguese - Brazil
       es: { translation: { ...esTranslations } }, // Spanish - Latin America
       ht: { translation: { ...htTranslations } }, // Haitian Creole - Haiti
-      jp: { translation: { ...jpTranslations } }, // Japanese - Japan
     },
     lng: "en-us", // default language
   });
