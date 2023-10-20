@@ -12,7 +12,7 @@ import htTranslations from "../locales/ht.json";
 i18next
   .use(initReactI18next) // passes i18next down to react-i18next
   .use(Backend)
-  .use(LanguageDetector)
+  // .use(LanguageDetector)
   .init({
     debug: true, // change to true to debug i18next
     fallbackLng: "en",
@@ -25,3 +25,5 @@ i18next
     lng: "en-us", // default language
   });
 // }
+
+// Add event listener here
