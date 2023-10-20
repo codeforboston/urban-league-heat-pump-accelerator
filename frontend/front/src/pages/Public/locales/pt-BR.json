@@ -136,6 +136,26 @@
         "body": "Ajude os seus vizinhos na transição para uma energia mais barata e mais limpa, procurando iniciativas locais e comunicando com os seus representantes eleitos para expressar a sua preferência por bombas de calor. \nUse o seguinte serviço gratuito para obter informações de contato para uma ligação, e-mail ou carta aos seus representantes eleitos.",
         "link": "Contate seus funcionários eleitos"
       }
+    },
+    "about-heat-pump": {
+      "item1": {
+        "title": "O que é uma bomba de calor?",
+        "body": "Confira este artigo abrangente que a Carrier, fabricante de bombas de calor, escreveu sobre o que são bombas de calor e como funcionam.",
+        "link": "Leia o artigo"
+      },
+      "item2": {
+        "title": "Como funciona uma bomba de calor?",
+        "body": "Este especialista em encanamento e aquecimento da Old House, Richard Tretheway, instrui Kevin O'Connor sobre os princípios básicos de como funciona uma bomba de calor."
+      },
+      "item3": {
+        "title": "Por que as bombas de calor são melhores?",
+        "body": "Este vídeo da Vox explica por que as bombas de calor são melhores para o meio ambiente do que os aquecedores a combustível fóssil."
+      },
+      "item4": {
+        "title": "O que outras pessoas dizem?",
+        "body": "Ouça o que outra pessoa tem a dizer sobre a experiência de instalar uma bomba de calor em sua casa."
+      },
+      "headingBg": "Sobre bombas de calor"
     }
   }
 }

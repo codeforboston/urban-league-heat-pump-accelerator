@@ -133,6 +133,26 @@
         "body": "Assist your neighbors in transitioning towards cheaper and cleaner energy by seeking local initiatives and communicating with your elected representatives to express your preference for heat pumps. Use the following free service to get contact info for a call, email, or letter to your elected representatives.",
         "link": "Contact your elected officials"
       }
+    },
+    "about-heat-pump": {
+      "item1": {
+        "title": "What is a heat pump?",
+        "body": "Check out this comprehensive article that Carrier, a heat pump manufacturer, has written up about what a heat pump is and how they work.",
+        "link": "Read Article"
+      },
+      "item2": {
+        "title": "How does a heat pump work?",
+        "body": "This Old House plumbing and heating expert Richard Tretheway instructs Kevin O’Connor on the basic principles of how a heat pump works."
+      },
+      "item3": {
+        "title": "Why are heat pumps better?",
+        "body": "This video by Vox explains why heat pumps are better for the environment than fossil fuel heaters."
+      },
+      "item4": {
+        "title": "What do other people say?",
+        "body": "Hear what someone else has to say about their experience getting a heat pump installed in their home."
+      },
+      "headingBg": "About Heat Pumps"
     }
   }
 }

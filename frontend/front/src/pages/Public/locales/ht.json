@@ -136,6 +136,26 @@
         "body": "Ede vwazen ou yo nan tranzisyon nan direksyon pi bon mache ak pi pwòp nan chèche inisyativ lokal yo epi kominike ak reprezantan ou eli yo eksprime preferans ou pou ponp chalè. \nSèvi ak sèvis gratis sa a pou jwenn enfòmasyon kontak pou yon apèl, imèl, oswa lèt bay reprezantan ou eli yo.",
         "link": "Kontakte ofisyèl eli ou yo"
       }
+    },
+    "about-heat-pump": {
+      "item1": {
+        "title": "Ki sa ki se yon ponp chalè?",
+        "body": "Tcheke atik sa a konplè ke Carrier, yon manifakti ponp chalè, te ekri sou sa yon ponp chalè se ak ki jan yo travay.",
+        "link": "Li atik"
+      },
+      "item2": {
+        "title": "Ki jan yon ponp chalè travay?",
+        "body": "Ekspè nan plonbri ak chofaj Old House sa a Richard Tretheway enstwi Kevin O'Connor sou prensip debaz yo sou fason yon ponp chalè fonksyone."
+      },
+      "item3": {
+        "title": "Poukisa ponp chalè yo pi bon?",
+        "body": "Videyo Vox sa a eksplike poukisa ponp chalè pi bon pou anviwònman an pase aparèy chofaj gaz fosil."
+      },
+      "item4": {
+        "title": "Kisa lòt moun di?",
+        "body": "Tande sa yon lòt moun gen pou di sou eksperyans yo jwenn yon ponp chalè enstale lakay yo."
+      },
+      "headingBg": "Konsènan Ponp Chalè"
     }
   }
 }
