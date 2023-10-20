@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { styled } from "@mui/material/styles";
 import { Container, Typography, Box } from "@mui/material";
 import MuiAccordion from "@mui/material/Accordion";
@@ -12,9 +13,6 @@ const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
   borderBottom: "2px solid var(--color-text-5)",
-  "&:not(:last-child)": {
-    // borderBottom: 0,
-  },
   "&:before": {
     display: "none",
   },
@@ -26,7 +24,6 @@ const AccordionSummary = styled((props) => (
     {...props}
   />
 ))(({ theme }) => ({
-  // backgroundColor: "var(--bgColor-3)",
   flexDirection: "row-reverse",
   "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
     transform: "rotate(90deg)",
@@ -38,10 +35,11 @@ const AccordionSummary = styled((props) => (
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
-  // borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
 function PrivacyPolicy() {
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={{

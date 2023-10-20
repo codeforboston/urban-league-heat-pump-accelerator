@@ -1,5 +1,5 @@
-import { Box, Container } from "@mui/material";
 import React from "react";
+import { Box, Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import card1 from "../../../assets/images/copywritingImages/jason-goodman-NYMJYXfZG-g-unsplash.jpg";
 import card2 from "../../../assets/images/copywritingImages/todd-kent-iRKv_XiN--M-unsplash.jpg";
