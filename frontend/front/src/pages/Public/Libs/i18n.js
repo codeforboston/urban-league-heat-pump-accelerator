@@ -7,7 +7,6 @@ import esTranslations from "../locales/es-419.json";
 import htTranslations from "../locales/ht.json";
 
 const userLangPref = localStorage.getItem("langPref") || "en-us";
-console.log("userLangPref", userLangPref);
 
 // configuration for i18next library
 // if (!i18next.isInitialized) {

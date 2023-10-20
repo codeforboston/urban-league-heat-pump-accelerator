@@ -114,7 +114,25 @@
       "text3": "opinions!"
     },
     "getInvolved": {
-      "title1": "Share with your community"
+      "item1": {
+        "body": "Let your neighbors know about the savings and other benefits of heat pumps. Share this website on social media or through email.",
+        "title": "Share with your community",
+        "link": "Download social sharing kit"
+      },
+      "item2": {
+        "title": "Post flyers at local businesses",
+        "body": "Print and post this flyer at cafes, conveniences, and community bulletin boards around your neighborhood.",
+        "link": "Download informational flyer"
+      },
+      "item3": {
+        "title": "Discuss with your community",
+        "body": "Help to organize and/or host an event for neighbors to learn about heat pumps and their benefits."
+      },
+      "item4": {
+        "title": "Share with your local legislators",
+        "body": "Assist your neighbors in transitioning towards cheaper and cleaner energy by seeking local initiatives and communicating with your elected representatives to express your preference for heat pumps. Use the following free service to get contact info for a call, email, or letter to your elected representatives.",
+        "link": "Contact your elected officials"
+      }
     }
   }
 }

@@ -117,7 +117,25 @@
       "text3": "opiniones!"
     },
     "getInvolved": {
-      "title1": "Comparte con tu comunidad"
+      "item1": {
+        "title": "Comparte con tu comunidad",
+        "body": "Informe a sus vecinos sobre los ahorros y otros beneficios de las bombas de calor. \nComparta este sitio web en las redes sociales o por correo electrónico.",
+        "link": "Descargar el kit para compartir en redes sociales"
+      },
+      "item2": {
+        "title": "Publicar folletos en empresas locales.",
+        "body": "Imprima y publique este folleto en cafés, tiendas de conveniencia y tableros de anuncios comunitarios de su vecindario.",
+        "link": "Descargar folleto informativo"
+      },
+      "item3": {
+        "title": "Discute con tu comunidad",
+        "body": "Ayude a organizar y/o albergar un evento para que los vecinos aprendan sobre las bombas de calor y sus beneficios."
+      },
+      "item4": {
+        "title": "Comparta con sus legisladores locales",
+        "body": "Ayude a sus vecinos en la transición hacia una energía más barata y limpia buscando iniciativas locales y comunicándose con sus representantes electos para expresar su preferencia por las bombas de calor. \nUtilice el siguiente servicio gratuito para obtener información de contacto para una llamada, correo electrónico o carta a sus representantes electos.",
+        "link": "Comuníquese con sus funcionarios electos"
+      }
     }
   }
 }

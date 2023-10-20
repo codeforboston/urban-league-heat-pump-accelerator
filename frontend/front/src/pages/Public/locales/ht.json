@@ -117,7 +117,25 @@
       "text3": "opinyon ou!"
     },
     "getInvolved": {
-      "title1": "Pataje ak kominote w la"
+      "item1": {
+        "title": "Pataje ak kominote w la",
+        "body": "Fè vwazen ou yo konnen ekonomi yo ak lòt benefis nan ponp chalè. \nPataje sit entènèt sa a sou rezo sosyal oswa pa imèl.",
+        "link": "Telechaje twous pataje sosyal"
+      },
+      "item2": {
+        "title": "Afiche feyè nan biznis lokal yo",
+        "body": "Enprime epi poste feyè sa a nan kafe, konvenyans, ak tablo afichaj kominotè nan katye w la.",
+        "link": "Telechaje feyè enfòmasyon"
+      },
+      "item3": {
+        "title": "Diskite ak kominote w la",
+        "body": "Ede yo òganize ak/oswa òganize yon evènman pou vwazen yo aprann sou ponp chalè ak benefis yo."
+      },
+      "item4": {
+        "title": "Pataje ak lejislatè lokal ou yo",
+        "body": "Ede vwazen ou yo nan tranzisyon nan direksyon pi bon mache ak pi pwòp nan chèche inisyativ lokal yo epi kominike ak reprezantan ou eli yo eksprime preferans ou pou ponp chalè. \nSèvi ak sèvis gratis sa a pou jwenn enfòmasyon kontak pou yon apèl, imèl, oswa lèt bay reprezantan ou eli yo.",
+        "link": "Kontakte ofisyèl eli ou yo"
+      }
     }
   }
 }

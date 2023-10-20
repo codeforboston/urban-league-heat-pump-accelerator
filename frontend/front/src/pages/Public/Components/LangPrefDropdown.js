@@ -24,7 +24,6 @@ const LangPrefDropdown = () => {
     "es-us": `🇪🇸 ${t("public.global-labels.locales.spanish")}`,
   };
 
-  console.log("currentLanguage", language);
   useEffect(() => {
     // Get query params from current URL
     const params = new URLSearchParams(window.location.search);
@@ -54,7 +53,7 @@ const LangPrefDropdown = () => {
       changeLanguage(queryLang);
       localStorage.setItem("langPref", queryLang);
     }
-  }, [location, currentLanguage, currentLanguage]);
+  }, [location, currentLanguage, changeLanguage]);
 
   // Determine if the language menu should be open
   const open = Boolean(anchorMore);
