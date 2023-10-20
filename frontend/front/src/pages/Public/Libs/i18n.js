@@ -15,7 +15,12 @@ i18next
   .use(LanguageDetector)
   .init({
     debug: true, // change to true to debug i18next
-    fallbackLng: "en",
+    fallbackLng: {
+      "pt-BR": ["pt"],
+      es: ["es"],
+      ht: ["ht"],
+      default: ["en"],
+    },
     resources: {
       en: { translation: { ...enTranslations } }, // English - United States
       "pt-BR": { translation: { ...ptTranslations } }, // Portuguese - Brazil
