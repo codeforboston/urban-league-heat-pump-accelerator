@@ -14,7 +14,9 @@ const LangPrefDropdown = () => {
   const [anchorMore, setAnchorMore] = useState(null);
   const [langDisplay, setLangDisplay] = useState("English");
   const [currentLanguage, setCurrentLanguage] = useState(language);
-  // const [isReloaded, setIsReloaded] = useState(false);
+  const [isReloaded, setIsReloaded] = useState(
+    localStorage.getItem("isReloaded") === "true"
+  );
 
   const location = useLocation();
 
@@ -32,7 +34,11 @@ const LangPrefDropdown = () => {
     // Check if current route is a 'public' route
     const isPublicRoute = window.location.pathname.includes("public");
 
-    if (isPublicRoute) {
+    if (isPublicRoute && !isReloaded) {
+      setIsReloaded(true);
+      localStorage.setItem("isReloaded", "true");
+      window.location.reload();
+
       // Get language preference from localStorage or default to 'en-us'
       queryLang = localStorage.getItem("langPref") || "en-us";
       const url = new URL(window.location.href);
@@ -54,7 +60,7 @@ const LangPrefDropdown = () => {
       changeLanguage(queryLang);
       localStorage.setItem("langPref", queryLang);
     }
-  }, [location, currentLanguage]);
+  }, [location, currentLanguage, isReloaded]);
 
   // Determine if the language menu should be open
   const open = Boolean(anchorMore);

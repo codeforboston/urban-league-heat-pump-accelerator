@@ -14,7 +14,7 @@ i18next
   .use(Backend)
   .use(LanguageDetector)
   .init({
-    debug: false, // change to true to debug i18next
+    debug: true, // change to true to debug i18next
     fallbackLng: "en",
     resources: {
       en: { translation: { ...enTranslations } }, // English - United States
