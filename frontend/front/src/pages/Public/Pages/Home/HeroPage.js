@@ -110,6 +110,7 @@ const HeroPage = ({
                   background: "var(--bgColor-3)",
                   borderRadius: "50px",
                   px: 3,
+                  mb: 3,
                   "&:hover": {
                     backgroundColor: "var(--bgColor-3)",
                   },
