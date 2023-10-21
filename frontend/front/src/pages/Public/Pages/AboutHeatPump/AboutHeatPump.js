@@ -71,7 +71,7 @@ function AboutHeatPump() {
             );
           })}
         </Box>
-        <Stack alignItems="center" spacing="20px" mt={3}>
+        <Stack alignItems="center" spacing="20px" mt={{ xs: 2, md: 8 }}>
           <Box align="center">
             <Heading4 text={t("public.about-heat-pump.button-section.text1")} />
             <Heading4 text={t("public.about-heat-pump.button-section.text2")} />
