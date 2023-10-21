@@ -164,7 +164,7 @@ export const SurveyPage = () => {
           pageContent()
         ) : (
           <Box
-            sx={{ textAlign: "center" }}
+            sx={{ textAlign: "center", pb: 7 }}
             data-testid="publicSurveyUnderConstruction"
           >
             <TitleHero titleBold={t("public.survey.work-in-progress")} />
