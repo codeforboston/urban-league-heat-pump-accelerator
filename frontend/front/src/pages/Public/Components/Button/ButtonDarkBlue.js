@@ -20,6 +20,7 @@ const ButtonDarkBklue = ({ text, to, children, externalLink }) => {
             color: "var(--color-text-1)",
             background: "var(--bgColor-2)",
             borderRadius: "50px",
+            textAlign: "center",
             "&:hover": {
               backgroundColor: "var(--bgColor-2)",
             },
@@ -45,6 +46,7 @@ const ButtonDarkBklue = ({ text, to, children, externalLink }) => {
           color: "var(--color-text-1)",
           background: "var(--bgColor-2)",
           borderRadius: "50px",
+          textAlign: "center",
           "&:hover": {
             backgroundColor: "var(--bgColor-2)",
           },

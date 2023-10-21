@@ -93,7 +93,7 @@ const Partners = () => {
               </a>
             </Grid>
           ))}
-          <Grid item pb={4} pt={1} mx={2}>
+          <Grid item pb={4} pt={1}>
             <Typography
               variant="body"
               sx={{ color: "var(--color-text-3)" }}

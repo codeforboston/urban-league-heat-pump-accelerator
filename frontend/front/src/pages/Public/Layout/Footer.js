@@ -72,22 +72,27 @@ const Footer = () => {
           pt={5}
           pb={2}
           sx={{
-            textAlign: { xs: "center", lg: "left" },
+            textAlign: { xs: "center", md: "left" },
           }}
         >
           <Grid
             item
             justifyContent="center"
             alignItems="flex-start"
-            sx={{ display: { xs: "none", lg: "flex" }, pr: { lg: 1 } }}
-            lg={3}
+            sx={{ display: { xs: "none", md: "flex" }, pr: { md: 1 } }}
+            md={3}
           >
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
               <Box
                 component="img"
-                alt="logo"
                 src={logoHeatPump}
-                sx={{ maxWidth: "300px" }}
+                className="logo"
+                alt="logo"
+                sx={{
+                  width: "100%",
+                  maxWidth: "300px",
+                  minWidth: "150px",
+                }}
               />
             </Link>
           </Grid>
@@ -95,7 +100,7 @@ const Footer = () => {
           <Grid
             item
             sx={{
-              display: { xs: "block", lg: "none" },
+              display: { xs: "block", md: "none" },
             }}
             xs={12}
           >
@@ -106,23 +111,23 @@ const Footer = () => {
           <Grid
             item
             sx={{
-              pt: { xs: 2, lg: 0 },
-              px: { lg: 2 },
+              pt: { xs: 2, md: 0 },
+              px: { md: 2 },
             }}
             xs={12}
-            lg={3}
+            md={3}
           >
             <List variant="caption">
               <Typography className="subtitle-footer" pb={1}>
                 {t("public.global-labels.learn-more.value")}
               </Typography>
               {Object.keys(footerItems).map((item) => (
-                <ListItem key={item} sx={{ pt: { xs: 0, lg: 0 }, px: 0 }}>
+                <ListItem key={item} sx={{ pt: { xs: 0, md: 0 }, px: 0 }}>
                   <ListItemButton
                     sx={{
                       py: 0,
                       px: 0,
-                      textAlign: { xs: "center", lg: "left" },
+                      textAlign: { xs: "center", md: "left" },
                     }}
                     component={item === "testimonials" ? "button" : Link}
                     to={item === "testimonials" ? null : footerItems[item].link}
@@ -162,25 +167,25 @@ const Footer = () => {
           <Grid
             item
             sx={{
-              pt: { xs: 1, lg: 0 },
-              px: { lg: 2 },
-              borderLeft: { lg: "1px solid var(--accent-2)" },
-              pl: { lg: 4 },
+              pt: { xs: 1, md: 0 },
+              px: { md: 2 },
+              borderLeft: { md: "1px solid var(--accent-2)" },
+              pl: { md: 4 },
             }}
             xs={12}
-            lg={3}
+            md={3}
           >
             <List variant="caption">
               <Typography className="subtitle-footer" pb={1}>
                 {t("public.footer.legal")}
               </Typography>
 
-              <ListItem sx={{ py: { xs: 0, lg: 0 }, px: 0 }}>
+              <ListItem sx={{ py: { xs: 0, md: 0 }, px: 0 }}>
                 <ListItemButton
                   sx={{
                     py: 0,
                     px: 0,
-                    textAlign: { xs: "center", lg: "left" },
+                    textAlign: { xs: "center", md: "left" },
                     fontWeight: "300",
                   }}
                   component={Link}
@@ -205,12 +210,12 @@ const Footer = () => {
           <Grid
             item
             xs={12}
-            lg={3}
+            md={3}
             sx={{
-              pt: { xs: 2, lg: 0 },
-              px: { lg: 2 },
-              borderLeft: { lg: "1px solid var(--accent-2)" },
-              pl: { lg: 4 },
+              pt: { xs: 2, md: 0 },
+              px: { md: 2 },
+              borderLeft: { md: "1px solid var(--accent-2)" },
+              pl: { md: 4 },
             }}
           >
             <>
@@ -224,8 +229,8 @@ const Footer = () => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: { xs: "center", lg: "flex-start" },
-                    py: { xs: 1, lg: 1 },
+                    justifyContent: { xs: "center", md: "flex-start" },
+                    py: { xs: 1, md: 1 },
                   }}
                 >
                   <EmailIcon sx={{ mr: 1 }} />
@@ -244,15 +249,15 @@ const Footer = () => {
                 <Box
                   mt={2}
                   sx={{
-                    display: { xs: "none", lg: "block" },
+                    display: { xs: "none", md: "block" },
                   }}
                 >
                   <ButtonGetPump />
                 </Box>
                 <Box
                   sx={{
-                    display: { xs: "none", lg: "block" },
-                    py: { xs: 0, lg: 2 },
+                    display: { xs: "none", md: "block" },
+                    py: { xs: 0, md: 2 },
                   }}
                 >
                   <ButtonWhite to={routes.LOGIN_ROUTE}>
@@ -269,7 +274,7 @@ const Footer = () => {
             item
             xs={12}
             align="center"
-            sx={{ pt: { xs: 4 }, display: { xs: "block", lg: "none" } }}
+            sx={{ pt: { xs: 4 }, display: { xs: "block", md: "none" } }}
           >
             <ButtonWhite to={routes.LOGIN_ROUTE}>
               <LockOutlinedIcon sx={{ mr: 1 }} />
@@ -280,19 +285,19 @@ const Footer = () => {
           {/* COPYRIGHT */}
           <Grid
             item
-            sx={{ display: { xs: "block", lg: "none" }, pt: { xs: 4 } }}
+            sx={{ display: { xs: "block", md: "none" }, pt: { xs: 4 } }}
             xs={12}
           >
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
               <Box
                 component="img"
-                alt="logo"
                 src={logoHeatPump}
+                className="logo"
+                alt="logo"
                 sx={{
+                  width: "100%",
                   maxWidth: "300px",
-                  "@media (max-width: 350px)": {
-                    width: "250px",
-                  },
+                  minWidth: "150px",
                 }}
               />
             </Link>

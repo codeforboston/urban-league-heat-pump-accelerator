@@ -28,6 +28,7 @@ const ButtonGetPumnp = () => {
           minWidth: 200,
           transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
           letterSpacing: "-.03em",
+          textAlign: "center",
           "&:hover": {
             background: "var(--bgColor-1)",
           },

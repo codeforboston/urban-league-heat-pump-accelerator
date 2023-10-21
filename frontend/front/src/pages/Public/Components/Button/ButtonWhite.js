@@ -22,6 +22,7 @@ const ButtonWhite = ({ text, to, children }) => {
           color: "var(--color-text-2)",
           background: "var(--bgColor-3)",
           borderRadius: "50px",
+          textAlign: "center",
           "&:hover": {
             backgroundColor: "var(--bgColor-3)",
           },
