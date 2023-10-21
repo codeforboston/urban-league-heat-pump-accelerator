@@ -21,6 +21,7 @@ function TitleHero({ text, titleBold }) {
           style={{
             color: "var(--color-text-8)",
             textShadow: "1px 1px 1px var(--color-text-5)",
+            textTransform: "uppercase",
           }}
         >
           {titleBold}

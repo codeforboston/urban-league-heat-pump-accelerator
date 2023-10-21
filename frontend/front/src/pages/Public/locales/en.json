@@ -87,7 +87,8 @@
     },
     "survey": {
       "heading1BlueBgGround": "Take the Survey",
-      "under-construction": "Public survey is under construction!"
+      "under-construction": "Public Survey is Currently Under Development!",
+      "work-in-progress": "UNDER CONSTRUCTION"
     },
     "benefits-heat-pump": {
       "cardBenefits": {

@@ -1,5 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { Alert, Box, Container, Snackbar, Stack } from "@mui/material";
+import TitleHero from "../Components/Typography/TitleHero";
+import Heading2 from "../Components/Typography/Heading2";
+
 import {
   RECAPTCHA_ACTION_PUBLIC_SURVEY,
   useGetReCAPTCHAToken,
@@ -164,7 +167,8 @@ export const SurveyPage = () => {
             sx={{ textAlign: "center" }}
             data-testid="publicSurveyUnderConstruction"
           >
-            <h2>{t("public.survey.under-construction")}</h2>
+            <TitleHero titleBold={t("public.survey.work-in-progress")} />
+            <Heading2 text={t("public.survey.under-construction")} />
           </Box>
         )}
       </Container>

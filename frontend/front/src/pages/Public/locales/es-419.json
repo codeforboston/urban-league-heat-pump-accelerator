@@ -90,7 +90,8 @@
     },
     "survey": {
       "heading1BlueBgGround": "Realice la encuesta",
-      "under-construction": "¡La encuesta pública está en construcción!"
+      "under-construction": "¡La encuesta pública está actualmente en desarrollo!",
+      "work-in-progress": "BAJO CONSTRUCCIÓN"
     },
     "benefits-heat-pump": {
       "cardBenefits": {

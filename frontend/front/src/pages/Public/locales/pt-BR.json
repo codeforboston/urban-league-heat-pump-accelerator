@@ -90,7 +90,8 @@
     },
     "survey": {
       "heading1BlueBgGround": "Faça a pesquisa",
-      "under-construction": "A pesquisa pública está em construção!"
+      "under-construction": "A pesquisa pública está atualmente em desenvolvimento!",
+      "work-in-progress": "Em construção"
     },
     "benefits-heat-pump": {
       "cardBenefits": {
