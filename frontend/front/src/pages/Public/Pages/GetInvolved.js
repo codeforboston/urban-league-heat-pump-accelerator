@@ -56,7 +56,7 @@ function GetInvolved() {
         minHeight: "calc(100vh - 520px)",
       }}
     >
-      <Heading1BlueBgGround text="Get Involved" />
+      <Heading1BlueBgGround text={t("public.getInvolved.heading")} />
       <Container>
         {/* <Box mb={{ xs: 1, sm: 6 }} mt={{ xs: 1, sm: 2 }}>
           <Heading1

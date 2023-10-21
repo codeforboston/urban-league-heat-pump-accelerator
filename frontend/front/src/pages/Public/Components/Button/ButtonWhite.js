@@ -14,6 +14,7 @@ const ButtonWhite = ({ text, to, children }) => {
         to={to}
         onClick={() => window.scrollTo(0, 0)}
         sx={{
+          px: 2,
           width: "auto",
           minWidth: "200px",
           maxWidth: "250px",

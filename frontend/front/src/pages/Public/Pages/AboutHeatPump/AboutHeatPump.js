@@ -73,10 +73,13 @@ function AboutHeatPump() {
         </Box>
         <Stack alignItems="center" spacing="20px" mt={3}>
           <Box align="center">
-            <Heading4 text="Convinced a heat pump is for you?" />
-            <Heading4 text="Get started here!" />
+            <Heading4 text={t("public.about-heat-pump.button-section.text1")} />
+            <Heading4 text={t("public.about-heat-pump.button-section.text2")} />
           </Box>
-          <ButtonDarkBlue text="GET A HEAT PUMP" to="/public/get-heat-pump" />
+          <ButtonDarkBlue
+            text={t("public.about-heat-pump.button-section.button")}
+            to="/public/get-heat-pump"
+          />
         </Stack>
       </Container>
     </Box>

@@ -135,7 +135,8 @@
         "title": "Compartilhe com seus legisladores locais",
         "body": "Ajude os seus vizinhos na transição para uma energia mais barata e mais limpa, procurando iniciativas locais e comunicando com os seus representantes eleitos para expressar a sua preferência por bombas de calor. \nUse o seguinte serviço gratuito para obter informações de contato para uma ligação, e-mail ou carta aos seus representantes eleitos.",
         "link": "Contate seus funcionários eleitos"
-      }
+      },
+      "heading": "Envolver-se"
     },
     "about-heat-pump": {
       "item1": {
@@ -155,7 +156,12 @@
         "title": "O que outras pessoas dizem?",
         "body": "Ouça o que outra pessoa tem a dizer sobre a experiência de instalar uma bomba de calor em sua casa."
       },
-      "headingBg": "Sobre bombas de calor"
+      "headingBg": "Sobre bombas de calor",
+      "button-section": {
+        "text1": "Convencido de que uma bomba de calor é para você?",
+        "text2": "Comece aqui!",
+        "button": "OBTENHA UMA BOMBA DE CALOR"
+      }
     }
   }
 }

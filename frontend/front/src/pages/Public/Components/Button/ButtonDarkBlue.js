@@ -13,7 +13,9 @@ const ButtonDarkBklue = ({ text, to, children, externalLink }) => {
         <Button
           onClick={() => window.scrollTo(0, 0)}
           sx={{
-            width: "200px",
+            px: 2,
+            width: "auto",
+            minWidth: "200px",
             height: "50px",
             color: "var(--color-text-1)",
             background: "var(--bgColor-2)",
@@ -36,7 +38,9 @@ const ButtonDarkBklue = ({ text, to, children, externalLink }) => {
         to={to}
         onClick={() => window.scrollTo(0, 0)}
         sx={{
-          width: "200px",
+          px: 2,
+          width: "auto",
+          minWidth: "200px",
           height: "50px",
           color: "var(--color-text-1)",
           background: "var(--bgColor-2)",

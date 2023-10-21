@@ -135,7 +135,8 @@
         "title": "Pataje ak lejislatè lokal ou yo",
         "body": "Ede vwazen ou yo nan tranzisyon nan direksyon pi bon mache ak pi pwòp nan chèche inisyativ lokal yo epi kominike ak reprezantan ou eli yo eksprime preferans ou pou ponp chalè. \nSèvi ak sèvis gratis sa a pou jwenn enfòmasyon kontak pou yon apèl, imèl, oswa lèt bay reprezantan ou eli yo.",
         "link": "Kontakte ofisyèl eli ou yo"
-      }
+      },
+      "heading": "Patisipe"
     },
     "about-heat-pump": {
       "item1": {
@@ -155,7 +156,12 @@
         "title": "Kisa lòt moun di?",
         "body": "Tande sa yon lòt moun gen pou di sou eksperyans yo jwenn yon ponp chalè enstale lakay yo."
       },
-      "headingBg": "Konsènan Ponp Chalè"
+      "headingBg": "Konsènan Ponp Chalè",
+      "button-section": {
+        "text1": "Konvenk yon ponp chalè se pou ou?",
+        "text2": "Kòmanse isit la!",
+        "button": "JWENN YON PONP CHALÈ"
+      }
     }
   }
 }

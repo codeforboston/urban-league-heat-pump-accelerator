@@ -18,9 +18,9 @@ const ButtonGetPumnp = () => {
         variant="Button"
         onClick={() => window.scrollTo(0, 0)}
         sx={{
+          px: 2,
           color: "var(--color-text-2)",
           background: "var(--bgColor-1)",
-          fontSize: "1rem",
           height: "50px",
           fontWeight: 600,
           borderRadius: "50px",

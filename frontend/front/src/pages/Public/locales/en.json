@@ -132,7 +132,8 @@
         "title": "Share with your local legislators",
         "body": "Assist your neighbors in transitioning towards cheaper and cleaner energy by seeking local initiatives and communicating with your elected representatives to express your preference for heat pumps. Use the following free service to get contact info for a call, email, or letter to your elected representatives.",
         "link": "Contact your elected officials"
-      }
+      },
+      "heading": "Get Involved"
     },
     "about-heat-pump": {
       "item1": {
@@ -152,7 +153,12 @@
         "title": "What do other people say?",
         "body": "Hear what someone else has to say about their experience getting a heat pump installed in their home."
       },
-      "headingBg": "About Heat Pumps"
+      "headingBg": "About Heat Pumps",
+      "button-section": {
+        "text1": "Convinced a heat pump is for you?",
+        "text2": "Get started here!",
+        "button": "GET A HEAT PUMP"
+      }
     }
   }
 }

@@ -102,7 +102,7 @@ const CardLinksSection = () => {
                     sx={{
                       height: "100%",
                       maxHeight: { xs: "auto", sm: "370px" },
-                      minHeight: { xs: "auto", sm: "270px" },
+                      minHeight: { xs: "auto", sm: "280px" },
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "space-between",
@@ -113,13 +113,11 @@ const CardLinksSection = () => {
                     <Box
                       sx={{
                         // height: { xs: "auto", sm: "140px" },
-                        my: { xs: 2, sm: 2 },
+                        my: { xs: 2, sm: 0.5 },
                         color: "var(--color-text-3)",
                       }}
                     >
-                      <Typography variant="body1">
-                        {detail.paragraph}
-                      </Typography>
+                      <Typography variant="body">{detail.paragraph}</Typography>
                     </Box>
                     <Box
                       mt={2}
