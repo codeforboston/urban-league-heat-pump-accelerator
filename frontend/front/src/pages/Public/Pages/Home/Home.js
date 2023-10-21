@@ -39,9 +39,9 @@ const Home = () => {
           link="https://www.cenhud.com/en/my-energy/save-energy-money/energy-calculators/fuel-switching-calculator/"
         />
       </Box>
-      <Container>
+      <Container mb={8} id="target-section">
         {/* CARDS LINKS TO SURVEY AND ABOUT PAGES */}
-        <Box mt={16}>
+        <Box mt={8}>
           <CardLinksSection />
         </Box>
       </Container>

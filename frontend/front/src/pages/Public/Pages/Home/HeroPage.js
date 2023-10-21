@@ -1,11 +1,12 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
+import { Link as RouterLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Typography, Box, Button } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { Typography, Box, Button, IconButton } from "@mui/material";
 import AnimatedBox from "../../Components/AnimatedBox";
 import TitleHero from "../../Components/Typography/TitleHero";
 import { Link as MuiLink } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import ArrowDownwardIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const HeroWrapper = styled("div")(({ theme, image }) => ({
   display: "flex",
@@ -50,6 +51,12 @@ const HeroPage = ({
   image,
 }) => {
   const { t } = useTranslation();
+
+  const scrollToSection = () => {
+    const section = document.getElementById("target-section");
+    section.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <HeroWrapper image={image}>
       <Box className="text-wrapper">
@@ -62,7 +69,7 @@ const HeroPage = ({
                 justifyContent: "center",
                 alignItems: "center",
                 gap: 8,
-                minHeight: "calc(100vh - 122px)",
+                minHeight: "calc(100vh - 232px)",
                 "@media (max-width: 385px)": {
                   minHeight: "calc(100vh - 90px)",
                 },
@@ -98,27 +105,45 @@ const HeroPage = ({
                   {text2}
                 </Typography>
               </Box>
-
-              <Button
-                component={RouterLink}
-                to="/public/benefits-heat-pump"
-                onClick={() => window.scrollTo(0, 0)}
-                sx={{
-                  width: "auto",
-                  height: "50px",
-                  color: "var(--color-text-2)",
-                  background: "var(--bgColor-3)",
-                  borderRadius: "50px",
-                  px: 3,
-                  mb: 3,
-                  "&:hover": {
-                    backgroundColor: "var(--bgColor-3)",
-                  },
-                }}
-              >
-                {t("public.home.hero.button")}
-              </Button>
+              <Box>
+                <Button
+                  component={RouterLink}
+                  to="/public/benefits-heat-pump"
+                  onClick={() => window.scrollTo(0, 0)}
+                  sx={{
+                    width: "auto",
+                    height: "50px",
+                    color: "var(--color-text-2)",
+                    background: "var(--bgColor-3)",
+                    borderRadius: "50px",
+                    px: 3,
+                    mt: 3,
+                    "&:hover": {
+                      backgroundColor: "var(--bgColor-3)",
+                    },
+                  }}
+                >
+                  {t("public.home.hero.button")}
+                </Button>
+              </Box>
             </Box>
+            <IconButton
+              onClick={scrollToSection}
+              sx={{
+                borderRadius: "50%",
+                color: "var(--color-text-5)",
+                mt: 4,
+                mb: 4,
+                animation: "moveUpDown 2s infinite",
+                "@keyframes moveUpDown": {
+                  "0%": { transform: "translateY(0)" },
+                  "50%": { transform: "translateY(-10px)" },
+                  "100%": { transform: "translateY(0)" },
+                },
+              }}
+            >
+              <ArrowDownwardIcon fontSize="large" />
+            </IconButton>
           </AnimatedBox>
         </Box>
       </Box>
