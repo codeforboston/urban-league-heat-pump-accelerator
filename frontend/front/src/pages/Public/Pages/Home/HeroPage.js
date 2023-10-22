@@ -9,37 +9,41 @@ import { Link as MuiLink } from "@mui/material";
 import ArrowDownwardIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const HeroWrapper = styled("div")(({ theme, image }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  minHeight: "350px",
-  position: "relative",
+  height: "calc(100vh - 120px)",
   backgroundImage: `url(${image})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
-  "& .text-wrapper": {
-    width: "100vw",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignContent: "center",
-    textAlign: "center",
-    position: "relative",
-    zIndex: 1,
-  },
+  position: "relative",
   "& .text-overlay": {
-    margin: "0 auto",
-    width: "100%",
-    minHeight: "350px",
-    top: "143px",
-    left: 0,
-    right: 0,
-    bottom: 0,
+    height: "calc(100vh - 120px)",
     background: "var(--accent-1)",
-    boxSizing: "border-box",
   },
 }));
+
+const ArrowDown = () => {
+  const scrollToSection = () => {
+    const section = document.getElementById("target-section");
+    section.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <IconButton
+      onClick={scrollToSection}
+      sx={{
+        color: "var(--color-text-5)",
+        animation: "moveUpDown 2s infinite",
+        "@keyframes moveUpDown": {
+          "0%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+          "100%": { transform: "translateY(0)" },
+        },
+      }}
+    >
+      <ArrowDownwardIcon fontSize="large" />
+    </IconButton>
+  );
+};
 
 const HeroPage = ({
   title,
@@ -52,60 +56,69 @@ const HeroPage = ({
 }) => {
   const { t } = useTranslation();
 
-  const scrollToSection = () => {
-    const section = document.getElementById("target-section");
-    section.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <HeroWrapper image={image}>
-      <Box className="text-wrapper">
-        <Box className="text-overlay">
-          <AnimatedBox triggerOnce={false}>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: 8,
-                minHeight: "calc(100vh - 232px)",
-                "@media (max-width: 385px)": {
-                  minHeight: "calc(100vh - 90px)",
-                },
-              }}
-            >
-              <Box px={0.5} mt={2}>
-                <TitleHero
-                  text={title.toUpperCase()}
-                  titleBold={titleBold.toUpperCase()}
-                />
-                <Typography
-                  variant="h6"
-                  sx={{ color: "var(--color-text-9)", px: { xs: 1, md: 20 } }}
-                >
-                  {text1}
-                  {link !== "" && (
-                    <MuiLink
-                      href={link}
-                      target="_blank"
-                      rel="noopener"
-                      underline="always"
-                      sx={{
-                        color: "var(--color-text-9)",
-                        fontWeight: 800,
-                        textDecoration: "solid underline 3px",
-                        textUnderlinePosition: "under",
-                        textDecorationColor: "var(--color-text-6)",
-                      }}
-                    >
-                      {textBold}
-                    </MuiLink>
-                  )}
-                  {text2}
-                </Typography>
-              </Box>
-              <Box>
+      <Box className="text-overlay">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+          }}
+        >
+          <Box
+            sx={{
+              flexGrow: 1,
+              mt: 10,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <AnimatedBox triggerOnce={false}>
+              <TitleHero
+                text={title.toUpperCase()}
+                titleBold={titleBold.toUpperCase()}
+              />
+              <Typography
+                variant="h6"
+                sx={{
+                  color: "var(--color-text-9)",
+                  px: { xs: 1, md: 20 },
+                  textAlign: "center",
+                }}
+              >
+                {text1}
+                {link !== "" && (
+                  <MuiLink
+                    href={link}
+                    target="_blank"
+                    rel="noopener"
+                    underline="always"
+                    sx={{
+                      color: "var(--color-text-9)",
+                      fontWeight: 800,
+                      textDecoration: "solid underline 3px",
+                      textUnderlinePosition: "under",
+                      textDecorationColor: "var(--color-text-6)",
+                    }}
+                  >
+                    {textBold}
+                  </MuiLink>
+                )}
+                {text2}
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  mt: 10,
+                }}
+              >
                 <Button
                   component={RouterLink}
                   to="/public/benefits-heat-pump"
@@ -117,7 +130,6 @@ const HeroPage = ({
                     background: "var(--bgColor-3)",
                     borderRadius: "50px",
                     px: 3,
-                    mt: 3,
                     "&:hover": {
                       backgroundColor: "var(--bgColor-3)",
                     },
@@ -126,25 +138,11 @@ const HeroPage = ({
                   {t("public.home.hero.button")}
                 </Button>
               </Box>
-            </Box>
-            <IconButton
-              onClick={scrollToSection}
-              sx={{
-                borderRadius: "50%",
-                color: "var(--color-text-5)",
-                mt: 4,
-                mb: 4,
-                animation: "moveUpDown 2s infinite",
-                "@keyframes moveUpDown": {
-                  "0%": { transform: "translateY(0)" },
-                  "50%": { transform: "translateY(-10px)" },
-                  "100%": { transform: "translateY(0)" },
-                },
-              }}
-            >
-              <ArrowDownwardIcon fontSize="large" />
-            </IconButton>
-          </AnimatedBox>
+            </AnimatedBox>
+          </Box>
+          <Box sx={{ flexGrow: 0, pb: 10 }}>
+            <ArrowDown />
+          </Box>
         </Box>
       </Box>
     </HeroWrapper>
