@@ -116,7 +116,8 @@ const HeroPage = ({
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  mt: 10,
+                  flexDirection: "column",
+                  mt: 6,
                 }}
               >
                 <Button
@@ -137,10 +138,15 @@ const HeroPage = ({
                 >
                   {t("public.home.hero.button")}
                 </Button>
+                <Box sx={{ pt: 8, display: { xs: "block", sm: "none" } }}>
+                  <ArrowDown />
+                </Box>
               </Box>
             </AnimatedBox>
           </Box>
-          <Box sx={{ flexGrow: 0, pb: 10 }}>
+          <Box
+            sx={{ flexGrow: 0, pb: 10, display: { xs: "none", sm: "block" } }}
+          >
             <ArrowDown />
           </Box>
         </Box>
