@@ -145,7 +145,7 @@ const HeroPage = ({
             </AnimatedBox>
           </Box>
           <Box
-            sx={{ flexGrow: 0, pb: 10, display: { xs: "none", sm: "block" } }}
+            sx={{ flexGrow: 0, pb: 5, display: { xs: "none", sm: "block" } }}
           >
             <ArrowDown />
           </Box>
