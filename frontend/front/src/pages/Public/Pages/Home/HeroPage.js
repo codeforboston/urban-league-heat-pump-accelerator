@@ -13,7 +13,6 @@ const HeroWrapper = styled("div")(({ theme, image }) => ({
   position: "absolute",
   bottom: 0,
   paddingBottom: "5rem",
-
   width: "100%",
   backgroundImage: `url(${image})`,
   backgroundSize: "cover",
