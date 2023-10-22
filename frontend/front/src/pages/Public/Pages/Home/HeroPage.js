@@ -10,12 +10,14 @@ import ArrowDownwardIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const HeroWrapper = styled("div")(({ theme, image }) => ({
   height: "calc(100vh - 120px)",
+  minHeight: "450px",
   backgroundImage: `url(${image})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   position: "relative",
   "& .text-overlay": {
+    minHeight: "450px",
     height: "calc(100vh - 120px)",
     background: "var(--accent-1)",
   },
@@ -70,8 +72,8 @@ const HeroPage = ({
         >
           <Box
             sx={{
+              mt: 2,
               flexGrow: 1,
-              mt: 10,
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
