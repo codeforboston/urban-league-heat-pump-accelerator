@@ -9,14 +9,23 @@ import { Link as MuiLink } from "@mui/material";
 import ArrowDownwardIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const HeroWrapper = styled("div")(({ theme, image }) => ({
-  height: "calc(100vh - 120px)",
+  height: "calc(100vh - 124px)",
+  position: "absolute",
+  bottom: 0,
+  paddingBottom: "5rem",
+
+  width: "100%",
   backgroundImage: `url(${image})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   position: "relative",
   "& .text-overlay": {
-    height: "calc(100vh - 120px)",
+    width: "100%",
+    position: "absolute",
+    paddingBottom: "3rem",
+    paddingTop: "2rem",
+    height: "calc(100vh - 124px)",
     background: "var(--accent-1)",
   },
 }));
@@ -71,7 +80,7 @@ const HeroPage = ({
           <Box
             sx={{
               flexGrow: 1,
-              mt: 10,
+              mt: { xs: 2, sm: 10 },
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -138,14 +147,19 @@ const HeroPage = ({
                 >
                   {t("public.home.hero.button")}
                 </Button>
-                <Box sx={{ pt: 8, display: { xs: "block", sm: "none" } }}>
+                <Box sx={{ pt: 6, display: { xs: "block", sm: "none" } }}>
                   <ArrowDown />
                 </Box>
               </Box>
             </AnimatedBox>
           </Box>
           <Box
-            sx={{ flexGrow: 0, pb: 5, display: { xs: "none", sm: "block" } }}
+            sx={{
+              flexGrow: 0,
+              pb: 5,
+              pt: 2,
+              display: { xs: "none", sm: "block" },
+            }}
           >
             <ArrowDown />
           </Box>
