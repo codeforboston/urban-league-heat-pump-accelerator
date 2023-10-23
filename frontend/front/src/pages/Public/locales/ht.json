@@ -176,6 +176,28 @@
       "bhpa": "<1>Boston Heat Pump Accelerator (BHPA)</1> travay pou sipòte plis aksè pou pwopriyetè kay Boston yo nan ponp chalè ak resous ki gen rapò, ede diminye depans pou rezidan yo, ogmante rezistans kominote a, epi chanje rejyon an nan teknoloji ki ba kabòn. \n. \nInisyativ sa a pa pran okenn finansman nan men konpayi oswa enstalatè ponp chalè - li sipòte aksè jeneral nan ponp chalè sèlman, atravè efò edikasyon ak konsyantizasyon.",
       "ulem1": "<1> <5>Urban League of Eastern Massachusetts (ULEM)</5> </1> se patwone efò BHPA a. \nDepi 1919, ULEM te bay mendèv ak sèvis devlopman ekonomik ak pwogram pou ogmante endepandans rezidan kominote Boston ak zòn metwopolitèn ki antoure yo. \nULEM se yon òganizasyon 501c3 san bi likratif ak youn nan pi ansyen afilye nan mouvman National Urban League la.",
       "ulem2": "Se Christopher Scranton Manm Konsèy ULEM ki dirije pwojè BHPA a, an kowòdinasyon ak patnè prensipal yo, ki endike anba a."
+    },
+    "get-heat-pump": {
+      "headingBg": "Ki jan yo jwenn yon ponp chalè?",
+      "heading2": "Kalkile ekonomi ou nan 3 etap fasil",
+      "subtitle": "Pou jwenn yon ponp chalè, kòmanse pa jwenn kèk detay sou kay ou pou ou ka gen yon konvèsasyon enfòme sou fason ponp chalè ka ede w.",
+      "step1": {
+        "title": "Jwenn detay sou bezwen chofaj/refwadisman lakay ou",
+        "itemE": "Estime ekonomi ou <0>ak kalkilatris lyen sa a</0>",
+        "itemA": "Pye kare",
+        "itemB": "Konbyen etaj",
+        "itemC": "Aktyèl sistèm HVAC",
+        "itemD": "Bòdwo sèvis piblik aktyèl / itilizasyon"
+      },
+      "step2": {
+        "title": "Pale ak yon antrenè ponp chalè",
+        "title2": "(Opsyonèl, men rekòmande)",
+        "buttonText": "MANDE YON ANTRENÈ"
+      },
+      "step3": {
+        "title": "Jwenn detay sou bezwen chofaj/refwadisman lakay ou",
+        "buttonText": "RESOUS"
+      }
     }
   }
 }

@@ -176,6 +176,28 @@
       "bhpa": "O <1>Boston Heat Pump Accelerator (BHPA)</1> trabalha para apoiar o aumento do acesso dos proprietários de residências de Boston às bombas de calor e recursos relacionados, ajudando a reduzir custos para os residentes, aumentar a resiliência da comunidade e mudar a região para tecnologias de baixo carbono \n. \nEsta iniciativa não recebe financiamento de empresas ou instaladores de bombas de calor - apoia apenas o acesso geral a bombas de calor, através de esforços de educação e sensibilização.",
       "ulem1": "A <1> <5>Liga Urbana do Leste de Massachusetts (ULEM)</5> </1> é a patrocinadora do esforço da BHPA. \nDesde 1919, a ULEM fornece serviços e programas de força de trabalho e de desenvolvimento econômico para aumentar a autossuficiência dos residentes da comunidade de Boston e das áreas metropolitanas vizinhas. \nA ULEM é uma organização sem fins lucrativos 501c3 e uma das afiliadas mais antigas do movimento da Liga Urbana Nacional.",
       "ulem2": "O projeto BHPA é dirigido pelo membro do Conselho da ULEM, Christopher Scranton, em coordenação com os principais parceiros, listados abaixo."
+    },
+    "get-heat-pump": {
+      "headingBg": "Como obter uma bomba de calor?",
+      "heading2": "Calcule suas economias em 3 etapas fáceis",
+      "subtitle": "Para obter uma bomba de calor, comece por obter alguns detalhes sobre a sua casa para que possa ter uma conversa informada sobre como as bombas de calor podem ajudá-lo.",
+      "step1": {
+        "title": "Obtenha detalhes sobre suas necessidades de aquecimento/resfriamento doméstico",
+        "itemE": "Estime suas economias <0>com esta calculadora no link</0>",
+        "itemA": "Metragem quadrada",
+        "itemB": "Quantos andares",
+        "itemC": "Sistema HVAC atual",
+        "itemD": "Contas/uso de serviços públicos atuais"
+      },
+      "step2": {
+        "title": "Fale com um treinador de bomba de calor",
+        "title2": "(Opcional, mas recomendado)",
+        "buttonText": "SOLICITE UM TREINADOR"
+      },
+      "step3": {
+        "title": "Obtenha detalhes sobre suas necessidades de aquecimento/resfriamento doméstico",
+        "buttonText": "RECURSOS"
+      }
     }
   }
 }

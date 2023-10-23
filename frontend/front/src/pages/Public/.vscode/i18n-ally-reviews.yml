@@ -349,3 +349,15 @@ reviews:
             suggestion: ''
             type: approve
             time: '2023-10-23T16:38:02.522Z'
+  public.get-heat-pump.step1.itemE:
+    locales:
+      pt-BR:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: jvkqez29ESzNkkuTHTQ4c
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-23T17:55:08.671Z'

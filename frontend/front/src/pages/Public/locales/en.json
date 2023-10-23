@@ -173,6 +173,28 @@
       "pcb": "<0>{{partnerName}}</0> is a green jobs program that provides young adults with training, career readiness support, and connections to employers in the green industry. PCB provided support to the BHPA surveying effort.",
       "moc": "The <0>{{partnerName}}</0> is a laboratory for cloud research and innovation. Since its creation in 2013, with support from the Mass Tech Collaborative, it has provided a production cloud that has enabled innovation by a broad community of industry and research partners, used by thousands of students and researchers, and supported tens of millions of dollars in associated research grants that have resulted in contributions to open source software and hundreds of publications.",
       "bhpa-core-partners": "BHPA CORE PARTNERS"
+    },
+    "get-heat-pump": {
+      "headingBg": "How To Get a Heat Pump?",
+      "heading2": "Calculate your savings in 3 easy steps",
+      "subtitle": "To get a heat pump, start by getting some details about your home so you can have an informed conversation about how heat pumps can help you.",
+      "step1": {
+        "title": "Get Details About Your Home Heating/Cooling Needs",
+        "itemA": "Square footage",
+        "itemB": "How many floors",
+        "itemC": "Current HVAC system",
+        "itemD": "Current utility bills/usage",
+        "itemE": "Estimate Your savings <0>with this link calculator</0>"
+      },
+      "step2": {
+        "title": "Talk with a Heat Pump Coach",
+        "title2": "(Optional but recommend)",
+        "buttonText": "REQUEST A COACH"
+      },
+      "step3": {
+        "title": "Get Details About Your Home Heating/Cooling Needs",
+        "buttonText": "RESOURCES"
+      }
     }
   }
 }
