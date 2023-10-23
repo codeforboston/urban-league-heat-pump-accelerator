@@ -1,21 +1,8 @@
 import React from "react";
 import { useTranslation, Trans } from "react-i18next";
-import {
-  Box,
-  Typography,
-  Divider,
-  Stack,
-  Link,
-  Container,
-} from "@mui/material";
+import { Box, Typography, Stack, Link, Container } from "@mui/material";
 import PartnerTile from "./PartnerTile";
 import ulem from "../../../../assets/images/partnersLogo/ULEM.png";
-import mcec from "../../../../assets/images/partnersLogo/MACleanEnergy.png";
-import cfb from "../../../../assets/images/partnersLogo/CFB.png";
-import cfa from "../../../../assets/images/partnersLogo/CFA.png";
-import heatsmart from "../../../../assets/images/partnersLogo/HeatSmart.png";
-import pcb from "../../../../assets/images/partnersLogo/powercorp-boston.jpeg";
-import moc from "../../../../assets/images/partnersLogo/moc.png";
 import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
 
 function AboutUs() {
