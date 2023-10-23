@@ -163,6 +163,19 @@
         "text2": "Kòmanse isit la!",
         "button": "JWENN YON PONP CHALÈ"
       }
+    },
+    "about-us": {
+      "mcec": "<0>{{partnerName}}</0> se yon ajans devlopman ekonomik eta kasi-piblik ki dedye a akselere kwasans sektè enèji pwòp atravè Commonwealth la, pou ankouraje kreyasyon djòb, bay avantaj anviwonmantal nan tout eta a, epi asire lontan. \n- tèm kwasans ekonomik pou moun nan Massachusetts. \nMassCEC te bay finansman prensipal pwojè BHPA atravè pwogram sibvansyon EmPower.",
+      "cfb": "<0>{{partnerName}}</0> se yon òganizasyon volontè teknoloji sivik ak chanjman sosyal. \nCfB konpoze de devlopè, konsèpteur, done geeks, aktivis sitwayen yo, ak anpil lòt moun ki sèvi ak teknoloji kreyatif pou rezoud pwoblèm sivik ak sosyal. \nAnplwaye ak volontè CfB te bay eleman debaz pwojè BHPA a.",
+      "cfa": "<0>{{partnerName}}</0> se yon 501(c)(3) san bi likratif ki te fonde an 2009 pou amelyore sèvis gouvènman an pou tout moun, kòmanse ak moun ki pi bezwen yo. \nCfA Brigade Network te bay sipò pèsonèl an kalite pou pwojè BHPA atravè pwogram Impact Sprints 2022 la.",
+      "heat-smart": "<0>{{partnerName}}</0> a se yon gwoup volontè ki ankouraje adopsyon chofaj, refwadisman ak teknoloji ki gen rapò ak emisyon ki ba nan kominote lokal yo. \nAnplwaye Alliance lan te bay ekspètiz teknik ak konsèy pou pwojè BHPA a.",
+      "pcb": "<0>{{partnerName}}</0> se yon pwogram travay vèt ki bay jèn adilt fòmasyon, sipò pou preparasyon pou karyè, ak koneksyon ak anplwayè nan endistri vèt la. \nPCB te bay sipò nan efò sondaj BHPA a.",
+      "moc": "<0>{{partnerName}}</0> se yon laboratwa pou rechèch ak inovasyon sou nwaj. \nDepi kreyasyon li an 2013, ak sipò Mass Tech Collaborative, li te bay yon nwaj pwodiksyon ki te pèmèt inovasyon pa yon gwo kominote endistri ak patnè rechèch, itilize pa plizyè milye etidyan ak chèchè, epi sipòte plizyè dizèn milyon dola nan \nsibvansyon rechèch ki asosye ki te lakòz kontribisyon nan lojisyèl sous louvri ak plizyè santèn piblikasyon.",
+      "bhpa-core-partners": "BHPA CORE PATÈNÈ",
+      "headingbg": "Konsènan Boston Heat Pump Accelerator",
+      "bhpa": "<1>Boston Heat Pump Accelerator (BHPA)</1> travay pou sipòte plis aksè pou pwopriyetè kay Boston yo nan ponp chalè ak resous ki gen rapò, ede diminye depans pou rezidan yo, ogmante rezistans kominote a, epi chanje rejyon an nan teknoloji ki ba kabòn. \n. \nInisyativ sa a pa pran okenn finansman nan men konpayi oswa enstalatè ponp chalè - li sipòte aksè jeneral nan ponp chalè sèlman, atravè efò edikasyon ak konsyantizasyon.",
+      "ulem1": "<1> <5>Urban League of Eastern Massachusetts (ULEM)</5> </1> se patwone efò BHPA a. \nDepi 1919, ULEM te bay mendèv ak sèvis devlopman ekonomik ak pwogram pou ogmante endepandans rezidan kominote Boston ak zòn metwopolitèn ki antoure yo. \nULEM se yon òganizasyon 501c3 san bi likratif ak youn nan pi ansyen afilye nan mouvman National Urban League la.",
+      "ulem2": "Se Christopher Scranton Manm Konsèy ULEM ki dirije pwojè BHPA a, an kowòdinasyon ak patnè prensipal yo, ki endike anba a."
     }
   }
 }

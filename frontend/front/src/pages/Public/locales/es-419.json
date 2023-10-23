@@ -163,6 +163,19 @@
         "text2": "¡Empiece aquí!",
         "button": "CONSIGUE UNA BOMBA DE CALOR"
       }
+    },
+    "about-us": {
+      "mcec": "El <0>{{partnerName}}</0> es una agencia estatal de desarrollo económico cuasi pública dedicada a acelerar el crecimiento del sector de energía limpia en todo el Commonwealth, estimular la creación de empleo, brindar beneficios ambientales en todo el estado y asegurar \ncrecimiento económico a corto plazo para el pueblo de Massachusetts. \nMassCEC proporcionó financiación primaria al proyecto BHPA a través del programa de subvenciones EmPower.",
+      "cfb": "<0>{{partnerName}}</0> es una organización voluntaria de tecnología cívica y cambio social. \nCfB está formado por desarrolladores, diseñadores, expertos en datos, activistas ciudadanos y muchos otros que utilizan tecnología creativa para resolver problemas cívicos y sociales. \nEl personal y los voluntarios de CfB proporcionaron elementos centrales del proyecto BHPA.",
+      "cfa": "<0>{{partnerName}}</0> es una organización sin fines de lucro 501(c)(3) fundada en 2009 para mejorar los servicios gubernamentales para todos, empezando por quienes más los necesitan. \nLa CfA Brigade Network brindó apoyo de personal en especie al proyecto BHPA a través del programa Impact Sprints 2022.",
+      "heat-smart": "El <0>{{partnerName}}</0> es un grupo de voluntarios que promueve la adopción de calefacción, refrigeración y tecnologías relacionadas con bajas emisiones en las comunidades locales. \nEl personal de la Alianza brindó experiencia técnica y orientación al proyecto BHPA.",
+      "pcb": "<0>{{partnerName}}</0> es un programa de empleos verdes que brinda a los adultos jóvenes capacitación, apoyo para su preparación profesional y conexiones con empleadores en la industria verde. \nPCB brindó apoyo al esfuerzo de encuesta de BHPA.",
+      "moc": "El <0>{{partnerName}}</0> es un laboratorio para la investigación e innovación en la nube. \nDesde su creación en 2013, con el apoyo de Mass Tech Collaborative, ha proporcionado una nube de producción que ha permitido la innovación por parte de una amplia comunidad de socios industriales y de investigación, utilizada por miles de estudiantes e investigadores, y respaldado decenas de millones de dólares en \nbecas de investigación asociadas que han resultado en contribuciones al software de código abierto y cientos de publicaciones.",
+      "bhpa-core-partners": "SOCIOS PRINCIPALES DE BHPA",
+      "headingbg": "Acerca del acelerador de bomba de calor Boston",
+      "bhpa": "El <1>Acelerador de Bombas de Calor de Boston (BHPA)</1> trabaja para respaldar un mayor acceso de los propietarios de viviendas de Boston a bombas de calor y recursos relacionados, ayudando a reducir los costos para los residentes, aumentar la resiliencia de la comunidad y hacer que la región adopte tecnologías bajas en carbono. \n. \nEsta iniciativa no requiere financiación de empresas ni instaladores de bombas de calor; solo apoya el acceso general a las bombas de calor, a través de esfuerzos de educación y concientización.",
+      "ulem1": "La <1> <5>Liga Urbana del Este de Massachusetts (ULEM)</5> </1> es el patrocinador del esfuerzo de BHPA. \nDesde 1919, ULEM ha brindado servicios y programas de desarrollo económico y laboral para aumentar la autosuficiencia de los residentes de la comunidad de Boston y las áreas metropolitanas circundantes. \nULEM es una organización sin fines de lucro 501c3 y una de las afiliadas más antiguas dentro del movimiento de la Liga Urbana Nacional.",
+      "ulem2": "El proyecto BHPA está dirigido por Christopher Scranton, miembro de la junta directiva de ULEM, en coordinación con los socios principales, que se enumeran a continuación."
     }
   }
 }
