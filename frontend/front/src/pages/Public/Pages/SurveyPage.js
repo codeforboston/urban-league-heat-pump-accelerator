@@ -3,7 +3,7 @@ import {
   RECAPTCHA_ACTION_PUBLIC_SURVEY,
   useGetReCAPTCHAToken,
 } from "../../../components/ReCaptcha";
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   useCreateHomeMutation,
   useCreateSurveyVisitMutation,
@@ -16,6 +16,12 @@ import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
 import { PublicSurvey } from "../Components/PublicSurvey";
 import { ThanksForSubmission } from "../Components/ThanksForSubmission";
 import { buildSurveyVisitData } from "../../../util/surveyUtils";
+import CanonicalizationLoader, {
+  CANONICALIZED,
+  UNCANONICALIZED,
+  UNRECOGNIZED,
+  VALIDATION_ERROR,
+} from "../Components/CanonicalizationLoader";
 
 const STEP_ADDRESS = "PHASE_ADDRESS";
 const STEP_SURVEY = "PHASE_SURVEY";
@@ -27,6 +33,8 @@ const STEP_THANKS = "PHASE_THANKS";
  * This page should handle all API calls so that component switching is easier to control
  */
 export const SurveyPage = () => {
+  const [validationStatus, setValidationStatus] = useState();
+
   const getReCaptchaToken = useGetReCAPTCHAToken(
     RECAPTCHA_ACTION_PUBLIC_SURVEY
   );
@@ -76,14 +84,30 @@ export const SurveyPage = () => {
     [addSurveyVisit, getReCaptchaToken]
   );
 
+  const isCanonicalized = validationStatus === CANONICALIZED;
+
   const step = useMemo(() => {
-    if (!createHomeData && !isSurveyVisitSuccess) {
+    if (!isCanonicalized && !isSurveyVisitSuccess) {
       return STEP_ADDRESS;
     } else if (isSurveyVisitSuccess) {
       return STEP_THANKS;
+    } else if (!!createHomeData && isCanonicalized) {
+      return STEP_SURVEY;
     }
-    return STEP_SURVEY;
-  }, [createHomeData, isSurveyVisitSuccess]);
+  }, [createHomeData, isSurveyVisitSuccess, isCanonicalized]);
+
+  const showValidationLoader = useMemo(() => {
+    if (!createHomeData?.id) return false;
+    if (step !== STEP_ADDRESS) return false;
+    if (validationStatus === UNCANONICALIZED || validationStatus === undefined)
+      return true;
+    return false; // For completed validations (unrecognized or canonicalized).
+  }, [createHomeData, validationStatus, step]);
+
+  // Reset validation status on resubmission.
+  useEffect(() => {
+    if (isCreateHomeLoading) setValidationStatus(undefined);
+  }, [isCreateHomeLoading]);
 
   const pageContent = useCallback(
     () => (
@@ -119,14 +143,34 @@ export const SurveyPage = () => {
         <HeatPumpSlide show={step === STEP_THANKS}>
           <ThanksForSubmission />
         </HeatPumpSlide>
-        {/* TODO: this should probably be a more specific error */}
+
+        <HeatPumpFade show={showValidationLoader}>
+          <CanonicalizationLoader
+            homeId={createHomeData?.id}
+            onResolved={setValidationStatus}
+          />
+        </HeatPumpFade>
+
         <Snackbar open={!!createHomeError}>
-          <Alert severity="info">
-            {"Sorry, that address is not in our service area!"}
+          <Alert severity="error">
+            There was an error submitting your address. Please try again later.
           </Alert>
         </Snackbar>
         <Snackbar open={!!surveyVisitError}>
           <Alert severity="error">{"Error submitting survey."}</Alert>
+        </Snackbar>
+        <Snackbar open={validationStatus === UNRECOGNIZED}>
+          <Alert severity="error">
+            This address could not be validated. Make sure your information is
+            correct then try again.
+          </Alert>
+        </Snackbar>
+        <Snackbar open={validationStatus === VALIDATION_ERROR}>
+          <Alert severity="error">
+            There was an error validating your address, or it has already been
+            used to submit a survey. Please submit again or try a different
+            address.
+          </Alert>
         </Snackbar>
       </>
     ),
@@ -139,6 +183,8 @@ export const SurveyPage = () => {
       isSurveyVisitLoading,
       step,
       surveyVisitError,
+      showValidationLoader,
+      validationStatus,
     ]
   );
 
