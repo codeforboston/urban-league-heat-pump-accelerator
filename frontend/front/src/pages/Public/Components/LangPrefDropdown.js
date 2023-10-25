@@ -25,29 +25,37 @@ const LangPrefDropdown = () => {
 
   useEffect(() => {
     // Get query params from current URL
-    let queryLang = new URLSearchParams(window.location.search).get("langPref");
+    const params = new URLSearchParams(location.search);
+    let queryLang = params.get("langPref");
 
     // Check if current route is a 'public' route
-    const isPublicRoute = window.location.pathname.includes("public");
+    const isPublicRoute = location.pathname.includes("public");
 
     if (isPublicRoute) {
       // Get language preference from localStorage or default to 'en-us'
       queryLang = localStorage.getItem("langPref") || "en-us";
+
       if (!localStorage.getItem("langPref")) {
         localStorage.setItem("langPref", "en-us");
       }
 
-      const url = new URL(window.location.href);
-
       // Update or remove 'langPref' query param based on language
       if (queryLang !== "en-us") {
-        url.searchParams.set("langPref", queryLang);
+        params.set("langPref", queryLang);
       } else {
-        url.searchParams.delete("langPref");
+        params.delete("langPref");
       }
 
       // Update the browser history
-      window.history.replaceState({ path: url.toString() }, "", url.toString());
+      if (params.toString()) {
+        window.history.replaceState(
+          {},
+          "",
+          `${location.pathname}?${params.toString()}`
+        );
+      } else {
+        window.history.replaceState({}, "", `${location.pathname}`);
+      }
     }
 
     // Update language state if queryLang is different
