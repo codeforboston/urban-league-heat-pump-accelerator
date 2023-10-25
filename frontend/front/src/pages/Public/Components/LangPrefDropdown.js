@@ -13,7 +13,6 @@ const LangPrefDropdown = () => {
 
   const [anchorMore, setAnchorMore] = useState(null);
   const [langDisplay, setLangDisplay] = useState("English");
-  const [currentLanguage, setCurrentLanguage] = useState(language);
 
   const location = useLocation();
 
@@ -26,14 +25,18 @@ const LangPrefDropdown = () => {
 
   useEffect(() => {
     // Get query params from current URL
-    const params = new URLSearchParams(window.location.search);
-    let queryLang = params.get("langPref");
+    let queryLang = new URLSearchParams(window.location.search).get("langPref");
+
     // Check if current route is a 'public' route
     const isPublicRoute = window.location.pathname.includes("public");
 
     if (isPublicRoute) {
       // Get language preference from localStorage or default to 'en-us'
       queryLang = localStorage.getItem("langPref") || "en-us";
+      if (!localStorage.getItem("langPref")) {
+        localStorage.setItem("langPref", "en-us");
+      }
+
       const url = new URL(window.location.href);
 
       // Update or remove 'langPref' query param based on language
@@ -48,12 +51,11 @@ const LangPrefDropdown = () => {
     }
 
     // Update language state if queryLang is different
-    if (queryLang && queryLang !== currentLanguage) {
-      setCurrentLanguage(queryLang);
+    if (queryLang && queryLang !== language) {
       changeLanguage(queryLang);
       localStorage.setItem("langPref", queryLang);
     }
-  }, [location, currentLanguage, changeLanguage]);
+  }, [location, language, changeLanguage]);
 
   // Determine if the language menu should be open
   const open = Boolean(anchorMore);
@@ -67,8 +69,7 @@ const LangPrefDropdown = () => {
   const handleCloseMore = () => setAnchorMore(null);
 
   // Change language and update localStorage and URL
-  const handleChangeLanguage = (lang, display) => {
-    setCurrentLanguage(lang);
+  const handleChangeLanguage = (lang) => {
     changeLanguage(lang);
     localStorage.setItem("langPref", lang);
 
