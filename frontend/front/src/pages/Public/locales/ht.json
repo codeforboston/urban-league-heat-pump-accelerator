@@ -198,6 +198,43 @@
         "title": "Jwenn detay sou bezwen chofaj/refwadisman lakay ou",
         "buttonText": "RESOUS"
       }
+    },
+    "privacy": {
+      "textDate": "Dènye mizajou: 19 avril 2023",
+      "text2": "<0>Règleman sou enfòmasyon prive</0> nou an te mete ajou.",
+      "text3": "**Règleman sou enfòmasyon prive Boston Heat Pump Accelerator (BHPA) sa a pral ede w pi byen konprann kijan nou kolekte, pataje, epi itilize enfòmasyon pèsonèl ou yo.**",
+      "headingBg": "Règleman sou enfòmasyon prive",
+      "title1": "Table of Contents",
+      "items": {
+        "item1": {
+          "title": "Ki done BHPA itilize?",
+          "text": "Done yo te itilize pou pwojè BHPA a se te done piblik ki louvri nan baz done Evalyatè Pwopriyete Vil Boston an. \nDone sa yo pa privilejye oswa prive. \nLi ouvri pou piblik la."
+        },
+        "item2": {
+          "title": "Kisa BHPA te fè ak done yo?",
+          "text": "BHPA te itilize done Boston Assessor pou idantifye kay pwopriyetè kay yo te okipe nan katye Dorchester, Roxbury, ak Mattapan. \nSa te pèmèt òganizatè pwojè yo devlope yon lis rezidan katye yo ki kapab patisipe nan yon sondaj ki fèt pou pwopriyetè kay yo. \nEsansyèlman, li ede BHPA evite voye sondaj yo nan yon adrès kote sèlman rezidan/okipan yo pa ta kapab patisipe nan sondaj la. \nBHPA planifye pou sèvi ak done anonim yo kolekte nan sondaj yo ak kòd sous louvri pou ankouraje aksè piblik a enfòmasyon jenerik ki èspere ke pral pèmèt itilizatè zòn Boston yo pran desizyon pi byen enfòme sou ponp chalè nan pwòp anviwònman pèsonèl yo."
+        },
+        "item3": {
+          "title": "Poukisa sondaj BHPA a se sèlman pou pwopriyetè kay epi li pa pou lokatè?",
+          "text": "Lokatè nan Boston se rezidan ak vwa enpòtan nan kominote a. \nLokatè k ap viv nan kay ki gen plizyè apatman ak/oswa bilding apatman yo deja elijib pou patisipe nan lòt pwogram ak inisyativ, tankou BlocPower. \nSepareman, pwopriyetè kay ki okipe kay pwopriyetè yo (anjeneral gen kontwòl legal sou bilding yo epi yo ka pran desizyon sou chanje sistèm chofaj ak refwadisman nan fason ke lokatè yo (anjeneral) pa kapab. Tou de pwopriyetè kay ak lokatè yo gen vwa enpòtan ak pati yo jwe nan efò alantou yo. \nchanje nan chofaj ak refwadisman ki pi pwòp, ki pi ba pri.Li fè sans pou angaje ak gwoup sa yo ak yon apwòch endividyèl ak pèsonalize- pwojè BHPA konsantre sou pwopriyetè kay."
+        },
+        "item4": {
+          "title": "Poukisa Vil Boston gen done sou kay ak pwopriyetè kay nan vil Boston?",
+          "text": "Vil Boston se pi bon resous pou kesyon sa a. \nBHPA ka ofri pwòp pa nou: Pandan acha yon pwopriyete, enfòmasyon debaz ki enplike nan tranzaksyon an vin yon pati nan dosye pwopriyete a. \nEnfòmasyon sa a se piblik-li disponib pou nenpòt moun ki chèche li. \nPrèske chak vil, vil, ak/oswa konte Ozetazini kolekte fondamantalman menm enfòmasyon yo epi tou fè yo disponib pou piblik la."
+        },
+        "item5": {
+          "title": "Ki done egzakteman Vil Boston genyen sou mwen ak pwopriyete mwen an?",
+          "text": "Baz done Evalyatè Pwopriyete Vil Boston an fasil pou itilize. \nPou aprann plis sou done vil la genyen, santi yo lib pou chèche adrès ki an kesyon nan baz done yo isit la [<a href='https://www.cityofboston.gov/assessing/search/' target='_blank' \nrel='noopener noreferrer'>LINK</a>]"
+        },
+        "item6": {
+          "title": "Ki done sou mwen ak pwopriyete mwen yo te itilize nan pwojè sa a? \n[epi li fè mal/redwi/anvayi vi prive mwen...]",
+          "text": "Boston Heat Pump Accelerator itilize done ki disponib piblikman nan biwo Evalyatè Vil Boston pou kontakte pwopriyetè kay ki nan katye Boston yo pou sondaj rezidan yo sou konesans yo genyen sou ponp chalè. \nPiske Massachusetts gen kèk rabè pou rezidan yo ki baze sou yo se yon rezidan ak yon pwopriyetè kay, nou ap kontakte moun ki kalifye pou rabè sa yo, epi nou itilize done piblik pou fè sa. \nNou itilize tou kòd sous louvri pou ede kreye zouti pou fè lis moun yo kontakte. \nBoston Heat Pump Accelerator travay ak volontè nan kominote Code for Boston pou kreye kòd òdinatè sous louvri nan teknoloji nou an. \nKòd la se <a href='https://github.com/codeforboston/urban-league-heat-pump-accelerator'>piblik sou GitHub</a> nan ka ou ta renmen enspekte li."
+        },
+        "item7": {
+          "title": "Kisa k ap pase ak opinyon moun yo bay sondaj la (swa an pèsòn oswa sou entènèt)?",
+          "text": "Lè w pran sondaj BHPA sou ponp chalè, li anonimize epi yo kolekte l an jeneral. \nNou rapòte done nou kolekte nan sondaj nou an bay patnè yo ki nan lis nan paj Patnè nou an pou ede yo amelyore pwogram yo, pou nou ka ede plis moun jwenn rabè pou ponp chalè yo kalifye pou yo. \nNou pa vann done ou yo bay twazyèm pati. \nSi w gen kesyon sou fason yo itilize done w yo, tanpri kontakte <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
+        }
+      }
     }
   }
 }

@@ -198,6 +198,43 @@
         "title": "Obtenha detalhes sobre suas necessidades de aquecimento/resfriamento doméstico",
         "buttonText": "RECURSOS"
       }
+    },
+    "privacy": {
+      "textDate": "Última atualização: 19 de abril de 2023",
+      "text2": "Nossa <0>Política de Privacidade</0> foi atualizada.",
+      "text3": "**Esta política de privacidade do Boston Heat Pump Accelerator (BHPA) ajudará você a entender melhor como coletamos, compartilhamos e usamos suas informações pessoais.**",
+      "headingBg": "política de Privacidade",
+      "title1": "Índice",
+      "items": {
+        "item1": {
+          "title": "Quais dados o BHPA usa?",
+          "text": "Os dados usados ​​para o projeto BHPA foram dados abertos e públicos do banco de dados on-line do Property Assessor da cidade de Boston. \nEsses dados não são privilegiados ou privados. \nÉ aberto ao público."
+        },
+        "item2": {
+          "title": "O que a BHPA fez com os dados?",
+          "text": "A BHPA usou os dados do Assessor de Boston para identificar casas ocupadas por proprietários nos bairros de Dorchester, Roxbury e Mattapan. \nIsto permitiu aos organizadores do projecto desenvolver uma lista de residentes do bairro que poderiam potencialmente participar num inquérito destinado aos proprietários de casas. \nEssencialmente, ajuda a BHPA a evitar o envio de pesquisadores para um endereço onde os únicos residentes/ocupantes não poderiam participar da pesquisa. \nA BHPA planeja usar os dados anonimizados coletados em pesquisas e o código-fonte aberto para promover o acesso público a informações genéricas que, esperançosamente, permitirão que os usuários da área de Boston tomem decisões mais informadas sobre bombas de calor em seus próprios ambientes pessoais."
+        },
+        "item3": {
+          "title": "Por que a pesquisa da BHPA é apenas para proprietários e não para locatários?",
+          "text": "Os locatários em Boston são residentes e vozes importantes na comunidade. \nOs locatários que moram em residências com várias unidades e/ou prédios de apartamentos já são elegíveis para participar de outros programas e iniciativas, como o BlocPower. \nSeparadamente, os proprietários de casas ocupadas pelos proprietários (geralmente têm controle legal de seu edifício e podem tomar decisões sobre a troca de sistemas de aquecimento e resfriamento de uma forma que os locatários (geralmente) não podem. Tanto os proprietários quanto os locatários têm vozes e papéis importantes a desempenhar nos esforços em torno \nmudança para aquecimento e resfriamento mais limpos e de baixo custo. Faz sentido interagir com esses grupos com uma abordagem individualizada e personalizada - o projeto BHPA concentra-se nos proprietários de residências."
+        },
+        "item4": {
+          "title": "Por que a cidade de Boston possui dados sobre as casas e os proprietários de casas na cidade de Boston?",
+          "text": "A cidade de Boston é o melhor recurso para esta questão. \nA BHPA pode oferecer nossa própria opinião: Durante a compra de um imóvel, as informações básicas envolvidas na transação passam a fazer parte do registro do imóvel. \nEsta informação é pública – está disponível para qualquer pessoa que a procure. \nQuase todas as cidades, vilas e/ou condados dos Estados Unidos coletam basicamente as mesmas informações e também as disponibilizam ao público."
+        },
+        "item5": {
+          "title": "Quais dados exatamente a cidade de Boston possui sobre mim e minha propriedade?",
+          "text": "O banco de dados do Assessor de Propriedade da Cidade de Boston é fácil de usar. \nPara saber mais sobre os dados que a cidade possui, fique à vontade para procurar o endereço em questão em seu banco de dados aqui [<a href='https://www.cityofboston.gov/assessing/search/' target='_blank' \nrel='noopener noreferrer'>LINK</a>]"
+        },
+        "item6": {
+          "title": "Quais dados sobre mim e minha propriedade foram usados ​​neste projeto? \n[e prejudicou/reduziu/invadiu minha privacidade...]",
+          "text": "O Boston Heat Pump Accelerator usa dados disponíveis publicamente do escritório do assessor da cidade de Boston para chegar aos proprietários de casas nos bairros de Boston e pesquisar os residentes sobre seu conhecimento sobre bombas de calor. \nComo Massachusetts oferece alguns descontos para residentes com base na condição de residente e proprietário de casa, estamos entrando em contato com pessoas que têm direito a esses descontos e usamos dados públicos para fazer isso. \nTambém usamos código-fonte aberto para ajudar a criar ferramentas para fazer listas de pessoas para contato. \nO Boston Heat Pump Accelerator trabalha com voluntários da comunidade Code for Boston para criar código de computador de código aberto em nossa tecnologia. \nO código é <a href='https://github.com/codeforboston/urban-league-heat-pump-accelerator'>público no GitHub</a> caso você queira inspecioná-lo."
+        },
+        "item7": {
+          "title": "O que acontece com as informações que as pessoas fornecem para a pesquisa (presencialmente ou on-line)?",
+          "text": "Quando você responde à pesquisa da BHPA sobre bombas de calor, ela é anonimizada e coletada de forma agregada. \nReportamos os dados que recolhemos no nosso inquérito aos parceiros listados na nossa página de Parceiros para os ajudar a melhorar os seus programas, para que possamos ajudar mais pessoas a obter descontos em bombas de calor para as quais são elegíveis. \nNão vendemos seus dados a terceiros. \nSe você tiver dúvidas sobre como seus dados são usados, entre em contato com <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
+        }
+      }
     }
   }
 }

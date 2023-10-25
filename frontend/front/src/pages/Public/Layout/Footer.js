@@ -37,6 +37,10 @@ const getFooterItems = () => ({
     link: "get-involved",
     value: "public.global-labels.get-involved",
   },
+  survey: {
+    link: "survey",
+    value: "public.global-labels.survey",
+  },
   testimonials: {
     link: "testimonial-section",
     value: "public.global-labels.learn-more.items.testimonials",
