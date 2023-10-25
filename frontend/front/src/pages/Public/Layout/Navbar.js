@@ -124,9 +124,9 @@ function Navbar(props) {
         TransitionComponent={Fade}
       >
         <Box>
-          {Object.keys(navbarItems.LearnMore.items).map((subItem, index) => (
+          {Object.keys(navbarItems.LearnMore.items).map((subItem) => (
             <MenuItem
-              key={index}
+              key={subItem}
               variant="navLinks"
               onClick={() => {
                 handleNavigation(navbarItems.LearnMore.items[subItem].link);
