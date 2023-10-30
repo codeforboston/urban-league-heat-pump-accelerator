@@ -65,9 +65,9 @@ on:
       context:
         type: string
         required: true
-    secrets:
       build-args:
         type: string
+        required: false
 
 jobs:
   # 🖊️ EDIT if you want to run vulnerability check on your project before deploying
@@ -153,7 +153,7 @@ jobs:
         with:
           image: ${{ env.APP_NAME }}
           tags: ${{ env.IMAGE_TAGS }}
-          build-args: ${{ secrets.build-args }}
+          build-args: ${{ inputs.build-args }}
 
           # If you don't have a Dockerfile/Containerfile, refer to https://github.com/redhat-actions/buildah-build#scratch-build-inputs
           # Or, perform a source-to-image build using https://github.com/redhat-actions/s2i-build
