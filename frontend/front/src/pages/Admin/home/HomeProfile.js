@@ -10,8 +10,8 @@ import {
 } from "../../../api/apiSlice";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import ConfirmationModal from "../../../components/confirmationModal/ConfirmationModal.js";
-import { AdminBackButton } from "../../Surveyor/Components/AdminBackButton";
 import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
+import { AdminBackButton } from "../../Surveyor/Components/AdminBackButton";
 
 const HomeProfile = () => {
   const { hid } = useParams();
@@ -23,20 +23,15 @@ const HomeProfile = () => {
     isLoading: isHomeDataLoading,
     isError: isHomeDataError,
   } = useGetHomeQuery(hid);
-  const [
-    updateHome,
-    { isLoading: updateHomeInProg, isError: updateHomeError },
-  ] = useUpdateHomeMutation();
-  const [
-    deleteHome,
-    { isLoading: deleteHomeInProg, isError: deleteHomeError },
-  ] = useDeleteHomeMutation();
+  const [updateHome, { isLoading: updateHomeInProg }] = useUpdateHomeMutation();
+  const [deleteHome, { isLoading: deleteHomeInProg }] = useDeleteHomeMutation();
 
   //states
   const [editMode, setEditMode] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [postError, setPostError] = useState(false);
+  const [errorStatus, setErrorStatus] = useState(false);
   const [erroMessage, setErrorMessage] = useState("");
+  const [updateRoomSucess, setUpdateRoomSucess] = useState(false);
 
   //form
   const {
@@ -66,13 +61,15 @@ const HomeProfile = () => {
   };
   const deleteHandler = () => {
     setModalIsOpen(false);
-    deleteHome(homeData);
-    if (deleteHomeError) {
-      setPostError(true);
-      setErrorMessage("Error deleting home!");
-      return;
-    }
-    navigate("/admin/home");
+    deleteHome(homeData)
+      .unwrap()
+      .then(() => {
+        navigate("/admin/home");
+      })
+      .catch(() => {
+        setErrorStatus(true);
+        setErrorMessage("Error deleting home!");
+      });
   };
 
   const onSubmit = (data) => {
@@ -85,13 +82,16 @@ const HomeProfile = () => {
       zip_code: data.zip_code,
       building_type: data.building_type,
     };
-    updateHome(updatedHomeData);
-    if (updateHomeError) {
-      setPostError(true);
-      setErrorMessage("Error saving home!");
-    }
-    setPostError(false);
-    setEditMode(false);
+    updateHome(updatedHomeData)
+      .unwrap()
+      .then(() => {
+        setUpdateRoomSucess(true);
+        setEditMode(false);
+      })
+      .catch(() => {
+        setErrorStatus(true);
+        setErrorMessage("Error saving home!");
+      });
   };
 
   //side effect
@@ -263,8 +263,18 @@ const HomeProfile = () => {
                   />
                 )}
               />
+              {errorStatus && (
+                <Alert severity="error" sx={{ my: 2 }}>
+                  {erroMessage}
+                </Alert>
+              )}
+              {updateRoomSucess && (
+                <Alert severity="success" sx={{ my: 2 }}>
+                  Home saved sucessfuly!
+                </Alert>
+              )}
               {/* BUTTONS */}
-              <Box pt={5} textAlign="right">
+              <Box pt={1} textAlign="right">
                 <Button variant="outlined" sx={{ ml: 2 }}>
                   <Link style={{ textDecoration: "none", color: "inherit" }}>
                     View Survey
@@ -274,11 +284,6 @@ const HomeProfile = () => {
                 {saveButton}
                 {deleteButton}
               </Box>
-              {postError ?? (
-                <Alert severity="error" sx={{ my: 2 }}>
-                  {erroMessage}
-                </Alert>
-              )}
             </form>
           </Box>
         </>
