@@ -31,6 +31,8 @@ const STEP_THANKS = "PHASE_THANKS";
  * This page should handle all API calls so that component switching is easier to control
  */
 export const SurveyPage = () => {
+  const [validationStatus, setValidationStatus] = useState();
+
   const { t } = useTranslation();
 
   const getReCaptchaToken = useGetReCAPTCHAToken(
