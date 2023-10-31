@@ -71,10 +71,10 @@
       },
       "get-involved": "Envolver-se",
       "locales": {
-        "english": "Inglês (Estados Unidos)",
+        "english": "English (United States)",
         "portuguese": "Português (Brasil)",
-        "spanish": "Espanhol (América Latina)",
-        "creole": "Crioulo (Haiti)"
+        "spanish": "Español (Latinoamérica)",
+        "creole": "Kreyòl (Ayiti)"
       },
       "button-get-heat-pump": "OBTENHA UMA BOMBA DE CALOR",
       "all-rights-reserved": "Todos os direitos reservados.",
@@ -174,7 +174,7 @@
       "bhpa-core-partners": "PARCEIROS PRINCIPAIS DA BHPA",
       "headingbg": "Sobre o acelerador da bomba de calor de Boston",
       "bhpa": "O <1>Boston Heat Pump Accelerator (BHPA)</1> trabalha para apoiar o aumento do acesso dos proprietários de residências de Boston às bombas de calor e recursos relacionados, ajudando a reduzir custos para os residentes, aumentar a resiliência da comunidade e mudar a região para tecnologias de baixo carbono \n. \nEsta iniciativa não recebe financiamento de empresas ou instaladores de bombas de calor - apoia apenas o acesso geral a bombas de calor, através de esforços de educação e sensibilização.",
-      "ulem1": "A <1> <5>Liga Urbana do Leste de Massachusetts (ULEM)</5> </1> é a patrocinadora do esforço da BHPA. \nDesde 1919, a ULEM fornece serviços e programas de força de trabalho e de desenvolvimento econômico para aumentar a autossuficiência dos residentes da comunidade de Boston e das áreas metropolitanas vizinhas. \nA ULEM é uma organização sem fins lucrativos 501c3 e uma das afiliadas mais antigas do movimento da Liga Urbana Nacional.",
+      "ulem1": "A <1> <5>Urban League of Eastern Massachusetts (ULEM)</5> </1> é a patrocinadora do esforço da BHPA. \nDesde 1919, a ULEM fornece serviços e programas de força de trabalho e de desenvolvimento econômico para aumentar a autossuficiência dos residentes da comunidade de Boston e das áreas metropolitanas vizinhas. \nA ULEM é uma organização sem fins lucrativos 501c3 e uma das afiliadas mais antigas do movimento da Liga Urbana Nacional.",
       "ulem2": "O projeto BHPA é dirigido pelo membro do Conselho da ULEM, Christopher Scranton, em coordenação com os principais parceiros, listados abaixo."
     },
     "get-heat-pump": {

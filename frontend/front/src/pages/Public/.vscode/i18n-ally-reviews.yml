@@ -198,6 +198,33 @@ reviews:
             suggestion: ''
             type: approve
             time: '2023-10-16T19:26:38.810Z'
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: J9VM-jjl969BKhYnjvU_v
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:01:54.568Z'
+      ht:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: gBVO-OQsq4J3q2ERorYMu
+            comment: ''
+            suggestion: English (United States)
+            type: request_change
+            time: '2023-10-31T17:02:05.970Z'
+            resolved: true
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: IHZS-GSIy1-Bni8F3jWlX
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:02:11.912Z'
   public.footer.privacy-and-data-policy:
     locales:
       pt-BR:
@@ -361,3 +388,131 @@ reviews:
             suggestion: ''
             type: approve
             time: '2023-10-23T17:55:08.671Z'
+  public.global-labels.locales.creole:
+    locales:
+      ht:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: DqUgzKoEM0L2z4sC67wWu
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:03:13.609Z'
+      es-419:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: v_u9R8SLZ3AFobY6OFyS2
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:03:16.634Z'
+      en:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: 4FyS4E4U7mx1fBH4lEwoH
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:03:19.635Z'
+      pt-BR:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: QZ64Px1GC19rJDIu1Ul97
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:03:23.866Z'
+  public.global-labels.locales.portuguese:
+    locales:
+      ht:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: 4JWrTYBD5hleSMLY0WDS8
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:03:52.041Z'
+      es-419:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: nSBOdGdzDdmFcudJrOplU
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:03:54.277Z'
+      en:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: wSGCe7E8zMc_4dYtEKUFc
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:03:56.384Z'
+  public.global-labels.locales.spanish:
+    locales:
+      en:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: zO1mlEJUFqNKYHg-kGLXL
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:04:08.638Z'
+      ht:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: F1uh41werJGtfn0KNkcx1
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:04:19.972Z'
+      pt-BR:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: KeKV0sXSkklKCZRr8b5nL
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:04:24.634Z'
+  public.about-us.ulem1:
+    locales:
+      pt-BR:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: '-plXMd26ENmReZzJrarY1'
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:07:15.898Z'
+      es-419:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: 6TOkwy7N3Ir0vGL8FspUN
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:07:21.532Z'
