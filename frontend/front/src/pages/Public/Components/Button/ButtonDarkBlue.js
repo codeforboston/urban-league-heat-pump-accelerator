@@ -1,17 +1,23 @@
-import { useEffect } from "react";
-import { Button, Link as MuiLink } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useEffect, forwardRef } from "react";
+import { Button } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 
 const ButtonDarkBklue = ({ text, to, children, externalLink }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const LinkBehavior = forwardRef((props, ref) => (
+    <RouterLink ref={ref} to={to} {...props} />
+  ));
+
   if (externalLink) {
     return (
-      <MuiLink href={to} target="_blank" rel="noopener noreferrer">
+      <>
         <Button
-          onClick={() => window.scrollTo(0, 0)}
+          component={LinkBehavior}
+          target={externalLink ? "_blank" : "_self"}
+          onClick={externalLink ? undefined : () => window.scrollTo(0, 0)}
           sx={{
             px: 2,
             width: "auto",
@@ -28,14 +34,14 @@ const ButtonDarkBklue = ({ text, to, children, externalLink }) => {
         >
           {text ? text : children}
         </Button>
-      </MuiLink>
+      </>
     );
   }
 
   return (
     <>
       <Button
-        component={Link}
+        component={RouterLink}
         to={to}
         onClick={() => window.scrollTo(0, 0)}
         sx={{
