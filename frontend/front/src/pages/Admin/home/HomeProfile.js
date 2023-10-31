@@ -1,7 +1,7 @@
 import { Alert, Box, Button, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../../../src/components/Loader.js";
 import {
   useDeleteHomeMutation,
@@ -275,11 +275,13 @@ const HomeProfile = () => {
               )}
               {/* BUTTONS */}
               <Box pt={1} textAlign="right">
+                {/*
                 <Button variant="outlined" sx={{ ml: 2 }}>
                   <Link style={{ textDecoration: "none", color: "inherit" }}>
                     View Survey
                   </Link>
                 </Button>
+                */}
                 {editButton}
                 {saveButton}
                 {deleteButton}
