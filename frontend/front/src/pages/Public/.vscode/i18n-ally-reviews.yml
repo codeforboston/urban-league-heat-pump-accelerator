@@ -516,3 +516,206 @@ reviews:
             suggestion: ''
             type: approve
             time: '2023-10-31T17:07:21.532Z'
+  public.global-labels.click-here:
+    locales:
+      pt-BR:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: e8XNx_dh1zN8fSqBCmcMy
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:32:02.693Z'
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: 6ha19zlA9Axfj_wLUdfdi
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:32:34.302Z'
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: _IeXz_uO8DNRRZeul_0qA
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:32:43.275Z'
+  public.benefits-heat-pump.cardBenefits.item1.body2:
+    locales:
+      pt-BR:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: FtWrdVV4bUhQDdve6JdT_
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:33:06.284Z'
+      ht:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: Ue8N3y_mq2r5GjzTjssRR
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:33:40.040Z'
+      es-419:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: GSKjsJxXVBfKjkUMyCRSg
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:33:57.246Z'
+  public.benefits-heat-pump.cardBenefits.item2.body1:
+    locales:
+      en:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: dCnGLaNaspA0GawI0hNrk
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:34:55.252Z'
+            resolved: true
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: 4wWULaSJwHp1W1jviTs6K
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:35:53.604Z'
+      es-419:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: Gpp0a0dQPPW2qqkP59Ghb
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:35:38.029Z'
+      ht:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: tGnev-5CyL813ezyDcP9F
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:35:43.132Z'
+      pt-BR:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: 30wFWQ98zoGnlBspo-gex
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:35:48.053Z'
+  public.benefits-heat-pump.cardBenefits.item3.body1:
+    locales:
+      en:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: NPB21hp50uW3-xRj6yyCF
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:36:35.469Z'
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: jHrrH6l_J646x_zsFO7Nz
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:37:25.428Z'
+      es-419:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: wnF5oXjrL9667T60xQHbn
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:37:00.549Z'
+      ht:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: heUlczEfJXnqPcZqfFuvO
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:37:09.628Z'
+      pt-BR:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: DfPJRm3OVSvz5VRDkFMvK
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:37:18.114Z'
+  public.benefits-heat-pump.cardBenefits.item4.body1:
+    locales:
+      en:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: Mz4V_WPqXtegL6AG_NQE3
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:38:10.269Z'
+      es-419:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: 9asWLU5nusJ3Z0iWnfrSF
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:38:16.819Z'
+      ht:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: qJgiykgePKBA2zPseebrc
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:38:22.893Z'
+      pt-BR:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: rSFhuC5zkSE9DJDvr2b3E
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:38:29.829Z'
