@@ -41,13 +41,13 @@ function CardsSection({
           alt={title}
           src={mediaSource}
           sx={{
-            objectFit: "cover",
-            display: "block",
-            margin: "auto",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             width: "100%",
-            minWidth: "500px",
-            maxWidth: { xs: "353px", lg: "500px" },
-            height: { xs: "281px", md: "281px", lg: "281px" }, // 16:9 ratio
+            minWidth: { xs: "353px", smm: "425px", sm: "500px" },
+            maxWidth: { xs: "353px", smm: "425px", sm: "500px" },
+            height: { xs: "198px", smm: "239px", sm: "281px" }, // 16:9 ratio
           }}
         />
       );
@@ -59,11 +59,9 @@ function CardsSection({
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            minWidth: "500px",
-            maxWidth: { xs: "353px", lg: "500px" },
-            height: { xs: "281px", md: "281px", lg: "281px" }, // 16:9 ratio
-            overflow: "hidden",
-            margin: "auto",
+            minWidth: { xs: "353px", smm: "425px", sm: "500px" },
+            maxWidth: { xs: "353px", smm: "425px", sm: "500px" },
+            height: { xs: "198px", smm: "239px", sm: "281px" }, // 16:9 ratio
           }}
         >
           <Box
