@@ -387,19 +387,6 @@ function Navbar(props) {
                 </Stack>
               </Box>
             </Grid>
-
-            {/* Removed this button from the navbar */}
-            {/* <Box
-              sx={{
-                position: "fixed",
-                zIndex: 999999,
-                top: "75%",
-                backgroundColor: "black",
-              }}
-            >
-              <LangPrefDropdown />
-            </Box> */}
-
             <Box
               sx={{
                 display: { xs: "none", lg: "flex" },

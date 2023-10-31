@@ -719,3 +719,15 @@ reviews:
             suggestion: ''
             type: approve
             time: '2023-10-31T17:38:29.829Z'
+  public.home.hero.text1:
+    locales:
+      ht:
+        comments:
+          - user:
+              name: thiagobadini
+              email: thiagobardini@hotmail.com
+            id: vgcoDiJDYCMHP5h7t7u9d
+            comment: ''
+            suggestion: ''
+            type: approve
+            time: '2023-10-31T17:51:01.770Z'
