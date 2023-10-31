@@ -75,8 +75,8 @@ const BenefitsHeatPumps = () => {
       <Container sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
         <Stack direction="column">
           <Box>
-            {cardBenefits.map((card, index) => (
-              <Box mb={{ xs: 3, sm: 6 }} key={index}>
+            {cardBenefits.map((card) => (
+              <Box mb={{ xs: 3, sm: 6 }} key={card.link}>
                 <Stack
                   direction={{ xs: "column", sm: "row" }}
                   alignItems={{ xs: "center", sm: "flex-start" }}
