@@ -11,6 +11,7 @@ import {
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import ConfirmationModal from "../../../components/confirmationModal/ConfirmationModal.js";
 import { AdminBackButton } from "../../Surveyor/Components/AdminBackButton";
+import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 
 const HomeProfile = () => {
   const { hid } = useParams();
@@ -154,7 +155,7 @@ const HomeProfile = () => {
       alignItems="center"
       flexDirection="column"
     >
-      <AdminBackButton url="/admin/home" description="homes" />
+      <AdminBackButton url={withAdminPrefix(ADMIN_HOME)} description="homes" />
       {isHomeDataLoading ? (
         <Loader />
       ) : isHomeDataError ? (

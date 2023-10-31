@@ -6,8 +6,8 @@ import heatSmartLogo from "../../../../assets/images/partnersLogo/HeatSmart.png"
 import codeForAmericaLogo from "../../../../assets/images/partnersLogo/CFA.png";
 import codeForBostonLogo from "../../../../assets/images/partnersLogo/CFB.png";
 import pcb from "../../../../assets/images/partnersLogo/powercorp-boston.jpeg";
+import moc from "../../../../assets/images/partnersLogo/moc.png";
 import AnimatedBox from "../../Components/AnimatedBox";
-import ButtonDarkBklue from "../../Components/Button/ButtonDarkBlue";
 import Heading1 from "../../Components/Typography/Heading1";
 
 const Partners = () => {
@@ -39,11 +39,17 @@ const Partners = () => {
     {
       id: 5,
       logo: maCleanEnergyLogo,
-      name: "Massachusetts Clean Energy Center",
+      name: "MOC Alliance",
       link: "https://www.masscec.com/",
     },
     {
       id: 6,
+      logo: moc,
+      name: "Massachusetts Clean Energy Center",
+      link: "https://massopen.cloud/",
+    },
+    {
+      id: 7,
       logo: ulemLogo,
       name: "Urban League of Eastern Massachusetts (ULEM)",
       link: "https://www.ulem.org/",
@@ -91,21 +97,19 @@ const Partners = () => {
               sx={{ color: "var(--color-text-3)" }}
               textAlign={{ xs: "center", sm: "left" }}
             >
-              This initiative is a collaboration of Massachusetts government and
-              nonprofit organizations working together to help{" "}
+              The Boston Heat Pump Accelerator is an initiative of the Urban
+              League of Eastern Massachusetts, in partnership with local and
+              national organizations.{" "}
               <Link
                 href="https://www.masssave.com/residential/programs-and-services/income-based-offers/income-eligible-programs"
                 target="_blank"
                 rel="noopener"
-                sx={{ color: "var(--color-text-4)" }}
+                sx={{ color: "var(--color-text-3)" }}
               >
-                make heat pumps more available to low-income residents
+                Learn more
               </Link>
               .
             </Typography>
-          </Grid>
-          <Grid item mt={2}>
-            <ButtonDarkBklue text="Learn more" to="about-us" />
           </Grid>
         </Grid>
       </AnimatedBox>

@@ -3,6 +3,7 @@ import React, { useCallback, useMemo } from "react";
 import {
   useDeleteSurveyVisitMutation,
   useGetHomeQuery,
+  useGetSurveyStructureQuery,
   useGetSurveyVisitQuery,
   useUpdateSurveyVisitMutation,
 } from "../../../api/apiSlice";
@@ -13,6 +14,8 @@ import Loader from "../../../components/Loader";
 import { SurveyError } from "../survey/SurveyError";
 import { formatISODate } from "../../../components/DateUtils";
 import { houseToString } from "../../../components/AddressUtils";
+import { withAdminPrefix, ADMIN_SURVEY } from "../../../routing/routes";
+import { buildDataFromSurveyAnswers } from "../../../util/surveyUtils";
 
 const SurveyProfile = () => {
   const navigate = useNavigate();
@@ -22,17 +25,14 @@ const SurveyProfile = () => {
     useGetSurveyVisitQuery(surveyVisitId);
 
   const { data: houseData, error: houseError } = useGetHomeQuery(
-    surveyVisit?.homeId,
+    surveyVisit?.home_id,
     { skip: !surveyVisit }
   );
-  const [
-    putSurveyVisit,
-    { isLoading: isSurveyVisitPutLoading, isError: isSurveyVisitPutError },
-  ] = useUpdateSurveyVisitMutation();
-  const [
-    deleteSurveyVisit,
-    { isLoading: isSurveyDeleteLoading, isError: isSurveyVisitDeleteError },
-  ] = useDeleteSurveyVisitMutation();
+
+  const { data: { survey_questions: surveyQuestions } = {} } =
+    useGetSurveyStructureQuery(surveyVisit?.survey_response?.survey_id, {
+      skip: !surveyVisit,
+    });
 
   const title = useMemo(
     () =>
@@ -41,6 +41,26 @@ const SurveyProfile = () => {
         : "Loading...",
     [houseData, surveyVisit]
   );
+
+  const surveyAnswers = useMemo(
+    () =>
+      surveyVisit?.survey_response
+        ? buildDataFromSurveyAnswers(
+            surveyVisit?.survey_response?.survey_answers,
+            surveyQuestions?.length
+          )
+        : [],
+    [surveyVisit, surveyQuestions]
+  );
+
+  const [
+    putSurveyVisit,
+    { isLoading: isSurveyVisitPutLoading, isError: isSurveyVisitPutError },
+  ] = useUpdateSurveyVisitMutation();
+  const [
+    deleteSurveyVisit,
+    { isLoading: isSurveyDeleteLoading, isError: isSurveyVisitDeleteError },
+  ] = useDeleteSurveyVisitMutation();
 
   const onSubmit = useCallback(
     async (responses, surveyId) => {
@@ -60,7 +80,7 @@ const SurveyProfile = () => {
 
   const onDelete = useCallback(() => {
     deleteSurveyVisit(surveyVisitId);
-    navigate("/admin/survey");
+    navigate(withAdminPrefix(ADMIN_SURVEY));
   }, [deleteSurveyVisit, surveyVisitId, navigate]);
 
   return (
@@ -70,9 +90,9 @@ const SurveyProfile = () => {
       </Typography>
       {surveyVisit && houseData ? (
         <AdminSurvey
-          defaultData={surveyVisit.responses}
+          defaultData={surveyAnswers}
           activeHome={houseData}
-          surveyId={surveyVisit.surveyId}
+          surveyId={surveyVisit.survey_response.survey_id}
           submitSurvey={onSubmit}
           onDelete={onDelete}
           isLoading={isSurveyVisitPutLoading || isSurveyDeleteLoading}

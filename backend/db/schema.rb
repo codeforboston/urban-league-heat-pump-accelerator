@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_12_003916) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_20_000437) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_003916) do
     t.integer "total_score_x"
     t.string "yr_built_category"
     t.integer "yr_built_score"
+    t.integer "status", default: 0, null: false
+    t.boolean "user_added", default: false, null: false
     t.index ["assignment_id", "visit_order"], name: "index_homes_on_assignment_id_and_visit_order", unique: true
     t.index ["assignment_id"], name: "index_homes_on_assignment_id"
   end
@@ -64,6 +66,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_003916) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["jti"], name: "index_jwt_denylists_on_jti"
+  end
+
+  create_table "localized_survey_questions", force: :cascade do |t|
+    t.string "language_code"
+    t.text "text"
+    t.string "response_options", array: true
+    t.bigint "survey_question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_question_id"], name: "index_localized_survey_questions_on_survey_question_id"
   end
 
   create_table "survey_answers", force: :cascade do |t|
@@ -77,14 +89,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_003916) do
   end
 
   create_table "survey_questions", force: :cascade do |t|
-    t.text "text"
     t.integer "response_type"
-    t.string "response_options", array: true
     t.bigint "survey_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "display_order", default: 0, null: false
-    t.index ["response_options"], name: "index_survey_questions_on_response_options", using: :gin
     t.index ["survey_id", "display_order"], name: "index_survey_questions_on_survey_id_and_display_order", unique: true
     t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
   end

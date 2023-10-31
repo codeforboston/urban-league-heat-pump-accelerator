@@ -30,7 +30,7 @@ const GridLinkWrapper = styled(Grid)(({ theme }) => ({
   justifyContent: "center",
   flexWrap: "nowrap",
   gap: "2rem",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("lg")]: {
     flexWrap: "wrap",
   },
 }));
@@ -39,26 +39,27 @@ const CardLinksSection = () => {
   const linkCards = [
     {
       id: 1,
-      title: "Add Your Voice",
+      title: "What is a heat pump?",
       paragraph:
-        "To a collections of homeowner’s questions and thoughts about heat pumps.",
+        "A heat pump is an energy-efficient system that heats your home in the winter, and cools your home in the summer.",
       button: {
         text: "Take the survey",
         to: "survey",
       },
       idCSS: "survey-link-section",
-      image: imageVoice,
+      image: imageAbout,
     },
     {
       id: 2,
       title: "About Us",
-      paragraph: "Empowering Boston residents to save, stay, and sustain.",
+      paragraph:
+        "The Boston Heat Pump Accelerator is an initiative of the Urban League of Eastern Massachusetts, in partnership with local and national organizations.",
       button: {
         text: "Learn more",
         to: "about-us",
       },
       idCSS: "learnmore-link-section",
-      image: imageAbout,
+      image: imageVoice,
     },
   ];
 
@@ -72,7 +73,8 @@ const CardLinksSection = () => {
               background: "var(--bgColor-3)",
               display: "flex",
               flexDirection: { xs: "column", sm: "row" },
-              minWidth: "260px",
+              width: "100%",
+              minWidth: { xs: "260px", lg: "634px" },
               maxWidth: { xs: "468px", sm: "680px" },
               borderRadius: "2%",
             }}

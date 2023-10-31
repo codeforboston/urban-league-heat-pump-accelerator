@@ -6,9 +6,10 @@ json.surveyor_ids do
   json.array!(assignment.surveyors.map { |s| s[:id] })
 end
 
+@sorted_homes = assignment.homes.sort_by do |h|
+  h[:visit_order]
+end
+
 json.homes do
-  json.array!(assignment.homes.sort_by do |h|
-                h[:visit_order]
-              end, :id, :street_number, :street_name, :unit_number, :city, :state, :zip_code,
-              :building_type, :visit_order, :visited?, :completed?, :latitude, :longitude)
+  json.array! @sorted_homes, partial: 'homes/home', as: :home
 end

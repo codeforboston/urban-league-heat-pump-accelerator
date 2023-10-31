@@ -8,7 +8,10 @@ import CustomSnackbar from "../../../components/CustomSnackbar";
 import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../../../components/Loader";
 import React from "react";
+
 import { useGetHomesQuery } from "../../../api/apiSlice";
+import { useNavigate } from "react-router-dom";
+import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -24,25 +27,49 @@ export const getAddress = (params) => {
 
 const HomeTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
+  const navigate = useNavigate();
 
-  useInitBreadcrumbs([
-    { url: "/admin/dashboard", description: "dashboard" },
-    { url: "/admin/home", description: "homes" },
-  ]);
+  useInitBreadcrumbs(
+    [{ url: withAdminPrefix(ADMIN_HOME), description: "homes" }],
+    true
+  );
 
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
+
+  const handleUserLink = (home) => {
+    navigate(`/admin/survey/visit/${home.survey_visit_ids[0]}`);
+  };
 
   const handleAssignmentLink = (assignment) =>
     goToBreadcrumb("assignment", assignment);
 
   const columns = [
-    { field: "id", headerName: "Id", minWidth: 80 },
+    {
+      field: "id",
+      headerName: "Id",
+      minWidth: 80,
+    },
     {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
-      minWidth: 200,
-      flex: 1,
+      minWidth: 300,
+      // maxWidth: 300,
+      // flex: 1.5,
+      renderCell: (params) => (
+        <Box minWidth="max-content" m={0}>
+          <Button
+            onClick={() => handleHomeLink(params.row)}
+            sx={{
+              textAlign: "left",
+              minWidth: "max-content",
+              padding: 0,
+            }}
+          >
+            {params.value}
+          </Button>
+        </Box>
+      ),
     },
     {
       field: "city",
@@ -61,7 +88,20 @@ const HomeTable = () => {
     {
       field: "completed",
       headerName: "Completed",
-      renderCell: (params) => (params.row.completed === "true" ? "Yes" : "No"),
+      renderCell: (params) =>
+        params.row.completed ? (
+          <Button
+            variant="text"
+            sx={{ minWidth: "unset", padding: "0px" }}
+            color="primary"
+            size="small"
+            onClick={() => handleUserLink(params.row)}
+          >
+            Yes ✅
+          </Button>
+        ) : (
+          "No"
+        ),
       minWidth: 100,
       maxWidth: 150,
       flex: 0.8,
@@ -80,21 +120,6 @@ const HomeTable = () => {
       ),
       headerName: "Assignment",
       width: 110,
-    },
-    {
-      field: "home",
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="primary"
-          size="small"
-          onClick={() => handleHomeLink(params.row)}
-        >
-          View
-        </Button>
-      ),
-      headerName: "Home",
-      maxWidth: 80,
     },
   ];
 

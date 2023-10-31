@@ -60,6 +60,14 @@ We also have a dummy json-server located at `/frontend/jsonserver`. However, it'
 10. Make sure to copy the pull request link and paste into the frontend slack page so that folks notice.
 11. After your pull request is approved, you can merge it and close any github issue related to the pull request.
 
+## Building Docker Image for Mass Open Cloud
+
+Assuming you are pushing to the Docker registry for mzagaja, you should do:
+
+```sh
+docker build --platform linux/amd64 --build-arg REACT_APP_API_URL=http://api.bostonhpa.org -t mzagaja/bhpa-frontend:latest --push .
+```
+
 ---
 
 # Getting Started with Create React App

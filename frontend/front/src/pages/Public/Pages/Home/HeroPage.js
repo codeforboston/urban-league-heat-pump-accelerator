@@ -1,9 +1,10 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Typography, Box, Link } from "@mui/material";
-import ButtonWhite from "../../Components/Button/ButtonWhite";
+import { Typography, Box, Button } from "@mui/material";
 import AnimatedBox from "../../Components/AnimatedBox";
 import TitleHero from "../../Components/Typography/TitleHero";
+import { Link as MuiLink } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 
 const HeroWrapper = styled("div")(({ theme, image }) => ({
   display: "flex",
@@ -67,10 +68,13 @@ const HeroPage = ({
                   text={title.toUpperCase()}
                   titleBold={titleBold.toUpperCase()}
                 />
-                <Typography variant="h6" sx={{ color: "var(--color-text-9)" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ color: "var(--color-text-9)", px: { xs: 1, md: 20 } }}
+                >
                   {text1}
                   {link !== "" && (
-                    <Link
+                    <MuiLink
                       href={link}
                       target="_blank"
                       rel="noopener"
@@ -84,13 +88,32 @@ const HeroPage = ({
                       }}
                     >
                       {textBold}
-                    </Link>
+                    </MuiLink>
                   )}
                   {text2}
                 </Typography>
               </Box>
 
-              <ButtonWhite text="Take the survey" to="survey" />
+              <Button
+                component={RouterLink}
+                to="/public/benefits-heat-pump"
+                onClick={() => window.scrollTo(0, 0)}
+                sx={{
+                  width: "auto",
+                  minWidth: "200px",
+                  maxWidth: "250px",
+                  height: "50px",
+                  color: "var(--color-text-2)",
+                  background: "var(--bgColor-3)",
+                  borderRadius: "50px",
+                  px: 3,
+                  "&:hover": {
+                    backgroundColor: "var(--bgColor-3)",
+                  },
+                }}
+              >
+                Benefits of heat pumps
+              </Button>
             </Box>
           </AnimatedBox>
         </Box>

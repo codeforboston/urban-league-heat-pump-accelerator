@@ -24,6 +24,7 @@ import { HeatPumpTextField } from "../../../components/SurveyComponent/HeatPumpT
 import Loader from "../../../components/Loader";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { withAdminPrefix, ADMIN_USER } from "../../../routing/routes";
 
 const ACTION_BACK = "BACK";
 const ACTION_NEW = "NEW";
@@ -53,7 +54,7 @@ const CreateNewUser = () => {
   const [createSurveyor] = useCreateSurveyorMutation();
 
   const handleCancel = useCallback(() => {
-    navigate("/admin/user");
+    navigate(withAdminPrefix(ADMIN_USER));
   }, [navigate]);
 
   const onSubmit = useCallback(
