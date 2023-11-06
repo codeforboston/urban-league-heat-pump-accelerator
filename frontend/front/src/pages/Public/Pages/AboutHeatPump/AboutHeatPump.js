@@ -1,4 +1,5 @@
 import { Box, Container, Stack } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import React from "react";
 import heatpump from "../../../../assets/images/heatPump-outside.png";
 import ButtonDarkBlue from "../../Components/Button/ButtonDarkBlue";
@@ -6,37 +7,37 @@ import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGrou
 import Heading4 from "../../Components/Typography/Heading4";
 import CardsSection from "../../Components/CardsSection";
 
-const cardContent = [
-  {
-    mediaType: "img",
-    mediaSource: heatpump,
-    title: "What is a heat pump?",
-    body: "Check out this comprehensive article that Carrier, a heat pump manufacturer, has written up about what a heat pump is and how they work.",
-    link: "https://www.carrier.com/residential/en/us/products/heat-pumps/what-is-a-heat-pump-how-does-it-work/",
-    linkDescription: "Read Article",
-  },
-  {
-    mediaType: "iframe",
-    mediaSource: "https://www.youtube.com/embed/iQaycSD5GWE",
-    title: "How does a heat pump work?",
-    body: "This Old House plumbing and heating expert Richard Tretheway instructs Kevin O’Connor on the basic principles of how a heat pump works.",
-  },
-  {
-    mediaType: "iframe",
-    mediaSource: "https://youtube.com/embed/PIulbHyK0bc",
-    title: "Why are heat pumps better?",
-    body: "This video by Vox explains why heat pumps are better for the environment than fossil fuel heaters.",
-  },
-  {
-    mediaType: "iframe",
-    mediaSource: "https://www.youtube.com/embed/Ep9zqk5bVaU",
-    title: "What do other people say?",
-    body: "Hear what someone else has to say about their experience getting a heat pump installed in their home.",
-  },
-];
-
 function AboutHeatPump() {
-  // const isSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
+  const { t } = useTranslation();
+
+  const cardContent = [
+    {
+      mediaType: "img",
+      mediaSource: heatpump,
+      title: t("public.about-heat-pump.item1.title"),
+      body: t("public.about-heat-pump.item1.body"),
+      link: "https://www.carrier.com/residential/en/us/products/heat-pumps/what-is-a-heat-pump-how-does-it-work/",
+      linkDescription: t("public.about-heat-pump.item1.link"),
+    },
+    {
+      mediaType: "iframe",
+      mediaSource: "https://www.youtube.com/embed/iQaycSD5GWE",
+      title: t("public.about-heat-pump.item2.title"),
+      body: t("public.about-heat-pump.item2.body"),
+    },
+    {
+      mediaType: "iframe",
+      mediaSource: "https://youtube.com/embed/PIulbHyK0bc",
+      title: t("public.about-heat-pump.item3.title"),
+      body: t("public.about-heat-pump.item3.body"),
+    },
+    {
+      mediaType: "iframe",
+      mediaSource: "https://www.youtube.com/embed/Ep9zqk5bVaU",
+      title: t("public.about-heat-pump.item4.title"),
+      body: t("public.about-heat-pump.item4.body"),
+    },
+  ];
   return (
     <Box
       mb={6}
@@ -47,40 +48,8 @@ function AboutHeatPump() {
         minHeight: "calc(100vh - 520px)",
       }}
     >
-      <Heading1BlueBgGround text="About Heat Pumps" />
+      <Heading1BlueBgGround text={t("public.about-heat-pump.headingBg")} />
       <Container>
-        {/* <Box mb={{ xs: 1, sm: 6 }} mt={{ xs: 1, sm: 2 }}>
-          {isSmallerThanMd ? (
-            <Heading1
-              fontWeight="500"
-              text="Learn how heat pumps work and why they are right for you!"
-            />
-          ) : (
-            <>
-              <Heading1 fontWeight="500" text="Learn how heat pumps work " />
-              <Heading1
-                fontWeight="500"
-                text="and why they are right for you!"
-              />
-            </>
-          )}
-        </Box> */}
-        {/* <Stack direction="column" spacing={{ xs: 4, lg: 8 }}>
-          {cardContent.map((card, index) => {
-            return (
-              <AboutHeatPumpCards
-                key={index}
-                mediaType={card.mediaType}
-                mediaSource={card.mediaSource}
-                title={card.title}
-                body={card.body}
-                link={card.link}
-                linkDescription={card.linkDescription}
-              />
-            );
-          })}
-        </Stack> */}
-
         <Box
           sx={{
             display: "flex",
@@ -102,12 +71,15 @@ function AboutHeatPump() {
             );
           })}
         </Box>
-        <Stack alignItems="center" spacing="20px" mt={3}>
+        <Stack alignItems="center" spacing="20px" mt={{ xs: 2, md: 8 }}>
           <Box align="center">
-            <Heading4 text="Convinced a heat pump is for you?" />
-            <Heading4 text="Get started here!" />
+            <Heading4 text={t("public.about-heat-pump.button-section.text1")} />
+            <Heading4 text={t("public.about-heat-pump.button-section.text2")} />
           </Box>
-          <ButtonDarkBlue text="GET A HEAT PUMP" to="/public/get-heat-pump" />
+          <ButtonDarkBlue
+            text={t("public.about-heat-pump.button-section.button")}
+            to="/public/get-heat-pump"
+          />
         </Stack>
       </Container>
     </Box>

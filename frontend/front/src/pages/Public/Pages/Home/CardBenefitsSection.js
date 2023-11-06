@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   Typography,
   Box,
@@ -9,6 +10,7 @@ import {
   Stack,
   Container,
 } from "@mui/material";
+import { Link as MuiLink } from "@mui/material";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import AnimatedBox from "../../Components/AnimatedBox";
@@ -26,43 +28,37 @@ const StyledGrid = styled(Grid)(() => ({
 }));
 
 const CardBenefitsSection = () => {
+  const { t } = useTranslation();
+
   const cards = [
     {
       id: 1,
-      title: "Lower energy bills",
-      paragraphs: [
-        "Heat pumps are so energy efficient that they can lead to significant savings on monthly utility bills and lower maintenance, repair and replacement costs.",
-      ],
+      title: t("public.home.cardBenefitsSection.item1.title"),
+      paragraphs: [t("public.home.cardBenefitsSection.item1.text1")],
       image: liveMoreCom,
       buttonText: "",
       buttonLink: "",
     },
     {
       id: 2,
-      title: "Comfort at home",
-      paragraphs: [
-        "The same heat pump that helps to cool in the summer can then provide warmth in the winter- it's one system that is efficient, quiet, and convenient, providing comfort throughout the home.",
-      ],
+      title: t("public.home.cardBenefitsSection.item2.title"),
+      paragraphs: [t("public.home.cardBenefitsSection.item2.text1")],
       image: imageTwo,
       buttonText: "",
       buttonLink: "",
     },
     {
       id: 3,
-      title: "Stronger communities",
-      paragraphs: [
-        "By helping to lower utility bills, heat pumps can lower the cost of living for residents, which in turn can support residents living on fixed- or low-incomes to remain in their homes longer, strengthening communities.",
-      ],
+      title: t("public.home.cardBenefitsSection.item3.title"),
+      paragraphs: [t("public.home.cardBenefitsSection.item3.text1")],
       image: strengthenCommunity,
       buttonText: "",
       buttonLink: "",
     },
     {
       id: 4,
-      title: "Cleaner air",
-      paragraphs: [
-        "Heat pumps use electricity that can be produced by renewable sources. As the grid becomes more green, heat pumps become much more eco-friendly than gas or oil-fueled systems. With a single “green-powered” unit that heats and cools, your home’s carbon footprint is as low as it can go.",
-      ],
+      title: t("public.home.cardBenefitsSection.item4.title"),
+      paragraphs: [t("public.home.cardBenefitsSection.item4.text1")],
       image: beEnvironmentally,
       buttonText: "",
       buttonLink: "",
@@ -80,7 +76,7 @@ const CardBenefitsSection = () => {
             textAlign: "center",
           }}
         >
-          <Heading1 text="Benefits of Heat Pumps" />
+          <Heading1 text={t("public.home.cardBenefitsSection.heading1")} />
           <Stack
             direction="row"
             justifyContent="center"
@@ -91,10 +87,10 @@ const CardBenefitsSection = () => {
               variant="body"
               sx={{ color: "var(--color-text-3)", display: "inline-block" }}
             >
-              Learn more about the&nbsp;
-            </Typography>
-            <Link to="benefits-heat-pump" style={{ textDecoration: "none" }}>
-              <Typography
+              {t("public.home.cardBenefitsSection.subtitle1")}&nbsp;
+              <MuiLink
+                component={Link}
+                to="benefits-heat-pump"
                 variant="body"
                 sx={{
                   color: "var(--color-text-3) !important",
@@ -108,9 +104,9 @@ const CardBenefitsSection = () => {
                   },
                 }}
               >
-                Benefits of Heat Pumps
-              </Typography>
-            </Link>
+                {t("public.home.cardBenefitsSection.link")}
+              </MuiLink>
+            </Typography>
           </Stack>
         </Box>
         {cards.map((card, index) => (
@@ -128,17 +124,25 @@ const CardBenefitsSection = () => {
           >
             <Grid item xs={12} sm={6}>
               <Box
-                component="img"
                 sx={{
-                  backgroundSize: "fit",
                   width: "100%",
-                  height: "100%",
+                  height: { xs: "100%", sm: "auto", md: "100%" },
                 }}
-                src={card.image}
-                alt={card.title}
-              />
+              >
+                <Box
+                  component="img"
+                  sx={{
+                    objectFit: "cover", // ou "contain"
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  src={card.image}
+                  alt={card.title}
+                />
+              </Box>
             </Grid>
-            <StyledGrid item sx={{ pt: { xs: 2, md: 0 } }} xs={12} sm={6}>
+
+            <StyledGrid item sx={{ pt: { xs: 2, sm: 0 } }} xs={12} sm={6}>
               <AnimatedBox triggerOnce={false}>
                 <Box sx={{ p: { md: 4, xs: 0 } }}>
                   <Box pl={2}>
