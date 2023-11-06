@@ -1,4 +1,4 @@
-import { Alert, Box, Button, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, Link, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
@@ -58,6 +58,10 @@ const HomeProfile = () => {
 
   const modalCloseHandler = () => {
     setModalIsOpen(false);
+  };
+
+  const viewSurveyhandler = () => {
+    navigate(`/admin/survey/visit/${homeData.survey_visit_ids[0]}`);
   };
   const deleteHandler = () => {
     setModalIsOpen(false);
@@ -275,13 +279,17 @@ const HomeProfile = () => {
               )}
               {/* BUTTONS */}
               <Box pt={1} textAlign="right">
-                {/*
-                <Button variant="outlined" sx={{ ml: 2 }}>
-                  <Link style={{ textDecoration: "none", color: "inherit" }}>
-                    View Survey
-                  </Link>
-                </Button>
-                */}
+                {homeData.completed && (
+                  <Button
+                    variant="outlined"
+                    sx={{ ml: 2 }}
+                    onClick={viewSurveyhandler}
+                  >
+                    <Link style={{ textDecoration: "none", color: "inherit" }}>
+                      View Survey
+                    </Link>
+                  </Button>
+                )}
                 {editButton}
                 {saveButton}
                 {deleteButton}
