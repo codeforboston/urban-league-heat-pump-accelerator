@@ -7,7 +7,7 @@ import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
 import { SurveyPage } from "./Pages/SurveyPage";
 import GetInvolved from "./Pages/GetInvolved";
-import GetHeatPump from "./Pages/GetHeatPump/GetHeatPump";
+import GetHeatPump from "./Pages/GetHeatPump";
 import BenefitsHeatPumps from "./Pages/BenefitsHeatPumps";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import AboutHeatPump from "./Pages/AboutHeatPump/AboutHeatPump";
@@ -15,6 +15,7 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
 import ScrollToTopButton from "./Components/ScrollToTopButton";
+import "./Libs/i18n";
 
 const PublicContainer = () => {
   return (

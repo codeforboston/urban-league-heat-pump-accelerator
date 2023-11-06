@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { styled } from "@mui/material/styles";
 import {
   Typography,
@@ -26,6 +27,8 @@ const Testimonial = () => {
   const theme = useTheme();
   const isSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
 
+  const { t } = useTranslation();
+
   return (
     <AnimatedBox triggerOnce={false}>
       <Container>
@@ -39,12 +42,12 @@ const Testimonial = () => {
             direction={{ xs: "reverse-column", md: "row" }}
           >
             <Grid item xs={12}>
-              <Item>
-                <Heading1 text="Testimonials" />
-              </Item>
+              <Box sx={{ p: 2, textAlign: "center" }}>
+                <Heading1 text={t("public.home.testimonials.heading1")} />
+              </Box>
             </Grid>
             {isSmallerThanMd && (
-              <Grid item xs={12} direction="column">
+              <Grid item xs={12}>
                 <Item sx={{ paddingBottom: 0 }}>
                   <Avatar
                     src={niaAvatar}
@@ -58,28 +61,29 @@ const Testimonial = () => {
                 </Item>
               </Grid>
             )}
-            <Grid item md={8} direction="column">
-              <Item style={{ flexGrow: 1 }}>
+            <Grid item md={8}>
+              <Box sx={{ flexGrow: 1, px: 2, textAlign: "center", pt: 3 }}>
                 <Typography variant="h4" px={{ xs: 0, md: 6 }}>
-                  “Wow, it blew my mind. Normally the bill is anywhere from $400
-                  to $500, and it was more like $200. I was like, let me look at
-                  that again!”
+                  {t("public.home.testimonials.text1")}
                 </Typography>
                 <Box pt={3}>
-                  <Heading4 text="Nia, Mattapan Resident" />
+                  <Heading4
+                    text={`Nia, Mattapan ${t(
+                      "public.home.testimonials.text3"
+                    )}`}
+                  />
                 </Box>
-                <Typography py={6} variant="h6" sx={{ fontWeight: 400 }} px={1}>
-                  Stories from other Massachusetts residents about their heat
-                  pumps.
+                <Typography py={6} variant="h6" sx={{ fontWeight: 400 }}>
+                  {t("public.home.testimonials.text2")}
                 </Typography>
                 <Box>
                   <ButtonDarkBklue
-                    text="read more"
+                    text={t("public.home.testimonials.button")}
                     to="https://goclean.masscec.com/customer-story/peter-installs-an-air-source-heat-pump-system/?utm_medium=cpc&utm_source=google&utm_campaign=brand"
                     externalLink={true}
                   />
                 </Box>
-              </Item>
+              </Box>
             </Grid>
             {!isSmallerThanMd && (
               <Grid item md={4}>

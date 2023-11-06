@@ -10,6 +10,9 @@ end
   h[:visit_order]
 end
 
-json.homes do
-  json.array! @sorted_homes, partial: 'homes/home', as: :home
+json.homes @sorted_homes do |home|
+  json.extract! home, :id, :street_number, :street_name, :unit_number, :city, :state, :zip_code,
+                :building_type, :visit_order, :latitude, :longitude
+  json.visited home.visited?
+  json.completed home.completed?
 end

@@ -1,5 +1,5 @@
 import * as routes from "../../../routing/routes";
-
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Divider,
@@ -17,17 +17,35 @@ import ButtonGetPump from "../Components/Button/ButtonGetPump";
 import ButtonWhite from "../Components/Button/ButtonWhite";
 import EmailIcon from "@mui/icons-material/Email";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-// import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 import logoHeatPump from "../../../assets/images/bhpa-logos/bhpa-logo300px.png";
 import { styled } from "@mui/material/styles";
 
-const footerItems = {
-  "About BHPA": { link: "about-us" },
-  "About Heat Pumps": { link: "about-heat-pump" },
-  "Benefits of Heat Pumps": { link: "benefits-heat-pump" },
-  "Get Involved": { link: "get-involved" },
-  Testimonials: { link: "testimonial-section" },
-};
+const getFooterItems = () => ({
+  aboutBHPA: {
+    link: "about-us",
+    value: "public.global-labels.learn-more.items.about-bhpa",
+  },
+  aboutUs: {
+    link: "about-heat-pump",
+    value: "public.global-labels.learn-more.items.about-us",
+  },
+  benefitsHeatPumps: {
+    link: "benefits-heat-pump",
+    value: "public.global-labels.learn-more.items.benefits-heat-pumps",
+  },
+  getInvolved: {
+    link: "get-involved",
+    value: "public.global-labels.get-involved",
+  },
+  survey: {
+    link: "survey",
+    value: "public.global-labels.survey",
+  },
+  testimonials: {
+    link: "testimonial-section",
+    value: "public.global-labels.learn-more.items.testimonials",
+  },
+});
 
 const FooterWrapper = styled("div")(({ theme }) => ({
   background: "var(--bgColor-2)",
@@ -46,6 +64,9 @@ const Footer = () => {
 
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
+  const footerItems = getFooterItems();
+
   return (
     <FooterWrapper sx={{ px: { xl: "18%" } }}>
       <Toolbar>
@@ -55,22 +76,27 @@ const Footer = () => {
           pt={5}
           pb={2}
           sx={{
-            textAlign: { xs: "center", lg: "left" },
+            textAlign: { xs: "center", md: "left" },
           }}
         >
           <Grid
             item
             justifyContent="center"
             alignItems="flex-start"
-            sx={{ display: { xs: "none", lg: "flex" }, pr: { lg: 1 } }}
-            lg={3}
+            sx={{ display: { xs: "none", md: "flex" }, pr: { md: 1 } }}
+            md={3}
           >
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
               <Box
                 component="img"
-                alt="logo"
                 src={logoHeatPump}
-                sx={{ maxWidth: "300px" }}
+                className="logo"
+                alt="logo"
+                sx={{
+                  width: "100%",
+                  maxWidth: "300px",
+                  minWidth: "150px",
+                }}
               />
             </Link>
           </Grid>
@@ -78,7 +104,7 @@ const Footer = () => {
           <Grid
             item
             sx={{
-              display: { xs: "block", lg: "none" },
+              display: { xs: "block", md: "none" },
             }}
             xs={12}
           >
@@ -89,36 +115,28 @@ const Footer = () => {
           <Grid
             item
             sx={{
-              pt: { xs: 2, lg: 0 },
-              px: { lg: 2 },
+              pt: { xs: 2, md: 0 },
+              px: { md: 2 },
             }}
             xs={12}
-            lg={3}
+            md={3}
           >
             <List variant="caption">
               <Typography className="subtitle-footer" pb={1}>
-                Learn More
+                {t("public.global-labels.learn-more.value")}
               </Typography>
               {Object.keys(footerItems).map((item) => (
-                <ListItem key={item} sx={{ pt: { xs: 0, lg: 0 }, px: 0 }}>
+                <ListItem key={item} sx={{ pt: { xs: 0, md: 0 }, px: 0 }}>
                   <ListItemButton
                     sx={{
                       py: 0,
                       px: 0,
-                      textAlign: { xs: "center", lg: "left" },
+                      textAlign: { xs: "center", md: "left" },
                     }}
-                    component={
-                      item === "Our Partners" || item === "Testimonials"
-                        ? "button"
-                        : Link
-                    }
-                    to={
-                      item === "Our Partners" || item === "Testimonials"
-                        ? null
-                        : footerItems[item].link
-                    }
+                    component={item === "testimonials" ? "button" : Link}
+                    to={item === "testimonials" ? null : footerItems[item].link}
                     onClick={
-                      item === "Our Partners" || item === "Testimonials"
+                      item === "Our Partners" || item === "testimonials"
                         ? () => {
                             navigate("/public");
                             setTimeout(() => {
@@ -134,12 +152,13 @@ const Footer = () => {
                     }
                   >
                     <ListItemText
-                      primary={item}
+                      primary={t(footerItems[item].value)}
                       sx={{
                         color: "var(--color-text-1)",
                       }}
                       primaryTypographyProps={{
                         fontWeight: "300",
+                        textTransform: "capitalize",
                       }}
                     />
                   </ListItemButton>
@@ -152,25 +171,25 @@ const Footer = () => {
           <Grid
             item
             sx={{
-              pt: { xs: 1, lg: 0 },
-              px: { lg: 2 },
-              borderLeft: { lg: "1px solid var(--accent-2)" },
-              pl: { lg: 4 },
+              pt: { xs: 1, md: 0 },
+              px: { md: 2 },
+              borderLeft: { md: "1px solid var(--accent-2)" },
+              pl: { md: 4 },
             }}
             xs={12}
-            lg={3}
+            md={3}
           >
             <List variant="caption">
               <Typography className="subtitle-footer" pb={1}>
-                Legal
+                {t("public.footer.legal")}
               </Typography>
 
-              <ListItem sx={{ py: { xs: 0, lg: 0 }, px: 0 }}>
+              <ListItem sx={{ py: { xs: 0, md: 0 }, px: 0 }}>
                 <ListItemButton
                   sx={{
                     py: 0,
                     px: 0,
-                    textAlign: { xs: "center", lg: "left" },
+                    textAlign: { xs: "center", md: "left" },
                     fontWeight: "300",
                   }}
                   component={Link}
@@ -178,7 +197,7 @@ const Footer = () => {
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   <ListItemText
-                    primary="Privacy & Data Policy"
+                    primary={t("public.footer.privacy-and-data-policy")}
                     sx={{
                       color: "var(--color-text-1)",
                     }}
@@ -195,48 +214,27 @@ const Footer = () => {
           <Grid
             item
             xs={12}
-            lg={3}
+            md={3}
             sx={{
-              pt: { xs: 2, lg: 0 },
-              px: { lg: 2 },
-              borderLeft: { lg: "1px solid var(--accent-2)" },
-              pl: { lg: 4 },
+              pt: { xs: 2, md: 0 },
+              px: { md: 2 },
+              borderLeft: { md: "1px solid var(--accent-2)" },
+              pl: { md: 4 },
             }}
           >
             <>
               <Typography className="subtitle-footer" pb={1}>
-                Contact Us
+                {t("public.footer.contact-us")}
               </Typography>
               <Box>
-                {/* <Box
-                  variant="navLinks"
-                  sx={{
-                    display: "flex",
-                    alignItem: "flex-center",
-                    justifyContent: { xs: "center", lg: "flex-start" },
-                    pt: { xs: 1, lg: 2 },
-                  }}
-                >
-                  <PermPhoneMsgIcon sx={{ mr: 1 }} />
-                  <a
-                    href="tel:617-635-4500"
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: "300",
-                    }}
-                  >
-                    617-635-4500
-                  </a>
-                </Box> */}
                 <Box
                   variant="navLinks"
                   pt={1}
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: { xs: "center", lg: "flex-start" },
-                    py: { xs: 1, lg: 1 },
+                    justifyContent: { xs: "center", md: "flex-start" },
+                    py: { xs: 1, md: 1 },
                   }}
                 >
                   <EmailIcon sx={{ mr: 1 }} />
@@ -255,20 +253,20 @@ const Footer = () => {
                 <Box
                   mt={2}
                   sx={{
-                    display: { xs: "none", lg: "block" },
+                    display: { xs: "none", md: "block" },
                   }}
                 >
                   <ButtonGetPump />
                 </Box>
                 <Box
                   sx={{
-                    display: { xs: "none", lg: "block" },
-                    py: { xs: 0, lg: 2 },
+                    display: { xs: "none", md: "block" },
+                    py: { xs: 0, md: 2 },
                   }}
                 >
                   <ButtonWhite to={routes.LOGIN_ROUTE}>
                     <LockOutlinedIcon sx={{ mr: 1 }} />
-                    Member Login
+                    {t("public.footer.member-login")}
                   </ButtonWhite>
                 </Box>
               </Box>
@@ -280,30 +278,30 @@ const Footer = () => {
             item
             xs={12}
             align="center"
-            sx={{ pt: { xs: 4 }, display: { xs: "block", lg: "none" } }}
+            sx={{ pt: { xs: 4 }, display: { xs: "block", md: "none" } }}
           >
             <ButtonWhite to={routes.LOGIN_ROUTE}>
               <LockOutlinedIcon sx={{ mr: 1 }} />
-              Member Login
+              {t("public.footer.member-login")}
             </ButtonWhite>
           </Grid>
 
           {/* COPYRIGHT */}
           <Grid
             item
-            sx={{ display: { xs: "block", lg: "none" }, pt: { xs: 4 } }}
+            sx={{ display: { xs: "block", md: "none" }, pt: { xs: 4 } }}
             xs={12}
           >
             <Link to="" onClick={() => window.scrollTo(0, 0)}>
               <Box
                 component="img"
-                alt="logo"
                 src={logoHeatPump}
+                className="logo"
+                alt="logo"
                 sx={{
+                  width: "100%",
                   maxWidth: "300px",
-                  "@media (max-width: 350px)": {
-                    width: "250px",
-                  },
+                  minWidth: "150px",
                 }}
               />
             </Link>
@@ -315,7 +313,7 @@ const Footer = () => {
               Copyright © {currentYear} | Boston Heat Pump Accelerator. {` `}
             </Typography>
             <Typography align="center" variant="caption" pt={1}>
-              All Rights Reserved.
+              {t("public.global-labels.all-rights-reserved")}
             </Typography>
           </Grid>
         </Grid>

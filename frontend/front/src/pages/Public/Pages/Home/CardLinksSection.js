@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { styled } from "@mui/material/styles";
 import {
   Typography,
@@ -36,14 +37,15 @@ const GridLinkWrapper = styled(Grid)(({ theme }) => ({
 }));
 
 const CardLinksSection = () => {
+  const { t } = useTranslation();
+
   const linkCards = [
     {
       id: 1,
-      title: "What is a heat pump?",
-      paragraph:
-        "A heat pump is an energy-efficient system that heats your home in the winter, and cools your home in the summer.",
+      title: t("public.home.cardLinksSection.item1.title"),
+      paragraph: t("public.home.cardLinksSection.item1.paragraph"),
       button: {
-        text: "Take the survey",
+        text: t("public.home.cardLinksSection.item1.button"),
         to: "survey",
       },
       idCSS: "survey-link-section",
@@ -51,11 +53,10 @@ const CardLinksSection = () => {
     },
     {
       id: 2,
-      title: "About Us",
-      paragraph:
-        "The Boston Heat Pump Accelerator is an initiative of the Urban League of Eastern Massachusetts, in partnership with local and national organizations.",
+      title: t("public.home.cardLinksSection.item2.title"),
+      paragraph: t("public.home.cardLinksSection.item2.paragraph"),
       button: {
-        text: "Learn more",
+        text: t("public.home.cardLinksSection.item2.button"),
         to: "about-us",
       },
       idCSS: "learnmore-link-section",
@@ -65,10 +66,9 @@ const CardLinksSection = () => {
 
   return (
     <GridLinkWrapper>
-      {linkCards.map((detail, index) => (
-        <CardLinks>
+      {linkCards.map((detail) => (
+        <CardLinks key={detail.id}>
           <Card
-            key={index}
             sx={{
               background: "var(--bgColor-3)",
               display: "flex",
@@ -86,8 +86,10 @@ const CardLinksSection = () => {
                 width: { xs: "100%", sm: "300px" },
                 minWidth: "260px",
                 maxWidth: { xs: "468px", sm: "680px" },
-                backgroundSize: "cover",
-                height: "auto",
+                // backgroundSize: "cover",
+                objectFit: { xs: "cover", sm: "cover" },
+                objectPosition: "50% 50%",
+                height: { xs: "250px", sm: "auto" },
               }}
               image={detail.image}
               alt={detail.title}
@@ -98,8 +100,9 @@ const CardLinksSection = () => {
                   <Box
                     id="survey-link-section"
                     sx={{
-                      maxHeight: { xs: "auto", sm: "300px" },
-                      minHeight: { xs: "auto", sm: "270px" },
+                      height: "100%",
+                      maxHeight: { xs: "auto", sm: "370px" },
+                      minHeight: { xs: "auto", sm: "280px" },
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "space-between",
@@ -109,14 +112,12 @@ const CardLinksSection = () => {
 
                     <Box
                       sx={{
-                        height: { xs: "auto", sm: "140px" },
-                        my: { xs: 2, sm: 0 },
+                        // height: { xs: "auto", sm: "140px" },
+                        my: { xs: 2, sm: 0.5 },
                         color: "var(--color-text-3)",
                       }}
                     >
-                      <Typography variant="body1">
-                        {detail.paragraph}
-                      </Typography>
+                      <Typography variant="body">{detail.paragraph}</Typography>
                     </Box>
                     <Box
                       mt={2}

@@ -1,5 +1,6 @@
-import { Box, Container } from "@mui/material";
 import React from "react";
+import { Box, Container } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import card1 from "../../../assets/images/copywritingImages/jason-goodman-NYMJYXfZG-g-unsplash.jpg";
 import card2 from "../../../assets/images/copywritingImages/todd-kent-iRKv_XiN--M-unsplash.jpg";
 import card3 from "../../../assets/images/copywritingImages/erika-giraud-H6xKnDKrKDk-unsplash.jpg";
@@ -10,35 +11,37 @@ import SocialSharingKit from "../../../assets/pdfDownload/SocialSharingKit.pdf";
 import CommunityFlyer from "../../../assets/pdfDownload/CommunityFlyer.pdf";
 
 function GetInvolved() {
+  const { t } = useTranslation();
+
   const cardContent = [
     {
       mediaType: "img",
       mediaSource: card1,
-      title: "Share with your community",
-      body: "Let your neighbors know about the savings and other benefits of heat pumps. Share this website on social media or through email.",
-      linkDescription: "Download social sharing kit",
+      title: t("public.getInvolved.item1.title"),
+      body: t("public.getInvolved.item1.body"),
+      linkDescription: t("public.getInvolved.item1.link"),
       linkDownload: SocialSharingKit,
     },
     {
       mediaType: "img",
       mediaSource: card2,
-      title: "Post flyers at local businesses",
-      body: "Print and post this flyer at cafes, conveniences, and community bulletin boards around your neighborhood.",
-      linkDescription: "Download informational flyer",
+      title: t("public.getInvolved.item2.title"),
+      body: t("public.getInvolved.item2.body"),
+      linkDescription: t("public.getInvolved.item2.link"),
       linkDownload: CommunityFlyer,
     },
     {
       mediaType: "img",
       mediaSource: card3,
-      title: "Discuss with your community",
-      body: "Help to organize and/or host an event for neighbors to learn about heat pumps and their benefits.",
+      title: t("public.getInvolved.item3.title"),
+      body: t("public.getInvolved.item3.body"),
     },
     {
       mediaType: "img",
       mediaSource: card4,
-      title: "Share with your local legislators",
-      body: "Assist your neighbors in transitioning towards cheaper and cleaner energy by seeking local initiatives and communicating with your elected representatives to express your preference for heat pumps. Use the following free service to get contact info for a call, email, or letter to your elected representatives.",
-      linkDescription: "Contact your elected officials",
+      title: t("public.getInvolved.item4.title"),
+      body: t("public.getInvolved.item4.body"),
+      linkDescription: t("public.getInvolved.item4.link"),
       link: "https://www.usa.gov/elected-officials",
     },
   ];
@@ -53,7 +56,7 @@ function GetInvolved() {
         minHeight: "calc(100vh - 520px)",
       }}
     >
-      <Heading1BlueBgGround text="Get Involved" />
+      <Heading1BlueBgGround text={t("public.getInvolved.heading")} />
       <Container>
         {/* <Box mb={{ xs: 1, sm: 6 }} mt={{ xs: 1, sm: 2 }}>
           <Heading1
