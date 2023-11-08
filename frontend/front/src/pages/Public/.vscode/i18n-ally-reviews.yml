@@ -9,10 +9,10 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: eednowkKNoroUqVJOoSSO
-            comment: ''
+            comment: ""
             suggestion: Saiba mais
             type: request_change
-            time: '2023-10-15T15:17:05.195Z'
+            time: "2023-10-15T15:17:05.195Z"
             resolved: true
   public.home.testimonials.text1:
     locales:
@@ -22,30 +22,30 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: r0yBD1yt3vfVUVIjTJEJa
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T15:24:54.763Z'
+            time: "2023-10-15T15:24:54.763Z"
       fr-HT:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: M9MU4w717b8jp7lAKZBRt
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T15:26:42.348Z'
+            time: "2023-10-15T15:26:42.348Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: IWqlWzXqAFgcniYfYW4Qe
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T15:26:52.244Z'
+            time: "2023-10-15T15:26:52.244Z"
   public.home.partners.link:
     locales:
       pt-BR:
@@ -54,30 +54,30 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: HbG6QoRz9krU44i4w4dX7
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T16:16:09.131Z'
+            time: "2023-10-15T16:16:09.131Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: KygrtysPUza-9LpMK2d0s
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T16:16:37.215Z'
+            time: "2023-10-15T16:16:37.215Z"
       fr-HT:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: vTqhaZNmLgeSLUR32hGar
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T16:17:08.933Z'
+            time: "2023-10-15T16:17:08.933Z"
   public.home.cardBenefitsSection.subtitle1:
     locales:
       pt-BR:
@@ -86,30 +86,30 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: a_2gXdc8bj6h9qbCDYtQL
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T17:03:53.330Z'
+            time: "2023-10-15T17:03:53.330Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 8GlhLo8p4vt_pV0RtOV87
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T17:04:35.669Z'
+            time: "2023-10-15T17:04:35.669Z"
       fr-HT:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: Jyk03o31X1nsvKyRqf8W5
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T17:04:53.209Z'
+            time: "2023-10-15T17:04:53.209Z"
   public.global-labels.learn-more.learn-more:
     locales:
       fr-HT:
@@ -118,30 +118,30 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: cSW3cx_3ciQGYkY1Vts67
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T18:06:10.356Z'
+            time: "2023-10-15T18:06:10.356Z"
       pt-BR:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: NlXB3vBEjw1rZ-jmM66ss
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T18:06:13.734Z'
+            time: "2023-10-15T18:06:13.734Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: CG2sibg7DZo4BRkbScorC
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-15T18:07:47.471Z'
+            time: "2023-10-15T18:07:47.471Z"
   public.global-labels.learn-more.value:
     description: Using machine learn to translate to others languages - google translation
     locales:
@@ -151,19 +151,19 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 8C1Q539GxPtFnMOA2Wi1U
-            comment: ''
+            comment: ""
             suggestion: Saiba Mais
             type: request_change
-            time: '2023-10-16T16:35:44.382Z'
+            time: "2023-10-16T16:35:44.382Z"
             resolved: true
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: wGVABJNYs5Ng6uQYeJ4F8
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T20:31:42.001Z'
+            time: "2023-10-16T20:31:42.001Z"
   public.home.testimonials.button:
     locales:
       pt-BR:
@@ -172,10 +172,10 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: F2lE6iWvKSfxJQCEUUfEv
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T17:54:11.252Z'
+            time: "2023-10-16T17:54:11.252Z"
   public.global-labels.locales.english:
     locales:
       es-419:
@@ -184,47 +184,47 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: GBWstVZdSKUsqOgNvSSce
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T19:26:11.738Z'
+            time: "2023-10-16T19:26:11.738Z"
       pt-BR:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: g9ptZ4S5g_VYYA0_u2pEK
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T19:26:38.810Z'
+            time: "2023-10-16T19:26:38.810Z"
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: J9VM-jjl969BKhYnjvU_v
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:01:54.568Z'
+            time: "2023-10-31T17:01:54.568Z"
       ht:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: gBVO-OQsq4J3q2ERorYMu
-            comment: ''
+            comment: ""
             suggestion: English (United States)
             type: request_change
-            time: '2023-10-31T17:02:05.970Z'
+            time: "2023-10-31T17:02:05.970Z"
             resolved: true
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: IHZS-GSIy1-Bni8F3jWlX
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:02:11.912Z'
+            time: "2023-10-31T17:02:11.912Z"
   public.footer.privacy-and-data-policy:
     locales:
       pt-BR:
@@ -233,46 +233,46 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 0WNq5iCz7WMgnzJ7izqWt
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T20:43:27.061Z'
+            time: "2023-10-16T20:43:27.061Z"
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: P-r7htOjXYxqzK1hv2yjc
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T20:45:00.387Z'
+            time: "2023-10-16T20:45:00.387Z"
       ht:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: UOIQXJfwJsCSaAwb-X36R
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T20:44:23.268Z'
+            time: "2023-10-16T20:44:23.268Z"
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 2ejpIP0qlM0GJJlm9CiGg
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T20:45:52.060Z'
+            time: "2023-10-16T20:45:52.060Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: Mvdl-2rBhSK38Zo-trUo0
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T20:45:24.484Z'
+            time: "2023-10-16T20:45:24.484Z"
   public.footer.member-login:
     locales:
       es-419:
@@ -281,10 +281,10 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: Q6wTGlNjNEtUGLb-kdvnZ
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T20:55:56.927Z'
+            time: "2023-10-16T20:55:56.927Z"
   public.benefits-heat-pump.text2:
     locales:
       pt-BR:
@@ -293,30 +293,30 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: uWsVO3VUJzQ5vLsZB8HwW
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T22:42:24.795Z'
+            time: "2023-10-16T22:42:24.795Z"
       ht:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: TT5QzNS5bGUJPwxnp2bHA
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T22:43:07.437Z'
+            time: "2023-10-16T22:43:07.437Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: uHX7yK6V0595EOnzzlbi8
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T22:43:16.320Z'
+            time: "2023-10-16T22:43:16.320Z"
   public.benefits-heat-pump.text3:
     locales:
       ht:
@@ -325,10 +325,10 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 342jM5AMjuemch-QDVetP
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-16T22:44:32.924Z'
+            time: "2023-10-16T22:44:32.924Z"
   public.survey.under-construction:
     locales:
       en:
@@ -337,10 +337,10 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: jtrU22FXD10G4o8fYWzi0
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-21T01:45:55.507Z'
+            time: "2023-10-21T01:45:55.507Z"
   public.survey.work-in-progress:
     locales:
       en:
@@ -349,20 +349,20 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: FnsKHTP2gz65PlAG0ghKf
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-21T01:49:39.855Z'
+            time: "2023-10-21T01:49:39.855Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 3qhTB3z_pxNFRLkBNXxdI
-            comment: ''
+            comment: ""
             suggestion: BAJO CONSTRUCCIÓN
             type: request_change
-            time: '2023-10-21T01:51:03.507Z'
+            time: "2023-10-21T01:51:03.507Z"
             resolved: true
   public.about-us.mcec:
     locales:
@@ -372,10 +372,10 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: e1FkAxgn2HeTvHT4UQUzR
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-23T16:38:02.522Z'
+            time: "2023-10-23T16:38:02.522Z"
   public.get-heat-pump.step1.itemE:
     locales:
       pt-BR:
@@ -384,10 +384,10 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: jvkqez29ESzNkkuTHTQ4c
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-23T17:55:08.671Z'
+            time: "2023-10-23T17:55:08.671Z"
   public.global-labels.locales.creole:
     locales:
       ht:
@@ -396,40 +396,40 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: DqUgzKoEM0L2z4sC67wWu
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:03:13.609Z'
+            time: "2023-10-31T17:03:13.609Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: v_u9R8SLZ3AFobY6OFyS2
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:03:16.634Z'
+            time: "2023-10-31T17:03:16.634Z"
       en:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 4FyS4E4U7mx1fBH4lEwoH
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:03:19.635Z'
+            time: "2023-10-31T17:03:19.635Z"
       pt-BR:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: QZ64Px1GC19rJDIu1Ul97
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:03:23.866Z'
+            time: "2023-10-31T17:03:23.866Z"
   public.global-labels.locales.portuguese:
     locales:
       ht:
@@ -438,30 +438,30 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 4JWrTYBD5hleSMLY0WDS8
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:03:52.041Z'
+            time: "2023-10-31T17:03:52.041Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: nSBOdGdzDdmFcudJrOplU
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:03:54.277Z'
+            time: "2023-10-31T17:03:54.277Z"
       en:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: wSGCe7E8zMc_4dYtEKUFc
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:03:56.384Z'
+            time: "2023-10-31T17:03:56.384Z"
   public.global-labels.locales.spanish:
     locales:
       en:
@@ -470,30 +470,30 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: zO1mlEJUFqNKYHg-kGLXL
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:04:08.638Z'
+            time: "2023-10-31T17:04:08.638Z"
       ht:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: F1uh41werJGtfn0KNkcx1
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:04:19.972Z'
+            time: "2023-10-31T17:04:19.972Z"
       pt-BR:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: KeKV0sXSkklKCZRr8b5nL
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:04:24.634Z'
+            time: "2023-10-31T17:04:24.634Z"
   public.about-us.ulem1:
     locales:
       pt-BR:
@@ -501,21 +501,21 @@ reviews:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
-            id: '-plXMd26ENmReZzJrarY1'
-            comment: ''
-            suggestion: ''
+            id: "-plXMd26ENmReZzJrarY1"
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:07:15.898Z'
+            time: "2023-10-31T17:07:15.898Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 6TOkwy7N3Ir0vGL8FspUN
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:07:21.532Z'
+            time: "2023-10-31T17:07:21.532Z"
   public.global-labels.click-here:
     locales:
       pt-BR:
@@ -524,26 +524,26 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: e8XNx_dh1zN8fSqBCmcMy
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:32:02.693Z'
+            time: "2023-10-31T17:32:02.693Z"
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 6ha19zlA9Axfj_wLUdfdi
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:32:34.302Z'
+            time: "2023-10-31T17:32:34.302Z"
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: _IeXz_uO8DNRRZeul_0qA
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:32:43.275Z'
+            time: "2023-10-31T17:32:43.275Z"
   public.benefits-heat-pump.cardBenefits.item1.body2:
     locales:
       pt-BR:
@@ -552,30 +552,30 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: FtWrdVV4bUhQDdve6JdT_
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:33:06.284Z'
+            time: "2023-10-31T17:33:06.284Z"
       ht:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: Ue8N3y_mq2r5GjzTjssRR
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:33:40.040Z'
+            time: "2023-10-31T17:33:40.040Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: GSKjsJxXVBfKjkUMyCRSg
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:33:57.246Z'
+            time: "2023-10-31T17:33:57.246Z"
   public.benefits-heat-pump.cardBenefits.item2.body1:
     locales:
       en:
@@ -584,49 +584,49 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: dCnGLaNaspA0GawI0hNrk
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:34:55.252Z'
+            time: "2023-10-31T17:34:55.252Z"
             resolved: true
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 4wWULaSJwHp1W1jviTs6K
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:35:53.604Z'
+            time: "2023-10-31T17:35:53.604Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: Gpp0a0dQPPW2qqkP59Ghb
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:35:38.029Z'
+            time: "2023-10-31T17:35:38.029Z"
       ht:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: tGnev-5CyL813ezyDcP9F
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:35:43.132Z'
+            time: "2023-10-31T17:35:43.132Z"
       pt-BR:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 30wFWQ98zoGnlBspo-gex
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:35:48.053Z'
+            time: "2023-10-31T17:35:48.053Z"
   public.benefits-heat-pump.cardBenefits.item3.body1:
     locales:
       en:
@@ -635,48 +635,48 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: NPB21hp50uW3-xRj6yyCF
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:36:35.469Z'
+            time: "2023-10-31T17:36:35.469Z"
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: jHrrH6l_J646x_zsFO7Nz
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:37:25.428Z'
+            time: "2023-10-31T17:37:25.428Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: wnF5oXjrL9667T60xQHbn
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:37:00.549Z'
+            time: "2023-10-31T17:37:00.549Z"
       ht:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: heUlczEfJXnqPcZqfFuvO
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:37:09.628Z'
+            time: "2023-10-31T17:37:09.628Z"
       pt-BR:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: DfPJRm3OVSvz5VRDkFMvK
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:37:18.114Z'
+            time: "2023-10-31T17:37:18.114Z"
   public.benefits-heat-pump.cardBenefits.item4.body1:
     locales:
       en:
@@ -685,40 +685,40 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: Mz4V_WPqXtegL6AG_NQE3
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:38:10.269Z'
+            time: "2023-10-31T17:38:10.269Z"
       es-419:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: 9asWLU5nusJ3Z0iWnfrSF
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:38:16.819Z'
+            time: "2023-10-31T17:38:16.819Z"
       ht:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: qJgiykgePKBA2zPseebrc
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:38:22.893Z'
+            time: "2023-10-31T17:38:22.893Z"
       pt-BR:
         comments:
           - user:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: rSFhuC5zkSE9DJDvr2b3E
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:38:29.829Z'
+            time: "2023-10-31T17:38:29.829Z"
   public.home.hero.text1:
     locales:
       ht:
@@ -727,7 +727,7 @@ reviews:
               name: thiagobadini
               email: thiagobardini@hotmail.com
             id: vgcoDiJDYCMHP5h7t7u9d
-            comment: ''
-            suggestion: ''
+            comment: ""
+            suggestion: ""
             type: approve
-            time: '2023-10-31T17:51:01.770Z'
+            time: "2023-10-31T17:51:01.770Z"
