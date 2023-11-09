@@ -37,7 +37,7 @@ const SurveyComponent = ({
 }) => {
   const navigate = useNavigate();
 
-  const { handleSubmit, reset, control, watch } = useForm({
+  const { handleSubmit, reset, control, watch, getValues } = useForm({
     defaultValues: formDefault,
   });
 
@@ -201,6 +201,13 @@ const SurveyComponent = ({
       >
         <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
           {surveyStructure?.survey_questions.map((q) => {
+            if (
+              q.conditional_on &&
+              getValues(q.conditional_on.id) !== q.conditional_on.value
+            ) {
+              return null;
+            }
+
             switch (q.response_type) {
               case "radio":
                 return (
