@@ -10,8 +10,8 @@ import Loader from "../../../components/Loader";
 import React from "react";
 
 import { useGetHomesQuery } from "../../../api/apiSlice";
-import { useNavigate } from "react-router-dom";
 import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
+import SurveyLink from "../../../components/SurveyLink";
 
 // Formats addresses
 export const getAddress = (params) => {
@@ -27,7 +27,6 @@ export const getAddress = (params) => {
 
 const HomeTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
-  const navigate = useNavigate();
 
   useInitBreadcrumbs(
     [{ url: withAdminPrefix(ADMIN_HOME), description: "homes" }],
@@ -35,10 +34,6 @@ const HomeTable = () => {
   );
 
   const handleHomeLink = (home) => goToBreadcrumb("home", home);
-
-  const handleUserLink = (home) => {
-    navigate(`/admin/survey/visit/${home.survey_visit_ids[0]}`);
-  };
 
   const handleAssignmentLink = (assignment) =>
     goToBreadcrumb("assignment", assignment);
@@ -90,15 +85,14 @@ const HomeTable = () => {
       headerName: "Completed",
       renderCell: (params) =>
         params.row.completed ? (
-          <Button
+          <SurveyLink
+            label={"Yes ✅"}
+            links={params.row.survey_visit_ids}
             variant="text"
             sx={{ minWidth: "unset", padding: "0px" }}
             color="primary"
             size="small"
-            onClick={() => handleUserLink(params.row)}
-          >
-            Yes ✅
-          </Button>
+          />
         ) : (
           "No"
         ),

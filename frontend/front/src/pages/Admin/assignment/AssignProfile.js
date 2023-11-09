@@ -20,6 +20,7 @@ import {
   ADMIN_ASSIGNMENT,
   withAdminPrefix,
 } from "../../../routing/routes";
+import SurveyLink from "../../../components/SurveyLink";
 
 const AssignProfile = () => {
   const { aid } = useParams();
@@ -103,16 +104,17 @@ const AssignProfile = () => {
       headerName: "Survey",
       minWidth: 50,
       maxWidth: 80,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="primary"
-          size="small"
-          onClick={() => handleUserLink(params.row)}
-        >
-          View
-        </Button>
-      ),
+      renderCell: (params) =>
+        params.row.completed ? (
+          <SurveyLink
+            label="VIEW"
+            links={params.row.survey_visit_ids}
+            variant="text"
+            sx={{ minWidth: "unset", padding: "0px" }}
+            color="primary"
+            size="small"
+          />
+        ) : null,
     },
     {
       field: "unassign",
