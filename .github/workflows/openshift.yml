@@ -27,34 +27,31 @@
 name: OpenShift
 
 env:
-  # 🖊️ EDIT your repository secrets to log into your OpenShift cluster and set up the context.
-  # See https://github.com/redhat-actions/oc-login#readme for how to retrieve these values.
-  # To get a permanent token, refer to https://github.com/redhat-actions/oc-login/wiki/Using-a-Service-Account-for-GitHub-Actions
-  OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
-  OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
   # 🖊️ EDIT to set the kube context's namespace, you can view your available project namespaces by login into: https://console.apps.shift.nerc.mghpcc.org.
   OPENSHIFT_NAMESPACE: 'boston-heat-pump-accelerator'
-
   # EDIT to set a name for your OpenShift app, or a default one will be generated below.
   APP_NAME: ${{ inputs.app }}
-
   # EDIT with the port your application should be accessible on.
   # If the container image exposes *exactly one* port, this can be left blank.
   # Refer to the 'port' input of https://github.com/redhat-actions/oc-new-app
   APP_PORT: ${{ inputs.port }}
-
   # EDIT to change the image registry settings.
   # Registries such as GHCR, Quay.io, and Docker Hub are supported.
-  IMAGE_REGISTRY: ghcr.io/${{ github.actor }}
+  IMAGE_REGISTRY: ghcr.io/codeforboston
   # EDIT with your registry username.
   IMAGE_REGISTRY_USER: ${{ github.actor }}
-  IMAGE_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-
   # EDIT to specify custom tags for the container image, or default tags will be generated below.
   IMAGE_TAGS: ''
 
 on:
   workflow_call:
+    secrets:
+      OPENSHIFT_SERVER:
+        required: true
+      OPENSHIFT_TOKEN:
+        required: true
+      GITHUB_TOKEN:
+        required: true
     inputs:
       app:
         type: string
@@ -95,44 +92,6 @@ jobs:
       SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
 
     steps:
-      - name: Check for required secrets
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const secrets = {
-              OPENSHIFT_SERVER: `${{ secrets.OPENSHIFT_SERVER }}`,
-              OPENSHIFT_TOKEN: `${{ secrets.OPENSHIFT_TOKEN }}`,
-            };
-
-            const GHCR = "ghcr.io";
-            if (`${{ env.IMAGE_REGISTRY }}`.startsWith(GHCR)) {
-              core.info(`Image registry is ${GHCR} - no registry password required`);
-            }
-            else {
-              core.info("A registry password is required");
-              secrets["IMAGE_REGISTRY_PASSWORD"] = `${{ secrets.IMAGE_REGISTRY_PASSWORD }}`;
-            }
-
-            const missingSecrets = Object.entries(secrets).filter(([ name, value ]) => {
-              if (value.length === 0) {
-                core.error(`Secret "${name}" is not set`);
-                return true;
-              }
-              core.info(`✔️ Secret "${name}" is set`);
-              return false;
-            });
-
-            if (missingSecrets.length > 0) {
-              core.setFailed(`❌ At least one required secret is not set in the repository. \n` +
-                "You can add it using:\n" +
-                "GitHub UI: https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository \n" +
-                "GitHub CLI: https://cli.github.com/manual/gh_secret_set \n" +
-                "Also, refer to https://github.com/redhat-actions/oc-login#getting-started-with-the-action-or-see-example");
-            }
-            else {
-              core.info(`✅ All the required secrets are set`);
-            }
-
       - name: Check out repository
         uses: actions/checkout@v3
 
@@ -170,7 +129,7 @@ jobs:
           tags: ${{ steps.build-image.outputs.tags }}
           registry: ${{ env.IMAGE_REGISTRY }}
           username: ${{ env.IMAGE_REGISTRY_USER }}
-          password: ${{ env.IMAGE_REGISTRY_PASSWORD }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       # The path the image was pushed to is now stored in ${{ steps.push-image.outputs.registry-path }}
 
@@ -183,8 +142,8 @@ jobs:
       - name: Log in to OpenShift
         uses: redhat-actions/oc-login@v1
         with:
-          openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
-          openshift_token: ${{ env.OPENSHIFT_TOKEN }}
+          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
           insecure_skip_tls_verify: true
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
 
