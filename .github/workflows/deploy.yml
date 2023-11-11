@@ -17,6 +17,7 @@ jobs:
       app: bhpa-backend
       context: backend
       port: 3000
+    secrets: inherit
   deploy-website:
     uses: ./.github/workflows/openshift.yml
     with:
@@ -27,3 +28,4 @@ jobs:
         REACT_APP_RECAPTCHA_KEY=$REACT_APP_RECAPTCHA_KEY
         REACT_APP_PUBLIC_SURVEY_ENABLED=$REACT_APP_PUBLIC_SURVEY_ENABLED
         REACT_APP_API_URL=$REACT_APP_API_URL
+      secrets: inherit
