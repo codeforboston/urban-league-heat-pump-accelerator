@@ -50,8 +50,6 @@ on:
         required: true
       OPENSHIFT_TOKEN:
         required: true
-      GITHUB_TOKEN:
-        required: true
     inputs:
       app:
         type: string
