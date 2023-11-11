@@ -11,9 +11,8 @@ ARG REACT_APP_PUBLIC_SURVEY_ENABLED
 ENV REACT_APP_PUBLIC_SURVEY_ENABLED=$REACT_APP_PUBLIC_SURVEY_ENABLED
 
 WORKDIR /usr/src/app
-COPY package.json yarn.lock ./
+COPY frontend/front/ ./
 RUN yarn
-COPY . ./
 RUN yarn build
 
 # Stage 2: Copy the JS React SPA into the Nginx HTML directory
