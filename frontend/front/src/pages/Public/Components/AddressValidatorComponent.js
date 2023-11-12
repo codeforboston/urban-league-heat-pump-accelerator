@@ -4,6 +4,7 @@ import { HeatPumpAddressField } from "../../../components/SurveyComponent/HeatPu
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../../components/Loader";
+import { useTranslation } from "react-i18next";
 
 export const AddressValidatorComponent = forwardRef(
   (
@@ -15,6 +16,8 @@ export const AddressValidatorComponent = forwardRef(
     ref
   ) => {
     const navigate = useNavigate();
+
+    const { t } = useTranslation();
 
     const { handleSubmit, control } = useForm({
       defaultValues: {
@@ -38,13 +41,13 @@ export const AddressValidatorComponent = forwardRef(
         <Box mx={{ margin: "1em 0" }}>
           <HeatPumpAddressField
             control={control}
-            label={"Enter the address where you're interested in a heat pump:"}
+            label={t("public.address.enter-address")}
           />
         </Box>
         <Stack direction="row" justifyContent="center" spacing={2} mb={5}>
           {isLoading && <Loader />}
           <Button variant="contained" type="submit">
-            {"Verify"}
+            {t('public.address.verify')}
           </Button>
           <Button
             variant="outlined"
@@ -54,7 +57,7 @@ export const AddressValidatorComponent = forwardRef(
               navigate(-1);
             }}
           >
-            {"Back"}
+            {t("public.address.back")}
           </Button>
         </Stack>
       </form>

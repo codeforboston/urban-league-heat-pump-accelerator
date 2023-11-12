@@ -238,6 +238,11 @@
           "text": "When you take the BHPA survey about heat pumps, it is anonymized and collected in aggregate. We report data we collect in our survey to the partners listed on our Partners page to help them improve their programs, so we can help more people get the discounts for heat pumps for which they are eligible. We do not sell your data to 3rd parties. If you have questions about how your data is used, please contact <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
         }
       }
+    },
+    "address": {
+      "enter-address": "Enter the address where you're interested in a heat pump:",
+      "back": "Back",
+      "verify": "Verify"
     }
   }
 }

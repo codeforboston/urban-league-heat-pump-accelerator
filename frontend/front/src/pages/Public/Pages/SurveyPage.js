@@ -124,10 +124,6 @@ export const SurveyPage = () => {
     if (isCreateHomeLoading) setValidationStatus(undefined);
   }, [isCreateHomeLoading]);
 
-  useEffect(() => {
-    console.log(language);
-  }, [language]);
-
   const pageContent = useCallback(
     () => (
       <>

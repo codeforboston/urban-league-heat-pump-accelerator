@@ -238,6 +238,11 @@
           "text": "Quando você responde à pesquisa da BHPA sobre bombas de calor, ela é anonimizada e coletada de forma agregada. \nReportamos os dados que recolhemos no nosso inquérito aos parceiros listados na nossa página de Parceiros para os ajudar a melhorar os seus programas, para que possamos ajudar mais pessoas a obter descontos em bombas de calor para as quais são elegíveis. \nNão vendemos seus dados a terceiros. \nSe você tiver dúvidas sobre como seus dados são usados, entre em contato com <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
         }
       }
+    },
+    "address": {
+      "enter-address": "Insira o endereço onde você está interessado em uma bomba de calor:",
+      "back": "Voltar",
+      "verify": "Verificar"
     }
   }
 }

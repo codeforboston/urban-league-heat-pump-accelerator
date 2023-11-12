@@ -238,6 +238,11 @@
           "text": "Lè w pran sondaj BHPA sou ponp chalè, li anonimize epi yo kolekte l an jeneral. \nNou rapòte done nou kolekte nan sondaj nou an bay patnè yo ki nan lis nan paj Patnè nou an pou ede yo amelyore pwogram yo, pou nou ka ede plis moun jwenn rabè pou ponp chalè yo kalifye pou yo. \nNou pa vann done ou yo bay twazyèm pati. \nSi w gen kesyon sou fason yo itilize done w yo, tanpri kontakte <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
         }
       }
+    },
+    "address": {
+      "enter-address": "Antre adrès kote w enterese nan yon ponp chalè:",
+      "back": "Retounen",
+      "verify": "Verifye"
     }
   }
 }
