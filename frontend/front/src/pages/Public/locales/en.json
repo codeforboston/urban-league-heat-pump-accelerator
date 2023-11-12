@@ -88,7 +88,13 @@
     "survey": {
       "heading1BlueBgGround": "Take the Survey",
       "under-construction": "Public Survey is Currently Under Development!",
-      "work-in-progress": "UNDER CONSTRUCTION"
+      "work-in-progress": "UNDER CONSTRUCTION",
+      "fill-out-form": "Fill out this form to record your interest in installing a heat pump for your home.",
+      "ulhpa-representative": "An ULHPA representative will contact you with more information about the installation process.",
+      "language-missing": "Sorry, we do not currently have a translation of the survey in your language. The survey is available in either English or Spanish. If you choose to continue in your current language, the survey questions will be delivered in English. If you prefer Spanish, please use the language selector now to change language to Spanish.",
+      "error-submitting": "There was an error submitting your address. Please try again later.",
+      "error-validating": "This address could not be validated. Make sure your information is correct then try again.",
+      "error-validating-or-already-used": "There was an error validating your address, or it has already been used to submit a survey. Please submit again or try a different address."
     },
     "benefits-heat-pump": {
       "cardBenefits": {

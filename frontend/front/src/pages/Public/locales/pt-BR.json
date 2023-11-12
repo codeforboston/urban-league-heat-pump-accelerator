@@ -91,7 +91,10 @@
     "survey": {
       "heading1BlueBgGround": "Faça a pesquisa",
       "under-construction": "A pesquisa pública está atualmente em desenvolvimento!",
-      "work-in-progress": "Em construção"
+      "work-in-progress": "Em construção",
+      "fill-out-form": "Preencha este formulário para registar o seu interesse em instalar uma bomba de calor na sua casa.",
+      "ulhpa-representative": "Um representante da ULHPA entrará em contato com você com mais informações sobre o processo de instalação.",
+      "language-missing": "Desculpe, no momento não temos uma tradução da pesquisa em seu idioma. \nA pesquisa está disponível em inglês ou espanhol. \nSe você optar por continuar no seu idioma atual, as perguntas da pesquisa serão entregues em inglês. \nSe você preferir espanhol, use o seletor de idioma agora para alterar o idioma para espanhol."
     },
     "benefits-heat-pump": {
       "cardBenefits": {

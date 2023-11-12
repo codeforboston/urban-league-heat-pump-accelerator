@@ -91,7 +91,10 @@
     "survey": {
       "heading1BlueBgGround": "Pran Sondaj la",
       "under-construction": "Sondaj Piblik la ap Devlopman kounye a!",
-      "work-in-progress": "Sou konstriksyon"
+      "work-in-progress": "Sou konstriksyon",
+      "fill-out-form": "Ranpli fòm sa a pou anrejistre enterè w genyen nan enstale yon ponp chalè pou kay ou.",
+      "ulhpa-representative": "Yon reprezantan ULHPA ap ​​kontakte w pou w jwenn plis enfòmasyon sou pwosesis enstalasyon an.",
+      "language-missing": "Padon, nou pa gen yon tradiksyon sondaj la kounye a nan lang ou. \nSondaj la disponib swa nan lang angle oswa panyòl. \nSi w chwazi pou w kontinye nan lang ou ye kounye a, kesyon sondaj yo ap voye an angle. \nSi w pito panyòl, tanpri itilize seleksyon lang kounye a pou w chanje lang pou w vin panyòl."
     },
     "benefits-heat-pump": {
       "cardBenefits": {

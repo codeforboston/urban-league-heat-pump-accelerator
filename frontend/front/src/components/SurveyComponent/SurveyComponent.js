@@ -20,6 +20,7 @@ import { SurveyError } from "./SurveyStructureError";
 import { useForm } from "react-hook-form";
 import { useGetSurveyStructureQuery } from "../../api/apiSlice";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
@@ -256,10 +257,14 @@ const SurveyComponentWrapper = forwardRef((props, ref) => {
   const { defaultData, style, activeHome, surveyId } = props;
 
   const {
+    i18n: { language },
+  } = useTranslation();
+
+  const {
     data: surveyStructure,
     isError: isSurveyError,
     isLoading: isSurveyLoading,
-  } = useGetSurveyStructureQuery(surveyId);
+  } = useGetSurveyStructureQuery({ id: surveyId, langPref: language });
 
   const formDefault = useMemo(() => {
     if (defaultData) {
