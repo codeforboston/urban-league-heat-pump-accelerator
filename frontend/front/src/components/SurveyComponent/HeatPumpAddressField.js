@@ -183,14 +183,14 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
               },
               pattern: {
                 value: /\d{5}/,
-                message: t('public.address.error.invalid-zip-code'),
+                message: t("public.address.error.invalid-zip-code"),
               },
             }}
             render={({ field }) => (
               <TextField
                 fullWidth
                 variant="standard"
-                label={t('public.address.labels.zip-code')}
+                label={t("public.address.labels.zip-code")}
                 {...field}
                 error={!!formState.errors.address?.zip_code}
                 helperText={
