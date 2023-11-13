@@ -22,6 +22,13 @@ import { useGetSurveyStructureQuery } from "../../api/apiSlice";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+function getSurveyLangPref(currentLanguage) {
+  if (currentLanguage === "en-us" || currentLanguage === "es-us") {
+    return currentLanguage;
+  }
+  return "en-us";
+}
+
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
  */
@@ -103,7 +110,7 @@ const SurveyComponent = ({
             reset(formDefault);
           }}
         >
-          {t('public.survey.buttons.clear')}
+          {t("public.survey.buttons.clear")}
         </Button>
       </>
     ),
@@ -182,10 +189,10 @@ const SurveyComponent = ({
           }
         }}
         handleCancel={() => setIsDeleteModalOpen(false)}
-        confirmBtnText={t('public.survey.buttons.delete')}
-        cancelBtnText={t('public.survey.buttons.cancel')}
-        title={t('public.survey.buttons.confirm-delete')}
-        message={t('public.survey.delete-modal-confirm')}
+        confirmBtnText={t("public.survey.buttons.delete")}
+        cancelBtnText={t("public.survey.buttons.cancel")}
+        title={t("public.survey.buttons.confirm-delete")}
+        message={t("public.survey.delete-modal-confirm")}
       />
       <AddressComponent home={activeHome} />
       <form
@@ -266,7 +273,10 @@ const SurveyComponentWrapper = forwardRef((props, ref) => {
     data: surveyStructure,
     isError: isSurveyError,
     isLoading: isSurveyLoading,
-  } = useGetSurveyStructureQuery({ id: surveyId, langPref: language });
+  } = useGetSurveyStructureQuery({
+    id: surveyId,
+    langPref: getSurveyLangPref(language),
+  });
 
   const formDefault = useMemo(() => {
     if (defaultData) {
