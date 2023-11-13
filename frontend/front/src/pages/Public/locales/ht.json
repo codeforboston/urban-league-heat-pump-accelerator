@@ -10,9 +10,6 @@
         "button": "Benefis nan ponp chalè"
       },
       "cardLinksSection": {
-        "title": "",
-        "paragraph": "",
-        "button": "",
         "item1": {
           "title": "Ki sa ki se yon ponp chalè?",
           "paragraph": "Yon ponp chalè se yon sistèm enèji efikas ki chofe kay ou nan sezon fredi a, ak refwadi kay ou an ete.",
@@ -94,7 +91,10 @@
       "work-in-progress": "Sou konstriksyon",
       "fill-out-form": "Ranpli fòm sa a pou anrejistre enterè w genyen nan enstale yon ponp chalè pou kay ou.",
       "ulhpa-representative": "Yon reprezantan ULHPA ap ​​kontakte w pou w jwenn plis enfòmasyon sou pwosesis enstalasyon an.",
-      "language-missing": "Padon, nou pa gen yon tradiksyon sondaj la kounye a nan lang ou. \nSondaj la disponib swa nan lang angle oswa panyòl. \nSi w chwazi pou w kontinye nan lang ou ye kounye a, kesyon sondaj yo ap voye an angle. \nSi w pito panyòl, tanpri itilize seleksyon lang kounye a pou w chanje lang pou w vin panyòl."
+      "language-missing": "Padon, nou pa gen yon tradiksyon sondaj la kounye a nan lang ou. \nSondaj la disponib swa nan lang angle oswa panyòl. \nSi w chwazi pou w kontinye nan lang ou ye kounye a, kesyon sondaj yo ap voye an angle. \nSi w pito panyòl, tanpri itilize seleksyon lang kounye a pou w chanje lang pou w vin panyòl.",
+      "error-validating-or-already-used": "Te gen yon erè nan validation adrès ou, oswa li te deja itilize pou soumèt yon sondaj. \nTanpri soumèt ankò oswa eseye yon lòt adrès.",
+      "error-submitting": "Te gen yon erè lè w te voye adrès ou a. \nTanpri eseye ankò pita.",
+      "error-validating": "Adrès sa a pa t 'kapab valide. \nAsire w ke enfòmasyon ou yo kòrèk epi eseye ankò."
     },
     "benefits-heat-pump": {
       "cardBenefits": {
@@ -254,7 +254,8 @@
         "street-name": "* Non Ri",
         "city": "* Vil",
         "state": "* Eta",
-        "zip-code": "* Kòd postal"
+        "zip-code": "* Kòd postal",
+        "unit-number": "Nimewo Inite"
       }
     }
   }
