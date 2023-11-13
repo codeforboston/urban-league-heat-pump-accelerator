@@ -146,6 +146,7 @@ export const SurveyPage = () => {
           <AddressValidatorComponent
             onValidate={handleCreateHome}
             isLoading={isCreateHomeLoading}
+            validationStatus={validationStatus}
           />
         </HeatPumpFade>
         <HeatPumpSlide show={step === STEP_SURVEY}>

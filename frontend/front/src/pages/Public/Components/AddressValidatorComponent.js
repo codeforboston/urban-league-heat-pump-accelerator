@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState, useEffect } from "react";
 import { Stack, Button, Box } from "@mui/material";
 import { HeatPumpAddressField } from "../../../components/SurveyComponent/HeatPumpAddressField";
 import { useForm } from "react-hook-form";
@@ -11,11 +11,26 @@ export const AddressValidatorComponent = forwardRef(
     {
       onValidate,
       isLoading,
+      validationStatus,
       style, // passed through so MUI transitions work
     },
     ref
   ) => {
     const navigate = useNavigate();
+    const [buttonsDisabled, setButtonsDisabled] = useState(false);
+
+    // Disable buttons when request is sent.
+    useEffect(() => {
+      if (isLoading) {
+        setButtonsDisabled(true);
+      }
+      if (validationStatus === "unrecognized") {
+        setButtonsDisabled(false);
+      }
+      if (validationStatus === "validationError") {
+        setButtonsDisabled(false);
+      }
+    }, [isLoading, validationStatus]);
 
     const { t } = useTranslation();
 
@@ -34,7 +49,10 @@ export const AddressValidatorComponent = forwardRef(
 
     return (
       <form
-        onSubmit={handleSubmit((data) => onValidate(data))}
+        onSubmit={handleSubmit((data) => {
+          setButtonsDisabled(true);
+          onValidate(data);
+        })}
         ref={ref}
         style={style}
       >
@@ -46,8 +64,8 @@ export const AddressValidatorComponent = forwardRef(
         </Box>
         <Stack direction="row" justifyContent="center" spacing={2} mb={5}>
           {isLoading && <Loader />}
-          <Button variant="contained" type="submit">
-            {t('public.address.verify')}
+          <Button variant="contained" type="submit" disabled={buttonsDisabled}>
+            {t("public.address.verify")}
           </Button>
           <Button
             variant="outlined"
@@ -56,6 +74,7 @@ export const AddressValidatorComponent = forwardRef(
             onClick={() => {
               navigate(-1);
             }}
+            disabled={buttonsDisabled}
           >
             {t("public.address.back")}
           </Button>
