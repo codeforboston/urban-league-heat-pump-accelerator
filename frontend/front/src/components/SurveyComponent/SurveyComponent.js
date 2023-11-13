@@ -38,6 +38,8 @@ const SurveyComponent = ({
 }) => {
   const navigate = useNavigate();
 
+  const { t } = useTranslation();
+
   const { handleSubmit, reset, control, watch } = useForm({
     defaultValues: formDefault,
   });
@@ -91,7 +93,7 @@ const SurveyComponent = ({
     () => (
       <>
         <Button variant="contained" type="submit" name="submit">
-          {"Submit"}
+          {t("public.survey.buttons.submit")}
         </Button>
         <Button
           variant="outlined"
@@ -101,11 +103,11 @@ const SurveyComponent = ({
             reset(formDefault);
           }}
         >
-          {"Clear"}
+          {t('public.survey.buttons.clear')}
         </Button>
       </>
     ),
-    [formDefault, reset]
+    [formDefault, reset, t]
   );
 
   const adminButtonsViewing = useCallback(
@@ -180,10 +182,10 @@ const SurveyComponent = ({
           }
         }}
         handleCancel={() => setIsDeleteModalOpen(false)}
-        confirmBtnText="Delete"
-        cancelBtnText="Cancel"
-        title="Confirm Delete"
-        message={`Are you sure you want to delete this survey data?`}
+        confirmBtnText={t('public.survey.buttons.delete')}
+        cancelBtnText={t('public.survey.buttons.cancel')}
+        title={t('public.survey.buttons.confirm-delete')}
+        message={t('public.survey.delete-modal-confirm')}
       />
       <AddressComponent home={activeHome} />
       <form
@@ -234,7 +236,7 @@ const SurveyComponent = ({
                   <Alert
                     key={`q${q.id}`}
                     severity="error"
-                  >{`Invalid question type: ${q.response_type}`}</Alert>
+                  >{`{t('public.survey.invalid-question-type')} ${q.response_type}`}</Alert>
                 );
             }
           })}

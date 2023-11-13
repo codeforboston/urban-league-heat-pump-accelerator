@@ -94,7 +94,16 @@
       "language-missing": "Lo sentimos, actualmente no tenemos una traducción de la encuesta en su idioma. \nLa encuesta está disponible en inglés o español. \nSi elige continuar en su idioma actual, las preguntas de la encuesta se entregarán en inglés. \nSi prefiere español, utilice el selector de idioma ahora para cambiar el idioma a español.",
       "error-submitting": "Hubo un error al enviar su dirección. \nPor favor, inténtelo de nuevo más tarde.",
       "error-validating-or-already-used": "Hubo un error al validar tu dirección o ya se usó para enviar una encuesta. \nPor favor envíelo nuevamente o pruebe con una dirección diferente.",
-      "error-validating": "Esta dirección no se pudo validar. \nAsegúrese de que su información sea correcta y vuelva a intentarlo."
+      "error-validating": "Esta dirección no se pudo validar. \nAsegúrese de que su información sea correcta y vuelva a intentarlo.",
+      "buttons": {
+        "clear": "{\"Claro\"}",
+        "submit": "Entregar",
+        "delete": "Borrar",
+        "confirm-delete": "Confirmar eliminación",
+        "cancel": "Cancelar"
+      },
+      "invalid-question-type": "Tipo de pregunta no válida:",
+      "delete-modal-confirm": "{`¿Estás seguro de que deseas eliminar los datos de esta encuesta?`}"
     },
     "benefits-heat-pump": {
       "cardBenefits": {

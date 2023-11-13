@@ -94,7 +94,16 @@
       "language-missing": "Padon, nou pa gen yon tradiksyon sondaj la kounye a nan lang ou. \nSondaj la disponib swa nan lang angle oswa panyòl. \nSi w chwazi pou w kontinye nan lang ou ye kounye a, kesyon sondaj yo ap voye an angle. \nSi w pito panyòl, tanpri itilize seleksyon lang kounye a pou w chanje lang pou w vin panyòl.",
       "error-validating-or-already-used": "Te gen yon erè nan validation adrès ou, oswa li te deja itilize pou soumèt yon sondaj. \nTanpri soumèt ankò oswa eseye yon lòt adrès.",
       "error-submitting": "Te gen yon erè lè w te voye adrès ou a. \nTanpri eseye ankò pita.",
-      "error-validating": "Adrès sa a pa t 'kapab valide. \nAsire w ke enfòmasyon ou yo kòrèk epi eseye ankò."
+      "error-validating": "Adrès sa a pa t 'kapab valide. \nAsire w ke enfòmasyon ou yo kòrèk epi eseye ankò.",
+      "buttons": {
+        "clear": "{\"Klè\"}",
+        "submit": "Soumèt",
+        "delete": "Efase",
+        "confirm-delete": "Konfime Efase",
+        "cancel": "Anile"
+      },
+      "invalid-question-type": "Kalite kesyon ki pa valab:",
+      "delete-modal-confirm": "{`Èske w sèten ou vle efase done sondaj sa a?`}"
     },
     "benefits-heat-pump": {
       "cardBenefits": {

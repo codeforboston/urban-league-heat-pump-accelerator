@@ -94,7 +94,16 @@
       "language-missing": "Sorry, we do not currently have a translation of the survey in your language. The survey is available in either English or Spanish. If you choose to continue in your current language, the survey questions will be delivered in English. If you prefer Spanish, please use the language selector now to change language to Spanish.",
       "error-submitting": "There was an error submitting your address. Please try again later.",
       "error-validating": "This address could not be validated. Make sure your information is correct then try again.",
-      "error-validating-or-already-used": "There was an error validating your address, or it has already been used to submit a survey. Please submit again or try a different address."
+      "error-validating-or-already-used": "There was an error validating your address, or it has already been used to submit a survey. Please submit again or try a different address.",
+      "buttons": {
+        "submit": "Submit",
+        "clear": "{\"Clear\"}",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "confirm-delete": "Confirm Delete"
+      },
+      "delete-modal-confirm": "{`Are you sure you want to delete this survey data?`}",
+      "invalid-question-type": "Invalid question type:"
     },
     "benefits-heat-pump": {
       "cardBenefits": {

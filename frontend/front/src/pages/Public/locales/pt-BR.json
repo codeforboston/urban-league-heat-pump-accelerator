@@ -94,7 +94,16 @@
       "language-missing": "Desculpe, no momento não temos uma tradução da pesquisa em seu idioma. \nA pesquisa está disponível em inglês ou espanhol. \nSe você optar por continuar no seu idioma atual, as perguntas da pesquisa serão entregues em inglês. \nSe você preferir espanhol, use o seletor de idioma agora para alterar o idioma para espanhol.",
       "error-validating-or-already-used": "Ocorreu um erro ao validar seu endereço ou ele já foi usado para enviar uma pesquisa. \nEnvie novamente ou tente um endereço diferente.",
       "error-submitting": "Ocorreu um erro ao enviar seu endereço. \nPor favor, tente novamente mais tarde.",
-      "error-validating": "Este endereço não pôde ser validado. \nVerifique se suas informações estão corretas e tente novamente."
+      "error-validating": "Este endereço não pôde ser validado. \nVerifique se suas informações estão corretas e tente novamente.",
+      "buttons": {
+        "clear": "{\"Claro\"}",
+        "submit": "Enviar",
+        "delete": "Excluir",
+        "confirm-delete": "Confirmar exclusão",
+        "cancel": "Cancelar"
+      },
+      "invalid-question-type": "Tipo de pergunta inválido:",
+      "delete-modal-confirm": "{`Tem certeza de que deseja excluir os dados desta pesquisa?`}"
     },
     "benefits-heat-pump": {
       "cardBenefits": {
