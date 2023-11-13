@@ -1,6 +1,7 @@
 import React from "react";
 import { Controller, useController } from "react-hook-form";
 import { FormLabel, Grid, TextField, Stack } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 /**
  * Field to collect a user's address
@@ -8,6 +9,7 @@ import { FormLabel, Grid, TextField, Stack } from "@mui/material";
  */
 export const HeatPumpAddressField = ({ control, label, disabled }) => {
   const { formState } = useController({ name: "address", control });
+  const { t } = useTranslation();
 
   return (
     <Stack>
@@ -33,18 +35,18 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "This field is required!",
+                message: t("public.address.error.required"),
               },
               pattern: {
                 value: /\d+/,
-                message: "Invalid street number.",
+                message: t("public.address.error.invalid-street-number"),
               },
             }}
             render={({ field }) => (
               <TextField
                 fullWidth
                 variant="standard"
-                label="* Street Number"
+                label={t("public.address.street-number")}
                 {...field}
                 error={!!formState.errors.address?.street_number}
                 helperText={
@@ -65,14 +67,14 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "This field is required!",
+                message: t("public.address.error.required"),
               },
             }}
             render={({ field }) => (
               <TextField
                 fullWidth
                 variant="standard"
-                label="* Street Name"
+                label={t("public.address.labels.street-name")}
                 {...field}
                 error={!!formState.errors.address?.street_name}
                 helperText={
@@ -93,14 +95,14 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
             rules={{
               pattern: {
                 value: /\d+/,
-                message: "Invalid unit number.",
+                message: t("public.address.error.invalid-unit-number"),
               },
             }}
             render={({ field }) => (
               <TextField
                 fullWidth
                 variant="standard"
-                label="Unit Number"
+                label={t("public.address.labels.unit-number")}
                 {...field}
                 error={!!formState.errors.address?.unit_number}
                 helperText={
@@ -121,14 +123,14 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "This field is required!",
+                message: t("public.address.error.required"),
               },
             }}
             render={({ field }) => (
               <TextField
                 fullWidth
                 variant="standard"
-                label="* City"
+                label={t("public.address.labels.city")}
                 {...field}
                 error={!!formState.errors.address?.city}
                 helperText={
@@ -149,14 +151,14 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "This field is required!",
+                message: t("public.address.error.required"),
               },
             }}
             render={({ field }) => (
               <TextField
                 fullWidth
                 variant="standard"
-                label="* State"
+                label={t("public.address.labels.state")}
                 {...field}
                 error={!!formState.errors.address?.state}
                 helperText={
@@ -177,18 +179,18 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "This field is required!",
+                message: t("public.address.error.required"),
               },
               pattern: {
                 value: /\d{5}/,
-                message: "Invalid ZIP code.",
+                message: t('public.address.error.invalid-zip-code'),
               },
             }}
             render={({ field }) => (
               <TextField
                 fullWidth
                 variant="standard"
-                label="* ZIP Code"
+                label={t('public.address.labels.zip-code')}
                 {...field}
                 error={!!formState.errors.address?.zip_code}
                 helperText={

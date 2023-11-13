@@ -242,7 +242,20 @@
     "address": {
       "enter-address": "Insira o endereço onde você está interessado em uma bomba de calor:",
       "back": "Voltar",
-      "verify": "Verificar"
+      "verify": "Verificar",
+      "street-number": "* Número da rua",
+      "error": {
+        "required": "Este campo é obrigatório!",
+        "invalid-unit-number": "Número de unidade inválido.",
+        "invalid-street-number": "Número de rua inválido.",
+        "invalid-zip-code": "CEP inválido."
+      },
+      "labels": {
+        "street-name": "* Nome da rua",
+        "city": "* Cidade",
+        "state": "* Estado",
+        "zip-code": "* CEP"
+      }
     }
   }
 }

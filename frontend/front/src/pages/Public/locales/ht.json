@@ -242,7 +242,20 @@
     "address": {
       "enter-address": "Antre adrès kote w enterese nan yon ponp chalè:",
       "back": "Retounen",
-      "verify": "Verifye"
+      "verify": "Verifye",
+      "street-number": "* Nimewo Ri",
+      "error": {
+        "required": "Jaden sa a obligatwa!",
+        "invalid-unit-number": "Nimewo inite ki pa valab.",
+        "invalid-street-number": "Nimewo lari ki pa valab.",
+        "invalid-zip-code": "Kòd postal ki pa valab."
+      },
+      "labels": {
+        "street-name": "* Non Ri",
+        "city": "* Vil",
+        "state": "* Eta",
+        "zip-code": "* Kòd postal"
+      }
     }
   }
 }

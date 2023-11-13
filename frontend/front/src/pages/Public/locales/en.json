@@ -242,7 +242,21 @@
     "address": {
       "enter-address": "Enter the address where you're interested in a heat pump:",
       "back": "Back",
-      "verify": "Verify"
+      "verify": "Verify",
+      "street-number": "* Street Number",
+      "error": {
+        "required": "This field is required!",
+        "invalid-unit-number": "Invalid unit number.",
+        "invalid-street-number": "Invalid street number.",
+        "invalid-zip-code": "Invalid ZIP code."
+      },
+      "labels": {
+        "unit-number": "Unit Number",
+        "street-name": "* Street Name",
+        "city": "* City",
+        "state": "* State",
+        "zip-code": "* ZIP Code"
+      }
     }
   }
 }
