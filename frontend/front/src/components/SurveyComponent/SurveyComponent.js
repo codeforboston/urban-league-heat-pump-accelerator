@@ -24,9 +24,9 @@ import { useTranslation } from "react-i18next";
 
 function getSurveyLangPref(currentLanguage) {
   if (currentLanguage === "en-us" || currentLanguage === "es-us") {
-    return currentLanguage;
+    return currentLanguage.slice(0, 2);
   }
-  return "en-us";
+  return "en";
 }
 
 /*
