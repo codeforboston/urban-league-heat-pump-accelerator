@@ -11,15 +11,15 @@ import {
   buildSurveyCacheKey,
 } from "../../util/surveyUtils";
 
-import { AddressComponent } from "../AddressUtils";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useGetSurveyStructureQuery } from "../../api/apiSlice";
 import ConfirmationModal from "../../components/confirmationModal/ConfirmationModal";
+import { AddressComponent } from "../AddressUtils";
+import Loader from "../Loader";
 import { HeatPumpDropdown } from "./HeatPumpDropdown";
 import { HeatPumpTextField } from "./HeatPumpTextField";
-import Loader from "../Loader";
 import { SurveyError } from "./SurveyStructureError";
-import { useForm } from "react-hook-form";
-import { useGetSurveyStructureQuery } from "../../api/apiSlice";
-import { useNavigate } from "react-router-dom";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
@@ -208,7 +208,7 @@ const SurveyComponent = ({
                     key={`q${q.id}`}
                     control={control}
                     name={`${q.id}`}
-                    label={q.text}
+                    label={q.question}
                     options={q.response_options.map((o) => ({
                       value: o,
                       label: o,
@@ -223,7 +223,7 @@ const SurveyComponent = ({
                     key={`q${q.id}`}
                     control={control}
                     name={`${q.id}`}
-                    label={q.text}
+                    label={q.question}
                     disabled={isDisabled}
                     disableFancyLabel
                   />
