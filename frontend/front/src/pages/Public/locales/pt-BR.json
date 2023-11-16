@@ -96,7 +96,7 @@
       "error-submitting": "Ocorreu um erro ao enviar seu endereço. \nPor favor, tente novamente mais tarde.",
       "error-validating": "Este endereço não pôde ser validado. \nVerifique se suas informações estão corretas e tente novamente.",
       "buttons": {
-        "clear": "{\"Claro\"}",
+        "clear": "Claro",
         "submit": "Enviar",
         "delete": "Excluir",
         "confirm-delete": "Confirmar exclusão",

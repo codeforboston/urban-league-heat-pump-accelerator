@@ -97,7 +97,7 @@
       "error-validating-or-already-used": "There was an error validating your address, or it has already been used to submit a survey. Please submit again or try a different address.",
       "buttons": {
         "submit": "Submit",
-        "clear": "{\"Clear\"}",
+        "clear": "Clear",
         "delete": "Delete",
         "cancel": "Cancel",
         "confirm-delete": "Confirm Delete"

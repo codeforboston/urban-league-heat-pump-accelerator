@@ -96,7 +96,7 @@
       "error-submitting": "Te gen yon erè lè w te voye adrès ou a. \nTanpri eseye ankò pita.",
       "error-validating": "Adrès sa a pa t 'kapab valide. \nAsire w ke enfòmasyon ou yo kòrèk epi eseye ankò.",
       "buttons": {
-        "clear": "{\"Klè\"}",
+        "clear": "Klè",
         "submit": "Soumèt",
         "delete": "Efase",
         "confirm-delete": "Konfime Efase",
