@@ -19,10 +19,14 @@ export const AddressValidatorComponent = forwardRef(
     const navigate = useNavigate();
     const [buttonsDisabled, setButtonsDisabled] = useState(false);
 
-    // Disable buttons when request is sent.
+    // Disable buttons when request is sent, re-enable when canonicalization resolves or errors.
     useEffect(() => {
       if (isLoading) {
         setButtonsDisabled(true);
+        return;
+      }
+      if (validationStatus === undefined) {
+        setButtonsDisabled(false);
       }
       if (validationStatus === "unrecognized") {
         setButtonsDisabled(false);
