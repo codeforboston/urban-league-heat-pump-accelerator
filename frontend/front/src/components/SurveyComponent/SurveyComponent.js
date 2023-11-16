@@ -20,6 +20,14 @@ import { SurveyError } from "./SurveyStructureError";
 import { useForm } from "react-hook-form";
 import { useGetSurveyStructureQuery } from "../../api/apiSlice";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
+function getSurveyLangPref(currentLanguage) {
+  if (currentLanguage === "en-us" || currentLanguage === "es-us") {
+    return currentLanguage.slice(0, 2);
+  }
+  return "en";
+}
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
@@ -36,6 +44,8 @@ const SurveyComponent = ({
   onDelete,
 }) => {
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const { handleSubmit, reset, control, watch } = useForm({
     defaultValues: formDefault,
@@ -90,7 +100,7 @@ const SurveyComponent = ({
     () => (
       <>
         <Button variant="contained" type="submit" name="submit">
-          {"Submit"}
+          {t("public.survey.buttons.submit")}
         </Button>
         <Button
           variant="outlined"
@@ -100,11 +110,11 @@ const SurveyComponent = ({
             reset(formDefault);
           }}
         >
-          {"Clear"}
+          {t("public.survey.buttons.clear")}
         </Button>
       </>
     ),
-    [formDefault, reset]
+    [formDefault, reset, t]
   );
 
   const adminButtonsViewing = useCallback(
@@ -179,10 +189,10 @@ const SurveyComponent = ({
           }
         }}
         handleCancel={() => setIsDeleteModalOpen(false)}
-        confirmBtnText="Delete"
-        cancelBtnText="Cancel"
-        title="Confirm Delete"
-        message={`Are you sure you want to delete this survey data?`}
+        confirmBtnText={t("public.survey.buttons.delete")}
+        cancelBtnText={t("public.survey.buttons.cancel")}
+        title={t("public.survey.buttons.confirm-delete")}
+        message={t("public.survey.delete-modal-confirm")}
       />
       <AddressComponent home={activeHome} />
       <form
@@ -208,7 +218,7 @@ const SurveyComponent = ({
                     key={`q${q.id}`}
                     control={control}
                     name={`${q.id}`}
-                    label={q.text}
+                    label={q.question}
                     options={q.response_options.map((o) => ({
                       value: o,
                       label: o,
@@ -223,7 +233,7 @@ const SurveyComponent = ({
                     key={`q${q.id}`}
                     control={control}
                     name={`${q.id}`}
-                    label={q.text}
+                    label={q.question}
                     disabled={isDisabled}
                     disableFancyLabel
                   />
@@ -233,7 +243,7 @@ const SurveyComponent = ({
                   <Alert
                     key={`q${q.id}`}
                     severity="error"
-                  >{`Invalid question type: ${q.response_type}`}</Alert>
+                  >{`{t('public.survey.invalid-question-type')} ${q.response_type}`}</Alert>
                 );
             }
           })}
@@ -256,10 +266,17 @@ const SurveyComponentWrapper = forwardRef((props, ref) => {
   const { defaultData, style, activeHome, surveyId } = props;
 
   const {
+    i18n: { language },
+  } = useTranslation();
+
+  const {
     data: surveyStructure,
     isError: isSurveyError,
     isLoading: isSurveyLoading,
-  } = useGetSurveyStructureQuery(surveyId);
+  } = useGetSurveyStructureQuery({
+    id: surveyId,
+    langPref: getSurveyLangPref(language),
+  });
 
   const formDefault = useMemo(() => {
     if (defaultData) {

@@ -706,7 +706,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             tabindex="0"
             type="submit"
           >
-            Submit
+            public.survey.buttons.submit
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
@@ -716,7 +716,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             tabindex="0"
             type="button"
           >
-            Clear
+            public.survey.buttons.clear
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />

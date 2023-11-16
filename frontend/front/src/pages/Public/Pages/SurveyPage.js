@@ -31,6 +31,12 @@ const STEP_ADDRESS = "PHASE_ADDRESS";
 const STEP_SURVEY = "PHASE_SURVEY";
 const STEP_THANKS = "PHASE_THANKS";
 
+const SUPPORTED_LANGUAGES = ["en-us", "es-us"];
+
+function isLanguageSupported(lang) {
+  return SUPPORTED_LANGUAGES.includes(lang);
+}
+
 /*
  * Page that handles the lifecycle of the public survey process
  * Verify address -> display survey -> display thank you
@@ -39,7 +45,10 @@ const STEP_THANKS = "PHASE_THANKS";
 export const SurveyPage = () => {
   const [validationStatus, setValidationStatus] = useState();
 
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
 
   const getReCaptchaToken = useGetReCAPTCHAToken(
     RECAPTCHA_ACTION_PUBLIC_SURVEY
@@ -124,19 +133,21 @@ export const SurveyPage = () => {
           justifyContent="center"
           data-testid="publicSurveyInfoMessage"
         >
-          <p>
-            Fill out this form to record your interest in installing a heat pump
-            for your home.
-          </p>
-          <p>
-            An ULHPA representative will contact you with more information about
-            the installation process.
-          </p>
+          {!isLanguageSupported(language) && (
+            <Alert severity="warning">
+              {t("public.survey.language-missing")}
+            </Alert>
+          )}
+
+          <p>{t("public.survey.fill-out-form")}</p>
+          <p>{t("public.survey.ulhpa-representative")}</p>
         </Stack>
         <HeatPumpFade show={step === STEP_ADDRESS}>
           <AddressValidatorComponent
             onValidate={handleCreateHome}
             isLoading={isCreateHomeLoading}
+            validationStatus={validationStatus}
+            createHomeError={createHomeError}
           />
         </HeatPumpFade>
         <HeatPumpSlide show={step === STEP_SURVEY}>
@@ -158,24 +169,17 @@ export const SurveyPage = () => {
         </HeatPumpFade>
 
         <Snackbar open={!!createHomeError}>
-          <Alert severity="error">
-            There was an error submitting your address. Please try again later.
-          </Alert>
+          <Alert severity="error">{t("public.survey.error-submitting")}</Alert>
         </Snackbar>
         <Snackbar open={!!surveyVisitError}>
-          <Alert severity="error">{"Error submitting survey."}</Alert>
+          <Alert severity="error"> {t("public.survey.error-submitting")}</Alert>
         </Snackbar>
         <Snackbar open={validationStatus === UNRECOGNIZED}>
-          <Alert severity="error">
-            This address could not be validated. Make sure your information is
-            correct then try again.
-          </Alert>
+          <Alert severity="error">{t("public.survey.error-validating")}</Alert>
         </Snackbar>
         <Snackbar open={validationStatus === VALIDATION_ERROR}>
           <Alert severity="error">
-            There was an error validating your address, or it has already been
-            used to submit a survey. Please submit again or try a different
-            address.
+            {t("public.survey.error-validating-or-already-used")}
           </Alert>
         </Snackbar>
       </>
@@ -191,6 +195,8 @@ export const SurveyPage = () => {
       surveyVisitError,
       showValidationLoader,
       validationStatus,
+      t,
+      language,
     ]
   );
 

@@ -8,7 +8,7 @@ const ImageAnimation = styled("div")(({ theme }) => ({
     left: "50%",
     top: "50%",
     bottom: "50%",
-    position: "absolute",
+    position: "fixed",
     transform: "translate(-50%,-50%)",
     animation: "fanHero 1.5s infinite linear",
     zIndex: "1",

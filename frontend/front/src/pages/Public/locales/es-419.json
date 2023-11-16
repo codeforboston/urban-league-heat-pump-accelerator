@@ -10,9 +10,6 @@
         "button": "Ventajas de las bombas de calor"
       },
       "cardLinksSection": {
-        "title": "",
-        "paragraph": "Una bomba de calor es un sistema energéticamente eficiente que calienta su hogar en invierno y lo enfría en verano.",
-        "button": "Toma la encuesta",
         "item1": {
           "title": "¿Qué es una bomba de calor?",
           "paragraph": "Una bomba de calor es un sistema energéticamente eficiente que calienta su hogar en invierno y lo enfría en verano.",
@@ -91,7 +88,22 @@
     "survey": {
       "heading1BlueBgGround": "Realice la encuesta",
       "under-construction": "¡La encuesta pública está actualmente en desarrollo!",
-      "work-in-progress": "BAJO CONSTRUCCIÓN"
+      "work-in-progress": "BAJO CONSTRUCCIÓN",
+      "fill-out-form": "Complete este formulario para dejar constancia de su interés en instalar una bomba de calor para su hogar.",
+      "ulhpa-representative": "Un representante de ULHPA se comunicará con usted para brindarle más información sobre el proceso de instalación.",
+      "language-missing": "Lo sentimos, actualmente no tenemos una traducción de la encuesta en su idioma. \nLa encuesta está disponible en inglés o español. \nSi elige continuar en su idioma actual, las preguntas de la encuesta se entregarán en inglés. \nSi prefiere español, utilice el selector de idioma ahora para cambiar el idioma a español.",
+      "error-submitting": "Hubo un error al enviar su dirección. \nPor favor, inténtelo de nuevo más tarde.",
+      "error-validating-or-already-used": "Hubo un error al validar tu dirección o ya se usó para enviar una encuesta. \nPor favor envíelo nuevamente o pruebe con una dirección diferente.",
+      "error-validating": "Esta dirección no se pudo validar. \nAsegúrese de que su información sea correcta y vuelva a intentarlo.",
+      "buttons": {
+        "clear": "Claro",
+        "submit": "Entregar",
+        "delete": "Borrar",
+        "confirm-delete": "Confirmar eliminación",
+        "cancel": "Cancelar"
+      },
+      "invalid-question-type": "Tipo de pregunta no válida:",
+      "delete-modal-confirm": "{`¿Estás seguro de que deseas eliminar los datos de esta encuesta?`}"
     },
     "benefits-heat-pump": {
       "cardBenefits": {
@@ -234,6 +246,25 @@
           "title": "¿Qué sucede con los aportes que las personas brindan a la encuesta (ya sea en persona o en línea)?",
           "text": "Cuando realiza la encuesta de BHPA sobre bombas de calor, se anonimiza y se recopila de forma agregada. \nInformamos los datos que recopilamos en nuestra encuesta a los socios que figuran en nuestra página de Socios para ayudarlos a mejorar sus programas, de modo que podamos ayudar a más personas a obtener los descuentos para las bombas de calor para las que son elegibles. \nNo vendemos sus datos a terceros. \nSi tiene preguntas sobre cómo se utilizan sus datos, comuníquese con <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
         }
+      }
+    },
+    "address": {
+      "enter-address": "Introduce la dirección donde estás interesado en una bomba de calor:",
+      "back": "Atrás",
+      "verify": "Verificar",
+      "street-number": "* Número de calle",
+      "error": {
+        "required": "¡Este campo es obligatorio!",
+        "invalid-unit-number": "Número de unidad no válido.",
+        "invalid-street-number": "Número de calle no válido.",
+        "invalid-zip-code": "Código postal no válido."
+      },
+      "labels": {
+        "street-name": "* Nombre de la calle",
+        "city": "* Ciudad",
+        "state": "* Estado",
+        "zip-code": "* Código postal",
+        "unit-number": "Unidad numérica"
       }
     }
   }

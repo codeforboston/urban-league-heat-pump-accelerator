@@ -88,7 +88,22 @@
     "survey": {
       "heading1BlueBgGround": "Take the Survey",
       "under-construction": "Public Survey is Currently Under Development!",
-      "work-in-progress": "UNDER CONSTRUCTION"
+      "work-in-progress": "UNDER CONSTRUCTION",
+      "fill-out-form": "Fill out this form to record your interest in installing a heat pump for your home.",
+      "ulhpa-representative": "An ULHPA representative will contact you with more information about the installation process.",
+      "language-missing": "Sorry, we do not currently have a translation of the survey in your language. The survey is available in either English or Spanish. If you choose to continue in your current language, the survey questions will be delivered in English. If you prefer Spanish, please use the language selector now to change language to Spanish.",
+      "error-submitting": "There was an error submitting your address. Please try again later.",
+      "error-validating": "This address could not be validated. Make sure your information is correct then try again.",
+      "error-validating-or-already-used": "There was an error validating your address, or it has already been used to submit a survey. Please submit again or try a different address.",
+      "buttons": {
+        "submit": "Submit",
+        "clear": "Clear",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "confirm-delete": "Confirm Delete"
+      },
+      "delete-modal-confirm": "{`Are you sure you want to delete this survey data?`}",
+      "invalid-question-type": "Invalid question type:"
     },
     "benefits-heat-pump": {
       "cardBenefits": {
@@ -231,6 +246,25 @@
           "title": "What happens to the input that people provide to the survey (either in person or online)?",
           "text": "When you take the BHPA survey about heat pumps, it is anonymized and collected in aggregate. We report data we collect in our survey to the partners listed on our Partners page to help them improve their programs, so we can help more people get the discounts for heat pumps for which they are eligible. We do not sell your data to 3rd parties. If you have questions about how your data is used, please contact <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
         }
+      }
+    },
+    "address": {
+      "enter-address": "Enter the address where you're interested in a heat pump:",
+      "back": "Back",
+      "verify": "Verify",
+      "street-number": "* Street Number",
+      "error": {
+        "required": "This field is required!",
+        "invalid-unit-number": "Invalid unit number.",
+        "invalid-street-number": "Invalid street number.",
+        "invalid-zip-code": "Invalid ZIP code."
+      },
+      "labels": {
+        "unit-number": "Unit Number",
+        "street-name": "* Street Name",
+        "city": "* City",
+        "state": "* State",
+        "zip-code": "* ZIP Code"
       }
     }
   }

@@ -10,9 +10,6 @@
         "button": "Benefis nan ponp chalè"
       },
       "cardLinksSection": {
-        "title": "",
-        "paragraph": "",
-        "button": "",
         "item1": {
           "title": "Ki sa ki se yon ponp chalè?",
           "paragraph": "Yon ponp chalè se yon sistèm enèji efikas ki chofe kay ou nan sezon fredi a, ak refwadi kay ou an ete.",
@@ -91,7 +88,22 @@
     "survey": {
       "heading1BlueBgGround": "Pran Sondaj la",
       "under-construction": "Sondaj Piblik la ap Devlopman kounye a!",
-      "work-in-progress": "Sou konstriksyon"
+      "work-in-progress": "Sou konstriksyon",
+      "fill-out-form": "Ranpli fòm sa a pou anrejistre enterè w genyen nan enstale yon ponp chalè pou kay ou.",
+      "ulhpa-representative": "Yon reprezantan ULHPA ap ​​kontakte w pou w jwenn plis enfòmasyon sou pwosesis enstalasyon an.",
+      "language-missing": "Padon, nou pa gen yon tradiksyon sondaj la kounye a nan lang ou. \nSondaj la disponib swa nan lang angle oswa panyòl. \nSi w chwazi pou w kontinye nan lang ou ye kounye a, kesyon sondaj yo ap voye an angle. \nSi w pito panyòl, tanpri itilize seleksyon lang kounye a pou w chanje lang pou w vin panyòl.",
+      "error-validating-or-already-used": "Te gen yon erè nan validation adrès ou, oswa li te deja itilize pou soumèt yon sondaj. \nTanpri soumèt ankò oswa eseye yon lòt adrès.",
+      "error-submitting": "Te gen yon erè lè w te voye adrès ou a. \nTanpri eseye ankò pita.",
+      "error-validating": "Adrès sa a pa t 'kapab valide. \nAsire w ke enfòmasyon ou yo kòrèk epi eseye ankò.",
+      "buttons": {
+        "clear": "Klè",
+        "submit": "Soumèt",
+        "delete": "Efase",
+        "confirm-delete": "Konfime Efase",
+        "cancel": "Anile"
+      },
+      "invalid-question-type": "Kalite kesyon ki pa valab:",
+      "delete-modal-confirm": "{`Èske w sèten ou vle efase done sondaj sa a?`}"
     },
     "benefits-heat-pump": {
       "cardBenefits": {
@@ -234,6 +246,25 @@
           "title": "Kisa k ap pase ak opinyon moun yo bay sondaj la (swa an pèsòn oswa sou entènèt)?",
           "text": "Lè w pran sondaj BHPA sou ponp chalè, li anonimize epi yo kolekte l an jeneral. \nNou rapòte done nou kolekte nan sondaj nou an bay patnè yo ki nan lis nan paj Patnè nou an pou ede yo amelyore pwogram yo, pou nou ka ede plis moun jwenn rabè pou ponp chalè yo kalifye pou yo. \nNou pa vann done ou yo bay twazyèm pati. \nSi w gen kesyon sou fason yo itilize done w yo, tanpri kontakte <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
         }
+      }
+    },
+    "address": {
+      "enter-address": "Antre adrès kote w enterese nan yon ponp chalè:",
+      "back": "Retounen",
+      "verify": "Verifye",
+      "street-number": "* Nimewo Ri",
+      "error": {
+        "required": "Jaden sa a obligatwa!",
+        "invalid-unit-number": "Nimewo inite ki pa valab.",
+        "invalid-street-number": "Nimewo lari ki pa valab.",
+        "invalid-zip-code": "Kòd postal ki pa valab."
+      },
+      "labels": {
+        "street-name": "* Non Ri",
+        "city": "* Vil",
+        "state": "* Eta",
+        "zip-code": "* Kòd postal",
+        "unit-number": "Nimewo Inite"
       }
     }
   }
