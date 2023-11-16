@@ -147,6 +147,7 @@ export const SurveyPage = () => {
             onValidate={handleCreateHome}
             isLoading={isCreateHomeLoading}
             validationStatus={validationStatus}
+            createHomeError={createHomeError}
           />
         </HeatPumpFade>
         <HeatPumpSlide show={step === STEP_SURVEY}>

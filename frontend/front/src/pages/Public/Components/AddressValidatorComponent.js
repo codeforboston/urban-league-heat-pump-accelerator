@@ -12,6 +12,7 @@ export const AddressValidatorComponent = forwardRef(
       onValidate,
       isLoading,
       validationStatus,
+      createHomeError,
       style, // passed through so MUI transitions work
     },
     ref
@@ -25,7 +26,7 @@ export const AddressValidatorComponent = forwardRef(
         setButtonsDisabled(true);
         return;
       }
-      if (validationStatus === undefined) {
+      if (!!createHomeError) {
         setButtonsDisabled(false);
       }
       if (validationStatus === "unrecognized") {
@@ -34,7 +35,7 @@ export const AddressValidatorComponent = forwardRef(
       if (validationStatus === "validationError") {
         setButtonsDisabled(false);
       }
-    }, [isLoading, validationStatus]);
+    }, [isLoading, validationStatus, createHomeError]);
 
     const { t } = useTranslation();
 
