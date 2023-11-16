@@ -218,7 +218,7 @@ const SurveyComponent = ({
                     key={`q${q.id}`}
                     control={control}
                     name={`${q.id}`}
-                    label={q.text}
+                    label={q.question}
                     options={q.response_options.map((o) => ({
                       value: o,
                       label: o,
@@ -233,7 +233,7 @@ const SurveyComponent = ({
                     key={`q${q.id}`}
                     control={control}
                     name={`${q.id}`}
-                    label={q.text}
+                    label={q.question}
                     disabled={isDisabled}
                     disableFancyLabel
                   />

@@ -27,8 +27,10 @@ describe("SurveyComponent", () => {
 
     jest
       .spyOn(apiSlice, "useGetSurveyStructureQuery")
-      .mockImplementation((id) => {
-        const survey = surveys.find((s) => `${s.id}` === `${id}`);
+      .mockImplementation(({ id, langPref }) => {
+        const survey = surveys.find(
+          (s) => `${s.id}` === `${id}` && s.langPref === langPref
+        );
         return { data: survey, error: !survey };
       });
   });
