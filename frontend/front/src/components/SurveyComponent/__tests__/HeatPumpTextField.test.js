@@ -1,5 +1,5 @@
-import React from "react";
 import { render } from "@testing-library/react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { HeatPumpTextField } from "../HeatPumpTextField";
 
@@ -19,7 +19,7 @@ const FormWrapper = ({ q }) => {
       key={`q${q.id}`}
       control={control}
       name={`${q.id}`}
-      label={q.text}
+      label={q.question}
       {...q}
     />
   );
