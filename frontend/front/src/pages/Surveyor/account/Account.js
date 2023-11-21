@@ -4,7 +4,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ContainerTitle from "../../Admin/component/ContainerTitle";
-import { BackButton } from "../Components/BackButton";
 import AccountDetail from "./AccountDetail";
 
 const Account = () => {
@@ -13,7 +12,6 @@ const Account = () => {
   );
   return (
     <>
-      <BackButton url="/surveyor/dashboard" description="dashboard" />
       <ContainerTitle name="My Account">
         <Stack direction="column" gap={1}>
           <AccountDetail label="First Name" value={firstName} />

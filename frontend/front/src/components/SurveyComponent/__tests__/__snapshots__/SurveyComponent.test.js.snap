@@ -36,15 +36,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="1-dropdown"
             id="1-dropdown-label"
-          >
-            Have you heard of heat pumps?
-          </label>
+          />
           <div
             aria-labelledby="1-dropdown-label"
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r24:"
+              aria-controls=":r2l:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-1"
@@ -88,15 +86,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="2-dropdown"
             id="2-dropdown-label"
-          >
-            If yes, have you considered them for home heating/cooling?
-          </label>
+          />
           <div
             aria-labelledby="2-dropdown-label"
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r25:"
+              aria-controls=":r2m:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-2"
@@ -140,9 +136,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="3-textField"
             id="3-textField-label"
-          >
-            If yes, how far have you taken your interest in heat pumps?
-          </label>
+          />
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="3"
@@ -168,15 +162,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="4-dropdown"
             id="4-dropdown-label"
-          >
-            Have you heard of Mass Save… the energy efficieny program?
-          </label>
+          />
           <div
             aria-labelledby="4-dropdown-label"
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r27:"
+              aria-controls=":r2o:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-4"
@@ -220,15 +212,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="5-dropdown"
             id="5-dropdown-label"
-          >
-            If yes, have you had contact with them?
-          </label>
+          />
           <div
             aria-labelledby="5-dropdown-label"
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r28:"
+              aria-controls=":r2p:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-5"
@@ -272,15 +262,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="6-dropdown"
             id="6-dropdown-label"
-          >
-            If you could save money on your utility bills with a state-discounted or free heating/cooling system upgrade, would you like to learn more?
-          </label>
+          />
           <div
             aria-labelledby="6-dropdown-label"
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r29:"
+              aria-controls=":r2q:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-6"
@@ -324,9 +312,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="7-textField"
             id="7-textField-label"
-          >
-            If yes, please confirm your name
-          </label>
+          />
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="7"
@@ -352,9 +338,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="8-textField"
             id="8-textField-label"
-          >
-            If yes, please confirm your email address
-          </label>
+          />
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="8"
@@ -380,9 +364,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="9-textField"
             id="9-textField-label"
-          >
-            If yes, please confirm your phone number
-          </label>
+          />
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="9"
@@ -408,15 +390,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="10-dropdown"
             id="10-dropdown-label"
-          >
-            So we can report back on your potential savings, what type of heating system do you have? (Across the whole home, not just in individual rooms)
-          </label>
+          />
           <div
             aria-labelledby="10-dropdown-label"
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r2d:"
+              aria-controls=":r2u:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-10"
@@ -460,9 +440,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="11-textField"
             id="11-textField-label"
-          >
-            If other, please specify
-          </label>
+          />
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="11"
@@ -488,15 +466,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="12-dropdown"
             id="12-dropdown-label"
-          >
-            What type of heating FUEL do you use for that heating system?
-          </label>
+          />
           <div
             aria-labelledby="12-dropdown-label"
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r2f:"
+              aria-controls=":r30:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-12"
@@ -540,9 +516,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="13-textField"
             id="13-textField-label"
-          >
-            If other, please specify
-          </label>
+          />
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="13"
@@ -568,15 +542,13 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="14-dropdown"
             id="14-dropdown-label"
-          >
-            We expect to have “heat pump coaches” available to walk through the process with you (volunteers, who are not affiliated with any installer or brand). Would you like to know more about how to get free, personal help from a heat pump coach?
-          </label>
+          />
           <div
             aria-labelledby="14-dropdown-label"
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r2h:"
+              aria-controls=":r32:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-14"
@@ -620,9 +592,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="15-textField"
             id="15-textField-label"
-          >
-            If yes, please confirm your name
-          </label>
+          />
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="15"
@@ -648,9 +618,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="16-textField"
             id="16-textField-label"
-          >
-            If yes, please confirm your email address
-          </label>
+          />
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="16"
@@ -676,9 +644,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="17-textField"
             id="17-textField-label"
-          >
-            If yes, please confirm your phone number
-          </label>
+          />
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="17"

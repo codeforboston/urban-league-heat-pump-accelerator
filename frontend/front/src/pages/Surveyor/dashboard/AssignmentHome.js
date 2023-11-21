@@ -10,6 +10,33 @@ import {
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
+import SurveyLink from "../../../components/SurveyLink";
+
+const CompleteButton = ({ home }) => {
+  if (!home.completed) {
+    return (
+      <Typography color="red" sx={{ display: "inline-flex" }}>
+        Incomplete
+      </Typography>
+    );
+  }
+
+  let text = "Complete";
+  if (home.survey_visit_ids > 1) {
+    text += ` (${home.survey_visit_ids})`;
+  }
+
+  return (
+    <SurveyLink
+      mode="surveyor"
+      label={<Typography color="green">{text}</Typography>}
+      links={home.survey_visit_ids}
+      variant="text"
+      size="small"
+      color="primary"
+    />
+  );
+};
 
 export const AssignmentHome = ({
   home,
@@ -25,13 +52,16 @@ export const AssignmentHome = ({
       key={home?.visit_order + home?.street_number}
       sx={{ pl: 0 }}
       secondaryAction={
-        <Checkbox
-          edge="end"
-          onChange={handleToggle(home)}
-          checked={checked}
-          inputProps={{ "aria-labelledby": labelId }}
-          disabled={selectionCap && !checked}
-        />
+        <>
+          {<CompleteButton home={home} />}
+          <Checkbox
+            edge="end"
+            onChange={handleToggle(home)}
+            checked={checked}
+            inputProps={{ "aria-labelledby": labelId }}
+            disabled={selectionCap && !checked}
+          />
+        </>
       }
     >
       <ListItemButton onClick={() => navigate("/surveyor/house/" + home?.id)}>
@@ -58,13 +88,6 @@ export const AssignmentHome = ({
                   ? home?.zip_code
                   : `0${home?.zip_code}`
               }`}</Box>
-              <Box>
-                {home.completed === true ? (
-                  <Typography color="green">{"Completed ✅"}</Typography>
-                ) : (
-                  <Typography color="red">Incomplete</Typography>
-                )}
-              </Box>
             </Box>
           }
         />

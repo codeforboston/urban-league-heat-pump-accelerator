@@ -2,7 +2,7 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SurveyLink = ({ links, label = "VIEW", ...styles }) => {
+const SurveyLink = ({ links, label = "VIEW", mode = "admin", ...styles }) => {
   const navigate = useNavigate();
 
   // Dropdown for when there more then one servey
@@ -11,7 +11,7 @@ const SurveyLink = ({ links, label = "VIEW", ...styles }) => {
   const closeDropdown = () => setDropdownButtonEl(null);
 
   const goToSurvey = (surveyId) => {
-    navigate(`/admin/survey/visit/${surveyId}`);
+    navigate(`/${mode}/survey/visit/${surveyId}`);
   };
 
   return (

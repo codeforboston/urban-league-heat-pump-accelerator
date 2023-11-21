@@ -34,6 +34,7 @@ const SurveyComponent = ({
   formDefault,
   surveyStructure,
   onDelete,
+  readonly,
 }) => {
   const navigate = useNavigate();
 
@@ -46,8 +47,8 @@ const SurveyComponent = ({
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const isDisabled = useMemo(
-    () => isEditable && !isEditing,
-    [isEditing, isEditable]
+    () => (isEditable && !isEditing) || readonly,
+    [isEditing, isEditable, readonly]
   );
 
   const cacheKey = useMemo(
@@ -69,12 +70,13 @@ const SurveyComponent = ({
   // useEffect to set the default data for the form
   // add in cached data here instead of in formDefault so that clicking "clear" doesn't treat the cache as default
   useEffect(() => {
-    const cacheOrDefault = cachedData || formDefault;
+    const cacheOrDefault =
+      cachedData && !readonly && !isEditable ? cachedData : formDefault;
 
     if (cacheOrDefault) {
       reset(cacheOrDefault);
     }
-  }, [cachedData, formDefault, reset]);
+  }, [cachedData, formDefault, isEditable, readonly, reset]);
 
   useEffect(() => {
     // function passed to watch is executed every time the form data changes
@@ -208,7 +210,7 @@ const SurveyComponent = ({
                     key={`q${q.id}`}
                     control={control}
                     name={`${q.id}`}
-                    label={q.text}
+                    label={q.question}
                     options={q.response_options.map((o) => ({
                       value: o,
                       label: o,
@@ -223,7 +225,7 @@ const SurveyComponent = ({
                     key={`q${q.id}`}
                     control={control}
                     name={`${q.id}`}
-                    label={q.text}
+                    label={q.question}
                     disabled={isDisabled}
                     disableFancyLabel
                   />
@@ -239,11 +241,12 @@ const SurveyComponent = ({
           })}
           <Stack direction="row" justifyContent="center" spacing={2}>
             {isLoading && <Loader />}
-            {isEditable
-              ? isEditing
-                ? adminButtonsEditing()
-                : adminButtonsViewing()
-              : commonButtonSection()}
+            {!readonly &&
+              (isEditable
+                ? isEditing
+                  ? adminButtonsEditing()
+                  : adminButtonsViewing()
+                : commonButtonSection())}
           </Stack>
         </Stack>
       </form>

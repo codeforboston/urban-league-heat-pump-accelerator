@@ -1,11 +1,13 @@
 import React, { forwardRef } from "react";
+import { Typography } from "@mui/material";
 import SurveyComponent from "../../../components/SurveyComponent/SurveyComponent";
-import { BackButton } from "./BackButton";
 
 export const SURVEYOR_SURVEY_ID = "1";
 export const SurveyorSurvey = forwardRef((props, ref) => (
   <>
-    <BackButton url="/surveyor/dashboard" description="dashboard" />
+    <Typography variant="h5" mt={2}>
+      {"New Survey Response"}
+    </Typography>
     <SurveyComponent
       {...props}
       surveyId={SURVEYOR_SURVEY_ID}

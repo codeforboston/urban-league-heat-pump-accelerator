@@ -35,7 +35,7 @@ const SurveyTable = () => {
     () =>
       surveyData?.map((s) => ({
         ...s,
-        questionCount: s.survey_questions.length,
+        questionCount: s.survey_questions?.length,
         lastUpdated: formatISODate(s.updated_at),
       })) || [],
     [surveyData]

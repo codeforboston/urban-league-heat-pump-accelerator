@@ -13,11 +13,10 @@ import { AdminSurvey } from "../component/AdminSurvey";
 import Loader from "../../../components/Loader";
 import { SurveyError } from "../survey/SurveyError";
 import { formatISODate } from "../../../components/DateUtils";
-import { houseToString } from "../../../components/AddressUtils";
 import { withAdminPrefix, ADMIN_SURVEY } from "../../../routing/routes";
 import { buildDataFromSurveyAnswers } from "../../../util/surveyUtils";
 
-const SurveyProfile = () => {
+const SurveyProfile = ({ readonly }) => {
   const navigate = useNavigate();
   const { uid: surveyVisitId } = useParams();
 
@@ -37,7 +36,7 @@ const SurveyProfile = () => {
   const title = useMemo(
     () =>
       surveyVisit && houseData
-        ? `${houseToString(houseData)} ${formatISODate(surveyVisit.date)}`
+        ? `Survey taken ${formatISODate(surveyVisit.created_at)}`
         : "Loading...",
     [houseData, surveyVisit]
   );
@@ -90,6 +89,7 @@ const SurveyProfile = () => {
       </Typography>
       {surveyVisit && houseData ? (
         <AdminSurvey
+          readonly={readonly}
           defaultData={surveyAnswers}
           activeHome={houseData}
           surveyId={surveyVisit.survey_response.survey_id}
