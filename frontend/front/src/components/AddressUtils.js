@@ -27,11 +27,32 @@ export const AddressComponent = ({ home }) => {
   return (
     <Card sx={{ margin: "1em" }}>
       <CardContent>
-        <address>
-          <h3>{"Address:"}</h3>
-          <div>{line1}</div>
-          <div>{line2}</div>
-        </address>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap-reverse",
+            justifyContent: "center",
+            alignContent: "center",
+          }}
+        >
+          <div style={{ flex: 1, display: "inline-block" }}>
+            <address>
+              <h3>{"Address:"}</h3>
+              <div>{line1}</div>
+              <div>{line2}</div>
+            </address>
+          </div>
+
+          <iframe
+            title="Address map"
+            src={`https://maps.google.com/maps?q=${home.latitude},${home.longitude}&output=embed`}
+            style={{ border: 0, display: "inline-block" }}
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </CardContent>
     </Card>
   );

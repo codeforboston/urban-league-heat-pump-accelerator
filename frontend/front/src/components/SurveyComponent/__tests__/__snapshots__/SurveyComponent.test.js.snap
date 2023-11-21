@@ -12,17 +12,33 @@ exports[`SurveyComponent no errors when rendering 1`] = `
       <div
         class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
       >
-        <address>
-          <h3>
-            Address:
-          </h3>
-          <div>
-            1 Hanover Street #5
+        <div
+          style="display: flex; flex-direction: row; flex-wrap: wrap-reverse; justify-content: center; align-content: center;"
+        >
+          <div
+            style="flex: 1; display: inline-block;"
+          >
+            <address>
+              <h3>
+                Address:
+              </h3>
+              <div>
+                1 Hanover Street #5
+              </div>
+              <div>
+                Boston, MA 2108
+              </div>
+            </address>
           </div>
-          <div>
-            Boston, MA 2108
-          </div>
-        </address>
+          <iframe
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=undefined,undefined&output=embed"
+            style="border: 0px; display: inline-block;"
+            title="Address map"
+          />
+        </div>
       </div>
     </div>
     <form>
