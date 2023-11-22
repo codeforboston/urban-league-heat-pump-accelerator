@@ -82,6 +82,13 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+staging:
+  <<: *default
+  database: boston_heat_pump_accelerator_staging
+  username: boston_heat_pump_accelerator
+  password: <%= ENV["BOSTON_HEAT_PUMP_ACCELERATOR_PASSWORD"] %>
+  host: <%= ENV["BOSTON_HEAT_PUMP_ACCELERATOR_HOST"] %>
+
 production:
   <<: *default
   database: boston_heat_pump_accelerator_production
