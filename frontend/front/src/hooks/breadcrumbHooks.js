@@ -26,7 +26,7 @@ export const useGoToBreadcrumb = () => {
       case "home":
         url = `/admin/home/homeProfile/${data?.id}`;
         description = `${data?.street_number} ${data?.street_name} ${
-          data?.unit_number && "#" + data.unit_number
+          data?.unit_number ? "#" + data.unit_number : ""
         }`;
         break;
       case "user":
