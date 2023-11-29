@@ -41,7 +41,7 @@ env:
   # EDIT with your registry username.
   IMAGE_REGISTRY_USER: ${{ github.actor }}
   # EDIT to specify custom tags for the container image, or default tags will be generated below.
-  IMAGE_TAGS: ''
+  IMAGE_TAGS: ${{ github.event.name == 'release' && 'production' || 'staging' }}
 
 on:
   workflow_call:

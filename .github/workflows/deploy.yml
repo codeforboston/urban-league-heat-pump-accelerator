@@ -4,6 +4,9 @@ on:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
   release:
     types: [published]
+  push:
+    branches:
+      - main
 
 jobs:
   deploy-server:
