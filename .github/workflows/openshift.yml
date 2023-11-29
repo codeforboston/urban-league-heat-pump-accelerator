@@ -93,6 +93,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+      - name: Print the event name
+        run: |
+          EVENT_NAME=${{ github.event_name}}
+          echo "::debug::{Event Name: $EVENT_NAME}"
+
       - name: Determine app name
         if: env.APP_NAME == ''
         run: |
@@ -102,8 +107,6 @@ jobs:
         if: env.IMAGE_TAGS == ''
         run: |
           echo "IMAGE_TAGS=latest ${GITHUB_SHA::12}" | tee -a $GITHUB_ENV
-          EVENT_NAME=${{ github.event_name}}
-          echo "::debug::{Event Name: $EVENT_NAME}"
 
       # https://github.com/redhat-actions/buildah-build#readme
       - name: Build from Dockerfile
