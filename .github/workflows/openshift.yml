@@ -41,7 +41,7 @@ env:
   # EDIT with your registry username.
   IMAGE_REGISTRY_USER: ${{ github.actor }}
   # EDIT to specify custom tags for the container image, or default tags will be generated below.
-  IMAGE_TAGS: ${{ github.event.type == 'Release' && 'production latest' || 'staging latest' }}
+  IMAGE_TAGS: ${{ github.event_name == 'release' && 'production latest' || 'staging latest' }}
 
 on:
   workflow_call:
@@ -102,6 +102,8 @@ jobs:
         if: env.IMAGE_TAGS == ''
         run: |
           echo "IMAGE_TAGS=latest ${GITHUB_SHA::12}" | tee -a $GITHUB_ENV
+          EVENT_NAME=${{ github.event_name}}
+          echo "::debug::{Event Name: $EVENT_NAME}"
 
       # https://github.com/redhat-actions/buildah-build#readme
       - name: Build from Dockerfile
