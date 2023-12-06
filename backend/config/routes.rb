@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   resource :assignments_surveyors
 
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    passwords: 'users/passwords'
   }, defaults: { format: :json }
   root 'homes#index'
 end
