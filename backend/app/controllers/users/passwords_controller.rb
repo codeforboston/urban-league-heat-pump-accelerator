@@ -5,7 +5,6 @@ module Users
     respond_to :json
 
     def create
-      debugger
       super
     end
 
