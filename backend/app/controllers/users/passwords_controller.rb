@@ -5,7 +5,10 @@ module Users
     respond_to :json
 
     def create
+<<<<<<< HEAD
       debugger
+=======
+>>>>>>> main
       super
     end
 
@@ -19,4 +22,8 @@ module Users
       head :no_content
     end
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> main
