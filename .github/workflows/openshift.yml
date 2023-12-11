@@ -158,7 +158,6 @@ jobs:
         with:
           app_name: ${{ env.APP_NAME }}
           image: ${{ steps.push-image.outputs.registry-path }}
-          image_pull_secret_name: github-packages
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
           port: ${{ env.APP_PORT }}
 
