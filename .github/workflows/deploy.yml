@@ -8,27 +8,24 @@ on:
     branches:
       - main
 
-env:
-  # environment is 'production' if this was triggered by a release
-  # or 'staging' if triggered by merge to main
-  ENVIRONMENT: ${{ github.event_name == 'release' && 'production' || 'staging' }}
-
 jobs:
   deploy-server:
     uses: ./.github/workflows/openshift.yml
     secrets: inherit
     with:
-      app: ${{ env.ENVIRONMENT == 'production' && 'bhpa-backend' || 'bhpa-backend-staging'}}
+      environment: ${{ github.event_name == 'release' && 'production' || 'staging' }}
+      app: ${{ github.event_name == 'release' && 'bhpa-backend' || 'bhpa-backend-staging' }}
       context: backend
       port: 3000
   deploy-website:
     uses: ./.github/workflows/openshift.yml
     secrets: inherit
     with:
-      app: ${{ env.ENVIRONMENT == 'production' && 'bhpa-frontend' || 'bhpa-frontend-staging'}}
+      environment: ${{ github.event_name == 'release' && 'production' || 'staging' }}
+      app: ${{ github.event_name == 'release' && 'bhpa-frontend' || 'bhpa-frontend-staging' }}
       context: frontend/front
       port: 8080
       build-args: |
         REACT_APP_RECAPTCHA_KEY=6LdHAxYmAAAAAHGN0eNzJhGpCrxm7FisXyZoy8cr
         REACT_APP_PUBLIC_SURVEY_ENABLED='false'
-        REACT_APP_API_URL=${{ env.ENVIRONMENT == 'production' && 'https://api.bostonhpa.org' || 'https://api.staging.bostonhpa.org'}}
+        REACT_APP_API_URL=${{ github.event_name == 'release' && 'https://api.bostonhpa.org' || 'https://api.staging.bostonhpa.org' }}
