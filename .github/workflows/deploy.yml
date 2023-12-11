@@ -13,14 +13,14 @@ jobs:
     uses: ./.github/workflows/openshift.yml
     secrets: inherit
     with:
-      app: bhpa-backend
+      app: ${{ github.event_name == 'release' && 'bhpa-backend' || 'bhpa-backend-staging'}}
       context: backend
       port: 3000
   deploy-website:
     uses: ./.github/workflows/openshift.yml
     secrets: inherit
     with:
-      app: bhpa-frontend
+      app: ${{ github.event_name == 'release' && 'bhpa-frontend' || 'bhpa-frontend-staging'}}
       context: frontend/front
       port: 8080
       build-args: |
