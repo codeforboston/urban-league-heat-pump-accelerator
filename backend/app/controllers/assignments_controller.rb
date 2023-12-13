@@ -5,7 +5,7 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments or /assignments.json
   def index
-    coll = Assignment.includes(homes: { survey_visits: :survey_response })
+    coll = policy_scope(Assignment).includes(homes: { survey_visits: :survey_response })
 
     @assignments = if search_params[:surveyor_id]
                      coll.filter_by_surveyor [search_params[:surveyor_id]]
@@ -63,6 +63,7 @@ class AssignmentsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_assignment
     @assignment = Assignment.includes(homes: { survey_visits: :survey_response }).find(params[:id])
+    authorize @assignment
   end
 
   # Only allow a list of trusted parameters through.
