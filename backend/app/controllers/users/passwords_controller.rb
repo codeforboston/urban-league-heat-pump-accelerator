@@ -5,10 +5,6 @@ module Users
     respond_to :json
 
     def create
-<<<<<<< HEAD
-      debugger
-=======
->>>>>>> main
       super
     end
 
