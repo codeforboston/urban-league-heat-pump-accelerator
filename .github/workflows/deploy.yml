@@ -15,6 +15,7 @@ jobs:
     with:
       environment: ${{ github.event_name == 'release' && 'production' || 'staging' }}
       app: ${{ github.event_name == 'release' && 'bhpa-backend' || 'bhpa-backend-staging' }}
+      image_name: 'bhpa-backend'
       context: backend
       port: 3000
   deploy-website:
@@ -23,6 +24,7 @@ jobs:
     with:
       environment: ${{ github.event_name == 'release' && 'production' || 'staging' }}
       app: ${{ github.event_name == 'release' && 'bhpa-frontend' || 'bhpa-frontend-staging' }}
+      image_name: bhpa-frontend
       context: frontend/front
       port: 8080
       build-args: |
