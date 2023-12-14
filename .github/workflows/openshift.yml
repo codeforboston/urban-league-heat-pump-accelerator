@@ -157,37 +157,27 @@ jobs:
           insecure_skip_tls_verify: true
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
 
-      # https://medium.com/@david.ojaigho/step-by-step-guide-creating-a-github-action-workflow-for-deploying-to-openshift-container-platform-4595f554726c
-      - name: Get POD
+      # This step should create a deployment, service, and route to run your app and expose it to the internet.
+      # https://github.com/redhat-actions/oc-new-app#readme
+      - name: Create and expose app
+        id: deploy-and-expose
+        uses: redhat-actions/oc-new-app@v1
+        with:
+          app_name: ${{ env.APP_NAME }}
+          image: ${{ steps.push-image.outputs.registry-path }}
+          namespace: ${{ env.OPENSHIFT_NAMESPACE }}
+          port: ${{ env.APP_PORT }}
+          image_pull_secret_name: github-packages
+
+      - name: Print application URL
+        env:
+          ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
+          SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
         run: |
-          oc get po -A | grep "${{ env.APP_NAME }}" | grep Running
-          oc rollout latest ${{ env.APP_NAME }}  -n ${{ env.OPENSHIFT_NAMESPACE }}
-          sleep 10
-          oc get po -A | grep "${{ env.APP_NAME }}" | grep Running -w
-          sleep 60
-          oc get po -A | grep "${{ env.APP_NAME }}" | grep Running -w
-          sleep 20
-
-      # # This step should create a deployment, service, and route to run your app and expose it to the internet.
-      # # https://github.com/redhat-actions/oc-new-app#readme
-      # - name: Create and expose app
-      #   id: deploy-and-expose
-      #   uses: redhat-actions/oc-new-app@v1
-      #   with:
-      #     app_name: ${{ env.APP_NAME }}
-      #     image: ${{ steps.push-image.outputs.registry-path }}
-      #     namespace: ${{ env.OPENSHIFT_NAMESPACE }}
-      #     port: ${{ env.APP_PORT }}
-
-      # - name: Print application URL
-      #   env:
-      #     ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
-      #     SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
-      #   run: |
-      #     [[ -n ${{ env.ROUTE }} ]] || (echo "Determining application route failed in previous step"; exit 1)
-      #     echo
-      #     echo "======================== Your application is available at: ========================"
-      #     echo ${{ env.ROUTE }}
-      #     echo "==================================================================================="
-      #     echo
-      #     echo "Your app can be taken down with: \"oc delete all --selector='${{ env.SELECTOR }}'\""
+          [[ -n ${{ env.ROUTE }} ]] || (echo "Determining application route failed in previous step"; exit 1)
+          echo
+          echo "======================== Your application is available at: ========================"
+          echo ${{ env.ROUTE }}
+          echo "==================================================================================="
+          echo
+          echo "Your app can be taken down with: \"oc delete all --selector='${{ env.SELECTOR }}'\""
