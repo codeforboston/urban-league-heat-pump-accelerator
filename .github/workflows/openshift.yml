@@ -28,7 +28,7 @@ name: OpenShift
 
 env:
   # 🖊️ EDIT to set the kube context's namespace, you can view your available project namespaces by login into: https://console.apps.shift.nerc.mghpcc.org.
-  OPENSHIFT_NAMESPACE: 'boston-heat-pump-accelerator'
+  OPENSHIFT_NAMESPACE: 'boston-heat-pump-accelerator-dbab1b'
   # EDIT to set a name for your OpenShift app, or a default one will be generated below.
   APP_NAME: ${{ inputs.app }}
   IMAGE_NAME: ${{ inputs.image_name }}
