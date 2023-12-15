@@ -15,6 +15,7 @@ import Login from "./features/login/Login";
 import { ProtectedRoute } from "./routing/ProtectedRoute";
 import PublicContainer from "./pages/Public/PublicContainer";
 import SurveyorContainer from "./pages/Surveyor/SurveyorContainer";
+import { Metadata } from "./pages/Metadata";
 
 function App() {
   // update jwt
@@ -49,6 +50,8 @@ function App() {
             }
           />
           <Route path={`${routes.LOGIN_ROUTE}`} element={<Login />} />
+
+          <Route path="/metadata" element={<Metadata />} />
         </Routes>
       </BrowserRouter>
     </Box>
