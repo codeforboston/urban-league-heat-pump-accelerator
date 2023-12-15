@@ -33,8 +33,9 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "PORT=3001 react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env REACT_APP_GIT_SHA=$(git rev-parse --short HEAD) PORT=3001 react-scripts start",
+    "build": "cross-env REACT_APP_GIT_SHA=$(git rev-parse --short HEAD) react-scripts build",
+    "serve": "serve -l 3001 build/",
     "test": "react-scripts test",
     "test-style": "run-s lint prettier",
     "eject": "react-scripts eject",
@@ -63,8 +64,10 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "cross-env": "^7.0.3",
     "eslint": "^8.44.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "serve": "^14.2.1"
   }
 }
