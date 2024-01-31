@@ -5,7 +5,7 @@ class SurveyQuestionsController < ApplicationController
 
   # GET /survey_questions or /survey_questions.json
   def index
-    @survey_questions = SurveyQuestion.all
+    @survey_questions = policy_scope(SurveyQuestion).all
   end
 
   # GET /survey_questions/1 or /survey_questions/1.json
@@ -14,6 +14,7 @@ class SurveyQuestionsController < ApplicationController
   # GET /survey_questions/new
   def new
     @survey_question = SurveyQuestion.new
+    authorize @survey_question
   end
 
   # GET /survey_questions/1/edit
@@ -63,6 +64,7 @@ class SurveyQuestionsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_survey_question
     @survey_question = SurveyQuestion.find(params[:id])
+    authorize @survey_question
   end
 
   # Only allow a list of trusted parameters through.

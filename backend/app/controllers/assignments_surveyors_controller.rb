@@ -4,7 +4,10 @@
 class AssignmentsSurveyorsController < ApplicationController
   def create
     @surveyor = Surveyor.find(params[:surveyor_id])
-    @assignments = Assignment.find(params[:assignment_ids])
+    @assignments = policy_scope(Assignment).find(params[:assignment_ids])
+
+    authorize @surveyor
+    authorize Assignment
 
     @surveyor.assignments << @assignments
     @surveyor.assignments = @surveyor.assignments.uniq
@@ -21,6 +24,9 @@ class AssignmentsSurveyorsController < ApplicationController
   def destroy
     @surveyor = Surveyor.find(params[:surveyor_id])
     @assignments = @surveyor.assignments.find(params[:assignment_ids])
+
+    authorize @surveyor
+
     @surveyor.assignments.delete(@assignments)
 
     respond_to do |format|

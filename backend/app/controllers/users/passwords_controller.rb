@@ -4,10 +4,6 @@ module Users
   class PasswordsController < Devise::PasswordsController
     respond_to :json
 
-    def create
-      super
-    end
-
     private
 
     def respond_with(resource, _opts = {})
@@ -18,8 +14,4 @@ module Users
       head :no_content
     end
   end
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> main

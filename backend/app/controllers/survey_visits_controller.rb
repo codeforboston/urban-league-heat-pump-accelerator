@@ -5,7 +5,7 @@ class SurveyVisitsController < ApplicationController
 
   # GET /survey_visits or /survey_visits.json
   def index
-    @survey_visits = SurveyVisit.where(search_params)
+    @survey_visits = policy_scope(SurveyVisit).where(search_params)
   end
 
   # GET /survey_visits/1 or /survey_visits/1.json
@@ -14,6 +14,7 @@ class SurveyVisitsController < ApplicationController
   # GET /survey_visits/new
   def new
     @survey_visit = SurveyVisit.new
+    authorize @survey_visit
   end
 
   # GET /survey_visits/1/edit
@@ -24,6 +25,7 @@ class SurveyVisitsController < ApplicationController
     params_hash = survey_visit_params.to_h
     params_hash[:survey_response_attributes][:ip] = request.ip if params_hash.key?(:survey_response_attributes)
     @survey_visit = SurveyVisit.new(params_hash)
+    authorize @survey_visit
 
     # If authenticated and have a survey response,
     # always consider it trustworthy
@@ -75,6 +77,7 @@ class SurveyVisitsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_survey_visit
     @survey_visit = SurveyVisit.find(params[:id])
+    authorize @survey_visit
   end
 
   # Only allow a list of trusted parameters through.
