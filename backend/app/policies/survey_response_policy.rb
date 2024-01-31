@@ -3,17 +3,13 @@
 class SurveyResponsePolicy < ApplicationPolicy
   attr_reader :user, :record
 
-  def initialize(user, record)
-    @user = user
-    @record = record
-  end
-
   def index?
     user.surveyor.admin? || user.surveyor.surveyor?
   end
 
   def show?
-    user.surveyor.admin? || record.survey_visit.surveyor == user.surveyor # or if you were the surveyor that submitted it?
+    # or if you were the surveyor that submitted it?
+    user.surveyor.admin? || record.survey_visit.surveyor == user.surveyor
   end
 
   def create?
@@ -46,7 +42,8 @@ class SurveyResponsePolicy < ApplicationPolicy
       if user.surveyor.admin?
         scope.all
       else
-        scope.includes(:survey_visit).where('survey_visit.surveyor': user.surveyor)
+        scope.includes(:survey_visit)
+             .where('survey_visit.surveyor': user.surveyor)
       end
     end
 
