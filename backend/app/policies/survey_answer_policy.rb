@@ -4,11 +4,11 @@ class SurveyAnswerPolicy < ApplicationPolicy
   attr_reader :user, :record
 
   def index?
-    user.surveyor.admin?
+    user.admin?
   end
 
   def show?
-    user.surveyor.admin?
+    user.admin?
   end
 
   def create?
@@ -20,7 +20,7 @@ class SurveyAnswerPolicy < ApplicationPolicy
   end
 
   def update?
-    user.surveyor.admin?
+    user.admin?
   end
 
   def edit?

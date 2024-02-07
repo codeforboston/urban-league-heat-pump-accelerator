@@ -20,15 +20,11 @@ class HomePolicy < ApplicationPolicy
   end
 
   def update?
-    user.surveyor.admin?
-  end
-
-  def edit?
-    update?
+    user&.admin?
   end
 
   def destroy?
-    user.surveyor.admin?
+    user&.admin?
   end
 
   class Scope

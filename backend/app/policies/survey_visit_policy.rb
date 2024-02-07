@@ -4,11 +4,11 @@ class SurveyVisitPolicy < ApplicationPolicy
   attr_reader :user, :record
 
   def index?
-    user.surveyor.admin? || user.surveyor.surveyor?
+    user.admin? || user.surveyor?
   end
 
   def show?
-    user.surveyor.admin? || record.surveyor == user.surveyor # or if you were the surveyor that submitted it?
+    user.admin? || record.surveyor == user.surveyor # or if you were the surveyor that submitted it?
   end
 
   def create?
@@ -20,7 +20,7 @@ class SurveyVisitPolicy < ApplicationPolicy
   end
 
   def update?
-    user.surveyor.admin? || record.surveyor == user.surveyor
+    user.admin? || record.surveyor == user.surveyor
   end
 
   def edit?
@@ -28,7 +28,7 @@ class SurveyVisitPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.surveyor.admin? || record.surveyor == user.surveyor
+    user.admin? || record.surveyor == user.surveyor
   end
 
   class Scope
@@ -38,7 +38,7 @@ class SurveyVisitPolicy < ApplicationPolicy
     end
 
     def resolve
-      if user.surveyor.admin?
+      if user.admin?
         scope.all
       else
         scope.where(surveyor: user.surveyor)

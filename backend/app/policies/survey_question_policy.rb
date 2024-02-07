@@ -12,7 +12,7 @@ class SurveyQuestionPolicy < ApplicationPolicy
   end
 
   def create?
-    user.surveyor.admin?
+    user.admin?
   end
 
   def new?
@@ -20,7 +20,7 @@ class SurveyQuestionPolicy < ApplicationPolicy
   end
 
   def update?
-    user.surveyor.admin?
+    user.admin?
   end
 
   def edit?
@@ -28,7 +28,7 @@ class SurveyQuestionPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.surveyor.admin?
+    user.admin?
   end
 
   class Scope

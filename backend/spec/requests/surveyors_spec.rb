@@ -36,7 +36,6 @@ RSpec.describe '/surveyors', type: :request do
       city: 'Cambridge',
       zipcode: '01234',
       state: 'MA',
-      role: 'surveyor',
       status: 'active'
     }
   end

@@ -15,6 +15,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/assignments', type: :request do
+  include Devise::Test::IntegrationHelpers
   # This should return the minimal set of attributes required to create a valid
   # Assignment. As you add validations to Assignment, be sure to
   # adjust the attributes here as well.
@@ -72,6 +73,8 @@ RSpec.describe '/assignments', type: :request do
 
   describe 'GET /new' do
     it 'renders a successful response' do
+      surveyor = create(:surveyor)
+      sign_in surveyor.user
       get new_assignment_url, as: :json
       expect(response).to be_successful
     end

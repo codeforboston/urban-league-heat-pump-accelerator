@@ -17,12 +17,10 @@ class HomesController < ApplicationController
     authorize @home
   end
 
-  # GET /homes/1/edit
-  def edit; end
-
   # POST /homes or /homes.json
   def create
     @home = Home.new(home_params)
+    authorize @home
     # By definition, a new home's address has not been canonicalized.
     @home.status = :uncanonicalized
     # If the user isn't signed in and we're creating a new home, mark as user added
