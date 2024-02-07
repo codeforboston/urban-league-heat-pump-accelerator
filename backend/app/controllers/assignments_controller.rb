@@ -20,6 +20,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments/new
   def new
     @assignment = Assignment.new
+    authorize @assignment
   end
 
   # GET /assignments/1/edit
@@ -28,6 +29,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments or /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
+    authorize @assignment
 
     respond_to do |format|
       if @assignment.save

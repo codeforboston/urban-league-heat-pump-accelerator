@@ -93,7 +93,6 @@ RSpec.describe '/homes', type: :request do
   describe 'DELETE /destroy' do
     it 'destroys the requested home' do
       home = Home.create! valid_attributes
-      # below here, we need to do this as a real user with a surveyor
       surveyor = create(:surveyor)
       sign_in surveyor.user
       expect do
@@ -103,6 +102,8 @@ RSpec.describe '/homes', type: :request do
 
     it 'returns status no_content' do
       home = Home.create! valid_attributes
+      surveyor = create(:surveyor)
+      sign_in surveyor.user
       delete home_url(home), as: :json
       expect(response).to have_http_status(:no_content)
     end
