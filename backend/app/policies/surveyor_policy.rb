@@ -4,11 +4,11 @@ class SurveyorPolicy < ApplicationPolicy
   attr_reader :user, :record
 
   def index?
-    user.admin?
+    user&.admin?
   end
 
   def show?
-    user.admin? || record == user.surveyor
+    user&.admin? || record == user&.surveyor
   end
 
   def create?
@@ -20,7 +20,7 @@ class SurveyorPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? || record == user.surveyor
+    user&.admin? || record == user&.surveyor
   end
 
   def edit?
@@ -28,7 +28,7 @@ class SurveyorPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin?
+    user&.admin?
   end
 
   class Scope
@@ -38,7 +38,7 @@ class SurveyorPolicy < ApplicationPolicy
     end
 
     def resolve
-      return unless user.admin?
+      return unless user&.admin?
 
       scope.all
     end

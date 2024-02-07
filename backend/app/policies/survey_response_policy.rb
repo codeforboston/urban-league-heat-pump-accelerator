@@ -43,7 +43,7 @@ class SurveyResponsePolicy < ApplicationPolicy
         scope.all
       else
         scope.includes(:survey_visit)
-             .where('survey_visit.surveyor': user.surveyor)
+             .where('survey_visit.surveyor': user&.surveyor)
       end
     end
 
