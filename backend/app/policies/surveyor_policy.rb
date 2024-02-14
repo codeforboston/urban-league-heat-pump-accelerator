@@ -8,11 +8,11 @@ class SurveyorPolicy < ApplicationPolicy
   end
 
   def show?
-    user&.admin? || record == user&.surveyor
+    user&.admin? || record.user.id == user.id
   end
 
   def create?
-    true
+    user&.admin?
   end
 
   def new?
@@ -20,7 +20,7 @@ class SurveyorPolicy < ApplicationPolicy
   end
 
   def update?
-    user&.admin? || record == user&.surveyor
+    user&.admin? || record.user.id == user.id
   end
 
   def edit?
@@ -38,9 +38,11 @@ class SurveyorPolicy < ApplicationPolicy
     end
 
     def resolve
-      return unless user&.admin?
-
-      scope.all
+      if user&.admin?
+        scope.all
+      else
+        scope.where(user:)
+      end
     end
 
     private

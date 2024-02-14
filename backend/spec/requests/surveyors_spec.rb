@@ -16,12 +16,17 @@ require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
 RSpec.describe '/surveyors', type: :request do
+  include Devise::Test::IntegrationHelpers
   # This should return the minimal set of attributes required to create a valid
   # Surveyor. As you add validations to Surveyor, be sure to
   # adjust the attributes here as well.
 
   let(:user) do
-    User.create(email: 'sample@test.com', password: 'password')
+    User.create(email: 'sample@test.com', password: 'password', role: :surveyor)
+  end
+
+  let(:admin) do
+    User.create(email: 'admin@test.com', password: 'password', role: :admin)
   end
 
   let(:valid_attributes) do
@@ -56,6 +61,7 @@ RSpec.describe '/surveyors', type: :request do
 
   describe 'GET /show' do
     it 'renders a successful response' do
+      sign_in user
       surveyor = Surveyor.create! valid_attributes
       get surveyor_url(surveyor), as: :json
       expect(response).to be_successful
@@ -64,6 +70,7 @@ RSpec.describe '/surveyors', type: :request do
 
   describe 'GET /edit' do
     it 'renders a successful response' do
+      sign_in user
       surveyor = Surveyor.create! valid_attributes
       get edit_surveyor_url(surveyor), as: :json
       expect(response).to be_successful
@@ -73,12 +80,14 @@ RSpec.describe '/surveyors', type: :request do
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new Surveyor' do
+        sign_in admin
         expect do
           post surveyors_url, params: { surveyor: valid_attributes }, as: :json
         end.to change(Surveyor, :count).by(1)
       end
 
       it 'redirects to the created surveyor' do
+        sign_in admin
         post surveyors_url, params: { surveyor: valid_attributes }, as: :json
         expect(response).to have_http_status(:created)
       end
@@ -86,12 +95,14 @@ RSpec.describe '/surveyors', type: :request do
 
     context 'with invalid parameters' do
       it 'does not create a new Surveyor' do
+        sign_in admin
         expect do
           post surveyors_url, params: { surveyor: invalid_attributes }, as: :json
         end.to change(Surveyor, :count).by(0)
       end
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
+        sign_in admin
         post surveyors_url, params: { surveyor: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
       end
@@ -112,12 +123,12 @@ RSpec.describe '/surveyors', type: :request do
           city: 'Cambridge',
           zipcode: '01234',
           state: 'MA',
-          role: 'surveyor',
           status: 'active'
         }
       end
 
       it 'updates the requested surveyor' do
+        sign_in user
         surveyor = Surveyor.create! valid_attributes
         patch surveyor_url(surveyor), params: { surveyor: new_attributes }, as: :json
         surveyor.reload
@@ -125,6 +136,7 @@ RSpec.describe '/surveyors', type: :request do
       end
 
       it 'redirects to the surveyor' do
+        sign_in user
         surveyor = Surveyor.create! valid_attributes
         patch surveyor_url(surveyor), params: { surveyor: new_attributes }, as: :json
         surveyor.reload
@@ -134,6 +146,7 @@ RSpec.describe '/surveyors', type: :request do
 
     context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+        sign_in user
         surveyor = Surveyor.create! valid_attributes
         patch surveyor_url(surveyor), params: { surveyor: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
@@ -143,6 +156,7 @@ RSpec.describe '/surveyors', type: :request do
 
   describe 'DELETE /destroy' do
     it 'destroys the requested surveyor' do
+      sign_in admin
       surveyor = Surveyor.create! valid_attributes
       expect do
         delete surveyor_url(surveyor), as: :json
@@ -150,6 +164,7 @@ RSpec.describe '/surveyors', type: :request do
     end
 
     it 'returns status no_content' do
+      sign_in admin
       surveyor = Surveyor.create! valid_attributes
       delete surveyor_url(surveyor), as: :json
       expect(response).to have_http_status(:no_content)

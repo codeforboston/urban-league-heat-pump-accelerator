@@ -24,6 +24,7 @@ class SurveyorsController < ApplicationController
   # POST /surveyors or /surveyors.json
   def create
     @surveyor = Surveyor.new(surveyor_params)
+    authorize @surveyor
 
     respond_to do |format|
       if @surveyor.save
@@ -65,10 +66,10 @@ class SurveyorsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def surveyor_params
     params.require(:surveyor).permit(:user_id, :firstname, :lastname, :email, :phone, :street_address, :geocode,
-                                     :city, :zipcode, :state, :role, :status, :assignment_ids)
+                                     :city, :zipcode, :state, :status, :assignment_ids)
   end
 
   def search_params
-    params.permit(:city, :zipcode, :state, :role, :status)
+    params.permit(:city, :zipcode, :state, :status)
   end
 end
