@@ -1,27 +1,48 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, TextField, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import React, { useState } from "react";
 
-import { AdminBackButton } from "../../Surveyor/Components/AdminBackButton";
-import ConfirmationModal from "../../../components/confirmationModal/ConfirmationModal";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  useDeleteSurveyorMutation,
+  useGetSurveyorQuery,
+  useUpdateSurveyorMutation,
+} from "../../../api/apiSlice";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
-import { useGetSurveyorQuery } from "../../../api/apiSlice";
-import { useParams } from "react-router-dom";
+import ConfirmationModal from "../../../components/confirmationModal/ConfirmationModal";
 import { ADMIN_USER, withAdminPrefix } from "../../../routing/routes";
+import { AdminBackButton } from "../../Surveyor/Components/AdminBackButton";
 
 const UserProfile = () => {
+  const navigate = useNavigate();
+  //surveyor data
   const { uid } = useParams();
   const {
     data: surveyorData,
     isLoading: isSurveyorDataLoading,
     isError: isSurveyorError,
   } = useGetSurveyorQuery(uid);
+  const [updateSurveyor, { isLoading: updateSurveyorProg }] =
+    useUpdateSurveyorMutation();
+
+  const [deleteUser, { isLoading: deleteUserProg }] =
+    useDeleteSurveyorMutation();
+
+  //states
   const [editMode, setEditMode] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [errorStatus, setErrorStatus] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [upduteUserSuccess, setUpdateUserSucess] = useState(false);
 
   // react-hook-forms
-  const { handleSubmit, control } = useForm({
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { isDirty },
+  } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -34,55 +55,109 @@ const UserProfile = () => {
     },
   });
   const onSubmit = (data) => {
+    const newSurveyorData = {
+      ...surveyorData,
+      firstname: data.firstName,
+      lastname: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      street_address: data.street_address,
+      city: data.city,
+    };
+    updateSurveyor(newSurveyorData)
+      .unwrap()
+      .then(() => {
+        setUpdateUserSucess(true);
+        setErrorStatus(false);
+        setEditMode(false);
+      })
+      .catch(() => {
+        setErrorStatus(true);
+        setErrorMsg("Error saving user!");
+      });
+  };
+  const onEditCancel = (data) => {
     setEditMode(false);
+    reset();
   };
 
   // deleteModal
   const confirmDelete = () => {
     setDeleteModal(false);
     // make api call to delete the user profile here
+    deleteUser(surveyorData)
+      .unwrap()
+      .then(() => {
+        navigate("/admin/user");
+      })
+      .catch(() => {
+        setErrorStatus(true);
+        setErrorMsg("Error deleting user!");
+      });
   };
   const cancelDelete = () => {
     setDeleteModal(false);
   };
 
+  //side effects
+  //set form default values after data fetch
+  useEffect(() => {
+    if (surveyorData) {
+      reset({
+        firstName: surveyorData.firstname,
+        lastName: surveyorData.lastname,
+        email: surveyorData.email,
+        phone: surveyorData.phone,
+        streetAddress: surveyorData.street_address,
+        city: surveyorData.city,
+        zipCode: surveyorData.zipcode,
+        state: surveyorData.state,
+      });
+    }
+  }, [reset, surveyorData]);
   // Conditional Buttons
-  let formControlButtons;
+  let editButton, deleteButton, saveButton;
   if (!editMode) {
-    formControlButtons = (
-      <Box pt={5} textAlign="right">
-        <Button
-          variant="outlined"
-          sx={{ ml: 2 }}
-          onClick={() => setEditMode(true)}
-        >
-          EDIT
-        </Button>
-        <Button
-          variant="outlined"
-          sx={{ ml: 2 }}
-          color="error"
-          onClick={() => setDeleteModal(true)}
-        >
-          DELETE
-        </Button>
-      </Box>
+    editButton = (
+      <Button
+        variant="outlined"
+        sx={{ ml: 2 }}
+        onClick={() => setEditMode(true)}
+      >
+        EDIT
+      </Button>
+    );
+    deleteButton = (
+      <Button
+        variant="outlined"
+        sx={{ ml: 2 }}
+        color="error"
+        onClick={() => setDeleteModal(true)}
+        disabled={deleteUserProg}
+      >
+        {deleteUserProg ? "DELETING..." : "DELETE"}
+      </Button>
     );
   } else {
-    formControlButtons = (
-      <Box pt={5} textAlign="right">
-        <Button variant="outlined" sx={{ ml: 2 }} onClick={() => onSubmit()}>
-          SAVE
-        </Button>
-        <Button
-          variant="outlined"
-          sx={{ ml: 2 }}
-          color="error"
-          onClick={() => setEditMode(false)}
-        >
-          CANCEL
-        </Button>
-      </Box>
+    saveButton = (
+      <Button
+        variant="outlined"
+        sx={{ ml: 2 }}
+        type="submit"
+        disabled={!isDirty || updateSurveyorProg ? true : false}
+      >
+        {updateSurveyorProg ? "SAVING..." : "SAVE"}
+      </Button>
+    );
+    deleteButton = (
+      <Button
+        variant="outlined"
+        sx={{ ml: 2 }}
+        color="error"
+        onClick={onEditCancel}
+      >
+        CANCEL
+      </Button>
     );
   }
 
@@ -120,7 +195,7 @@ const UserProfile = () => {
               {/* Can't be edited, but could be helpful to display. */}
             </Box>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate>
               <Controller
                 name={"firstName"}
                 control={control}
@@ -128,7 +203,7 @@ const UserProfile = () => {
                   <TextField
                     disabled={!editMode}
                     onChange={onChange}
-                    value={surveyorData?.firstname || value}
+                    value={value}
                     label="First Name"
                     variant="standard"
                     sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -142,7 +217,7 @@ const UserProfile = () => {
                   <TextField
                     disabled={!editMode}
                     onChange={onChange}
-                    value={surveyorData?.lastname || value}
+                    value={value}
                     label="Last Name"
                     variant="standard"
                     sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -156,7 +231,7 @@ const UserProfile = () => {
                   <TextField
                     disabled={!editMode}
                     onChange={onChange}
-                    value={surveyorData?.email || value}
+                    value={value}
                     label="Email"
                     variant="standard"
                     sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -184,7 +259,7 @@ const UserProfile = () => {
                   <TextField
                     disabled={!editMode}
                     onChange={onChange}
-                    value={surveyorData?.street_address || value}
+                    value={value}
                     label="Street Address"
                     variant="standard"
                     sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -198,7 +273,7 @@ const UserProfile = () => {
                   <TextField
                     disabled={!editMode}
                     onChange={onChange}
-                    value={surveyorData?.city || value}
+                    value={value}
                     label="City"
                     variant="standard"
                     sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -212,7 +287,7 @@ const UserProfile = () => {
                   <TextField
                     disabled={!editMode}
                     onChange={onChange}
-                    value={surveyorData?.zipcode || value}
+                    value={value}
                     label="Zip Code"
                     variant="standard"
                     sx={{ width: "95%", mx: 2, mt: 3 }}
@@ -226,13 +301,24 @@ const UserProfile = () => {
                   <TextField
                     disabled={!editMode}
                     onChange={onChange}
-                    value={surveyorData?.state || value}
+                    value={value}
                     label="State"
                     variant="standard"
                     sx={{ width: "95%", mx: 2, mt: 3 }}
                   />
                 )}
               />
+              {/*update result feedback*/}
+              {upduteUserSuccess && (
+                <Alert severity="success" sx={{ my: 2 }}>
+                  User saved successfully!
+                </Alert>
+              )}
+              {errorStatus && (
+                <Alert severity="error" sx={{ my: 2 }}>
+                  {errorMsg}
+                </Alert>
+              )}
 
               {/* BUTTONS */}
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -245,7 +331,11 @@ const UserProfile = () => {
                     CHANGE PASSWORD
                   </Button>
                 </Box>
-                {formControlButtons}
+                <Box pt={5} textAlign="right">
+                  {editButton}
+                  {saveButton}
+                  {deleteButton}
+                </Box>
               </Box>
             </form>
           </Box>
