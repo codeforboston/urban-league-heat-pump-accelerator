@@ -54,7 +54,8 @@ const UserProfile = () => {
       state: "",
     },
   });
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
+    e.preventDefault();
     const newSurveyorData = {
       ...surveyorData,
       firstname: data.firstName,
