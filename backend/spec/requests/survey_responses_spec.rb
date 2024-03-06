@@ -71,7 +71,7 @@ RSpec.describe '/survey_responses', type: :request do
         end.to change(SurveyResponse, :count).by(0)
       end
 
-      it "renders a response with 422 status (i.e. to display the 'new' template)" do
+      it "renders a response with 422 status" do
         post survey_responses_url, params: { survey_response: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
       end
@@ -86,16 +86,16 @@ RSpec.describe '/survey_responses', type: :request do
 
       it 'updates the requested survey_response' do
         survey_response = SurveyResponse.create! valid_attributes
-        patch survey_response_url(survey_response), params: { survey_response: new_attributes }
+        patch survey_response_url(survey_response), params: { survey_response: new_attributes }, as: :json
         survey_response.reload
         skip('Add assertions for updated state')
       end
     end
 
     context 'with invalid parameters' do
-      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+      it "renders a response with 422 status" do
         survey_response = SurveyResponse.create! valid_attributes
-        patch survey_response_url(survey_response), params: { survey_response: invalid_attributes }
+        patch survey_response_url(survey_response), params: { survey_response: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end

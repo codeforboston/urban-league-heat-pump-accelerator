@@ -49,37 +49,24 @@ RSpec.describe '/survey_visits', type: :request do
     end
   end
 
-  describe 'GET /edit' do
-    it 'renders a successful response' do
-      survey_visit = SurveyVisit.create! valid_attributes
-      get edit_survey_visit_url(survey_visit), as: :json
-      expect(response).to be_successful
-    end
-  end
-
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new SurveyVisit' do
         expect do
-          post survey_visits_url, params: { survey_visit: valid_attributes }
+          post survey_visits_url, params: { survey_visit: valid_attributes }, as: :json
         end.to change(SurveyVisit, :count).by(1)
-      end
-
-      it 'redirects to the created survey_visit' do
-        post survey_visits_url, params: { survey_visit: valid_attributes }
-        expect(response).to redirect_to(survey_visit_url(SurveyVisit.last))
       end
     end
 
     context 'with invalid parameters' do
       it 'does not create a new SurveyVisit' do
         expect do
-          post survey_visits_url, params: { survey_visit: invalid_attributes }
+          post survey_visits_url, params: { survey_visit: invalid_attributes }, as: :json
         end.to change(SurveyVisit, :count).by(0)
       end
 
-      it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post survey_visits_url, params: { survey_visit: invalid_attributes }
+      it "renders a response with 422 status" do
+        post survey_visits_url, params: { survey_visit: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -93,23 +80,16 @@ RSpec.describe '/survey_visits', type: :request do
 
       it 'updates the requested survey_visit' do
         survey_visit = SurveyVisit.create! valid_attributes
-        patch survey_visit_url(survey_visit), params: { survey_visit: new_attributes }
+        patch survey_visit_url(survey_visit), params: { survey_visit: new_attributes }, as: :json
         survey_visit.reload
         skip('Add assertions for updated state')
-      end
-
-      it 'redirects to the survey_visit' do
-        survey_visit = SurveyVisit.create! valid_attributes
-        patch survey_visit_url(survey_visit), params: { survey_visit: new_attributes }
-        survey_visit.reload
-        expect(response).to redirect_to(survey_visit_url(survey_visit))
       end
     end
 
     context 'with invalid parameters' do
-      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+      it "renders a response with 422 status" do
         survey_visit = SurveyVisit.create! valid_attributes
-        patch survey_visit_url(survey_visit), params: { survey_visit: invalid_attributes }
+        patch survey_visit_url(survey_visit), params: { survey_visit: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -119,14 +99,8 @@ RSpec.describe '/survey_visits', type: :request do
     it 'destroys the requested survey_visit' do
       survey_visit = SurveyVisit.create! valid_attributes
       expect do
-        delete survey_visit_url(survey_visit)
+        delete survey_visit_url(survey_visit), as: :json
       end.to change(SurveyVisit, :count).by(-1)
-    end
-
-    it 'redirects to the survey_visits list' do
-      survey_visit = SurveyVisit.create! valid_attributes
-      delete survey_visit_url(survey_visit)
-      expect(response).to redirect_to(survey_visits_url)
     end
   end
 end

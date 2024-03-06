@@ -3,7 +3,8 @@
 FactoryBot.define do
   factory :survey_response do
     survey
-    completed { false }
-    user
+    survey_visit
+    ip { "127.0.0.1" }
+    recaptcha_score { "42" }
   end
 end

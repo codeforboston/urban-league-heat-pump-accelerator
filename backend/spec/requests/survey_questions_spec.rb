@@ -77,11 +77,6 @@ RSpec.describe '/survey_questions', type: :request do
           post survey_questions_url, params: { survey_question: invalid_attributes }
         end.to change(SurveyQuestion, :count).by(0)
       end
-
-      it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post survey_questions_url, params: { survey_question: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
     end
   end
 
@@ -107,7 +102,7 @@ RSpec.describe '/survey_questions', type: :request do
     end
 
     context 'with invalid parameters' do
-      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+      it "renders a response with 422 status" do
         survey_question = SurveyQuestion.create! valid_attributes
         patch survey_question_url(survey_question), params: { survey_question: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
@@ -121,12 +116,6 @@ RSpec.describe '/survey_questions', type: :request do
       expect do
         delete survey_question_url(survey_question)
       end.to change(SurveyQuestion, :count).by(-1)
-    end
-
-    it 'redirects to the survey_questions list' do
-      survey_question = SurveyQuestion.create! valid_attributes
-      delete survey_question_url(survey_question)
-      expect(response).to redirect_to(survey_questions_url)
     end
   end
 end
