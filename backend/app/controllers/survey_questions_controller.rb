@@ -39,9 +39,6 @@ class SurveyQuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @survey_question.update(survey_question_params)
-        format.html do
-          redirect_to survey_question_url(@survey_question), notice: 'Survey question was successfully updated.'
-        end
         format.json { render :show, status: :ok, location: @survey_question }
       else
         format.json { render json: @survey_question.errors, status: :unprocessable_entity }
