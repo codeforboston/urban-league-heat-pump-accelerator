@@ -232,6 +232,47 @@
           "text": "When you take the BHPA survey about heat pumps, it is anonymized and collected in aggregate. We report data we collect in our survey to the partners listed on our Partners page to help them improve their programs, so we can help more people get the discounts for heat pumps for which they are eligible. We do not sell your data to 3rd parties. If you have questions about how your data is used, please contact <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
         }
       }
+    },
+    "faq": {
+      "heading": "FAQ",
+      "items": {
+        "item1": {
+          "title": "What is a heat pump? What is an Air Source Heat Pump (ASHP)?",
+          "text": "Please see our <a href='/public/about-heat-pump'>What is a Heat Pump</a> page for more details on heat pumps! If you have further questions about heat pumps beyond what you see on this site, please connect with the <a href='https://heatsmartalliance.org/' target='_blank' rel='noopener noreferrer'>Heat Smart Alliance</a>."
+        },
+        "item2": {
+          "title": "Why did this project consider only ASHPs and not ground source heat pumps (GSHP) or air-to-water heat pumps (A2WHP)?",
+          "text": "ASHPs are a more widely available solution for installation, more compatible with the average home in Boston (given the urban density and lack of space for GSHPs) and air-to-water heat pumps (A2WHPs) are not yet generally available in the numbers and at the cost of ASHPs. That said, with the future potential of A2WHPs to replace entire boiler systems, it is a technology that bears watching closely as it matures."
+        },
+        "item3": {
+          "title": "How can ASHPs help residents in the City of Boston?",
+          "text": "Please see our page on the <a href='/public/benefits-heat-pump'>Benefits of Heat Pumps</a>."
+        },
+        "item4": {
+          "title": "Why does this project engage the residents of Dorchester, Roxbury, and Mattapan?",
+          "text": "This project was funded by a grant that was awarded to the Urban League of Eastern Massachusetts (which serves these and other neighborhoods) by the Massachusetts Clean Energy Center (which identified this project as being eligible for grant funds precisely because it would explore supporting residents in these neighborhoods)."
+        },
+        "item5": {
+          "title": "Why is this project surveying a sample of the neighborhood and not everyone in the neighborhood? Why did my neighbor get surveyed and I didn't?",
+          "text": "This project is a “pilot” project, which means that it is understood that it will explore a potentially useful concept at a small scale with very limited funding. The results of the project are expected to potentially confirm that a larger version of the same or similar activities would be worthwhile in the future. Pilot projects are an established and widely implemented approach by institutions to explore, test, and confirm some activity as a precursor to committing larger funding amounts for more comprehensive action."
+        },
+        "item6": {
+          "title": "This pilot project appears to be exclusively focused on homeowners, is that correct?",
+          "text": "<p>No, the project is not supporting homeowners only. The public website for this project is built to support, educate, and empower all residents to understand heat pumps and learn about how heat pumps can help residents, communities, and the planet, regardless of whether a resident owns or rents their home.</p><p>The project's survey, which asks questions about what the respondent is interested in installing in their home, is targeted solely to homeowners. A similar survey in the future, offered to renters, is a possibility under a future grant. Renters are an integral part of the community and there are other efforts in motion locally and nationally to identify, organize, and empower the voices of renters as well.</p>"
+        },
+        "item7": {
+          "title": "Did the project survey every resident in Dorchester, Roxbury, and Mattapan?",
+          "text": "No - given the limitations in funding, staffing, and time, this project could only survey a sample sub-set of residents from these neighborhoods."
+        },
+        "item8": {
+          "title": "How did the project identify the residents to survey?",
+          "text": "<p>The first step was to consider which sorts of respondents would not be eligible to complete the survey.</p><p>For example, this survey focuses on the homeowners, not renters (for reasons outlined above). Further, since the survey would be largely completed in-person, at the door of the particular house in question, it made sense to focus on owner-occupied homes. This focus reduces the likelihood that surveyors knock on the door of a home, only to find that the owner (who has the authority to make decisions about the heating system) is not only not at the home, but in fact does not even live there. In this situation, it would not be possible for this “door knock” to result in a completed survey. So the decision was made to focus on owner-occupied homes. With a very limited budget to support the time of surveyors, the project looked for ways to ensure that each survey-interaction had the highest “foundational” chance of engaging an eligible survey respondent.</p><p>To identify owner-occupied homes in the supported neighborhoods, the project analyzed the publicly available City of Boston property database. This open dataset is maintained by the city, contains publicly available information, and is searchable by anyone. It lists limited information associated with properties in Boston neighborhoods, including address, owner, and owner's address, along with year built, heating system, and some other basic fields.</p>"
+        },
+        "item9": {
+          "title": "If I take this survey, how will my responses be used?",
+          "text": "<p>The purpose of the 2024 BostonHPA survey is to gauge the awareness of heat pumps in the supported neighborhoods. Survey responses will be stored in a secure database and aggregated to illustrate the possible strengths and/or gaps in heat pump familiarity of the general public in these neighborhoods.</p><p>It is the the goal of this project that these insights on heat pump awareness in local communities can inform additional, comprehensive efforts to empower residents with information, context, options, and guidance around evaluating heat pumps as greener, more efficient, and less expensive HVAC solutions.</p>"
+        }
+      }
     }
   }
 }

@@ -235,6 +235,47 @@
           "text": "Quando você responde à pesquisa da BHPA sobre bombas de calor, ela é anonimizada e coletada de forma agregada. \nReportamos os dados que recolhemos no nosso inquérito aos parceiros listados na nossa página de Parceiros para os ajudar a melhorar os seus programas, para que possamos ajudar mais pessoas a obter descontos em bombas de calor para as quais são elegíveis. \nNão vendemos seus dados a terceiros. \nSe você tiver dúvidas sobre como seus dados são usados, entre em contato com <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
         }
       }
+    },
+    "faq": {
+      "heading": "Perguntas Frequentes",
+      "items": {
+        "item1": {
+          "title": "O que é uma bomba de calor? O que é uma ASHP?",
+          "text": "Consulte nossa página <a href='/public/about-heat-pump'>O que é uma Bomba de Calor</a> para obter mais detalhes sobre bombas de calor! Se você tiver mais dúvidas sobre bombas de calor além do que está neste site, conecte-se com a <a href='https://heatsmartalliance.org/' target='_blank' rel='noopener noreferrer'>Heat Smart Alliance</a>."
+        },
+        "item2": {
+          "title": "Por que este projeto considerou apenas ASHPs e não bombas de calor geotérmicas (GSHPs) ou bombas de calor ar-água (A2WHPs)?",
+          "text": "As ASHPs são uma solução mais amplamente disponível para instalação, mais compatível com a casa média em Boston (dada a densidade urbana e a falta de espaço para GSHPs) e as bombas de calor ar-água (A2WHPs) ainda não estão geralmente disponíveis nos números e ao custo das ASHPs. No entanto, com o potencial futuro das A2WHPs para substituir sistemas inteiros de caldeiras, é uma tecnologia que vale a pena acompanhar de perto à medida que amadurece."
+        },
+        "item3": {
+          "title": "Como as ASHPs podem ajudar os residentes na Cidade de Boston?",
+          "text": "Consulte nossa página sobre os <a href='/public/benefits-heat-pump'>Benefícios das Bombas de Calor</a>."
+        },
+        "item4": {
+          "title": "Por que este projeto envolve os residentes de Dorchester, Roxbury e Mattapan?",
+          "text": "Este projeto foi financiado por uma bolsa concedida à Urban League of Eastern Massachusetts (que atende esses e outros bairros) pelo Massachusetts Clean Energy Center (que identificou este projeto como elegível para fundos de bolsa precisamente porque exploraria o apoio aos residentes nesses bairros)."
+        },
+        "item5": {
+          "title": "Por que este projeto está pesquisando uma amostra do bairro e não todos no bairro? Por que meu vizinho foi pesquisado e eu não?",
+          "text": "Este projeto é um 'projeto piloto', o que significa que se entende que vai explorar um conceito potencialmente útil em pequena escala com fundos muito limitados. Espera-se que os resultados do projeto possam potencialmente confirmar que uma versão maior das mesmas ou semelhantes atividades valeria a pena no futuro. Projetos-piloto são uma abordagem estabelecida e amplamente implementada por instituições para explorar, testar e confirmar alguma atividade como precursora para comprometer maiores quantias de fundos para uma ação mais abrangente."
+        },
+        "item6": {
+          "title": "Este projeto piloto parece estar focado exclusivamente em proprietários de imóveis, está correto?",
+          "text": "<p>Não, o projeto não apoia apenas proprietários. O site público deste projeto foi criado para apoiar, educar e capacitar todos os residentes a entender as bombas de calor e aprender como as bombas de calor podem ajudar os residentes, comunidades e o planeta, independentemente de o residente ser proprietário ou inquilino de sua casa.</p><p>A pesquisa do projeto, que faz perguntas sobre o que o entrevistado está interessado em instalar em sua casa, é direcionada exclusivamente aos proprietários. Uma pesquisa semelhante no futuro, oferecida aos inquilinos, é uma possibilidade sob uma futura bolsa. Os inquilinos são uma parte integral da comunidade e existem outros esforços em andamento local e nacionalmente para identificar, organizar e capacitar as vozes dos inquilinos também.</p>"
+        },
+        "item7": {
+          "title": "O projeto pesquisou todos os residentes em Dorchester, Roxbury e Mattapan?",
+          "text": "Não - dadas as limitações de financiamento, pessoal e tempo, este projeto só pôde pesquisar um subconjunto de amostra de residentes desses bairros."
+        },
+        "item8": {
+          "title": "Como o projeto identificou os residentes a serem pesquisados?",
+          "text": "<p>A primeira etapa foi considerar que tipos de entrevistados não seriam elegíveis para completar a pesquisa.</p><p>Por exemplo, esta pesquisa enfoca os proprietários, não os inquilinos (pelas razões descritas acima). Além disso, como a pesquisa seria realizada principalmente pessoalmente, na porta da casa em questão, fez sentido focar em casas ocupadas pelos proprietários. Este foco reduz a probabilidade de os pesquisadores baterem na porta de uma casa, apenas para descobrir que o proprietário (que tem autoridade para tomar decisões sobre o sistema de aquecimento) não só não está em casa, mas na verdade nem mesmo mora lá. Nesta situação, não seria possível que esta 'batida na porta' resultasse em uma pesquisa concluída. Então, foi tomada a decisão de focar em casas ocupadas pelos proprietários. Com um orçamento muito limitado para apoiar o tempo dos pesquisadores, o projeto buscou maneiras de garantir que cada interação da pesquisa tivesse a maior 'chance fundamental' de envolver um entrevistado elegível.</p><p>Para identificar as casas ocupadas pelos proprietários nos bairros compatíveis, o projeto analisou o banco de dados de propriedades da Cidade de Boston aberto ao público. Esse conjunto de dados aberto é mantido pela cidade, contém informações publicamente disponíveis e é pesquisável por qualquer pessoa. Ele lista informações limitadas associadas a propriedades nos bairros de Boston, incluindo endereço, proprietário e endereço do proprietário, junto com o ano construído, sistema de aquecimento e alguns outros campos básicos.</p>"
+        },
+        "item9": {
+          "title": "Se eu responder a esta pesquisa, como minhas respostas serão utilizadas?",
+          "text": "<p>O objetivo da pesquisa BostonHPA 2024 é avaliar a conscientização sobre bombas de calor nos bairros compatíveis. As respostas da pesquisa serão armazenadas em um banco de dados seguro e agregadas para ilustrar os possíveis pontos fortes e/ou lacunas na familiaridade com bombas de calor do público em geral nesses bairros.</p><p>É o objetivo deste projeto que esses insights sobre a conscientização de bombas de calor nas comunidades locais possam informar esforços adicionais e abrangentes para capacitar os residentes com informações, contexto, opções e orientação em torno da avaliação de bombas de calor como soluções HVAC mais ecológicas, eficientes e menos caras.</p>"
+        }
+      }
     }
   }
 }
