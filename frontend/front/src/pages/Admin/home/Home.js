@@ -17,7 +17,7 @@ const Home = () => {
         direction={["column", null, null, "row"]}
         mb={1}
       >
-        <Box m={1} display="flex" alignItems="center">
+        {/* <Box m={1} display="flex" alignItems="center">
           <TextField
             id="standard-basic"
             label="Search"
@@ -27,7 +27,7 @@ const Home = () => {
           <IconButton color="inherit">
             <SearchIcon sx={{ fontSize: 30 }} />
           </IconButton>
-        </Box>
+        </Box> */}
         <Button
           variant="contained"
           component={Link}
