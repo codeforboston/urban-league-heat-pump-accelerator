@@ -2,9 +2,8 @@ import { Alert, Box, Button, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
-  useDeleteSurveyorMutation,
   useGetSurveyorQuery,
   useUpdateSurveyorMutation,
 } from "../../../api/apiSlice";
@@ -15,7 +14,6 @@ import { ADMIN_USER, withAdminPrefix } from "../../../routing/routes";
 import { AdminBackButton } from "../../Surveyor/Components/AdminBackButton";
 
 const UserProfile = () => {
-  const navigate = useNavigate();
   //surveyor data
   const { uid } = useParams();
   const {
@@ -25,9 +23,6 @@ const UserProfile = () => {
   } = useGetSurveyorQuery(uid);
   const [updateSurveyor, { isLoading: updateSurveyorProg }] =
     useUpdateSurveyorMutation();
-
-  const [deleteUser, { isLoading: deleteUserProg }] =
-    useDeleteSurveyorMutation();
 
   //states
   const [editMode, setEditMode] = useState(false);
@@ -54,6 +49,8 @@ const UserProfile = () => {
       state: "",
     },
   });
+
+  //event handlers
   const onSubmit = (data, e) => {
     e.preventDefault();
     const newSurveyorData = {
@@ -77,23 +74,48 @@ const UserProfile = () => {
         setErrorMsg("Error saving user!");
       });
   };
+
   const onEditCancel = (data) => {
     setEditMode(false);
     reset();
   };
 
   // deleteModal
-  const confirmDelete = () => {
+  const confirmDeactivate = () => {
     setDeleteModal(false);
     // make api call to delete the user profile here
-    deleteUser(surveyorData)
+    const newSurveyorData = {
+      ...surveyorData,
+      status: "inactive",
+    };
+    updateSurveyor(newSurveyorData)
       .unwrap()
       .then(() => {
-        navigate("/admin/user");
+        setUpdateUserSucess(true);
+        setErrorStatus(false);
+        setEditMode(false);
       })
       .catch(() => {
         setErrorStatus(true);
-        setErrorMsg("Error deleting user!");
+        setErrorMsg("Error saving user!");
+      });
+  };
+  const activateUser = (e) => {
+    e.preventDefault();
+    const newSurveyorData = {
+      ...surveyorData,
+      status: "active",
+    };
+    updateSurveyor(newSurveyorData)
+      .unwrap()
+      .then(() => {
+        setUpdateUserSucess(true);
+        setErrorStatus(false);
+        setEditMode(false);
+      })
+      .catch(() => {
+        setErrorStatus(true);
+        setErrorMsg("Error saving user!");
       });
   };
   const cancelDelete = () => {
@@ -116,8 +138,10 @@ const UserProfile = () => {
       });
     }
   }, [reset, surveyorData]);
+
   // Conditional Buttons
-  let editButton, deleteButton, saveButton;
+  let editButton, saveButton, deactivateButton;
+
   if (!editMode) {
     editButton = (
       <Button
@@ -128,17 +152,30 @@ const UserProfile = () => {
         EDIT
       </Button>
     );
-    deleteButton = (
-      <Button
-        variant="outlined"
-        sx={{ ml: 2 }}
-        color="error"
-        onClick={() => setDeleteModal(true)}
-        disabled={deleteUserProg}
-      >
-        {deleteUserProg ? "DELETING..." : "DELETE"}
-      </Button>
-    );
+    if (surveyorData?.status === "active") {
+      deactivateButton = (
+        <Button
+          variant="outlined"
+          sx={{ ml: 2 }}
+          color="error"
+          onClick={() => setDeleteModal(true)}
+          disabled={updateSurveyorProg}
+        >
+          DEACTIVATE
+        </Button>
+      );
+    } else {
+      deactivateButton = (
+        <Button
+          variant="outlined"
+          sx={{ ml: 2 }}
+          color="success"
+          onClick={activateUser}
+        >
+          ACTIVATE
+        </Button>
+      );
+    }
   } else {
     saveButton = (
       <Button
@@ -150,7 +187,7 @@ const UserProfile = () => {
         {updateSurveyorProg ? "SAVING..." : "SAVE"}
       </Button>
     );
-    deleteButton = (
+    deactivateButton = (
       <Button
         variant="outlined"
         sx={{ ml: 2 }}
@@ -182,16 +219,19 @@ const UserProfile = () => {
         <>
           <ConfirmationModal
             isOpen={deleteModal}
-            handleConfirm={() => confirmDelete()}
+            handleConfirm={() => confirmDeactivate()}
             handleCancel={() => cancelDelete()}
-            confirmBtnText="Delete"
+            confirmBtnText="Deactivate"
             cancelBtnText="Cancel"
-            title="Confirm Delete"
-            message="Please confirm to delete this user."
+            title="Confirm Deactivation"
+            message="Please confirm to deactivate this user."
           />
           <Box maxWidth={500} mt={5}>
             <Box sx={{ bgcolor: "primary.main", color: "white" }} p={1}>
               <Typography variant="h5">User Profile: {uid}</Typography>
+              <Typography variant="h6">
+                Status: {surveyorData.status}
+              </Typography>
               {/* Could add user ID to header. */}
               {/* Can't be edited, but could be helpful to display. */}
             </Box>
@@ -322,7 +362,8 @@ const UserProfile = () => {
               )}
 
               {/* BUTTONS */}
-              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                {/*
                 <Box pt={5} textAlign="left">
                   <Button
                     variant="contained"
@@ -332,10 +373,11 @@ const UserProfile = () => {
                     CHANGE PASSWORD
                   </Button>
                 </Box>
+              */}
                 <Box pt={5} textAlign="right">
                   {editButton}
                   {saveButton}
-                  {deleteButton}
+                  {deactivateButton}
                 </Box>
               </Box>
             </form>
