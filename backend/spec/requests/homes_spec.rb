@@ -78,14 +78,18 @@ RSpec.describe '/homes', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          street_number: '42',
+          street_name: 'Franklin Street'
+        }
       end
 
       it 'updates the requested home' do
         home = Home.create! valid_attributes
         patch home_url(home), params: { home: new_attributes }, as: :json
         home.reload
-        skip('Add assertions for updated state')
+        expect(home.street_number).to eq("42")
+        expect(home.street_name).to eq('Franklin Street')
       end
     end
   end
