@@ -65,6 +65,35 @@ describe("SurveyComponent", () => {
     );
   });
 
+  it("cache should not be used for readonly survey", () => {
+    localStorage.setItem(
+      DEFAULT_TEST_SURVEY_CACHE_KEY,
+      JSON.stringify({
+        ...DEFAULT_TEST_DEFAULT_SURVEY_DATA,
+        3: "some text",
+      })
+    );
+
+    render(
+      <SurveyComponent
+        submitSurvey={jest.fn()}
+        isLoading={false}
+        activeHome={DEFAULT_TEST_HOME}
+        isEditable={false}
+        surveyId={DEFAULT_TEST_SURVEY.id}
+        formSpacing={5}
+        readonly
+      />,
+      {}
+    );
+
+    // eslint-disable-next-line testing-library/no-node-access
+    expect(screen.getByTestId("3").querySelector("input")).not.toHaveAttribute(
+      "value",
+      "some text"
+    );
+  });
+
   it("should cache data when form is edited", () => {
     render(
       <SurveyComponent

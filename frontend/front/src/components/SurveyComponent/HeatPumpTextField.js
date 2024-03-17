@@ -49,6 +49,7 @@ export const HeatPumpTextField = ({
       name={name}
       control={control}
       rules={rules}
+      disabled={disabled}
       render={({ field }) => (
         <FormControl fullWidth>
           {disableFancyLabel && (
@@ -67,7 +68,6 @@ export const HeatPumpTextField = ({
             helperText={
               !!formState.errors[name] && formState.errors[name].message
             }
-            disabled={disabled}
             type={inputType}
             inputProps={{ readOnly, id: `${name}-textField` }}
             {...field}

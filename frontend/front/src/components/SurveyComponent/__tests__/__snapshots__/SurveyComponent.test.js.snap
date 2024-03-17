@@ -12,17 +12,33 @@ exports[`SurveyComponent no errors when rendering 1`] = `
       <div
         class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
       >
-        <address>
-          <h3>
-            Address:
-          </h3>
-          <div>
-            1 Hanover Street #5
+        <div
+          style="display: flex; flex-direction: row; flex-wrap: wrap-reverse; justify-content: center; align-content: center;"
+        >
+          <div
+            style="flex: 1; display: inline-block;"
+          >
+            <address>
+              <h3>
+                Address:
+              </h3>
+              <div>
+                1 Hanover Street #5
+              </div>
+              <div>
+                Boston, MA 2108
+              </div>
+            </address>
           </div>
-          <div>
-            Boston, MA 2108
-          </div>
-        </address>
+          <iframe
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=undefined,undefined&output=embed"
+            style="border: 0px; display: inline-block;"
+            title="Address map"
+          />
+        </div>
       </div>
     </div>
     <form>
@@ -42,7 +58,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r24:"
+              aria-controls=":r2l:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-1"
@@ -92,7 +108,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r25:"
+              aria-controls=":r2m:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-2"
@@ -168,7 +184,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r27:"
+              aria-controls=":r2o:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-4"
@@ -218,7 +234,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r28:"
+              aria-controls=":r2p:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-5"
@@ -268,7 +284,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r29:"
+              aria-controls=":r2q:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-6"
@@ -396,7 +412,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r2d:"
+              aria-controls=":r2u:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-10"
@@ -472,7 +488,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r2f:"
+              aria-controls=":r30:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-12"
@@ -548,7 +564,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-llrb4p-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root"
           >
             <div
-              aria-controls=":r2h:"
+              aria-controls=":r32:"
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="mui-component-select-14"

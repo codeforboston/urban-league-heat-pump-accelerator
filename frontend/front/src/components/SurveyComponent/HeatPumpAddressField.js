@@ -40,6 +40,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                 message: "Invalid street number.",
               },
             }}
+            disabled={disabled}
             render={({ field }) => (
               <TextField
                 fullWidth
@@ -51,7 +52,6 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                   !!formState.errors.address?.street_number &&
                   formState.errors.address?.street_number.message
                 }
-                disabled={disabled}
                 autoComplete="address-line1"
               />
             )}
@@ -68,6 +68,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                 message: "This field is required!",
               },
             }}
+            disabled={disabled}
             render={({ field }) => (
               <TextField
                 fullWidth
@@ -79,7 +80,6 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                   !!formState.errors.address?.street_name &&
                   formState.errors.address?.street_name.message
                 }
-                disabled={disabled}
                 autoComplete="address-line1"
               />
             )}
@@ -96,6 +96,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                 message: "Invalid unit number.",
               },
             }}
+            disabled={disabled}
             render={({ field }) => (
               <TextField
                 fullWidth
@@ -107,7 +108,6 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                   !!formState.errors.address?.unit_number &&
                   formState.errors.address?.unit_number.message
                 }
-                disabled={disabled}
                 autoComplete="address-line2"
               />
             )}
@@ -124,6 +124,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                 message: "This field is required!",
               },
             }}
+            disabled={disabled}
             render={({ field }) => (
               <TextField
                 fullWidth
@@ -135,7 +136,6 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                   !!formState.errors.address?.city &&
                   formState.errors.address?.city.message
                 }
-                disabled={disabled}
                 autoComplete="address-level2"
               />
             )}
@@ -152,6 +152,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                 message: "This field is required!",
               },
             }}
+            disabled={disabled}
             render={({ field }) => (
               <TextField
                 fullWidth
@@ -163,7 +164,6 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                   !!formState.errors.address?.state &&
                   formState.errors.address?.state.message
                 }
-                disabled={disabled}
                 autoComplete="address-level1"
               />
             )}
@@ -184,6 +184,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                 message: "Invalid ZIP code.",
               },
             }}
+            disabled={disabled}
             render={({ field }) => (
               <TextField
                 fullWidth
@@ -195,7 +196,6 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
                   !!formState.errors.address?.zip_code &&
                   formState.errors.address?.zip_code.message
                 }
-                disabled={disabled}
                 autoComplete="postal-code"
               />
             )}
