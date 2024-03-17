@@ -1,5 +1,7 @@
 import React, { useMemo } from "react";
-import { DataGrid } from "@mui/x-data-grid";
+
+import { useNavigate } from "react-router-dom";
+import { DataGrid,GridToolbar } from "@mui/x-data-grid";
 import {
   useGoToBreadcrumb,
   useInitBreadcrumbs,
@@ -62,6 +64,16 @@ const SurveyTable = () => {
       disableSelectionOnClick
       autoHeight
       onRowClick={onRowClick}
+      disableColumnFilter
+      disableDensitySelector
+      disableColumnsMenu
+      slots={{ toolbar: GridToolbar }}
+      slotProps={{
+        toolbar: {
+          showQuickFilter: true,
+          quickFilterProps: { debounceMs: 500 },
+        },
+      }}
     />
   );
 };
