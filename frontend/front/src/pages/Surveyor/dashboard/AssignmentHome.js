@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
+import SurveyLink from "../../../components/SurveyLink";
 
 export const AssignmentHome = ({
   home,
@@ -69,6 +70,19 @@ export const AssignmentHome = ({
           }
         />
       </ListItemButton>
+      {home.completed && (
+        <Box sx={{ px: ".75rem" }}>
+          <SurveyLink
+            label={`View
+            `}
+            links={home.survey_visit_ids}
+            variant="text"
+            sx={{ minWidth: "unset", padding: "0px" }}
+            color="primary"
+            size="small"
+          />
+        </Box>
+      )}
       {/* <Box pt={0.5} pl={1}>
         <DialogMenu value={home} />
       </Box> */}
