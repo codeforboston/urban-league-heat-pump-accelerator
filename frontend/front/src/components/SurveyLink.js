@@ -1,8 +1,11 @@
 import { Button, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../features/login/loginSlice";
 
 const SurveyLink = ({ links, label = "VIEW", ...styles }) => {
+  const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
 
   // Dropdown for when there more then one servey
@@ -11,7 +14,9 @@ const SurveyLink = ({ links, label = "VIEW", ...styles }) => {
   const closeDropdown = () => setDropdownButtonEl(null);
 
   const goToSurvey = (surveyId) => {
-    navigate(`/admin/survey/visit/${surveyId}`);
+    currentUser.role === "admin"
+      ? navigate(`/admin/survey/visit/${surveyId}`)
+      : navigate(`/surveyor/survey/visit/${surveyId}`);
   };
 
   return (
