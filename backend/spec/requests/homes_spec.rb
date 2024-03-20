@@ -88,7 +88,7 @@ RSpec.describe '/homes', type: :request do
         home = Home.create! valid_attributes
         patch home_url(home), params: { home: new_attributes }, as: :json
         home.reload
-        expect(home.street_number).to eq("42")
+        expect(home.street_number).to eq('42')
         expect(home.street_name).to eq('Franklin Street')
       end
     end

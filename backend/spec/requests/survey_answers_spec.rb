@@ -107,7 +107,7 @@ RSpec.describe '/survey_answers', type: :request do
     end
 
     context 'with invalid parameters' do
-      it "renders a response with 422 status" do
+      it 'renders a response with 422 status' do
         survey_answer = SurveyAnswer.create! valid_attributes
         patch survey_answer_url(survey_answer), params: { survey_answer: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)

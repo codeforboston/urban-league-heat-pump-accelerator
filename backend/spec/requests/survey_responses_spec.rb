@@ -28,7 +28,10 @@ RSpec.describe '/survey_responses', type: :request do
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      survey_id: 'dev',
+      survey_visit_id: 'null'
+    }
   end
 
   describe 'GET /index' do
@@ -65,9 +68,8 @@ RSpec.describe '/survey_responses', type: :request do
 
     context 'with invalid parameters' do
       it 'does not create a new SurveyResponse' do
-        pending
         expect do
-          post survey_responses_url, params: { survey_response: invalid_attributes }
+          post survey_responses_url, params: { survey_response: invalid_attributes }, as: :json
         end.to change(SurveyResponse, :count).by(0)
       end
 

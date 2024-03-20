@@ -11,10 +11,10 @@ FactoryBot.define do
     building_type { 'Apartment' }
 
     trait :with_completed_survey_visit do
-      after(:build) do |home, evaluator|
-        survey_visit = build(:survey_visit, home: home)
+      after(:build) do |home, _evaluator|
+        survey_visit = build(:survey_visit, home:)
         home.survey_visits << survey_visit
-        survey_response = build(:survey_response, survey_visit: survey_visit)
+        survey_response = build(:survey_response, survey_visit:)
         survey_visit.survey_response = survey_response
       end
     end

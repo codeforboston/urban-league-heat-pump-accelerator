@@ -21,7 +21,7 @@ RSpec.describe '/survey_questions', type: :request do
   let(:survey) { create(:survey) }
   let(:valid_attributes) do
     {
-      response_type: 'radio', 
+      response_type: 'radio',
       survey_id: survey.id,
       display_order: 0
     }
@@ -29,7 +29,7 @@ RSpec.describe '/survey_questions', type: :request do
 
   let(:invalid_attributes) do
     {
-      response_type: 'text', 
+      response_type: 'text',
       survey_id: 'JetBrains',
       display_order: 'first'
     }
@@ -93,7 +93,7 @@ RSpec.describe '/survey_questions', type: :request do
     end
 
     context 'with invalid parameters' do
-      it "renders a response with 422 status" do
+      it 'renders a response with 422 status' do
         survey_question = SurveyQuestion.create! valid_attributes
         patch survey_question_url(survey_question), params: { survey_question: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)

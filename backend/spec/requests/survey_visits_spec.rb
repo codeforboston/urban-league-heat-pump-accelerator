@@ -37,7 +37,17 @@ RSpec.describe '/survey_visits', type: :request do
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      surveyor_id: 'dev',
+      home_id: 'null',
+      survey_response_attributes: {
+        survey_id: 'null',
+        survey_answers_attributes: [{
+          survey_question_id: 'null',
+          answer: 5
+        }]
+      }
+    }
   end
 
   describe 'GET /index' do
@@ -79,7 +89,7 @@ RSpec.describe '/survey_visits', type: :request do
         end.to change(SurveyVisit, :count).by(0)
       end
 
-      it "renders a response with 422 status" do
+      it 'renders a response with 422 status' do
         post survey_visits_url, params: { survey_visit: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
       end
@@ -88,20 +98,27 @@ RSpec.describe '/survey_visits', type: :request do
 
   describe 'PATCH /update' do
     context 'with valid parameters' do
-      let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
-      end
-
       it 'updates the requested survey_visit' do
-        survey_visit = SurveyVisit.create! valid_attributes
-        patch survey_visit_url(survey_visit), params: { survey_visit: new_attributes }, as: :json
+        survey_visit = create(:survey_visit)
+        valid_attributes_without_answer = {
+          surveyor_id: valid_attributes[:surveyor_id],
+          home_id: valid_attributes[:home_id],
+          survey_response_attributes: {
+            survey_id: valid_attributes[:survey_response_attributes][:survey_id],
+            survey_answers_attributes: [{
+              survey_question_id: valid_attributes[:survey_response_attributes][:survey_answers_attributes][0][:survey_question_id],
+              answer: 'No'
+            }]
+          }
+        }
+        patch survey_visit_url(survey_visit), params: { survey_visit: valid_attributes_without_answer }, as: :json
         survey_visit.reload
-        skip('Add assertions for updated state')
+        expect(response).to be_successful
       end
     end
 
     context 'with invalid parameters' do
-      it "renders a response with 422 status" do
+      it 'renders a response with 422 status' do
         survey_visit = SurveyVisit.create! valid_attributes
         patch survey_visit_url(survey_visit), params: { survey_visit: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
