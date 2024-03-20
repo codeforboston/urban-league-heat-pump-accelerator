@@ -10,8 +10,9 @@ require 'rails_helper'
 RSpec.describe Home, type: :model do
   describe 'completed?' do
     it 'returns true if any survey visits have an associated survey_response' do
-      home = build(:home, :with_completed_survey_visit)
-      debugger
+      home = build_stubbed(:home)
+      home.survey_visits << build(:survey_visit)
+      home.survey_visits.first.survey_response = build(:survey_response)
       expect(home.completed?).to be true
     end
 
