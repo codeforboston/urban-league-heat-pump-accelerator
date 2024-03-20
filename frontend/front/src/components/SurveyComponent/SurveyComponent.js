@@ -20,6 +20,8 @@ import Loader from "../Loader";
 import { HeatPumpDropdown } from "./HeatPumpDropdown";
 import { HeatPumpTextField } from "./HeatPumpTextField";
 import { SurveyError } from "./SurveyStructureError";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../features/login/loginSlice";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
@@ -35,6 +37,7 @@ const SurveyComponent = ({
   surveyStructure,
   onDelete,
 }) => {
+  const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
 
   const { handleSubmit, reset, control, watch } = useForm({
@@ -169,6 +172,57 @@ const SurveyComponent = ({
     [formDefault, reset]
   );
 
+  const surveyorButtonsViewing = useCallback(
+    () => (
+      <>
+        <Button
+          type="button"
+          variant="contained"
+          onClick={(e) => {
+            e.preventDefault();
+            setIsEditing(true);
+          }}
+        >
+          {"EDIT"}
+        </Button>
+        <Button variant="outlined" type="button" onClick={() => navigate(-1)}>
+          {"BACK"}
+        </Button>
+      </>
+    ),
+    [navigate]
+  );
+
+  const surveyorButtonsEditing = useCallback(
+    () => (
+      <>
+        <Button
+          variant="contained"
+          type="submit"
+          onClick={() => {
+            // no preventDefault here, we want to do the submit and ALSO setIsEditing(false)
+            setIsEditing(false);
+          }}
+        >
+          {"SAVE"}
+        </Button>
+        <Button
+          variant="outlined"
+          type="button"
+          color="error"
+          onClick={(e) => {
+            e.preventDefault();
+            reset(formDefault);
+            setIsEditing(false);
+          }}
+        >
+          {"CANCEL"}
+        </Button>
+      </>
+    ),
+    [formDefault, reset]
+  );
+
   return (
     <>
       <ConfirmationModal
@@ -239,11 +293,23 @@ const SurveyComponent = ({
           })}
           <Stack direction="row" justifyContent="center" spacing={2}>
             {isLoading && <Loader />}
-            {isEditable
-              ? isEditing
-                ? adminButtonsEditing()
-                : adminButtonsViewing()
-              : commonButtonSection()}
+            {(() => {
+              if (currentUser.role === "admin" && isEditable) {
+                if (isEditing) {
+                  return adminButtonsEditing();
+                } else {
+                  return adminButtonsViewing();
+                }
+              } else if (currentUser.role === "surveyor" && isEditable) {
+                if (isEditing) {
+                  return surveyorButtonsEditing();
+                } else {
+                  return surveyorButtonsViewing();
+                }
+              } else {
+                return commonButtonSection();
+              }
+            })()}
           </Stack>
         </Stack>
       </form>
