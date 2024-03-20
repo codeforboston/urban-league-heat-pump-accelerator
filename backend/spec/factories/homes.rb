@@ -12,7 +12,10 @@ FactoryBot.define do
 
     trait :with_completed_survey_visit do
       after(:build) do |home, evaluator|
-        build_list(:survey_visit, 1, home: home)
+        survey_visit = build(:survey_visit, home: home)
+        home.survey_visits << survey_visit
+        survey_response = build(:survey_response, survey_visit: survey_visit)
+        survey_visit.survey_response = survey_response
       end
     end
   end
