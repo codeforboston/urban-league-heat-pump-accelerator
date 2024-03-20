@@ -19,7 +19,21 @@ RSpec.describe '/survey_visits', type: :request do
   # SurveyVisit. As you add validations to SurveyVisit, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    surveyor = create(:surveyor)
+    home = create(:home)
+    survey = create(:survey)
+    survey_question = create(:survey_question)
+    {
+      surveyor_id: surveyor.id,
+      home_id: home.id,
+      survey_response_attributes: {
+        survey_id: survey.id,
+        survey_answers_attributes: [{
+          survey_question_id: survey_question.id,
+          answer: 'Yes'
+        }]
+      }
+    }
   end
 
   let(:invalid_attributes) do
@@ -29,7 +43,7 @@ RSpec.describe '/survey_visits', type: :request do
   describe 'GET /index' do
     it 'renders a successful response' do
       SurveyVisit.create! valid_attributes
-      get survey_visits_url, format: :json
+      get survey_visits_url, as: :json
       expect(response).to be_successful
     end
   end
