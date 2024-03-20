@@ -45,12 +45,6 @@ export const SurveyPage = () => {
     RECAPTCHA_ACTION_PUBLIC_SURVEY
   );
 
-  // this ought to just be a global constant but that made it untestable
-  const publicSurveyEnabled = useMemo(
-    () => process.env.REACT_APP_PUBLIC_SURVEY_ENABLED === "true",
-    []
-  );
-
   const [
     createHome,
     {
@@ -205,19 +199,7 @@ export const SurveyPage = () => {
       }}
     >
       <Heading1BlueBgGround text={t("public.survey.heading1BlueBgGround")} />
-      <Container>
-        {publicSurveyEnabled ? (
-          pageContent()
-        ) : (
-          <Box
-            sx={{ textAlign: "center", pb: 7 }}
-            data-testid="publicSurveyUnderConstruction"
-          >
-            <TitleHero titleBold={t("public.survey.work-in-progress")} />
-            <Heading2 text={t("public.survey.under-construction")} />
-          </Box>
-        )}
-      </Container>
+      <Container>{pageContent()}</Container>
     </Box>
   );
 };
