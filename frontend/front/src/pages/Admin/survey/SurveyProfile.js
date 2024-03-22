@@ -1,17 +1,17 @@
 import { Container, Typography } from "@mui/material";
 import React, { useMemo } from "react";
 
+import { useParams } from "react-router-dom";
+import { useGetSurveyStructureQuery } from "../../../api/apiSlice";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
-import { SurveyEditorForm } from "./SurveyEditorForm";
-import { useGetSurveyStructureQuery } from "../../../api/apiSlice";
 import { useInitBreadcrumbs } from "../../../hooks/breadcrumbHooks";
-import { useParams } from "react-router-dom";
 import {
-  adminSurveyEdit,
   ADMIN_SURVEY,
+  adminSurveyEdit,
   withAdminPrefix,
 } from "../../../routing/routes";
+import { SurveyEditorForm } from "./SurveyEditorForm";
 
 const SurveyProfile = () => {
   const { uid: surveyVisitId } = useParams();
@@ -33,7 +33,7 @@ const SurveyProfile = () => {
   });
 
   const title = useMemo(
-    () => (surveyData?.id ? `Survey ${surveyData.id}` : "Loading..."),
+    () => (surveyData?.id ? `Survey ID: ${surveyData.id}` : "Loading..."),
     [surveyData]
   );
 

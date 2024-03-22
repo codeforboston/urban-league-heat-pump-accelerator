@@ -1,19 +1,18 @@
-import React, { useMemo } from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import React, { useMemo } from "react";
+import { useGetSurveysQuery } from "../../../api/apiSlice";
+import { formatISODate } from "../../../components/DateUtils";
+import Loader from "../../../components/Loader";
 import {
   useGoToBreadcrumb,
   useInitBreadcrumbs,
 } from "../../../hooks/breadcrumbHooks";
-import Loader from "../../../components/Loader";
-import { SurveyError } from "./SurveyError";
-import { formatISODate } from "../../../components/DateUtils";
-import { useGetSurveysQuery } from "../../../api/apiSlice";
 import { ADMIN_SURVEY, withAdminPrefix } from "../../../routing/routes";
+import { SurveyError } from "./SurveyError";
 
 const COLUMNS = [
   { field: "id", headerName: "ID", flex: 1 },
   { field: "title", headerName: "Title", flex: 3 },
-  { field: "questionCount", headerName: "Questions", flex: 2 },
   { field: "lastUpdated", headerName: "Last Updated", flex: 3 },
 ];
 
@@ -35,12 +34,11 @@ const SurveyTable = () => {
     () =>
       surveyData?.map((s) => ({
         ...s,
-        questionCount: s.survey_questions.length,
         lastUpdated: formatISODate(s.updated_at),
       })) || [],
     [surveyData]
   );
-
+  console.log(surveyData);
   const onRowClick = (row) => {
     goToBreadcrumb("surveyEdit", row);
   };
