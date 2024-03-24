@@ -10,6 +10,7 @@ export const SURVEYOR_DASHBOARD_ROUTE = `${SURVEYOR_ROUTE}/dashboard`;
 export const SURVEYOR_ACCOUNT_ROUTE = `${SURVEYOR_ROUTE}/account`;
 export const SURVEYOR_EDIT_ACCOUNT_ROUTE = `${SURVEYOR_ACCOUNT_ROUTE}/edit`;
 export const SURVEYOR_HOUSE_ROUTE = `${SURVEYOR_ROUTE}/house`;
+export const SURVEYOR_INACTIVE = `${SURVEYOR_ROUTE}/inactive`;
 
 export const ADMIN_DASHBOARD_ROUTE = `${ADMIN_ROUTE}/`;
 export const withAdminPrefix = (path) => `${ADMIN_ROUTE}/${path}`;
