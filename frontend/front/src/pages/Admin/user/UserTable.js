@@ -1,33 +1,24 @@
+import Paper from "@mui/material/Paper";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import * as React from "react";
-
+import { useGetSurveyorsQuery } from "../../../api/apiSlice";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import { useGetSurveyorsQuery } from "../../../api/apiSlice";
 import {
   useGoToBreadcrumb,
   useInitBreadcrumbs,
 } from "../../../hooks/breadcrumbHooks";
 import { ADMIN_USER, withAdminPrefix } from "../../../routing/routes";
-import { DataGrid,GridToolbar } from "@mui/x-data-grid";
 
 const columns = [
-  {field: "id", headerName: "User ID", flex: .7},
-  {field: "firstname", headerName: "First Name", flex: 1 },
-  {field: "lastname", headerName: "Last Name", flex: 1 },
-  {field: "email", headerName: "Email", flex: 2 },
-  {field: "phone", headerName: "Phone", flex: 1 },
-  {field: "role", headerName: "Role", flex: 1 },
-  {field: "status", headerName: "Status", flex: 1 },
+  { field: "id", headerName: "User ID", flex: 0.7 },
+  { field: "firstname", headerName: "First Name", flex: 1 },
+  { field: "lastname", headerName: "Last Name", flex: 1 },
+  { field: "email", headerName: "Email", flex: 2 },
+  { field: "phone", headerName: "Phone", flex: 1 },
+  { field: "role", headerName: "Role", flex: 1 },
+  { field: "status", headerName: "Status", flex: 1 },
 ];
-
 
 const UserTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
@@ -70,7 +61,6 @@ const UserTable = () => {
             disableColumnFilter
             disableDensitySelector
             disableColumnsMenu
-            autoHeight
             slots={{ toolbar: GridToolbar }}
             slotProps={{
               toolbar: {
@@ -79,7 +69,6 @@ const UserTable = () => {
               },
             }}
           />
-          
         </>
       )}
     </Paper>
