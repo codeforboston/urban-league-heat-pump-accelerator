@@ -37,7 +37,7 @@ const SurveyProfile = () => {
   const title = useMemo(
     () =>
       surveyVisit && houseData
-        ? `${houseToString(houseData)} ${formatISODate(surveyVisit.date)}`
+        ? `${houseToString(houseData)} ${formatISODate(surveyVisit.updated_at)}`
         : "Loading...",
     [houseData, surveyVisit]
   );

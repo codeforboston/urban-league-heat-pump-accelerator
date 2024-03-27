@@ -20,6 +20,8 @@ import Loader from "../Loader";
 import { HeatPumpDropdown } from "./HeatPumpDropdown";
 import { HeatPumpTextField } from "./HeatPumpTextField";
 import { SurveyError } from "./SurveyStructureError";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../features/login/loginSlice";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
@@ -35,6 +37,7 @@ const SurveyComponent = ({
   surveyStructure,
   onDelete,
 }) => {
+  const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
 
   const { handleSubmit, reset, control, watch } = useForm({
@@ -107,7 +110,7 @@ const SurveyComponent = ({
     [formDefault, reset]
   );
 
-  const adminButtonsViewing = useCallback(
+  const buttonsViewing = useCallback(
     () => (
       <>
         <Button
@@ -123,23 +126,25 @@ const SurveyComponent = ({
         <Button variant="outlined" type="button" onClick={() => navigate(-1)}>
           {"BACK"}
         </Button>
-        <Button
-          variant="outlined"
-          type="button"
-          color="error"
-          onClick={(e) => {
-            e.preventDefault();
-            setIsDeleteModalOpen(true);
-          }}
-        >
-          {"DELETE"}
-        </Button>
+        {currentUser.role === "admin" && (
+          <Button
+            variant="outlined"
+            type="button"
+            color="error"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsDeleteModalOpen(true);
+            }}
+          >
+            {"DELETE"}
+          </Button>
+        )}
       </>
     ),
-    [navigate]
+    [navigate, currentUser.role]
   );
 
-  const adminButtonsEditing = useCallback(
+  const buttonsEditing = useCallback(
     () => (
       <>
         <Button
@@ -241,8 +246,8 @@ const SurveyComponent = ({
             {isLoading && <Loader />}
             {isEditable
               ? isEditing
-                ? adminButtonsEditing()
-                : adminButtonsViewing()
+                ? buttonsEditing()
+                : buttonsViewing()
               : commonButtonSection()}
           </Stack>
         </Stack>
