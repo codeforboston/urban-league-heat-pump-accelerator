@@ -1,3 +1,4 @@
+
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useMemo } from "react";
 import {
@@ -7,6 +8,12 @@ import {
 } from "../../../api/apiSlice";
 import { formatISODate } from "../../../components/DateUtils";
 import Loader from "../../../components/Loader";
+
+import React, { useMemo } from "react";
+
+import { useNavigate } from "react-router-dom";
+import { DataGrid,GridToolbar } from "@mui/x-data-grid";
+
 import {
   useGoToBreadcrumb,
   useInitBreadcrumbs,
@@ -101,6 +108,16 @@ const SurveyTable = () => {
       disableSelectionOnClick
       autoHeight
       onRowClick={onRowClick}
+      disableColumnFilter
+      disableDensitySelector
+      disableColumnsMenu
+      slots={{ toolbar: GridToolbar }}
+      slotProps={{
+        toolbar: {
+          showQuickFilter: true,
+          quickFilterProps: { debounceMs: 500 },
+        },
+      }}
     />
   );
 };

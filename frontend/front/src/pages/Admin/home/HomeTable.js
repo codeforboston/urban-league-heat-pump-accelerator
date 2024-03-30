@@ -1,3 +1,7 @@
+import * as React from "react";
+
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { useGetHomesQuery } from "../../../api/apiSlice";
 import { Box, Button } from "@mui/material";
 import {
   useGoToBreadcrumb,
@@ -5,25 +9,25 @@ import {
 } from "../../../hooks/breadcrumbHooks";
 
 import CustomSnackbar from "../../../components/CustomSnackbar";
-import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../../../components/Loader";
-import React from "react";
 
-import { useGetHomesQuery } from "../../../api/apiSlice";
 import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 import SurveyLink from "../../../components/SurveyLink";
 
 // Formats addresses
 export const getAddress = (params) => {
-  let unit_number = "";
-  if (params.getValue(params.id, "unit_number")) {
-    unit_number = `, Unit #${params.getValue(params.id, "unit_number")}`;
-  }
-  return `${params.getValue(params.id, "street_number")} ${params.getValue(
-    params.id,
-    "street_name"
-  )}${unit_number && unit_number}`;
+
+  let adrs = params.row
+
+  return adrs.street_number + " " +
+         adrs.street_name + " " 
 };
+
+const getApt = (params) => {
+
+  return params.row.unit_number
+
+}
 
 const HomeTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
@@ -39,33 +43,28 @@ const HomeTable = () => {
     goToBreadcrumb("assignment", assignment);
 
   const columns = [
-    {
-      field: "id",
-      headerName: "Id",
-      minWidth: 80,
+    { field: "id", 
+      headerName: "ID", 
+      minWidth: 50,
+      flex: .7
     },
     {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
-      minWidth: 300,
-      // maxWidth: 300,
-      // flex: 1.5,
-      renderCell: (params) => (
-        <Box minWidth="max-content" m={0}>
-          <Button
-            onClick={() => handleHomeLink(params.row)}
-            sx={{
-              textAlign: "left",
-              minWidth: "max-content",
-              padding: 0,
-            }}
-          >
-            {params.value}
-          </Button>
-        </Box>
-      ),
+      minWidth: 200,
+      flex: 1,
     },
+
+    {
+    field: "apartment",
+    valueGetter: getApt,
+    headerName: "Apt. No.",
+    minWidth: 100,
+    maxWidth: 200,
+    flex: .5,
+    },
+
     {
       field: "city",
       headerName: "City",
@@ -142,7 +141,17 @@ const HomeTable = () => {
           pageSize={20}
           rowsPerPageOptions={[20]}
           disableSelectionOnClick
+          disableColumnFilter
+          disableDensitySelector
+          disableColumnsMenu
           autoHeight
+          slots={{ toolbar: GridToolbar }}
+          slotProps={{
+            toolbar: {
+              showQuickFilter: true,
+              quickFilterProps: { debounceMs: 500 },
+            },
+          }}
         />
       )}
     </Box>

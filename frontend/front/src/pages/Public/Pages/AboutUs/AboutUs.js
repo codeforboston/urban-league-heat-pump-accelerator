@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { Box, Typography, Stack, Link, Container } from "@mui/material";
 import PartnerTile from "./PartnerTile";
+import Faq from "./Faq";
 import ulem from "../../../../assets/images/partnersLogo/ULEM.png";
 import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
 
@@ -89,6 +90,10 @@ function AboutUs() {
             </Typography>
           </Box>
           <PartnerTile />
+          <Box textAlign="center" mt={6} mb={3}>
+            <Typography variant="title4">{t("public.faq.heading")}</Typography>
+          </Box>
+          <Faq />
         </Stack>
       </Container>
     </Box>
