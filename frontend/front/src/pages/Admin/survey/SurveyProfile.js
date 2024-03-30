@@ -2,7 +2,10 @@ import { Container, Typography } from "@mui/material";
 import React, { useMemo } from "react";
 
 import { useParams } from "react-router-dom";
-import { useGetSurveyStructureQuery } from "../../../api/apiSlice";
+import {
+  useGetSurveyStructureQuery,
+  useGetSurveyVisitQuery,
+} from "../../../api/apiSlice";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
 import { useInitBreadcrumbs } from "../../../hooks/breadcrumbHooks";
@@ -23,31 +26,35 @@ const SurveyProfile = () => {
       description: `survey ${surveyVisitId}`,
     },
   ]);
-
   const {
     data: surveyData,
     error: surveyError,
     isLoading: surveyLoading,
-  } = useGetSurveyStructureQuery(surveyVisitId, {
-    skip: surveyVisitId === "new",
-  });
-
+  } = useGetSurveyVisitQuery(surveyVisitId);
+  const {
+    data: surveyQuestions,
+    error: surveyQuetionsError,
+    isLoading: surveyQuestionsLoading,
+  } = useGetSurveyStructureQuery("01");
   const title = useMemo(
     () => (surveyData?.id ? `Survey ID: ${surveyData.id}` : "Loading..."),
     [surveyData]
   );
-
+  console.log(surveyQuestions);
   return (
     <Container>
       <Typography variant="h5" mt={2}>
         {title}
       </Typography>
-      {surveyLoading ? (
+      {surveyLoading || surveyQuestionsLoading ? (
         <Loader />
-      ) : surveyError ? (
+      ) : surveyError || surveyQuetionsError ? (
         <CustomSnackbar message={`Error loading survey ${surveyVisitId}`} />
       ) : (
-        <SurveyEditorForm formDefault={surveyData} />
+        <SurveyEditorForm
+          surveyData={surveyData}
+          surveyQuestions={surveyQuestions.survey_questions}
+        />
       )}
     </Container>
   );
