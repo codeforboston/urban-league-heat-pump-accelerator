@@ -116,24 +116,7 @@ const AssignProfile = () => {
           />
         ) : null,
     },
-    {
-      field: "unassign",
-      headerName: "Unassign",
-      minWidth: 50,
-      maxWidth: 80,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="error"
-          size="small"
-          onClick={() =>
-            console.log(`clicked unassign home id: ${params.row.id}`)
-          }
-        >
-          X
-        </Button>
-      ),
-    },
+
   ];
 
   return (
