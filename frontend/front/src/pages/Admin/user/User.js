@@ -1,10 +1,9 @@
-import { Box, Button, IconButton, TextField } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";
 import ContainerTitle from "../component/ContainerTitle";
 import { Link } from "react-router-dom";
 import React from "react";
-import SearchIcon from "@mui/icons-material/Search";
 import UserTable from "./UserTable";
 
 const User = () => {
