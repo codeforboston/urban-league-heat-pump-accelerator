@@ -16,18 +16,17 @@ import {
   useInitBreadcrumbs,
 } from "../../../hooks/breadcrumbHooks";
 import { ADMIN_USER, withAdminPrefix } from "../../../routing/routes";
-import { DataGrid,GridToolbar } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 const columns = [
-  {field: "id", headerName: "User ID", flex: .7},
-  {field: "firstname", headerName: "First Name", flex: 1 },
-  {field: "lastname", headerName: "Last Name", flex: 1 },
-  {field: "email", headerName: "Email", flex: 2 },
-  {field: "phone", headerName: "Phone", flex: 1 },
-  {field: "role", headerName: "Role", flex: 1 },
-  {field: "status", headerName: "Status", flex: 1 },
+  { field: "id", headerName: "User ID", flex: 0.7 },
+  { field: "firstname", headerName: "First Name", flex: 1 },
+  { field: "lastname", headerName: "Last Name", flex: 1 },
+  { field: "email", headerName: "Email", flex: 2 },
+  { field: "phone", headerName: "Phone", flex: 1 },
+  { field: "role", headerName: "Role", flex: 1 },
+  { field: "status", headerName: "Status", flex: 1 },
 ];
-
 
 const UserTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
@@ -43,7 +42,7 @@ const UserTable = () => {
     isLoading: isSurveyorsDataLoading,
   } = useGetSurveyorsQuery();
 
-  const onRowClick = (row) => goToBreadcrumb("user", row);
+  const onRowClick = (data) => goToBreadcrumb("user", data.row);
 
   if (isSurveyorsDataLoading) {
     return <Loader />;
@@ -70,7 +69,6 @@ const UserTable = () => {
             disableColumnFilter
             disableDensitySelector
             disableColumnsMenu
-            autoHeight
             slots={{ toolbar: GridToolbar }}
             slotProps={{
               toolbar: {
@@ -79,7 +77,6 @@ const UserTable = () => {
               },
             }}
           />
-          
         </>
       )}
     </Paper>
