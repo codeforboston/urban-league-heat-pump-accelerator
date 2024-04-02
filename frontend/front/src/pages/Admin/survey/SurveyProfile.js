@@ -40,7 +40,7 @@ const SurveyProfile = () => {
     () => (surveyData?.id ? `Survey ID: ${surveyData.id}` : "Loading..."),
     [surveyData]
   );
-  console.log(surveyQuestions);
+  
   return (
     <Container>
       <Typography variant="h5" mt={2}>
