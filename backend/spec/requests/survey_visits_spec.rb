@@ -26,19 +26,19 @@ RSpec.describe '/survey_visits', type: :request do
   let(:survey_question) { localized_survey_question.survey_question }
   let(:surveyor) { create(:surveyor) }
   let(:valid_attributes) do
-      {
-        surveyor_id: surveyor.id,
-        home_id: home.id,
-        survey_response_attributes: {
-          survey_id: survey.id,
-          survey_answers_attributes: [
-            {
-              survey_question_id: survey_question.id,
-              answer: 1
-            }
-          ]
-        }
+    {
+      surveyor_id: surveyor.id,
+      home_id: home.id,
+      survey_response_attributes: {
+        survey_id: survey.id,
+        survey_answers_attributes: [
+          {
+            survey_question_id: survey_question.id,
+            answer: 1
+          }
+        ]
       }
+    }
     # params.require(:survey_visit)
     #       .permit(:surveyor_id, :home_id,
     #               survey_response_attributes: [:survey_id, :completed,
