@@ -1,8 +1,8 @@
-firstname,lastname,email,phone,street_address,city,state,zipcode,geocode,role,status
-"Alice","Abbott","alice.abbott@test.com","(123) 111-1111","1 Boylston Street","Boston","MA","02116","abc","surveyor","active"
-"Bob","Baker","bob.baker@test.com","(123) 111-1112","2 Boylston Street","Boston","MA","02116","abc","surveyor","active"
-"Charlotte","Cooke","charlotte.cooke@test.com","(123) 111-1113","3 Boylston Street","Boston","MA","02116","abc","surveyor","active"
-"David","Daley","david.daley@test.com","(123) 111-1114","4 Boylston Street","Boston","MA","02116","abc","surveyor","active"
-"Eve","Earl","eve.earl@test.com","(123) 111-1115","5 Boylston Street","Boston","MA","02116","abc","surveyor","active"
-"Admin","Adminson","admin@heat.pump","(123) 111-1114","4 Boylston Street","Boston","MA","02116","abc","admin","active"
-"Surveyor","D'Surveyor","surveyor@heat.pump","(123) 111-1115","5 Boylston Street","Boston","MA","02116","abc","surveyor","active"
+firstname,lastname,email,phone,street_address,city,state,zipcode,geocode,status
+"Alice","Abbott","alice.abbott@test.com","(123) 111-1111","1 Boylston Street","Boston","MA","02116","abc","active"
+"Bob","Baker","bob.baker@test.com","(123) 111-1112","2 Boylston Street","Boston","MA","02116","abc","active"
+"Charlotte","Cooke","charlotte.cooke@test.com","(123) 111-1113","3 Boylston Street","Boston","MA","02116","abc","active"
+"David","Daley","david.daley@test.com","(123) 111-1114","4 Boylston Street","Boston","MA","02116","abc","active"
+"Eve","Earl","eve.earl@test.com","(123) 111-1115","5 Boylston Street","Boston","MA","02116","abc","active"
+"Admin","Adminson","admin@heat.pump","(123) 111-1114","4 Boylston Street","Boston","MA","02116","abc","active"
+"Surveyor","D'Surveyor","surveyor@heat.pump","(123) 111-1115","5 Boylston Street","Boston","MA","02116","abc","active"
