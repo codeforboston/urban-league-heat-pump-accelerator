@@ -9,7 +9,7 @@ class HomesController < ApplicationController
   end
 
   # GET /homes/1 or /homes/1.json
-  def show; 
+  def show; end
 
   # GET /homes/new
   def new
