@@ -79,7 +79,7 @@ const Testimonial = () => {
                 <Box>
                   <ButtonDarkBklue
                     text={t("public.home.testimonials.button")}
-                    to="https://goclean.masscec.com/customer-story/peter-installs-an-air-source-heat-pump-system/?utm_medium=cpc&utm_source=google&utm_campaign=brand"
+                    to="https://goclean.masscec.com/customer-story/ashp-nias-new-floor-mounted-air-source-heat-pump/"
                     externalLink={true}
                   />
                 </Box>

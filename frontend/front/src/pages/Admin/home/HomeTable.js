@@ -16,18 +16,14 @@ import SurveyLink from "../../../components/SurveyLink";
 
 // Formats addresses
 export const getAddress = (params) => {
+  let adrs = params.row;
 
-  let adrs = params.row
-
-  return adrs.street_number + " " +
-         adrs.street_name + " " 
+  return adrs.street_number + " " + adrs.street_name + " ";
 };
 
 const getApt = (params) => {
-
-  return params.row.unit_number
-
-}
+  return params.row.unit_number;
+};
 
 const HomeTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
@@ -37,17 +33,11 @@ const HomeTable = () => {
     true
   );
 
-  const handleHomeLink = (home) => goToBreadcrumb("home", home);
-
   const handleAssignmentLink = (assignment) =>
     goToBreadcrumb("assignment", assignment);
 
   const columns = [
-    { field: "id", 
-      headerName: "ID", 
-      minWidth: 50,
-      flex: .7
-    },
+    { field: "id", headerName: "ID", minWidth: 50, flex: 0.7 },
     {
       field: "address",
       valueGetter: getAddress,
@@ -57,12 +47,12 @@ const HomeTable = () => {
     },
 
     {
-    field: "apartment",
-    valueGetter: getApt,
-    headerName: "Apt. No.",
-    minWidth: 100,
-    maxWidth: 200,
-    flex: .5,
+      field: "apartment",
+      valueGetter: getApt,
+      headerName: "Apt. No.",
+      minWidth: 100,
+      maxWidth: 200,
+      flex: 0.5,
     },
 
     {
@@ -140,7 +130,7 @@ const HomeTable = () => {
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}
-          disableSelectionOnClick
+          disableRowSelectionOnClick
           disableColumnFilter
           disableDensitySelector
           disableColumnsMenu
