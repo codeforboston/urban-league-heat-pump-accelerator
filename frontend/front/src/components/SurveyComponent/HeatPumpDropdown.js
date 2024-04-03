@@ -50,7 +50,6 @@ export const HeatPumpDropdown = ({
             name={`${name}-dropdown`}
             aria-labelledby={`${name}-dropdown-label`}
             variant="filled"
-            disabled={disabled}
             inputProps={{
               id: `${name}-dropdown`,
             }}
@@ -65,7 +64,7 @@ export const HeatPumpDropdown = ({
         </FormControl>
       );
     },
-    [name, options, label, mainFieldError, disabled]
+    [name, options, label, mainFieldError]
   );
 
   return (
@@ -79,11 +78,13 @@ export const HeatPumpDropdown = ({
           }
         }
         render={({ field }) => renderDropdown(field)}
+        disabled={disabled}
       />
       {showOtherInput && (
         <Controller
           name={otherFieldName}
           control={control}
+          disabled={disabled}
           rules={
             required && {
               required: {

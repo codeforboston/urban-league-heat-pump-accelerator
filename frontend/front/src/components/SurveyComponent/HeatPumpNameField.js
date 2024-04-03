@@ -24,6 +24,7 @@ export const HeatPumpNameField = ({ control, label, disabled }) => {
               message: "This field is required!",
             },
           }}
+          disabled={disabled}
           render={({ field }) => (
             <TextField
               label="First Name"
@@ -35,7 +36,6 @@ export const HeatPumpNameField = ({ control, label, disabled }) => {
                 !!formState.errors.name?.first &&
                 formState.errors.name?.first.message
               }
-              disabled={disabled}
             />
           )}
         />
@@ -49,6 +49,7 @@ export const HeatPumpNameField = ({ control, label, disabled }) => {
               message: "This field is required!",
             },
           }}
+          disabled={disabled}
           render={({ field }) => (
             <TextField
               label="Last Name"
@@ -60,7 +61,6 @@ export const HeatPumpNameField = ({ control, label, disabled }) => {
                 !!formState.errors.name?.last &&
                 formState.errors.name?.last.message
               }
-              disabled={disabled}
             />
           )}
         />

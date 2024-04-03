@@ -19,6 +19,7 @@ export const HeatPumpPhoneField = ({ name, control, label, disabled }) => {
           message: "Invalid phone number.",
         },
       }}
+      disabled={disabled}
       render={({ field }) => (
         <TextField
           id={`${name}-phoneNumber`}
@@ -26,7 +27,6 @@ export const HeatPumpPhoneField = ({ name, control, label, disabled }) => {
           variant="standard"
           error={!!mainFieldError}
           helperText={!!mainFieldError && mainFieldError.message}
-          disabled={disabled}
           type="tel"
           {...field}
         />
