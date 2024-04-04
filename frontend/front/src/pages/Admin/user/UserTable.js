@@ -1,6 +1,5 @@
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import * as React from "react";
-import { useGetSurveyorsQuery } from "../../../api/apiSlice";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
 import Paper from "@mui/material/Paper";
