@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import * as routes from "./routes";
 
 /*
@@ -8,5 +8,5 @@ export const ProtectedInactive = ({ children, userStatus }) => {
   if (userStatus === "inactive") {
     return <Navigate to={routes.SURVEYOR_INACTIVE} />;
   }
-  return children;
+  return <Outlet />;
 };
