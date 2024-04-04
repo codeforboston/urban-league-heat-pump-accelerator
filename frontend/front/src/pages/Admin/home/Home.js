@@ -1,13 +1,10 @@
 import { Box, Button } from "@mui/material";
-
 import AddIcon from "@mui/icons-material/Add";
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ContainerTitle from "../component/ContainerTitle";
 import HomeTable from "./HomeTable";
 
 const Home = () => {
-  const [searchString] = useState("");
   return (
     <ContainerTitle name="HOMES">
       <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -23,7 +20,7 @@ const Home = () => {
         </Box>
       </Box>
 
-      <HomeTable searchString={searchString} />
+      <HomeTable />
     </ContainerTitle>
   );
 };

@@ -1,5 +1,5 @@
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import * as React from "react";
-
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
 import Paper from "@mui/material/Paper";
@@ -9,7 +9,6 @@ import {
   useInitBreadcrumbs,
 } from "../../../hooks/breadcrumbHooks";
 import { ADMIN_USER, withAdminPrefix } from "../../../routing/routes";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 const columns = [
   { field: "id", headerName: "User ID", flex: 0.7 },
