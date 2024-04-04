@@ -1,5 +1,5 @@
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { default as React, default as React, useMemo } from "react";
+import { React, useMemo } from "react";
 import {
   useGetHomesQuery,
   useGetSurveyVisitsQuery,
