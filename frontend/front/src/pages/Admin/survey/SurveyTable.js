@@ -15,16 +15,16 @@ import { ADMIN_SURVEY, withAdminPrefix } from "../../../routing/routes";
 import { SurveyError } from "./SurveyError";
 
 const COLUMNS = [
-  { field: "id", headerName: "Survey ID", flex: 0.5 },
+  { field: "id", headerName: "Survey ID", flex: 1 },
   {
     field: "home_address",
     headerName: "Address",
-    flex: 1.5,
+    flex: 1,
   },
   { field: "city", headerName: "City", flex: 1 },
   { field: "surveyor", headerName: "Surveyor", flex: 1 },
-  { field: "created", headerName: "Created", flex: 2 },
-  { field: "lastUpdated", headerName: "Last Updated", flex: 3 },
+  { field: "created", headerName: "Created", flex: 1 },
+  { field: "lastUpdated", headerName: "Last Updated", flex: 1 },
 ];
 
 const SurveyTable = () => {
@@ -54,10 +54,10 @@ const SurveyTable = () => {
   } = useGetHomesQuery();
 
   const addressFormatter = (homeData) => {
-    if (!homeData.unit_number || homeData.unit_number === "") {
-      return `${homeData.street_number} ${homeData.street_name}`;
+    if (!homeData?.unit_number || homeData?.unit_number === "") {
+      return `${homeData?.street_number} ${homeData?.street_name}`;
     } else {
-      return `${homeData.street_number} ${homeData.street_name} Unit ${homeData.unit_number}`;
+      return `${homeData?.street_number} ${homeData?.street_name} Unit ${homeData?.unit_number}`;
     }
   };
 
@@ -65,17 +65,17 @@ const SurveyTable = () => {
     () =>
       surveyVisitsData?.map((survey) => {
         const surveyorData = surveyorList?.find(
-          (surveyor) => surveyor.id === survey.surveyor_id
+          (surveyor) => surveyor?.id === survey?.surveyor_id
         );
-        const surveyorName = `${surveyorData.firstname} ${surveyorData.lastname}`;
-        const homeData = homeList?.find((home) => home.id === survey.home_id);
+        const surveyorName = `${surveyorData?.firstname} ${surveyorData?.lastname}`;
+        const homeData = homeList?.find((home) => home?.id === survey?.home_id);
         return {
-          id: survey.id,
+          id: survey?.id,
           home_address: addressFormatter(homeData),
-          city: homeData.city,
+          city: homeData?.city,
           surveyor: surveyorName,
-          created: formatISODate(survey.created_at),
-          lastUpdated: formatISODate(survey.updated_at),
+          created: formatISODate(survey?.created_at),
+          lastUpdated: formatISODate(survey?.updated_at),
         };
       }) || [],
     [surveyVisitsData, surveyorList, homeList]
