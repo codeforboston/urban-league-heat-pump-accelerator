@@ -15,6 +15,12 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/survey_questions', type: :request do
+  include Devise::Test::IntegrationHelpers
+
+  let(:admin) do
+    User.create(email: 'admin@test.com', password: 'password', role: :admin)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # SurveyQuestion. As you add validations to SurveyQuestion, be sure to
   # adjust the attributes here as well.
@@ -44,6 +50,7 @@ RSpec.describe '/survey_questions', type: :request do
 
   describe 'GET /new' do
     it 'renders a successful response' do
+      sign_in admin
       get new_survey_question_url, as: :json
       expect(response).to be_successful
     end

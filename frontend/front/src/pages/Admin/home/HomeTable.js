@@ -130,7 +130,7 @@ const HomeTable = () => {
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}
-          disableSelectionOnClick
+          disableRowSelectionOnClick
           disableColumnFilter
           disableDensitySelector
           disableColumnsMenu

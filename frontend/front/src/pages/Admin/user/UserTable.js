@@ -4,11 +4,14 @@ import * as React from "react";
 import { useGetSurveyorsQuery } from "../../../api/apiSlice";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
+import Paper from "@mui/material/Paper";
+import { useGetSurveyorsQuery } from "../../../api/apiSlice";
 import {
   useGoToBreadcrumb,
   useInitBreadcrumbs,
 } from "../../../hooks/breadcrumbHooks";
 import { ADMIN_USER, withAdminPrefix } from "../../../routing/routes";
+
 
 const columns = [
   { field: "id", headerName: "User ID", flex: 0.7 },
@@ -34,7 +37,7 @@ const UserTable = () => {
     isLoading: isSurveyorsDataLoading,
   } = useGetSurveyorsQuery();
 
-  const onRowClick = (row) => goToBreadcrumb("user", row);
+  const onRowClick = (data) => goToBreadcrumb("user", data.row);
 
   if (isSurveyorsDataLoading) {
     return <Loader />;
