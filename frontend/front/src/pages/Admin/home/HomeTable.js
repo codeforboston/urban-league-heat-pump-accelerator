@@ -1,8 +1,8 @@
 import * as React from "react";
 
+import { Box, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useGetHomesQuery } from "../../../api/apiSlice";
-import { Box, Button } from "@mui/material";
 import {
   useGoToBreadcrumb,
   useInitBreadcrumbs,
@@ -11,8 +11,8 @@ import {
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
 
-import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 import SurveyLink from "../../../components/SurveyLink";
+import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 
 // Formats addresses
 export const getAddress = (params) => {

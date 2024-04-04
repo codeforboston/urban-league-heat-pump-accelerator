@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
-
-import ContainerTitle from "../component/ContainerTitle";
 import React from "react";
+import ContainerTitle from "../component/ContainerTitle";
 import SurveyTable from "./SurveyTable";
 
 const Home = () => {
@@ -12,7 +11,6 @@ const Home = () => {
         justifyContent="space-between"
         alignItems="center"
       ></Box>
-
       <SurveyTable />
     </ContainerTitle>
   );

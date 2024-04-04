@@ -116,7 +116,6 @@ const AssignProfile = () => {
           />
         ) : null,
     },
-
   ];
 
   return (
