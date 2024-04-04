@@ -10,7 +10,6 @@ import {
 } from "../../../hooks/breadcrumbHooks";
 import { ADMIN_USER, withAdminPrefix } from "../../../routing/routes";
 
-
 const columns = [
   { field: "id", headerName: "User ID", flex: 0.7 },
   { field: "firstname", headerName: "First Name", flex: 1 },
