@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Alert, Box, Container, Snackbar, Stack } from "@mui/material";
-import TitleHero from "../Components/Typography/TitleHero";
-import Heading2 from "../Components/Typography/Heading2";
 
 import {
   RECAPTCHA_ACTION_PUBLIC_SURVEY,

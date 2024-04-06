@@ -1,12 +1,12 @@
+import { Box, Divider, Link, Stack, Typography } from "@mui/material";
 import React from "react";
-import { useTranslation, Trans } from "react-i18next";
-import { Box, Stack, Typography, Link, Divider } from "@mui/material";
-import mcec from "../../../../assets/images/partnersLogo/MACleanEnergy.png";
-import cfb from "../../../../assets/images/partnersLogo/CFB.png";
+import { Trans, useTranslation } from "react-i18next";
 import cfa from "../../../../assets/images/partnersLogo/CFA.png";
+import cfb from "../../../../assets/images/partnersLogo/CFB.png";
 import heatsmart from "../../../../assets/images/partnersLogo/HeatSmart.png";
-import pcb from "../../../../assets/images/partnersLogo/powercorp-boston.jpeg";
+import mcec from "../../../../assets/images/partnersLogo/MACleanEnergy.png";
 import moc from "../../../../assets/images/partnersLogo/moc.png";
+import pcb from "../../../../assets/images/partnersLogo/powercorp-boston.jpeg";
 
 const PartnerTile = () => {
   const { t } = useTranslation();
@@ -79,7 +79,7 @@ const PartnerTile = () => {
             index,
             array
           ) => (
-            <Box>
+            <Box key={`partner-${index}`}>
               <Stack
                 direction={{ xs: "column", md: "row" }}
                 alignItems={{ xs: "center", md: "flex-start" }}

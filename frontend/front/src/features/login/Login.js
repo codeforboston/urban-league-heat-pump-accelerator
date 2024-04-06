@@ -95,7 +95,7 @@ const Login = () => {
 
         <form onSubmit={handleSubmit(doLogin)}>
           <TextField
-            id="standard-basic"
+            id="user-email"
             placeholder="Enter Email"
             type="text"
             style={btnstyle}
@@ -112,7 +112,7 @@ const Login = () => {
           />
           <span style={errorStyles}>{errors?.email?.message}</span>
           <TextField
-            id="standard-basic"
+            id="user-password"
             placeholder="Enter password"
             type="password"
             style={btnstyle}
