@@ -3,6 +3,12 @@
 module Users
   class SessionsController < Devise::SessionsController
     respond_to :json
+    include Pundit::Authorization
+
+    def create
+      skip_authorization
+      super
+    end
 
     private
 
