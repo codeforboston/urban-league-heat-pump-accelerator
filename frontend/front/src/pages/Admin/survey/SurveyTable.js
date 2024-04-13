@@ -15,16 +15,37 @@ import { ADMIN_SURVEY, withAdminPrefix } from "../../../routing/routes";
 import { SurveyError } from "./SurveyError";
 
 const COLUMNS = [
-  { field: "id", headerName: "Survey ID", flex: 1 },
+  {
+    field: "id",
+    headerName: "Survey ID",
+    minWidth: 50,
+    flex: 0.7,
+  },
   {
     field: "home_address",
     headerName: "Address",
-    flex: 1,
+    minWidth: 150,
+    flex: 1.5,
   },
-  { field: "city", headerName: "City", flex: 1 },
-  { field: "surveyor", headerName: "Surveyor", flex: 1 },
-  { field: "created", headerName: "Created", flex: 1 },
-  { field: "lastUpdated", headerName: "Last Updated", flex: 1 },
+  { field: "city", headerName: "City", minWidth: 100, flex: 1.2 },
+  {
+    field: "surveyor",
+    headerName: "Surveyor",
+    minWidth: 100,
+    flex: 1.2,
+  },
+  {
+    field: "created",
+    headerName: "Created",
+    minWidth: 155,
+    flex: 1.5,
+  },
+  {
+    field: "lastUpdated",
+    headerName: "Last Updated",
+    minWidth: 155,
+    flex: 1.5,
+  },
 ];
 
 const SurveyTable = () => {

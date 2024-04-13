@@ -126,7 +126,8 @@ const AssignTable = () => {
     {
       field: "surveyorData",
       headerName: "Surveyor(s)",
-      flex: 1,
+      minWidth: 150,
+      flex: 2,
       renderCell: (params) => {
         return params.row.surveyorData ? (
           <Stack
