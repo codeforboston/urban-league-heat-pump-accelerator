@@ -34,7 +34,7 @@ export const useGoToBreadcrumb = () => {
         description = `${data?.firstname} ${data?.lastname}`;
         break;
       case "surveyVisit":
-        url = `/admin/survey/visit/${data.id}}`;
+        url = `/admin/survey/visit/${data.id}`;
         description = `Survey ${data.id}`;
         break;
       default:
