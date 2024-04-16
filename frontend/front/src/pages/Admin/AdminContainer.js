@@ -32,7 +32,7 @@ const AdminContainer = () => {
     <Box>
       <Box>
         <Nav />
-        <Tabs value={tabValue}>
+        <Tabs value={tabValue} variant="scrollable" allowScrollButtonsMobile>
           <Tab
             label="HOMES"
             value={routes.ADMIN_HOME}

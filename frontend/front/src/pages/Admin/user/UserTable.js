@@ -11,13 +11,13 @@ import {
 import { ADMIN_USER, withAdminPrefix } from "../../../routing/routes";
 
 const columns = [
-  { field: "id", headerName: "User ID", flex: 0.7 },
-  { field: "firstname", headerName: "First Name", flex: 1 },
-  { field: "lastname", headerName: "Last Name", flex: 1 },
-  { field: "email", headerName: "Email", flex: 2 },
-  { field: "phone", headerName: "Phone", flex: 1 },
-  { field: "role", headerName: "Role", flex: 1 },
-  { field: "status", headerName: "Status", flex: 1 },
+  { field: "id", headerName: "User ID", minWidth: 50, flex: 0.7 },
+  { field: "firstname", headerName: "First Name", minWidth: 100, flex: 1 },
+  { field: "lastname", headerName: "Last Name", minWidth: 100, flex: 1 },
+  { field: "email", headerName: "Email", minWidth: 200, flex: 1.5 },
+  { field: "phone", headerName: "Phone", minWidth: 120, flex: 1.2 },
+  { field: "role", headerName: "Role", minWidth: 100, flex: 1 },
+  { field: "status", headerName: "Status", minWidth: 90, flex: 0.8 },
 ];
 
 const UserTable = () => {
