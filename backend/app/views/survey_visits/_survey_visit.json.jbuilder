@@ -2,7 +2,7 @@
 
 json.extract! survey_visit, :id, :surveyor_id, :home_id, :created_at, :updated_at
 json.url survey_visit_url(survey_visit, format: :json)
-if json.survey_response.present?
+if survey_visit.survey_response.present?
   json.survey_response do
     json.id survey_visit.survey_response.id
     json.survey_id survey_visit.survey_response.survey_id
