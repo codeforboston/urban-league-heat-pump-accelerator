@@ -34,6 +34,7 @@ const SurveyComponent = ({
   formDefault,
   surveyStructure,
   onDelete,
+  readOnly,
 }) => {
   const navigate = useNavigate();
 
@@ -239,11 +240,11 @@ const SurveyComponent = ({
           })}
           <Stack direction="row" justifyContent="center" spacing={2}>
             {isLoading && <Loader />}
-            {isEditable
+            {!readOnly && isEditable
               ? isEditing
                 ? adminButtonsEditing()
                 : adminButtonsViewing()
-              : commonButtonSection()}
+              : !readOnly && commonButtonSection()}
           </Stack>
         </Stack>
       </form>

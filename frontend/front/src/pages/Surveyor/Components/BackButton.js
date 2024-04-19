@@ -6,7 +6,7 @@ export const BackButton = ({ url, description }) => {
     <Button
       component={Link}
       to={url}
-      sx={{ mt: "10px", gap: "5px", justifyContent: "center" }}
+      sx={{ mt: "10px", ml: "-12px", gap: "5px", justifyContent: "center" }}
     >
       <ArrowBack />
       Return to {description}
