@@ -60,8 +60,8 @@ const SurveyComponent = ({
   // only use this for prepopulating the form
   const cachedData = useMemo(() => {
     const cacheDataString = localStorage.getItem(cacheKey);
-    return cacheDataString ? JSON.parse(cacheDataString) : null;
-  }, [cacheKey]);
+    return !readOnly && cacheDataString ? JSON.parse(cacheDataString) : null;
+  }, [cacheKey, readOnly]);
 
   const clearCache = useCallback(() => {
     localStorage.removeItem(cacheKey);
