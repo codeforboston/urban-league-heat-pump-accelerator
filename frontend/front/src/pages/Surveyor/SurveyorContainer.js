@@ -15,6 +15,7 @@ import EditAccount from "./account/edit/EditAccount";
 import Dashboard from "./dashboard/Dashboard";
 import HouseProfile from "./houseProfile/HouseProfile";
 import Nav from "./nav/Nav";
+import SurveyVisit from "../../pages/Admin/home/SurveyVisitProfile";
 
 const SurveyorContainer = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -33,6 +34,10 @@ const SurveyorContainer = () => {
             <Route path="account" element={<Account />}></Route>
             <Route path="account/edit" element={<EditAccount />}></Route>
             <Route path="house/:id" element={<HouseProfile />}></Route>
+            <Route
+              path="survey/:uid"
+              element={<SurveyVisit readOnly />}
+            ></Route>
             <Route path="/*" element={<Navigate to="/surveyor/dashboard" />} />
           </Route>
           <Route path="inactive" element={<InactiveSurveyor />} />

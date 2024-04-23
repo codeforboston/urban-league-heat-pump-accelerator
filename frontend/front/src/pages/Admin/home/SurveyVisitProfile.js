@@ -16,8 +16,9 @@ import { formatISODate } from "../../../components/DateUtils";
 import { houseToString } from "../../../components/AddressUtils";
 import { withAdminPrefix, ADMIN_SURVEY } from "../../../routing/routes";
 import { buildDataFromSurveyAnswers } from "../../../util/surveyUtils";
+import { BackButton } from "../../Surveyor/Components/BackButton";
 
-const SurveyProfile = () => {
+const SurveyProfile = ({ readOnly }) => {
   const navigate = useNavigate();
   const { uid: surveyVisitId } = useParams();
 
@@ -36,8 +37,14 @@ const SurveyProfile = () => {
 
   const title = useMemo(
     () =>
+      surveyVisit && houseData ? `${houseToString(houseData)}` : "Loading...",
+    [houseData, surveyVisit]
+  );
+
+  const completedTime = useMemo(
+    () =>
       surveyVisit && houseData
-        ? `${houseToString(houseData)} ${formatISODate(surveyVisit.date)}`
+        ? `Completed at: ${formatISODate(surveyVisit.created_at)}`
         : "Loading...",
     [houseData, surveyVisit]
   );
@@ -85,8 +92,14 @@ const SurveyProfile = () => {
 
   return (
     <Container>
+      {readOnly && (
+        <BackButton url="/surveyor/dashboard" description="dashboard" />
+      )}
       <Typography variant="h5" mt={2}>
         {title}
+      </Typography>
+      <Typography variant="subtitle1" mt={2}>
+        {completedTime}
       </Typography>
       {surveyVisit && houseData ? (
         <AdminSurvey
@@ -97,6 +110,7 @@ const SurveyProfile = () => {
           onDelete={onDelete}
           isLoading={isSurveyVisitPutLoading || isSurveyDeleteLoading}
           isErrorSurvey={isSurveyVisitPutError || isSurveyVisitDeleteError}
+          readOnly={readOnly}
         />
       ) : surveyVisitError || houseError ? (
         <SurveyError />

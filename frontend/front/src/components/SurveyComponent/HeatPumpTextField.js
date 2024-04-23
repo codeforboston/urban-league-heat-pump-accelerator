@@ -67,10 +67,10 @@ export const HeatPumpTextField = ({
             helperText={
               !!formState.errors[name] && formState.errors[name].message
             }
-            disabled={disabled}
             type={inputType}
             inputProps={{ readOnly, id: `${name}-textField` }}
             {...field}
+            disabled={disabled}
           />
         </FormControl>
       )}

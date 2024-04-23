@@ -42,7 +42,7 @@ export const HeatPumpDropdown = ({
   const renderDropdown = useCallback(
     (field) => {
       return (
-        <FormControl fullWidth error={!!mainFieldError}>
+        <FormControl fullWidth error={!!mainFieldError} disabled={disabled}>
           <Label id={`${name}-dropdown-label`} htmlFor={`${name}-dropdown`}>
             {label}
           </Label>
@@ -50,7 +50,6 @@ export const HeatPumpDropdown = ({
             name={`${name}-dropdown`}
             aria-labelledby={`${name}-dropdown-label`}
             variant="filled"
-            disabled={disabled}
             inputProps={{
               id: `${name}-dropdown`,
             }}

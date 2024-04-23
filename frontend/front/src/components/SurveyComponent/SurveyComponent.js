@@ -34,6 +34,7 @@ const SurveyComponent = ({
   formDefault,
   surveyStructure,
   onDelete,
+  readOnly,
 }) => {
   const navigate = useNavigate();
 
@@ -59,8 +60,8 @@ const SurveyComponent = ({
   // only use this for prepopulating the form
   const cachedData = useMemo(() => {
     const cacheDataString = localStorage.getItem(cacheKey);
-    return cacheDataString ? JSON.parse(cacheDataString) : null;
-  }, [cacheKey]);
+    return !readOnly && cacheDataString ? JSON.parse(cacheDataString) : null;
+  }, [cacheKey, readOnly]);
 
   const clearCache = useCallback(() => {
     localStorage.removeItem(cacheKey);
@@ -239,11 +240,11 @@ const SurveyComponent = ({
           })}
           <Stack direction="row" justifyContent="center" spacing={2}>
             {isLoading && <Loader />}
-            {isEditable
+            {!readOnly && isEditable
               ? isEditing
                 ? adminButtonsEditing()
                 : adminButtonsViewing()
-              : commonButtonSection()}
+              : !readOnly && commonButtonSection()}
           </Stack>
         </Stack>
       </form>
