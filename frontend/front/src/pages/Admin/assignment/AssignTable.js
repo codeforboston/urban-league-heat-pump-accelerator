@@ -35,6 +35,7 @@ const AssignTable = () => {
   };
 
   const handleSelectionModelChange = (newSelection) => {
+    console.log(newSelection);
     setSelectedAssignments(newSelection);
   };
 
@@ -89,7 +90,7 @@ const AssignTable = () => {
 
   const handleAddSurveyor = () => {
     console.log(selectedSurveyor);
-    console.log(setSelectedAssignments);
+    console.log(selectedAssignments);
     addAssignmentsToSurveyor({
       surveyorId: selectedSurveyor,
       assignmentIds: selectedAssignments,
