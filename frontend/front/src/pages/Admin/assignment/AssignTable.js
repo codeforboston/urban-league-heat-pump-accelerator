@@ -11,12 +11,12 @@ import {
   useInitBreadcrumbs,
 } from "../../../hooks/breadcrumbHooks";
 
-import CustomSnackbar from "../../../components/CustomSnackbar";
-import { DataGrid } from "@mui/x-data-grid";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
-import Loader from "../../../components/Loader";
 import Select from "@mui/material/Select";
+import { DataGrid } from "@mui/x-data-grid";
+import CustomSnackbar from "../../../components/CustomSnackbar";
+import Loader from "../../../components/Loader";
 import { ADMIN_ASSIGNMENT, withAdminPrefix } from "../../../routing/routes";
 
 const AssignTable = () => {
