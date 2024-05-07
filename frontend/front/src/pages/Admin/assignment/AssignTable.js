@@ -88,6 +88,8 @@ const AssignTable = () => {
   );
 
   const handleAddSurveyor = () => {
+    console.log(selectedSurveyor);
+    console.log(setSelectedAssignments);
     addAssignmentsToSurveyor({
       surveyorId: selectedSurveyor,
       assignmentIds: selectedAssignments,
