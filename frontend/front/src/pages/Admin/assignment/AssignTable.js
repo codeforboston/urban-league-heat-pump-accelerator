@@ -35,7 +35,6 @@ const AssignTable = () => {
   };
 
   const handleSelectionModelChange = (newSelection) => {
-    console.log(newSelection);
     setSelectedAssignments(newSelection);
   };
 
@@ -89,8 +88,6 @@ const AssignTable = () => {
   );
 
   const handleAddSurveyor = () => {
-    console.log(selectedSurveyor);
-    console.log(selectedAssignments);
     addAssignmentsToSurveyor({
       surveyorId: selectedSurveyor,
       assignmentIds: selectedAssignments,
@@ -251,8 +248,8 @@ const AssignTable = () => {
           disableSelectionOnClick
           autoHeight
           checkboxSelection
-          onSelectionModelChange={handleSelectionModelChange}
-          selectionModel={selectedAssignments}
+          onRowSelectionModelChange={handleSelectionModelChange}
+          rowSelectionModel={selectedAssignments}
         />
       </Box>
     </Box>
