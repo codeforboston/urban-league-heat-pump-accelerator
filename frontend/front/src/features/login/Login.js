@@ -12,11 +12,10 @@ import {
 } from "@mui/material";
 import { ROLE_ADMIN, ROLE_SURVEYOR } from "../../features/login/loginUtils";
 import React, { useMemo } from "react";
-
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { LoadingButton } from "@mui/lab";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { selectCurrentUser } from "../../features/login/loginSlice";
 import { useForm } from "react-hook-form";
 import { useLoginUserMutation } from "../../api/apiSlice";
@@ -150,6 +149,14 @@ const Login = () => {
             Log in
           </LoadingButton>
         </form>
+        <Box sx={{ mt: 2 }}>
+          <Link
+            to="/users/forgot"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            Forgot Password?
+          </Link>
+        </Box>
       </Paper>
     </Box>
   );

@@ -11,9 +11,12 @@ import {
 
 import AdminContainer from "./pages/Admin/AdminContainer";
 import Box from "@mui/material/Box";
+import ForgotPassword from "./features/login/ForgotPassword";
 import Login from "./features/login/Login";
 import { ProtectedRoute } from "./routing/ProtectedRoute";
 import PublicContainer from "./pages/Public/PublicContainer";
+import ResetPassword from "./features/login/ResetPassword";
+import ResetPasswordError from "./features/login/ResetPasswordError";
 import SurveyorContainer from "./pages/Surveyor/SurveyorContainer";
 import { Metadata } from "./pages/Metadata";
 
@@ -50,7 +53,12 @@ function App() {
             }
           />
           <Route path={`${routes.LOGIN_ROUTE}`} element={<Login />} />
-
+          <Route path="/users/forgot" element={<ForgotPassword />} />
+          <Route path="/users/password/edit" element={<ResetPassword />} />
+          <Route
+            path="/users/password/error"
+            element={<ResetPasswordError />}
+          />
           <Route path="/metadata" element={<Metadata />} />
         </Routes>
       </BrowserRouter>

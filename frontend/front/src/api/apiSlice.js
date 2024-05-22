@@ -411,6 +411,38 @@ export const apiSlice = createApi({
         body: { user: { email, password } },
       }),
     }),
+    requestPasswordReset: builder.mutation({
+      query: (email) => ({
+        url: "/users/password",
+        method: "POST",
+        body: { user: { email } },
+      }),
+    }),
+    validateResetToken: builder.mutation({
+      query: (resetPasswordToken) => ({
+        url: `/users/password/validate_reset_token?reset_password_token=${resetPasswordToken}`,
+      }),
+    }),
+    resetPassword: builder.mutation({
+      query: ({ resetPasswordToken, password }) => ({
+        url: "/users/password/",
+        method: "PUT",
+        body: {
+          user: {
+            reset_password_token: resetPasswordToken,
+            password,
+          },
+        },
+      }),
+      transformResponse: (response) => {
+        // Response always 200 success. If failed, id is null
+        if (!response?.id) {
+          return { success: false };
+        } else {
+          return { success: true };
+        }
+      },
+    }),
   }),
 });
 
@@ -435,6 +467,9 @@ export const {
   useLoginUserMutation,
   useLogoutUserMutation,
   useCreateUserMutation,
+  useRequestPasswordResetMutation,
+  useValidateResetTokenMutation,
+  useResetPasswordMutation,
 
   // Survey
   useDeleteSurveyMutation,
