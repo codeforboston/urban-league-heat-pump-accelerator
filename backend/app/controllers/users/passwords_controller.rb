@@ -10,6 +10,22 @@ module Users
       super
     end
 
+    def update
+      skip_authorization
+      super
+    end
+
+    def validate_reset_token
+      skip_authorization
+      @user = User.with_reset_password_token(params[:reset_password_token])
+
+      if @user
+        head :ok
+      else
+        head :unprocessable_entity
+      end
+    end
+
     private
 
     def respond_with(resource, _opts = {})
