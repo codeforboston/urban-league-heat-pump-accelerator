@@ -9,6 +9,7 @@ env:
   OPENSHIFT_NAMESPACE: 'boston-heat-pump-accelerator-dbab1b'
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 0 1 * *"
 
