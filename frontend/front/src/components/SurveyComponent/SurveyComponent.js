@@ -17,7 +17,7 @@ import { useGetSurveyStructureQuery } from "../../api/apiSlice";
 import ConfirmationModal from "../../components/confirmationModal/ConfirmationModal";
 import { AddressComponent } from "../AddressUtils";
 import Loader from "../Loader";
-import { HeatPumpDropdown } from "./HeatPumpDropdown";
+import { HeatPumpRadio } from "./HeatPumpRadio";
 import { HeatPumpTextField } from "./HeatPumpTextField";
 import { SurveyError } from "./SurveyStructureError";
 
@@ -205,7 +205,7 @@ const SurveyComponent = ({
             switch (q.response_type) {
               case "radio":
                 return (
-                  <HeatPumpDropdown
+                  <HeatPumpRadio
                     key={`q${q.id}`}
                     control={control}
                     name={`${q.id}`}
@@ -215,7 +215,6 @@ const SurveyComponent = ({
                       label: o,
                     }))}
                     disabled={isDisabled}
-                    disableFancyLabel
                   />
                 );
               case "text":
