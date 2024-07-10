@@ -84,11 +84,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Yes
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -132,11 +132,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 No
-              </span>
+              </p>
             </label>
           </div>
         </div>
@@ -195,11 +195,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Yes
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -243,11 +243,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 No
-              </span>
+              </p>
             </label>
           </div>
         </div>
@@ -332,11 +332,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Yes
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -380,11 +380,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 No
-              </span>
+              </p>
             </label>
           </div>
         </div>
@@ -443,11 +443,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Yes
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -491,11 +491,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 No
-              </span>
+              </p>
             </label>
           </div>
         </div>
@@ -554,11 +554,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Yes
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -602,11 +602,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 No
-              </span>
+              </p>
             </label>
           </div>
         </div>
@@ -743,11 +743,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Forced hot air – vents
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -791,11 +791,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Radiators – water
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -839,11 +839,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Radiators – steam
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -887,11 +887,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Basebaord – water
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -935,11 +935,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Baseboard – electric
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -983,11 +983,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Other
-              </span>
+              </p>
             </label>
           </div>
         </div>
@@ -1072,11 +1072,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Oil
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -1120,11 +1120,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Gas
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -1168,11 +1168,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Electric (for baseboard)
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -1216,11 +1216,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Other
-              </span>
+              </p>
             </label>
           </div>
         </div>
@@ -1305,11 +1305,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 Yes
-              </span>
+              </p>
             </label>
             <label
               class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
@@ -1353,11 +1353,11 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </span>
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
               >
                 No
-              </span>
+              </p>
             </label>
           </div>
         </div>
