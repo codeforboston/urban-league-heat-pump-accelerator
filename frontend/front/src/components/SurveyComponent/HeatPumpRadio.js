@@ -5,6 +5,7 @@ import {
   FormControlLabel,
   FormControl,
   FormLabel,
+  Typography,
 } from "@mui/material";
 import { useCallback } from "react";
 
@@ -15,6 +16,7 @@ export const HeatPumpRadio = ({
   label,
   disabled,
   required,
+  styles = {},
 }) => {
   const { formState } = useController({ name, control });
   const fieldError = formState.errors[name];
@@ -22,8 +24,18 @@ export const HeatPumpRadio = ({
     (field) => {
       return (
         // Red error label if required prop set to true
-        <FormControl disabled={disabled} error={!!fieldError}>
-          <FormLabel id={`${name}-radio-label`} htmlFor={`${name}-radio`}>
+        <FormControl
+          disabled={disabled}
+          error={!!fieldError}
+          sx={{ ...styles?.container }}
+        >
+          <FormLabel
+            id={`${name}-radio-label`}
+            htmlFor={`${name}-radio`}
+            sx={{
+              ...styles?.label,
+            }}
+          >
             {label}
           </FormLabel>
           <RadioGroup
@@ -36,14 +48,22 @@ export const HeatPumpRadio = ({
                 key={`option-${option.value}`} // optional
                 value={option.value}
                 control={<Radio />}
-                label={option.value}
+                label={
+                  <Typography
+                    sx={{
+                      ...styles?.label,
+                    }}
+                  >
+                    {option.value}
+                  </Typography>
+                }
               />
             ))}
           </RadioGroup>
         </FormControl>
       );
     },
-    [label, name, options, disabled, fieldError]
+    [label, name, options, disabled, fieldError, styles.container, styles.label]
   );
 
   return (

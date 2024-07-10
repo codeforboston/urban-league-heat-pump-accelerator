@@ -35,6 +35,7 @@ const SurveyComponent = ({
   surveyStructure,
   onDelete,
   readOnly,
+  styles = {},
 }) => {
   const navigate = useNavigate();
 
@@ -215,6 +216,7 @@ const SurveyComponent = ({
                       label: o,
                     }))}
                     disabled={isDisabled}
+                    styles={styles}
                   />
                 );
               case "text":
@@ -226,6 +228,7 @@ const SurveyComponent = ({
                     label={q.question}
                     disabled={isDisabled}
                     disableFancyLabel
+                    styles={styles}
                   />
                 );
               default:

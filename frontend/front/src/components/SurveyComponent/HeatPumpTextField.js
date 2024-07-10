@@ -12,6 +12,7 @@ export const HeatPumpTextField = ({
   type,
   readOnly,
   disableFancyLabel,
+  styles = {},
 }) => {
   const { formState } = useController({ name, control });
 
@@ -50,11 +51,19 @@ export const HeatPumpTextField = ({
       control={control}
       rules={rules}
       render={({ field }) => (
-        <FormControl fullWidth>
+        <FormControl
+          fullWidth
+          sx={{
+            ...styles?.container,
+          }}
+        >
           {disableFancyLabel && (
             <FormLabel
               id={`${name}-textField-label`}
               htmlFor={`${name}-textField`}
+              sx={{
+                ...styles?.label,
+              }}
             >
               {label}
             </FormLabel>
@@ -68,7 +77,11 @@ export const HeatPumpTextField = ({
               !!formState.errors[name] && formState.errors[name].message
             }
             type={inputType}
-            inputProps={{ readOnly, id: `${name}-textField` }}
+            inputProps={{
+              readOnly,
+              id: `${name}-textField`,
+              style: { ...styles?.label },
+            }}
             {...field}
             disabled={disabled}
           />
