@@ -46,6 +46,8 @@ export const buildSurveyVisitData = (answers, homeId, surveyId, surveyorId) => {
         survey_id: surveyId,
         survey_answers_attributes: answersObject,
       },
+      resp_latitude: "41.0895249",
+      resp_longitude: "-71.9419063",
     },
   };
 };

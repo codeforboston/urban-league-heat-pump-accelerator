@@ -1,17 +1,17 @@
 import { Alert, Container, Snackbar } from "@mui/material";
 import React, { useCallback, useEffect, useMemo } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useCreateSurveyVisitMutation,
   useGetHomeQuery,
 } from "../../../api/apiSlice";
-import { useNavigate, useParams } from "react-router-dom";
 
+import { useSelector } from "react-redux";
 import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import Loader from "../../../components/Loader";
-import { SurveyorSurvey } from "../Components/SurveyorSurvey";
-import { buildSurveyVisitData } from "../../../util/surveyUtils";
 import { selectCurrentUser } from "../../../features/login/loginSlice";
-import { useSelector } from "react-redux";
+import { buildSurveyVisitData } from "../../../util/surveyUtils";
+import { SurveyorSurvey } from "../Components/SurveyorSurvey";
 
 const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
@@ -54,6 +54,7 @@ const HouseProfile = () => {
           surveyorId
         ),
       });
+      console.log(buildSurveyVisitData(answers, homeId, surveyId, surveyorId));
       return surveyVisit;
     },
     [addSurveyVisit, homeId, surveyorId]
