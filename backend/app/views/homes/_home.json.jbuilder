@@ -6,3 +6,4 @@ json.visited home.visited?
 json.completed home.completed?
 json.survey_visit_ids home.survey_visit_ids
 json.url home_url(home, format: :json)
+json.test "TEST"
