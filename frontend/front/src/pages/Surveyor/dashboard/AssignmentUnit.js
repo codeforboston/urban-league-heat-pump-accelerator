@@ -1,9 +1,9 @@
 import { Box, Button, List, Stack } from "@mui/material";
 import React, { useCallback, useMemo, useState } from "react";
 
+import { generateMapsLink } from "../map/mapUtils";
 import { AssignmentHome } from "./AssignmentHome";
 import OptionMenu from "./OptionMenu";
-import { generateMapsLink } from "../map/mapUtils";
 
 // does a quick comparison by order
 const compareArrayByOrder = (a, b) => {
@@ -70,7 +70,7 @@ const AssignmentUnit = ({ data }) => {
           }
           disabled={checked.length === 0}
         >
-          GENERATE MAP
+          GENERATE ROUTE
         </Button>
         <OptionMenu
           handleSelectAll={handleSelectAll}
