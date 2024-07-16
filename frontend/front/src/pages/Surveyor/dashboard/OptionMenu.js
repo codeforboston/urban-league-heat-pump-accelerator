@@ -70,7 +70,7 @@ const OptionMenu = ({
         <MenuItem onClick={showIncomplete}>
           {showOnlyIncomplete
             ? "SHOW All ASSIGNMENTS"
-            : "SHOW ONLY INCOMPLETE ASSIGNMENTS"}
+            : "SHOW ONLY INCOMPLETE HOMES"}
         </MenuItem>
       </Menu>
     </Box>
