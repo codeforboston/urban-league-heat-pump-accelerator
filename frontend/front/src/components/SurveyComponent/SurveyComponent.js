@@ -20,6 +20,8 @@ import Loader from "../Loader";
 import { HeatPumpRadio } from "./HeatPumpRadio";
 import { HeatPumpTextField } from "./HeatPumpTextField";
 import { SurveyError } from "./SurveyStructureError";
+import { surveyRenderRules } from "../../util/surveyUtils";
+import ConditionalQuestion from "./ConditionalQuestion";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
@@ -36,6 +38,7 @@ const SurveyComponent = ({
   onDelete,
   readOnly,
   styles = {},
+  conditionalRender,
 }) => {
   const navigate = useNavigate();
 
@@ -203,42 +206,56 @@ const SurveyComponent = ({
       >
         <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
           {surveyStructure?.survey_questions.map((q) => {
-            switch (q.response_type) {
-              case "radio":
-                return (
-                  <HeatPumpRadio
-                    key={`q${q.id}`}
-                    control={control}
-                    name={`${q.id}`}
-                    label={q.question}
-                    options={q.response_options.map((o) => ({
-                      value: o,
-                      label: o,
-                    }))}
-                    disabled={isDisabled}
-                    styles={styles}
-                  />
-                );
-              case "text":
-                return (
-                  <HeatPumpTextField
-                    key={`q${q.id}`}
-                    control={control}
-                    name={`${q.id}`}
-                    label={q.question}
-                    disabled={isDisabled}
-                    disableFancyLabel
-                    styles={styles}
-                  />
-                );
-              default:
-                return (
-                  <Alert
-                    key={`q${q.id}`}
-                    severity="error"
-                  >{`Invalid question type: ${q.response_type}`}</Alert>
-                );
-            }
+            const renderInput = () => {
+              switch (q.response_type) {
+                case "radio":
+                  return (
+                    <HeatPumpRadio
+                      key={`q${q.id}`}
+                      control={control}
+                      name={`${q.id}`}
+                      label={q.question}
+                      options={q.response_options.map((o) => ({
+                        value: o,
+                        label: o,
+                      }))}
+                      disabled={isDisabled}
+                      styles={styles}
+                    />
+                  );
+                case "text":
+                  return (
+                    <HeatPumpTextField
+                      key={`q${q.id}`}
+                      control={control}
+                      name={`${q.id}`}
+                      label={q.question}
+                      disabled={isDisabled}
+                      disableFancyLabel
+                      styles={styles}
+                    />
+                  );
+                default:
+                  return (
+                    <Alert
+                      key={`q${q.id}`}
+                      severity="error"
+                    >{`Invalid question type: ${q.response_type}`}</Alert>
+                  );
+              }
+            };
+            const rule = surveyRenderRules[q.id];
+            return conditionalRender && rule ? (
+              <ConditionalQuestion
+                key={`q${q.id}`}
+                control={control}
+                rule={rule}
+              >
+                {renderInput()}
+              </ConditionalQuestion>
+            ) : (
+              renderInput()
+            );
           })}
           <Stack direction="row" justifyContent="center" spacing={2}>
             {isLoading && <Loader />}
