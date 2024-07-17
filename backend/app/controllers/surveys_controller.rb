@@ -10,9 +10,9 @@ class SurveysController < ApplicationController
 
   # GET /surveys/1 or /surveys/1.json
   def show
-    @language_code = (params[:langPref] || http_accept_language.preferred_language_from(
+    @language_code = params[:langPref] || http_accept_language.preferred_language_from(
       @survey.survey_questions.first.localized_survey_questions.distinct.pluck(:language_code)
-    ))
+    )
 
     # If first question of survey doesn't have this localization, then throw exception
     # (No need to check all questions for this localization)
