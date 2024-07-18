@@ -42,7 +42,7 @@ const SurveyComponent = ({
 }) => {
   const navigate = useNavigate();
 
-  const { handleSubmit, reset, control, watch } = useForm({
+  const { handleSubmit, reset, control, watch, setValue } = useForm({
     defaultValues: formDefault,
   });
 
@@ -250,6 +250,9 @@ const SurveyComponent = ({
                 key={`q${q.id}`}
                 control={control}
                 rule={rule}
+                id={q.id}
+                formDefault={formDefault}
+                setValue={setValue}
               >
                 {renderInput()}
               </ConditionalQuestion>
