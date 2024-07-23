@@ -4,7 +4,6 @@ import React, { useCallback, useMemo, useState } from "react";
 import { generateMapsLink } from "../map/mapUtils";
 import { AssignmentHome } from "./AssignmentHome";
 import OptionMenu from "./OptionMenu";
-
 // does a quick comparison by order
 const compareArrayByOrder = (a, b) => {
   if (a.visit_order < b.visit_order) {
@@ -86,8 +85,9 @@ const AssignmentUnit = ({ data }) => {
           width: "100%",
         }}
       >
-        {(data || []).map((home) =>
-          showOnlyIncomplete && home.completed ? null : (
+        {(data || [])
+          .filter((home) => !home.completed)
+          .map((home) => (
             <AssignmentHome
               key={`assignmentHome-${home.id}`}
               home={home}
@@ -95,8 +95,20 @@ const AssignmentUnit = ({ data }) => {
               checked={checkedSet.has(home.id)}
               selectionCap={checkedSet.size >= 10}
             />
-          )
-        )}
+          ))}
+        {(data || [])
+          .filter((home) => home.completed)
+          .map((home) =>
+            showOnlyIncomplete && home.completed ? null : (
+              <AssignmentHome
+                key={`assignmentHome-${home.id}`}
+                home={home}
+                handleToggle={handleToggle}
+                checked={checkedSet.has(home.id)}
+                selectionCap={checkedSet.size >= 10}
+              />
+            )
+          )}
       </List>
     </Box>
   );
