@@ -1,7 +1,8 @@
 export const generateMapsLink = (locations) => {
   const destination = locations[locations.length - 1];
   // multiple waypoints for Apple Maps was introduce with IOS16 this will not work if Iphone IOS is below 15
-  if (navigator.userAgent.match(/(iPhone|iPod|iPad)/)) {
+  const userAgent = navigator.userAgent;
+  if (/iPad|iPhone|iPod/.test(userAgent)) {
     const waypoints = locations
       .slice(0, -1)
       .map((location) => `&daddr=${location.latitude},${location.longitude}`)
