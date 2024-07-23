@@ -1,15 +1,15 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import AssignmentUnit from "./AssignmentUnit";
+import { useSearchParams } from "react-router-dom";
 import CustomSnackbar from "../../../components/CustomSnackbar";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Loader from "../../../components/Loader";
 import { useAssignmentsForCurrentUser } from "../../../hooks/useDataForSurveyor";
-import { useSearchParams } from "react-router-dom";
+import AssignmentUnit from "./AssignmentUnit";
 
 const ListView = () => {
   const {
