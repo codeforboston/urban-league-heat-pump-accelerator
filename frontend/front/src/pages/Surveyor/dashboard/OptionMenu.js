@@ -22,11 +22,6 @@ const OptionMenu = ({
     setAnchorEl(null);
   };
 
-  const SelectAllAndClose = () => {
-    handleSelectAll();
-    handleClose();
-  };
-
   const DeselectAllAndClose = () => {
     handleDeselectAll();
     handleClose();
@@ -62,7 +57,6 @@ const OptionMenu = ({
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={SelectAllAndClose}>SELECT NEXT 10</MenuItem>
         <MenuItem onClick={DeselectAllAndClose}>DESELECT ALL</MenuItem>
         <MenuItem onClick={SelectIncompletedAndClose}>
           SELECT NEXT 10 INCOMPLETE
