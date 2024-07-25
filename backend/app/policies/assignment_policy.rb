@@ -8,7 +8,12 @@ class AssignmentPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    if user&.admin?
+      true
+    else
+      surveyor_id = user&.surveyor&.id
+      @record.surveyor_ids.any? { |id| id == surveyor_id }
+    end
   end
 
   def create?
