@@ -38,7 +38,12 @@ class AssignmentPolicy < ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      if user&.admin?
+        scope.all
+      else
+        surveyor_id = user&.surveyor&.id
+        scope.joins(:surveyors).where(surveyors: { id: surveyor_id })
+      end
     end
 
     private
