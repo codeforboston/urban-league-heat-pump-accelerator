@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Surveyor < ApplicationRecord
-  STATUS_ACTIVE = 'active'.freeze
+  STATUS_ACTIVE = 'active'
 
   belongs_to :user
   has_and_belongs_to_many :assignments

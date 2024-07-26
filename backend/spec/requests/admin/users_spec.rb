@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe '/admin/users', type: :request do
@@ -83,7 +85,7 @@ RSpec.describe '/admin/users', type: :request do
         end.to change(User, :count).by(0)
       end
 
-      it "renders a response with 422 status" do
+      it 'renders a response with 422 status' do
         post admin_users_url, params: { user: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
 
