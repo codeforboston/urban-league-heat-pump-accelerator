@@ -3,10 +3,6 @@
 class SurveyAnswerPolicy < ApplicationPolicy
   attr_reader :user, :record
 
-  def index?
-    user&.admin?
-  end
-
   def show?
     user&.admin?
   end
@@ -38,7 +34,11 @@ class SurveyAnswerPolicy < ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      if user&.admin?
+        scope.all
+      else
+        scope.none
+      end
     end
 
     private
