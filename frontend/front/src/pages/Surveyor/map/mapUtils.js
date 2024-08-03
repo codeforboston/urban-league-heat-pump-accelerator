@@ -8,24 +8,26 @@ export const generateMapsLink = (locations) => {
     const IOSversion = match[1].split("_").map(parseInt);
     return IOSversion[0];
   };
-  if (/iPad|iPhone|iPod/.test(userAgent)) {
-    //
-    const waypoints = locations
-      .slice(0, -1)
-      .map((location) => `&daddr=${location.latitude},${location.longitude}`)
-      .join("");
 
-    if (IOSversion > 15) {
-      return `maps://http://maps.apple.com/?&daddr=${destination.latitude},${destination.longitude}${waypoints}&dirflg=d`;
-    } else {
-      return `https://www.google.com/maps/dir/?api=1&destination=${destination.latitude},${destination.longitude}&waypoints=${waypoints}&travelmode=walking`;
-    }
-  } else {
+  const googleMapLink = () => {
     const waypoints = locations
       .slice(0, -1)
       .map((location) => `${location.latitude},${location.longitude}`)
       .join("|");
 
     return `https://www.google.com/maps/dir/?api=1&destination=${destination.latitude},${destination.longitude}&waypoints=${waypoints}&travelmode=walking`;
+  };
+  if (/iPad|iPhone|iPod/.test(userAgent)) {
+    if (IOSversion() > 15) {
+      const waypoints = locations
+        .slice(0, -1)
+        .map((location) => `&daddr=${location.latitude},${location.longitude}`)
+        .join("");
+      return `maps://http://maps.apple.com/?&daddr=${destination.latitude},${destination.longitude}${waypoints}&dirflg=d`;
+    } else {
+      return googleMapLink();
+    }
+  } else {
+    return googleMapLink();
   }
 };
