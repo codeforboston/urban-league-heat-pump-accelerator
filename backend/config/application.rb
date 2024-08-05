@@ -39,9 +39,6 @@ module UrbanLeagueHeatPumpAccelerator
     # Configure Active Job to use sucker_punch backend
     config.active_job.queue_adapter = :sucker_punch
 
-    config.api_only = true
-    config.debug_exception_response_format = :api
-    
     config.autoload_paths += %W[#{config.root}/lib]
   end
 end
