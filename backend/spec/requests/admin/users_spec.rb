@@ -3,6 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe '/admin/users', type: :request do
+  include Devise::Test::IntegrationHelpers
+
+  let(:admin) do
+    User.create(email: 'admin@test.com', password: 'password', role: :admin)
+  end
+
   describe 'POST /create' do
     context 'with valid parameters for a surveyor' do
       let(:valid_attributes) do
@@ -20,6 +26,8 @@ RSpec.describe '/admin/users', type: :request do
           }
         }
       end
+
+      before { sign_in admin }
 
       it 'creates a new user who is a surveyor' do
         expect do
@@ -55,6 +63,8 @@ RSpec.describe '/admin/users', type: :request do
         }
       end
 
+      before { sign_in admin }
+
       it 'creates a new user who is an admin' do
         expect do
           post admin_users_url, params: { user: valid_attributes }, as: :json
@@ -79,6 +89,8 @@ RSpec.describe '/admin/users', type: :request do
         }
       end
 
+      before { sign_in admin }
+
       it 'does not create a new user' do
         expect do
           post admin_users_url, params: { user: invalid_attributes }, as: :json
@@ -91,6 +103,21 @@ RSpec.describe '/admin/users', type: :request do
 
         error_message = JSON.parse(response.body)['email'][0]
         expect(error_message).to eq("can't be blank")
+      end
+    end
+
+    context 'as unauthorized user' do
+      let(:valid_attributes) do
+        {
+          email: 'bob@example.com',
+          role: 'admin'
+        }
+      end
+
+      it 'raises an error' do
+        expect do
+          post admin_users_url, params: { user: valid_attributes }, as: :json
+        end.to raise_error(Pundit::NotAuthorizedError)
       end
     end
   end
