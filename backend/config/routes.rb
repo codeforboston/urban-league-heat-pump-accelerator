@@ -24,4 +24,8 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }, defaults: { format: :json }
   root 'homes#index'
+
+  namespace :admin do
+    resources :users, only: [:create]
+  end
 end
