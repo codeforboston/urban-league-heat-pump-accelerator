@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -10,8 +11,8 @@ import {
   Typography,
 } from "@mui/material";
 import AssignmentDialog from "../Components/AssignmentDialog";
-
-import { useNavigate } from "react-router-dom";
+import { buildSurveyCacheKey } from "../../../util/surveyUtils";
+import { SURVEYOR_SURVEY_ID } from "../Components/SurveyorSurvey";
 
 export const AssignmentHome = ({
   home,
@@ -22,7 +23,7 @@ export const AssignmentHome = ({
   const labelId = `checkbox-list-secondary-label-${home}`;
   const navigate = useNavigate();
   const [dialogOpen, setDialogOpen] = useState(false);
-
+  const cacheKey = buildSurveyCacheKey(SURVEYOR_SURVEY_ID, home.id);
   return (
     <>
       <ListItem
@@ -71,6 +72,8 @@ export const AssignmentHome = ({
                 <Box>
                   {home.completed === true ? (
                     <Typography color="green">{"Completed ✅"}</Typography>
+                  ) : localStorage.getItem(cacheKey) ? (
+                    <Typography color="orange">In Progress</Typography>
                   ) : (
                     <Typography color="red">Incomplete</Typography>
                   )}
