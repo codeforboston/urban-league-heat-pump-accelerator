@@ -6,16 +6,9 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import {
-  ROLE_ADMIN,
-  ROLE_SURVEYOR,
-  generatePassword,
-} from "../../../features/login/loginUtils";
+import { ROLE_ADMIN, ROLE_SURVEYOR } from "../../../features/login/loginUtils";
 import React, { useCallback, useState } from "react";
-import {
-  useCreateSurveyorMutation,
-  useCreateUserMutation,
-} from "../../../api/apiSlice";
+import { useCreateUserMutation } from "../../../api/apiSlice";
 
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import { HeatPumpDropdown } from "../../../components/SurveyComponent/HeatPumpDropdown";
@@ -51,7 +44,6 @@ const CreateNewUser = () => {
   });
 
   const [createUser] = useCreateUserMutation();
-  const [createSurveyor] = useCreateSurveyorMutation();
 
   const handleCancel = useCallback(() => {
     navigate(withAdminPrefix(ADMIN_USER));
@@ -60,33 +52,21 @@ const CreateNewUser = () => {
   const onSubmit = useCallback(
     async (data) => {
       setIsUserLoading(true);
-
-      const password = generatePassword();
-
       try {
+        const { email, role, ...surveyor } = data;
         const user = await createUser({
-          email: data.email,
-          password,
+          email,
+          role,
+          surveyor,
         }).unwrap();
-
-        // TODO: not 100% on whether all this data is necessary
-        const surveyorPayload = {
-          ...data,
-          status: "active",
-          geocode: "unknown",
-          user_id: user.id,
-        };
-
-        await createSurveyor(surveyorPayload).unwrap();
-
-        setModalData({ ...user, password });
+        setModalData({ ...user });
       } catch (e) {
         setUserError(e);
       } finally {
         setIsUserLoading(false);
       }
     },
-    [createUser, createSurveyor]
+    [createUser]
   );
 
   const handleModalClose = useCallback(
@@ -121,11 +101,11 @@ const CreateNewUser = () => {
             p: 4,
           }}
         >
-          <p>
-            Succesfully created user <b>'{modalData?.email}'</b> with password{" "}
-            <b>'{modalData?.password}'</b>
-          </p>
-          <p>{"Write down this password to give to the surveyor!"}</p>
+          <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
+            <p>
+              Succesfully created user <b>'{modalData?.email}'</b>
+            </p>
+          </Stack>
           <Stack direction="row" justifyContent="right" spacing={2}>
             <Button onClick={() => handleModalClose(ACTION_BACK)}>
               Dashboard
@@ -146,13 +126,12 @@ const CreateNewUser = () => {
   return (
     <Container>
       {modal()}
-      {
+      {!!userError && (
         <CustomSnackbar
-          open={userError}
           message="Error creating user account."
           onClose={() => setUserError(null)}
         />
-      }
+      )}
       <Box sx={{ bgcolor: "primary.main", color: "white" }} p={1} m={1}>
         <Typography variant="h5">Create User Profile</Typography>
       </Box>
