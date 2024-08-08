@@ -12,6 +12,7 @@ import { SurveyorSurvey } from "../Components/SurveyorSurvey";
 import { buildSurveyVisitData } from "../../../util/surveyUtils";
 import { selectCurrentUser } from "../../../features/login/loginSlice";
 import { useSelector } from "react-redux";
+import SurveyErrorDialog from "../../../components/SurveyComponent/SurveyErrorDialog";
 
 const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
@@ -86,12 +87,12 @@ const HouseProfile = () => {
           activeHome={homeData}
         />
       </HeatPumpFade>
-      <Snackbar open={!!surveyVisitError}>
-        <Alert severity="error">{"Error submitting survey."}</Alert>
-      </Snackbar>
-      <Snackbar open={!!homeError}>
-        <Alert severity="error">{"Error retrieving home data."}</Alert>
-      </Snackbar>
+      <SurveyErrorDialog open={!!surveyVisitError} handleAgree={submitSurvey} />
+      {!isHomeLoading && !homeData && (
+        <Snackbar open={!!homeError}>
+          <Alert severity="error">{"Error retrieving home data."}</Alert>
+        </Snackbar>
+      )}
     </Container>
   );
 };

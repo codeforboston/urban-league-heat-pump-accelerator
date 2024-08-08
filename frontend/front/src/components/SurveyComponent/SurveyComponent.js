@@ -1,4 +1,4 @@
-import { Alert, Button, Stack } from "@mui/material";
+import { Alert, Button, Snackbar, Stack } from "@mui/material";
 import React, {
   forwardRef,
   useCallback,
@@ -10,7 +10,7 @@ import {
   buildDefaultDataFromSurveyStructure,
   buildSurveyCacheKey,
 } from "../../util/surveyUtils";
-
+import { useDebouncedCallback } from "use-debounce";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useGetSurveyStructureQuery } from "../../api/apiSlice";
@@ -41,6 +41,7 @@ const SurveyComponent = ({
   conditionalRender,
 }) => {
   const navigate = useNavigate();
+  const [saving, setSaving] = useState(false);
 
   const { handleSubmit, reset, control, watch, setValue } = useForm({
     defaultValues: formDefault,
@@ -81,20 +82,45 @@ const SurveyComponent = ({
     }
   }, [cachedData, formDefault, reset]);
 
+  // Create a debounced version of saving snackbar
+  const debouncedSetSaving = useDebouncedCallback(
+    (value) => {
+      setSaving(value);
+    },
+    // delay in ms, adjust as needed
+    3000
+  );
+
   useEffect(() => {
     // function passed to watch is executed every time the form data changes
     // to update the data in the cache
     const formSubscription = watch((value) => {
       localStorage.setItem(cacheKey, JSON.stringify(value));
+      debouncedSetSaving(true);
     });
 
-    return () => formSubscription.unsubscribe();
-  }, [cacheKey, watch]);
+    return () => {
+      formSubscription.unsubscribe();
+      debouncedSetSaving(false);
+    };
+  }, [cacheKey, watch, debouncedSetSaving]);
+
+  const closeSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSaving(false);
+  };
 
   const commonButtonSection = useCallback(
     () => (
       <>
-        <Button variant="contained" type="submit" name="submit">
+        <Button
+          variant="contained"
+          type="submit"
+          name="submit"
+          disabled={isLoading}
+        >
           {"Submit"}
         </Button>
         <Button
@@ -109,7 +135,7 @@ const SurveyComponent = ({
         </Button>
       </>
     ),
-    [formDefault, reset]
+    [formDefault, reset, isLoading]
   );
 
   const adminButtonsViewing = useCallback(
@@ -269,6 +295,11 @@ const SurveyComponent = ({
               : !readOnly && commonButtonSection()}
           </Stack>
         </Stack>
+        <Snackbar open={saving} autoHideDuration={1000} onClose={closeSnackbar}>
+          <Alert onClose={closeSnackbar} severity="success" variant="filled">
+            Survey saved
+          </Alert>
+        </Snackbar>
       </form>
     </>
   );
