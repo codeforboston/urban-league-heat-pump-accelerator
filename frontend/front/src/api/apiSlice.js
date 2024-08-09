@@ -405,10 +405,12 @@ export const apiSlice = createApi({
       }),
     }),
     createUser: builder.mutation({
-      query: ({ email, password }) => ({
-        url: "/users",
+      query: ({ email, role, surveyor }) => ({
+        url: "/admin/users",
         method: "POST",
-        body: { user: { email, password } },
+        body: {
+          user: { email, role, surveyor },
+        },
       }),
     }),
     requestPasswordReset: builder.mutation({

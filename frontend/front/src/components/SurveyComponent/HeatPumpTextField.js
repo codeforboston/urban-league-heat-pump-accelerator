@@ -43,6 +43,7 @@ export const HeatPumpTextField = ({
         message: "Invalid ZIP code.",
       };
     }
+    return ruleList;
   }, [type, required]);
 
   return (
