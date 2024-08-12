@@ -30,7 +30,7 @@ export const useGoToBreadcrumb = () => {
         }`;
         break;
       case "user":
-        url = `/admin/user/userProfile/${data?.user_id}`;
+        url = `/admin/user/userProfile/${data?.id}`;
         description = `${data?.firstname} ${data?.lastname}`;
         break;
       case "surveyVisit":
