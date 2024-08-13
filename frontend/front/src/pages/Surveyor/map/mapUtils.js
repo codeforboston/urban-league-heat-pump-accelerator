@@ -9,21 +9,47 @@ export const generateMapsLink = (locations) => {
     return IOSversion[0];
   };
 
+  //we have to use home address for location instead of geolocation data. Geolocation data doesn't map home address when loaded on map app
+  const checkStreetNumberIsValid = (streetNumber) => {
+    // check if street number doesnt contain space and is a whole number
+    if (streetNumber.trim().includes(" ")) {
+      const validStreetNumber = streetNumber.replace(" ", "-");
+      return validStreetNumber;
+    } else {
+      return streetNumber;
+    }
+  };
   const googleMapLink = () => {
     const waypoints = locations
       .slice(0, -1)
-      .map((location) => `${location.latitude},${location.longitude}`)
+      .map((location) => {
+        const streetNumber = checkStreetNumberIsValid(location.street_number);
+        return `${streetNumber}%20${location.street_name}%20${location.city}%2C${location.state}%20${location.zip_code}`;
+      })
       .join("|");
 
-    return `https://www.google.com/maps/dir/?api=1&destination=${destination.latitude},${destination.longitude}&waypoints=${waypoints}&travelmode=walking`;
+    const destinationStreetNumber = checkStreetNumberIsValid(
+      destination.street_number
+    );
+    const destinationURLEncode = `${destinationStreetNumber}%20${destination.street_name}%20${destination.city}%2C${destination.state}%20${destination.zip_code}`;
+
+    return `https://www.google.com/maps/dir/?api=1&destination=${destinationURLEncode}&waypoints=${waypoints}&travelmode=walking`;
   };
   if (/iPad|iPhone|iPod/.test(userAgent)) {
     if (IOSversion() > 15) {
       const waypoints = locations
         .slice(0, -1)
-        .map((location) => `&daddr=${location.latitude},${location.longitude}`)
+        .map((location) => {
+          const streetNumber = checkStreetNumberIsValid(location.street_number);
+          return `&daddr=${streetNumber}%20${location.street_name}%20${location.city}%2C${location.state}%20${location.zip_code}`;
+        })
         .join("");
-      return `maps://http://maps.apple.com/?&daddr=${destination.latitude},${destination.longitude}${waypoints}&dirflg=d`;
+      const destinationStreetNumber = checkStreetNumberIsValid(
+        destination.street_number
+      );
+      const destinationURLEncode = `${destinationStreetNumber}%20${destination.street_name}%20${destination.city}%2C${destination.state}%20${destination.zip_code}`;
+
+      return `maps://http://maps.apple.com/?&daddr=${destinationURLEncode}${waypoints}&dirflg=d`;
     } else {
       return googleMapLink();
     }
