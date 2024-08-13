@@ -49,7 +49,7 @@ export const generateMapsLink = (locations) => {
       );
       const destinationURLEncode = `${destinationStreetNumber}%20${destination.street_name}%20${destination.city}%2C${destination.state}%20${destination.zip_code}`;
 
-      return `maps://http://maps.apple.com/?&daddr=${destinationURLEncode}${waypoints}&dirflg=d`;
+      return `maps://http://maps.apple.com/?${waypoints}&daddr=${destinationURLEncode}&dirflg=d`;
     } else {
       return googleMapLink();
     }
