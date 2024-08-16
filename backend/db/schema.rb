@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_31_015953) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_16_145140) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,6 +114,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_015953) do
     t.datetime "updated_at", null: false
     t.bigint "home_id"
     t.bigint "surveyor_id"
+    t.string "latitude"
+    t.string "longitude"
     t.index ["home_id"], name: "index_survey_visits_on_home_id"
     t.index ["surveyor_id"], name: "index_survey_visits_on_surveyor_id"
   end
