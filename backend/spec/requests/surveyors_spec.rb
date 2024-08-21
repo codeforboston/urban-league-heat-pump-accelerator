@@ -52,19 +52,45 @@ RSpec.describe '/surveyors', type: :request do
   end
 
   describe 'GET /index' do
+    before do
+      @surveyor = Surveyor.create! valid_attributes
+      sign_in user
+    end
+
     it 'renders a successful response' do
-      Surveyor.create! valid_attributes
       get surveyors_url, as: :json
       expect(response).to be_successful
+
+      surveyors_json = JSON.parse(response.body)
+      expect(surveyors_json[0]['id']).to eq(@surveyor.id)
     end
   end
 
   describe 'GET /show' do
-    it 'renders a successful response' do
+    before do
+      @surveyor = Surveyor.create! valid_attributes
       sign_in user
-      surveyor = Surveyor.create! valid_attributes
-      get surveyor_url(surveyor), as: :json
+    end
+
+    it 'renders a successful response' do
+      get surveyor_url(@surveyor), as: :json
       expect(response).to be_successful
+
+      surveyor_json = JSON.parse(response.body)
+      expect(surveyor_json['id']).to eq(@surveyor.id)
+      expect(surveyor_json['user_id']).to eq(user.id)
+      expect(surveyor_json['assignment_ids']).to eq([])
+      expect(surveyor_json['firstname']).to eq('John')
+      expect(surveyor_json['lastname']).to eq('Smith')
+      expect(surveyor_json['email']).to eq('johnsmith@example.com')
+      expect(surveyor_json['phone']).to eq('1234567890')
+      expect(surveyor_json['street_address']).to eq('123 First Street')
+      expect(surveyor_json['city']).to eq('Cambridge')
+      expect(surveyor_json['state']).to eq('MA')
+      expect(surveyor_json['zipcode']).to eq('01234')
+      expect(surveyor_json['status']).to eq('active')
+      expect(surveyor_json['role']).to eq('surveyor')
+      expect(surveyor_json['url']).to eq("http://www.example.com/surveyors/#{@surveyor.id}.json")
     end
   end
 

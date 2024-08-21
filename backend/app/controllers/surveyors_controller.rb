@@ -6,7 +6,7 @@ class SurveyorsController < ApplicationController
 
   # GET /surveyors or /surveyors.json
   def index
-    @surveyors = policy_scope(Surveyor).where(search_params)
+    @surveyors = policy_scope(Surveyor).where(search_params).includes(:user)
   end
 
   # GET /surveyors/1 or /surveyors/1.json
