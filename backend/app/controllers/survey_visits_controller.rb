@@ -71,7 +71,7 @@ class SurveyVisitsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def survey_visit_params
     params.require(:survey_visit)
-          .permit(:surveyor_id, :home_id,
+          .permit(:surveyor_id, :home_id, :latitude, :longitude,
                   survey_response_attributes: [:survey_id,
                                                { survey_answers_attributes: %i[survey_question_id answer] }])
   end

@@ -20,8 +20,7 @@ RSpec.describe '/survey_visits', type: :request do
   # SurveyVisit. As you add validations to SurveyVisit, be sure to
   # adjust the attributes here as well.
   let(:survey) { create(:survey) }
-  let(:survey_visit) { create(:survey_visit) }
-  let(:home) { survey_visit.home }
+  let(:home) { create(:home) }
   let(:localized_survey_question) { create(:localized_survey_question) }
   let(:survey_question) { localized_survey_question.survey_question }
   let(:surveyor) { create(:surveyor) }
@@ -29,6 +28,8 @@ RSpec.describe '/survey_visits', type: :request do
     {
       surveyor_id: surveyor.id,
       home_id: home.id,
+      latitude: '41.0895249',
+      longitude: '-71.9419063',
       survey_response_attributes: {
         survey_id: survey.id,
         survey_answers_attributes: [
@@ -39,10 +40,6 @@ RSpec.describe '/survey_visits', type: :request do
         ]
       }
     }
-    # params.require(:survey_visit)
-    #       .permit(:surveyor_id, :home_id,
-    #               survey_response_attributes: [:survey_id, :completed,
-    #                                            { survey_answers_attributes: %i[survey_question_id answer] }])
   end
 
   let(:invalid_attributes) do
@@ -77,10 +74,20 @@ RSpec.describe '/survey_visits', type: :request do
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new SurveyVisit' do
-        pending 'fix valid attributes in branch fix-cors-for-staging'
         expect do
           post survey_visits_url, params: { survey_visit: valid_attributes }, as: :json
         end.to change(SurveyVisit, :count).by(1)
+
+        survey_visit = SurveyVisit.last
+        expect(survey_visit.home_id).to eq(home.id)
+        expect(survey_visit.surveyor_id).to eq(surveyor.id)
+        expect(survey_visit.latitude).to eq('41.0895249')
+        expect(survey_visit.longitude).to eq('-71.9419063')
+
+        survey_response = survey_visit.survey_response
+        expect(survey_response).to be_present
+        expect(survey_response.survey_id).to eq(survey.id)
+        expect(survey_response.survey_answers.count).to eq(1)
       end
 
       it 'redirects to the created survey_visit' do
