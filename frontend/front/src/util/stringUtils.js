@@ -28,3 +28,26 @@ export const isPasswordValid = (password) => {
     };
   }
 };
+
+export const validatePhoneNumber = (value) => {
+  const digitsOnly = value.replace(/\D/g, "");
+  if (
+    (digitsOnly.length === 11 && digitsOnly.startsWith("1")) ||
+    digitsOnly.length === 10
+  ) {
+    const validCharacters = /^[0-9()\-\s]+$/;
+    if (validCharacters.test(value)) {
+      return true;
+    }
+  }
+
+  return "Invalid phone number format";
+};
+
+export const validateZipCode = (value) => {
+  const zipPattern = /^\d{5}(-\d{4})?$/;
+  if (!zipPattern.test(value)) {
+    return "Invalid zip code format";
+  }
+  return true;
+};

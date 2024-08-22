@@ -11,7 +11,6 @@ import {
 import { ProtectedInactive } from "../../routing/ProtectedInactive";
 import InactiveSurveyor from "./Components/InactiveSurveyor";
 import Account from "./account/Account";
-import EditAccount from "./account/edit/EditAccount";
 import Dashboard from "./dashboard/Dashboard";
 import HouseProfile from "./houseProfile/HouseProfile";
 import Nav from "./nav/Nav";
@@ -32,7 +31,6 @@ const SurveyorContainer = () => {
           >
             <Route path="dashboard" element={<Dashboard />}></Route>
             <Route path="account" element={<Account />}></Route>
-            <Route path="account/edit" element={<EditAccount />}></Route>
             <Route path="house/:id" element={<HouseProfile />}></Route>
             <Route
               path="survey/:uid"
