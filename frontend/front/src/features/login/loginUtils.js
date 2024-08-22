@@ -43,8 +43,8 @@ export const useLocallyStoredJWT = () => {
 
 export const decodeJwt = (token) => {
   // "sub" = "subject", aka the user id
-  const { sub, email, role } = jwt_decode(token);
-  return { id: sub, email, role };
+  const { surveyorId, sub, email, role } = jwt_decode(token);
+  return { id: surveyorId, userId: sub, email, role };
 };
 
 export const generatePassword = () =>

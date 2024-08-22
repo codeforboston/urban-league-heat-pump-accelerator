@@ -41,7 +41,6 @@ const UserProfile = () => {
     defaultValues: {
       firstName: "",
       lastName: "",
-      email: "",
       phone: "",
       streetAddress: "",
       city: "",
@@ -57,10 +56,10 @@ const UserProfile = () => {
       ...surveyorData,
       firstname: data.firstName,
       lastname: data.lastName,
-      email: data.email,
       phone: data.phone,
-      street_address: data.street_address,
+      street_address: data.streetAddress,
       city: data.city,
+      zipcode: data.zipCode,
     };
     updateSurveyor(newSurveyorData)
       .unwrap()
@@ -127,13 +126,12 @@ const UserProfile = () => {
   useEffect(() => {
     if (surveyorData) {
       reset({
-        firstName: surveyorData.firstname,
-        lastName: surveyorData.lastname,
-        email: surveyorData.email,
+        firstName: surveyorData.firstName,
+        lastName: surveyorData.lastName,
         phone: surveyorData.phone,
-        streetAddress: surveyorData.street_address,
+        streetAddress: surveyorData.streetAddress,
         city: surveyorData.city,
-        zipCode: surveyorData.zipcode,
+        zipCode: surveyorData.zipCode,
         state: surveyorData.state,
       });
     }
@@ -226,9 +224,11 @@ const UserProfile = () => {
             title="Confirm Deactivation"
             message="Please confirm to deactivate this user."
           />
-          <Box maxWidth={500} mt={5}>
-            <Box sx={{ bgcolor: "primary.main", color: "white" }} p={1}>
-              <Typography variant="h5">User Profile: {uid}</Typography>
+          <Box maxWidth={500} my={5} px={2}>
+            <Box sx={{ bgcolor: "primary.main", color: "white" }} p={2}>
+              <Typography variant="h5" mb={1}>
+                User Profile: {surveyorData.email}
+              </Typography>
               <Typography variant="h6">
                 Status: {surveyorData.status}
               </Typography>
@@ -247,7 +247,7 @@ const UserProfile = () => {
                     value={value}
                     label="First Name"
                     variant="standard"
-                    sx={{ width: "95%", mx: 2, mt: 3 }}
+                    sx={{ width: "95%", mx: 1, mt: 3 }}
                   />
                 )}
               />
@@ -261,21 +261,7 @@ const UserProfile = () => {
                     value={value}
                     label="Last Name"
                     variant="standard"
-                    sx={{ width: "95%", mx: 2, mt: 3 }}
-                  />
-                )}
-              />
-              <Controller
-                name={"email"}
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <TextField
-                    disabled={!editMode}
-                    onChange={onChange}
-                    value={value}
-                    label="Email"
-                    variant="standard"
-                    sx={{ width: "95%", mx: 2, mt: 3 }}
+                    sx={{ width: "95%", mx: 1, mt: 3 }}
                   />
                 )}
               />
@@ -286,10 +272,10 @@ const UserProfile = () => {
                   <TextField
                     disabled={!editMode}
                     onChange={onChange}
-                    value={surveyorData?.phone || value}
+                    value={value}
                     label="Phone"
                     variant="standard"
-                    sx={{ width: "95%", mx: 2, mt: 3 }}
+                    sx={{ width: "95%", mx: 1, mt: 3 }}
                   />
                 )}
               />
@@ -303,7 +289,7 @@ const UserProfile = () => {
                     value={value}
                     label="Street Address"
                     variant="standard"
-                    sx={{ width: "95%", mx: 2, mt: 3 }}
+                    sx={{ width: "95%", mx: 1, mt: 3 }}
                   />
                 )}
               />
@@ -317,21 +303,7 @@ const UserProfile = () => {
                     value={value}
                     label="City"
                     variant="standard"
-                    sx={{ width: "95%", mx: 2, mt: 3 }}
-                  />
-                )}
-              />
-              <Controller
-                name={"zipCode"}
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <TextField
-                    disabled={!editMode}
-                    onChange={onChange}
-                    value={value}
-                    label="Zip Code"
-                    variant="standard"
-                    sx={{ width: "95%", mx: 2, mt: 3 }}
+                    sx={{ width: "95%", mx: 1, mt: 3 }}
                   />
                 )}
               />
@@ -345,7 +317,21 @@ const UserProfile = () => {
                     value={value}
                     label="State"
                     variant="standard"
-                    sx={{ width: "95%", mx: 2, mt: 3 }}
+                    sx={{ width: "95%", mx: 1, mt: 3 }}
+                  />
+                )}
+              />
+              <Controller
+                name={"zipCode"}
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    disabled={!editMode}
+                    onChange={onChange}
+                    value={value}
+                    label="Zip Code"
+                    variant="standard"
+                    sx={{ width: "95%", mx: 1, mt: 3 }}
                   />
                 )}
               />
