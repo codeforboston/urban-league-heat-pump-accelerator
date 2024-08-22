@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { AUTHORIZATION_HEADER } from "../features/login/loginUtils";
+import { transformSurveyorKeys } from "../features/surveyor/surveyorUtils";
 
 const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
@@ -98,6 +99,7 @@ export const apiSlice = createApi({
     // }),
     getSurveyor: builder.query({
       query: (id) => `/surveyors/${id}`,
+      transformResponse: (result) => result && transformSurveyorKeys(result),
       providesTags: (result, error, arg) => [{ type: "Surveyor", id: arg }],
     }),
     createSurveyor: builder.mutation({
@@ -114,6 +116,7 @@ export const apiSlice = createApi({
         method: "PUT",
         body: surveyor,
       }),
+      transformResponse: (result) => result && transformSurveyorKeys(result),
       invalidatesTags: (result, error, arg) => [
         { type: "Surveyor", id: arg.id },
       ],
