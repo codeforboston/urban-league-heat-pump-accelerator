@@ -124,13 +124,11 @@ const AssignProfile = () => {
         <Loader />
       ) : isAssignmentError ? (
         <CustomSnackbar
-          open={isAssignmentError}
           message="Error fetching surveyor assignment data"
           severity="error"
         />
       ) : isSurveyorsError ? (
         <CustomSnackbar
-          open={isSurveyorsError}
           message="Error fetching surveyors data"
           severity="error"
         />

@@ -163,11 +163,7 @@ const HomeProfile = () => {
       {isHomeDataLoading ? (
         <Loader />
       ) : isHomeDataError ? (
-        <CustomSnackbar
-          severity="error"
-          open={isHomeDataError}
-          message="Error Loading data"
-        />
+        <CustomSnackbar severity="error" message="Error Loading data" />
       ) : (
         <>
           <ConfirmationModal

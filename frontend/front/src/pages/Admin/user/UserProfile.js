@@ -209,7 +209,6 @@ const UserProfile = () => {
         <Loader />
       ) : isSurveyorError ? (
         <CustomSnackbar
-          open={isSurveyorError}
           message="Error fetching surveyor data."
           severity="error"
         />
