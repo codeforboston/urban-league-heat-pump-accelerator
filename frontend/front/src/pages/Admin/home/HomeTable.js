@@ -119,11 +119,7 @@ const HomeTable = () => {
   return (
     <Box>
       {isHomesError ? (
-        <CustomSnackbar
-          open={isHomesError}
-          message="Error fetching homes data."
-          severity="error"
-        />
+        <CustomSnackbar message="Error fetching homes data." severity="error" />
       ) : (
         <DataGrid
           rows={homesData}

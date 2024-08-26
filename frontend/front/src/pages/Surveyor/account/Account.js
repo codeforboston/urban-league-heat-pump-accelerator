@@ -22,7 +22,6 @@ const Account = () => {
         <Loader />
       ) : !surveyorData || isSurveyorError ? (
         <CustomSnackbar
-          open={isSurveyorError}
           message="Error fetching surveyor data."
           severity="error"
         />

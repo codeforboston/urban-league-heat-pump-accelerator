@@ -100,13 +100,11 @@ const Unassigned = () => {
     <Loader />
   ) : isUnassignedIncompleteHomesError ? (
     <CustomSnackbar
-      open={isUnassignedIncompleteHomesError}
       message="Error fetching unassigned homes data"
       severity="error"
     />
   ) : isAssignmentsError ? (
     <CustomSnackbar
-      open={isAssignmentsError}
       message="Error fetching assignments data"
       severity="error"
     />
