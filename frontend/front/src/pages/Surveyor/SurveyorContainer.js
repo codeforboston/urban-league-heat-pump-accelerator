@@ -32,10 +32,7 @@ const SurveyorContainer = () => {
             <Route path="dashboard" element={<Dashboard />}></Route>
             <Route path="account" element={<Account />}></Route>
             <Route path="house/:id" element={<HouseProfile />}></Route>
-            <Route
-              path="survey/:uid"
-              element={<SurveyVisit readOnly />}
-            ></Route>
+            <Route path="survey/:uid" element={<SurveyVisit />}></Route>
             <Route path="/*" element={<Navigate to="/surveyor/dashboard" />} />
           </Route>
           <Route path="inactive" element={<InactiveSurveyor />} />

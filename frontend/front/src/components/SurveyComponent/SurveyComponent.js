@@ -14,7 +14,6 @@ import { useDebouncedCallback } from "use-debounce";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useGetSurveyStructureQuery } from "../../api/apiSlice";
-import ConfirmationModal from "../../components/confirmationModal/ConfirmationModal";
 import { AddressComponent } from "../AddressUtils";
 import Loader from "../Loader";
 import { HeatPumpRadio } from "./HeatPumpRadio";
@@ -30,12 +29,10 @@ const SurveyComponent = ({
   submitSurvey,
   isLoading,
   activeHome,
-  isEditable,
   surveyId,
   formSpacing,
   formDefault,
   surveyStructure,
-  onDelete,
   readOnly,
   styles = {},
   conditionalRender,
@@ -46,15 +43,6 @@ const SurveyComponent = ({
   const { handleSubmit, reset, control, watch, setValue } = useForm({
     defaultValues: formDefault,
   });
-
-  const [isEditing, setIsEditing] = useState(!isEditable);
-
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-
-  const isDisabled = useMemo(
-    () => isEditable && !isEditing,
-    [isEditing, isEditable]
-  );
 
   const cacheKey = useMemo(
     () => buildSurveyCacheKey(surveyId, activeHome.id),
@@ -138,83 +126,19 @@ const SurveyComponent = ({
     [formDefault, reset, isLoading]
   );
 
-  const adminButtonsViewing = useCallback(
+  const backButton = useCallback(
     () => (
       <>
-        <Button
-          type="button"
-          variant="contained"
-          onClick={(e) => {
-            e.preventDefault();
-            setIsEditing(true);
-          }}
-        >
-          {"EDIT"}
-        </Button>
         <Button variant="outlined" type="button" onClick={() => navigate(-1)}>
           {"BACK"}
-        </Button>
-        <Button
-          variant="outlined"
-          type="button"
-          color="error"
-          onClick={(e) => {
-            e.preventDefault();
-            setIsDeleteModalOpen(true);
-          }}
-        >
-          {"DELETE"}
         </Button>
       </>
     ),
     [navigate]
   );
 
-  const adminButtonsEditing = useCallback(
-    () => (
-      <>
-        <Button
-          variant="contained"
-          type="submit"
-          onClick={() => {
-            // no preventDefault here, we want to do the submit and ALSO setIsEditing(false)
-            setIsEditing(false);
-          }}
-        >
-          {"SAVE"}
-        </Button>
-        <Button
-          variant="outlined"
-          type="button"
-          color="error"
-          onClick={(e) => {
-            e.preventDefault();
-            reset(formDefault);
-            setIsEditing(false);
-          }}
-        >
-          {"CANCEL"}
-        </Button>
-      </>
-    ),
-    [formDefault, reset]
-  );
-
   return (
     <>
-      <ConfirmationModal
-        isOpen={isDeleteModalOpen}
-        handleConfirm={() => {
-          if (onDelete) {
-            onDelete();
-          }
-        }}
-        handleCancel={() => setIsDeleteModalOpen(false)}
-        confirmBtnText="Delete"
-        cancelBtnText="Cancel"
-        title="Confirm Delete"
-        message={`Are you sure you want to delete this survey data?`}
-      />
       <AddressComponent home={activeHome} />
       <form
         onSubmit={handleSubmit(async (surveyData) => {
@@ -245,7 +169,7 @@ const SurveyComponent = ({
                         value: o,
                         label: o,
                       }))}
-                      disabled={isDisabled}
+                      disabled={readOnly}
                       styles={styles}
                     />
                   );
@@ -256,7 +180,7 @@ const SurveyComponent = ({
                       control={control}
                       name={`${q.id}`}
                       label={q.question}
-                      disabled={isDisabled}
+                      disabled={readOnly}
                       disableFancyLabel
                       styles={styles}
                     />
@@ -288,11 +212,7 @@ const SurveyComponent = ({
           })}
           <Stack direction="row" justifyContent="center" spacing={2}>
             {isLoading && <Loader />}
-            {!readOnly && isEditable
-              ? isEditing
-                ? adminButtonsEditing()
-                : adminButtonsViewing()
-              : !readOnly && commonButtonSection()}
+            {readOnly ? backButton() : commonButtonSection()}
           </Stack>
         </Stack>
         <Snackbar open={saving} autoHideDuration={1000} onClose={closeSnackbar}>
