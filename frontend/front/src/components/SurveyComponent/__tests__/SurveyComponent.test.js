@@ -51,7 +51,6 @@ describe("SurveyComponent", () => {
         submitSurvey={jest.fn()}
         isLoading={false}
         activeHome={DEFAULT_TEST_HOME}
-        isEditable={false}
         surveyId={DEFAULT_TEST_SURVEY.id}
         formSpacing={5}
       />,
@@ -71,7 +70,6 @@ describe("SurveyComponent", () => {
         submitSurvey={jest.fn()}
         isLoading={false}
         activeHome={DEFAULT_TEST_HOME}
-        isEditable={false}
         surveyId={DEFAULT_TEST_SURVEY.id}
         formSpacing={5}
       />,
@@ -104,7 +102,6 @@ describe("SurveyComponent", () => {
         submitSurvey={mockSubmit}
         isLoading={false}
         activeHome={DEFAULT_TEST_HOME}
-        isEditable={false}
         surveyId={DEFAULT_TEST_SURVEY.id}
         formSpacing={5}
       />,
@@ -134,7 +131,6 @@ describe("SurveyComponent", () => {
         submitSurvey={mockSubmit}
         isLoading={false}
         activeHome={DEFAULT_TEST_HOME}
-        isEditable={false}
         surveyId={DEFAULT_TEST_SURVEY.id}
         formSpacing={5}
       />,
@@ -156,7 +152,6 @@ describe("SurveyComponent", () => {
         submitSurvey={jest.fn()}
         isLoading={false}
         activeHome={DEFAULT_TEST_HOME}
-        isEditable={false}
         surveyId={DEFAULT_TEST_SURVEY.id}
         formSpacing={5}
       />,

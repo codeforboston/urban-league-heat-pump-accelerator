@@ -197,26 +197,6 @@ export const apiSlice = createApi({
         { type: "Home", id: arg.surveyVisit.home_id },
       ],
     }),
-    updateSurveyVisit: builder.mutation({
-      query: ({ id, body }) => {
-        return {
-          url: `/survey_visits/${id}`,
-          method: "PUT",
-          body,
-        };
-      },
-      invalidatesTags: (result, error, arg) => [
-        { type: "SurveyVisit", id: arg.id },
-      ],
-    }),
-    deleteSurveyVisit: builder.mutation({
-      query: (id) => ({
-        url: `/survey_visits/${id}`,
-        method: "DELETE",
-      }),
-      invalidatesTags: ["SurveyVisit"],
-    }),
-
     /* Survey response endpoints */
     getSurveyResponses: builder.query({
       query: () => ({ url: "/survey_responses", method: "GET" }),
@@ -485,8 +465,6 @@ export const {
 
   // Survey visit
   useCreateSurveyVisitMutation,
-  useUpdateSurveyVisitMutation,
-  useDeleteSurveyVisitMutation,
   useGetSurveyVisitsQuery,
   useGetSurveyVisitQuery,
 

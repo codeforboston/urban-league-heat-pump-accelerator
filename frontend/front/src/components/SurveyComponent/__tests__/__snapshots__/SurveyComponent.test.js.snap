@@ -4,9 +4,6 @@ exports[`SurveyComponent no errors when rendering 1`] = `
 <div>
   <div>
     <div
-      class="MuiBox-root css-0"
-    />
-    <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1mbnk9w-MuiPaper-root-MuiCard-root"
     >
       <div
