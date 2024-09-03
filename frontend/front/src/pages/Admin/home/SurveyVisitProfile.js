@@ -1,7 +1,6 @@
 import { Container, Typography } from "@mui/material";
 import React, { useMemo } from "react";
 import {
-  useGetHomeQuery,
   useGetSurveyStructureQuery,
   useGetSurveyVisitQuery,
 } from "../../../api/apiSlice";
@@ -19,28 +18,22 @@ const SurveyProfile = () => {
   const { data: surveyVisit, error: surveyVisitError } =
     useGetSurveyVisitQuery(surveyVisitId);
 
-  const { data: houseData, error: houseError } = useGetHomeQuery(
-    surveyVisit?.home_id,
-    { skip: !surveyVisit }
-  );
-
   const { data: { survey_questions: surveyQuestions } = {} } =
     useGetSurveyStructureQuery(surveyVisit?.survey_response?.survey_id, {
       skip: !surveyVisit,
     });
 
   const title = useMemo(
-    () =>
-      surveyVisit && houseData ? `${houseToString(houseData)}` : "Loading...",
-    [houseData, surveyVisit]
+    () => (surveyVisit ? `${houseToString(surveyVisit.home)}` : "Loading..."),
+    [surveyVisit]
   );
 
   const completedTime = useMemo(
     () =>
-      surveyVisit && houseData
+      surveyVisit
         ? `Completed at: ${formatISODate(surveyVisit.created_at)}`
         : "Loading...",
-    [houseData, surveyVisit]
+    [surveyVisit]
   );
 
   const surveyAnswers = useMemo(
@@ -62,14 +55,14 @@ const SurveyProfile = () => {
       <Typography variant="subtitle1" mt={2}>
         {completedTime}
       </Typography>
-      {surveyVisit && houseData ? (
+      {surveyVisit ? (
         <AdminSurvey
           defaultData={surveyAnswers}
-          activeHome={houseData}
+          activeHome={surveyVisit.home}
           surveyId={surveyVisit.survey_response.survey_id}
           readOnly
         />
-      ) : surveyVisitError || houseError ? (
+      ) : surveyVisitError ? (
         <SurveyError />
       ) : (
         <Loader />
