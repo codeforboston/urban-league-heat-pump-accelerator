@@ -1,10 +1,6 @@
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { React, useMemo } from "react";
-import {
-  useGetHomesQuery,
-  useGetSurveyVisitsQuery,
-  useGetSurveyorsQuery,
-} from "../../../api/apiSlice";
+import { useGetSurveyVisitsQuery } from "../../../api/apiSlice";
 import { formatISODate } from "../../../components/DateUtils";
 import Loader from "../../../components/Loader";
 import {
@@ -40,12 +36,6 @@ const COLUMNS = [
     minWidth: 155,
     flex: 1.5,
   },
-  {
-    field: "lastUpdated",
-    headerName: "Last Updated",
-    minWidth: 155,
-    flex: 1.5,
-  },
 ];
 
 const SurveyTable = () => {
@@ -62,18 +52,6 @@ const SurveyTable = () => {
     isLoading: surveyVisitsLoading,
   } = useGetSurveyVisitsQuery();
 
-  const {
-    data: surveyorList,
-    error: surveyorListError,
-    isLoading: surveyorListIsLoading,
-  } = useGetSurveyorsQuery();
-
-  const {
-    data: homeList,
-    error: homeListError,
-    isLoading: homeListIsLoading,
-  } = useGetHomesQuery();
-
   const addressFormatter = (homeData) => {
     if (!homeData?.unit_number || homeData?.unit_number === "") {
       return `${homeData?.street_number} ${homeData?.street_name}`;
@@ -85,32 +63,31 @@ const SurveyTable = () => {
   const tableData = useMemo(
     () =>
       surveyVisitsData?.map((survey) => {
-        const surveyorData = surveyorList?.find(
-          (surveyor) => surveyor?.id === survey?.surveyor_id
-        );
-        const surveyorName = `${surveyorData?.firstname} ${surveyorData?.lastname}`;
-        const homeData = homeList?.find((home) => home?.id === survey?.home_id);
+        const surveyorName = survey.surveyor_id
+          ? `${survey?.surveyor?.firstname ?? ""} ${
+              survey?.surveyor?.lastname ?? ""
+            }`
+          : "Public Submission";
         return {
           id: survey?.id,
-          home_address: addressFormatter(homeData),
-          city: homeData?.city,
+          home_address: addressFormatter(survey?.home),
+          city: survey?.home?.city,
           surveyor: surveyorName,
           created: formatISODate(survey?.created_at),
-          lastUpdated: formatISODate(survey?.updated_at),
         };
       }) || [],
-    [surveyVisitsData, surveyorList, homeList]
+    [surveyVisitsData]
   );
 
   const onRowClick = (row) => {
     goToBreadcrumb("surveyVisit", row.row);
   };
 
-  if (surveyVisitsLoading || surveyorListIsLoading || homeListIsLoading) {
+  if (surveyVisitsLoading) {
     return <Loader />;
   }
 
-  if (surveyVisitsError || surveyorListError || homeListError) {
+  if (surveyVisitsError) {
     return <SurveyError />;
   }
   return (
