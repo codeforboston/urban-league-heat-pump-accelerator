@@ -10,6 +10,7 @@ import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
 import { useAssignmentsForCurrentUser } from "../../../hooks/useDataForSurveyor";
 import AssignmentUnit from "./AssignmentUnit";
+import LocationPermission from "./LocationPermission";
 
 const ListView = () => {
   const {
@@ -49,6 +50,7 @@ const ListView = () => {
         <Box>
           <Stack my={3} alignItems="center">
             <Typography variant="h4">Your Assignments</Typography>
+            <LocationPermission />
             {(!assignmentsData || assignmentsData.length === 0) && (
               <Typography variant="h5">No assignments found.</Typography>
             )}

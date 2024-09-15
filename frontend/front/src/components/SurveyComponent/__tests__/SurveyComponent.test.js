@@ -20,7 +20,6 @@ const DEFAULT_TEST_SURVEY_CACHE_KEY = buildSurveyCacheKey(
 );
 const DEFAULT_TEST_DEFAULT_SURVEY_DATA =
   buildDefaultDataFromSurveyStructure(DEFAULT_TEST_SURVEY);
-
 describe("SurveyComponent", () => {
   beforeEach(() => {
     jest.spyOn(router, "useNavigate").mockImplementation(() => jest.fn());
@@ -94,8 +93,23 @@ describe("SurveyComponent", () => {
         3: "some text",
       })
     );
+    const mockGeolocation = {
+      getCurrentPosition: jest.fn().mockImplementationOnce((success) =>
+        Promise.resolve(
+          success({
+            coords: {
+              latitude: 51.1,
+              longitude: 45.3,
+            },
+          })
+        )
+      ),
+    };
+    global.navigator.geolocation = mockGeolocation;
 
-    const mockSubmit = jest.fn(() => Promise.resolve({ data: "success!" }));
+    const mockSubmit = jest.fn(async () =>
+      Promise.resolve({ data: "success!" })
+    );
 
     render(
       <SurveyComponent
@@ -123,6 +137,19 @@ describe("SurveyComponent", () => {
         3: "some text",
       })
     );
+    const mockGeolocation = {
+      getCurrentPosition: jest.fn().mockImplementationOnce((success) =>
+        Promise.resolve(
+          success({
+            coords: {
+              latitude: 51.1,
+              longitude: 45.3,
+            },
+          })
+        )
+      ),
+    };
+    global.navigator.geolocation = mockGeolocation;
 
     const mockSubmit = jest.fn(() => Promise.resolve({ error: "oh no!" }));
 

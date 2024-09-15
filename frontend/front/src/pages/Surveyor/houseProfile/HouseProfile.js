@@ -1,18 +1,18 @@
 import { Alert, Container, Snackbar } from "@mui/material";
 import React, { useCallback, useEffect, useMemo } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useCreateSurveyVisitMutation,
   useGetHomeQuery,
 } from "../../../api/apiSlice";
-import { useNavigate, useParams } from "react-router-dom";
 
+import { useSelector } from "react-redux";
 import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import Loader from "../../../components/Loader";
-import { SurveyorSurvey } from "../Components/SurveyorSurvey";
-import { buildSurveyVisitData } from "../../../util/surveyUtils";
-import { selectCurrentUser } from "../../../features/login/loginSlice";
-import { useSelector } from "react-redux";
 import SurveyErrorDialog from "../../../components/SurveyComponent/SurveyErrorDialog";
+import { selectCurrentUser } from "../../../features/login/loginSlice";
+import { buildSurveyVisitData } from "../../../util/surveyUtils";
+import { SurveyorSurvey } from "../Components/SurveyorSurvey";
 
 const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
@@ -46,13 +46,14 @@ const HouseProfile = () => {
   }, [homeId, isSurveyVisitSuccess, navigate]);
 
   const submitSurvey = useCallback(
-    async (answers, surveyId) => {
+    async (answers, surveyId, _, __, surveyorPosition) => {
       const surveyVisit = await addSurveyVisit({
         surveyVisit: buildSurveyVisitData(
           answers,
           homeId,
           surveyId,
-          surveyorId
+          surveyorId,
+          surveyorPosition
         ),
       });
       return surveyVisit;

@@ -6,21 +6,21 @@ import React, {
   useMemo,
   useState,
 } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useDebouncedCallback } from "use-debounce";
+import { useGetSurveyStructureQuery } from "../../api/apiSlice";
 import {
   buildDefaultDataFromSurveyStructure,
   buildSurveyCacheKey,
+  surveyRenderRules,
 } from "../../util/surveyUtils";
-import { useDebouncedCallback } from "use-debounce";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useGetSurveyStructureQuery } from "../../api/apiSlice";
 import { AddressComponent } from "../AddressUtils";
 import Loader from "../Loader";
+import ConditionalQuestion from "./ConditionalQuestion";
 import { HeatPumpRadio } from "./HeatPumpRadio";
 import { HeatPumpTextField } from "./HeatPumpTextField";
 import { SurveyError } from "./SurveyStructureError";
-import { surveyRenderRules } from "../../util/surveyUtils";
-import ConditionalQuestion from "./ConditionalQuestion";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
@@ -39,6 +39,7 @@ const SurveyComponent = ({
 }) => {
   const navigate = useNavigate();
   const [saving, setSaving] = useState(false);
+  const [errSnackBarOpen, setErrSnackBarOpen] = useState(false);
 
   const { handleSubmit, reset, control, watch, setValue } = useForm({
     defaultValues: formDefault,
@@ -100,6 +101,10 @@ const SurveyComponent = ({
     setSaving(false);
   };
 
+  const closeErrSnackBar = () => {
+    setErrSnackBarOpen(false);
+  };
+
   const commonButtonSection = useCallback(
     () => (
       <>
@@ -137,23 +142,52 @@ const SurveyComponent = ({
     [navigate]
   );
 
+  const getLocationCoords = () => {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const crd = pos.coords;
+
+          resolve({ latitude: crd.latitude, longitude: crd.longitude });
+        },
+        (err) => {
+          if (err.code === 1) {
+            reject({ error_code: err.code, message: err.message });
+          } else {
+            resolve({ latitude: "not available", longitude: "not available" });
+          }
+        }
+      );
+    });
+  };
+
+  const surveySubmit = async (surveyData) => {
+    try {
+      const surveyorPosition = await getLocationCoords();
+      const { data } = await submitSurvey(
+        surveyData,
+        surveyId,
+        activeHome.id,
+        clearCache,
+        surveyorPosition
+      );
+      if (!!data) {
+        // clear cache data if survey submission succeeds
+        clearCache();
+        setErrSnackBarOpen(false);
+      }
+    } catch (err) {
+      if (err.error_code === 1 && err.message === "User denied Geolocation") {
+        setErrSnackBarOpen(true);
+        return;
+      }
+    }
+  };
+
   return (
     <>
       <AddressComponent home={activeHome} />
-      <form
-        onSubmit={handleSubmit(async (surveyData) => {
-          const { data } = await submitSurvey(
-            surveyData,
-            surveyId,
-            activeHome.id,
-            clearCache
-          );
-          if (!!data) {
-            // clear cache data if survey submission succeeds
-            clearCache();
-          }
-        })}
-      >
+      <form onSubmit={handleSubmit(surveySubmit)}>
         <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
           {surveyStructure?.survey_questions.map((q) => {
             const renderInput = () => {
@@ -218,6 +252,15 @@ const SurveyComponent = ({
         <Snackbar open={saving} autoHideDuration={1000} onClose={closeSnackbar}>
           <Alert onClose={closeSnackbar} severity="success" variant="filled">
             Survey saved
+          </Alert>
+        </Snackbar>
+        <Snackbar open={errSnackBarOpen} onClose={closeErrSnackBar}>
+          <Alert onClose={closeErrSnackBar} severity="error" variant="filled">
+            Oops! It looks like there was an issue submitting your survey
+            <br />
+            because location permissions were denied.
+            <br /> Please enable location access and try submitting the survey
+            again.
           </Alert>
         </Snackbar>
       </form>
