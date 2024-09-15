@@ -26,7 +26,13 @@ export const buildDataFromSurveyAnswers = (
   return data;
 };
 
-export const buildSurveyVisitData = (answers, homeId, surveyId, surveyorId) => {
+export const buildSurveyVisitData = (
+  answers,
+  homeId,
+  surveyId,
+  surveyorId,
+  surveyorPosition
+) => {
   // build answers object
   const answersObject = {};
   Object.entries(answers).forEach(([key, value]) => {
@@ -37,11 +43,12 @@ export const buildSurveyVisitData = (answers, homeId, surveyId, surveyorId) => {
       };
     }
   });
-
   return {
     survey_visit: {
       home_id: homeId,
       surveyor_id: surveyorId,
+      latitude: `${surveyorPosition.latitude.toString()}`,
+      longitude: `${surveyorPosition.longitude.toString()}`,
       survey_response_attributes: {
         survey_id: surveyId,
         survey_answers_attributes: answersObject,
