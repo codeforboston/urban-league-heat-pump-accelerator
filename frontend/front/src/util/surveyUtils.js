@@ -1,3 +1,15 @@
+// Current supported survey languages
+const supportedLanguages = ["en"];
+
+export const validateLanguage = () => {
+  const langPref = localStorage.getItem("langPref");
+  if (typeof langPref !== "string") {
+    return "en";
+  }
+  const generalLang = langPref.split("-")[0];
+  return supportedLanguages.includes(generalLang) ? generalLang : "en";
+};
+
 export const buildSurveyCacheKey = (surveyId, homeId) =>
   `survey${surveyId}-home${homeId}`;
 
