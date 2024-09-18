@@ -17,10 +17,10 @@ const LangPrefDropdown = () => {
   const location = useLocation();
 
   const langMap = {
-    "en-us": `🇺🇸 ${t("public.global-labels.locales.english")}`,
-    "ht-cr": `🇭🇹 ${t("public.global-labels.locales.creole")}`,
-    "pt-br": `🇧🇷 ${t("public.global-labels.locales.portuguese")}`,
-    "es-us": `🇪🇸 ${t("public.global-labels.locales.spanish")}`,
+    "en-US": `🇺🇸 ${t("public.global-labels.locales.english")}`,
+    "ht-CR": `🇭🇹 ${t("public.global-labels.locales.creole")}`,
+    "pt-BR": `🇧🇷 ${t("public.global-labels.locales.portuguese")}`,
+    "es-US": `🇪🇸 ${t("public.global-labels.locales.spanish")}`,
   };
 
   useEffect(() => {
@@ -32,15 +32,15 @@ const LangPrefDropdown = () => {
     const isPublicRoute = location.pathname.includes("public");
 
     if (isPublicRoute) {
-      // Get language preference from localStorage or default to 'en-us'
-      queryLang = localStorage.getItem("langPref") || "en-us";
+      // Get language preference from localStorage or default to 'en-US'
+      queryLang = localStorage.getItem("langPref") || "en-US";
 
       if (!localStorage.getItem("langPref")) {
-        localStorage.setItem("langPref", "en-us");
+        localStorage.setItem("langPref", "en-US");
       }
 
       // Update or remove 'langPref' query param based on language
-      if (queryLang !== "en-us") {
+      if (queryLang !== "en-US") {
         params.set("langPref", queryLang);
       } else {
         params.delete("langPref");
@@ -85,7 +85,7 @@ const LangPrefDropdown = () => {
 
     // Update or remove 'langPref' query param based on route and language
     if (url.pathname.includes("public")) {
-      if (lang !== "en-us") {
+      if (lang !== "en-US") {
         url.searchParams.set("langPref", lang);
       } else {
         url.searchParams.delete("langPref");

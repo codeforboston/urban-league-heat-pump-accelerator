@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { AUTHORIZATION_HEADER } from "../features/login/loginUtils";
 import { transformSurveyorKeys } from "../features/surveyor/surveyorUtils";
+import { validateLanguage } from "../util/surveyUtils";
 
 const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
@@ -140,10 +141,14 @@ export const apiSlice = createApi({
       ],
     }),
     getSurveyStructure: builder.query({
-      query: (id) => ({
-        url: `/surveys/${id}`,
-        method: "GET",
-      }),
+      query: (id) => {
+        const validatedLangPref = validateLanguage();
+        return {
+          url: `/surveys/${id}`,
+          method: "GET",
+          params: { langPref: validatedLangPref },
+        };
+      },
       providesTags: (result, error, arg) => [{ type: "Survey", id: arg }],
     }),
     createSurvey: builder.mutation({
