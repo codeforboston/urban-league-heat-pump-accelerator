@@ -32,7 +32,7 @@ module SeedImporter
             LocalizedSurveyQuestion.new({
                                           text: data_hash[:text],
                                           response_options: data_hash[:response_options],
-                                          language_code: 'en'
+                                          language_code: 'en-US'
                                         })
           ]
         }
