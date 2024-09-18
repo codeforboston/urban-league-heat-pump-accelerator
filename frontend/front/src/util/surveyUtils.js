@@ -6,8 +6,7 @@ export const validateLanguage = () => {
   if (typeof langPref !== "string") {
     return "en-US";
   }
-  const generalLang = langPref.split("-")[0];
-  return supportedLanguages.includes(generalLang) ? generalLang : "en-US";
+  return supportedLanguages.includes(langPref) ? langPref : "en-US";
 };
 
 export const buildSurveyCacheKey = (surveyId, homeId) =>
