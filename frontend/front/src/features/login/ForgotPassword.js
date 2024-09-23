@@ -50,7 +50,7 @@ export default function ForgotPassword() {
         </Grid>
         <TextField
           placeholder="Enter Email"
-          type="text"
+          type="email"
           style={btnstyle}
           name="text"
           fullWidth

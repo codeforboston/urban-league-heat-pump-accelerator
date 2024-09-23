@@ -103,7 +103,7 @@ const Login = () => {
           <TextField
             id="user-email"
             placeholder="Enter Email"
-            type="text"
+            type="email"
             style={btnstyle}
             name="email"
             fullWidth
