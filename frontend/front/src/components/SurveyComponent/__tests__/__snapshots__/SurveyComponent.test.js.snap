@@ -653,7 +653,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                 class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
                 id="8-textField"
                 name="8"
-                type="text"
+                type="email"
                 value=""
               />
             </div>
@@ -669,7 +669,6 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           />
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
-            data-testid="9"
           >
             <div
               class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
@@ -679,7 +678,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                 class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
                 id="9-textField"
                 name="9"
-                type="text"
+                type="tel"
                 value=""
               />
             </div>
@@ -1404,7 +1403,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                 class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
                 id="16-textField"
                 name="16"
-                type="text"
+                type="email"
                 value=""
               />
             </div>
@@ -1420,7 +1419,6 @@ exports[`SurveyComponent no errors when rendering 1`] = `
           />
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
-            data-testid="17"
           >
             <div
               class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
@@ -1430,7 +1428,7 @@ exports[`SurveyComponent no errors when rendering 1`] = `
                 class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
                 id="17-textField"
                 name="17"
-                type="text"
+                type="tel"
                 value=""
               />
             </div>
