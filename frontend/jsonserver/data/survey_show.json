@@ -55,14 +55,14 @@
       "id": 8,
       "display_order": 8,
       "text": "If yes, please confirm your email address",
-      "response_type": "text",
+      "response_type": "email",
       "response_options": []
     },
     {
       "id": 9,
       "display_order": 9,
       "text": "If yes, please confirm your phone number",
-      "response_type": "text",
+      "response_type": "tel",
       "response_options": []
     },
     {
@@ -118,14 +118,14 @@
       "id": 16,
       "display_order": 16,
       "text": "If yes, please confirm your email address",
-      "response_type": "text",
+      "response_type": "email",
       "response_options": []
     },
     {
       "id": 17,
       "display_order": 17,
       "text": "If yes, please confirm your phone number",
-      "response_type": "text",
+      "response_type": "tel",
       "response_options": []
     }
   ],
