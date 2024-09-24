@@ -18,6 +18,7 @@ import {
 import { AddressComponent } from "../AddressUtils";
 import Loader from "../Loader";
 import ConditionalQuestion from "./ConditionalQuestion";
+import { HeatPumpPhoneField } from "./HeatPumpPhoneField";
 import { HeatPumpRadio } from "./HeatPumpRadio";
 import { HeatPumpTextField } from "./HeatPumpTextField";
 import { SurveyError } from "./SurveyStructureError";
@@ -205,9 +206,11 @@ const SurveyComponent = ({
                       }))}
                       disabled={readOnly}
                       styles={styles}
+                      readOnly={readOnly}
                     />
                   );
                 case "text":
+                case "email":
                   return (
                     <HeatPumpTextField
                       key={`q${q.id}`}
@@ -217,6 +220,21 @@ const SurveyComponent = ({
                       disabled={readOnly}
                       disableFancyLabel
                       styles={styles}
+                      type={q.response_type}
+                      readOnly={readOnly}
+                    />
+                  );
+                case "tel":
+                  return (
+                    <HeatPumpPhoneField
+                      key={`q${q.id}`}
+                      control={control}
+                      name={`${q.id}`}
+                      label={q.question}
+                      disabled={readOnly}
+                      disableFancyLabel
+                      styles={styles}
+                      readOnly={readOnly}
                     />
                   );
                 default:
