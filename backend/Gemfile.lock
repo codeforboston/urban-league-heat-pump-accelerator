@@ -280,6 +280,13 @@ GEM
       rubocop (>= 1.33.0, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
     ruby-progressbar (1.13.0)
+    ruby2_keywords (0.0.5)
+    ruby_http_client (3.5.5)
+    sendgrid-actionmailer (3.2.0)
+      mail (~> 2.7)
+      sendgrid-ruby (~> 6.4)
+    sendgrid-ruby (6.6.2)
+      ruby_http_client (~> 3.4)
     smarter_csv (1.12.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -344,6 +351,7 @@ DEPENDENCIES
   rspec-rails (~> 6.0.0)
   rubocop
   rubocop-rails
+  sendgrid-actionmailer
   smarter_csv
   sprockets-rails
   sucker_punch (~> 3.0)
