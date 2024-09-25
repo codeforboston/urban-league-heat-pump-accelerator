@@ -19,7 +19,7 @@ class SurveysController < ApplicationController
     return unless @survey.survey_questions.first.localized_survey_questions.find_by(language_code: @language_code).nil?
     
     respond_to do |format|
-      format.json { render :show, status: :404, error: "{ \"status\": \"Survey question #{@survey.id} does not have localization #{@language_code}\" }" }
+      format.json { render :show, status: :404, error: "{ \"status\": \"Survey #{@survey.id} does not have localization #{@language_code}\" }" }
     end
   end
 
