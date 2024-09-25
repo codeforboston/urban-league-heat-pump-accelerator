@@ -23,7 +23,7 @@ RSpec.describe '/assignments', type: :request do
   let!(:user) { FactoryBot.create(:user) }
   let!(:home) { FactoryBot.create(:home) }
   let!(:surveyor) do
-    FactoryBot.create(:surveyor, user:) do |surveyor|
+    FactoryBot.create(:surveyor, user: user) do |surveyor|
       FactoryBot.create_list(:assignment, 1, surveyors: [surveyor])
       home.update(assignment: surveyor.assignments[0], visit_order: 1)
     end

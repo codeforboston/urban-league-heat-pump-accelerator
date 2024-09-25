@@ -18,8 +18,12 @@ class SurveysController < ApplicationController
     # (No need to check all questions for this localization)
     return unless @survey.survey_questions.first.localized_survey_questions.find_by(language_code: @language_code).nil?
 
-    raise StandardError,
-          "Survey question #{@survey.id} does not have localization '#{@language_code}'"
+    respond_to do |format|
+      format.json do
+        render json: "{ \"status\": \"Survey #{@survey.id} does not have localization #{@language_code}\" }",
+               status: :not_found
+      end
+    end
   end
 
   # GET /surveys/new
