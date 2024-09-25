@@ -20,7 +20,8 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       format.json do
-        render json: "{ \"status\": \"Survey #{@survey.id} does not have localization #{@language_code}\" }", status: :not_found
+        render json: "{ \"status\": \"Survey #{@survey.id} does not have localization #{@language_code}\" }",
+               status: :not_found
       end
     end
   end

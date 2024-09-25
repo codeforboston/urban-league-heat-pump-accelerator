@@ -41,7 +41,7 @@ class SurveyorPolicy < ApplicationPolicy
       if user&.admin?
         scope.all
       else
-        scope.where(user:)
+        scope.where(user: user)
       end
     end
 
