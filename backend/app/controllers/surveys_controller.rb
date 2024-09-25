@@ -1,17 +1,18 @@
 # frozen_string_literal: true
 
 class SurveysController < ApplicationController
-  AVAILABLE_LANGUAGES = %w[en es fr-ht pt-br].freeze
   before_action :set_survey, only: %i[show edit update destroy]
 
   # GET /surveys or /surveys.json
   def index
-    @surveys = Survey.includes(:survey_questions).all
+    @surveys = policy_scope(Survey).includes(:survey_questions).all
   end
 
   # GET /surveys/1 or /surveys/1.json
   def show
-    @language_code = (params[:langPref].presence || http_accept_language.preferred_language_from(AVAILABLE_LANGUAGES))
+    @language_code = params[:langPref] || http_accept_language.preferred_language_from(
+      @survey.survey_questions.first.localized_survey_questions.distinct.pluck(:language_code)
+    )
 
     # If first question of survey doesn't have this localization, then throw exception
     # (No need to check all questions for this localization)
@@ -32,6 +33,7 @@ class SurveysController < ApplicationController
   # POST /surveys or /surveys.json
   def create
     @survey = Survey.new(survey_params)
+    authorize @survey
 
     respond_to do |format|
       if @survey.save
@@ -67,6 +69,7 @@ class SurveysController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_survey
     @survey = Survey.find(params[:id])
+    authorize @survey
   end
 
   # Only allow a list of trusted parameters through.

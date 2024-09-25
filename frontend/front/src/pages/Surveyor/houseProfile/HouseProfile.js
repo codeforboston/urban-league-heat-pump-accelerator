@@ -1,17 +1,18 @@
 import { Alert, Container, Snackbar } from "@mui/material";
 import React, { useCallback, useEffect, useMemo } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useCreateSurveyVisitMutation,
   useGetHomeQuery,
 } from "../../../api/apiSlice";
-import { useNavigate, useParams } from "react-router-dom";
 
+import { useSelector } from "react-redux";
 import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import Loader from "../../../components/Loader";
-import { SurveyorSurvey } from "../Components/SurveyorSurvey";
-import { buildSurveyVisitData } from "../../../util/surveyUtils";
+import SurveyErrorDialog from "../../../components/SurveyComponent/SurveyErrorDialog";
 import { selectCurrentUser } from "../../../features/login/loginSlice";
-import { useSelector } from "react-redux";
+import { buildSurveyVisitData } from "../../../util/surveyUtils";
+import { SurveyorSurvey } from "../Components/SurveyorSurvey";
 
 const STEP_LOADING = "PHASE_LOADING";
 const STEP_HOME_ERROR = "PHASE_HOME_ERROR";
@@ -45,13 +46,14 @@ const HouseProfile = () => {
   }, [homeId, isSurveyVisitSuccess, navigate]);
 
   const submitSurvey = useCallback(
-    async (answers, surveyId) => {
+    async (answers, surveyId, _, __, surveyorPosition) => {
       const surveyVisit = await addSurveyVisit({
         surveyVisit: buildSurveyVisitData(
           answers,
           homeId,
           surveyId,
-          surveyorId
+          surveyorId,
+          surveyorPosition
         ),
       });
       return surveyVisit;
@@ -86,12 +88,12 @@ const HouseProfile = () => {
           activeHome={homeData}
         />
       </HeatPumpFade>
-      <Snackbar open={!!surveyVisitError}>
-        <Alert severity="error">{"Error submitting survey."}</Alert>
-      </Snackbar>
-      <Snackbar open={!!homeError}>
-        <Alert severity="error">{"Error retrieving home data."}</Alert>
-      </Snackbar>
+      <SurveyErrorDialog open={!!surveyVisitError} handleAgree={submitSurvey} />
+      {!isHomeLoading && !homeData && (
+        <Snackbar open={!!homeError}>
+          <Alert severity="error">{"Error retrieving home data."}</Alert>
+        </Snackbar>
+      )}
     </Container>
   );
 };

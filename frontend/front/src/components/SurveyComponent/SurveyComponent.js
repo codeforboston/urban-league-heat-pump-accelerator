@@ -1,4 +1,4 @@
-import { Alert, Button, Stack } from "@mui/material";
+import { Alert, Button, Snackbar, Stack } from "@mui/material";
 import React, {
   forwardRef,
   useCallback,
@@ -6,20 +6,22 @@ import React, {
   useMemo,
   useState,
 } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useDebouncedCallback } from "use-debounce";
+import { useGetSurveyStructureQuery } from "../../api/apiSlice";
 import {
   buildDefaultDataFromSurveyStructure,
   buildSurveyCacheKey,
+  surveyRenderRules,
 } from "../../util/surveyUtils";
-
 import { AddressComponent } from "../AddressUtils";
-import ConfirmationModal from "../../components/confirmationModal/ConfirmationModal";
-import { HeatPumpDropdown } from "./HeatPumpDropdown";
-import { HeatPumpTextField } from "./HeatPumpTextField";
 import Loader from "../Loader";
+import ConditionalQuestion from "./ConditionalQuestion";
+import { HeatPumpPhoneField } from "./HeatPumpPhoneField";
+import { HeatPumpRadio } from "./HeatPumpRadio";
+import { HeatPumpTextField } from "./HeatPumpTextField";
 import { SurveyError } from "./SurveyStructureError";
-import { useForm } from "react-hook-form";
-import { useGetSurveyStructureQuery } from "../../api/apiSlice";
-import { useNavigate } from "react-router-dom";
 
 /*
  * Reusable survey component based on https://docs.google.com/document/d/1LPCNCUBJR8aOCEnO02x0YG3cPMg7CzThlnDzruU1KvI/edit
@@ -28,27 +30,21 @@ const SurveyComponent = ({
   submitSurvey,
   isLoading,
   activeHome,
-  isEditable,
   surveyId,
   formSpacing,
   formDefault,
   surveyStructure,
-  onDelete,
+  readOnly,
+  styles = {},
+  conditionalRender,
 }) => {
   const navigate = useNavigate();
+  const [saving, setSaving] = useState(false);
+  const [errSnackBarOpen, setErrSnackBarOpen] = useState(false);
 
-  const { handleSubmit, reset, control, watch } = useForm({
+  const { handleSubmit, reset, control, watch, setValue } = useForm({
     defaultValues: formDefault,
   });
-
-  const [isEditing, setIsEditing] = useState(!isEditable);
-
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-
-  const isDisabled = useMemo(
-    () => isEditable && !isEditing,
-    [isEditing, isEditable]
-  );
 
   const cacheKey = useMemo(
     () => buildSurveyCacheKey(surveyId, activeHome.id),
@@ -59,8 +55,8 @@ const SurveyComponent = ({
   // only use this for prepopulating the form
   const cachedData = useMemo(() => {
     const cacheDataString = localStorage.getItem(cacheKey);
-    return cacheDataString ? JSON.parse(cacheDataString) : null;
-  }, [cacheKey]);
+    return !readOnly && cacheDataString ? JSON.parse(cacheDataString) : null;
+  }, [cacheKey, readOnly]);
 
   const clearCache = useCallback(() => {
     localStorage.removeItem(cacheKey);
@@ -76,20 +72,49 @@ const SurveyComponent = ({
     }
   }, [cachedData, formDefault, reset]);
 
+  // Create a debounced version of saving snackbar
+  const debouncedSetSaving = useDebouncedCallback(
+    (value) => {
+      setSaving(value);
+    },
+    // delay in ms, adjust as needed
+    3000
+  );
+
   useEffect(() => {
     // function passed to watch is executed every time the form data changes
     // to update the data in the cache
     const formSubscription = watch((value) => {
       localStorage.setItem(cacheKey, JSON.stringify(value));
+      debouncedSetSaving(true);
     });
 
-    return () => formSubscription.unsubscribe();
-  }, [cacheKey, watch]);
+    return () => {
+      formSubscription.unsubscribe();
+      debouncedSetSaving(false);
+    };
+  }, [cacheKey, watch, debouncedSetSaving]);
+
+  const closeSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSaving(false);
+  };
+
+  const closeErrSnackBar = () => {
+    setErrSnackBarOpen(false);
+  };
 
   const commonButtonSection = useCallback(
     () => (
       <>
-        <Button variant="contained" type="submit" name="submit">
+        <Button
+          variant="contained"
+          type="submit"
+          name="submit"
+          disabled={isLoading}
+        >
           {"Submit"}
         </Button>
         <Button
@@ -104,148 +129,158 @@ const SurveyComponent = ({
         </Button>
       </>
     ),
-    [formDefault, reset]
+    [formDefault, reset, isLoading]
   );
 
-  const adminButtonsViewing = useCallback(
+  const backButton = useCallback(
     () => (
       <>
-        <Button
-          type="button"
-          variant="contained"
-          onClick={(e) => {
-            e.preventDefault();
-            setIsEditing(true);
-          }}
-        >
-          {"EDIT"}
-        </Button>
         <Button variant="outlined" type="button" onClick={() => navigate(-1)}>
           {"BACK"}
-        </Button>
-        <Button
-          variant="outlined"
-          type="button"
-          color="error"
-          onClick={(e) => {
-            e.preventDefault();
-            setIsDeleteModalOpen(true);
-          }}
-        >
-          {"DELETE"}
         </Button>
       </>
     ),
     [navigate]
   );
 
-  const adminButtonsEditing = useCallback(
-    () => (
-      <>
-        <Button
-          variant="contained"
-          type="submit"
-          onClick={() => {
-            // no preventDefault here, we want to do the submit and ALSO setIsEditing(false)
-            setIsEditing(false);
-          }}
-        >
-          {"SAVE"}
-        </Button>
-        <Button
-          variant="outlined"
-          type="button"
-          color="error"
-          onClick={(e) => {
-            e.preventDefault();
-            reset(formDefault);
-            setIsEditing(false);
-          }}
-        >
-          {"CANCEL"}
-        </Button>
-      </>
-    ),
-    [formDefault, reset]
-  );
+  const getLocationCoords = () => {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const crd = pos.coords;
+
+          resolve({ latitude: crd.latitude, longitude: crd.longitude });
+        },
+        (err) => {
+          if (err.code === 1) {
+            reject({ error_code: err.code, message: err.message });
+          } else {
+            resolve({ latitude: "not available", longitude: "not available" });
+          }
+        }
+      );
+    });
+  };
+
+  const surveySubmit = async (surveyData) => {
+    try {
+      const surveyorPosition = await getLocationCoords();
+      const { data } = await submitSurvey(
+        surveyData,
+        surveyId,
+        activeHome.id,
+        clearCache,
+        surveyorPosition
+      );
+      if (!!data) {
+        // clear cache data if survey submission succeeds
+        clearCache();
+        setErrSnackBarOpen(false);
+      }
+    } catch (err) {
+      if (err.error_code === 1 && err.message === "User denied Geolocation") {
+        setErrSnackBarOpen(true);
+        return;
+      }
+    }
+  };
 
   return (
     <>
-      <ConfirmationModal
-        isOpen={isDeleteModalOpen}
-        handleConfirm={() => {
-          if (onDelete) {
-            onDelete();
-          }
-        }}
-        handleCancel={() => setIsDeleteModalOpen(false)}
-        confirmBtnText="Delete"
-        cancelBtnText="Cancel"
-        title="Confirm Delete"
-        message={`Are you sure you want to delete this survey data?`}
-      />
       <AddressComponent home={activeHome} />
-      <form
-        onSubmit={handleSubmit(async (surveyData) => {
-          const { data } = await submitSurvey(
-            surveyData,
-            surveyId,
-            activeHome.id,
-            clearCache
-          );
-          if (!!data) {
-            // clear cache data if survey submission succeeds
-            clearCache();
-          }
-        })}
-      >
+      <form onSubmit={handleSubmit(surveySubmit)}>
         <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
           {surveyStructure?.survey_questions.map((q) => {
-            switch (q.response_type) {
-              case "radio":
-                return (
-                  <HeatPumpDropdown
-                    key={`q${q.id}`}
-                    control={control}
-                    name={`${q.id}`}
-                    label={q.text}
-                    options={q.response_options.map((o) => ({
-                      value: o,
-                      label: o,
-                    }))}
-                    disabled={isDisabled}
-                    disableFancyLabel
-                  />
-                );
-              case "text":
-                return (
-                  <HeatPumpTextField
-                    key={`q${q.id}`}
-                    control={control}
-                    name={`${q.id}`}
-                    label={q.text}
-                    disabled={isDisabled}
-                    disableFancyLabel
-                  />
-                );
-              default:
-                return (
-                  <Alert
-                    key={`q${q.id}`}
-                    severity="error"
-                  >{`Invalid question type: ${q.response_type}`}</Alert>
-                );
-            }
+            const renderInput = () => {
+              switch (q.response_type) {
+                case "radio":
+                  return (
+                    <HeatPumpRadio
+                      key={`q${q.id}`}
+                      control={control}
+                      name={`${q.id}`}
+                      label={q.question}
+                      options={q.response_options.map((o) => ({
+                        value: o,
+                        label: o,
+                      }))}
+                      disabled={readOnly}
+                      styles={styles}
+                      readOnly={readOnly}
+                    />
+                  );
+                case "text":
+                case "email":
+                  return (
+                    <HeatPumpTextField
+                      key={`q${q.id}`}
+                      control={control}
+                      name={`${q.id}`}
+                      label={q.question}
+                      disabled={readOnly}
+                      disableFancyLabel
+                      styles={styles}
+                      type={q.response_type}
+                      readOnly={readOnly}
+                    />
+                  );
+                case "tel":
+                  return (
+                    <HeatPumpPhoneField
+                      key={`q${q.id}`}
+                      control={control}
+                      name={`${q.id}`}
+                      label={q.question}
+                      disabled={readOnly}
+                      disableFancyLabel
+                      styles={styles}
+                      readOnly={readOnly}
+                    />
+                  );
+                default:
+                  return (
+                    <Alert
+                      key={`q${q.id}`}
+                      severity="error"
+                    >{`Invalid question type: ${q.response_type}`}</Alert>
+                  );
+              }
+            };
+            const rule = surveyRenderRules[q.id];
+            return conditionalRender && rule ? (
+              <ConditionalQuestion
+                key={`q${q.id}`}
+                control={control}
+                rule={rule}
+                id={q.id}
+                formDefault={formDefault}
+                setValue={setValue}
+              >
+                {renderInput()}
+              </ConditionalQuestion>
+            ) : (
+              renderInput()
+            );
           })}
           <Stack direction="row" justifyContent="center" spacing={2}>
             {isLoading && <Loader />}
-            {isEditable
-              ? isEditing
-                ? adminButtonsEditing()
-                : adminButtonsViewing()
-              : commonButtonSection()}
+            {readOnly ? backButton() : commonButtonSection()}
           </Stack>
         </Stack>
+        <Snackbar open={saving} autoHideDuration={1000} onClose={closeSnackbar}>
+          <Alert onClose={closeSnackbar} severity="success" variant="filled">
+            Survey saved
+          </Alert>
+        </Snackbar>
+        <Snackbar open={errSnackBarOpen} onClose={closeErrSnackBar}>
+          <Alert onClose={closeErrSnackBar} severity="error" variant="filled">
+            Oops! It looks like there was an issue submitting your survey
+            <br />
+            because location permissions were denied.
+            <br /> Please enable location access and try submitting the survey
+            again.
+          </Alert>
+        </Snackbar>
       </form>
     </>
   );

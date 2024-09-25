@@ -5,7 +5,7 @@ class HomesController < ApplicationController
 
   # GET /homes or /homes.json
   def index
-    @homes = Home.includes(survey_visits: :survey_response).where(search_params)
+    @homes = policy_scope(Home).includes(survey_visits: :survey_response).where(search_params)
   end
 
   # GET /homes/1 or /homes/1.json
@@ -14,14 +14,13 @@ class HomesController < ApplicationController
   # GET /homes/new
   def new
     @home = Home.new
+    authorize @home
   end
-
-  # GET /homes/1/edit
-  def edit; end
 
   # POST /homes or /homes.json
   def create
     @home = Home.new(home_params)
+    authorize @home
     # By definition, a new home's address has not been canonicalized.
     @home.status = :uncanonicalized
     # If the user isn't signed in and we're creating a new home, mark as user added
@@ -61,6 +60,7 @@ class HomesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_home
     @home = Home.includes(survey_visits: :survey_response).find(params[:id])
+    authorize @home
   end
 
   # Only allow a list of trusted parameters through.

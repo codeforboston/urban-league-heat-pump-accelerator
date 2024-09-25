@@ -1,46 +1,33 @@
-import { Box, Button, Stack } from "@mui/material";
-
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import ContainerTitle from "../../Admin/component/ContainerTitle";
 import { BackButton } from "../Components/BackButton";
-import AccountDetail from "./AccountDetail";
+import { useGetSurveyorQuery } from "../../../api/apiSlice";
+import { selectCurrentUser } from "../../../features/login/loginSlice";
+import Loader from "../../../components/Loader";
+import CustomSnackbar from "../../../components/CustomSnackbar";
+import EditAccount from "../Components/EditAccount";
 
 const Account = () => {
-  const { firstName, lastName, email, address, phoneNumber } = useSelector(
-    (state) => state.account
-  );
+  const currentUser = useSelector(selectCurrentUser);
+  const {
+    data: surveyorData,
+    isLoading: isSurveyorDataLoading,
+    isError: isSurveyorError,
+  } = useGetSurveyorQuery(currentUser.id);
+
   return (
     <>
       <BackButton url="/surveyor/dashboard" description="dashboard" />
-      <ContainerTitle name="My Account">
-        <Stack direction="column" gap={1}>
-          <AccountDetail label="First Name" value={firstName} />
-          <AccountDetail label="Last Name" value={lastName} />
-          <AccountDetail label="Email" value={email} />
-          <AccountDetail label="Address" value={address} />
-          <AccountDetail label="Phone Number" value={phoneNumber} />
-        </Stack>
-
-        <Stack direction="column">
-          <Box display="flex" mt={3} mb={2} px={2}>
-            <Button variant="contained" component={Link} to="edit">
-              Edit
-            </Button>
-          </Box>
-          {/*
-          <Box p={1} sx={{ borderBottom: "1px dashed grey" }} />
-          <Box display="flex" mt={3} mb={2} px={2}>
-            
-            --Feature will not implemented on backend
-            <Button variant="contained" disabled={true}>
-              Request New Assignment
-            </Button>
-          </Box>
-  */}
-        </Stack>
-      </ContainerTitle>
+      {isSurveyorDataLoading ? (
+        <Loader />
+      ) : !surveyorData || isSurveyorError ? (
+        <CustomSnackbar
+          message="Error fetching surveyor data."
+          severity="error"
+        />
+      ) : (
+        <EditAccount surveyorData={surveyorData} />
+      )}
     </>
   );
 };

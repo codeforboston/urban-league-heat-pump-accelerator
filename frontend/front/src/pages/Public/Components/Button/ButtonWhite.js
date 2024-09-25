@@ -14,6 +14,7 @@ const ButtonWhite = ({ text, to, children }) => {
         to={to}
         onClick={() => window.scrollTo(0, 0)}
         sx={{
+          px: 2,
           width: "auto",
           minWidth: "200px",
           maxWidth: "250px",
@@ -21,6 +22,7 @@ const ButtonWhite = ({ text, to, children }) => {
           color: "var(--color-text-2)",
           background: "var(--bgColor-3)",
           borderRadius: "50px",
+          textAlign: "center",
           "&:hover": {
             backgroundColor: "var(--bgColor-3)",
           },

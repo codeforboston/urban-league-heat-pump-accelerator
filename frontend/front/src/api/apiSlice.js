@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { AUTHORIZATION_HEADER } from "../features/login/loginUtils";
+import { transformSurveyorKeys } from "../features/surveyor/surveyorUtils";
+import { validateLanguage } from "../util/surveyUtils";
 
 const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
@@ -98,6 +100,7 @@ export const apiSlice = createApi({
     // }),
     getSurveyor: builder.query({
       query: (id) => `/surveyors/${id}`,
+      transformResponse: (result) => result && transformSurveyorKeys(result),
       providesTags: (result, error, arg) => [{ type: "Surveyor", id: arg }],
     }),
     createSurveyor: builder.mutation({
@@ -114,6 +117,7 @@ export const apiSlice = createApi({
         method: "PUT",
         body: surveyor,
       }),
+      transformResponse: (result) => result && transformSurveyorKeys(result),
       invalidatesTags: (result, error, arg) => [
         { type: "Surveyor", id: arg.id },
       ],
@@ -137,10 +141,14 @@ export const apiSlice = createApi({
       ],
     }),
     getSurveyStructure: builder.query({
-      query: (id) => ({
-        url: `/surveys/${id}`,
-        method: "GET",
-      }),
+      query: (id) => {
+        const validatedLangPref = validateLanguage();
+        return {
+          url: `/surveys/${id}`,
+          method: "GET",
+          params: { langPref: validatedLangPref },
+        };
+      },
       providesTags: (result, error, arg) => [{ type: "Survey", id: arg }],
     }),
     createSurvey: builder.mutation({
@@ -194,26 +202,6 @@ export const apiSlice = createApi({
         { type: "Home", id: arg.surveyVisit.home_id },
       ],
     }),
-    updateSurveyVisit: builder.mutation({
-      query: ({ id, body }) => {
-        return {
-          url: `/survey_visits/${id}`,
-          method: "PUT",
-          body,
-        };
-      },
-      invalidatesTags: (result, error, arg) => [
-        { type: "SurveyVisit", id: arg.id },
-      ],
-    }),
-    deleteSurveyVisit: builder.mutation({
-      query: (id) => ({
-        url: `/survey_visits/${id}`,
-        method: "DELETE",
-      }),
-      invalidatesTags: ["SurveyVisit"],
-    }),
-
     /* Survey response endpoints */
     getSurveyResponses: builder.query({
       query: () => ({ url: "/survey_responses", method: "GET" }),
@@ -405,11 +393,45 @@ export const apiSlice = createApi({
       }),
     }),
     createUser: builder.mutation({
-      query: ({ email, password }) => ({
-        url: "/users",
+      query: ({ email, role, surveyor }) => ({
+        url: "/admin/users",
         method: "POST",
-        body: { user: { email, password } },
+        body: {
+          user: { email, role, surveyor },
+        },
       }),
+    }),
+    requestPasswordReset: builder.mutation({
+      query: (email) => ({
+        url: "/users/password",
+        method: "POST",
+        body: { user: { email } },
+      }),
+    }),
+    validateResetToken: builder.mutation({
+      query: (resetPasswordToken) => ({
+        url: `/users/password/validate_reset_token?reset_password_token=${resetPasswordToken}`,
+      }),
+    }),
+    resetPassword: builder.mutation({
+      query: ({ resetPasswordToken, password }) => ({
+        url: "/users/password/",
+        method: "PUT",
+        body: {
+          user: {
+            reset_password_token: resetPasswordToken,
+            password,
+          },
+        },
+      }),
+      transformResponse: (response) => {
+        // Response always 200 success. If failed, id is null
+        if (!response?.id) {
+          return { success: false };
+        } else {
+          return { success: true };
+        }
+      },
     }),
   }),
 });
@@ -435,6 +457,9 @@ export const {
   useLoginUserMutation,
   useLogoutUserMutation,
   useCreateUserMutation,
+  useRequestPasswordResetMutation,
+  useValidateResetTokenMutation,
+  useResetPasswordMutation,
 
   // Survey
   useDeleteSurveyMutation,
@@ -445,8 +470,6 @@ export const {
 
   // Survey visit
   useCreateSurveyVisitMutation,
-  useUpdateSurveyVisitMutation,
-  useDeleteSurveyVisitMutation,
   useGetSurveyVisitsQuery,
   useGetSurveyVisitQuery,
 

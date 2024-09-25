@@ -1,3 +1,14 @@
+// Current supported survey languages
+const supportedLanguages = ["en-US"];
+
+export const validateLanguage = () => {
+  const langPref = localStorage.getItem("langPref");
+  if (typeof langPref !== "string") {
+    return "en-US";
+  }
+  return supportedLanguages.includes(langPref) ? langPref : "en-US";
+};
+
 export const buildSurveyCacheKey = (surveyId, homeId) =>
   `survey${surveyId}-home${homeId}`;
 
@@ -26,7 +37,13 @@ export const buildDataFromSurveyAnswers = (
   return data;
 };
 
-export const buildSurveyVisitData = (answers, homeId, surveyId, surveyorId) => {
+export const buildSurveyVisitData = (
+  answers,
+  homeId,
+  surveyId,
+  surveyorId,
+  surveyorPosition
+) => {
   // build answers object
   const answersObject = {};
   Object.entries(answers).forEach(([key, value]) => {
@@ -37,15 +54,36 @@ export const buildSurveyVisitData = (answers, homeId, surveyId, surveyorId) => {
       };
     }
   });
-
   return {
     survey_visit: {
       home_id: homeId,
       surveyor_id: surveyorId,
+      latitude: `${surveyorPosition.latitude.toString()}`,
+      longitude: `${surveyorPosition.longitude.toString()}`,
       survey_response_attributes: {
         survey_id: surveyId,
         survey_answers_attributes: answersObject,
       },
     },
   };
+};
+
+export const surveyRenderRules = {
+  1: null,
+  2: { question: 1, answer: "Yes" },
+  3: { question: 2, answer: "Yes" },
+  4: null,
+  5: { question: 4, answer: "Yes" },
+  6: null,
+  7: { question: 6, answer: "Yes" },
+  8: { question: 6, answer: "Yes" },
+  9: { question: 6, answer: "Yes" },
+  10: null,
+  11: { question: 10, answer: "Other" },
+  12: null,
+  13: { question: 12, answer: "Other" },
+  14: null,
+  15: { question: 14, answer: "Yes" },
+  16: { question: 14, answer: "Yes" },
+  17: { question: 14, answer: "Yes" },
 };

@@ -11,12 +11,12 @@ import {
   useInitBreadcrumbs,
 } from "../../../hooks/breadcrumbHooks";
 
-import CustomSnackbar from "../../../components/CustomSnackbar";
-import { DataGrid } from "@mui/x-data-grid";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
-import Loader from "../../../components/Loader";
 import Select from "@mui/material/Select";
+import { DataGrid } from "@mui/x-data-grid";
+import CustomSnackbar from "../../../components/CustomSnackbar";
+import Loader from "../../../components/Loader";
 import { ADMIN_ASSIGNMENT, withAdminPrefix } from "../../../routing/routes";
 
 const AssignTable = () => {
@@ -126,7 +126,8 @@ const AssignTable = () => {
     {
       field: "surveyorData",
       headerName: "Surveyor(s)",
-      flex: 1,
+      minWidth: 150,
+      flex: 2,
       renderCell: (params) => {
         return params.row.surveyorData ? (
           <Stack
@@ -247,8 +248,8 @@ const AssignTable = () => {
           disableSelectionOnClick
           autoHeight
           checkboxSelection
-          onSelectionModelChange={handleSelectionModelChange}
-          selectionModel={selectedAssignments}
+          onRowSelectionModelChange={handleSelectionModelChange}
+          rowSelectionModel={selectedAssignments}
         />
       </Box>
     </Box>

@@ -1,0 +1,278 @@
+{
+  "public": {
+    "home": {
+      "hero": {
+        "title": "Save money on your ",
+        "titleBold": "heating and cooling bills",
+        "text1": "You may be able to get incentives to install a heat pump, a type of heating and cooling system that can  ",
+        "link": "lower your utility bills",
+        "text2": ".",
+        "button": "Benefits of heat pumps"
+      },
+      "cardLinksSection": {
+        "item1": {
+          "title": "What is a heat pump?",
+          "paragraph": "A heat pump is an energy-efficient system that heats your home in the winter, and cools your home in the summer.",
+          "button": "Take the survey"
+        },
+        "item2": {
+          "title": "About Us",
+          "paragraph": "The Boston Heat Pump Accelerator is an initiative of the Urban League of Eastern Massachusetts, in partnership with local and national organizations.",
+          "button": "Learn more"
+        }
+      },
+      "testimonials": {
+        "heading1": "Testimonials",
+        "text1": "“Wow, it blew my mind. Normally the bill is anywhere from $400 to $500, and it was more like $200. I was like, let me look at that again!”",
+        "text2": "Stories from other Massachusetts residents about their heat pumps.",
+        "button": "read more",
+        "text3": "Resident"
+      },
+      "cardBenefitsSection": {
+        "heading1": "Benefits of Heat Pumps",
+        "subtitle1": "Learn more about the",
+        "link": "Benefits of Heat Pumps",
+        "item1": {
+          "title": "Lower energy bills",
+          "text1": "Heat pumps are so energy efficient that they can lead to significant savings on monthly utility bills and lower maintenance, repair and replacement costs."
+        },
+        "item2": {
+          "title": "Comfort at home",
+          "text1": "The same heat pump that helps to cool in the summer can then provide warmth in the winter- it's one system that is efficient, quiet, and convenient, providing comfort throughout the home."
+        },
+        "item3": {
+          "title": "Stronger communities",
+          "text1": "By helping to lower utility bills, heat pumps can lower the cost of living for residents, which in turn can support residents living on fixed- or low-incomes to remain in their homes longer, strengthening communities."
+        },
+        "item4": {
+          "title": "Cleaner air",
+          "text1": "Heat pumps use electricity that can be produced by renewable sources. As the grid becomes more green, heat pumps become much more eco-friendly than gas or oil-fueled systems. With a single “green-powered” unit that heats and cools, your home’s carbon footprint is as low as it can go."
+        }
+      },
+      "partners": {
+        "heading1": "Our Partners",
+        "text1": "The Boston Heat Pump Accelerator is an initiative of the Urban League of Eastern Massachusetts, in partnership with local and national organizations.",
+        "link": "Learn more"
+      }
+    },
+    "global-labels": {
+      "survey": "survey",
+      "learn-more": {
+        "value": "Learn More",
+        "items": {
+          "benefits-heat-pumps": "Benefits of Heat Pumps",
+          "about-us": "About Heat Pumps",
+          "testimonials": "Testimonials",
+          "about-bhpa": "About BHPA"
+        }
+      },
+      "get-involved": "Get Involved",
+      "button-get-heat-pump": "GET A HEAT PUMP",
+      "locales": {
+        "english": "English (United States)",
+        "portuguese": "Português (Brasil)",
+        "spanish": "Español (Latinoamérica)",
+        "creole": "Kreyòl (Ayiti)"
+      },
+      "all-rights-reserved": "All Rights Reserved.",
+      "source": "source",
+      "click-here": " click here",
+      "take-the-survey": "Take the survey"
+    },
+    "footer": {
+      "legal": "Legal",
+      "privacy-and-data-policy": "Privacy & Data Policy",
+      "contact-us": "Contact Us",
+      "member-login": "Member Login"
+    },
+    "survey": {
+      "heading1BlueBgGround": "Take the Survey",
+      "under-construction": "Public Survey is Currently Under Development!",
+      "work-in-progress": "UNDER CONSTRUCTION"
+    },
+    "benefits-heat-pump": {
+      "cardBenefits": {
+        "item1": {
+          "title": "Lower utility bills",
+          "body1": "Air source heat pumps (ASHPs) can reduce electricity usage for heating by up to 50% compared to electrical furnaces and baseboard heaters (",
+          "body2": "For cooling, ASHPs are roughly equivalent to “central air conditioning” and far more efficient than window AC units. Together, this can translate into homeowner savings of 20%-40% off of their annual heating and cooling bills. To compare your system and to see how much you could save, "
+        },
+        "item2": {
+          "title": "Better Heating & Cooling",
+          "body1": "Heat pumps are an excellent way to heat and cool your home. They’re nearly silent, draw less electricity, and they are continuous: heat pumps’ continuous, low-level operation provides constant heating or cooling, eliminating the blasts of hot or cold that legacy systems usually create. To learn more about ASHP operation and benefits, "
+        },
+        "item3": {
+          "title": "Stronger Communities",
+          "body1": "Boston residents want to stay in their homes and keep their communities strong, even while facing challenges from rising costs. Switching to heat pumps can lower utility costs, reducing the financial challenge of staying in the community. By also adding active cooling capacity, ASHPs also improve the “housing resiliency” of entire neighborhoods as annual temperatures rise. With both energy bills and temperatures on the rise, housing resiliency is more important than ever to empower communities to stay strong and stay together. To learn more, "
+        },
+        "item4": {
+          "title": "Lower Carbon Emissions",
+          "body1": "Heat pumps are highly efficient heating and cooling systems that are electrically-powered. As such, they become “cleaner” whenever the source of their electric power becomes cleaner. Gas or oil fueled heating/cooling cannot benefit in the same way. How much of a difference will switching to ASHPs make in your case? Find specifics on the climate impact of a switch to heat pumps, "
+        }
+      },
+      "text1": "We want to hear your opinions!",
+      "text2": "We want to hear your",
+      "text3": "opinions!"
+    },
+    "getInvolved": {
+      "item1": {
+        "body": "Let your neighbors know about the savings and other benefits of heat pumps. Share this website on social media or through email.",
+        "title": "Share with your community",
+        "link": "Download social sharing kit"
+      },
+      "item2": {
+        "title": "Post flyers at local businesses",
+        "body": "Print and post this flyer at cafes, conveniences, and community bulletin boards around your neighborhood.",
+        "link": "Download informational flyer"
+      },
+      "item3": {
+        "title": "Discuss with your community",
+        "body": "Help to organize and/or host an event for neighbors to learn about heat pumps and their benefits."
+      },
+      "item4": {
+        "title": "Share with your local legislators",
+        "body": "Assist your neighbors in transitioning towards cheaper and cleaner energy by seeking local initiatives and communicating with your elected representatives to express your preference for heat pumps. Use the following free service to get contact info for a call, email, or letter to your elected representatives.",
+        "link": "Contact your elected officials"
+      },
+      "heading": "Get Involved"
+    },
+    "about-heat-pump": {
+      "item1": {
+        "title": "What is a heat pump?",
+        "body": "Check out this comprehensive article that Carrier, a heat pump manufacturer, has written up about what a heat pump is and how they work.",
+        "link": "Read Article"
+      },
+      "item2": {
+        "title": "How does a heat pump work?",
+        "body": "This Old House plumbing and heating expert Richard Tretheway instructs Kevin O’Connor on the basic principles of how a heat pump works."
+      },
+      "item3": {
+        "title": "Why are heat pumps better?",
+        "body": "This video by Vox explains why heat pumps are better for the environment than fossil fuel heaters."
+      },
+      "item4": {
+        "title": "What do other people say?",
+        "body": "Hear what someone else has to say about their experience getting a heat pump installed in their home."
+      },
+      "headingBg": "About Heat Pumps",
+      "button-section": {
+        "text1": "Convinced a heat pump is for you?",
+        "text2": "Get started here!",
+        "button": "GET A HEAT PUMP"
+      }
+    },
+    "about-us": {
+      "headingbg": "About the Boston Heat Pump Accelerator",
+      "bhpa": "The <1>Boston Heat Pump Accelerator (BHPA)</1> works to support increased access for Boston homeowners to heat pumps and related resources, helping to reduce costs for residents, increase community resilience, and shift the region to low-carbon technologies. This initiative takes no funding from companies or heat pump installers - it supports overall access to heat pumps only, via education and awareness efforts.",
+      "ulem1": "The <1> <5>Urban League of Eastern Massachusetts (ULEM)</5> </1> is the sponsor of the BHPA effort. Since 1919, ULEM has delivered workforce and economic development services and programs to increase self-reliance of residents of the Boston community and surrounding metropolitan areas. ULEM is a 501c3 nonprofit organization and one of the oldest affiliates within the National Urban League movement.",
+      "ulem2": "The BHPA project is directed by ULEM Board Member Christopher Scranton, in coordination with core partners, listed below.",
+      "mcec": "The <0>{{partnerName}}</0> is a quasi-public state economic development agency dedicated to accelerating the growth of the clean energy sector across the Commonwealth, to spur job creation, deliver statewide environmental benefits, and to secure long-term economic growth for the people of Massachusetts. MassCEC provided primary funding to the BHPA project via the EmPower grant program.",
+      "cfb": "<0>{{partnerName}}</0> is a volunteer civic technology and social change organization. CfB is made up of developers, designers, data geeks, citizen activists, and many others who use creative technology to solve civic and social problems. CfB staff and volunteers provided core elements of the BHPA project.",
+      "cfa": "<0>{{partnerName}}</0> is a 501(c)(3) nonprofit founded in 2009 to improve government services for all, starting with those who need them most. The CfA Brigade Network provided in-kind staff support to the BHPA project via the 2022 Impact Sprints program.",
+      "heat-smart": "The <0>{{partnerName}}</0> is a volunteer group that promotes adoption of low-emissions heating, cooling, and related technologies in local communities. The Alliance staff provided technical expertise and guidance to the BHPA project.",
+      "pcb": "<0>{{partnerName}}</0> is a green jobs program that provides young adults with training, career readiness support, and connections to employers in the green industry. PCB provided support to the BHPA surveying effort.",
+      "moc": "The <0>{{partnerName}}</0> is a laboratory for cloud research and innovation. Since its creation in 2013, with support from the Mass Tech Collaborative, it has provided a production cloud that has enabled innovation by a broad community of industry and research partners, used by thousands of students and researchers, and supported tens of millions of dollars in associated research grants that have resulted in contributions to open source software and hundreds of publications.",
+      "bhpa-core-partners": "BHPA CORE PARTNERS"
+    },
+    "get-heat-pump": {
+      "headingBg": "How To Get a Heat Pump?",
+      "heading2": "Calculate your savings in 3 easy steps",
+      "subtitle": "To get a heat pump, start by getting some details about your home so you can have an informed conversation about how heat pumps can help you.",
+      "step1": {
+        "title": "Get Details About Your Home Heating/Cooling Needs",
+        "itemA": "Square footage",
+        "itemB": "How many floors",
+        "itemC": "Current HVAC system",
+        "itemD": "Current utility bills/usage",
+        "itemE": "Estimate Your savings <0>with this link calculator</0>"
+      },
+      "step2": {
+        "title": "Talk with a Heat Pump Coach",
+        "title2": "(Optional but recommend)",
+        "buttonText": "REQUEST A COACH"
+      },
+      "step3": {
+        "title": "Get Details About Your Home Heating/Cooling Needs",
+        "buttonText": "RESOURCES"
+      }
+    },
+    "privacy": {
+      "textDate": "Last updated: April 19th, 2023",
+      "text2": "Our <0>Privacy Policy</0> has been updated.",
+      "text3": "**This privacy policy of the Boston Heat Pump Accelerator (BHPA) will help you better understand how we collect, share, and use your personal information.**",
+      "headingBg": "Privacy Policy",
+      "title1": "Table of Contents",
+      "items": {
+        "item1": {
+          "title": "What data does the BHPA use?",
+          "text": "The data used for the BHPA project was the open, public data from the City of Boston's online Property Assessor's database. This data is not privileged or private. It is open to the public."
+        },
+        "item2": {
+          "title": "What did BHPA do with the data?",
+          "text": "BHPA used the Boston Assessor's data to identify homeowner-occupied homes in the the neighborhoods of Dorchester, Roxbury, and Mattapan. This enabled the project organizers to develop a list of neighborhood residents who could potentially participate in a survey intended for the owners of homes. Essentially, it helps the BHPA avoid sending surveyors to an address where the only residents/occupants wouldn't be able to participate in the survey. BHPA plans to use the anonymized data collected from surveys and the open source code to promote public access to generic information that hopefully will enable Boston-area users to make better informed decisions on heat pumps in their own personal environments."
+        },
+        "item3": {
+          "title": "Why is the BHPA survey only for homeowners and not for renters?",
+          "text": "Renters in Boston are residents and important voices in the community. Renters living in multi-unit homes and/or apartment buildings are already eligible to participate in other programs and initiatives, such as BlocPower. Separately, homeowners of owner-occupied homes (usually have legal control of their building and can make decisions about switching heating and cooling systems in ways that renters (usually) cannot. Both homeowners and renters have important voices and parts to play in the efforts around switching to cleaner, lower-cost heating and cooling. It makes sense to engage with these groups with an individualized and customized approach- the BHPA project focuses on homeowners."
+        },
+        "item4": {
+          "title": "Why does the City of Boston have data on the houses and owners of homes in the city of Boston?",
+          "text": "The City of Boston is the best resource for this question. The BHPA can offer our own take: During the purchase of a property, basic information involved in the transaction becomes part of the property record. This information is public- it is available to anyone who seeks it. Nearly every city, town, and/or county in the United States collects basically the same information and also makes it available to the public."
+        },
+        "item5": {
+          "title": "What data exactly does the City of Boston have about me and my property?",
+          "text": "The City of Boston's Property Assessor's database is easy to use. To learn more about the data that the city has, feel free to look up the address in question in their database here [<a href='https://www.cityofboston.gov/assessing/search/' target='_blank' rel='noopener noreferrer'>LINK</a>]"
+        },
+        "item6": {
+          "title": "What data about me and my property was used in this project? [and it harmed/reduced/invaded my privacy...]",
+          "text": "The Boston Heat Pump Accelerator uses publicly available data from the City of Boston Assessor's office to reach out to homeowners in Boston neighborhoods to survey residents about their knowledge of heat pumps. Since Massachusetts has some discounts for residents based on being a resident and a homeowner, we are reaching out to folks who are eligible for these discounts, and we use public data to do this. We also use open source code to help create tools to make the lists for people to contact. The Boston Heat Pump Accelerator works with volunteers in the Code for Boston community to create open source computer code in our technology. The code is <a href='https://github.com/codeforboston/urban-league-heat-pump-accelerator'>public on GitHub</a> in case you would like to inspect it."
+        },
+        "item7": {
+          "title": "What happens to the input that people provide to the survey (either in person or online)?",
+          "text": "When you take the BHPA survey about heat pumps, it is anonymized and collected in aggregate. We report data we collect in our survey to the partners listed on our Partners page to help them improve their programs, so we can help more people get the discounts for heat pumps for which they are eligible. We do not sell your data to 3rd parties. If you have questions about how your data is used, please contact <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
+        }
+      }
+    },
+    "faq": {
+      "heading": "FAQ",
+      "items": {
+        "item1": {
+          "title": "What is a heat pump? What is an Air Source Heat Pump (ASHP)?",
+          "text": "Please see our <a href='/public/about-heat-pump'>What is a Heat Pump</a> page for more details on heat pumps! If you have further questions about heat pumps beyond what you see on this site, please connect with the <a href='https://heatsmartalliance.org/' target='_blank' rel='noopener noreferrer'>Heat Smart Alliance</a>."
+        },
+        "item2": {
+          "title": "Why did this project consider only ASHPs and not ground source heat pumps (GSHP) or air-to-water heat pumps (A2WHP)?",
+          "text": "ASHPs are a more widely available solution for installation, more compatible with the average home in Boston (given the urban density and lack of space for GSHPs) and air-to-water heat pumps (A2WHPs) are not yet generally available in the numbers and at the cost of ASHPs. That said, with the future potential of A2WHPs to replace entire boiler systems, it is a technology that bears watching closely as it matures."
+        },
+        "item3": {
+          "title": "How can ASHPs help residents in the City of Boston?",
+          "text": "Please see our page on the <a href='/public/benefits-heat-pump'>Benefits of Heat Pumps</a>."
+        },
+        "item4": {
+          "title": "Why does this project engage the residents of Dorchester, Roxbury, and Mattapan?",
+          "text": "This project was funded by a grant that was awarded to the Urban League of Eastern Massachusetts (which serves these and other neighborhoods) by the Massachusetts Clean Energy Center (which identified this project as being eligible for grant funds precisely because it would explore supporting residents in these neighborhoods)."
+        },
+        "item5": {
+          "title": "Why is this project surveying a sample of the neighborhood and not everyone in the neighborhood? Why did my neighbor get surveyed and I didn't?",
+          "text": "This project is a “pilot” project, which means that it is understood that it will explore a potentially useful concept at a small scale with very limited funding. The results of the project are expected to potentially confirm that a larger version of the same or similar activities would be worthwhile in the future. Pilot projects are an established and widely implemented approach by institutions to explore, test, and confirm some activity as a precursor to committing larger funding amounts for more comprehensive action."
+        },
+        "item6": {
+          "title": "This pilot project appears to be exclusively focused on homeowners, is that correct?",
+          "text": "<p>No, the project is not supporting homeowners only. The public website for this project is built to support, educate, and empower all residents to understand heat pumps and learn about how heat pumps can help residents, communities, and the planet, regardless of whether a resident owns or rents their home.</p><p>The project's survey, which asks questions about what the respondent is interested in installing in their home, is targeted solely to homeowners. A similar survey in the future, offered to renters, is a possibility under a future grant. Renters are an integral part of the community and there are other efforts in motion locally and nationally to identify, organize, and empower the voices of renters as well.</p>"
+        },
+        "item7": {
+          "title": "Did the project survey every resident in Dorchester, Roxbury, and Mattapan?",
+          "text": "No - given the limitations in funding, staffing, and time, this project could only survey a sample sub-set of residents from these neighborhoods."
+        },
+        "item8": {
+          "title": "How did the project identify the residents to survey?",
+          "text": "<p>The first step was to consider which sorts of respondents would not be eligible to complete the survey.</p><p>For example, this survey focuses on the homeowners, not renters (for reasons outlined above). Further, since the survey would be largely completed in-person, at the door of the particular house in question, it made sense to focus on owner-occupied homes. This focus reduces the likelihood that surveyors knock on the door of a home, only to find that the owner (who has the authority to make decisions about the heating system) is not only not at the home, but in fact does not even live there. In this situation, it would not be possible for this “door knock” to result in a completed survey. So the decision was made to focus on owner-occupied homes. With a very limited budget to support the time of surveyors, the project looked for ways to ensure that each survey-interaction had the highest “foundational” chance of engaging an eligible survey respondent.</p><p>To identify owner-occupied homes in the supported neighborhoods, the project analyzed the publicly available City of Boston property database. This open dataset is maintained by the city, contains publicly available information, and is searchable by anyone. It lists limited information associated with properties in Boston neighborhoods, including address, owner, and owner's address, along with year built, heating system, and some other basic fields.</p>"
+        },
+        "item9": {
+          "title": "If I take this survey, how will my responses be used?",
+          "text": "<p>The purpose of the 2024 BostonHPA survey is to gauge the awareness of heat pumps in the supported neighborhoods. Survey responses will be stored in a secure database and aggregated to illustrate the possible strengths and/or gaps in heat pump familiarity of the general public in these neighborhoods.</p><p>It is the the goal of this project that these insights on heat pump awareness in local communities can inform additional, comprehensive efforts to empower residents with information, context, options, and guidance around evaluating heat pumps as greener, more efficient, and less expensive HVAC solutions.</p>"
+        }
+      }
+    }
+  }
+}

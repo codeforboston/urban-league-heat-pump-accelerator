@@ -1,9 +1,11 @@
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Alert, Box, Container, Snackbar, Stack } from "@mui/material";
+
 import {
   RECAPTCHA_ACTION_PUBLIC_SURVEY,
   useGetReCAPTCHAToken,
 } from "../../../components/ReCaptcha";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   useCreateHomeMutation,
   useCreateSurveyVisitMutation,
@@ -35,14 +37,10 @@ const STEP_THANKS = "PHASE_THANKS";
 export const SurveyPage = () => {
   const [validationStatus, setValidationStatus] = useState();
 
+  const { t } = useTranslation();
+
   const getReCaptchaToken = useGetReCAPTCHAToken(
     RECAPTCHA_ACTION_PUBLIC_SURVEY
-  );
-
-  // this ought to just be a global constant but that made it untestable
-  const publicSurveyEnabled = useMemo(
-    () => process.env.REACT_APP_PUBLIC_SURVEY_ENABLED === "true",
-    []
   );
 
   const [
@@ -190,6 +188,7 @@ export const SurveyPage = () => {
 
   return (
     <Box
+      mb={6}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -197,16 +196,8 @@ export const SurveyPage = () => {
         minHeight: "calc(100vh - 520px)",
       }}
     >
-      <Heading1BlueBgGround text="Take the Survey" />
-      <Container>
-        {publicSurveyEnabled ? (
-          pageContent()
-        ) : (
-          <div data-testid="publicSurveyUnderConstruction">
-            <h2>Public survey is under construction!</h2>
-          </div>
-        )}
-      </Container>
+      <Heading1BlueBgGround text={t("public.survey.heading1BlueBgGround")} />
+      <Container>{pageContent()}</Container>
     </Box>
   );
 };

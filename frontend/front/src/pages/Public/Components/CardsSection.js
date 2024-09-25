@@ -41,27 +41,41 @@ function CardsSection({
           alt={title}
           src={mediaSource}
           sx={{
-            backgroundSize: "contain",
-            height: { xs: "200px", sm: "300px", md: "300px", lg: "300px" },
-            minWidth: "500px",
-            maxWidth: { xs: "353px", lg: "500px" },
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            minWidth: { xs: "353px", smm: "425px", sm: "500px" },
+            maxWidth: { xs: "353px", smm: "425px", sm: "500px" },
+            height: { xs: "198px", smm: "239px", sm: "281px" }, // 16:9 ratio
           }}
         />
       );
     } else if (mediaType === "iframe") {
       return (
         <Box
-          component="iframe"
-          title={title}
-          src={mediaSource}
           sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             width: "100%",
-            height: { xs: "200px", sm: "300px", md: "300px", lg: "300px" },
-            border: "none",
-            minWidth: "500px",
-            maxWidth: { xs: "353px", lg: "500px" },
+            minWidth: { xs: "353px", smm: "425px", sm: "500px" },
+            maxWidth: { xs: "353px", smm: "425px", sm: "500px" },
+            height: { xs: "198px", smm: "239px", sm: "281px" }, // 16:9 ratio
           }}
-        />
+        >
+          <Box
+            component="iframe"
+            title={title}
+            src={mediaSource}
+            sx={{
+              width: "100%",
+              minWidth: "100%",
+              height: "100%",
+              border: "none",
+            }}
+          />
+        </Box>
       );
     } else {
       return null;
@@ -91,21 +105,23 @@ function CardsSection({
           </Box>
           <Typography variant="body">{body}</Typography>
         </CardContent>
-        <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <Button
-            size="large"
-            sx={{
-              color: "var(--color-text-2)",
-              textDecoration: "solid underline 1px",
-              textUnderlinePosition: "under",
-              textDecorationColor: "var(--color-text-2)",
-              textTransform: "none",
-            }}
-            onClick={handleClick}
-          >
-            {linkDescription}
-          </Button>
-        </CardActions>
+        {linkDescription !== "" && (
+          <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <Button
+              size="large"
+              sx={{
+                color: "var(--color-text-2)",
+                textDecoration: "solid underline 1px",
+                textUnderlinePosition: "under",
+                textDecorationColor: "var(--color-text-2)",
+                textTransform: "none",
+              }}
+              onClick={handleClick}
+            >
+              {linkDescription}
+            </Button>
+          </CardActions>
+        )}
       </Box>
       {renderMedia()}
     </Card>

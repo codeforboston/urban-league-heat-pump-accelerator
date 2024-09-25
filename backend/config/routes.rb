@@ -11,8 +11,21 @@ Rails.application.routes.draw do
   resources :surveys
   resource :assignments_surveyors
 
+  devise_scope :user do
+    namespace :users do
+      resource :password, only: [] do
+        get 'validate_reset_token', on: :collection
+      end
+    end
+  end
+
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    passwords: 'users/passwords'
   }, defaults: { format: :json }
   root 'homes#index'
+
+  namespace :admin do
+    resources :users, only: [:create]
+  end
 end

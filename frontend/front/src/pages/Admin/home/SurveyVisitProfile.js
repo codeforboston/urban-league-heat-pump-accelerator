@@ -1,33 +1,22 @@
 import { Container, Typography } from "@mui/material";
-import React, { useCallback, useMemo } from "react";
+import React, { useMemo } from "react";
 import {
-  useDeleteSurveyVisitMutation,
-  useGetHomeQuery,
   useGetSurveyStructureQuery,
   useGetSurveyVisitQuery,
-  useUpdateSurveyVisitMutation,
 } from "../../../api/apiSlice";
-import { useNavigate, useParams } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 import { AdminSurvey } from "../component/AdminSurvey";
 import Loader from "../../../components/Loader";
 import { SurveyError } from "../survey/SurveyError";
 import { formatISODate } from "../../../components/DateUtils";
 import { houseToString } from "../../../components/AddressUtils";
-import { withAdminPrefix, ADMIN_SURVEY } from "../../../routing/routes";
 import { buildDataFromSurveyAnswers } from "../../../util/surveyUtils";
 
 const SurveyProfile = () => {
-  const navigate = useNavigate();
   const { uid: surveyVisitId } = useParams();
 
   const { data: surveyVisit, error: surveyVisitError } =
     useGetSurveyVisitQuery(surveyVisitId);
-
-  const { data: houseData, error: houseError } = useGetHomeQuery(
-    surveyVisit?.home_id,
-    { skip: !surveyVisit }
-  );
 
   const { data: { survey_questions: surveyQuestions } = {} } =
     useGetSurveyStructureQuery(surveyVisit?.survey_response?.survey_id, {
@@ -35,11 +24,16 @@ const SurveyProfile = () => {
     });
 
   const title = useMemo(
+    () => (surveyVisit ? `${houseToString(surveyVisit.home)}` : "Loading..."),
+    [surveyVisit]
+  );
+
+  const completedTime = useMemo(
     () =>
-      surveyVisit && houseData
-        ? `${houseToString(houseData)} ${formatISODate(surveyVisit.date)}`
+      surveyVisit
+        ? `Completed at: ${formatISODate(surveyVisit.created_at)}`
         : "Loading...",
-    [houseData, surveyVisit]
+    [surveyVisit]
   );
 
   const surveyAnswers = useMemo(
@@ -53,52 +47,22 @@ const SurveyProfile = () => {
     [surveyVisit, surveyQuestions]
   );
 
-  const [
-    putSurveyVisit,
-    { isLoading: isSurveyVisitPutLoading, isError: isSurveyVisitPutError },
-  ] = useUpdateSurveyVisitMutation();
-  const [
-    deleteSurveyVisit,
-    { isLoading: isSurveyDeleteLoading, isError: isSurveyVisitDeleteError },
-  ] = useDeleteSurveyVisitMutation();
-
-  const onSubmit = useCallback(
-    async (responses, surveyId) => {
-      return await putSurveyVisit({
-        id: surveyVisitId,
-        body: {
-          responses,
-          surveyId,
-          homeId: surveyVisit?.homeId,
-          // TODO: probably remove this and handle on the back end
-          date: new Date().toISOString(),
-        },
-      });
-    },
-    [putSurveyVisit, surveyVisit?.homeId, surveyVisitId]
-  );
-
-  const onDelete = useCallback(() => {
-    deleteSurveyVisit(surveyVisitId);
-    navigate(withAdminPrefix(ADMIN_SURVEY));
-  }, [deleteSurveyVisit, surveyVisitId, navigate]);
-
   return (
     <Container>
       <Typography variant="h5" mt={2}>
         {title}
       </Typography>
-      {surveyVisit && houseData ? (
+      <Typography variant="subtitle1" mt={2}>
+        {completedTime}
+      </Typography>
+      {surveyVisit ? (
         <AdminSurvey
           defaultData={surveyAnswers}
-          activeHome={houseData}
+          activeHome={surveyVisit.home}
           surveyId={surveyVisit.survey_response.survey_id}
-          submitSurvey={onSubmit}
-          onDelete={onDelete}
-          isLoading={isSurveyVisitPutLoading || isSurveyDeleteLoading}
-          isErrorSurvey={isSurveyVisitPutError || isSurveyVisitDeleteError}
+          readOnly
         />
-      ) : surveyVisitError || houseError ? (
+      ) : surveyVisitError ? (
         <SurveyError />
       ) : (
         <Loader />

@@ -1,16 +1,16 @@
-import * as apiSlice from "../../../api/apiSlice";
 import * as router from "react-router";
+import * as apiSlice from "../../../api/apiSlice";
 
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import {
   buildDefaultDataFromSurveyStructure,
   buildSurveyCacheKey,
 } from "../../../util/surveyUtils";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 import React from "react";
-import SurveyComponent from "../SurveyComponent";
 import homes from "../../../../../jsonserver/data/homes_index.json";
 import surveys from "../../../../../jsonserver/data/survey_index.json";
+import SurveyComponent from "../SurveyComponent";
 
 const DEFAULT_TEST_SURVEY = surveys[0];
 const DEFAULT_TEST_HOME = homes[0];
@@ -20,7 +20,6 @@ const DEFAULT_TEST_SURVEY_CACHE_KEY = buildSurveyCacheKey(
 );
 const DEFAULT_TEST_DEFAULT_SURVEY_DATA =
   buildDefaultDataFromSurveyStructure(DEFAULT_TEST_SURVEY);
-
 describe("SurveyComponent", () => {
   beforeEach(() => {
     jest.spyOn(router, "useNavigate").mockImplementation(() => jest.fn());
@@ -51,7 +50,6 @@ describe("SurveyComponent", () => {
         submitSurvey={jest.fn()}
         isLoading={false}
         activeHome={DEFAULT_TEST_HOME}
-        isEditable={false}
         surveyId={DEFAULT_TEST_SURVEY.id}
         formSpacing={5}
       />,
@@ -71,7 +69,6 @@ describe("SurveyComponent", () => {
         submitSurvey={jest.fn()}
         isLoading={false}
         activeHome={DEFAULT_TEST_HOME}
-        isEditable={false}
         surveyId={DEFAULT_TEST_SURVEY.id}
         formSpacing={5}
       />,
@@ -96,15 +93,29 @@ describe("SurveyComponent", () => {
         3: "some text",
       })
     );
+    const mockGeolocation = {
+      getCurrentPosition: jest.fn().mockImplementationOnce((success) =>
+        Promise.resolve(
+          success({
+            coords: {
+              latitude: 51.1,
+              longitude: 45.3,
+            },
+          })
+        )
+      ),
+    };
+    global.navigator.geolocation = mockGeolocation;
 
-    const mockSubmit = jest.fn(() => Promise.resolve({ data: "success!" }));
+    const mockSubmit = jest.fn(async () =>
+      Promise.resolve({ data: "success!" })
+    );
 
     render(
       <SurveyComponent
         submitSurvey={mockSubmit}
         isLoading={false}
         activeHome={DEFAULT_TEST_HOME}
-        isEditable={false}
         surveyId={DEFAULT_TEST_SURVEY.id}
         formSpacing={5}
       />,
@@ -126,6 +137,19 @@ describe("SurveyComponent", () => {
         3: "some text",
       })
     );
+    const mockGeolocation = {
+      getCurrentPosition: jest.fn().mockImplementationOnce((success) =>
+        Promise.resolve(
+          success({
+            coords: {
+              latitude: 51.1,
+              longitude: 45.3,
+            },
+          })
+        )
+      ),
+    };
+    global.navigator.geolocation = mockGeolocation;
 
     const mockSubmit = jest.fn(() => Promise.resolve({ error: "oh no!" }));
 
@@ -134,7 +158,6 @@ describe("SurveyComponent", () => {
         submitSurvey={mockSubmit}
         isLoading={false}
         activeHome={DEFAULT_TEST_HOME}
-        isEditable={false}
         surveyId={DEFAULT_TEST_SURVEY.id}
         formSpacing={5}
       />,
@@ -156,7 +179,6 @@ describe("SurveyComponent", () => {
         submitSurvey={jest.fn()}
         isLoading={false}
         activeHome={DEFAULT_TEST_HOME}
-        isEditable={false}
         surveyId={DEFAULT_TEST_SURVEY.id}
         formSpacing={5}
       />,

@@ -1,76 +1,60 @@
+import * as React from "react";
+
 import { Box, Button } from "@mui/material";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { useGetHomesQuery } from "../../../api/apiSlice";
 import {
   useGoToBreadcrumb,
   useInitBreadcrumbs,
 } from "../../../hooks/breadcrumbHooks";
 
 import CustomSnackbar from "../../../components/CustomSnackbar";
-import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../../../components/Loader";
-import React from "react";
 
-import { useGetHomesQuery } from "../../../api/apiSlice";
-import { useNavigate } from "react-router-dom";
+import SurveyLink from "../../../components/SurveyLink";
 import { ADMIN_HOME, withAdminPrefix } from "../../../routing/routes";
 
 // Formats addresses
 export const getAddress = (params) => {
-  let unit_number = "";
-  if (params.getValue(params.id, "unit_number")) {
-    unit_number = `, Unit #${params.getValue(params.id, "unit_number")}`;
-  }
-  return `${params.getValue(params.id, "street_number")} ${params.getValue(
-    params.id,
-    "street_name"
-  )}${unit_number && unit_number}`;
+  let adrs = params.row;
+
+  return adrs.street_number + " " + adrs.street_name + " ";
+};
+
+const getApt = (params) => {
+  return params.row.unit_number;
 };
 
 const HomeTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
-  const navigate = useNavigate();
 
   useInitBreadcrumbs(
     [{ url: withAdminPrefix(ADMIN_HOME), description: "homes" }],
     true
   );
 
-  const handleHomeLink = (home) => goToBreadcrumb("home", home);
-
-  const handleUserLink = (home) => {
-    navigate(`/admin/survey/visit/${home.survey_visit_ids[0]}`);
-  };
-
   const handleAssignmentLink = (assignment) =>
     goToBreadcrumb("assignment", assignment);
 
   const columns = [
-    {
-      field: "id",
-      headerName: "Id",
-      minWidth: 80,
-    },
+    { field: "id", headerName: "ID", minWidth: 50, flex: 0.7 },
     {
       field: "address",
       valueGetter: getAddress,
       headerName: "Address",
-      minWidth: 300,
-      // maxWidth: 300,
-      // flex: 1.5,
-      renderCell: (params) => (
-        <Box minWidth="max-content" m={0}>
-          <Button
-            onClick={() => handleHomeLink(params.row)}
-            sx={{
-              textAlign: "left",
-              minWidth: "max-content",
-              padding: 0,
-            }}
-          >
-            {params.value}
-          </Button>
-        </Box>
-      ),
+      minWidth: 200,
+      flex: 1,
     },
+
+    {
+      field: "apartment",
+      valueGetter: getApt,
+      headerName: "Apt. No.",
+      minWidth: 100,
+      maxWidth: 200,
+      flex: 0.5,
+    },
+
     {
       field: "city",
       headerName: "City",
@@ -90,15 +74,14 @@ const HomeTable = () => {
       headerName: "Completed",
       renderCell: (params) =>
         params.row.completed ? (
-          <Button
+          <SurveyLink
+            label={"Yes ✅"}
+            links={params.row.survey_visit_ids}
             variant="text"
             sx={{ minWidth: "unset", padding: "0px" }}
             color="primary"
             size="small"
-            onClick={() => handleUserLink(params.row)}
-          >
-            Yes ✅
-          </Button>
+          />
         ) : (
           "No"
         ),
@@ -136,19 +119,25 @@ const HomeTable = () => {
   return (
     <Box>
       {isHomesError ? (
-        <CustomSnackbar
-          open={isHomesError}
-          message="Error fetching homes data."
-          severity="error"
-        />
+        <CustomSnackbar message="Error fetching homes data." severity="error" />
       ) : (
         <DataGrid
           rows={homesData}
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}
-          disableSelectionOnClick
+          disableRowSelectionOnClick
+          disableColumnFilter
+          disableDensitySelector
+          disableColumnsMenu
           autoHeight
+          slots={{ toolbar: GridToolbar }}
+          slotProps={{
+            toolbar: {
+              showQuickFilter: true,
+              quickFilterProps: { debounceMs: 500 },
+            },
+          }}
         />
       )}
     </Box>

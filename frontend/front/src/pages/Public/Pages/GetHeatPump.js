@@ -10,10 +10,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import React from "react";
-import Heading1BlueBgGround from "../../Components/Typography/Heading1BlueBgGround";
-import pageContent from "./getHeatPump.json";
-import Heading2 from "../../Components/Typography/Heading2";
-import ButtonDarkBlue from "../../Components/Button/ButtonDarkBlue";
+import { useTranslation, Trans } from "react-i18next";
+import Heading1BlueBgGround from "../Components/Typography/Heading1BlueBgGround";
+import Heading2 from "../Components/Typography/Heading2";
+import ButtonDarkBlue from "../Components/Button/ButtonDarkBlue";
 import { styled } from "@mui/material/styles";
 
 const StyledSectionNumber = styled(Typography)(({ theme }) => ({
@@ -29,8 +29,49 @@ const StyledSectionNumber = styled(Typography)(({ theme }) => ({
 }));
 
 const GetHeatPump = () => {
+  const { t } = useTranslation();
   const theme = useTheme();
   const isSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
+
+  const pageContent = [
+    {
+      step: "1",
+      title: t("public.get-heat-pump.step1.title"),
+      subtitle: "",
+      description: [
+        t("public.get-heat-pump.step1.itemA"),
+        t("public.get-heat-pump.step1.itemB"),
+        t("public.get-heat-pump.step1.itemC"),
+        t("public.get-heat-pump.step1.itemD"),
+        {
+          text: "Estimate Your savings ",
+          link: {
+            text: "with this link calculator",
+            url: "https://www.cenhud.com/en/my-energy/save-energy-money/energy-calculators/fuel-switching-calculator/",
+          },
+          textTranslationKey: t("public.get-heat-pump.step1.itemE"),
+        },
+      ],
+      textButton: "",
+      linkButton: "",
+    },
+    {
+      step: "2",
+      title: t("public.get-heat-pump.step2.title"),
+      subtitle: t("public.get-heat-pump.step2.title2"),
+      description: [],
+      textButton: t("public.get-heat-pump.step2.buttonText"),
+      linkButton: "https://heatsmartalliance.org/request-a-coach-2/",
+    },
+    {
+      step: "3",
+      title: t("public.get-heat-pump.step3.title"),
+      subtitle: "",
+      description: [],
+      textButton: t("public.get-heat-pump.step3.buttonText"),
+      linkButton: "https://heatsmartalliance.org/resources/",
+    },
+  ];
 
   return (
     <Box
@@ -42,7 +83,7 @@ const GetHeatPump = () => {
       }}
     >
       {/*Page Title */}
-      <Heading1BlueBgGround text="How To Get a Heat Pump?" />
+      <Heading1BlueBgGround text={t("public.get-heat-pump.headingBg")} />
 
       <Container sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
         <Stack direction="column">
@@ -53,12 +94,10 @@ const GetHeatPump = () => {
             }}
           >
             {/*SubTile */}
-            <Heading2 text="Calculate your savings in 3 easy steps" />
+            <Heading2 text={t("public.get-heat-pump.heading2")} />
           </Box>
           <Typography mb={8} variant="h5">
-            To get a heat pump, start by getting some details about your home so
-            you can have an informed conversation about how heat pumps can help
-            you.
+            {t("public.get-heat-pump.subtitle")}
           </Typography>
 
           {/* Sections */}
@@ -150,21 +189,22 @@ const GetHeatPump = () => {
                           {typeof item === "string" ? (
                             item
                           ) : (
-                            <>
-                              {item.text}{" "}
-                              <Link
-                                underline="none"
-                                href={item.link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                sx={{
-                                  color: "inherit",
-                                  textDecoration: "underline",
-                                }}
-                              >
-                                {item.link.text}
-                              </Link>
-                            </>
+                            <Trans
+                              i18nKey={item.textTranslationKey}
+                              default="{item.text} <0>{item.link.text}</0>"
+                              components={[
+                                <Link
+                                  underline="none"
+                                  href={item.link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  sx={{
+                                    color: "inherit",
+                                    textDecoration: "underline",
+                                  }}
+                                ></Link>,
+                              ]}
+                            ></Trans>
                           )}
                         </li>
                       ))}

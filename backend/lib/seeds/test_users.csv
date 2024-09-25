@@ -1,8 +1,8 @@
-email,password
-"alice.abbott@test.com","abcdef"
-"bob.baker@test.com","abcdef"
-"charlotte.cooke@test.com","abcdef"
-"david.daley@test.com","abcdef"
-"eve.earl@test.com","abcdef"
-"admin@heat.pump","aaaaaa"
-"surveyor@heat.pump","ssssss"
+email,password,role
+"alice.abbott@test.com","abcdef","surveyor"
+"bob.baker@test.com","abcdef","surveyor"
+"charlotte.cooke@test.com","abcdef","surveyor"
+"david.daley@test.com","abcdef","surveyor"
+"eve.earl@test.com","abcdef","surveyor"
+"admin@heat.pump","aaaaaa","admin"
+"surveyor@heat.pump","ssssss","surveyor"

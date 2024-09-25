@@ -1,10 +1,9 @@
 import { Box, Button, List, Stack } from "@mui/material";
 import React, { useCallback, useMemo, useState } from "react";
 
+import { generateMapsLink } from "../map/mapUtils";
 import { AssignmentHome } from "./AssignmentHome";
 import OptionMenu from "./OptionMenu";
-import { generateMapsLink } from "../map/mapUtils";
-
 // does a quick comparison by order
 const compareArrayByOrder = (a, b) => {
   if (a.visit_order < b.visit_order) {
@@ -23,6 +22,7 @@ const generateGoogleMap = (checked) => {
 };
 
 const AssignmentUnit = ({ data }) => {
+  const [showOnlyIncomplete, setShowOnlyIncomplete] = useState(false);
   const [checked, setChecked] = useState([]);
   const checkedSet = useMemo(() => new Set(checked), [checked]);
 
@@ -53,6 +53,9 @@ const AssignmentUnit = ({ data }) => {
   const handleDeselectAll = useCallback(() => {
     setChecked([]);
   }, []);
+  const handleShowIncomplete = useCallback(() => {
+    setShowOnlyIncomplete((prev) => !prev);
+  }, []);
 
   return (
     <Box>
@@ -66,12 +69,14 @@ const AssignmentUnit = ({ data }) => {
           }
           disabled={checked.length === 0}
         >
-          GENERATE MAP
+          GENERATE ROUTE
         </Button>
         <OptionMenu
           handleSelectAll={handleSelectAll}
           handleDeselectAll={handleDeselectAll}
           handleSelectIncompleted={selectAllIncompleted}
+          handleShowIncomplete={handleShowIncomplete}
+          showOnlyIncomplete={showOnlyIncomplete}
         />
       </Stack>
       <List
@@ -80,15 +85,30 @@ const AssignmentUnit = ({ data }) => {
           width: "100%",
         }}
       >
-        {(data || []).map((home) => (
-          <AssignmentHome
-            key={`assignmentHome-${home.id}`}
-            home={home}
-            handleToggle={handleToggle}
-            checked={checkedSet.has(home.id)}
-            selectionCap={checkedSet.size >= 10}
-          />
-        ))}
+        {(data || [])
+          .filter((home) => !home.completed)
+          .map((home) => (
+            <AssignmentHome
+              key={`assignmentHome-${home.id}`}
+              home={home}
+              handleToggle={handleToggle}
+              checked={checkedSet.has(home.id)}
+              selectionCap={checkedSet.size >= 10}
+            />
+          ))}
+        {(data || [])
+          .filter((home) => home.completed)
+          .map((home) =>
+            showOnlyIncomplete && home.completed ? null : (
+              <AssignmentHome
+                key={`assignmentHome-${home.id}`}
+                home={home}
+                handleToggle={handleToggle}
+                checked={checkedSet.has(home.id)}
+                selectionCap={checkedSet.size >= 10}
+              />
+            )
+          )}
       </List>
     </Box>
   );

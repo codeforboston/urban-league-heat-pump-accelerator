@@ -9,9 +9,7 @@ exports[`HeatPumpTextField renders as expected when disableFancyLabel=true 1`] =
       class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
       for="1-textField"
       id="1-textField-label"
-    >
-      Enter some text!
-    </label>
+    />
     <div
       class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
       data-testid="1"
@@ -42,14 +40,6 @@ exports[`HeatPumpTextField renders normally with default props 1`] = `
       class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
       data-testid="1"
     >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-standard css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="false"
-        for=":r0:"
-        id=":r0:-label"
-      >
-        Enter some text!
-      </label>
       <div
         class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
       >

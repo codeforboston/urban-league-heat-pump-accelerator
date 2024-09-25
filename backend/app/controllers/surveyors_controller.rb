@@ -6,7 +6,7 @@ class SurveyorsController < ApplicationController
 
   # GET /surveyors or /surveyors.json
   def index
-    @surveyors = Surveyor.where(search_params)
+    @surveyors = policy_scope(Surveyor).where(search_params).includes(:user)
   end
 
   # GET /surveyors/1 or /surveyors/1.json
@@ -15,6 +15,7 @@ class SurveyorsController < ApplicationController
   # GET /surveyors/new
   def new
     @surveyor = Surveyor.new
+    authorize @surveyor
   end
 
   # GET /surveyors/1/edit
@@ -23,6 +24,7 @@ class SurveyorsController < ApplicationController
   # POST /surveyors or /surveyors.json
   def create
     @surveyor = Surveyor.new(surveyor_params)
+    authorize @surveyor
 
     respond_to do |format|
       if @surveyor.save
@@ -58,15 +60,16 @@ class SurveyorsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_surveyor
     @surveyor = Surveyor.find(params[:id])
+    authorize @surveyor
   end
 
   # Only allow a list of trusted parameters through.
   def surveyor_params
     params.require(:surveyor).permit(:user_id, :firstname, :lastname, :email, :phone, :street_address, :geocode,
-                                     :city, :zipcode, :state, :role, :status, :assignment_ids)
+                                     :city, :zipcode, :state, :status, :assignment_ids)
   end
 
   def search_params
-    params.permit(:city, :zipcode, :state, :role, :status)
+    params.permit(:city, :zipcode, :state, :status)
   end
 end

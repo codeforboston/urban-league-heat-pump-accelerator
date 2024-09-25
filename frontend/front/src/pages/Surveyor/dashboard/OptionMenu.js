@@ -5,20 +5,21 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-const OptionMenu = (props) => {
-  const { handleSelectAll, handleDeselectAll, handleSelectIncompleted } = props;
+const OptionMenu = ({
+  handleSelectAll,
+  handleDeselectAll,
+  handleSelectIncompleted,
+  handleShowIncomplete,
+  showOnlyIncomplete,
+}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const SelectAllAndClose = () => {
-    handleSelectAll();
-    handleClose();
   };
 
   const DeselectAllAndClose = () => {
@@ -29,6 +30,10 @@ const OptionMenu = (props) => {
   const SelectIncompletedAndClose = () => {
     handleSelectIncompleted();
     handleClose();
+  };
+
+  const showIncomplete = () => {
+    handleShowIncomplete();
   };
 
   return (
@@ -52,10 +57,14 @@ const OptionMenu = (props) => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={SelectAllAndClose}>SELECT NEXT 10</MenuItem>
         <MenuItem onClick={DeselectAllAndClose}>DESELECT ALL</MenuItem>
         <MenuItem onClick={SelectIncompletedAndClose}>
           SELECT NEXT 10 INCOMPLETE
+        </MenuItem>
+        <MenuItem onClick={showIncomplete}>
+          {showOnlyIncomplete
+            ? "SHOW All ASSIGNMENTS"
+            : "SHOW ONLY INCOMPLETE HOMES"}
         </MenuItem>
       </Menu>
     </Box>

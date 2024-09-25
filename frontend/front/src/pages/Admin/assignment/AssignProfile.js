@@ -20,6 +20,7 @@ import {
   ADMIN_ASSIGNMENT,
   withAdminPrefix,
 } from "../../../routing/routes";
+import SurveyLink from "../../../components/SurveyLink";
 
 const AssignProfile = () => {
   const { aid } = useParams();
@@ -103,34 +104,17 @@ const AssignProfile = () => {
       headerName: "Survey",
       minWidth: 50,
       maxWidth: 80,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="primary"
-          size="small"
-          onClick={() => handleUserLink(params.row)}
-        >
-          View
-        </Button>
-      ),
-    },
-    {
-      field: "unassign",
-      headerName: "Unassign",
-      minWidth: 50,
-      maxWidth: 80,
-      renderCell: (params) => (
-        <Button
-          variant="text"
-          color="error"
-          size="small"
-          onClick={() =>
-            console.log(`clicked unassign home id: ${params.row.id}`)
-          }
-        >
-          X
-        </Button>
-      ),
+      renderCell: (params) =>
+        params.row.completed ? (
+          <SurveyLink
+            label="VIEW"
+            links={params.row.survey_visit_ids}
+            variant="text"
+            sx={{ minWidth: "unset", padding: "0px" }}
+            color="primary"
+            size="small"
+          />
+        ) : null,
     },
   ];
 
@@ -140,13 +124,11 @@ const AssignProfile = () => {
         <Loader />
       ) : isAssignmentError ? (
         <CustomSnackbar
-          open={isAssignmentError}
           message="Error fetching surveyor assignment data"
           severity="error"
         />
       ) : isSurveyorsError ? (
         <CustomSnackbar
-          open={isSurveyorsError}
           message="Error fetching surveyors data"
           severity="error"
         />

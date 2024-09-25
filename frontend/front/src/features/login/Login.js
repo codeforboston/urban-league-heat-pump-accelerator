@@ -1,29 +1,31 @@
 import * as routes from "../../routing/routes";
 
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { LoadingButton } from "@mui/lab";
 import {
   Alert,
   Avatar,
   Box,
-  Checkbox,
   Grid,
+  IconButton,
   Paper,
   Snackbar,
   TextField,
 } from "@mui/material";
-import { ROLE_ADMIN, ROLE_SURVEYOR } from "../../features/login/loginUtils";
-import React, { useMemo } from "react";
-
-import FormControlLabel from "@mui/material/FormControlLabel";
-import { LoadingButton } from "@mui/lab";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { Navigate } from "react-router-dom";
-import { selectCurrentUser } from "../../features/login/loginSlice";
+import InputAdornment from "@mui/material/InputAdornment";
+import React, { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLoginUserMutation } from "../../api/apiSlice";
 import { useSelector } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
+import { useLoginUserMutation } from "../../api/apiSlice";
+import { selectCurrentUser } from "../../features/login/loginSlice";
+import { ROLE_ADMIN, ROLE_SURVEYOR } from "../../features/login/loginUtils";
 
 const Login = () => {
   const currentUser = useSelector(selectCurrentUser);
+  const [showPassword, setShowPassword] = useState(false);
   const [login, { isLoading: isLoginLoading, error: loginError }] =
     useLoginUserMutation();
 
@@ -65,6 +67,10 @@ const Login = () => {
     login(values);
   }
 
+  const handleShowPassword = () => {
+    setShowPassword((showPassword) => !showPassword);
+  };
+
   // redirect to proper dashboard if the user is logged in!
   if (!!currentUser) {
     switch (currentUser.role) {
@@ -95,9 +101,9 @@ const Login = () => {
 
         <form onSubmit={handleSubmit(doLogin)}>
           <TextField
-            id="standard-basic"
+            id="user-email"
             placeholder="Enter Email"
-            type="text"
+            type="email"
             style={btnstyle}
             name="email"
             fullWidth
@@ -112,14 +118,27 @@ const Login = () => {
           />
           <span style={errorStyles}>{errors?.email?.message}</span>
           <TextField
-            id="standard-basic"
+            id="user-password"
             placeholder="Enter password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             style={btnstyle}
             name="password"
             fullWidth
             label="Password"
             variant="standard"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  position="end"
+                  aria-label="toggle password visibility"
+                  onClick={handleShowPassword}
+                >
+                  <IconButton>
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
             {...register("password", {
               required: {
                 value: true,
@@ -128,12 +147,6 @@ const Login = () => {
             })}
           />
           <span style={errorStyles}>{errors?.password?.message}</span>
-          <div style={{ marginTop: "5px" }}>
-            <FormControlLabel
-              control={<Checkbox color="primary" {...register("remember")} />}
-              label="Remember me"
-            />
-          </div>
           <LoadingButton
             loading={isLoginLoading}
             type="submit"
@@ -150,6 +163,14 @@ const Login = () => {
             Log in
           </LoadingButton>
         </form>
+        <Box sx={{ mt: 2 }}>
+          <Link
+            to="/users/forgot"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            Forgot Password?
+          </Link>
+        </Box>
       </Paper>
     </Box>
   );

@@ -13,7 +13,7 @@ if Rails.env.development?
 else
   Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins 'https://www.bostonhpa.org'
+      origins 'https://www.bostonhpa.org', 'https://staging.bostonhpa.org'
       resource  '*',
                 headers: :any,
                 methods: %i[get post patch put options delete],

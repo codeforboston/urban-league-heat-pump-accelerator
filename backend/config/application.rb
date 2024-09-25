@@ -40,5 +40,6 @@ module UrbanLeagueHeatPumpAccelerator
     config.active_job.queue_adapter = :sucker_punch
 
     config.autoload_paths += %W[#{config.root}/lib]
+    config.action_dispatch.rescue_responses['Pundit::NotAuthorizedError'] = :forbidden
   end
 end

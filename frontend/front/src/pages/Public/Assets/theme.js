@@ -23,7 +23,7 @@ const theme = createTheme({
       lineHeight: 1.5,
       letterSpacing: "0.00938em",
       "@media (min-width:900px)": {
-        fontSize: "18px",
+        fontSize: "16px",
       },
     },
 

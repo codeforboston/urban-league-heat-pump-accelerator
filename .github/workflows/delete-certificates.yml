@@ -1,0 +1,44 @@
+# Every three months or so, our LetsEncrypt certificates expire. This is a massive bummer. 
+# Although the ACME Lets Encrypt service is supposed to automatically renew them, it has forgotten how.
+# Therefore we need to trigger this refresh every three months on each of our "pods" in Mass Open Cloud.
+
+name: "Delete Certificates"
+
+env:
+  # 🖊️ EDIT to set the kube context's namespace, you can view your available project namespaces by login into: https://console.apps.shift.nerc.mghpcc.org.
+  OPENSHIFT_NAMESPACE: 'boston-heat-pump-accelerator-dbab1b'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 1 * *"
+
+jobs:
+  delete-certificates:
+    name: Delete the route certificates on OpenShift for Boston HPA productio and staging.
+    runs-on: ubuntu-20.04
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Install oc
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          oc: 4.15
+
+      - name: Log in to OpenShift
+        uses: redhat-actions/oc-login@v1
+        with:
+          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          insecure_skip_tls_verify: true
+          namespace: ${{ env.OPENSHIFT_NAMESPACE }}
+
+      - name: Delete the certificates we want to renew
+        run: |
+          oc patch route www -n ${{ env.OPENSHIFT_NAMESPACE }} --type=merge -p '{"spec": {"tls": null}}'
+          oc patch route bhpa-api -n ${{ env.OPENSHIFT_NAMESPACE }} --type=merge -p '{"spec": {"tls": null}}'
+          oc patch route staging-backend -n ${{ env.OPENSHIFT_NAMESPACE }} --type=merge -p '{"spec": {"tls": null}}'
+          oc patch route staging-frontend -n ${{ env.OPENSHIFT_NAMESPACE }} --type=merge -p '{"spec": {"tls": null}}'
