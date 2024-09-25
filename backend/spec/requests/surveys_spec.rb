@@ -35,10 +35,19 @@ RSpec.describe '/surveys', type: :request do
   end
 
   describe 'GET /show' do
+    let(:survey) do
+      localized_survey_question = create(:localized_survey_question, language_code: 'en-US')
+      localized_survey_question.survey_question.survey
+    end
+
     it 'renders a successful response' do
-      survey = Survey.create! valid_attributes
-      get survey_url(survey), as: :json
+      get survey_url(survey, langPref: 'en-US'), as: :json
       expect(response).to be_successful
+    end
+
+    it 'renders a 404 not found if langPref not found' do
+      get survey_url(survey, langPref: 'foo'), as: :json
+      expect(response).to have_http_status(:not_found)
     end
   end
 
