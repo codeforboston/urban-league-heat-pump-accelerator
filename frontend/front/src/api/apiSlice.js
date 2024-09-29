@@ -400,6 +400,7 @@ export const apiSlice = createApi({
           user: { email, role, surveyor },
         },
       }),
+      invalidatesTags: ["Surveyor"],
     }),
     requestPasswordReset: builder.mutation({
       query: (email) => ({
