@@ -5,6 +5,7 @@ import { breadcrumbsReducer } from "../features/breadcrumb/breadcrumbSlice";
 import { loginReducer } from "../features/login/loginSlice";
 import navReducer from "../features/nav/navSlice";
 import surveyorReducer from "../features/surveyor/surveyorSlice";
+import locationPermissionReducer from "../pages/Surveyor/dashboard/locationPermissionSlice";
 
 export const createStore = (options) =>
   configureStore({
@@ -14,6 +15,7 @@ export const createStore = (options) =>
       breadcrumbs: breadcrumbsReducer,
       login: loginReducer,
       surveyor: surveyorReducer,
+      locationPermissionPage: locationPermissionReducer,
       // apis
       [apiSlice.reducerPath]: apiSlice.reducer,
     },

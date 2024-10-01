@@ -1,16 +1,15 @@
 import { Alert, Box, Button, Link, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const LocationPermission = () => {
-  const [disableLocButn, setDisableLocBtn] = useState(false);
   const [err, setErr] = useState(false);
   const [errType, setErrType] = useState("");
-  const [locationStatus, setLocationStatus] = useState("Off");
+  const [locationStatus, setLocationStatus] = useState("unknown");
 
-  const locationPermission = () => {
+  const handleLocationPermission = () => {
     function success() {
       setErr(false);
-      setLocationStatus("On");
+      setLocationStatus("Granted");
     }
     function error(err) {
       if (err.code === 1) {
@@ -22,44 +21,6 @@ const LocationPermission = () => {
     }
     navigator.geolocation.getCurrentPosition(success, error);
   };
-
-  useEffect(() => {
-    //checking location permission
-    navigator.permissions.query({ name: "geolocation" }).then((res) => {
-      if (res.state === "prompt") {
-        setDisableLocBtn(false);
-        setErr(false);
-        setLocationStatus("Off");
-      } else if (res.state === "denied") {
-        setDisableLocBtn(true);
-        setErrType("user_denied");
-        setErr(true);
-        setLocationStatus("Denied");
-      } else if (res.state === "granted") {
-        setDisableLocBtn(true);
-        setErr(false);
-        setLocationStatus("On");
-      } else {
-        setDisableLocBtn(true);
-      }
-      res.onchange = (e) => {
-        if (e.type === "change") {
-          const newState = e.target.newState;
-          if (newState === "granted" || newState === "denied") {
-            if (newState === "granted") {
-              setLocationStatus("On");
-            }
-            if (newState === "denied") {
-              setLocationStatus("Denied");
-            }
-            setDisableLocBtn(true);
-          } else {
-            setDisableLocBtn(true);
-          }
-        }
-      };
-    });
-  });
 
   let permissionDeniedMsg = (
     <Alert severity="error">
@@ -99,6 +60,9 @@ const LocationPermission = () => {
       </ul>
     </Alert>
   );
+  let permissionSuccess = (
+    <Alert security="success">Location Permission is allowed</Alert>
+  );
 
   return (
     <Box
@@ -109,9 +73,9 @@ const LocationPermission = () => {
       alignItems="center"
     >
       <Alert severity="warning">
-        To submit surveys, please grant location permission using the "Grant
-        Location Permission" button below. You will be prompted for permission
-        please select "Allow".
+        To submit surveys, please enable your location permission using the
+        "Check Location Permission" button below. You will be prompted for
+        permission please select "Allow".
       </Alert>
       {err &&
         (errType === "user_denied" ? (
@@ -119,13 +83,10 @@ const LocationPermission = () => {
         ) : (
           <Typography>error</Typography>
         ))}
-      <Typography>Location Permission Status: {locationStatus}</Typography>
-      <Button
-        variant="contained"
-        onClick={locationPermission}
-        disabled={disableLocButn ? true : false}
-      >
-        Grant Location Permission
+      {locationStatus === "Granted" && permissionSuccess}
+
+      <Button variant="contained" onClick={handleLocationPermission}>
+        Check Location Permission
       </Button>
     </Box>
   );
