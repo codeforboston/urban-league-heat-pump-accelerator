@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_16_145140) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_07_152041) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,7 +54,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_16_145140) do
     t.integer "total_score_x"
     t.string "yr_built_category"
     t.integer "yr_built_score"
-    t.integer "status", default: 0, null: false
     t.boolean "user_added", default: false, null: false
     t.index ["assignment_id", "visit_order"], name: "index_homes_on_assignment_id_and_visit_order", unique: true
     t.index ["assignment_id"], name: "index_homes_on_assignment_id"
