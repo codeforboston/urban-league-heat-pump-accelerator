@@ -1,5 +1,5 @@
 # Stage 1: Use yarn to build the app
-FROM node:18 as builder
+FROM node:18-alpine as builder
 
 ARG REACT_APP_API_URL
 ENV REACT_APP_API_URL=$REACT_APP_API_URL
@@ -17,8 +17,13 @@ ARG REACT_APP_GIT_REF
 ENV REACT_APP_GIT_REF=$REACT_APP_GIT_REF
 
 WORKDIR /usr/src/app
+
+COPY frontend/front/package.json frontend/front/yarn.lock ./
+
+RUN --mount=type=cache,target=/usr/local/share/.cache/yarn/v6 \
+    yarn install --frozen-lockfile
+
 COPY frontend/front/ ./
-RUN yarn
 RUN yarn build
 
 # Stage 2: Copy the JS React SPA into the Nginx HTML directory
