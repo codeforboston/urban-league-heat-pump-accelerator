@@ -46,7 +46,7 @@ const HouseProfile = () => {
   }, [homeId, isSurveyVisitSuccess, navigate]);
 
   const submitSurvey = useCallback(
-    async (answers, surveyId, _, __, surveyorPosition) => {
+    async (answers, surveyId, _, surveyorPosition) => {
       const surveyVisit = await addSurveyVisit({
         surveyVisit: buildSurveyVisitData(
           answers,

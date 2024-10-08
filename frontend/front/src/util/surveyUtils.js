@@ -58,8 +58,12 @@ export const buildSurveyVisitData = (
     survey_visit: {
       home_id: homeId,
       surveyor_id: surveyorId,
-      latitude: `${surveyorPosition.latitude.toString()}`,
-      longitude: `${surveyorPosition.longitude.toString()}`,
+      latitude: surveyorPosition.latitude
+        ? `${surveyorPosition.latitude.toString()}`
+        : null,
+      longitude: surveyorPosition.longitude
+        ? `${surveyorPosition.longitude.toString()}`
+        : null,
       survey_response_attributes: {
         survey_id: surveyId,
         survey_answers_attributes: answersObject,

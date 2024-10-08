@@ -71,10 +71,13 @@ export const SurveyPage = () => {
   );
 
   const handleAddSurveyVisit = useCallback(
-    async (answers, surveyId, homeId) => {
+    async (answers, surveyId, homeId, _) => {
       const recaptcha = await getReCaptchaToken("create_survey");
       const surveyVisit = await addSurveyVisit({
-        surveyVisit: buildSurveyVisitData(answers, homeId, surveyId),
+        surveyVisit: buildSurveyVisitData(answers, homeId, surveyId, null, {
+          latitude: null,
+          longitude: null,
+        }),
         recaptcha,
       });
       return surveyVisit;
