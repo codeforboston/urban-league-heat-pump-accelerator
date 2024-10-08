@@ -165,8 +165,8 @@ const SurveyComponent = ({
               reject({ error_code: err.code, message: err.message });
             } else {
               resolve({
-                latitude: "not available",
-                longitude: "not available",
+                latitude: null,
+                longitude: null,
               });
             }
           }
