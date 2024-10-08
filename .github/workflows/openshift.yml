@@ -119,8 +119,6 @@ jobs:
       - name: Build from Dockerfile
         id: build-image
         uses: redhat-actions/buildah-build@v2
-        env:
-          DOCKER_BUILDKIT: 1
         with:
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ env.IMAGE_TAGS }}
