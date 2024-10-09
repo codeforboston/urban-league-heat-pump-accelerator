@@ -7,7 +7,7 @@ import React, {
   useState,
 } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 import { useGetSurveyStructureQuery } from "../../api/apiSlice";
 import {
@@ -15,6 +15,7 @@ import {
   buildSurveyCacheKey,
   surveyRenderRules,
 } from "../../util/surveyUtils";
+import { PUBLIC_ROUTE } from "../../routing/routes";
 import { AddressComponent } from "../AddressUtils";
 import Loader from "../Loader";
 import ConditionalQuestion from "./ConditionalQuestion";
@@ -38,6 +39,8 @@ const SurveyComponent = ({
   styles = {},
   conditionalRender,
 }) => {
+  const location = useLocation();
+  const isPublicSurvey = location.pathname.startsWith(PUBLIC_ROUTE);
   const navigate = useNavigate();
   const [saving, setSaving] = useState(false);
   const [errSnackBarOpen, setErrSnackBarOpen] = useState(false);
@@ -86,14 +89,18 @@ const SurveyComponent = ({
     // to update the data in the cache
     const formSubscription = watch((value) => {
       localStorage.setItem(cacheKey, JSON.stringify(value));
-      debouncedSetSaving(true);
+      if (!isPublicSurvey) {
+        debouncedSetSaving(true);
+      }
     });
 
     return () => {
       formSubscription.unsubscribe();
-      debouncedSetSaving(false);
+      if (!isPublicSurvey) {
+        debouncedSetSaving(false);
+      }
     };
-  }, [cacheKey, watch, debouncedSetSaving]);
+  }, [cacheKey, watch, debouncedSetSaving, isPublicSurvey]);
 
   const closeSnackbar = (event, reason) => {
     if (reason === "clickaway") {
@@ -144,22 +151,28 @@ const SurveyComponent = ({
   );
 
   const getLocationCoords = () => {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const crd = pos.coords;
+    return (
+      !isPublicSurvey &&
+      new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const crd = pos.coords;
 
-          resolve({ latitude: crd.latitude, longitude: crd.longitude });
-        },
-        (err) => {
-          if (err.code === 1) {
-            reject({ error_code: err.code, message: err.message });
-          } else {
-            resolve({ latitude: "not available", longitude: "not available" });
+            resolve({ latitude: crd.latitude, longitude: crd.longitude });
+          },
+          (err) => {
+            if (err.code === 1) {
+              reject({ error_code: err.code, message: err.message });
+            } else {
+              resolve({
+                latitude: null,
+                longitude: null,
+              });
+            }
           }
-        }
-      );
-    });
+        );
+      })
+    );
   };
 
   const surveySubmit = async (surveyData) => {
@@ -169,7 +182,6 @@ const SurveyComponent = ({
         surveyData,
         surveyId,
         activeHome.id,
-        clearCache,
         surveyorPosition
       );
       if (!!data) {

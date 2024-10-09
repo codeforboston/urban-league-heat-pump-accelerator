@@ -2,6 +2,7 @@ import * as router from "react-router";
 import * as apiSlice from "../../../api/apiSlice";
 
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom"; // <-- Add MemoryRouter
 import {
   buildDefaultDataFromSurveyStructure,
   buildSurveyCacheKey,
@@ -20,6 +21,7 @@ const DEFAULT_TEST_SURVEY_CACHE_KEY = buildSurveyCacheKey(
 );
 const DEFAULT_TEST_DEFAULT_SURVEY_DATA =
   buildDefaultDataFromSurveyStructure(DEFAULT_TEST_SURVEY);
+
 describe("SurveyComponent", () => {
   beforeEach(() => {
     jest.spyOn(router, "useNavigate").mockImplementation(() => jest.fn());
@@ -46,14 +48,15 @@ describe("SurveyComponent", () => {
     );
 
     render(
-      <SurveyComponent
-        submitSurvey={jest.fn()}
-        isLoading={false}
-        activeHome={DEFAULT_TEST_HOME}
-        surveyId={DEFAULT_TEST_SURVEY.id}
-        formSpacing={5}
-      />,
-      {}
+      <MemoryRouter>
+        <SurveyComponent
+          submitSurvey={jest.fn()}
+          isLoading={false}
+          activeHome={DEFAULT_TEST_HOME}
+          surveyId={DEFAULT_TEST_SURVEY.id}
+          formSpacing={5}
+        />
+      </MemoryRouter>
     );
 
     // eslint-disable-next-line testing-library/no-node-access
@@ -65,14 +68,15 @@ describe("SurveyComponent", () => {
 
   it("should cache data when form is edited", () => {
     render(
-      <SurveyComponent
-        submitSurvey={jest.fn()}
-        isLoading={false}
-        activeHome={DEFAULT_TEST_HOME}
-        surveyId={DEFAULT_TEST_SURVEY.id}
-        formSpacing={5}
-      />,
-      {}
+      <MemoryRouter>
+        <SurveyComponent
+          submitSurvey={jest.fn()}
+          isLoading={false}
+          activeHome={DEFAULT_TEST_HOME}
+          surveyId={DEFAULT_TEST_SURVEY.id}
+          formSpacing={5}
+        />
+      </MemoryRouter>
     );
 
     fireEvent.change(screen.getAllByRole("textbox")[0], {
@@ -112,14 +116,15 @@ describe("SurveyComponent", () => {
     );
 
     render(
-      <SurveyComponent
-        submitSurvey={mockSubmit}
-        isLoading={false}
-        activeHome={DEFAULT_TEST_HOME}
-        surveyId={DEFAULT_TEST_SURVEY.id}
-        formSpacing={5}
-      />,
-      {}
+      <MemoryRouter>
+        <SurveyComponent
+          submitSurvey={mockSubmit}
+          isLoading={false}
+          activeHome={DEFAULT_TEST_HOME}
+          surveyId={DEFAULT_TEST_SURVEY.id}
+          formSpacing={5}
+        />
+      </MemoryRouter>
     );
 
     const submitButton = screen.getByRole("button", { name: /submit/i });
@@ -154,14 +159,15 @@ describe("SurveyComponent", () => {
     const mockSubmit = jest.fn(() => Promise.resolve({ error: "oh no!" }));
 
     render(
-      <SurveyComponent
-        submitSurvey={mockSubmit}
-        isLoading={false}
-        activeHome={DEFAULT_TEST_HOME}
-        surveyId={DEFAULT_TEST_SURVEY.id}
-        formSpacing={5}
-      />,
-      {}
+      <MemoryRouter>
+        <SurveyComponent
+          submitSurvey={mockSubmit}
+          isLoading={false}
+          activeHome={DEFAULT_TEST_HOME}
+          surveyId={DEFAULT_TEST_SURVEY.id}
+          formSpacing={5}
+        />
+      </MemoryRouter>
     );
 
     const submitButton = screen.getByRole("button", { name: /submit/i });
@@ -175,14 +181,15 @@ describe("SurveyComponent", () => {
     const errSpy = jest.spyOn(console, "error");
 
     const { container } = render(
-      <SurveyComponent
-        submitSurvey={jest.fn()}
-        isLoading={false}
-        activeHome={DEFAULT_TEST_HOME}
-        surveyId={DEFAULT_TEST_SURVEY.id}
-        formSpacing={5}
-      />,
-      {}
+      <MemoryRouter>
+        <SurveyComponent
+          submitSurvey={jest.fn()}
+          isLoading={false}
+          activeHome={DEFAULT_TEST_HOME}
+          surveyId={DEFAULT_TEST_SURVEY.id}
+          formSpacing={5}
+        />
+      </MemoryRouter>
     );
 
     expect(container).toMatchSnapshot();
