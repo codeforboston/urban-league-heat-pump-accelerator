@@ -119,12 +119,8 @@ export const SurveyPage = () => {
           justifyContent="center"
           data-testid="publicSurveyInfoMessage"
         >
-          <p>
-            {t('public.survey.text1')}
-          </p>
-          <p>
-            {t('public.survey.text2')}
-          </p>
+          <p>{t("public.survey.text1")}</p>
+          <p>{t("public.survey.text2")}</p>
         </Stack>
         <HeatPumpFade show={step === STEP_ADDRESS}>
           <AddressValidatorComponent
@@ -151,22 +147,16 @@ export const SurveyPage = () => {
         </HeatPumpFade>
 
         <Snackbar open={!!createHomeError}>
-          <Alert severity="error">
-            {t('public.survey.alert1')}
-          </Alert>
+          <Alert severity="error">{t("public.survey.alert1")}</Alert>
         </Snackbar>
         <Snackbar open={!!surveyVisitError}>
-          <Alert severity="error">{t('public.survey.alert2')}</Alert>
+          <Alert severity="error">{t("public.survey.alert2")}</Alert>
         </Snackbar>
         <Snackbar open={validationStatus === UNRECOGNIZED}>
-          <Alert severity="error">
-            {t('public.survey.alert3')}
-          </Alert>
+          <Alert severity="error">{t("public.survey.alert3")}</Alert>
         </Snackbar>
         <Snackbar open={validationStatus === VALIDATION_ERROR}>
-          <Alert severity="error">
-            {t('public.survey.alert4')}
-          </Alert>
+          <Alert severity="error">{t("public.survey.alert4")}</Alert>
         </Snackbar>
       </>
     ),
@@ -181,6 +171,7 @@ export const SurveyPage = () => {
       surveyVisitError,
       showValidationLoader,
       validationStatus,
+      t,
     ]
   );
 
