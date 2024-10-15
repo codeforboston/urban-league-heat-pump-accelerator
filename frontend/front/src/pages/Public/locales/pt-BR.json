@@ -91,7 +91,13 @@
     "survey": {
       "heading1BlueBgGround": "Faça a pesquisa",
       "under-construction": "A pesquisa pública está atualmente em desenvolvimento!",
-      "work-in-progress": "Em construção"
+      "work-in-progress": "Em construção",
+      "text1": "Preencha este formulário para registar o seu interesse em instalar uma bomba de calor na sua casa.",
+      "text2": "Um representante da ULHPA entrará em contato com você com mais informações sobre o processo de instalação.",
+      "alert1": "Ocorreu um erro ao enviar seu endereço. \nPor favor, tente novamente mais tarde.",
+      "alert2": "Erro ao enviar a pesquisa.",
+      "alert3": "Este endereço não pôde ser validado. \nVerifique se suas informações estão corretas e tente novamente.",
+      "alert4": "Ocorreu um erro ao validar seu endereço ou ele já foi usado para enviar uma pesquisa. \nEnvie novamente ou tente um endereço diferente."
     },
     "benefits-heat-pump": {
       "cardBenefits": {

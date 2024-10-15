@@ -120,12 +120,10 @@ export const SurveyPage = () => {
           data-testid="publicSurveyInfoMessage"
         >
           <p>
-            Fill out this form to record your interest in installing a heat pump
-            for your home.
+            {t('public.survey.text1')}
           </p>
           <p>
-            An ULHPA representative will contact you with more information about
-            the installation process.
+            {t('public.survey.text2')}
           </p>
         </Stack>
         <HeatPumpFade show={step === STEP_ADDRESS}>
@@ -154,23 +152,20 @@ export const SurveyPage = () => {
 
         <Snackbar open={!!createHomeError}>
           <Alert severity="error">
-            There was an error submitting your address. Please try again later.
+            {t('public.survey.alert1')}
           </Alert>
         </Snackbar>
         <Snackbar open={!!surveyVisitError}>
-          <Alert severity="error">{"Error submitting survey."}</Alert>
+          <Alert severity="error">{t('public.survey.alert2')}</Alert>
         </Snackbar>
         <Snackbar open={validationStatus === UNRECOGNIZED}>
           <Alert severity="error">
-            This address could not be validated. Make sure your information is
-            correct then try again.
+            {t('public.survey.alert3')}
           </Alert>
         </Snackbar>
         <Snackbar open={validationStatus === VALIDATION_ERROR}>
           <Alert severity="error">
-            There was an error validating your address, or it has already been
-            used to submit a survey. Please submit again or try a different
-            address.
+            {t('public.survey.alert4')}
           </Alert>
         </Snackbar>
       </>
