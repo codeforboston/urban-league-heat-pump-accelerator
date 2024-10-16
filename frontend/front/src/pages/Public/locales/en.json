@@ -93,8 +93,6 @@
       "text2": "An ULHPA representative will contact you with more information about the installation process.",
       "alert1": "There was an error submitting your address. Please try again later.",
       "alert2": "Error submitting survey.",
-      "alert3": "This address could not be validated. Make sure your information is correct then try again.",
-      "alert4": "There was an error validating your address, or it has already been used to submit a survey. Please submit again or try a different address.",
       "text3": "Enter the address where you're interested in a heat pump:"
     },
     "benefits-heat-pump": {
