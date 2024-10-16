@@ -98,6 +98,11 @@ module SeedImporter
         home.save!
       end
     end
+    
+    # Seed Empty Assignments
+    # Get last highest integer of the assignment_id column of Homes
+    # Create an assignment for every entry in data-analysis/cluster_centroids_with_regions.csv which we will dutifully copy over.
+    # If we can't use names for our clusters, can we show a quick thumbnail map for the geocode
   end
 end
 
