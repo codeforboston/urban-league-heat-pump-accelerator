@@ -101,14 +101,8 @@ export const SurveyPage = () => {
           justifyContent="center"
           data-testid="publicSurveyInfoMessage"
         >
-          <p>
-            Fill out this form to record your interest in installing a heat pump
-            for your home.
-          </p>
-          <p>
-            An ULHPA representative will contact you with more information about
-            the installation process.
-          </p>
+          <p>{t("public.survey.text1")}</p>
+          <p>{t("public.survey.text2")}</p>
         </Stack>
         <HeatPumpFade show={step === STEP_ADDRESS}>
           <AddressValidatorComponent
@@ -127,13 +121,11 @@ export const SurveyPage = () => {
           <ThanksForSubmission />
         </HeatPumpSlide>
 
-        <Snackbar open={createHomeError}>
-          <Alert severity="error">
-            There was an error submitting your address. Please try again later.
-          </Alert>
+        <Snackbar open={!!createHomeError}>
+          <Alert severity="error">{t("public.survey.alert1")}</Alert>
         </Snackbar>
-        <Snackbar open={surveyVisitError}>
-          <Alert severity="error">{"Error submitting survey."}</Alert>
+        <Snackbar open={!!surveyVisitError}>
+          <Alert severity="error">{t("public.survey.alert2")}</Alert>
         </Snackbar>
       </>
     ),
@@ -146,6 +138,7 @@ export const SurveyPage = () => {
       isSurveyVisitLoading,
       step,
       surveyVisitError,
+      t,
     ]
   );
 

@@ -5,18 +5,15 @@
         "title": "Economize dinheiro em suas ",
         "titleBold": "contas de aquecimento e resfriamento",
         "text1": "Você pode receber incentivos para instalar uma bomba de calor, um tipo de sistema de aquecimento e resfriamento que pode ",
-        "link": "reduzir suas contas de serviços públicos",
+        "link": "reduzir suas contas de energia",
         "text2": ".",
         "button": "Benefícios das bombas de calor"
       },
       "cardLinksSection": {
-        "title": "O que é uma bomba de calor?",
-        "paragraph": "Uma bomba de calor é um sistema energeticamente eficiente que aquece a sua casa no inverno e a arrefece no verão.",
-        "button": "Faça a pesquisa",
         "item1": {
           "title": "O que é uma bomba de calor?",
-          "paragraph": "Uma bomba de calor é um sistema energeticamente eficiente que aquece a sua casa no inverno e a arrefece no verão.",
-          "button": "Faça a pesquisa"
+          "paragraph": "Uma bomba de calor é um sistema eficiente em termos de energia que aquece a sua casa no inverno e a resfria no verão.",
+          "button": "Responda à pesquisa"
         },
         "item2": {
           "title": "Sobre nós",
@@ -26,34 +23,34 @@
       },
       "testimonials": {
         "heading1": "Depoimentos",
-        "text1": "“Uau, me surpreendeu. Normalmente, a conta varia de US$400 a US$500, e era mais parecido com US$200. Eu pensei: \"Deixe-me olhar para isso novamente!\"",
-        "text2": "Histórias de outros residentes de Massachusetts sobre as suas bombas de calor.",
-        "button": "Leia Mais",
+        "text1": "“Uau, fiquei impressionado. Normalmente, a conta varia de US$400 a US$500, mas foi mais próximo de US$200. Pensei: deixe-me olhar isso de novo!”",
+        "text2": "Histórias de outros moradores de Massachusetts sobre suas experiências com bombas de calor.",
+        "button": "Leia mais",
         "text3": "Residente"
       },
       "cardBenefitsSection": {
-        "link": "Benefícios das bombas de calor",
+        "heading1": "Benefícios das Bombas de Calor",
         "subtitle1": "Saiba mais sobre os",
-        "heading1": "Benefícios das bombas de calor",
+        "link": "Benefícios das Bombas de Calor",
         "item1": {
           "title": "Contas de energia mais baixas",
-          "text1": "As bombas de calor são tão eficientes em termos energéticos que podem gerar economias significativas nas contas mensais de serviços públicos e reduzir custos de manutenção, reparo e substituição."
+          "text1": "As bombas de calor são tão eficientes que podem gerar economias significativas nas contas mensais de energia, além de reduzir os custos de manutenção, reparo e substituição."
         },
         "item2": {
-          "text1": "A mesma bomba de calor que ajuda a resfriar no verão pode fornecer calor no inverno – é um sistema eficiente, silencioso e conveniente, proporcionando conforto em toda a casa.",
-          "title": "Conforto em casa"
+          "title": "Conforto em casa",
+          "text1": "A mesma bomba de calor que ajuda a resfriar no verão também fornece calor no inverno. É um sistema eficiente, silencioso e conveniente, proporcionando conforto em toda a casa."
         },
         "item3": {
           "title": "Comunidades mais fortes",
-          "text1": "Ao ajudar a reduzir as contas de serviços públicos, as bombas de calor podem reduzir o custo de vida dos residentes, o que, por sua vez, pode ajudar os residentes que vivem com rendimentos fixos ou baixos a permanecerem nas suas casas por mais tempo, fortalecendo as comunidades."
+          "text1": "Ao reduzir as contas de energia, as bombas de calor podem ajudar a diminuir o custo de vida dos moradores, permitindo que aqueles com rendas fixas ou baixas permaneçam em suas casas por mais tempo, fortalecendo as comunidades."
         },
         "item4": {
           "title": "Ar mais limpo",
-          "text1": "As bombas de calor utilizam eletricidade que pode ser produzida por fontes renováveis. \nÀ medida que a rede se torna mais verde, as bombas de calor tornam-se muito mais ecológicas do que os sistemas alimentados a gás ou petróleo. \nCom uma única unidade “alimentada de forma ecológica” que aquece e arrefece, a pegada de carbono da sua casa é a mais baixa possível."
+          "text1": "As bombas de calor utilizam eletricidade que pode ser gerada por fontes renováveis. À medida que a rede elétrica se torna mais sustentável, as bombas de calor se tornam muito mais ecológicas do que sistemas a gás ou óleo. Com uma única unidade 'alimentada por energia verde' que aquece e resfria, a pegada de carbono da sua casa será minimizada."
         }
       },
       "partners": {
-        "heading1": "Nossos parceiros",
+        "heading1": "Nossos Parceiros",
         "text1": "O Boston Heat Pump Accelerator é uma iniciativa da Urban League of Eastern Massachusetts, em parceria com organizações locais e nacionais.",
         "link": "Saiba mais"
       }
@@ -64,100 +61,105 @@
         "value": "Saiba mais",
         "items": {
           "benefits-heat-pumps": "Benefícios das bombas de calor",
-          "about-us": "Sobre bombas de calor",
+          "about-us": "Sobre as bombas de calor",
           "testimonials": "Depoimentos",
           "about-bhpa": "Sobre a BHPA"
         }
       },
-      "get-involved": "Envolver-se",
+      "get-involved": "Participe",
+      "button-get-heat-pump": "OBTENHA UMA BOMBA DE CALOR",
       "locales": {
         "english": "English (United States)",
         "portuguese": "Português (Brasil)",
         "spanish": "Español (Latinoamérica)",
         "creole": "Kreyòl (Ayiti)"
       },
-      "button-get-heat-pump": "OBTENHA UMA BOMBA DE CALOR",
       "all-rights-reserved": "Todos os direitos reservados.",
       "source": "fonte",
-      "click-here": " clique aqui",
-      "take-the-survey": "Faça a pesquisa"
+      "click-here": "clique aqui",
+      "take-the-survey": "Responda à pesquisa"
     },
     "footer": {
       "legal": "Jurídico",
-      "privacy-and-data-policy": "\nPolítica de Privacidade e Dados",
+      "privacy-and-data-policy": "Política de Privacidade e Dados",
       "contact-us": "Contate-nos",
-      "member-login": "Acesso de membro"
+      "member-login": "Login de membro"
     },
     "survey": {
       "heading1BlueBgGround": "Faça a pesquisa",
       "under-construction": "A pesquisa pública está atualmente em desenvolvimento!",
-      "work-in-progress": "Em construção"
+      "work-in-progress": "Em construção",
+      "text1": "Preencha este formulário para registrar o seu interesse em instalar uma bomba de calor em sua casa.",
+      "text2": "Um representante da ULHPA entrará em contato com você com mais informações sobre o processo de instalação.",
+      "alert1": "Ocorreu um erro ao enviar seu endereço. Por favor, tente novamente mais tarde.",
+      "alert2": "Erro ao enviar a pesquisa.",
+      "text3": "Insira o endereço onde você tem interesse em instalar uma bomba de calor:"
     },
     "benefits-heat-pump": {
       "cardBenefits": {
         "item1": {
-          "title": "Contas de serviços públicos mais baixas",
-          "body1": "As bombas de calor de fonte de ar (ASHPs) podem reduzir o uso de eletricidade para aquecimento em até 50% em comparação com fornos elétricos e aquecedores de rodapé (",
-          "body2": "Para refrigeração, os ASHPs são aproximadamente equivalentes ao “ar condicionado central” e muito mais eficientes do que as unidades de AC de janela. \nJuntos, isso pode se traduzir em economias de 20% a 40% para os proprietários de suas contas anuais de aquecimento e resfriamento. \nPara comparar seu sistema e ver quanto você pode economizar, "
+          "title": "Contas de energia mais baixas",
+          "body1": "As bombas de calor de fonte de ar (ASHPs) podem reduzir o consumo de eletricidade para aquecimento em até 50% em comparação com fornos elétricos e aquecedores de rodapé (",
+          "body2": "Para refrigeração, os ASHPs são aproximadamente equivalentes ao “ar condicionado central” e muito mais eficientes do que as unidades de ar condicionado de janela. \nJuntos, isso pode resultar em economias de 20% a 40% nas contas anuais de aquecimento e resfriamento dos proprietários. \nPara comparar o seu sistema e ver quanto você pode economizar, "
         },
         "item2": {
-          "title": "Melhor aquecimento",
-          "body1": "As bombas de calor são uma excelente forma de aquecer e arrefecer a sua casa. \nSão quase silenciosas, consomem menos eletricidade e são contínuas: o funcionamento contínuo e de baixo nível das bombas de calor proporciona aquecimento ou arrefecimento constante, eliminando as rajadas de calor ou frio que os sistemas legados normalmente criam. \nPara saber mais sobre a operação e os benefícios do ASHP, "
+          "title": "Melhor aquecimento e resfriamento",
+          "body1": "As bombas de calor são uma excelente maneira de aquecer e resfriar a sua casa. \nElas são quase silenciosas, consomem menos eletricidade e são contínuas: o funcionamento contínuo e de baixo nível das bombas de calor proporciona aquecimento ou resfriamento constante, eliminando as rajadas de calor ou frio que os sistemas tradicionais normalmente criam. \nPara saber mais sobre a operação e os benefícios dos ASHPs, "
         },
         "item3": {
           "title": "Comunidades mais fortes",
-          "body1": "Os residentes de Boston querem permanecer nas suas casas e manter as suas comunidades fortes, mesmo enfrentando desafios decorrentes do aumento dos custos. \nA mudança para bombas de calor pode reduzir os custos dos serviços públicos, reduzindo o desafio financeiro de permanecer na comunidade. \nAo adicionar também capacidade de refrigeração ativa, os ASHPs também melhoram a “resiliência habitacional” de bairros inteiros à medida que as temperaturas anuais aumentam. \nCom o aumento das contas de energia e das temperaturas, a resiliência da habitação é mais importante do que nunca para capacitar as comunidades a permanecerem fortes e unidas. \nAprender mais, "
+          "body1": "Os moradores de Boston desejam permanecer em suas casas e fortalecer suas comunidades, mesmo enfrentando desafios relacionados ao aumento dos custos. \nA adoção de bombas de calor pode reduzir os custos de energia, aliviando o desafio financeiro de permanecer na comunidade. \nAlém disso, ao oferecer capacidade de resfriamento ativo, os ASHPs melhoram a “resiliência habitacional” de bairros inteiros à medida que as temperaturas anuais aumentam. \nCom o aumento das contas de energia e das temperaturas, a resiliência habitacional é mais importante do que nunca para fortalecer as comunidades. \nSaiba mais, "
         },
         "item4": {
           "title": "Menores emissões de carbono",
-          "body1": "As bombas de calor são sistemas de aquecimento e refrigeração altamente eficientes, alimentados eletricamente. \nComo tal, tornam-se “mais limpos” sempre que a fonte da sua energia eléctrica se torna mais limpa. \nO aquecimento/arrefecimento a gás ou a óleo não pode beneficiar da mesma forma. \nQuanta diferença a mudança para ASHPs fará no seu caso? \nEncontre detalhes sobre o impacto climático de uma mudança para bombas de calor, "
+          "body1": "As bombas de calor são sistemas de aquecimento e resfriamento altamente eficientes, movidos a eletricidade. \nDessa forma, elas se tornam “mais limpas” à medida que a fonte de energia elétrica se torna mais sustentável. \nO aquecimento e resfriamento a gás ou a óleo não podem se beneficiar da mesma maneira. \nQual será o impacto da mudança para ASHPs no seu caso? \nEncontre mais detalhes sobre o impacto climático de uma mudança para bombas de calor, "
         }
       },
-      "text1": "Queremos ouvir suas opiniões!",
-      "text2": "Queremos ouvir suas",
-      "text3": "opiniões!"
+      "text1": "Queremos ouvir sua opinião!",
+      "text2": "Queremos ouvir sua",
+      "text3": "opinião!"
     },
     "getInvolved": {
       "item1": {
         "title": "Compartilhe com sua comunidade",
-        "body": "Informe os seus vizinhos sobre as poupanças e outros benefícios das bombas de calor. \nCompartilhe este site nas redes sociais ou por e-mail.",
+        "body": "Informe seus vizinhos sobre as economias e outros benefícios das bombas de calor. \nCompartilhe este site nas redes sociais ou por e-mail.",
         "link": "Baixe o kit de compartilhamento social"
       },
       "item2": {
         "title": "Publique panfletos em empresas locais",
-        "body": "Imprima e publique este folheto em cafés, conveniências e quadros de avisos comunitários em sua vizinhança.",
-        "link": "Baixe o folheto informativo"
+        "body": "Imprima e cole este panfleto em cafés, lojas de conveniência e quadros de avisos comunitários na sua vizinhança.",
+        "link": "Baixe o panfleto informativo"
       },
       "item3": {
         "title": "Discuta com sua comunidade",
-        "body": "Ajude a organizar e/ou acolher um evento para os vizinhos aprenderem sobre bombas de calor e os seus benefícios."
+        "body": "Ajude a organizar e/ou hospedar um evento para que os vizinhos aprendam sobre bombas de calor e seus benefícios."
       },
       "item4": {
         "title": "Compartilhe com seus legisladores locais",
-        "body": "Ajude os seus vizinhos na transição para uma energia mais barata e mais limpa, procurando iniciativas locais e comunicando com os seus representantes eleitos para expressar a sua preferência por bombas de calor. \nUse o seguinte serviço gratuito para obter informações de contato para uma ligação, e-mail ou carta aos seus representantes eleitos.",
-        "link": "Contate seus funcionários eleitos"
+        "body": "Ajude seus vizinhos a fazer a transição para uma energia mais barata e limpa, buscando iniciativas locais e comunicando-se com seus representantes eleitos para expressar sua preferência por bombas de calor. \nUse o seguinte serviço gratuito para obter informações de contato para uma ligação, e-mail ou carta aos seus representantes eleitos.",
+        "link": "Contate seus representantes eleitos"
       },
-      "heading": "Envolver-se"
+      "heading": "Participe"
     },
     "about-heat-pump": {
       "item1": {
         "title": "O que é uma bomba de calor?",
-        "body": "Confira este artigo abrangente que a Carrier, fabricante de bombas de calor, escreveu sobre o que são bombas de calor e como funcionam.",
+        "body": "Confira este artigo abrangente que a Carrier, fabricante de bombas de calor, escreveu sobre o que é uma bomba de calor e como funciona.",
         "link": "Leia o artigo"
       },
       "item2": {
         "title": "Como funciona uma bomba de calor?",
-        "body": "Este especialista em encanamento e aquecimento da Old House, Richard Tretheway, instrui Kevin O'Connor sobre os princípios básicos de como funciona uma bomba de calor."
+        "body": "Este especialista em encanamento e aquecimento da Old House, Richard Tretheway, instrui Kevin O'Connor sobre os princípios básicos de como uma bomba de calor funciona."
       },
       "item3": {
         "title": "Por que as bombas de calor são melhores?",
-        "body": "Este vídeo da Vox explica por que as bombas de calor são melhores para o meio ambiente do que os aquecedores a combustível fóssil."
+        "body": "Este vídeo da Vox explica por que as bombas de calor são melhores para o meio ambiente do que os aquecedores a combustíveis fósseis."
       },
       "item4": {
         "title": "O que outras pessoas dizem?",
-        "body": "Ouça o que outra pessoa tem a dizer sobre a experiência de instalar uma bomba de calor em sua casa."
+        "body": "Ouça o que outras pessoas têm a dizer sobre a experiência de instalar uma bomba de calor em suas casas."
       },
-      "headingBg": "Sobre bombas de calor",
+      "headingBg": "Sobre Bombas de Calor",
       "button-section": {
         "text1": "Convencido de que uma bomba de calor é para você?",
         "text2": "Comece aqui!",
@@ -165,37 +167,37 @@
       }
     },
     "about-us": {
-      "mcec": "A <0>{{partnerName}}</0> é uma agência estatal quase pública de desenvolvimento econômico dedicada a acelerar o crescimento do setor de energia limpa em toda a Commonwealth, a estimular a criação de empregos, a proporcionar benefícios ambientais em todo o estado e a garantir longos \ncrescimento económico a longo prazo para o povo de Massachusetts. \nO MassCEC forneceu financiamento primário ao projeto BHPA através do programa de subsídios EmPower.",
-      "cfb": "<0>{{partnerName}}</0> é uma organização cívica voluntária de tecnologia e mudança social. \nO CfB é composto por desenvolvedores, designers, geeks de dados, ativistas cidadãos e muitos outros que usam tecnologia criativa para resolver problemas cívicos e sociais. \nA equipe e os voluntários do CfB forneceram elementos essenciais do projeto BHPA.",
-      "cfa": "<0>{{partnerName}}</0> é uma organização sem fins lucrativos 501(c)(3) fundada em 2009 para melhorar os serviços governamentais para todos, começando por aqueles que mais precisam deles. \nA CfA Brigade Network forneceu apoio em espécie ao projeto BHPA por meio do programa 2022 Impact Sprints.",
-      "heat-smart": "O <0>{{partnerName}}</0> é um grupo de voluntários que promove a adoção de aquecimento, refrigeração e tecnologias relacionadas com baixas emissões em comunidades locais. \nA equipe da Aliança forneceu conhecimentos técnicos e orientação ao projeto BHPA.",
-      "pcb": "<0>{{partnerName}}</0> é um programa de empregos verdes que oferece a jovens adultos treinamento, apoio para preparação profissional e conexões com empregadores na indústria verde. \nA PCB forneceu apoio ao esforço de levantamento da BHPA.",
-      "moc": "O <0>{{partnerName}}</0> é um laboratório de pesquisa e inovação em nuvem. \nDesde a sua criação em 2013, com o apoio da Mass Tech Collaborative, forneceu uma nuvem de produção que permitiu a inovação por uma ampla comunidade de parceiros da indústria e de pesquisa, usada por milhares de estudantes e pesquisadores, e apoiou dezenas de milhões de dólares em \nbolsas de pesquisa associadas que resultaram em contribuições para software de código aberto e centenas de publicações.",
+      "mcec": "A <0>{{partnerName}}</0> é uma agência estatal quase pública de desenvolvimento econômico dedicada a acelerar o crescimento do setor de energia limpa em toda a Commonwealth, a estimular a criação de empregos, proporcionar benefícios ambientais em todo o estado e garantir o crescimento econômico a longo prazo para o povo de Massachusetts. O MassCEC forneceu financiamento primário ao projeto BHPA através do programa de subsídios EmPower.",
+      "cfb": "<0>{{partnerName}}</0> é uma organização voluntária de tecnologia cívica e mudança social. O CfB é composto por desenvolvedores, designers, geeks de dados, ativistas cidadãos e muitos outros que utilizam tecnologia criativa para resolver problemas cívicos e sociais. A equipe e os voluntários do CfB forneceram elementos essenciais ao projeto BHPA.",
+      "cfa": "<0>{{partnerName}}</0> é uma organização sem fins lucrativos 501(c)(3) fundada em 2009 para melhorar os serviços governamentais para todos, começando pelos que mais precisam. A CfA Brigade Network ofereceu apoio em espécie ao projeto BHPA por meio do programa 2022 Impact Sprints.",
+      "heat-smart": "O <0>{{partnerName}}</0> é um grupo de voluntários que promove a adoção de tecnologias de aquecimento, resfriamento e relacionadas com baixas emissões em comunidades locais. A equipe da Aliança forneceu conhecimentos técnicos e orientações ao projeto BHPA.",
+      "pcb": "<0>{{partnerName}}</0> é um programa de empregos verdes que oferece a jovens adultos treinamento, apoio na preparação profissional e conexões com empregadores na indústria verde. A PCB forneceu apoio ao esforço de levantamento da BHPA.",
+      "moc": "O <0>{{partnerName}}</0> é um laboratório de pesquisa e inovação em nuvem. Desde sua criação em 2013, com o apoio da Mass Tech Collaborative, forneceu uma nuvem de produção que permitiu inovações para uma ampla comunidade de parceiros da indústria e da pesquisa. Esse esforço já foi usado por milhares de estudantes e pesquisadores, além de ter apoiado dezenas de milhões de dólares em bolsas de pesquisa, resultando em contribuições para software de código aberto e centenas de publicações.",
       "bhpa-core-partners": "PARCEIROS PRINCIPAIS DA BHPA",
-      "headingbg": "Sobre o acelerador da bomba de calor de Boston",
-      "bhpa": "O <1>Boston Heat Pump Accelerator (BHPA)</1> trabalha para apoiar o aumento do acesso dos proprietários de residências de Boston às bombas de calor e recursos relacionados, ajudando a reduzir custos para os residentes, aumentar a resiliência da comunidade e mudar a região para tecnologias de baixo carbono \n. \nEsta iniciativa não recebe financiamento de empresas ou instaladores de bombas de calor - apoia apenas o acesso geral a bombas de calor, através de esforços de educação e sensibilização.",
-      "ulem1": "A <1> <5>Urban League of Eastern Massachusetts (ULEM)</5> </1> é a patrocinadora do esforço da BHPA. \nDesde 1919, a ULEM fornece serviços e programas de força de trabalho e de desenvolvimento econômico para aumentar a autossuficiência dos residentes da comunidade de Boston e das áreas metropolitanas vizinhas. \nA ULEM é uma organização sem fins lucrativos 501c3 e uma das afiliadas mais antigas do movimento da Liga Urbana Nacional.",
-      "ulem2": "O projeto BHPA é dirigido pelo membro do Conselho da ULEM, Christopher Scranton, em coordenação com os principais parceiros, listados abaixo."
+      "headingbg": "Sobre o Boston Heat Pump Accelerator",
+      "bhpa": "O <1>Boston Heat Pump Accelerator (BHPA)</1> trabalha para apoiar o acesso dos proprietários de residências em Boston a bombas de calor e recursos relacionados, ajudando a reduzir custos, aumentar a resiliência da comunidade e promover a transição para tecnologias de baixo carbono. Esta iniciativa não recebe financiamento de empresas ou instaladores de bombas de calor – ela apoia o acesso às bombas de calor apenas por meio de esforços de educação e conscientização.",
+      "ulem1": "A <1><5>Urban League of Eastern Massachusetts (ULEM)</5></1> é a patrocinadora do esforço BHPA. Desde 1919, a ULEM oferece serviços e programas de desenvolvimento econômico e de força de trabalho para aumentar a autossuficiência dos residentes da comunidade de Boston e das áreas metropolitanas vizinhas. A ULEM é uma organização sem fins lucrativos 501c3 e uma das afiliadas mais antigas do movimento National Urban League.",
+      "ulem2": "O projeto BHPA é liderado por Christopher Scranton, membro do Conselho da ULEM, em coordenação com os parceiros principais listados abaixo."
     },
     "get-heat-pump": {
       "headingBg": "Como obter uma bomba de calor?",
-      "heading2": "Calcule suas economias em 3 etapas fáceis",
-      "subtitle": "Para obter uma bomba de calor, comece por obter alguns detalhes sobre a sua casa para que possa ter uma conversa informada sobre como as bombas de calor podem ajudá-lo.",
+      "heading2": "Calcule suas economias em 3 etapas simples",
+      "subtitle": "Para obter uma bomba de calor, comece obtendo alguns detalhes sobre sua casa para que você possa ter uma conversa informada sobre como as bombas de calor podem ajudar você.",
       "step1": {
-        "title": "Obtenha detalhes sobre suas necessidades de aquecimento/resfriamento doméstico",
-        "itemE": "Estime suas economias <0>com esta calculadora no link</0>",
+        "title": "Obtenha detalhes sobre suas necessidades de aquecimento/resfriamento",
+        "itemE": "Estime suas economias <0>com esta calculadora</0>",
         "itemA": "Metragem quadrada",
         "itemB": "Quantos andares",
         "itemC": "Sistema HVAC atual",
         "itemD": "Contas/uso de serviços públicos atuais"
       },
       "step2": {
-        "title": "Fale com um treinador de bomba de calor",
+        "title": "Converse com um consultor de bombas de calor",
         "title2": "(Opcional, mas recomendado)",
-        "buttonText": "SOLICITE UM TREINADOR"
+        "buttonText": "SOLICITE UM CONSULTOR"
       },
       "step3": {
-        "title": "Obtenha detalhes sobre suas necessidades de aquecimento/resfriamento doméstico",
+        "title": "Obtenha detalhes sobre suas necessidades de aquecimento/resfriamento",
         "buttonText": "RECURSOS"
       }
     },
@@ -203,36 +205,36 @@
       "textDate": "Última atualização: 19 de abril de 2023",
       "text2": "Nossa <0>Política de Privacidade</0> foi atualizada.",
       "text3": "**Esta política de privacidade do Boston Heat Pump Accelerator (BHPA) ajudará você a entender melhor como coletamos, compartilhamos e usamos suas informações pessoais.**",
-      "headingBg": "política de Privacidade",
+      "headingBg": "Política de Privacidade",
       "title1": "Índice",
       "items": {
         "item1": {
           "title": "Quais dados o BHPA usa?",
-          "text": "Os dados usados ​​para o projeto BHPA foram dados abertos e públicos do banco de dados on-line do Property Assessor da cidade de Boston. \nEsses dados não são privilegiados ou privados. \nÉ aberto ao público."
+          "text": "Os dados usados para o projeto BHPA foram extraídos do banco de dados público do Property Assessor da cidade de Boston. Esses dados não são confidenciais ou privados. Estão disponíveis ao público."
         },
         "item2": {
           "title": "O que a BHPA fez com os dados?",
-          "text": "A BHPA usou os dados do Assessor de Boston para identificar casas ocupadas por proprietários nos bairros de Dorchester, Roxbury e Mattapan. \nIsto permitiu aos organizadores do projecto desenvolver uma lista de residentes do bairro que poderiam potencialmente participar num inquérito destinado aos proprietários de casas. \nEssencialmente, ajuda a BHPA a evitar o envio de pesquisadores para um endereço onde os únicos residentes/ocupantes não poderiam participar da pesquisa. \nA BHPA planeja usar os dados anonimizados coletados em pesquisas e o código-fonte aberto para promover o acesso público a informações genéricas que, esperançosamente, permitirão que os usuários da área de Boston tomem decisões mais informadas sobre bombas de calor em seus próprios ambientes pessoais."
+          "text": "A BHPA utilizou os dados do Assessor de Boston para identificar residências ocupadas pelos proprietários nos bairros de Dorchester, Roxbury e Mattapan. Isso permitiu que os organizadores do projeto desenvolvessem uma lista de residentes que poderiam participar de uma pesquisa destinada aos proprietários. Dessa forma, a BHPA evita enviar pesquisadores para endereços onde os residentes não poderiam participar da pesquisa. A BHPA planeja usar os dados anonimizados das pesquisas para promover o acesso público a informações que permitam aos moradores de Boston tomar decisões mais informadas sobre bombas de calor."
         },
         "item3": {
           "title": "Por que a pesquisa da BHPA é apenas para proprietários e não para locatários?",
-          "text": "Os locatários em Boston são residentes e vozes importantes na comunidade. \nOs locatários que moram em residências com várias unidades e/ou prédios de apartamentos já são elegíveis para participar de outros programas e iniciativas, como o BlocPower. \nSeparadamente, os proprietários de casas ocupadas pelos proprietários (geralmente têm controle legal de seu edifício e podem tomar decisões sobre a troca de sistemas de aquecimento e resfriamento de uma forma que os locatários (geralmente) não podem. Tanto os proprietários quanto os locatários têm vozes e papéis importantes a desempenhar nos esforços em torno \nmudança para aquecimento e resfriamento mais limpos e de baixo custo. Faz sentido interagir com esses grupos com uma abordagem individualizada e personalizada - o projeto BHPA concentra-se nos proprietários de residências."
+          "text": "Locatários em Boston são uma parte importante da comunidade. Locatários que vivem em prédios de várias unidades ou apartamentos já são elegíveis para participar de outros programas, como o BlocPower. No entanto, os proprietários de imóveis ocupados por eles mesmos geralmente têm controle sobre as decisões do sistema de aquecimento e resfriamento, ao contrário dos locatários. Ambos desempenham papéis importantes nas iniciativas para a transição para sistemas de aquecimento e resfriamento mais limpos e baratos. O projeto BHPA se concentra nos proprietários, mas uma pesquisa futura para locatários é possível."
         },
         "item4": {
-          "title": "Por que a cidade de Boston possui dados sobre as casas e os proprietários de casas na cidade de Boston?",
-          "text": "A cidade de Boston é o melhor recurso para esta questão. \nA BHPA pode oferecer nossa própria opinião: Durante a compra de um imóvel, as informações básicas envolvidas na transação passam a fazer parte do registro do imóvel. \nEsta informação é pública – está disponível para qualquer pessoa que a procure. \nQuase todas as cidades, vilas e/ou condados dos Estados Unidos coletam basicamente as mesmas informações e também as disponibilizam ao público."
+          "title": "Por que a cidade de Boston possui dados sobre as propriedades e seus proprietários?",
+          "text": "A cidade de Boston é a fonte principal para responder a esta pergunta. Basicamente, durante a compra de um imóvel, as informações envolvidas na transação tornam-se parte do registro público do imóvel. Essas informações são públicas e acessíveis a qualquer pessoa. Quase todas as cidades nos EUA mantêm esses dados e os disponibilizam ao público."
         },
         "item5": {
-          "title": "Quais dados exatamente a cidade de Boston possui sobre mim e minha propriedade?",
-          "text": "O banco de dados do Assessor de Propriedade da Cidade de Boston é fácil de usar. \nPara saber mais sobre os dados que a cidade possui, fique à vontade para procurar o endereço em questão em seu banco de dados aqui [<a href='https://www.cityofboston.gov/assessing/search/' target='_blank' \nrel='noopener noreferrer'>LINK</a>]"
+          "title": "Quais dados a cidade de Boston possui sobre mim e minha propriedade?",
+          "text": "O banco de dados do Property Assessor da cidade de Boston é fácil de acessar. Para saber mais sobre os dados disponíveis sobre seu imóvel, consulte o banco de dados público aqui [<a href='https://www.cityofboston.gov/assessing/search/' target='_blank' rel='noopener noreferrer'>LINK</a>]"
         },
         "item6": {
-          "title": "Quais dados sobre mim e minha propriedade foram usados ​​neste projeto? \n[e prejudicou/reduziu/invadiu minha privacidade...]",
-          "text": "O Boston Heat Pump Accelerator usa dados disponíveis publicamente do escritório do assessor da cidade de Boston para chegar aos proprietários de casas nos bairros de Boston e pesquisar os residentes sobre seu conhecimento sobre bombas de calor. \nComo Massachusetts oferece alguns descontos para residentes com base na condição de residente e proprietário de casa, estamos entrando em contato com pessoas que têm direito a esses descontos e usamos dados públicos para fazer isso. \nTambém usamos código-fonte aberto para ajudar a criar ferramentas para fazer listas de pessoas para contato. \nO Boston Heat Pump Accelerator trabalha com voluntários da comunidade Code for Boston para criar código de computador de código aberto em nossa tecnologia. \nO código é <a href='https://github.com/codeforboston/urban-league-heat-pump-accelerator'>público no GitHub</a> caso você queira inspecioná-lo."
+          "title": "Quais dados sobre mim e minha propriedade foram usados neste projeto?",
+          "text": "O Boston Heat Pump Accelerator usa dados públicos do escritório do Assessor da Cidade de Boston para contatar proprietários em bairros de Boston sobre bombas de calor. Como Massachusetts oferece descontos para residentes, estamos contatando proprietários elegíveis usando dados públicos. O código-fonte aberto que utilizamos para essa ação está disponível publicamente. O código é <a href='https://github.com/codeforboston/urban-league-heat-pump-accelerator'>público no GitHub</a> para quem desejar inspecionar."
         },
         "item7": {
-          "title": "O que acontece com as informações que as pessoas fornecem para a pesquisa (presencialmente ou on-line)?",
-          "text": "Quando você responde à pesquisa da BHPA sobre bombas de calor, ela é anonimizada e coletada de forma agregada. \nReportamos os dados que recolhemos no nosso inquérito aos parceiros listados na nossa página de Parceiros para os ajudar a melhorar os seus programas, para que possamos ajudar mais pessoas a obter descontos em bombas de calor para as quais são elegíveis. \nNão vendemos seus dados a terceiros. \nSe você tiver dúvidas sobre como seus dados são usados, entre em contato com <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
+          "title": "O que acontece com os dados fornecidos nas pesquisas?",
+          "text": "Quando você responde à pesquisa da BHPA, suas respostas são anonimizadas e armazenadas de forma agregada. Compartilhamos os dados com os parceiros do projeto para ajudá-los a melhorar seus programas, garantindo que mais pessoas possam obter descontos em bombas de calor. Não vendemos seus dados a terceiros. Para dúvidas sobre o uso de seus dados, entre em contato com <a href='mailto:privacy@bostonhpa.org'>privacy@bostonhpa.org</a>."
         }
       }
     },
@@ -241,39 +243,39 @@
       "items": {
         "item1": {
           "title": "O que é uma bomba de calor? O que é uma ASHP?",
-          "text": "Consulte nossa página <a href='/public/about-heat-pump'>O que é uma Bomba de Calor</a> para obter mais detalhes sobre bombas de calor! Se você tiver mais dúvidas sobre bombas de calor além do que está neste site, conecte-se com a <a href='https://heatsmartalliance.org/' target='_blank' rel='noopener noreferrer'>Heat Smart Alliance</a>."
+          "text": "Consulte nossa página <a href='/public/about-heat-pump'>O que é uma Bomba de Calor</a> para mais detalhes! Caso tenha mais perguntas, entre em contato com a <a href='https://heatsmartalliance.org/' target='_blank' rel='noopener noreferrer'>Heat Smart Alliance</a>."
         },
         "item2": {
-          "title": "Por que este projeto considerou apenas ASHPs e não bombas de calor geotérmicas (GSHPs) ou bombas de calor ar-água (A2WHPs)?",
-          "text": "As ASHPs são uma solução mais amplamente disponível para instalação, mais compatível com a casa média em Boston (dada a densidade urbana e a falta de espaço para GSHPs) e as bombas de calor ar-água (A2WHPs) ainda não estão geralmente disponíveis nos números e ao custo das ASHPs. No entanto, com o potencial futuro das A2WHPs para substituir sistemas inteiros de caldeiras, é uma tecnologia que vale a pena acompanhar de perto à medida que amadurece."
+          "title": "Por que o projeto considera apenas ASHPs e não bombas geotérmicas (GSHP) ou bombas ar-água (A2WHP)?",
+          "text": "ASHPs são uma solução mais amplamente disponível e compatível com a maioria das residências em Boston, considerando a densidade urbana e a falta de espaço para GSHPs. As A2WHPs ainda não estão amplamente disponíveis ou com o mesmo custo das ASHPs, mas têm potencial futuro, especialmente para substituir sistemas de caldeiras inteiras."
         },
         "item3": {
-          "title": "Como as ASHPs podem ajudar os residentes na Cidade de Boston?",
+          "title": "Como as ASHPs podem ajudar os moradores de Boston?",
           "text": "Consulte nossa página sobre os <a href='/public/benefits-heat-pump'>Benefícios das Bombas de Calor</a>."
         },
         "item4": {
-          "title": "Por que este projeto envolve os residentes de Dorchester, Roxbury e Mattapan?",
-          "text": "Este projeto foi financiado por uma bolsa concedida à Urban League of Eastern Massachusetts (que atende esses e outros bairros) pelo Massachusetts Clean Energy Center (que identificou este projeto como elegível para fundos de bolsa precisamente porque exploraria o apoio aos residentes nesses bairros)."
+          "title": "Por que este projeto envolve os moradores de Dorchester, Roxbury e Mattapan?",
+          "text": "Este projeto foi financiado por uma bolsa concedida à Urban League of Eastern Massachusetts pelo Massachusetts Clean Energy Center, que identificou esses bairros como elegíveis para o financiamento."
         },
         "item5": {
-          "title": "Por que este projeto está pesquisando uma amostra do bairro e não todos no bairro? Por que meu vizinho foi pesquisado e eu não?",
-          "text": "Este projeto é um 'projeto piloto', o que significa que se entende que vai explorar um conceito potencialmente útil em pequena escala com fundos muito limitados. Espera-se que os resultados do projeto possam potencialmente confirmar que uma versão maior das mesmas ou semelhantes atividades valeria a pena no futuro. Projetos-piloto são uma abordagem estabelecida e amplamente implementada por instituições para explorar, testar e confirmar alguma atividade como precursora para comprometer maiores quantias de fundos para uma ação mais abrangente."
+          "title": "Por que o projeto está pesquisando apenas uma amostra do bairro e não todos os moradores?",
+          "text": "Este projeto é um 'projeto piloto', o que significa que explora um conceito em pequena escala com financiamento limitado. Pilotos ajudam a testar um conceito antes de comprometer maiores fundos para uma ação mais abrangente."
         },
         "item6": {
-          "title": "Este projeto piloto parece estar focado exclusivamente em proprietários de imóveis, está correto?",
-          "text": "<p>Não, o projeto não apoia apenas proprietários. O site público deste projeto foi criado para apoiar, educar e capacitar todos os residentes a entender as bombas de calor e aprender como as bombas de calor podem ajudar os residentes, comunidades e o planeta, independentemente de o residente ser proprietário ou inquilino de sua casa.</p><p>A pesquisa do projeto, que faz perguntas sobre o que o entrevistado está interessado em instalar em sua casa, é direcionada exclusivamente aos proprietários. Uma pesquisa semelhante no futuro, oferecida aos inquilinos, é uma possibilidade sob uma futura bolsa. Os inquilinos são uma parte integral da comunidade e existem outros esforços em andamento local e nacionalmente para identificar, organizar e capacitar as vozes dos inquilinos também.</p>"
+          "title": "Este projeto está focado exclusivamente em proprietários?",
+          "text": "<p>Não, o projeto não foca apenas em proprietários. O site público foi criado para apoiar e educar todos os moradores sobre bombas de calor, independentemente de serem proprietários ou inquilinos.</p><p>A pesquisa atual, no entanto, é voltada exclusivamente para proprietários. No futuro, uma pesquisa direcionada para inquilinos pode ser possível, dependendo de novos financiamentos.</p>"
         },
         "item7": {
-          "title": "O projeto pesquisou todos os residentes em Dorchester, Roxbury e Mattapan?",
-          "text": "Não - dadas as limitações de financiamento, pessoal e tempo, este projeto só pôde pesquisar um subconjunto de amostra de residentes desses bairros."
+          "title": "O projeto pesquisou todos os moradores de Dorchester, Roxbury e Mattapan?",
+          "text": "Não - devido às limitações de financiamento e tempo, o projeto pesquisou apenas uma amostra de moradores nesses bairros."
         },
         "item8": {
-          "title": "Como o projeto identificou os residentes a serem pesquisados?",
-          "text": "<p>A primeira etapa foi considerar que tipos de entrevistados não seriam elegíveis para completar a pesquisa.</p><p>Por exemplo, esta pesquisa enfoca os proprietários, não os inquilinos (pelas razões descritas acima). Além disso, como a pesquisa seria realizada principalmente pessoalmente, na porta da casa em questão, fez sentido focar em casas ocupadas pelos proprietários. Este foco reduz a probabilidade de os pesquisadores baterem na porta de uma casa, apenas para descobrir que o proprietário (que tem autoridade para tomar decisões sobre o sistema de aquecimento) não só não está em casa, mas na verdade nem mesmo mora lá. Nesta situação, não seria possível que esta 'batida na porta' resultasse em uma pesquisa concluída. Então, foi tomada a decisão de focar em casas ocupadas pelos proprietários. Com um orçamento muito limitado para apoiar o tempo dos pesquisadores, o projeto buscou maneiras de garantir que cada interação da pesquisa tivesse a maior 'chance fundamental' de envolver um entrevistado elegível.</p><p>Para identificar as casas ocupadas pelos proprietários nos bairros compatíveis, o projeto analisou o banco de dados de propriedades da Cidade de Boston aberto ao público. Esse conjunto de dados aberto é mantido pela cidade, contém informações publicamente disponíveis e é pesquisável por qualquer pessoa. Ele lista informações limitadas associadas a propriedades nos bairros de Boston, incluindo endereço, proprietário e endereço do proprietário, junto com o ano construído, sistema de aquecimento e alguns outros campos básicos.</p>"
+          "title": "Como os moradores foram selecionados para a pesquisa?",
+          "text": "<p>A primeira etapa foi identificar os entrevistados inelegíveis para a pesquisa.</p><p>Por exemplo, focamos em proprietários, não inquilinos. Além disso, priorizamos residências ocupadas pelos proprietários para maximizar a eficiência das entrevistas.</p><p>Para identificar essas casas, utilizamos o banco de dados público da Cidade de Boston, que contém informações limitadas sobre endereços e seus proprietários.</p>"
         },
         "item9": {
-          "title": "Se eu responder a esta pesquisa, como minhas respostas serão utilizadas?",
-          "text": "<p>O objetivo da pesquisa BostonHPA 2024 é avaliar a conscientização sobre bombas de calor nos bairros compatíveis. As respostas da pesquisa serão armazenadas em um banco de dados seguro e agregadas para ilustrar os possíveis pontos fortes e/ou lacunas na familiaridade com bombas de calor do público em geral nesses bairros.</p><p>É o objetivo deste projeto que esses insights sobre a conscientização de bombas de calor nas comunidades locais possam informar esforços adicionais e abrangentes para capacitar os residentes com informações, contexto, opções e orientação em torno da avaliação de bombas de calor como soluções HVAC mais ecológicas, eficientes e menos caras.</p>"
+          "title": "Se eu participar da pesquisa, como minhas respostas serão usadas?",
+          "text": "<p>A pesquisa de 2024 da BostonHPA visa avaliar a conscientização sobre bombas de calor nos bairros participantes. As respostas serão agregadas e usadas para informar futuros esforços de conscientização e acesso a bombas de calor.</p>"
         }
       }
     }

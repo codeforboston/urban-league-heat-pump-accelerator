@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Stack, Button, Box } from "@mui/material";
 import { HeatPumpAddressField } from "../../../components/SurveyComponent/HeatPumpAddressField";
 import { useForm } from "react-hook-form";
@@ -15,6 +16,8 @@ export const AddressValidatorComponent = forwardRef(
     ref
   ) => {
     const navigate = useNavigate();
+
+    const { t } = useTranslation();
 
     const { handleSubmit, control } = useForm({
       defaultValues: {
@@ -38,7 +41,7 @@ export const AddressValidatorComponent = forwardRef(
         <Box mx={{ margin: "1em 0" }}>
           <HeatPumpAddressField
             control={control}
-            label={"Enter the address where you're interested in a heat pump:"}
+            label={t("public.survey.text3")}
           />
         </Box>
         <Stack direction="row" justifyContent="center" spacing={2} mb={5}>
