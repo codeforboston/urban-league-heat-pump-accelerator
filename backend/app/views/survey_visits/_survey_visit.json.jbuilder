@@ -26,6 +26,7 @@ if survey_visit.survey_response.present?
       json.id sa.id
       json.survey_question_id sa.survey_question_id
       json.answer sa.answer
+      json.answers sa.answers
     end
   end
 end
