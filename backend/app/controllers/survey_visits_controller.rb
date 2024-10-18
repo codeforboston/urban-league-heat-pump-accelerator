@@ -73,7 +73,8 @@ class SurveyVisitsController < ApplicationController
     params.require(:survey_visit)
           .permit(:surveyor_id, :home_id, :latitude, :longitude,
                   survey_response_attributes: [:survey_id,
-                                               { survey_answers_attributes: %i[survey_question_id answer] }])
+                                               { survey_answers_attributes: [:survey_question_id,
+                                                                             :answer, { answers: [] }] }])
   end
 
   def search_params
