@@ -35,7 +35,8 @@ RSpec.describe '/survey_visits', type: :request do
         survey_answers_attributes: [
           {
             survey_question_id: survey_question.id,
-            answer: 1
+            answer: 1,
+            answers: %w[Foo Bar]
           }
         ]
       }
@@ -88,6 +89,9 @@ RSpec.describe '/survey_visits', type: :request do
         expect(survey_response).to be_present
         expect(survey_response.survey_id).to eq(survey.id)
         expect(survey_response.survey_answers.count).to eq(1)
+
+        survey_answer = survey_response.survey_answers.first
+        expect(survey_answer.answers).to include('Foo', 'Bar')
       end
 
       it 'redirects to the created survey_visit' do
