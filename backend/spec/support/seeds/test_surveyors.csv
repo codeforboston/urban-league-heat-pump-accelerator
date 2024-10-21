@@ -1,0 +1,3 @@
+firstname,lastname,email,phone,street_address,city,state,zipcode,geocode,status
+"Peppa","Pig","peppa.pig@example.com","(111) 555-5555","1 Boylston Street","Boston","MA","02116","abc","active"
+"Maisy","McMouse","maisy@example.com","(222) 555-5555","4 Boylston Street","Boston","MA","02116","abc","active"
