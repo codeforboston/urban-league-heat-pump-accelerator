@@ -1,29 +1,23 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { Alert, Box, Container, Snackbar, Stack } from "@mui/material";
+import React, { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import {
-  RECAPTCHA_ACTION_PUBLIC_SURVEY,
-  useGetReCAPTCHAToken,
-} from "../../../components/ReCaptcha";
 import {
   useCreateHomeMutation,
   useCreateSurveyVisitMutation,
 } from "../../../api/apiSlice";
+import {
+  RECAPTCHA_ACTION_PUBLIC_SURVEY,
+  useGetReCAPTCHAToken,
+} from "../../../components/ReCaptcha";
 
-import { AddressValidatorComponent } from "../Components/AddressValidatorComponent";
-import Heading1BlueBgGround from "../Components/Typography/Heading1BlueBgGround";
 import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
+import { buildSurveyVisitData } from "../../../util/surveyUtils";
+import { AddressValidatorComponent } from "../Components/AddressValidatorComponent";
 import { PublicSurvey } from "../Components/PublicSurvey";
 import { ThanksForSubmission } from "../Components/ThanksForSubmission";
-import { buildSurveyVisitData } from "../../../util/surveyUtils";
-import CanonicalizationLoader, {
-  CANONICALIZED,
-  UNCANONICALIZED,
-  UNRECOGNIZED,
-  VALIDATION_ERROR,
-} from "../Components/CanonicalizationLoader";
+import Heading1BlueBgGround from "../Components/Typography/Heading1BlueBgGround";
 
 const STEP_ADDRESS = "PHASE_ADDRESS";
 const STEP_SURVEY = "PHASE_SURVEY";
@@ -35,7 +29,7 @@ const STEP_THANKS = "PHASE_THANKS";
  * This page should handle all API calls so that component switching is easier to control
  */
 export const SurveyPage = () => {
-  const [validationStatus, setValidationStatus] = useState();
+  const [step, setStep] = useState(STEP_ADDRESS);
 
   const { t } = useTranslation();
 
@@ -49,6 +43,7 @@ export const SurveyPage = () => {
       data: createHomeData,
       error: createHomeError,
       isLoading: isCreateHomeLoading,
+      isSuccess: isCreateHomeSucccess,
     },
   ] = useCreateHomeMutation();
 
@@ -57,7 +52,7 @@ export const SurveyPage = () => {
     {
       isLoading: isSurveyVisitLoading,
       error: surveyVisitError,
-      isSuccess: isSurveyVisitSuccess,
+      isSuccess: isSurveyVisitSucess,
     },
   ] = useCreateSurveyVisitMutation();
 
@@ -70,6 +65,15 @@ export const SurveyPage = () => {
     [createHome, getReCaptchaToken]
   );
 
+  useEffect(() => {
+    if (isCreateHomeSucccess) {
+      setStep(STEP_SURVEY);
+    }
+    if (isSurveyVisitSucess) {
+      setStep(STEP_THANKS);
+    }
+  }, [isCreateHomeSucccess, isSurveyVisitSucess]);
+
   const handleAddSurveyVisit = useCallback(
     async (answers, surveyId, homeId, _) => {
       const recaptcha = await getReCaptchaToken("create_survey");
@@ -80,35 +84,13 @@ export const SurveyPage = () => {
         }),
         recaptcha,
       });
+      if (isSurveyVisitSucess) {
+        setStep(STEP_THANKS);
+      }
       return surveyVisit;
     },
-    [addSurveyVisit, getReCaptchaToken]
+    [addSurveyVisit, isSurveyVisitSucess, getReCaptchaToken]
   );
-
-  const isCanonicalized = validationStatus === CANONICALIZED;
-
-  const step = useMemo(() => {
-    if (!isCanonicalized && !isSurveyVisitSuccess) {
-      return STEP_ADDRESS;
-    } else if (isSurveyVisitSuccess) {
-      return STEP_THANKS;
-    } else if (!!createHomeData && isCanonicalized) {
-      return STEP_SURVEY;
-    }
-  }, [createHomeData, isSurveyVisitSuccess, isCanonicalized]);
-
-  const showValidationLoader = useMemo(() => {
-    if (!createHomeData?.id) return false;
-    if (step !== STEP_ADDRESS) return false;
-    if (validationStatus === UNCANONICALIZED || validationStatus === undefined)
-      return true;
-    return false; // For completed validations (unrecognized or canonicalized).
-  }, [createHomeData, validationStatus, step]);
-
-  // Reset validation status on resubmission.
-  useEffect(() => {
-    if (isCreateHomeLoading) setValidationStatus(undefined);
-  }, [isCreateHomeLoading]);
 
   const pageContent = useCallback(
     () => (
@@ -119,14 +101,8 @@ export const SurveyPage = () => {
           justifyContent="center"
           data-testid="publicSurveyInfoMessage"
         >
-          <p>
-            Fill out this form to record your interest in installing a heat pump
-            for your home.
-          </p>
-          <p>
-            An ULHPA representative will contact you with more information about
-            the installation process.
-          </p>
+          <p>{t("public.survey.text1")}</p>
+          <p>{t("public.survey.text2")}</p>
         </Stack>
         <HeatPumpFade show={step === STEP_ADDRESS}>
           <AddressValidatorComponent
@@ -145,33 +121,11 @@ export const SurveyPage = () => {
           <ThanksForSubmission />
         </HeatPumpSlide>
 
-        <HeatPumpFade show={showValidationLoader}>
-          <CanonicalizationLoader
-            homeId={createHomeData?.id}
-            onResolved={setValidationStatus}
-          />
-        </HeatPumpFade>
-
         <Snackbar open={!!createHomeError}>
-          <Alert severity="error">
-            There was an error submitting your address. Please try again later.
-          </Alert>
+          <Alert severity="error">{t("public.survey.alert1")}</Alert>
         </Snackbar>
         <Snackbar open={!!surveyVisitError}>
-          <Alert severity="error">{"Error submitting survey."}</Alert>
-        </Snackbar>
-        <Snackbar open={validationStatus === UNRECOGNIZED}>
-          <Alert severity="error">
-            This address could not be validated. Make sure your information is
-            correct then try again.
-          </Alert>
-        </Snackbar>
-        <Snackbar open={validationStatus === VALIDATION_ERROR}>
-          <Alert severity="error">
-            There was an error validating your address, or it has already been
-            used to submit a survey. Please submit again or try a different
-            address.
-          </Alert>
+          <Alert severity="error">{t("public.survey.alert2")}</Alert>
         </Snackbar>
       </>
     ),
@@ -184,8 +138,7 @@ export const SurveyPage = () => {
       isSurveyVisitLoading,
       step,
       surveyVisitError,
-      showValidationLoader,
-      validationStatus,
+      t,
     ]
   );
 

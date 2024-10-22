@@ -91,7 +91,12 @@
     "survey": {
       "heading1BlueBgGround": "Pran Sondaj la",
       "under-construction": "Sondaj Piblik la ap Devlopman kounye a!",
-      "work-in-progress": "Sou konstriksyon"
+      "work-in-progress": "Sou konstriksyon",
+      "text1": "Ranpli fòm sa a pou anrejistre enterè w genyen nan enstale yon ponp chalè pou kay ou.",
+      "text2": "Yon reprezantan ULHPA ap ​​kontakte w pou w jwenn plis enfòmasyon sou pwosesis enstalasyon an.",
+      "alert1": "Te gen yon erè lè w te voye adrès ou a. \nTanpri eseye ankò pita.",
+      "alert2": "Erè nan soumèt sondaj la.",
+      "text3": "Antre adrès kote w enterese nan yon ponp chalè:"
     },
     "benefits-heat-pump": {
       "cardBenefits": {
