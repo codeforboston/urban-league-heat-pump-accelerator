@@ -6,7 +6,7 @@ display_order,text,response_type,response_options
 5,"If you didn't consider heat pumps for either or both heating/cooling, why not?",0,"Didn't know they could do heating & cooling/Only need help with one: heating or cooling/Didn't think heat pumps could be efficient & cost effective doing heating & cooling/Didn't know how to get more info & begin the installation process/Too expensive/Home not compatible with heat pumps/Other"
 6,"If you did consider heat pumps for either or both heating & cooling, how far have you taken your interest in heat pumps?",0,"Basic research & Looked at a website/Decided on a plan/Contacted installers & Got quotes/Installed a heat pump/Other"
 7,"If you have considered but have not installed a heat pump yet, what factors have prevented you from moving forward? Was it...",0,"Didn't understand the options, details & next steps/Too expensive/Complexity, too much time, or hassle to do paperwork/Installation concerns & Bad installer experience/Home not compatible with heat pumps/Other"
-8,"Have you heard of Mass Save [wait for reaction]... the energy efficiency program?",0,"Yes/No"
+8,"Have you heard of Mass Save, the energy efficiency program?",0,"Yes/No"
 9,"If Yes, have you had contact?",0,"Yes/No"
 10,"If Yes to having contact, what was the extent of your contact?",0,"Talked on the phone/Scheduled a Mass Save visit/Had a Mass Save visit/Installed something in your home with Mass Save help/Other"
 11,"If answer to extent of contact is anything other than having a Mass Save visit then: What stopped you?",1,""
