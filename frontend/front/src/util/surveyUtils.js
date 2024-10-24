@@ -72,22 +72,4 @@ export const buildSurveyVisitData = (
   };
 };
 
-export const surveyRenderRules = {
-  1: null,
-  2: { question: 1, answer: "Yes" },
-  3: { question: 2, answer: "Yes" },
-  4: null,
-  5: { question: 4, answer: "Yes" },
-  6: null,
-  7: { question: 6, answer: "Yes" },
-  8: { question: 6, answer: "Yes" },
-  9: { question: 6, answer: "Yes" },
-  10: null,
-  11: { question: 10, answer: "Other" },
-  12: null,
-  13: { question: 12, answer: "Other" },
-  14: null,
-  15: { question: 14, answer: "Yes" },
-  16: { question: 14, answer: "Yes" },
-  17: { question: 14, answer: "Yes" },
-};
+export const surveyRenderRules = {};
