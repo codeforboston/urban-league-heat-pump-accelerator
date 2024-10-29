@@ -1,4 +1,4 @@
-import { Box, Button, MenuItem, Stack } from "@mui/material";
+import { Box, Button, Chip, MenuItem, Stack } from "@mui/material";
 import React, { useMemo, useState } from "react";
 import {
   useAddAssignmentsToSurveyorMutation,
@@ -135,21 +135,24 @@ const AssignTable = () => {
             maxWidth="100%"
             justifyContent="flex-start"
             overflow="scroll"
-            sx={{ overflowY: "auto", overflowX: "auto" }}
+            sx={{ overflowY: "auto", overflowX: "auto", pl: 2 }}
             flexWrap="wrap"
           >
             {params.row.surveyorData.map((surveyor) => {
               return (
-                <Button
+                <Chip
                   key={`surveyor-${surveyor.id}`}
+                  label={`${surveyor.firstname} ${surveyor.lastname}`}
+                  color="primary"
+                  variant="outlined"
                   onClick={() => handleUserLink(surveyor)}
-                  sx={{
-                    textAlign: "left",
-                    minWidth: "max-content",
-                  }}
-                >
-                  {`${surveyor.firstname} ${surveyor.lastname}`}
-                </Button>
+                  onDelete={() =>
+                    removeAssignmentsFromSurveyor({
+                      surveyorId: surveyor.id,
+                      assignmentIds: [params.row.id],
+                    })
+                  }
+                />
               );
             })}
           </Stack>
