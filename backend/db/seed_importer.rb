@@ -9,7 +9,7 @@ require 'smarter_csv'
 
 #   Seed importer provides a reusable function to import a csv file
 module SeedImporter
-  def import_seed_data(path, clustered_ordered_parcels)
+  def self.import_seed_data(path, clustered_ordered_parcels)
     options = { downcase_header: true, verbose: true }
 
     # Seed survey
@@ -49,7 +49,10 @@ module SeedImporter
       end
     end
 
-    SmarterCSV.process(File.join(path, 'test_surveyors.csv'), options) do |chunk|
+    # Prevent SmarterCSV from converting a zipcode like "02110" to "2110"
+    modified_options = options.merge(convert_values_to_numeric: { except: :zipcode })
+
+    SmarterCSV.process(File.join(path, 'test_surveyors.csv'), modified_options) do |chunk|
       chunk.each do |data_hash|
         surveyor = Surveyor.new(data_hash)
         surveyor.user = User.where(email: data_hash[:email]).first
@@ -58,24 +61,16 @@ module SeedImporter
     end
 
     # Seed assignments
-    # This is slightly inelegant, but first goes through the dummy data
-    # and ensures that each assignment exists.
-    # We sort the associations below.
-    SmarterCSV.process(File.join(path, 'test_assignments.csv'), options) do |chunk|
+    SmarterCSV.process(File.join(path, 'cluster_centroids_with_regions.csv'), options) do |chunk|
       chunk.each do |data_hash|
-        assignment = Assignment.where(group: data_hash[:group]).first
-        assignment = Assignment.new(data_hash.except(:surveyor_email)) if assignment.nil?
-        assignment.save!
-      end
-    end
+        assignment_hash = {
+          cluster_id: data_hash[:cluster],
+          latitude: data_hash[:lat],
+          longitude: data_hash[:lon],
+          region_code: data_hash[:region]
+        }
 
-    # Seed assignments-surveyor joins
-    SmarterCSV.process(File.join(path, 'test_assignments.csv'), options) do |chunk|
-      chunk.each do |data_hash|
-        surveyor = Surveyor.where(email: data_hash[:surveyor_email]).first
-        assignment = Assignment.where(group: data_hash[:group]).first
-
-        assignment.surveyors.append(surveyor)
+        assignment = Assignment.new(assignment_hash)
         assignment.save!
       end
     end
@@ -89,12 +84,17 @@ module SeedImporter
           unit_num: :unit_number,
           zipcode: :zip_code,
           lu_desc: :building_type,
-          cluster: :assignment_id,
           order: :visit_order
         }
+
         home = Home.new(data_hash.transform_keys(key_mapping).slice(*Home.new.attributes.symbolize_keys.keys))
         home.state = 'MA' if home.state.blank?
         home.zip_code = "0#{home.zip_code}" if home.zip_code.length == 4
+
+        # For performance, lookup assignment id without loading Assignment model
+        assignment_id = Assignment.where(cluster_id: data_hash[:cluster]).pick(:id)
+        home.assignment_id = assignment_id
+
         home.save!
       end
     end
