@@ -242,8 +242,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.6)
-      strscan
+    rexml (3.3.9)
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.1)
@@ -280,7 +279,6 @@ GEM
       rubocop (>= 1.52.0, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
     ruby-progressbar (1.13.0)
-    ruby2_keywords (0.0.5)
     ruby_http_client (3.5.5)
     sendgrid-actionmailer (3.2.0)
       mail (~> 2.7)
@@ -296,7 +294,6 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     stringio (3.1.1)
-    strscan (3.1.0)
     sucker_punch (3.2.0)
       concurrent-ruby (~> 1.0)
     syntax_suggest (2.0.0)
@@ -347,7 +344,7 @@ DEPENDENCIES
   rack (~> 2.0)
   rack-cors (~> 2.0)
   rails (~> 7.1.4)
-  rexml (>= 3.3.3)
+  rexml (>= 3.3.9)
   rspec-rails (~> 6.0.0)
   rubocop
   rubocop-rails
