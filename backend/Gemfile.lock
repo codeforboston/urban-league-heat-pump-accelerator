@@ -279,7 +279,6 @@ GEM
       rubocop (>= 1.52.0, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
     ruby-progressbar (1.13.0)
-    ruby2_keywords (0.0.5)
     ruby_http_client (3.5.5)
     sendgrid-actionmailer (3.2.0)
       mail (~> 2.7)
