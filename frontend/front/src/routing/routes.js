@@ -18,7 +18,6 @@ export const withAdminPrefix = (path) => `${ADMIN_ROUTE}/${path}`;
 export const ADMIN_HOME = "home";
 export const adminHomeProfile = (hid = ":hid") =>
   `${ADMIN_HOME}/homeprofile/${hid}`;
-export const ADMIN_CREATE_HOME = `${ADMIN_HOME}/createHome`;
 
 export const ADMIN_USER = "user";
 export const adminUserProfile = (uid = ":uid") =>

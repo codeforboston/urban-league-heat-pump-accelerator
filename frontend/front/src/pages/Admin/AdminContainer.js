@@ -3,7 +3,6 @@ import AssignProfile from "./assignment/AssignProfile";
 import Assignment from "./assignment/Assignment";
 import { Box, Tabs, Tab } from "@mui/material";
 import { BreadcrumbNav } from "../../features/breadcrumb/BreadcrumbNav";
-import CreateNewHome from "./home/CreateNewHome";
 import CreateNewUser from "./user/CreateNewUser";
 import Home from "./home/Home";
 import HomeProfile from "./home/HomeProfile";
@@ -62,7 +61,6 @@ const AdminContainer = () => {
         <Routes>
           <Route path={routes.ADMIN_HOME} element={<Home />} />
           <Route path={routes.adminHomeProfile()} element={<HomeProfile />} />
-          <Route path={routes.ADMIN_CREATE_HOME} element={<CreateNewHome />} />
           <Route path={routes.ADMIN_USER} element={<User />} />
           <Route path={routes.adminUserProfile()} element={<UserProfile />} />
           <Route path={routes.ADMIN_CREATE_USER} element={<CreateNewUser />} />
