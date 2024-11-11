@@ -7,7 +7,7 @@ import {
   useGoToBreadcrumb,
   useInitBreadcrumbs,
 } from "../../../hooks/breadcrumbHooks";
-
+import { AssignmentsMap } from "../component/AssignmentsMap";
 import ContainerTitle from "../component/ContainerTitle";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import { DataGrid } from "@mui/x-data-grid";
@@ -134,6 +134,7 @@ const AssignProfile = () => {
         />
       ) : (
         <Box>
+          <AssignmentsMap />
           <Stack
             py={3}
             justifyContent="flex-start"
