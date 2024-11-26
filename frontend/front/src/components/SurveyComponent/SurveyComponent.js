@@ -19,6 +19,7 @@ import { PUBLIC_ROUTE } from "../../routing/routes";
 import { AddressComponent } from "../AddressUtils";
 import Loader from "../Loader";
 import ConditionalQuestion from "./ConditionalQuestion";
+import { HeatPumpCheckbox } from "./HeatPumpCheckbox";
 import { HeatPumpPhoneField } from "./HeatPumpPhoneField";
 import { HeatPumpRadio } from "./HeatPumpRadio";
 import { HeatPumpTextField } from "./HeatPumpTextField";
@@ -221,6 +222,21 @@ const SurveyComponent = ({
                       readOnly={readOnly}
                     />
                   );
+                case "checkbox":
+                  return (
+                    <HeatPumpCheckbox
+                      key={`q${q.id}`}
+                      control={control}
+                      name={`${q.id}`}
+                      label={q.question}
+                      options={q.response_options.map((o) => ({
+                        value: o,
+                        label: o,
+                      }))}
+                      disabled={readOnly}
+                      styles={styles}
+                    />
+                  );
                 case "text":
                 case "email":
                   return (
@@ -319,7 +335,7 @@ const SurveyComponentWrapper = forwardRef((props, ref) => {
 
     return null;
   }, [defaultData, surveyStructure]);
-
+  console.log("formDefault", formDefault);
   return (
     <div ref={ref} style={style}>
       {isSurveyLoading ? (
