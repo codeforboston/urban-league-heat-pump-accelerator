@@ -34,9 +34,9 @@ export const HeatPumpCheckbox = ({
       </FormLabel>
       <FormGroup>
         <Stack spacing={2}>
-          {options.map((option) => (
+          {options.map((option, i) => (
             <Controller
-              key={`option-${option.value}`}
+              key={`q${name}-option${i + 1}`}
               name={name}
               control={control}
               rules={required && { required: "This field is required" }}
@@ -44,7 +44,7 @@ export const HeatPumpCheckbox = ({
                 <FormControlLabel
                   control={
                     <Checkbox
-                      id={option.label}
+                      id={`q${name}-option${i + 1}`}
                       checked={field.value?.includes(option.value) || false}
                       onChange={(e) => {
                         const newValue = e.target.checked
