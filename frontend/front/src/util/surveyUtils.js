@@ -83,4 +83,62 @@ export const surveyAnswersToArray = (answers) => {
   }, {});
 };
 
-export const surveyRenderRules = {};
+export const surveyRenderRules = {
+  1: null,
+  2: null,
+  3: null,
+  4: null,
+  5: {
+    question: 4,
+    answers: [
+      "No - heard of them but have not considered them for either",
+      "No answer - Not Available",
+    ],
+  },
+  6: {
+    question: 4,
+    answers: [
+      "Yes, for heating, not for cooling",
+      "Yes for cooling, not for heating",
+      "Yes, for both",
+    ],
+  },
+  7: {
+    question: 6,
+    answers: [
+      "Basic research & Looked at a website",
+      "Decided on a plan",
+      "Contacted installers & Got quotes",
+      "Other",
+    ],
+  },
+  8: null,
+  9: { question: 8, answers: ["Yes"] },
+  10: {
+    question: 9,
+    answers: [
+      "Talked on the phone",
+      "Scheduled a Mass Save visit",
+      "Had a Mass Save visit",
+      "Other",
+    ],
+  },
+  11: { question: 8, answers: ["No"] },
+  12: {
+    question: 11,
+    answers: ["ABCD", "RISE", "Homeworks Energy", "CET", "ClearResult"],
+  },
+  13: null,
+  14: { question: 13, answers: ["No"] },
+  15: null,
+  16: null,
+  17: null,
+  18: null,
+  19: null,
+  20: null,
+  21: null,
+  22: null,
+  23: null,
+  24: null,
+  25: null,
+};

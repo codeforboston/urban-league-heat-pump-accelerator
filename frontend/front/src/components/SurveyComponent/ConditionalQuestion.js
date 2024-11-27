@@ -15,12 +15,12 @@ const ConditionalQuestion = ({
   });
 
   useEffect(() => {
-    if (rule && watchedValue !== rule.answer) {
+    if (rule && !rule.answers.includes(watchedValue)) {
       setValue(id.toString(), formDefault[id]);
     }
   }, [watchedValue, rule, id, setValue, formDefault]);
 
-  if (rule && watchedValue !== rule.answer) {
+  if (rule && !rule.answers.includes(watchedValue)) {
     return null;
   }
 
