@@ -335,7 +335,7 @@ const SurveyComponentWrapper = forwardRef((props, ref) => {
 
     return null;
   }, [defaultData, surveyStructure]);
-  console.log("formDefault", formDefault);
+
   return (
     <div ref={ref} style={style}>
       {isSurveyLoading ? (
