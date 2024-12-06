@@ -31,7 +31,7 @@ export const buildDataFromSurveyAnswers = (
   }
 
   surveyAnswers.forEach((curr) => {
-    data[curr.survey_question_id] = curr.answer;
+    data[curr.survey_question_id] = curr.answers;
   });
 
   return data;
@@ -50,7 +50,7 @@ export const buildSurveyVisitData = (
     if (answers[key]) {
       answersObject[key] = {
         survey_question_id: key,
-        answer: value,
+        answers: value,
       };
     }
   });
@@ -70,6 +70,17 @@ export const buildSurveyVisitData = (
       },
     },
   };
+};
+
+export const surveyAnswersToArray = (answers) => {
+  return Object.keys(answers).reduce((acc, key) => {
+    if (Array.isArray(answers[key])) {
+      acc[key] = answers[key];
+    } else {
+      acc[key] = answers[key].trim() ? [answers[key]] : [];
+    }
+    return acc;
+  }, {});
 };
 
 export const surveyRenderRules = {};
