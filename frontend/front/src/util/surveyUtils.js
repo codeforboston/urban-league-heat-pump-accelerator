@@ -72,4 +72,15 @@ export const buildSurveyVisitData = (
   };
 };
 
+export const surveyAnswersToArray = (answers) => {
+  return Object.keys(answers).reduce((acc, key) => {
+    if (Array.isArray(answers[key])) {
+      acc[key] = answers[key];
+    } else {
+      acc[key] = answers[key].trim() ? [answers[key]] : [];
+    }
+    return acc;
+  }, {});
+};
+
 export const surveyRenderRules = {};
