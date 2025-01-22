@@ -7,7 +7,6 @@ import {
   useGoToBreadcrumb,
   useInitBreadcrumbs,
 } from "../../../hooks/breadcrumbHooks";
-
 import ContainerTitle from "../component/ContainerTitle";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import { DataGrid } from "@mui/x-data-grid";
