@@ -89,6 +89,7 @@ module SeedImporter
 
         home = Home.new(data_hash.transform_keys(key_mapping).slice(*Home.new.attributes.symbolize_keys.keys))
         next if home.street_number.blank?
+
         home.state = 'MA' if home.state.blank?
         home.zip_code = "0#{home.zip_code}" if home.zip_code.length == 4
 
