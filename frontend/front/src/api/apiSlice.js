@@ -434,6 +434,11 @@ export const apiSlice = createApi({
         }
       },
     }),
+    exportCSV: builder.query({
+      query: () => ({
+        url: "/export",
+      }),
+    }),
   }),
 });
 
@@ -501,4 +506,8 @@ export const {
 
   // Property assessments
   useGetPropertyAssessmentsQuery,
+
+  // Export CSV
+  useExportCSVQuery,
+  useLazyExportCSVQuery,
 } = apiSlice;
