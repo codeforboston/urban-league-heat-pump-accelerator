@@ -342,17 +342,17 @@ DEPENDENCIES
   faraday
   http_accept_language
   jbuilder
-  net-imap (>= 0.5.6)
+  net-imap (>= 0.5)
   newrelic_rpm
   pg (~> 1.1)
   pry
   puma (~> 5.0)
   pundit
-  rack (~> 2.2.11)
+  rack (~> 2.2)
   rack-cors (~> 2.0)
-  rails (~> 7.1.5)
-  rails-html-sanitizer (>= 1.6.1)
-  rexml (>= 3.3.9)
+  rails (~> 7.1)
+  rails-html-sanitizer (>= 1.6)
+  rexml (>= 3.3)
   rspec-rails (~> 6.0.0)
   rubocop
   rubocop-rails
