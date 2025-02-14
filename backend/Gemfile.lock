@@ -167,7 +167,7 @@ GEM
     mutex_m (0.3.0)
     net-http (0.4.1)
       uri
-    net-imap (0.5.5)
+    net-imap (0.5.6)
       date
       net-protocol
     net-pop (0.1.2)
@@ -202,7 +202,7 @@ GEM
     pundit (2.4.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (2.2.10)
+    rack (2.2.11)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (1.0.2)
@@ -347,12 +347,13 @@ DEPENDENCIES
   faraday
   http_accept_language
   jbuilder
+  net-imap (>= 0.5.6)
   newrelic_rpm
   pg (~> 1.1)
   pry
   puma (~> 5.0)
   pundit
-  rack (~> 2.0)
+  rack (~> 2.2.11)
   rack-cors (~> 2.0)
   rails (~> 7.1.4)
   rexml (>= 3.3.9)
