@@ -68,7 +68,6 @@ RSpec.describe SeedImporter, type: :model do
     end
 
     it 'creates homes' do
-      expect(Home.count).to eq(3)
       home = Home.find_by(street_name: 'WELLES AV')
 
       # Expect address to be correct
@@ -106,6 +105,10 @@ RSpec.describe SeedImporter, type: :model do
     it 'associates homes and assignments correctly' do
       home = Home.find_by(street_name: 'WELLES AV')
       expect(home.assignment.cluster_id).to eq(212)
+    end
+
+    it 'skips blank street number entries' do
+      expect(Home.all.count).to eq(3)
     end
   end
 end
