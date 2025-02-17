@@ -5,9 +5,9 @@ require 'rails_helper'
 RSpec.describe Exporter, type: :model do
   describe '#run' do
     let(:expected_standard_headers) do
-      'Survey Visit ID,Public Survey,Home ID,Assignment ID,Assignment Surveyor IDs,Assignment Surveyor Names,' \
-      'Street Number,Street Name,Unit Number,City,State,ZIP Code,Home Latitude,Home Longitude,' \
-      'Survey Visit Latitude,Survey Visit Longitude,Survey Visit Time,Surveyor ID,Surveyor Name'
+      'Survey Visit ID,Home ID,Successful Export,Public Survey,Assignment ID,Assignment Surveyor IDs,' \
+      'Assignment Surveyor Names,Street Number,Street Name,Unit Number,City,State,ZIP Code,Home Latitude,' \
+      'Home Longitude,Survey Visit Latitude,Survey Visit Longitude,Survey Visit Time,Surveyor ID,Surveyor Name'
     end
 
     it 'creates a CSV with the correct headers' do
@@ -45,7 +45,7 @@ RSpec.describe Exporter, type: :model do
       Exporter.new(survey: survey).run(file_path)
 
       expected = expected_standard_headers + "\n" \
-        ",,#{home.id},,,,203,Main,3,Somerville,MA,01234,42.32811808,-71.08244678,,,,,\n"
+        ",#{home.id},Yes,,,,,203,Main,3,Somerville,MA,01234,42.32811808,-71.08244678,,,,,\n"
 
       actual = File.read(file_path)
       expect(actual).to eq(expected)
@@ -60,7 +60,7 @@ RSpec.describe Exporter, type: :model do
       Exporter.new(survey: survey).run(file_path)
 
       expected = expected_standard_headers + "\n" \
-        ",,#{home.id},#{assignment.id},,,1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,,,,,\n"
+        ",#{home.id},Yes,,#{assignment.id},,,1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,,,,,\n"
 
       actual = File.read(file_path)
       expect(actual).to eq(expected)
@@ -76,7 +76,7 @@ RSpec.describe Exporter, type: :model do
       file_path = 'tmp/storage/test-export-csv-homes-with-assignment-with-a-surveyor.csv'
       Exporter.new(survey: survey).run(file_path)
 
-      expected = expected_standard_headers + "\n,,#{home.id},#{assignment.id}," \
+      expected = expected_standard_headers + "\n,#{home.id},Yes,,#{assignment.id}," \
         "#{surveyor.id},Luna Peters,1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,,,,,\n"
 
       actual = File.read(file_path)
@@ -126,7 +126,7 @@ RSpec.describe Exporter, type: :model do
         Exporter.new(survey: survey).run(file_path)
 
         expected = expected_standard_headers + ",\"1. Do you want a heat pump?\"\n" \
-          "#{survey_visit.id},Yes,#{home.id},,,,1,Broadway,106,Cambridge,MA,02139," \
+          "#{survey_visit.id},#{home.id},Yes,Yes,,,,1,Broadway,106,Cambridge,MA,02139," \
           '42.32603453,-71.08999264,42.3281053,-71.08229235,2025-02-13 12:30:20 -0500,' \
           ",,Yes I would love a heat pump\n"
 
@@ -158,7 +158,7 @@ RSpec.describe Exporter, type: :model do
         Exporter.new(survey: survey).run(file_path)
 
         expected = expected_standard_headers + ",\"1. Do you want a heat pump?\"\n" \
-          "#{survey_visit.id},No,#{home.id},#{assignment.id},#{surveyor.id},Luna Peters," \
+          "#{survey_visit.id},#{home.id},Yes,No,#{assignment.id},#{surveyor.id},Luna Peters," \
           '1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,42.3281053,-71.08229235,' \
           "2025-02-13 12:30:20 -0500,#{surveyor.id},Luna Peters,Yes I would love a heat pump\n"
 

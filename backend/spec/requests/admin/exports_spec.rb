@@ -20,7 +20,7 @@ RSpec.describe '/admin/exports', type: :request do
         get admin_export_url, params: { format: :csv }
         expect(response).to have_http_status(:success)
 
-        expected_body = 'Survey Visit ID,Public Survey,Home ID,Assignment ID,' \
+        expected_body = 'Survey Visit ID,Home ID,Successful Export,Public Survey,Assignment ID,' \
         'Assignment Surveyor IDs,Assignment Surveyor Names,Street Number,Street Name,' \
         'Unit Number,City,State,ZIP Code,Home Latitude,Home Longitude,Survey Visit Latitude,' \
         "Survey Visit Longitude,Survey Visit Time,Surveyor ID,Surveyor Name\n"
