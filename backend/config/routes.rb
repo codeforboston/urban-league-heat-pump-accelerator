@@ -27,5 +27,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:create]
+    get 'export', to: 'exports#export'
   end
 end

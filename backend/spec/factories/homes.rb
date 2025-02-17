@@ -9,5 +9,7 @@ FactoryBot.define do
     state { 'MA' }
     zip_code { '02139' }
     building_type { 'Apartment' }
+    latitude { '42.32603453' }
+    longitude { '-71.08999264' }
   end
 end

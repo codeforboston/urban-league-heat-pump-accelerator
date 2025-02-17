@@ -18,6 +18,10 @@ class Surveyor < ApplicationRecord
   validates :state, presence: true
   validates :status, presence: true
 
+  def full_name
+    "#{firstname} #{lastname}"
+  end
+
   private
 
   def set_default_status
