@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ClassLength
-class Exporter
+class CsvExportHelper
   SURVEY_LANG = 'en-US'
   EASTERN_TIMEZONE = 'Eastern Time (US & Canada)'
   CSV_STATIC_HEADERS = {
@@ -27,55 +26,7 @@ class Exporter
     surveyor_name: 'Surveyor Name'
   }.freeze
 
-  def initialize(survey:)
-    @survey = survey
-  end
-
-  def run(file_path)
-    csv_options = { map_headers: CSV_STATIC_HEADERS.merge(survey_question_headers) }
-
-    SmarterCSV.generate(file_path, csv_options) do |writer|
-      included_relations = [:surveyor, { home: [{ assignment: [:surveyors] }], survey_response: [:survey_answers] }]
-
-      SurveyVisit.includes(included_relations).find_in_batches do |batch|
-        batch.each do |survey_visit|
-          writer << survey_visit_hash_or_rescue(survey_visit)
-        end
-      end
-
-      Home.includes(assignment: [:surveyors]).where.not(id: SurveyVisit.pluck(:home_id)).find_in_batches do |batch|
-        batch.each do |home|
-          writer << home_hash_or_rescue(home)
-        end
-      end
-    end
-  end
-
-  private
-
-  def survey_visit_hash_or_rescue(survey_visit)
-    build_survey_visit_hash(survey_visit).merge({ successful_export: 'Yes' })
-  rescue StandardError => e
-    Rails.logger.error "Error exporting CSV survey visit #{survey_visit.id}: #{e}"
-
-    {
-      survey_visit_id: survey_visit.id,
-      successful_export: 'No'
-    }
-  end
-
-  def home_hash_or_rescue(home)
-    build_home_hash(home).merge({ successful_export: 'Yes' })
-  rescue StandardError => e
-    Rails.logger.error "Error exporting CSV home #{home.id}: #{e}"
-
-    {
-      home_id: home.id,
-      successful_export: 'No'
-    }
-  end
-
-  def build_home_hash(home)
+  def self.home_hash(home)
     {
       home_id: home.id,
       home_street_number: home.street_number,
@@ -86,35 +37,11 @@ class Exporter
       home_zip_code: home.zip_code,
       home_latitude: home.latitude,
       home_longitude: home.longitude
-    }.merge(build_home_assignment_hash(home))
+    }.merge(home_assignment_hash(home))
   end
 
-  def build_home_assignment_hash(home)
-    if home.assignment.present?
-      {
-        assignment_id: home.assignment.id,
-        assignment_surveyor_ids: home.assignment.surveyor_ids.join(','),
-        assignment_surveyor_names: home.assignment.surveyors.map(&:full_name).join(',')
-      }
-    else
-      {}
-    end
-  end
-
-  def build_survey_visit_metadata_hash(survey_visit)
-    {
-      survey_visit_id: survey_visit.id,
-      public_survey: survey_visit.public_survey? ? 'Yes' : 'No',
-      survey_visit_latitude: survey_visit.latitude,
-      survey_visit_longitude: survey_visit.longitude,
-      survey_visit_time: survey_visit.created_at.in_time_zone(EASTERN_TIMEZONE),
-      surveyor_id: survey_visit.surveyor_id,
-      surveyor_name: survey_visit.surveyor&.full_name
-    }
-  end
-
-  def build_survey_visit_hash(survey_visit)
-    survey_visit_hash = build_survey_visit_metadata_hash(survey_visit).merge(build_home_hash(survey_visit.home))
+  def self.survey_visit_hash(survey_visit)
+    survey_visit_hash = survey_visit_metadata_hash(survey_visit).merge(home_hash(survey_visit.home))
 
     survey_visit.survey_response.survey_answers.each do |survey_answer|
       key = csv_question_header_key(survey_answer.survey_question_id)
@@ -127,10 +54,40 @@ class Exporter
     survey_visit_hash
   end
 
-  def survey_question_headers
+  def self.csv_headers(survey)
+    CSV_STATIC_HEADERS.merge(survey_question_headers(survey))
+  end
+
+  def self.home_assignment_hash(home)
+    if home.assignment.present?
+      {
+        assignment_id: home.assignment.id,
+        assignment_surveyor_ids: home.assignment.surveyor_ids.join(','),
+        assignment_surveyor_names: home.assignment.surveyors.map(&:full_name).join(',')
+      }
+    else
+      {}
+    end
+  end
+  private_class_method :home_assignment_hash
+
+  def self.survey_visit_metadata_hash(survey_visit)
+    {
+      survey_visit_id: survey_visit.id,
+      public_survey: survey_visit.public_survey? ? 'Yes' : 'No',
+      survey_visit_latitude: survey_visit.latitude,
+      survey_visit_longitude: survey_visit.longitude,
+      survey_visit_time: survey_visit.created_at.in_time_zone(EASTERN_TIMEZONE),
+      surveyor_id: survey_visit.surveyor_id,
+      surveyor_name: survey_visit.surveyor&.full_name
+    }
+  end
+  private_class_method :survey_visit_metadata_hash
+
+  def self.survey_question_headers(survey)
     survey_question_headers = {}
 
-    @survey.survey_questions.each do |survey_question|
+    survey.survey_questions.each do |survey_question|
       key = csv_question_header_key(survey_question.id)
       value = survey_question.localized_survey_questions.find_by(language_code: SURVEY_LANG).text
       survey_question_headers[key] = "\"#{survey_question.display_order}. #{value}\""
@@ -138,9 +95,10 @@ class Exporter
 
     survey_question_headers
   end
+  private_class_method :survey_question_headers
 
-  def csv_question_header_key(question_id)
+  def self.csv_question_header_key(question_id)
     "question_#{question_id}".to_sym
   end
+  private_class_method :csv_question_header_key
 end
-# rubocop:enable Metrics/ClassLength

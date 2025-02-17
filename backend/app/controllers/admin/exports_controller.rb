@@ -3,16 +3,15 @@
 module Admin
   class ExportsController < ApplicationController
     def export
-      @exporter = Exporter.new(survey: Survey.last)
-      authorize @exporter
+      @csv_exporter = CsvExporter.new(survey: Survey.last)
+      authorize @csv_exporter
 
-      file_path = "tmp/storage/export-#{Time.current.strftime('%m-%d-%Y.%H.%M.%S')}.csv"
-      @exporter.run(file_path)
+      csv_data = @csv_exporter.run
 
       respond_to do |format|
         format.csv do
           response.headers['Content-Type'] = 'text/csv'
-          send_data File.read(file_path)
+          send_data csv_data
         end
       end
     end

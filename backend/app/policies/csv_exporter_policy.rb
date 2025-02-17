@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ExporterPolicy < ApplicationPolicy
+class CsvExporterPolicy < ApplicationPolicy
   def export?
     user&.admin?
   end
