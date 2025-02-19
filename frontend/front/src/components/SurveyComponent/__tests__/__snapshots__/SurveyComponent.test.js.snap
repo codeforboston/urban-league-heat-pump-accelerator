@@ -33,7 +33,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="1-radio"
             id="1-radio-label"
-          />
+          >
+            1) undefined
+          </label>
           <div
             aria-labelledby="1-dropdown-group-label"
             class="MuiFormGroup-root MuiFormGroup-row css-qfz70r-MuiFormGroup-root"
@@ -144,7 +146,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="2-radio"
             id="2-radio-label"
-          />
+          >
+            2) undefined
+          </label>
           <div
             aria-labelledby="2-dropdown-group-label"
             class="MuiFormGroup-root MuiFormGroup-row css-qfz70r-MuiFormGroup-root"
@@ -255,7 +259,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="3-textField"
             id="3-textField-label"
-          />
+          >
+            3) undefined
+          </label>
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="3"
@@ -281,7 +287,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="4-radio"
             id="4-radio-label"
-          />
+          >
+            4) undefined
+          </label>
           <div
             aria-labelledby="4-dropdown-group-label"
             class="MuiFormGroup-root MuiFormGroup-row css-qfz70r-MuiFormGroup-root"
@@ -392,7 +400,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="5-radio"
             id="5-radio-label"
-          />
+          >
+            5) undefined
+          </label>
           <div
             aria-labelledby="5-dropdown-group-label"
             class="MuiFormGroup-root MuiFormGroup-row css-qfz70r-MuiFormGroup-root"
@@ -503,7 +513,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="6-radio"
             id="6-radio-label"
-          />
+          >
+            6) undefined
+          </label>
           <div
             aria-labelledby="6-dropdown-group-label"
             class="MuiFormGroup-root MuiFormGroup-row css-qfz70r-MuiFormGroup-root"
@@ -614,7 +626,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="7-textField"
             id="7-textField-label"
-          />
+          >
+            7) undefined
+          </label>
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="7"
@@ -640,7 +654,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="8-textField"
             id="8-textField-label"
-          />
+          >
+            8) undefined
+          </label>
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="8"
@@ -666,7 +682,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="9-textField"
             id="9-textField-label"
-          />
+          >
+            9) undefined
+          </label>
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
@@ -691,7 +709,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="10-radio"
             id="10-radio-label"
-          />
+          >
+            10) undefined
+          </label>
           <div
             aria-labelledby="10-dropdown-group-label"
             class="MuiFormGroup-root MuiFormGroup-row css-qfz70r-MuiFormGroup-root"
@@ -994,7 +1014,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="11-textField"
             id="11-textField-label"
-          />
+          >
+            11) undefined
+          </label>
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="11"
@@ -1020,7 +1042,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="12-radio"
             id="12-radio-label"
-          />
+          >
+            12) undefined
+          </label>
           <div
             aria-labelledby="12-dropdown-group-label"
             class="MuiFormGroup-root MuiFormGroup-row css-qfz70r-MuiFormGroup-root"
@@ -1227,7 +1251,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="13-textField"
             id="13-textField-label"
-          />
+          >
+            13) undefined
+          </label>
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="13"
@@ -1253,7 +1279,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="14-radio"
             id="14-radio-label"
-          />
+          >
+            14) undefined
+          </label>
           <div
             aria-labelledby="14-dropdown-group-label"
             class="MuiFormGroup-root MuiFormGroup-row css-qfz70r-MuiFormGroup-root"
@@ -1364,7 +1392,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="15-textField"
             id="15-textField-label"
-          />
+          >
+            15) undefined
+          </label>
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="15"
@@ -1390,7 +1420,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="16-textField"
             id="16-textField-label"
-          />
+          >
+            16) undefined
+          </label>
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             data-testid="16"
@@ -1416,7 +1448,9 @@ exports[`SurveyComponent no errors when rendering 1`] = `
             class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
             for="17-textField"
             id="17-textField-label"
-          />
+          >
+            17) undefined
+          </label>
           <div
             class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
