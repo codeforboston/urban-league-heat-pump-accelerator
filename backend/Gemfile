@@ -22,6 +22,7 @@ gem 'rails', '~> 7.1'
 gem 'rails-html-sanitizer', '>= 1.6'
 gem 'rexml', '>= 3.3'
 gem 'sendgrid-actionmailer'
+gem 'smarter_csv'
 gem 'sprockets-rails'
 gem 'sucker_punch', '~> 3.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
@@ -31,6 +32,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry'
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'timecop'
 end
 
 group :development do
@@ -38,7 +40,6 @@ group :development do
   gem 'bundle-audit'
   gem 'rubocop'
   gem 'rubocop-rails'
-  gem 'smarter_csv'
   gem 'syntax_suggest'
   gem 'web-console'
 end
