@@ -3,7 +3,6 @@
 FactoryBot.define do
   factory :survey_response do
     survey
-    completed { false }
-    user
+    survey_visit
   end
 end

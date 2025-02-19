@@ -11,15 +11,18 @@ gem 'devise-jwt'
 gem 'faraday'
 gem 'http_accept_language'
 gem 'jbuilder'
+gem 'net-imap', '>= 0.5'
 gem 'newrelic_rpm'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'pundit'
-gem 'rack', '~> 2.0'
+gem 'rack', '~> 2.2'
 gem 'rack-cors', '~> 2.0'
-gem 'rails', '~> 7.1.4'
-gem 'rexml', '>= 3.3.9'
+gem 'rails', '~> 7.1'
+gem 'rails-html-sanitizer', '>= 1.6'
+gem 'rexml', '>= 3.3'
 gem 'sendgrid-actionmailer'
+gem 'smarter_csv'
 gem 'sprockets-rails'
 gem 'sucker_punch', '~> 3.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
@@ -29,6 +32,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry'
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'timecop'
 end
 
 group :development do
@@ -36,7 +40,6 @@ group :development do
   gem 'bundle-audit'
   gem 'rubocop'
   gem 'rubocop-rails'
-  gem 'smarter_csv'
   gem 'syntax_suggest'
   gem 'web-console'
 end

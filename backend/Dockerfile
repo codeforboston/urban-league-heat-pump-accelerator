@@ -10,7 +10,7 @@ RUN chown -R rails:root /usr/src/app
 USER rails
 
 # add x86_64 for support on ARM platform - nokogiri expects x86 for distribution
-RUN bundle lock --add-platform x86_64-linux
+RUN bundle lock --add-platform x86_64-linux-gnu
 RUN bundle install
 
 EXPOSE 3000
