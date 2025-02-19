@@ -203,7 +203,7 @@ const SurveyComponent = ({
       <form onSubmit={handleSubmit(surveySubmit)}>
         <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
           {surveyStructure?.survey_questions.map((q) => {
-            const formatedQestion = `${q.display_order}) ${q.question}`;
+            const formattedQestion = `${q.display_order}) ${q.question}`;
             const renderInput = () => {
               switch (q.response_type) {
                 case "radio":
@@ -212,7 +212,7 @@ const SurveyComponent = ({
                       key={`q${q.id}`}
                       control={control}
                       name={`${q.id}`}
-                      label={formatedQestion}
+                      label={formattedQestion}
                       options={q.response_options.map((o) => ({
                         value: o,
                         label: o,
@@ -229,7 +229,7 @@ const SurveyComponent = ({
                       key={`q${q.id}`}
                       control={control}
                       name={`${q.id}`}
-                      label={formatedQestion}
+                      label={formattedQestion}
                       disabled={readOnly}
                       disableFancyLabel
                       styles={styles}
@@ -243,7 +243,7 @@ const SurveyComponent = ({
                       key={`q${q.id}`}
                       control={control}
                       name={`${q.id}`}
-                      label={formatedQestion}
+                      label={formattedQestion}
                       disabled={readOnly}
                       disableFancyLabel
                       styles={styles}
