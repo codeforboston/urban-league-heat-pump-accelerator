@@ -1,13 +1,21 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'geocoder'
+
+module TestConstants
+  HOME_LAT = 42.32603453
+  HOME_LONG = -71.08999264
+  SURVEY_LAT = 42.3281053
+  SURVEY_LONG = -71.08229235
+end
 
 RSpec.describe CsvExporter, type: :model do
   describe '#run' do
     let(:expected_standard_headers) do
       'Survey Visit ID,Home ID,Successful Export,Public Survey,Assignment ID,Assignment Surveyor IDs,' \
       'Assignment Surveyor Names,Street Number,Street Name,Unit Number,City,State,ZIP Code,Home Latitude,' \
-      'Home Longitude,Survey Visit Latitude,Survey Visit Longitude,Survey Visit Time,Surveyor ID,Surveyor Name'
+      'Home Longitude,Survey Visit Latitude,Survey Visit Longitude,Survey Visit Time,Surveyor ID,Surveyor Name,Survey Distance'
     end
 
     before do
@@ -17,11 +25,17 @@ RSpec.describe CsvExporter, type: :model do
     it 'returns a CSV with survey visits and homes' do
       actual = CsvExporter.new(survey: @survey).run
 
+      survey_distance_miles = Geocoder::Calculations.distance_between(
+        [TestConstants::HOME_LAT, TestConstants::HOME_LONG],
+        [TestConstants::SURVEY_LAT, TestConstants::SURVEY_LONG]
+      )
+
       expected_headers = "#{expected_standard_headers},\"1. Do you want a heat pump?\"\n"
       expected_survey_visit = "#{@survey_visit.id},#{@home1.id},Yes,No,#{@assignment.id},#{@surveyor.id}," \
-        'Luna Peters,1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,42.3281053,-71.08229235,' \
-        "2025-02-13 12:30:20 -0500,#{@surveyor.id},Luna Peters,Yes I would love a heat pump\n"
-      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,,,,,,\n"
+        "Luna Peters,1,Broadway,106,Cambridge,MA,02139,#{@TestConstants::HOME_LAT},#{@TestConstants::HOME_LONG}," \
+        "#{@TestConstants::SURVEY_LAT},#{@TestConstants::SURVEY_LONG},#{@survey_distance_miles}" \
+        "2025-02-13 12:30:20 -0500,#{@surveyor.id},Luna Peters,,Yes I would love a heat pump\n"
+      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,#{@TestConstants::HOME_LAT},#{@TestConstants::HOME_LONG},,,,,,\n"
 
       expected = expected_headers + expected_survey_visit + expected_home
       expect(actual).to eq(expected)
@@ -34,7 +48,7 @@ RSpec.describe CsvExporter, type: :model do
 
       expected_headers = "#{expected_standard_headers},\"1. Do you want a heat pump?\"\n"
       expected_survey_visit = "#{@survey_visit.id},,No,,,,,,,,,,,,,,,,,,\n"
-      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,,,,,,\n"
+      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,#{@TestConstants::HOME_LAT},#{@TestConstants::HOME_LONG},,,,,,\n"
 
       expected = expected_headers + expected_survey_visit + expected_home
       expect(actual).to eq(expected)
