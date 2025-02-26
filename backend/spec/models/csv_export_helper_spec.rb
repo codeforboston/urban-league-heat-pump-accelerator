@@ -2,12 +2,19 @@
 
 require 'rails_helper'
 
+module TestConstants
+  HOME_LAT = 42.32811808
+  HOME_LONG = -71.08999264
+  SURVEY_LAT = 42.3281053
+  SURVEY_LONG = -71.08244678
+end
+
 RSpec.describe CsvExportHelper, type: :model do
   describe 'self.home_hash' do
     it 'builds a hash for a home' do
       home = create(:home, street_number: '203', street_name: 'Main', unit_number: '3',
-                           city: 'Somerville', state: 'MA', zip_code: '01234', latitude: '42.32811808',
-                           longitude: '-71.08244678')
+                           city: 'Somerville', state: 'MA', zip_code: '01234', latitude: "#{TestConstants::HOME_LAT}",
+                           longitude: "#{TestConstants::HOME_LONG}")
 
       actual = CsvExportHelper.home_hash(home)
       expected = {
@@ -18,8 +25,8 @@ RSpec.describe CsvExportHelper, type: :model do
         home_city: 'Somerville',
         home_state: 'MA',
         home_zip_code: '01234',
-        home_latitude: '42.32811808',
-        home_longitude: '-71.08244678'
+        home_latitude: "#{TestConstants::HOME_LAT}",
+        home_longitude: "#{TestConstants::HOME_LONG}"
       }
 
       expect(actual).to eq(expected)
@@ -75,22 +82,28 @@ RSpec.describe CsvExportHelper, type: :model do
 
       # Freeze time so we can test survey_visit created_at
       Timecop.freeze(freeze_time) do
-        @survey_visit = create(:survey_visit, home: home, latitude: '33.333', longitude: '44.444')
+        @survey_visit = create(:survey_visit, home: home, latitude: TestConstants::SURVEY_LAT, longitude: TestConstants::SURVEY_LONG)
       end
 
       survey_response = create(:survey_response, survey: survey, survey_visit: @survey_visit)
       create(:survey_answer, survey_question: survey_question, answer: 'Yes I would love a heat pump',
                              survey_response: survey_response)
 
+      distance_miles = Geocoder::Calculations.distance_between(
+                              [@survey_visit.home.@home_latitude, @survey_visit.home.@home_longitude],
+                              [@survey_visit.latitude,@survey_visit.longitude]
+                            )
+
       actual = CsvExportHelper.survey_visit_hash(@survey_visit)
       expected = {
         survey_visit_id: @survey_visit.id,
         public_survey: 'Yes',
-        survey_visit_latitude: '33.333',
-        survey_visit_longitude: '44.444',
+        survey_visit_latitude: TestConstants::SURVEY_LAT,
+        survey_visit_longitude: TestConstants::SURVEY_LONG,
         survey_visit_time: freeze_time.in_time_zone('Eastern Time (US & Canada)'),
         surveyor_id: nil,
         surveyor_name: nil,
+        survey_distance_miles: distance_miles,
         home_id: home.id,
         home_street_number: '1',
         home_street_name: 'Broadway',
@@ -98,8 +111,8 @@ RSpec.describe CsvExportHelper, type: :model do
         home_city: 'Cambridge',
         home_state: 'MA',
         home_zip_code: '02139',
-        home_latitude: '42.32603453',
-        home_longitude: '-71.08999264',
+        home_latitude: TestConstants::HOME_LAT,
+        home_longitude: TestConstants::HOME_LONG,
         "question_#{survey_question.id}".to_sym => 'Yes I would love a heat pump'
       }
 
@@ -156,6 +169,7 @@ RSpec.describe CsvExportHelper, type: :model do
         survey_visit_time: 'Survey Visit Time',
         surveyor_id: 'Surveyor ID',
         surveyor_name: 'Surveyor Name',
+        survey_distance_miles: 'Survey Distance',
         "question_#{survey_question.id}".to_sym => '"1. Heat pumps amirite?"'
       }
 

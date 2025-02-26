@@ -73,6 +73,10 @@ class CsvExportHelper
   private_class_method :home_assignment_hash
 
   def self.survey_visit_metadata_hash(survey_visit)
+    distance_miles = Geocoder::Calculations.distance_between(
+      [survey_visit.home.home_latitude, survey_visit.home.home_longitude],
+      [survey_visit.latitude,survey_visit.longitude]
+    )
     {
       survey_visit_id: survey_visit.id,
       public_survey: survey_visit.public_survey? ? 'Yes' : 'No',
@@ -81,7 +85,7 @@ class CsvExportHelper
       survey_visit_time: survey_visit.created_at.in_time_zone(EASTERN_TIMEZONE),
       surveyor_id: survey_visit.surveyor_id,
       surveyor_name: survey_visit.surveyor&.full_name,
-      survey_distance_miles: 
+      survey_distance_miles: distance_miles
     }
   end
   private_class_method :survey_visit_metadata_hash

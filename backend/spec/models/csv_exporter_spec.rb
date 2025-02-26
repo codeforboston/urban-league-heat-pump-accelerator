@@ -32,10 +32,10 @@ RSpec.describe CsvExporter, type: :model do
 
       expected_headers = "#{expected_standard_headers},\"1. Do you want a heat pump?\"\n"
       expected_survey_visit = "#{@survey_visit.id},#{@home1.id},Yes,No,#{@assignment.id},#{@surveyor.id}," \
-        "Luna Peters,1,Broadway,106,Cambridge,MA,02139,#{@TestConstants::HOME_LAT},#{@TestConstants::HOME_LONG}," \
-        "#{@TestConstants::SURVEY_LAT},#{@TestConstants::SURVEY_LONG},#{@survey_distance_miles}" \
+        "Luna Peters,1,Broadway,106,Cambridge,MA,02139,#{TestConstants::HOME_LAT},#{TestConstants::HOME_LONG}," \
+        "#{TestConstants::SURVEY_LAT},#{TestConstants::SURVEY_LONG},#{survey_distance_miles}" \
         "2025-02-13 12:30:20 -0500,#{@surveyor.id},Luna Peters,,Yes I would love a heat pump\n"
-      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,#{@TestConstants::HOME_LAT},#{@TestConstants::HOME_LONG},,,,,,\n"
+      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,#{TestConstants::HOME_LAT},#{TestConstants::HOME_LONG},,,,,,\n"
 
       expected = expected_headers + expected_survey_visit + expected_home
       expect(actual).to eq(expected)
@@ -47,8 +47,8 @@ RSpec.describe CsvExporter, type: :model do
       actual = CsvExporter.new(survey: @survey).run
 
       expected_headers = "#{expected_standard_headers},\"1. Do you want a heat pump?\"\n"
-      expected_survey_visit = "#{@survey_visit.id},,No,,,,,,,,,,,,,,,,,,\n"
-      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,#{@TestConstants::HOME_LAT},#{@TestConstants::HOME_LONG},,,,,,\n"
+      expected_survey_visit = "#{@survey_visit.id},,No,,,,,,,,,,,,,,,,,,,\n"
+      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,#{TestConstants::HOME_LAT},#{TestConstants::HOME_LONG},,,,,,,\n"
 
       expected = expected_headers + expected_survey_visit + expected_home
       expect(actual).to eq(expected)
@@ -60,8 +60,8 @@ RSpec.describe CsvExporter, type: :model do
       actual = CsvExporter.new(survey: @survey).run
 
       expected_headers = "#{expected_standard_headers},\"1. Do you want a heat pump?\"\n"
-      expected_survey_visit = "#{@survey_visit.id},,No,,,,,,,,,,,,,,,,,,\n"
-      expected_home = ",#{@home2.id},No,,,,,,,,,,,,,,,,,,\n"
+      expected_survey_visit = "#{@survey_visit.id},,No,,,,,,,,,,,,,,,,,,,\n"
+      expected_home = ",#{@home2.id},No,,,,,,,,,,,,,,,,,,,\n"
 
       expected = expected_headers + expected_survey_visit + expected_home
       expect(actual).to eq(expected)
