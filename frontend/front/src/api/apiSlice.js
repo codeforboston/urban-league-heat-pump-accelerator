@@ -436,7 +436,26 @@ export const apiSlice = createApi({
     }),
     exportCSV: builder.query({
       query: () => ({
-        url: "/export",
+        url: "/admin/export",
+        responseHandler: async (response) => {
+          if (!response.ok) {
+            throw new Error("Failed to export CSV");
+          }
+          try {
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", "survey-data.csv");
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.URL.revokeObjectURL(url);
+            return;
+          } catch {
+            throw new Error("Failed to export CSV");
+          }
+        },
       }),
     }),
   }),
@@ -508,6 +527,5 @@ export const {
   useGetPropertyAssessmentsQuery,
 
   // Export CSV
-  useExportCSVQuery,
   useLazyExportCSVQuery,
 } = apiSlice;
