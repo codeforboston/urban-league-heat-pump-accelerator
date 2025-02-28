@@ -11,6 +11,7 @@ import {
   useLazyExportCSVQuery,
 } from "../../../api/apiSlice";
 import { formatISODate } from "../../../components/DateUtils";
+import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
 import {
   useGoToBreadcrumb,
@@ -48,12 +49,21 @@ const COLUMNS = [
 ];
 
 function CustomToolbar() {
-  const [trigger, result, lastPromiseInfo] = useLazyExportCSVQuery();
+  const [trigger, result] = useLazyExportCSVQuery();
 
-  const handleExport = async () => {
-    // const res = await trigger();
-    console.log("exporting");
+  const handleExport = () => {
+    trigger();
   };
+
+  if (result.isError) {
+    return <CustomSnackbar message="Failed to export CSV" severity="error" />;
+  }
+
+  if (result.isSuccess) {
+    return (
+      <CustomSnackbar message="CSV exported successfully" severity="success" />
+    );
+  }
 
   return (
     <GridToolbarContainer>
