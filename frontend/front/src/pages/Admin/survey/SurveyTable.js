@@ -55,27 +55,28 @@ function CustomToolbar() {
     trigger();
   };
 
-  if (result.isError) {
-    return <CustomSnackbar message="Failed to export CSV" severity="error" />;
-  }
-
-  if (result.isSuccess) {
-    return (
-      <CustomSnackbar message="CSV exported successfully" severity="success" />
-    );
-  }
-
   return (
-    <GridToolbarContainer>
-      <GridToolbarColumnsButton />
-      <Button
-        onClick={handleExport}
-        sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
-      >
-        <FileDownloadOutlinedIcon fontSize="small" />
-        Export
-      </Button>
-    </GridToolbarContainer>
+    <>
+      <GridToolbarContainer>
+        <GridToolbarColumnsButton />
+        <Button
+          onClick={handleExport}
+          sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
+        >
+          <FileDownloadOutlinedIcon fontSize="small" />
+          Export
+        </Button>
+      </GridToolbarContainer>
+      {result.isError && (
+        <CustomSnackbar message="Failed to export CSV" severity="error" />
+      )}
+      {result.isSuccess && (
+        <CustomSnackbar
+          message="CSV exported successfully"
+          severity="success"
+        />
+      )}
+    </>
   );
 }
 
