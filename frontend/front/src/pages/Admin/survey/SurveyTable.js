@@ -1,7 +1,17 @@
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { React, useMemo } from "react";
-import { useGetSurveyVisitsQuery } from "../../../api/apiSlice";
+import {
+  DataGrid,
+  GridToolbarContainer,
+  GridToolbarColumnsButton,
+} from "@mui/x-data-grid";
+import { Button } from "@mui/material";
+import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
+import {
+  useGetSurveyVisitsQuery,
+  useLazyExportCSVQuery,
+} from "../../../api/apiSlice";
 import { formatISODate } from "../../../components/DateUtils";
+import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
 import {
   useGoToBreadcrumb,
@@ -37,6 +47,38 @@ const COLUMNS = [
     flex: 1.5,
   },
 ];
+
+function CustomToolbar() {
+  const [trigger, result] = useLazyExportCSVQuery();
+
+  const handleExport = () => {
+    trigger();
+  };
+
+  return (
+    <>
+      <GridToolbarContainer>
+        <GridToolbarColumnsButton />
+        <Button
+          onClick={handleExport}
+          sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
+        >
+          <FileDownloadOutlinedIcon fontSize="small" />
+          Export
+        </Button>
+      </GridToolbarContainer>
+      {result.isError && (
+        <CustomSnackbar message="Failed to export CSV" severity="error" />
+      )}
+      {result.isSuccess && (
+        <CustomSnackbar
+          message="CSV exported successfully"
+          severity="success"
+        />
+      )}
+    </>
+  );
+}
 
 const SurveyTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
@@ -90,26 +132,29 @@ const SurveyTable = () => {
   if (surveyVisitsError) {
     return <SurveyError />;
   }
+
   return (
-    <DataGrid
-      rows={tableData}
-      columns={COLUMNS}
-      pageSize={20}
-      rowsPerPageOptions={[20]}
-      disableSelectionOnClick
-      autoHeight
-      onRowClick={onRowClick}
-      disableColumnFilter
-      disableDensitySelector
-      disableColumnsMenu
-      slots={{ toolbar: GridToolbar }}
-      slotProps={{
-        toolbar: {
-          showQuickFilter: true,
-          quickFilterProps: { debounceMs: 500 },
-        },
-      }}
-    />
+    <>
+      <DataGrid
+        rows={tableData}
+        columns={COLUMNS}
+        pageSize={20}
+        rowsPerPageOptions={[20]}
+        disableSelectionOnClick
+        autoHeight
+        onRowClick={onRowClick}
+        disableColumnFilter
+        disableDensitySelector
+        disableColumnsMenu
+        slots={{ toolbar: CustomToolbar }}
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+            quickFilterProps: { debounceMs: 500 },
+          },
+        }}
+      />
+    </>
   );
 };
 export default SurveyTable;
