@@ -10,12 +10,12 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 import { useGetSurveyStructureQuery } from "../../api/apiSlice";
+import { PUBLIC_ROUTE } from "../../routing/routes";
 import {
   buildDefaultDataFromSurveyStructure,
   buildSurveyCacheKey,
   surveyRenderRules,
 } from "../../util/surveyUtils";
-import { PUBLIC_ROUTE } from "../../routing/routes";
 import { AddressComponent } from "../AddressUtils";
 import Loader from "../Loader";
 import ConditionalQuestion from "./ConditionalQuestion";
@@ -203,6 +203,7 @@ const SurveyComponent = ({
       <form onSubmit={handleSubmit(surveySubmit)}>
         <Stack spacing={formSpacing} mb={formSpacing} mt={formSpacing}>
           {surveyStructure?.survey_questions.map((q) => {
+            const formattedQestion = `${q.display_order}) ${q.question}`;
             const renderInput = () => {
               switch (q.response_type) {
                 case "radio":
@@ -211,7 +212,7 @@ const SurveyComponent = ({
                       key={`q${q.id}`}
                       control={control}
                       name={`${q.id}`}
-                      label={q.question}
+                      label={formattedQestion}
                       options={q.response_options.map((o) => ({
                         value: o,
                         label: o,
@@ -228,7 +229,7 @@ const SurveyComponent = ({
                       key={`q${q.id}`}
                       control={control}
                       name={`${q.id}`}
-                      label={q.question}
+                      label={formattedQestion}
                       disabled={readOnly}
                       disableFancyLabel
                       styles={styles}
@@ -242,7 +243,7 @@ const SurveyComponent = ({
                       key={`q${q.id}`}
                       control={control}
                       name={`${q.id}`}
-                      label={q.question}
+                      label={formattedQestion}
                       disabled={readOnly}
                       disableFancyLabel
                       styles={styles}
