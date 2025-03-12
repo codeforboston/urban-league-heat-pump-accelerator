@@ -79,7 +79,7 @@ RSpec.describe CsvExportHelper, type: :model do
       end
 
       survey_response = create(:survey_response, survey: survey, survey_visit: @survey_visit)
-      create(:survey_answer, survey_question: survey_question, answer: 'Yes I would love a heat pump',
+      create(:survey_answer, survey_question: survey_question, answers: ['Yes I would love a heat pump'],
                              survey_response: survey_response)
 
       actual = CsvExportHelper.survey_visit_hash(@survey_visit)
