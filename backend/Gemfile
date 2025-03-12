@@ -40,6 +40,5 @@ group :development do
   gem 'bundle-audit'
   gem 'rubocop'
   gem 'rubocop-rails'
-  gem 'syntax_suggest'
   gem 'web-console'
 end
