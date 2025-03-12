@@ -45,9 +45,7 @@ class CsvExportHelper
 
     survey_visit.survey_response.survey_answers.each do |survey_answer|
       key = csv_question_header_key(survey_answer.survey_question_id)
-      value = survey_answer.answer
-      # We do not yet support multiple answers
-      # value = survey_answer.answers.join(';')
+      value = survey_answer.answers.join(';')
       survey_visit_hash[key] = value
     end
 

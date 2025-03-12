@@ -83,7 +83,7 @@ RSpec.describe CsvExporter, type: :model do
       Timecop.freeze(freeze_time) { @survey_visit = create(:survey_visit, surveyor: @surveyor, home: @home1) }
 
       survey_response = create(:survey_response, survey: @survey, survey_visit: @survey_visit)
-      create(:survey_answer, survey_question: survey_question, answer: 'Yes I would love a heat pump',
+      create(:survey_answer, survey_question: survey_question, answers: ['Yes I would love a heat pump'],
                              survey_response: survey_response)
     end
   end
