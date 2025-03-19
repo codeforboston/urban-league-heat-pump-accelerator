@@ -2,6 +2,9 @@ FROM mcr.microsoft.com/devcontainers/ruby:3.2-bullseye
 
 # Install Rails
 RUN gem install rails webdrivers 
+RUN mkdir /gems
+RUN chown vscode:vscode /gems
+ENV BUNDLE_PATH="/gems"
 
 # Default value to allow debug server to serve content over GitHub Codespace's port forwarding service
 # The value is a comma-separated list of allowed domains 
@@ -12,7 +15,7 @@ RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSI
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+#     && apt-get -y install --no-install-recommends libyaml
 
 # [Optional] Uncomment this line to install additional gems.
 # RUN gem install <your-gem-names-here>
