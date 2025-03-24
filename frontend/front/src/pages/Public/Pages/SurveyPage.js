@@ -82,10 +82,16 @@ export const SurveyPage = () => {
       const recaptcha = await getReCaptchaToken("create_survey");
       const arrayAnswers = surveyAnswersToArray(answers);
       const surveyVisit = await addSurveyVisit({
-        surveyVisit: buildSurveyVisitData(arrayAnswers, homeId, surveyId, null, {
-          latitude: null,
-          longitude: null,
-        }),
+        surveyVisit: buildSurveyVisitData(
+          arrayAnswers,
+          homeId,
+          surveyId,
+          null,
+          {
+            latitude: null,
+            longitude: null,
+          }
+        ),
         recaptcha,
       });
       if (isSurveyVisitSucess) {
