@@ -117,9 +117,7 @@ RSpec.describe CsvExportHelper, type: :model do
       assignment.update!(surveyors: [@surveyor])
 
       @survey_visit = create(:survey_visit, home: home, surveyor: @surveyor, latitude: '33.333', longitude: '44.444')
-      survey_response = create(:survey_response, survey: survey, survey_visit: @survey_visit)
-      create(:survey_answer, survey_question: survey_question, answer: 'Yes I would love a heat pump',
-                             survey_response: survey_response)
+      create(:survey_response, survey: survey, survey_visit: @survey_visit)
 
       actual = CsvExportHelper.survey_visit_hash(@survey_visit)
       expect(actual[:public_survey]).to eq('No')

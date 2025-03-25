@@ -25,7 +25,6 @@ if survey_visit.survey_response.present?
     json.survey_answers survey_visit.survey_response.survey_answers do |sa|
       json.id sa.id
       json.survey_question_id sa.survey_question_id
-      json.answer sa.answer
       json.answers sa.answers
     end
   end

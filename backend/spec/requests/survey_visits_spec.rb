@@ -35,7 +35,6 @@ RSpec.describe '/survey_visits', type: :request do
         survey_answers_attributes: [
           {
             survey_question_id: survey_question.id,
-            answer: 1,
             answers: %w[Foo Bar]
           }
         ]
