@@ -11,7 +11,10 @@ import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import Loader from "../../../components/Loader";
 import SurveyErrorDialog from "../../../components/SurveyComponent/SurveyErrorDialog";
 import { selectCurrentUser } from "../../../features/login/loginSlice";
-import { buildSurveyVisitData } from "../../../util/surveyUtils";
+import {
+  buildSurveyVisitData,
+  surveyAnswersToArray,
+} from "../../../util/surveyUtils";
 import { SurveyorSurvey } from "../Components/SurveyorSurvey";
 
 const STEP_LOADING = "PHASE_LOADING";
@@ -47,9 +50,10 @@ const HouseProfile = () => {
 
   const submitSurvey = useCallback(
     async (answers, surveyId, _, surveyorPosition) => {
+      const arrayAnswers = surveyAnswersToArray(answers);
       const surveyVisit = await addSurveyVisit({
         surveyVisit: buildSurveyVisitData(
-          answers,
+          arrayAnswers,
           homeId,
           surveyId,
           surveyorId,

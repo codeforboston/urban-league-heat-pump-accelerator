@@ -13,7 +13,10 @@ import {
 
 import { HeatPumpFade } from "../../../components/HeatPumpFade";
 import { HeatPumpSlide } from "../../../components/HeatPumpSlide";
-import { buildSurveyVisitData } from "../../../util/surveyUtils";
+import {
+  buildSurveyVisitData,
+  surveyAnswersToArray,
+} from "../../../util/surveyUtils";
 import { AddressValidatorComponent } from "../Components/AddressValidatorComponent";
 import { PublicSurvey } from "../Components/PublicSurvey";
 import { ThanksForSubmission } from "../Components/ThanksForSubmission";
@@ -77,11 +80,18 @@ export const SurveyPage = () => {
   const handleAddSurveyVisit = useCallback(
     async (answers, surveyId, homeId, _) => {
       const recaptcha = await getReCaptchaToken("create_survey");
+      const arrayAnswers = surveyAnswersToArray(answers);
       const surveyVisit = await addSurveyVisit({
-        surveyVisit: buildSurveyVisitData(answers, homeId, surveyId, null, {
-          latitude: null,
-          longitude: null,
-        }),
+        surveyVisit: buildSurveyVisitData(
+          arrayAnswers,
+          homeId,
+          surveyId,
+          null,
+          {
+            latitude: null,
+            longitude: null,
+          }
+        ),
         recaptcha,
       });
       if (isSurveyVisitSucess) {

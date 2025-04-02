@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
-FROM ruby:3.1.3-alpine
-RUN apk update && apk upgrade && apk add build-base libpq-dev postgresql-client gcompat tzdata
+FROM ruby:3.2.7-alpine
+RUN apk update && apk upgrade && apk add build-base libpq-dev postgresql-client gcompat tzdata yaml-dev
 RUN adduser -S rails -G root
 COPY backend/ /usr/src/app/
 WORKDIR /usr/src/app

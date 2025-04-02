@@ -5,7 +5,9 @@ class SurveyVisitsController < ApplicationController
 
   # GET /survey_visits or /survey_visits.json
   def index
-    @survey_visits = policy_scope(SurveyVisit).where(search_params)
+    included_relations = [:surveyor, :home, { survey_response: [:survey_answers] }]
+
+    @survey_visits = policy_scope(SurveyVisit).includes(included_relations).where(search_params)
   end
 
   # GET /survey_visits/1 or /survey_visits/1.json
@@ -74,7 +76,7 @@ class SurveyVisitsController < ApplicationController
           .permit(:surveyor_id, :home_id, :latitude, :longitude,
                   survey_response_attributes: [:survey_id,
                                                { survey_answers_attributes: [:survey_question_id,
-                                                                             :answer, { answers: [] }] }])
+                                                                             { answers: [] }] }])
   end
 
   def search_params
