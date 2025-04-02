@@ -3,18 +3,18 @@
 require 'rails_helper'
 
 module TestConstants
-  HOME_LAT = 42.32811808
+  HOME_LAT = 42.32603453
   HOME_LONG = -71.08999264
   SURVEY_LAT = 42.3281053
-  SURVEY_LONG = -71.08244678
+  SURVEY_LONG = -71.08229235
 end
 
 RSpec.describe CsvExportHelper, type: :model do
   describe 'self.home_hash' do
     it 'builds a hash for a home' do
       home = create(:home, street_number: '203', street_name: 'Main', unit_number: '3',
-                           city: 'Somerville', state: 'MA', zip_code: '01234', latitude: "#{TestConstants::HOME_LAT}",
-                           longitude: "#{TestConstants::HOME_LONG}")
+                           city: 'Somerville', state: 'MA', zip_code: '01234', latitude: TestConstants::HOME_LAT,
+                           longitude: TestConstants::HOME_LONG)
 
       actual = CsvExportHelper.home_hash(home)
       expected = {
@@ -90,16 +90,16 @@ RSpec.describe CsvExportHelper, type: :model do
                              survey_response: survey_response)
 
       distance_miles = Geocoder::Calculations.distance_between(
-                              [@survey_visit.home.@home_latitude, @survey_visit.home.@home_longitude],
-                              [@survey_visit.latitude,@survey_visit.longitude]
+                              [TestConstants::HOME_LAT, TestConstants::HOME_LONG],
+                              [TestConstants::SURVEY_LAT, TestConstants::SURVEY_LONG]
                             )
 
       actual = CsvExportHelper.survey_visit_hash(@survey_visit)
       expected = {
         survey_visit_id: @survey_visit.id,
         public_survey: 'Yes',
-        survey_visit_latitude: TestConstants::SURVEY_LAT,
-        survey_visit_longitude: TestConstants::SURVEY_LONG,
+        survey_visit_latitude: "#{TestConstants::SURVEY_LAT}",
+        survey_visit_longitude: "#{TestConstants::SURVEY_LONG}",
         survey_visit_time: freeze_time.in_time_zone('Eastern Time (US & Canada)'),
         surveyor_id: nil,
         surveyor_name: nil,
@@ -111,8 +111,8 @@ RSpec.describe CsvExportHelper, type: :model do
         home_city: 'Cambridge',
         home_state: 'MA',
         home_zip_code: '02139',
-        home_latitude: TestConstants::HOME_LAT,
-        home_longitude: TestConstants::HOME_LONG,
+        home_latitude: "#{TestConstants::HOME_LAT}",
+        home_longitude: "#{TestConstants::HOME_LONG}",
         "question_#{survey_question.id}".to_sym => 'Yes I would love a heat pump'
       }
 

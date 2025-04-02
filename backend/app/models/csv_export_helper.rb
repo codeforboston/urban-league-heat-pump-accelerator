@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'geocoder'
+
 class CsvExportHelper
   SURVEY_LANG = 'en-US'
   EASTERN_TIMEZONE = 'Eastern Time (US & Canada)'
@@ -74,8 +76,8 @@ class CsvExportHelper
 
   def self.survey_visit_metadata_hash(survey_visit)
     distance_miles = Geocoder::Calculations.distance_between(
-      [survey_visit.home.home_latitude, survey_visit.home.home_longitude],
-      [survey_visit.latitude,survey_visit.longitude]
+      [survey_visit.home.latitude, survey_visit.home.longitude],
+      [survey_visit.latitude, survey_visit.longitude]
     )
     {
       survey_visit_id: survey_visit.id,
