@@ -19,6 +19,7 @@ import {
 import { AddressComponent } from "../AddressUtils";
 import Loader from "../Loader";
 import ConditionalQuestion from "./ConditionalQuestion";
+import { HeatPumpCheckbox } from "./HeatPumpCheckbox";
 import { HeatPumpPhoneField } from "./HeatPumpPhoneField";
 import { HeatPumpRadio } from "./HeatPumpRadio";
 import { HeatPumpTextField } from "./HeatPumpTextField";
@@ -220,6 +221,21 @@ const SurveyComponent = ({
                       disabled={readOnly}
                       styles={styles}
                       readOnly={readOnly}
+                    />
+                  );
+                case "checkbox":
+                  return (
+                    <HeatPumpCheckbox
+                      key={`q${q.id}`}
+                      control={control}
+                      name={`${q.id}`}
+                      label={formattedQestion}
+                      options={q.response_options.map((o) => ({
+                        value: o,
+                        label: o,
+                      }))}
+                      disabled={readOnly}
+                      styles={styles}
                     />
                   );
                 case "text":
