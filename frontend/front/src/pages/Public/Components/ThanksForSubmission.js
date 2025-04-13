@@ -1,8 +1,13 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect } from "react";
 import { Alert, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { logSurveySubmission } from "../../../features/newrelic";
 
 export const ThanksForSubmission = forwardRef((_, ref) => {
+  useEffect(() => {
+    logSurveySubmission();
+  }, []);
+
   const navigate = useNavigate();
   return (
     <Alert

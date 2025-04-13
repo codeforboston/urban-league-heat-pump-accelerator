@@ -17,3 +17,13 @@ if (isNewRelicEnabled()) {
   };
   newrelic = new BrowserAgent(options);
 }
+
+export const logSurveyPageVisit = () => {
+  if (!newrelic) return;
+  newrelic.addPageAction("surveyPageVisit-dev");
+};
+
+export const logSurveySubmission = () => {
+  if (!newrelic) return;
+  newrelic.addPageAction("surveySubmission-dev");
+};
