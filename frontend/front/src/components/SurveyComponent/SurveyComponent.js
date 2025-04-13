@@ -14,11 +14,9 @@ import { PUBLIC_ROUTE } from "../../routing/routes";
 import {
   buildDefaultDataFromSurveyStructure,
   buildSurveyCacheKey,
-  surveyRenderRules,
 } from "../../util/surveyUtils";
 import { AddressComponent } from "../AddressUtils";
 import Loader from "../Loader";
-import ConditionalQuestion from "./ConditionalQuestion";
 import { HeatPumpCheckbox } from "./HeatPumpCheckbox";
 import { HeatPumpPhoneField } from "./HeatPumpPhoneField";
 import { HeatPumpRadio } from "./HeatPumpRadio";
@@ -38,7 +36,6 @@ const SurveyComponent = ({
   surveyStructure,
   readOnly,
   styles = {},
-  conditionalRender,
 }) => {
   const location = useLocation();
   const isPublicSurvey = location.pathname.startsWith(PUBLIC_ROUTE);
@@ -275,21 +272,7 @@ const SurveyComponent = ({
                   );
               }
             };
-            const rule = surveyRenderRules[q.id];
-            return conditionalRender && rule ? (
-              <ConditionalQuestion
-                key={`q${q.id}`}
-                control={control}
-                rule={rule}
-                id={q.id}
-                formDefault={formDefault}
-                setValue={setValue}
-              >
-                {renderInput()}
-              </ConditionalQuestion>
-            ) : (
-              renderInput()
-            );
+            return renderInput();
           })}
           <Stack direction="row" justifyContent="center" spacing={2}>
             {isLoading && <Loader />}

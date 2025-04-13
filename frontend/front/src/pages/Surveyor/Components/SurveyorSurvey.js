@@ -26,7 +26,6 @@ export const SurveyorSurvey = forwardRef((props, ref) => {
         formSpacing={8}
         ref={ref}
         styles={styles}
-        conditionalRender={true}
       />
     </>
   );
