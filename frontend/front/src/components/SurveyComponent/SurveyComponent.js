@@ -43,7 +43,7 @@ const SurveyComponent = ({
   const [saving, setSaving] = useState(false);
   const [errSnackBarOpen, setErrSnackBarOpen] = useState(false);
 
-  const { handleSubmit, reset, control, watch, setValue } = useForm({
+  const { handleSubmit, reset, control, watch } = useForm({
     defaultValues: formDefault,
   });
 
