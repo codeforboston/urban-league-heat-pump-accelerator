@@ -8,16 +8,16 @@ class SurveyQuestion < ApplicationRecord
 
   validates :display_order, uniqueness: { scope: :survey_id }
 
-  def text(language_code)
-    lsq = localized_survey_questions.find_by(language_code: language_code)
+  def text(language_code, format)
+    lsq = localized_survey_questions.find_by(language_code: language_code, format: format)
 
     raise StandardError, "Survey question #{id} does not have localization '#{language_code}'" if lsq.nil?
 
     lsq.text
   end
 
-  def response_options(language_code)
-    lsq = localized_survey_questions.find_by(language_code: language_code)
+  def response_options(language_code, format)
+    lsq = localized_survey_questions.find_by(language_code: language_code, format: format)
 
     raise StandardError, "Survey question #{id} does not have localization '#{language_code}'" if lsq.nil?
 
