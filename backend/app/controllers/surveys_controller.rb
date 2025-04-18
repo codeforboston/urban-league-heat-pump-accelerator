@@ -14,8 +14,6 @@ class SurveysController < ApplicationController
       @survey.survey_questions.first.localized_survey_questions.distinct.pluck(:language_code)
     )
 
-    @format = params[:format] || 'online'
-
     # If first question of survey doesn't have this localization, then throw exception
     # (No need to check all questions for this localization)
     return unless @survey.survey_questions.first.localized_survey_questions.find_by(language_code: @language_code).nil?
