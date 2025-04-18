@@ -35,18 +35,42 @@ RSpec.describe '/surveys', type: :request do
   end
 
   describe 'GET /show' do
-    let(:survey) do
-      localized_survey_question = create(:localized_survey_question, language_code: 'en-US')
-      localized_survey_question.survey_question.survey
+    before do
+      localized_survey_question = create(:localized_survey_question, language_code: 'valid_code', text: 'ABC')
+      survey_question = localized_survey_question.survey_question
+      create(:localized_survey_question, survey_question: survey_question, language_code: 'valid_code_2', text: 'DEF')
+      create(:localized_survey_question, survey_question: survey_question, language_code: 'valid_code',
+                                         survey_mode: 'other', text: 'GHI')
+
+      @survey = survey_question.survey
     end
 
     it 'renders a successful response' do
-      get survey_url(survey, langPref: 'en-US'), as: :json
+      get survey_url(@survey, langPref: 'valid_code'), as: :json
       expect(response).to be_successful
+
+      response_body = JSON.parse(response.body)
+      expect(response_body['survey_questions'].length).to eq(1)
+      expect(response_body['survey_questions'][0]['question']).to eq('ABC')
+    end
+
+    it 'return a localized survey using the langPref param' do
+      get survey_url(@survey, langPref: 'valid_code_2'), as: :json
+      expect(JSON.parse(response.body)['survey_questions'][0]['question']).to eq('DEF')
+    end
+
+    it 'return a specialized survey using the survey_mode param' do
+      get survey_url(@survey, langPref: 'valid_code', survey_mode: 'other'), as: :json
+      expect(JSON.parse(response.body)['survey_questions'][0]['question']).to eq('GHI')
     end
 
     it 'renders a 404 not found if langPref not found' do
-      get survey_url(survey, langPref: 'foo'), as: :json
+      get survey_url(@survey, langPref: 'invalid_code'), as: :json
+      expect(response).to have_http_status(:not_found)
+    end
+
+    it 'renders a 404 not found if survey_mode not found' do
+      get survey_url(@survey, langPref: 'valid_code', survey_mode: 'invalid_mode'), as: :json
       expect(response).to have_http_status(:not_found)
     end
   end
