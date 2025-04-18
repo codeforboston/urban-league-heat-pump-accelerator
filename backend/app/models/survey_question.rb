@@ -2,7 +2,7 @@
 
 class SurveyQuestion < ApplicationRecord
   belongs_to :survey
-  enum response_type: { radio: 0, text: 1, email: 2, tel: 3 }
+  enum response_type: { radio: 0, text: 1, email: 2, tel: 3, checkbox: 4 }
   has_many :localized_survey_questions, dependent: nil
   accepts_nested_attributes_for :localized_survey_questions
 

@@ -82,5 +82,3 @@ export const surveyAnswersToArray = (answers) => {
     return acc;
   }, {});
 };
-
-export const surveyRenderRules = {};

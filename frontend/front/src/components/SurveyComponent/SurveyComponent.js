@@ -14,11 +14,10 @@ import { PUBLIC_ROUTE } from "../../routing/routes";
 import {
   buildDefaultDataFromSurveyStructure,
   buildSurveyCacheKey,
-  surveyRenderRules,
 } from "../../util/surveyUtils";
 import { AddressComponent } from "../AddressUtils";
 import Loader from "../Loader";
-import ConditionalQuestion from "./ConditionalQuestion";
+import { HeatPumpCheckbox } from "./HeatPumpCheckbox";
 import { HeatPumpPhoneField } from "./HeatPumpPhoneField";
 import { HeatPumpRadio } from "./HeatPumpRadio";
 import { HeatPumpTextField } from "./HeatPumpTextField";
@@ -37,7 +36,6 @@ const SurveyComponent = ({
   surveyStructure,
   readOnly,
   styles = {},
-  conditionalRender,
 }) => {
   const location = useLocation();
   const isPublicSurvey = location.pathname.startsWith(PUBLIC_ROUTE);
@@ -45,7 +43,7 @@ const SurveyComponent = ({
   const [saving, setSaving] = useState(false);
   const [errSnackBarOpen, setErrSnackBarOpen] = useState(false);
 
-  const { handleSubmit, reset, control, watch, setValue } = useForm({
+  const { handleSubmit, reset, control, watch } = useForm({
     defaultValues: formDefault,
   });
 
@@ -222,6 +220,21 @@ const SurveyComponent = ({
                       readOnly={readOnly}
                     />
                   );
+                case "checkbox":
+                  return (
+                    <HeatPumpCheckbox
+                      key={`q${q.id}`}
+                      control={control}
+                      name={`${q.id}`}
+                      label={formattedQestion}
+                      options={q.response_options.map((o) => ({
+                        value: o,
+                        label: o,
+                      }))}
+                      disabled={readOnly}
+                      styles={styles}
+                    />
+                  );
                 case "text":
                 case "email":
                   return (
@@ -259,21 +272,7 @@ const SurveyComponent = ({
                   );
               }
             };
-            const rule = surveyRenderRules[q.id];
-            return conditionalRender && rule ? (
-              <ConditionalQuestion
-                key={`q${q.id}`}
-                control={control}
-                rule={rule}
-                id={q.id}
-                formDefault={formDefault}
-                setValue={setValue}
-              >
-                {renderInput()}
-              </ConditionalQuestion>
-            ) : (
-              renderInput()
-            );
+            return renderInput();
           })}
           <Stack direction="row" justifyContent="center" spacing={2}>
             {isLoading && <Loader />}
