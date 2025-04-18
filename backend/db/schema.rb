@@ -78,7 +78,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_16_004117) do
     t.bigint "survey_question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "survey_mode", default: "online"
+    t.string "format", default: "online"
     t.index ["survey_question_id"], name: "index_localized_survey_questions_on_survey_question_id"
   end
 

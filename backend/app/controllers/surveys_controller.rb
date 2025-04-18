@@ -14,18 +14,15 @@ class SurveysController < ApplicationController
       @survey.survey_questions.first.localized_survey_questions.distinct.pluck(:language_code)
     )
 
-    @survey_mode = params[:survey_mode] || 'online'
+    @format = params[:format] || 'online'
 
-    # If first question of survey doesn't have this localization and survey mode, then throw exception
-    # (No need to check all questions for this localization and survey mode)
-    return unless @survey.survey_questions.first.localized_survey_questions.find_by(
-      language_code: @language_code, survey_mode: @survey_mode
-    ).nil?
+    # If first question of survey doesn't have this localization, then throw exception
+    # (No need to check all questions for this localization)
+    return unless @survey.survey_questions.first.localized_survey_questions.find_by(language_code: @language_code).nil?
 
     respond_to do |format|
       format.json do
-        render json: "{ \"status\": \"Survey #{@survey.id} does not have localization #{@language_code} for " \
-                  "#{@survey_mode} mode\" }",
+        render json: "{ \"status\": \"Survey #{@survey.id} does not have localization #{@language_code}\" }",
                status: :not_found
       end
     end
