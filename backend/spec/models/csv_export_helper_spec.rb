@@ -78,7 +78,7 @@ RSpec.describe CsvExportHelper, type: :model do
         @survey_visit = create(:survey_visit, home: home, latitude: '33.333', longitude: '44.444')
       end
 
-      survey_response = create(:survey_response, survey: survey, survey_visit: @survey_visit)
+      survey_response = create(:survey_response, survey: survey, survey_visit: @survey_visit, language_code: 'es')
       create(:survey_answer, survey_question: survey_question, answers: ['Yes I would love a heat pump'],
                              survey_response: survey_response)
 
@@ -100,6 +100,7 @@ RSpec.describe CsvExportHelper, type: :model do
         home_zip_code: '02139',
         home_latitude: '42.32603453',
         home_longitude: '-71.08999264',
+        survey_response_language_code: 'es',
         "question_#{survey_question.id}".to_sym => 'Yes I would love a heat pump'
       }
 
@@ -154,6 +155,7 @@ RSpec.describe CsvExportHelper, type: :model do
         survey_visit_time: 'Survey Visit Time',
         surveyor_id: 'Surveyor ID',
         surveyor_name: 'Surveyor Name',
+        survey_response_language_code: 'Language Code',
         "question_#{survey_question.id}".to_sym => '"1. Heat pumps amirite?"'
       }
 

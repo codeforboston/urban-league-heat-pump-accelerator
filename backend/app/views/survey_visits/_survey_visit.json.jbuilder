@@ -21,6 +21,7 @@ end
 if survey_visit.survey_response.present?
   json.survey_response do
     json.id survey_visit.survey_response.id
+    json.language_code survey_visit.survey_response.language_code
     json.survey_id survey_visit.survey_response.survey_id
     json.survey_answers survey_visit.survey_response.survey_answers do |sa|
       json.id sa.id

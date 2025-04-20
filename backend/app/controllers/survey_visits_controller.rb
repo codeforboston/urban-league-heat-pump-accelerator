@@ -74,7 +74,7 @@ class SurveyVisitsController < ApplicationController
   def survey_visit_params
     params.require(:survey_visit)
           .permit(:surveyor_id, :home_id, :latitude, :longitude,
-                  survey_response_attributes: [:survey_id,
+                  survey_response_attributes: [:survey_id, :language_code,
                                                { survey_answers_attributes: [:survey_question_id,
                                                                              { answers: [] }] }])
   end
