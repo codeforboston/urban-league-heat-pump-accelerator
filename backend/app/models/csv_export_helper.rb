@@ -2,6 +2,7 @@
 
 class CsvExportHelper
   SURVEY_LANG = 'en-US'
+  SURVEY_MODE = 'online'
   EASTERN_TIMEZONE = 'Eastern Time (US & Canada)'
   CSV_STATIC_HEADERS = {
     survey_visit_id: 'Survey Visit ID',
@@ -87,7 +88,8 @@ class CsvExportHelper
 
     survey.survey_questions.each do |survey_question|
       key = csv_question_header_key(survey_question.id)
-      value = survey_question.localized_survey_questions.find_by(language_code: SURVEY_LANG).text
+      value = survey_question.localized_survey_questions.find_by(language_code: SURVEY_LANG,
+                                                                 survey_mode: SURVEY_MODE).text
       survey_question_headers[key] = "\"#{survey_question.display_order}. #{value}\""
     end
 
