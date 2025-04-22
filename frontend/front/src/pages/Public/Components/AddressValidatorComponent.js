@@ -1,11 +1,10 @@
-import React, { forwardRef, useEffect } from "react";
+import React, { forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Stack, Button, Box } from "@mui/material";
 import { HeatPumpAddressField } from "../../../components/SurveyComponent/HeatPumpAddressField";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../../components/Loader";
-import { logSurveyPageVisit } from "../../../features/newrelic";
 
 export const AddressValidatorComponent = forwardRef(
   (
@@ -16,10 +15,6 @@ export const AddressValidatorComponent = forwardRef(
     },
     ref
   ) => {
-    useEffect(() => {
-      logSurveyPageVisit();
-    }, []);
-
     const navigate = useNavigate();
 
     const { t } = useTranslation();

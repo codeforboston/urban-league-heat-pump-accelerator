@@ -7,6 +7,10 @@ import {
   useCreateSurveyVisitMutation,
 } from "../../../api/apiSlice";
 import {
+  logSurveyPageVisit,
+  logSurveySubmission,
+} from "../../../features/newrelic";
+import {
   RECAPTCHA_ACTION_PUBLIC_SURVEY,
   useGetReCAPTCHAToken,
 } from "../../../components/ReCaptcha";
@@ -79,6 +83,20 @@ export const SurveyPage = () => {
       setStep(STEP_THANKS);
     }
   }, [isCreateHomeSucccess, isSurveyVisitSucess]);
+
+  useEffect(() => {
+    if (isCreateHomeSucccess) {
+      const language = localStorage.getItem("langPref");
+      logSurveyPageVisit(language);
+    }
+  }, [isCreateHomeSucccess]);
+
+  useEffect(() => {
+    if (isSurveyVisitSucess) {
+      const language = localStorage.getItem("langPref");
+      logSurveySubmission(language);
+    }
+  }, [isSurveyVisitSucess]);
 
   const handleAddSurveyVisit = useCallback(
     async (answers, surveyId, homeId, _) => {
