@@ -16,6 +16,7 @@ import "./Assets/index.css";
 import "animate.css/animate.min.css";
 import ScrollToTopButton from "./Components/ScrollToTopButton";
 import "./Libs/i18n";
+import { LanguageLogger } from "../../features/newrelic/LanguageLogger";
 
 const PublicContainer = () => {
   return (
@@ -32,6 +33,7 @@ const PublicContainer = () => {
               fontSize: "16px",
             }}
           >
+            <LanguageLogger />
             <Navbar />
             <Box>
               <Routes>

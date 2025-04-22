@@ -4,6 +4,8 @@ import { Box, Menu, MenuItem, Fade, Button, Typography } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useTranslation } from "react-i18next";
+import { logLanguagePref } from "../../../features/newrelic";
+import { useDebouncedCallback } from "use-debounce";
 
 const LangPrefDropdown = () => {
   const {
@@ -76,6 +78,10 @@ const LangPrefDropdown = () => {
   // Close language menu
   const handleCloseMore = () => setAnchorMore(null);
 
+  const debouncedLogLanguagePref = useDebouncedCallback((lang, source) => {
+    logLanguagePref(lang, source);
+  }, 3000);
+
   // Change language and update localStorage and URL
   const handleChangeLanguage = (lang) => {
     changeLanguage(lang);
@@ -139,6 +145,7 @@ const LangPrefDropdown = () => {
               onClick={() => {
                 handleChangeLanguage(lang, langMap[lang]);
                 handleCloseMore();
+                debouncedLogLanguagePref(lang, "user_select");
               }}
             >
               {langMap[lang]}
