@@ -1,10 +1,11 @@
 import { Controller, useController } from "react-hook-form";
 import {
+  Box,
   Radio,
   RadioGroup,
   FormControlLabel,
   FormControl,
-  FormLabel,
+  Stack,
   Typography,
 } from "@mui/material";
 import { useCallback } from "react";
@@ -24,43 +25,51 @@ export const HeatPumpRadio = ({
     (field) => {
       return (
         // Red error label if required prop set to true
-        <FormControl
-          disabled={disabled}
-          error={!!fieldError}
-          sx={{ ...styles?.container }}
-        >
-          <FormLabel
-            id={`${name}-radio-label`}
-            htmlFor={`${name}-radio`}
-            sx={{
-              ...styles?.label,
-            }}
+        <Box component="fieldset" sx={{ border: 0, padding: 0 }}>
+          <FormControl
+            disabled={disabled}
+            error={!!fieldError}
+            sx={{ ...styles?.container }}
           >
-            {label}
-          </FormLabel>
-          <RadioGroup
-            row
-            aria-labelledby={`${name}-dropdown-group-label`}
-            {...field}
-          >
-            {options.map((option) => (
-              <FormControlLabel
-                key={`option-${option.value}`} // optional
-                value={option.value}
-                control={<Radio />}
-                label={
-                  <Typography
-                    sx={{
-                      ...styles?.label,
-                    }}
-                  >
-                    {option.value}
-                  </Typography>
-                }
-              />
-            ))}
-          </RadioGroup>
-        </FormControl>
+            <Typography
+              component="legend"
+              sx={{
+                ...styles?.label,
+                ...(disabled && { color: "rgba(0, 0, 0, 0.38)" }),
+                marginBottom: "1rem",
+              }}
+              id={`${name}-radio-group-label`}
+            >
+              {label}
+            </Typography>
+            <RadioGroup
+              row
+              aria-labelledby={`${name}-radio-group-label`}
+              {...field}
+            >
+              <Stack spacing={2}>
+                {options.map((option, i) => (
+                  <FormControlLabel
+                    key={`${name}-option${i + 1}`}
+                    value={option.value}
+                    control={<Radio id={`${name}-option${i + 1}`} />}
+                    label={
+                      <Typography
+                        component="label"
+                        htmlFor={`${name}-option${i + 1}`}
+                        sx={{
+                          ...styles?.label,
+                        }}
+                      >
+                        {option.value}
+                      </Typography>
+                    }
+                  />
+                ))}
+              </Stack>
+            </RadioGroup>
+          </FormControl>
+        </Box>
       );
     },
     [label, name, options, disabled, fieldError, styles.container, styles.label]
