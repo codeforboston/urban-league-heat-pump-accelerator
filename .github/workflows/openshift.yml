@@ -89,7 +89,7 @@ jobs:
     # 🖊️ Uncomment this if you are using CRDA scan step above
     # needs: crda-scan
     name: Build and deploy ${{ inputs.app }} to OpenShift
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     environment: ${{ inputs.environment }}
 
     outputs:
