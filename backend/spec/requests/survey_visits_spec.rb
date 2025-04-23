@@ -32,6 +32,7 @@ RSpec.describe '/survey_visits', type: :request do
       longitude: '-71.9419063',
       survey_response_attributes: {
         survey_id: survey.id,
+        language_code: 'es',
         survey_answers_attributes: [
           {
             survey_question_id: survey_question.id,
@@ -61,6 +62,17 @@ RSpec.describe '/survey_visits', type: :request do
       survey_visit = SurveyVisit.create! valid_attributes
       get survey_visit_url(survey_visit), as: :json
       expect(response).to be_successful
+
+      survey_visit_json = JSON.parse(response.body)
+      expect(survey_visit_json['id']).to eq(survey_visit.id)
+      expect(survey_visit_json['surveyor_id']).to eq(surveyor.id)
+      expect(survey_visit_json['home_id']).to eq(home.id)
+      expect(survey_visit_json['survey_response']['survey_id']).to eq(survey.id)
+      expect(survey_visit_json['survey_response']['language_code']).to eq('es')
+
+      survey_answer = survey_visit_json['survey_response']['survey_answers'][0]
+      expect(survey_answer['survey_question_id']).to eq(survey_question.id)
+      expect(survey_answer['answers']).to eq(%w[Foo Bar])
     end
   end
 
@@ -86,6 +98,7 @@ RSpec.describe '/survey_visits', type: :request do
 
         survey_response = survey_visit.survey_response
         expect(survey_response).to be_present
+        expect(survey_response.language_code).to eq('es')
         expect(survey_response.survey_id).to eq(survey.id)
         expect(survey_response.survey_answers.count).to eq(1)
 

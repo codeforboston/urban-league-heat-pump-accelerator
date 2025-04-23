@@ -24,7 +24,8 @@ class CsvExportHelper
     survey_visit_longitude: 'Survey Visit Longitude',
     survey_visit_time: 'Survey Visit Time',
     surveyor_id: 'Surveyor ID',
-    surveyor_name: 'Surveyor Name'
+    surveyor_name: 'Surveyor Name',
+    survey_response_language_code: 'Language Code'
   }.freeze
 
   def self.home_hash(home)
@@ -78,7 +79,8 @@ class CsvExportHelper
       survey_visit_longitude: survey_visit.longitude,
       survey_visit_time: survey_visit.created_at.in_time_zone(EASTERN_TIMEZONE),
       surveyor_id: survey_visit.surveyor_id,
-      surveyor_name: survey_visit.surveyor&.full_name
+      surveyor_name: survey_visit.surveyor&.full_name,
+      survey_response_language_code: survey_visit.survey_response.language_code
     }
   end
   private_class_method :survey_visit_metadata_hash
