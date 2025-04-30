@@ -19,26 +19,51 @@ module SeedImporter
       end
     end
 
-    # Seed survey questions
+    # Seed offline English survey questions
     survey = Survey.first
-    SmarterCSV.process(File.join(path, 'test_survey_questions.csv'), options) do |chunk|
+    map_of_survey_question_ids = {}
+
+    SmarterCSV.process(File.join(path, 'survey_questions/en_offline.csv'), options) do |chunk|
       chunk.each do |data_hash|
-        data_hash[:response_options] =
-          (data_hash[:response_options].nil? ? [] : data_hash[:response_options].split('/', -1))
         fixed_data_hash = {
           display_order: data_hash[:display_order],
           response_type: data_hash[:response_type],
           localized_survey_questions: [
             LocalizedSurveyQuestion.new({
                                           text: data_hash[:text],
-                                          response_options: data_hash[:response_options],
-                                          language_code: 'en-US'
+                                          response_options: parse_response_options(data_hash[:response_options]),
+                                          language_code: 'en',
+                                          survey_mode: 'offline'
                                         })
           ]
         }
         question = SurveyQuestion.new(fixed_data_hash)
         question.survey = survey
         question.save!
+
+        map_of_survey_question_ids[question.display_order] = question.id
+      end
+    end
+
+    # Seed online localized survey questions
+    language_codes = Dir.entries("#{path}/survey_questions/").map do |file_name|
+      file_match = file_name.match(/^(?<language_code>\w{2})_online.csv$/)
+      file_match[:language_code] if file_match
+    end.compact
+
+    language_codes.each do |language_code|
+      SmarterCSV.process(File.join(path, "survey_questions/#{language_code}_online.csv"), options) do |chunk|
+        chunk.each do |data_hash|
+          question_id = map_of_survey_question_ids[data_hash[:display_order]]
+
+          LocalizedSurveyQuestion.create!({
+                                            text: data_hash[:text],
+                                            response_options: parse_response_options(data_hash[:response_options]),
+                                            language_code: language_code,
+                                            survey_mode: 'online',
+                                            survey_question_id: question_id
+                                          })
+        end
       end
     end
 
@@ -99,6 +124,14 @@ module SeedImporter
 
         home.save!
       end
+    end
+  end
+
+  def self.parse_response_options(response_options_str)
+    if response_options_str.nil?
+      []
+    else
+      response_options_str.split('/', -1)
     end
   end
 end

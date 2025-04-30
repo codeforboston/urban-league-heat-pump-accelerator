@@ -25,15 +25,25 @@ RSpec.describe SeedImporter, type: :model do
       expect(q1.response_type).to eq('radio')
       expect(q2.response_type).to eq('text')
 
-      q1_localized = q1.localized_survey_questions.first
-      expect(q1_localized.language_code).to eq('en-US')
+      q1_localized = q1.localized_survey_questions.find_by(language_code: 'en', survey_mode: 'offline')
       expect(q1_localized.text).to eq('What is your favorite color?')
       expect(q1_localized.response_options).to match_array(%w[Red Yellow Blue])
 
-      q2_localized = q2.localized_survey_questions.first
-      expect(q2_localized.language_code).to eq('en-US')
+      q2_localized = q2.localized_survey_questions.find_by(language_code: 'en', survey_mode: 'offline')
       expect(q2_localized.text).to eq('Explain why')
       expect(q2_localized.response_options).to eq([])
+    end
+
+    it 'creates online localized survey questions for other languages' do
+      q1 = Survey.last.survey_questions.find { |q| q.display_order == 1 }
+
+      q1_english_online = q1.localized_survey_questions.find_by(language_code: 'en', survey_mode: 'online')
+      expect(q1_english_online.text).to eq('The online question is slightly different! What is your fave color?')
+      expect(q1_english_online.response_options).to match_array(%w[Green Purple])
+
+      q1_spanish_online = q1.localized_survey_questions.find_by(language_code: 'es', survey_mode: 'online')
+      expect(q1_spanish_online.text).to eq('¿Cuál es tu color favorito?')
+      expect(q1_spanish_online.response_options).to match_array(%w[Amarillo Azul Rojo])
     end
 
     it 'creates users and surveyors' do

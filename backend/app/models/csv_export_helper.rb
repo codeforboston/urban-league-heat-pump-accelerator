@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CsvExportHelper
-  SURVEY_LANG = 'en-US'
+  SURVEY_LANG = 'en'
   SURVEY_MODE = 'online'
   EASTERN_TIMEZONE = 'Eastern Time (US & Canada)'
   CSV_STATIC_HEADERS = {
