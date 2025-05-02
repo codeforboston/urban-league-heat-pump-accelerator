@@ -1,9 +1,6 @@
 import { Container, Typography } from "@mui/material";
 import React, { useMemo } from "react";
-import {
-  useGetSurveyStructureQuery,
-  useGetSurveyVisitQuery,
-} from "../../../api/apiSlice";
+import { useGetSurveyVisitQuery } from "../../../api/apiSlice";
 import { useParams } from "react-router-dom";
 import { AdminSurvey } from "../component/AdminSurvey";
 import Loader from "../../../components/Loader";
@@ -17,11 +14,6 @@ const SurveyProfile = () => {
 
   const { data: surveyVisit, error: surveyVisitError } =
     useGetSurveyVisitQuery(surveyVisitId);
-
-  const { data: { survey_questions: surveyQuestions } = {} } =
-    useGetSurveyStructureQuery(surveyVisit?.survey_response?.survey_id, {
-      skip: !surveyVisit,
-    });
 
   const title = useMemo(
     () => (surveyVisit ? `${houseToString(surveyVisit.home)}` : "Loading..."),
@@ -40,11 +32,10 @@ const SurveyProfile = () => {
     () =>
       surveyVisit?.survey_response
         ? buildDataFromSurveyAnswers(
-            surveyVisit?.survey_response?.survey_answers,
-            surveyQuestions?.length
+            surveyVisit?.survey_response?.survey_answers
           )
         : [],
-    [surveyVisit, surveyQuestions]
+    [surveyVisit]
   );
 
   return (
