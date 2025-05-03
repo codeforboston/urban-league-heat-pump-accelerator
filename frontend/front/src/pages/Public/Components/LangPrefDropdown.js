@@ -101,7 +101,7 @@ const LangPrefDropdown = () => {
     }
 
     // Update displayed language
-    setLangDisplay(langMap[lang]);
+    setLangDisplay(dropdownLangNames[lang]);
   };
 
   return (
