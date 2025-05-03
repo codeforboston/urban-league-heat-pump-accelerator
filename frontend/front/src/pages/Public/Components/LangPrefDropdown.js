@@ -144,7 +144,7 @@ const LangPrefDropdown = () => {
               key={lang}
               variant="navLinks"
               onClick={() => {
-                handleChangeLanguage(lang, langMap[lang]);
+                handleChangeLanguage(lang);
                 handleCloseMore();
               }}
             >
