@@ -66,7 +66,7 @@ RSpec.describe CsvExportHelper, type: :model do
 
   describe 'self.survey_visit_hash' do
     it 'builds a hash for a survey visit' do
-      localized_survey_question = create(:localized_survey_question, language_code: 'en-US')
+      localized_survey_question = create(:localized_survey_question, language_code: 'en')
       survey_question = localized_survey_question.survey_question
       survey = survey_question.survey
       home = create(:home)
@@ -108,7 +108,7 @@ RSpec.describe CsvExportHelper, type: :model do
     end
 
     it 'builds a hash for a survey visit with a surveyor' do
-      localized_survey_question = create(:localized_survey_question, language_code: 'en-US')
+      localized_survey_question = create(:localized_survey_question, language_code: 'en')
       survey_question = localized_survey_question.survey_question
       survey = survey_question.survey
 
@@ -129,7 +129,7 @@ RSpec.describe CsvExportHelper, type: :model do
 
   describe 'self.csv_headers' do
     it 'builds the hash of csv headers with questions' do
-      localized_question = create(:localized_survey_question, language_code: 'en-US', text: 'Heat pumps amirite?')
+      localized_question = create(:localized_survey_question, language_code: 'en', text: 'Heat pumps amirite?')
       survey_question = localized_question.survey_question
       survey = survey_question.survey
 

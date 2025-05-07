@@ -2,6 +2,7 @@
 
 class SurveysController < ApplicationController
   before_action :set_survey, only: %i[show edit update destroy]
+  before_action :sanitize_lang_pref, only: :show
 
   # GET /surveys or /surveys.json
   def index
@@ -74,6 +75,13 @@ class SurveysController < ApplicationController
   end
 
   private
+
+  # TODO: Remove this when frontend switches to requesting 'en' language code
+  def sanitize_lang_pref
+    return unless params[:langPref] == 'en-US'
+
+    params[:langPref] = 'en'
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_survey

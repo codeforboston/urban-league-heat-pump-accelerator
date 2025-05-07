@@ -69,7 +69,7 @@ RSpec.describe CsvExporter, type: :model do
     end
 
     def create_test_data
-      localized_survey_question = create(:localized_survey_question, language_code: 'en-US')
+      localized_survey_question = create(:localized_survey_question, language_code: 'en')
       survey_question = localized_survey_question.survey_question
       @survey = survey_question.survey
 
