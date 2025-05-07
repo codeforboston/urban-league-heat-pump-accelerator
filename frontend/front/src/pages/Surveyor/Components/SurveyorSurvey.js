@@ -27,7 +27,7 @@ export const SurveyorSurvey = forwardRef((props, ref) => {
         ref={ref}
         styles={styles}
         langPref="en"
-        surveyMode="online"
+        surveyMode="offline"
       />
     </>
   );

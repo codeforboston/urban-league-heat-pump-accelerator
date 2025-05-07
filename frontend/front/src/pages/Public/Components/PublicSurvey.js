@@ -15,7 +15,7 @@ export const PublicSurvey = forwardRef((props, ref) => {
       formSpacing={5}
       ref={ref}
       langPref={language}
-      surveyMode="offline"
+      surveyMode="online"
     />
   );
 });
