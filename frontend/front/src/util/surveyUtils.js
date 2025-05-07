@@ -42,7 +42,8 @@ export const buildSurveyVisitData = (
   homeId,
   surveyId,
   surveyorId,
-  surveyorPosition
+  surveyorPosition,
+  languageCode
 ) => {
   // build answers object
   const answersObject = {};
@@ -66,6 +67,7 @@ export const buildSurveyVisitData = (
         : null,
       survey_response_attributes: {
         survey_id: surveyId,
+        language_code: languageCode,
         survey_answers_attributes: answersObject,
       },
     },

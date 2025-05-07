@@ -34,7 +34,10 @@ const STEP_THANKS = "PHASE_THANKS";
 export const SurveyPage = () => {
   const [step, setStep] = useState(STEP_ADDRESS);
 
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
 
   const getReCaptchaToken = useGetReCAPTCHAToken(
     RECAPTCHA_ACTION_PUBLIC_SURVEY
@@ -90,7 +93,8 @@ export const SurveyPage = () => {
           {
             latitude: null,
             longitude: null,
-          }
+          },
+          language
         ),
         recaptcha,
       });
@@ -99,7 +103,7 @@ export const SurveyPage = () => {
       }
       return surveyVisit;
     },
-    [addSurveyVisit, isSurveyVisitSucess, getReCaptchaToken]
+    [addSurveyVisit, isSurveyVisitSucess, getReCaptchaToken, language]
   );
 
   const pageContent = useCallback(
