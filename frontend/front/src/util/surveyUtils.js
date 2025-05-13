@@ -1,14 +1,3 @@
-// Current supported survey languages
-const supportedLanguages = ["en-US"];
-
-export const validateLanguage = () => {
-  const langPref = localStorage.getItem("langPref");
-  if (typeof langPref !== "string") {
-    return "en-US";
-  }
-  return supportedLanguages.includes(langPref) ? langPref : "en-US";
-};
-
 export const buildSurveyCacheKey = (surveyId, homeId) =>
   `survey${surveyId}-home${homeId}`;
 
@@ -20,22 +9,12 @@ export const buildDefaultDataFromSurveyStructure = (surveyStructure) =>
     }),
     {}
   );
-export const buildDataFromSurveyAnswers = (
-  surveyAnswers = [],
-  numberOfQuestions = 0
-) => {
-  const data = {};
 
-  for (let i = 1; i <= numberOfQuestions; i++) {
-    data[i] = "";
-  }
-
-  surveyAnswers.forEach((curr) => {
+export const buildDataFromSurveyAnswers = (surveyAnswers = []) =>
+  surveyAnswers.reduce((data, curr) => {
     data[curr.survey_question_id] = curr.answers;
-  });
-
-  return data;
-};
+    return data;
+  }, {});
 
 export const buildSurveyVisitData = (
   answers,

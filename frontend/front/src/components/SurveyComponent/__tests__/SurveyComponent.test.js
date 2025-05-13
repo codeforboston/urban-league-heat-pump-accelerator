@@ -21,6 +21,9 @@ const DEFAULT_TEST_SURVEY_CACHE_KEY = buildSurveyCacheKey(
 );
 const DEFAULT_TEST_DEFAULT_SURVEY_DATA =
   buildDefaultDataFromSurveyStructure(DEFAULT_TEST_SURVEY);
+const DEFAULT_TEST_LANG_PREF = "en";
+const EXPECTED_TEST_SURVEY_OPTIONS = ["online", "offline"];
+const DEFAULT_TEST_SURVEY_MODE = "online";
 
 describe("SurveyComponent", () => {
   beforeEach(() => {
@@ -28,9 +31,27 @@ describe("SurveyComponent", () => {
 
     jest
       .spyOn(apiSlice, "useGetSurveyStructureQuery")
-      .mockImplementation((id) => {
+      .mockImplementation(({ id, langPref, surveyMode }) => {
         const survey = surveys.find((s) => `${s.id}` === `${id}`);
-        return { data: survey, error: !survey };
+        if (
+          !langPref ||
+          !surveyMode ||
+          langPref !== DEFAULT_TEST_LANG_PREF ||
+          !EXPECTED_TEST_SURVEY_OPTIONS.includes(surveyMode)
+        ) {
+          return {
+            error: true,
+            isError: true,
+            isLoading: false,
+            data: undefined,
+          };
+        }
+        return {
+          data: survey,
+          error: !survey,
+          isError: !survey,
+          isLoading: false,
+        };
       });
   });
 
@@ -50,6 +71,8 @@ describe("SurveyComponent", () => {
     render(
       <MemoryRouter>
         <SurveyComponent
+          langPref="en"
+          surveyMode="online"
           submitSurvey={jest.fn()}
           isLoading={false}
           activeHome={DEFAULT_TEST_HOME}
@@ -70,6 +93,8 @@ describe("SurveyComponent", () => {
     render(
       <MemoryRouter>
         <SurveyComponent
+          langPref="en"
+          surveyMode="online"
           submitSurvey={jest.fn()}
           isLoading={false}
           activeHome={DEFAULT_TEST_HOME}
@@ -118,6 +143,8 @@ describe("SurveyComponent", () => {
     render(
       <MemoryRouter>
         <SurveyComponent
+          langPref="en"
+          surveyMode="online"
           submitSurvey={mockSubmit}
           isLoading={false}
           activeHome={DEFAULT_TEST_HOME}
@@ -161,6 +188,8 @@ describe("SurveyComponent", () => {
     render(
       <MemoryRouter>
         <SurveyComponent
+          langPref="en"
+          surveyMode="online"
           submitSurvey={mockSubmit}
           isLoading={false}
           activeHome={DEFAULT_TEST_HOME}
@@ -183,6 +212,8 @@ describe("SurveyComponent", () => {
     const { container } = render(
       <MemoryRouter>
         <SurveyComponent
+          langPref="en"
+          surveyMode="online"
           submitSurvey={jest.fn()}
           isLoading={false}
           activeHome={DEFAULT_TEST_HOME}
@@ -194,5 +225,83 @@ describe("SurveyComponent", () => {
 
     expect(container).toMatchSnapshot();
     expect(errSpy).not.toHaveBeenCalled();
+  });
+
+  it("should show error message when langPref is missing", () => {
+    render(
+      <MemoryRouter>
+        <SurveyComponent
+          submitSurvey={jest.fn()}
+          isLoading={false}
+          activeHome={DEFAULT_TEST_HOME}
+          surveyId={DEFAULT_TEST_SURVEY.id}
+          formSpacing={5}
+          surveyMode={DEFAULT_TEST_SURVEY_MODE}
+        />
+      </MemoryRouter>
+    );
+
+    expect(
+      screen.getByText("Encountered an error while loading the survey.")
+    ).toBeInTheDocument();
+  });
+
+  it("should show error message when langPref is incorrect", () => {
+    render(
+      <MemoryRouter>
+        <SurveyComponent
+          submitSurvey={jest.fn()}
+          isLoading={false}
+          activeHome={DEFAULT_TEST_HOME}
+          surveyId={DEFAULT_TEST_SURVEY.id}
+          formSpacing={5}
+          surveyMode={DEFAULT_TEST_SURVEY_MODE}
+          langPref="fr"
+        />
+      </MemoryRouter>
+    );
+
+    expect(
+      screen.getByText("Encountered an error while loading the survey.")
+    ).toBeInTheDocument();
+  });
+
+  it("should show error message when surveyMode is missing", () => {
+    render(
+      <MemoryRouter>
+        <SurveyComponent
+          submitSurvey={jest.fn()}
+          isLoading={false}
+          activeHome={DEFAULT_TEST_HOME}
+          surveyId={DEFAULT_TEST_SURVEY.id}
+          formSpacing={5}
+          langPref={DEFAULT_TEST_LANG_PREF}
+        />
+      </MemoryRouter>
+    );
+
+    expect(
+      screen.getByText("Encountered an error while loading the survey.")
+    ).toBeInTheDocument();
+  });
+
+  it("should show error message when surveyMode is not in allowed options", () => {
+    render(
+      <MemoryRouter>
+        <SurveyComponent
+          submitSurvey={jest.fn()}
+          isLoading={false}
+          activeHome={DEFAULT_TEST_HOME}
+          surveyId={DEFAULT_TEST_SURVEY.id}
+          formSpacing={5}
+          langPref={DEFAULT_TEST_LANG_PREF}
+          surveyMode="invalid_mode"
+        />
+      </MemoryRouter>
+    );
+
+    expect(
+      screen.getByText("Encountered an error while loading the survey.")
+    ).toBeInTheDocument();
   });
 });
