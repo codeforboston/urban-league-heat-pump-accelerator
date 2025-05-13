@@ -8,9 +8,10 @@ import Home from "./home/Home";
 import HomeProfile from "./home/HomeProfile";
 import Nav from "./nav/Nav";
 import React, { useMemo } from "react";
+import { AdminSurvey } from "./component/AdminSurvey";
 import Survey from "./survey/Survey";
 import SurveyEditor from "./survey/SurveyProfile";
-import SurveyVisit from "./home/SurveyVisitProfile";
+import SurveyVisitProfile from "../../components/SurveyComponent/SurveyVisitProfile";
 import Unassigned from "./assignment/Unassigned";
 import User from "./user/User";
 import UserProfile from "./user/UserProfile";
@@ -67,7 +68,14 @@ const AdminContainer = () => {
           <Route path={routes.ADMIN_SURVEY} element={<Survey />} />
           <Route path={routes.ADMIN_ASSIGNMENT} element={<Assignment />} />
           <Route path={routes.adminSurveyEdit()} element={<SurveyEditor />} />
-          <Route path={routes.adminSurveyVisit()} element={<SurveyVisit />} />
+          <Route
+            path={routes.adminSurveyVisit()}
+            element={
+              <SurveyVisitProfile
+                renderSurvey={(props) => <AdminSurvey {...props} />}
+              />
+            }
+          />
           <Route
             path={routes.adminAssignmentProfile()}
             element={<AssignProfile />}
