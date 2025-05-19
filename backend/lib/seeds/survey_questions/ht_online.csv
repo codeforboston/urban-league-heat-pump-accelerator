@@ -1,25 +1,25 @@
 display_order,text,response_type,response_options
-1,"[ONLINE HAITIAN] Are you the homeowner?",0,"Yes (proceed to next question)/No ->  “Can we leave this info with you, for the homeowner?”/No one answered the door/Door answered, survey declined/Yes, I own the residence at the address I provided/No, I am not the owner of this house (Only owners can complete this survey)"
-2,"[ONLINE HAITIAN] If you could save money on your utility bills with a state-discounted or free heating & cooling system upgrade, would you like to learn more?",0,"Yes/No"
-3,"[ONLINE HAITIAN] If “No” then can you share why you are not interested in moving forward?",1,""
-4,"[ONLINE HAITIAN] Have you heard of “heat pumps” for home heating and cooling?",0,"Yes/No"
-5,"[ONLINE HAITIAN] Are any of the following things important to you? If so, which ones? [Choose any that apply]",4,"Save money on energy bills/Having cooling as well as heating in one unit/Making your cooling quieter (than current AC?)/Reducing use of fossil fuels & reducing climate change"
-6,"[ONLINE HAITIAN] Would you consider heat pumps for home heating or for cooling? [Select 1]",0,"Yes, for heating, not for cooling/Yes for cooling, not for heating/Yes, for both/No - heard of them but have not considered them for either/No answer or didn't know - NA"
-7,"[ONLINE HAITIAN] If you didn't consider heat pumps for either heating or cooling, is it for any of the following reasons? [Choose any that apply]",4,"Didn't know what heat pumps are/I only need help with one: cooling/I only need help with one: heating/Didn't think heat pumps could be efficient or cost effective doing heating or cooling/Didn't know how to get more info or begin the installation process/Thought heat pumps are too expensive/Home not compatible with heat pumps/Other"
-8,"[ONLINE HAITIAN] If you did consider heat pumps for either or both heating/cooling, have you taken any of the following steps?",0,"Basic research & looked at a website/Decided on a plan/Contacted installers & got quotes/Installed a heat pump/Other"
-9,"[ONLINE HAITIAN] If you want to get heat pumps, but haven't yet installed them, were you stopped by any of the following reasons? [Choose any that apply]",4,"Didn't understand the options, details or next steps/Too expensive/Complexity, too much time, or hassle to do paperwork/Installation concerns or bad installer experience/Home not compatible with heat pumps/Other"
-10,"[ONLINE HAITIAN] Have you heard of Mass Save, the energy efficiency program?",0,"Yes/No"
-11,"[ONLINE HAITIAN] If you have heard of Mass Save, did you connect with them in any of the following ways?",0,"Talked on the phone/Scheduled a Mass Save visit/Had a Mass Save visit/Installed something in your home with Mass Save help/Other"
-12,"[ONLINE HAITIAN] Have you heard of any of the following local partners of Mass Save: [Choose any that apply]",4,"ABCD/RISE/Homeworks Energy/CET/ClearResult/None of the above"
-13,"[ONLINE HAITIAN] If you have heard of any of the local partners of Mass Save, then what was the extent of your contact? [Choose any that apply]",4,"Talked on the phone/Scheduled a Mass Save visit/Had a Mass Save visit/Installed something in your home with Mass Save help/Other/None of the above"
-14,"[ONLINE HAITIAN] So we can report back on your potential savings: Which of the following describes the TYPE of heating system you have?",0,"Furnace with Forced hot air - vents/Boiler with Radiators - water/Boiler with Radiators - steam/Boiler with Baseboard - water/Baseboard - electric/Other"
-15,"[ONLINE HAITIAN] Which of the following FUELS your heating system?",0,"Oil/Gas/Electric (for baseboard)/Other"
-16,"[ONLINE HAITIAN] We have free, volunteer “heat pump coaches” who are available to answer questions and can walk you through the process - (they are not sales people, not affiliated with any installer or brand, just interested in helping fellow homeowners). Would you like to know more about how to get free, personalized assistance from a heat pump coach?",0,"Yes/No"
-17,"[ONLINE HAITIAN] In order to follow-up with you, what is the homeowner's name?",1,""
-18,"[ONLINE HAITIAN] How would you like to follow-up? By email address?",2,""
-20,"[ONLINE HAITIAN] Or by phone number?",3,""
-21,"[ONLINE HAITIAN] Final optional, bonus questions: What is the primary language spoken in your household?",1,""
-22,"[ONLINE HAITIAN] How would you describe your ethnicity or ancestry?",1,""
-23,"[ONLINE HAITIAN] Does the homeowner currently work 1 job, 2 or more jobs, or no job?",0,"1 job/2 or more jobs/No job"
-24,"[ONLINE HAITIAN] Is the total household income more or less than $47,000 or prefer not to answer",0,"More/Less/Prefer not to answer"
-25,"[ONLINE HAITIAN] What is your total commute time to-and-from work in minutes?",1,""
+1,[ONLINE HAITIAN] Èske ou se pwopriyetè kay la?,0,"Wi, mwen se pwopriyetè kay ki nan adrès mwen bay la/Non, mwen pa pwopriyetè kay la"
+2,"[ONLINE HAITIAN] Si ou te ka ekonomize lajan sou bill sèvis piblik ou avèk lèd sibvansyon gouvènman Massachusetts oubyen change system chofaj ak èkondisyone kay ou gratis, èske ou ta renmen aprann plis?",0,Wi/Non
+3,"[ONLINE HAITIAN] Si ou chwazi ""non"", èske ou ka di poukisa ou pa enterese?",1,
+4,"[ONLINE HAITIAN] Èske ou te janm tande pale de ""Heat Pump""... kòm chofaj ak èkondisyone pou yon kay?",0,Wi/Non
+5,"[ONLINE HAITIAN] Èske gen nenpòt nan bagay sa yo ki enpòtan pou ou? - Si wi, kilès? [ou ka chwazi plizyè]",4,Ekonomize lajan sou bill  chofaj ak èkondisyone/Yon sèl sistèm pou chofaj ak èkondisyone/Yon  sistèm èkondisyone fè mwens bri pase sa ou genyen kounye a/Redui itilizasyon lwil epi ede pwoteje Tè a
+6,[ONLINE HAITIAN] Èske ou ta konsidere Heat Pump pou chofaj oswa èkondisyone? [chwazi youn],0,"Wi, pou chofaj, pa pou èkondisyone/Wi, pou èkondisyone, pa pou chofaj/Yes, for both/Non - mwen tande pale de Heat Pump men mwen pa enterese/Mwen Pa gen repons/Mwen pa konnen"
+7,"[ONLINE HAITIAN] Si ou pa enterese non yon Heat Pump pou chofaj oswa èkondisyone, èske se pou nenpòt nan rezon sa yo? [ou ka chwazi plizyè]",4,Mwen pa t konnen kisa yon Heat Pump ye/Mwen sèlman bezwen èd ak èkondisyone/Mwen pa t Heat Pump te pi efikas e mwen chè pou chofaj/èkondisyone/Mwen pa t konnen Heat Pump te pi efikas e mwen chè pou chofaj/èkondisyone/Mwen pa t konnen kijan pou m jwenn plis enfòmasyon ouswa kòmanse pwosesis enstalasyon an/Mwen te panse Heat Pump te plis chè/Mwen pa ka enstale Heat Pump lakay mwen/Lòt rezon
+8,"[ONLINE HAITIAN] Si ou te konsidere Heat Pump pou chofaj oswa èkondisyone, èske ou te pran nenpòt nan etap sa yo?",0,Rechèch debaz/vizite yon sit entènèt/Deside sou yon plan/Kontakte yon enstalatè/Resevwa estimasyon/Enstale yon Heat Pump/lòt
+9,"[ONLINE HAITIAN] Si ou vle enstale yon Heat Pump, èske youn nan rezon sa yo te anpeche ou enstale yon Heat Pump? [ou ka chwazi plizyè]",4,"Mwen pa t konprann ki opsyon mwen genyen oswa ki etap pou mwen swiv/Koute twò chè/Pwosesis la komplike,pran twòp tan, twòp papye pou ranpli/Pwoblèm enstalasyon, move eksperyans ak konpayi ke fè enstalasyon/Pwoblèm enstalasyon, move eksperyans ak konpayi ke fè enstalasyon/lòt rezon"
+10,"[ONLINE HAITIAN] Èske ou te tande pale de pragam ki rele Mass Save, ki edew itilize mwens enèji a?",0,Wi/Non
+11,"[ONLINE HAITIAN] Si ou te tande pale de Mass Save, èske ou te eseye konekte yo  non nenpòt fason sa yo?",0,Pale nan telefòn/Planifye yon vizit ak Mass Save/Mass Save te vizite kay ou/enstale yon bagay lakay ou avèk èd Mass Save/Lòt fason
+12,[ONLINE HAITIAN] Èske ou te tande pale de nenpòt nan patnè lokal Mass Save sa yo: [ou ka chwazi plizyè],4,ABCD/RISE/Homeworks Energy/CET/ClearResult/Mwne pa konnen okenn patnè sa yo
+13,"[ONLINE HAITIAN] Si ou te tande pale de nenpòt nan patnè lokal Mass Save yo, ki fason ou te kontakte yo? [ou ka chwazi plizyè]",4,Pale nan telefòn/Planifye yon vizit ak Mass Save/Mass Save te vizite kay ou/Enstale yon bagay lakay ou avèk èd Mass Save/Lòt fason ouswa rezon/Okenn nan opsyon sa yo
+14,[ONLINE HAITIAN] Pou nou ka ba ou yon rapò sou ekonomi potansyèl ou yo:\n Kilès nan opsyon sa yo ki dekri sistèm chofaj ou genyen?,0,Founo ak lè cho/Chofaj ak radyatè – dlo/Chofaj ak radyatè – vapè dlo/Founo ak baseboard/Baseboard elektrik/Lòt sistèm
+15,[ONLINE HAITIAN] Kil sous de enèji sistèm chofaj ou a itilize?,0,Lwil/Gaz/Elektrisite/Lòt sous denèji
+16,"[ONLINE HAITIAN] Nou gen volontè ki rele “Heat Pump Coach” ki disponib gratis pou reponn kesyon oswa ede w nan pwosesis pou enstale yon Heat Pump. Èske ou ta renmen konnen plis sou kijan pou jwenn asistans pèsonalize gratis avèk èd yon “Heat Pump Coach”?(Yo pa vandè, yo pa afilye ak okenn enstalatè oswa manifaktè,yo jis enterese nan ede lòt pwopriyetè kay.)",0,Wi/Non
+17,[ONLINE HAITIAN] Pou nou ka kontakte ou - ki non pwopriyetè kay la?,1,
+18,[ONLINE HAITIAN] Ki jan pou ta renmen nou kontakte ou? Pa adrès imel?,2,
+20,[ONLINE HAITIAN] Ou pa telefòn?,3,
+21,[ONLINE HAITIAN] Kesyon opsyonèl: Ki lang prensipal yo pale lakay ou a?,1,
+22,[ONLINE HAITIAN] Ki jan ou ta dekri orijin etnik ou?,1,
+23,"[ONLINE HAITIAN] Èske pwopriyetè kay la ap gen1 travay, 2 travay oswa plis, oswa li pa gen okenn travay?",0,1 travay/2 travay oswa plis/Pap travay
+24,"[ONLINE HAITIAN] Èske salè total kay la plis oswa mwens pase $47,000 / oswa prefere pa reponn",0,Plis/Mwens/Prefere pa reponn
+25,[ONLINE HAITIAN] Konbyen tan li pran ou an total pou ale travay epi retounen lakay ou?,1,
