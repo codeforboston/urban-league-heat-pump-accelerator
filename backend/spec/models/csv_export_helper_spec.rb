@@ -75,7 +75,7 @@ RSpec.describe CsvExportHelper, type: :model do
 
       # Freeze time so we can test survey_visit created_at
       Timecop.freeze(freeze_time) do
-        @survey_visit = create(:survey_visit, home: home, latitude: '33.333', longitude: '44.444')
+        @survey_visit = create(:survey_visit, home: home, latitude: '42.3261', longitude: '-71.0898')
       end
 
       survey_response = create(:survey_response, survey: survey, survey_visit: @survey_visit, language_code: 'es')
@@ -86,9 +86,10 @@ RSpec.describe CsvExportHelper, type: :model do
       expected = {
         survey_visit_id: @survey_visit.id,
         public_survey: 'Yes',
-        survey_visit_latitude: '33.333',
-        survey_visit_longitude: '44.444',
+        survey_visit_latitude: '42.3261',
+        survey_visit_longitude: '-71.0898',
         survey_visit_time: freeze_time.in_time_zone('Eastern Time (US & Canada)'),
+        survey_visit_distance_from_home: 0.01083,
         surveyor_id: nil,
         surveyor_name: nil,
         home_id: home.id,
@@ -153,6 +154,7 @@ RSpec.describe CsvExportHelper, type: :model do
         survey_visit_latitude: 'Survey Visit Latitude',
         survey_visit_longitude: 'Survey Visit Longitude',
         survey_visit_time: 'Survey Visit Time',
+        survey_visit_distance_from_home: 'Survey Visit Distance From Home (miles)',
         surveyor_id: 'Surveyor ID',
         surveyor_name: 'Surveyor Name',
         survey_response_language_code: 'Language Code',
