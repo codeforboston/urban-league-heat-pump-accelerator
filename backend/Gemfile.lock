@@ -197,7 +197,7 @@ GEM
     pundit (2.4.0)
       activesupport (>= 3.0.0)
     racc (1.8.0)
-    rack (2.2.13)
+    rack (2.2.16)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (1.0.2)
@@ -351,7 +351,7 @@ DEPENDENCIES
   pry
   puma (~> 5.0)
   pundit
-  rack (~> 2.2)
+  rack (>= 2.2.14)
   rack-cors (~> 2.0)
   rails (~> 7.1)
   rails-html-sanitizer (>= 1.6)
