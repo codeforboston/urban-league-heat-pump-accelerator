@@ -80,7 +80,7 @@ class CsvExportHelper
       survey_visit_latitude: survey_visit.latitude,
       survey_visit_longitude: survey_visit.longitude,
       survey_visit_time: survey_visit.created_at.in_time_zone(EASTERN_TIMEZONE),
-      survey_visit_distance_from_home: survey_visit.distance_from_home.round(SURVEY_VISIT_DISTANCE_FROM_HOME_DECIMAL),
+      survey_visit_distance_from_home: survey_visit.distance_from_home_rounded,
       surveyor_id: survey_visit.surveyor_id,
       surveyor_name: survey_visit.surveyor&.full_name,
       survey_response_language_code: survey_visit.survey_response.language_code
