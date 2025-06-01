@@ -13,7 +13,7 @@ display_order,text,response_type,response_options
 12,"Èske ou te tande pale de nenpòt nan patnè lokal Mass Save sa yo: [ou ka chwazi plizyè]",4,"ABCD/RISE/Homeworks Energy/CET/ClearResult/Mwne pa konnen okenn patnè sa yo"
 13,"Si ou te tande pale de nenpòt nan patnè lokal Mass Save yo, ki fason ou te kontakte yo? [ou ka chwazi plizyè]",4,"Pale nan telefòn/Planifye yon vizit ak Mass Save/Mass Save te vizite kay ou/Enstale yon bagay lakay ou avèk èd Mass Save/Lòt fason ouswa rezon/Okenn nan opsyon sa yo"
 14,"Pou nou ka ba ou yon rapò sou ekonomi potansyèl ou yo:\n Kilès nan opsyon sa yo ki dekri sistèm chofaj ou genyen?",0,"Founo ak lè cho/Chofaj ak radyatè – dlo/Chofaj ak radyatè – vapè dlo/Founo ak baseboard/Baseboard elektrik/Lòt sistèm"
-15,"Ki sous de enèji sistèm chofaj ou a itilize?,0,"Lwil/Gaz/Elektrisite/Lòt sous denèji"
+15,"Ki sous de enèji sistèm chofaj ou a itilize?",0,"Lwil/Gaz/Elektrisite/Lòt sous denèji"
 16,"Nou gen volontè ki rele “Heat Pump Coach” ki disponib gratis pou reponn kesyon oswa ede w nan pwosesis pou enstale yon Heat Pump. Èske ou ta renmen konnen plis sou kijan pou jwenn asistans pèsonalize gratis avèk èd yon “Heat Pump Coach”?(Yo pa vandè, yo pa afilye ak okenn enstalatè oswa manifaktè,yo jis enterese nan ede lòt pwopriyetè kay.)",0,"Wi/Non"
 17,"Pou nou ka kontakte ou - ki non pwopriyetè kay la?",1,
 18,"Ki jan pou ta renmen nou kontakte ou? Pa adrès imel"?,2,
