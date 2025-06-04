@@ -1,15 +1,14 @@
 import { Container, Typography } from "@mui/material";
-import React, { useMemo } from "react";
-import { useGetSurveyVisitQuery } from "../../../api/apiSlice";
+import { useMemo } from "react";
+import { useGetSurveyVisitQuery } from "../../api/apiSlice";
 import { useParams } from "react-router-dom";
-import { AdminSurvey } from "../component/AdminSurvey";
-import Loader from "../../../components/Loader";
-import { SurveyError } from "../survey/SurveyError";
-import { formatISODate } from "../../../components/DateUtils";
-import { houseToString } from "../../../components/AddressUtils";
-import { buildDataFromSurveyAnswers } from "../../../util/surveyUtils";
+import Loader from "../Loader";
+import { SurveyError } from "./SurveyStructureError";
+import { formatISODate } from "../DateUtils";
+import { houseToString } from "../AddressUtils";
+import { buildDataFromSurveyAnswers } from "../../util/surveyUtils";
 
-const SurveyProfile = () => {
+const SurveyProfile = ({ renderSurvey }) => {
   const { uid: surveyVisitId } = useParams();
 
   const { data: surveyVisit, error: surveyVisitError } =
@@ -38,6 +37,16 @@ const SurveyProfile = () => {
     [surveyVisit]
   );
 
+  const langPref = useMemo(
+    () => surveyVisit?.survey_response?.language_code || "en",
+    [surveyVisit]
+  );
+
+  const surveyMode = useMemo(
+    () => (surveyVisit?.surveyor_id ? "offline" : "online"),
+    [surveyVisit]
+  );
+
   return (
     <Container>
       <Typography variant="h5" mt={2}>
@@ -47,12 +56,14 @@ const SurveyProfile = () => {
         {completedTime}
       </Typography>
       {surveyVisit ? (
-        <AdminSurvey
-          defaultData={surveyAnswers}
-          activeHome={surveyVisit.home}
-          surveyId={surveyVisit.survey_response.survey_id}
-          readOnly
-        />
+        renderSurvey({
+          defaultData: surveyAnswers,
+          activeHome: surveyVisit.home,
+          surveyId: surveyVisit.survey_response.survey_id,
+          readOnly: true,
+          langPref,
+          surveyMode,
+        })
       ) : surveyVisitError ? (
         <SurveyError />
       ) : (
