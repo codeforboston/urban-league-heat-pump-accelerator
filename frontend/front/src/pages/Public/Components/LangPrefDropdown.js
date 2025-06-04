@@ -17,10 +17,17 @@ const LangPrefDropdown = () => {
   const location = useLocation();
 
   const langMap = {
-    "en-US": `🇺🇸 ${t("public.global-labels.locales.english")}`,
-    "ht-CR": `🇭🇹 ${t("public.global-labels.locales.creole")}`,
-    "pt-BR": `🇧🇷 ${t("public.global-labels.locales.portuguese")}`,
-    "es-US": `🇪🇸 ${t("public.global-labels.locales.spanish")}`,
+    en: `🇺🇸 ${t("public.global-labels.locales.english")}`,
+    ht: `🇭🇹 ${t("public.global-labels.locales.creole")}`,
+    pt: `🇧🇷 ${t("public.global-labels.locales.portuguese")}`,
+    es: `🇪🇸 ${t("public.global-labels.locales.spanish")}`,
+  };
+
+  const dropdownLangNames = {
+    en: "English",
+    ht: "Kreyòl",
+    pt: "Português",
+    es: "Español",
   };
 
   useEffect(() => {
@@ -32,15 +39,15 @@ const LangPrefDropdown = () => {
     const isPublicRoute = location.pathname.includes("public");
 
     if (isPublicRoute) {
-      // Get language preference from localStorage or default to 'en-US'
-      queryLang = localStorage.getItem("langPref") || "en-US";
+      // Get language preference from localStorage or default to 'en'
+      queryLang = localStorage.getItem("langPref") || "en";
 
       if (!localStorage.getItem("langPref")) {
-        localStorage.setItem("langPref", "en-US");
+        localStorage.setItem("langPref", "en");
       }
 
       // Update or remove 'langPref' query param based on language
-      if (queryLang !== "en-US") {
+      if (queryLang !== "en") {
         params.set("langPref", queryLang);
       } else {
         params.delete("langPref");
@@ -85,7 +92,7 @@ const LangPrefDropdown = () => {
 
     // Update or remove 'langPref' query param based on route and language
     if (url.pathname.includes("public")) {
-      if (lang !== "en-US") {
+      if (lang !== "en") {
         url.searchParams.set("langPref", lang);
       } else {
         url.searchParams.delete("langPref");
@@ -94,7 +101,7 @@ const LangPrefDropdown = () => {
     }
 
     // Update displayed language
-    setLangDisplay(langMap[lang]);
+    setLangDisplay(dropdownLangNames[lang]);
   };
 
   return (
@@ -109,7 +116,7 @@ const LangPrefDropdown = () => {
         sx={{ color: "var(--color-text-1)" }}
       >
         <Typography variant="navLinks">
-          {langDisplay === undefined ? "English" : language}
+          {langDisplay === undefined ? "English" : dropdownLangNames[language]}
         </Typography>
       </Button>
 
@@ -137,7 +144,7 @@ const LangPrefDropdown = () => {
               key={lang}
               variant="navLinks"
               onClick={() => {
-                handleChangeLanguage(lang, langMap[lang]);
+                handleChangeLanguage(lang);
                 handleCloseMore();
               }}
             >
