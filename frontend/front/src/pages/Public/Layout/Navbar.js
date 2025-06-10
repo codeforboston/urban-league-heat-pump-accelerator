@@ -52,6 +52,10 @@ const getNavbarItems = () => ({
         link: "about-us",
         value: "public.global-labels.learn-more.items.about-bhpa",
       },
+      ForRenters: {
+        link: "for-renters",
+        value: "public.global-labels.learn-more.items.for-renters",
+      },
     },
   },
   getInvolved: {

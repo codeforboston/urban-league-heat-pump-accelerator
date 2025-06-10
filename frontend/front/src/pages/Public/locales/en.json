@@ -63,7 +63,8 @@
           "benefits-heat-pumps": "Benefits of Heat Pumps",
           "about-us": "About Heat Pumps",
           "testimonials": "Testimonials",
-          "about-bhpa": "About BHPA"
+          "about-bhpa": "About BHPA",
+          "for-renters": "For Renters"
         }
       },
       "get-involved": "Get Involved",
@@ -199,6 +200,38 @@
       "step3": {
         "title": "Get Details About Your Home Heating/Cooling Needs",
         "buttonText": "RESOURCES"
+      }
+    },
+    "for-renters": {
+      "headingBg": "For Renters",
+      "heading2": "While the BHPA effort is focused on homeowners, there are many resources available for renters who are interested in heat pumps. Please find below a selection of such information and resources.",
+      "item1": {
+        "title": "Renters | Department of Energy",
+        "body": "Learn about federal tax credits and rebates for renters. Find easy ways to save energy and make your home more comfortable.",
+        "link": "Go To Page"
+      },
+      "item2": {
+        "title": "More heat pumps and help for renters: What's in the new Mass Save plan",
+        "body": "Mass Save has a new $5 billion plan to assist residents. The plan gives free weatherization and electrification services to more renters and families with moderate incomes. It also creates a customer service center to help residents get support and rebates more quickly.",
+        "link": "Read Article"
+      },
+      "item3": {
+        "title": "Getting renters in on the heat pump revolution",
+        "body": "Electric heat pumps help renters to breathe cleaner air and pay lower energy bills. New rebate programs make heat pumps more affordable and easier to get.",
+        "link": "Read Article"
+      },
+      "item4": {
+        "title": "Renters, you too can get a heat pump - a micro one, at least",
+        "body": "Micro heat pumps are small and easy to install in rental units. Renters can use them for heating and cooling. They plug into normal outlets and do not need changes to the building.",
+        "link": "Read Article"
+      },
+      "item5": {
+        "title": "Room Heat Pumps - Cooling and Heating in a Small Package",
+        "body": "Room heat pumps are easy to install and not expensive. They can cool and heat one room. They are good for apartments and rental homes, especially in places with mild weather."
+      },
+      "item6": {
+        "title": "Why This Window Heat Pump Is Genius",
+        "body": "Window heat pumps can be effective and efficient for renters in apartments. They help to heat and cool rooms. With widespread adoption, they also help cities lower pollution and empower vulnerable populations to stay in place."
       }
     },
     "privacy": {
