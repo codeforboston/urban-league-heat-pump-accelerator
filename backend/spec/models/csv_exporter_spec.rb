@@ -7,8 +7,8 @@ RSpec.describe CsvExporter, type: :model do
     let(:expected_standard_headers) do
       'Survey Visit ID,Home ID,Successful Export,Public Survey,Assignment ID,Assignment Surveyor IDs,' \
       'Assignment Surveyor Names,Street Number,Street Name,Unit Number,City,State,ZIP Code,Home Latitude,' \
-      'Home Longitude,Survey Visit Latitude,Survey Visit Longitude,Survey Visit Time,Surveyor ID,Surveyor Name,' \
-      'Language Code'
+      'Home Longitude,Survey Visit Latitude,Survey Visit Longitude,Survey Visit Time,' \
+      'Survey Visit Distance From Home (miles),Surveyor ID,Surveyor Name,Language Code'
     end
 
     before do
@@ -21,8 +21,8 @@ RSpec.describe CsvExporter, type: :model do
       expected_headers = "#{expected_standard_headers},\"1. Do you want a heat pump?\"\n"
       expected_survey_visit = "#{@survey_visit.id},#{@home1.id},Yes,No,#{@assignment.id},#{@surveyor.id}," \
         'Luna Peters,1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,42.3281053,-71.08229235,' \
-        "2025-02-13 12:30:20 -0500,#{@surveyor.id},Luna Peters,,Yes I would love a heat pump\n"
-      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,,,,,,,\n"
+        "2025-02-13 12:30:20 -0500,0.41856,#{@surveyor.id},Luna Peters,,Yes I would love a heat pump\n"
+      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,,,,,,,,\n"
 
       expected = expected_headers + expected_survey_visit + expected_home
       expect(actual).to eq(expected)
@@ -34,8 +34,8 @@ RSpec.describe CsvExporter, type: :model do
       actual = CsvExporter.new(survey: @survey).run
 
       expected_headers = "#{expected_standard_headers},\"1. Do you want a heat pump?\"\n"
-      expected_survey_visit = "#{@survey_visit.id},,No,,,,,,,,,,,,,,,,,,,\n"
-      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,,,,,,,\n"
+      expected_survey_visit = "#{@survey_visit.id},,No,,,,,,,,,,,,,,,,,,,,\n"
+      expected_home = ",#{@home2.id},Yes,,,,,1,Broadway,106,Cambridge,MA,02139,42.32603453,-71.08999264,,,,,,,,\n"
 
       expected = expected_headers + expected_survey_visit + expected_home
       expect(actual).to eq(expected)
@@ -47,8 +47,8 @@ RSpec.describe CsvExporter, type: :model do
       actual = CsvExporter.new(survey: @survey).run
 
       expected_headers = "#{expected_standard_headers},\"1. Do you want a heat pump?\"\n"
-      expected_survey_visit = "#{@survey_visit.id},,No,,,,,,,,,,,,,,,,,,,\n"
-      expected_home = ",#{@home2.id},No,,,,,,,,,,,,,,,,,,,\n"
+      expected_survey_visit = "#{@survey_visit.id},,No,,,,,,,,,,,,,,,,,,,,\n"
+      expected_home = ",#{@home2.id},No,,,,,,,,,,,,,,,,,,,,\n"
 
       expected = expected_headers + expected_survey_visit + expected_home
       expect(actual).to eq(expected)

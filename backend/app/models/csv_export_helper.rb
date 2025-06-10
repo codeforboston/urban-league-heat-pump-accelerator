@@ -23,6 +23,7 @@ class CsvExportHelper
     survey_visit_latitude: 'Survey Visit Latitude',
     survey_visit_longitude: 'Survey Visit Longitude',
     survey_visit_time: 'Survey Visit Time',
+    survey_visit_distance_from_home: 'Survey Visit Distance From Home (miles)',
     surveyor_id: 'Surveyor ID',
     surveyor_name: 'Surveyor Name',
     survey_response_language_code: 'Language Code'
@@ -78,6 +79,7 @@ class CsvExportHelper
       survey_visit_latitude: survey_visit.latitude,
       survey_visit_longitude: survey_visit.longitude,
       survey_visit_time: survey_visit.created_at.in_time_zone(EASTERN_TIMEZONE),
+      survey_visit_distance_from_home: survey_visit.distance_from_home_rounded,
       surveyor_id: survey_visit.surveyor_id,
       surveyor_name: survey_visit.surveyor&.full_name,
       survey_response_language_code: survey_visit.survey_response.language_code
