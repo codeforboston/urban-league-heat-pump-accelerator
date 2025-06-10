@@ -66,7 +66,8 @@
           "benefits-heat-pumps": "Beneficios de las bombas de calor",
           "about-us": "Acerca de las bombas de calor",
           "testimonials": "Testimonios",
-          "about-bhpa": "Acerca de BHPA"
+          "about-bhpa": "Acerca de BHPA",
+          "for-renters": "Para inquilinos"
         }
       },
       "get-involved": "Involucrarse",
@@ -202,6 +203,38 @@
       "step3": {
         "title": "Obtenga detalles sobre las necesidades de calefacción/refrigeración de su hogar",
         "buttonText": "RECURSOS"
+      }
+    },
+    "for-renters": {
+      "headingBg": "Para inquilinos",
+      "heading2": "Si bien la iniciativa de la BHPA se centra en los propietarios de viviendas, existen numerosos recursos disponibles para inquilinos interesados en bombas de calor. A continuación, encontrará una selección de dicha información y recursos.",
+      "item1": {
+        "title": "Inquilinos | Departamento de Energía",
+        "body": "Infórmese sobre los créditos y reembolsos fiscales federales para inquilinos. Descubra maneras sencillas de ahorrar energía y hacer que su hogar sea más cómodo.",
+        "link": "Ir a la página"
+      },
+      "item2": {
+        "title": "Más bombas de calor y ayuda para inquilinos: ¿Qué incluye el nuevo plan Mass Save?",
+        "body": "Mass Save tiene un nuevo plan de $5 mil millones para ayudar a los residentes. El plan ofrece servicios gratuitos de climatización y electrificación a más inquilinos y familias con ingresos moderados. También crea un centro de atención al cliente para ayudar a los residentes a obtener apoyo y reembolsos con mayor rapidez.",
+        "link": "Leer el artículo"
+      },
+      "item3": {
+        "title": "Cómo incorporar a los inquilinos a la revolución de las bombas de calor",
+        "body": "Las bombas de calor eléctricas ayudan a los inquilinos a respirar un aire más limpio y a pagar facturas de energía más bajas. Los nuevos programas de reembolso hacen que las bombas de calor sean más asequibles y fáciles de conseguir.",
+        "link": "Leer el artículo"
+      },
+      "item4": {
+        "title": "Inquilinos, también podéis conseguir una bomba de calor, al menos una micro",
+        "body": "Las microbombas de calor son pequeñas y fáciles de instalar en viviendas de alquiler. Los inquilinos pueden usarlas para calefacción y refrigeración. Se conectan a enchufes estándar y no requieren modificaciones en el edificio.",
+        "link": "Leer el artículo"
+      },
+      "item5": {
+        "title": "Bombas de calor para habitaciones: refrigeración y calefacción en un paquete pequeño",
+        "body": "Las bombas de calor para habitaciones son fáciles de instalar y económicas. Pueden enfriar y calentar una habitación. Son ideales para apartamentos y casas de alquiler, especialmente en lugares con clima templado."
+      },
+      "item6": {
+        "title": "Por qué esta bomba de calor de ventana es genial",
+        "body": "Las bombas de calor de ventana pueden ser eficaces y eficientes para quienes alquilan apartamentos. Ayudan a calentar y enfriar habitaciones. Su adopción generalizada también ayuda a las ciudades a reducir la contaminación y a empoderar a las poblaciones vulnerables para que puedan permanecer en sus hogares."
       }
     },
     "privacy": {

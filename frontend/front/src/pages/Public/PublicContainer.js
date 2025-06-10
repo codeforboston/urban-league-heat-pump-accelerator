@@ -5,13 +5,14 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Navbar from "./Layout/Navbar";
 import Footer from "./Layout/Footer";
-import { SurveyPage } from "./Pages/SurveyPage";
-import GetInvolved from "./Pages/GetInvolved";
-import GetHeatPump from "./Pages/GetHeatPump";
-import BenefitsHeatPumps from "./Pages/BenefitsHeatPumps";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import AboutHeatPump from "./Pages/AboutHeatPump/AboutHeatPump";
+import BenefitsHeatPumps from "./Pages/BenefitsHeatPumps";
+import ForRenters from "./Pages/ForRenters";
+import GetInvolved from "./Pages/GetInvolved";
+import GetHeatPump from "./Pages/GetHeatPump";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
+import { SurveyPage } from "./Pages/SurveyPage";
 import "./Assets/index.css";
 import "animate.css/animate.min.css";
 import ScrollToTopButton from "./Components/ScrollToTopButton";
@@ -45,6 +46,7 @@ const PublicContainer = () => {
                   path="/benefits-heat-pump"
                   element={<BenefitsHeatPumps />}
                 />
+                <Route path="/for-renters" element={<ForRenters />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               </Routes>
             </Box>

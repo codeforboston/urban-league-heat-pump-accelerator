@@ -94,6 +94,7 @@ function CardsSection({
       <Box
         sx={{
           display: "flex",
+          width: "100%",
           flexDirection: "column",
           justifyContent: "center",
           mr: { xs: 0, sm: 2 },
