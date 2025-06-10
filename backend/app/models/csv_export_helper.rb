@@ -3,7 +3,6 @@
 class CsvExportHelper
   SURVEY_LANG = 'en'
   SURVEY_MODE = 'online'
-  SURVEY_VISIT_DISTANCE_FROM_HOME_DECIMAL = 5
   EASTERN_TIMEZONE = 'Eastern Time (US & Canada)'
   CSV_STATIC_HEADERS = {
     survey_visit_id: 'Survey Visit ID',
