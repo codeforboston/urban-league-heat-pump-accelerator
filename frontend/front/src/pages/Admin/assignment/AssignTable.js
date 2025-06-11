@@ -14,7 +14,7 @@ import {
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, useGridApiRef } from "@mui/x-data-grid";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
 import { ADMIN_ASSIGNMENT, withAdminPrefix } from "../../../routing/routes";
@@ -26,16 +26,17 @@ const AssignTable = () => {
     true
   );
 
+  const apiRef = useGridApiRef();
+
   const [selectedSurveyor, setSelectedSurveyor] = useState("");
-  const [selectedAssignments, setSelectedAssignments] = useState([]);
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 25,
+  });
 
   // Event handlers
   const handleChange = (event) => {
     setSelectedSurveyor(event.target.value);
-  };
-
-  const handleSelectionModelChange = (newSelection) => {
-    setSelectedAssignments(newSelection);
   };
 
   // GET hooks
@@ -87,18 +88,52 @@ const AssignTable = () => {
     ]
   );
 
-  const handleAddSurveyor = () => {
-    addAssignmentsToSurveyor({
-      surveyorId: selectedSurveyor,
-      assignmentIds: selectedAssignments,
+  const handleAddSurveyor = async () => {
+    if (!selectedSurveyor) {
+      return;
+    }
+    const selectedAssignments = apiRef.current.getSelectedRows();
+    const assignmentIds = [];
+    selectedAssignments.forEach((assignment) => {
+      const surveyorAssigned = assignment.surveyorData.some(
+        (surveyor) => surveyor.id === selectedSurveyor
+      );
+      // Only adding surveyors to assignments that don't include surveyor
+      if (!surveyorAssigned) {
+        assignmentIds.push(assignment.id);
+      }
     });
+
+    if (assignmentIds.length > 0) {
+      await addAssignmentsToSurveyor({
+        surveyorId: selectedSurveyor,
+        assignmentIds,
+      }).unwrap();
+    }
   };
 
-  const handleRemoveSurveyor = () => {
-    removeAssignmentsFromSurveyor({
-      surveyorId: selectedSurveyor,
-      assignmentIds: selectedAssignments,
+  const handleRemoveSurveyor = async () => {
+    if (!selectedSurveyor) {
+      return;
+    }
+    const selectedAssignments = apiRef.current.getSelectedRows();
+    const assignmentIds = [];
+    selectedAssignments.forEach((assignment) => {
+      const surveyorAssigned = assignment.surveyorData.some(
+        (surveyor) => surveyor.id === selectedSurveyor
+      );
+
+      if (surveyorAssigned) {
+        assignmentIds.push(assignment.id);
+      }
     });
+
+    if (assignmentIds.length > 0) {
+      await removeAssignmentsFromSurveyor({
+        surveyorId: selectedSurveyor,
+        assignmentIds,
+      });
+    }
   };
 
   const handleUserLink = (user) => goToBreadcrumb("user", user);
@@ -243,6 +278,7 @@ const AssignTable = () => {
       </Stack>
       <Box sx={{ height: "100%", width: "100%" }}>
         <DataGrid
+          apiRef={apiRef}
           rows={tableData}
           columns={columns}
           pageSize={20}
@@ -251,8 +287,9 @@ const AssignTable = () => {
           disableSelectionOnClick
           autoHeight
           checkboxSelection
-          onRowSelectionModelChange={handleSelectionModelChange}
-          rowSelectionModel={selectedAssignments}
+          paginationModel={paginationModel}
+          onPaginationModelChange={setPaginationModel}
+          pageSizeOptions={[25, 50, 100]}
         />
       </Box>
     </Box>
