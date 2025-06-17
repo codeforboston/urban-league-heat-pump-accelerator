@@ -29,10 +29,6 @@ const AssignTable = () => {
   const apiRef = useGridApiRef();
 
   const [selectedSurveyor, setSelectedSurveyor] = useState("");
-  const [paginationModel, setPaginationModel] = useState({
-    page: 0,
-    pageSize: 25,
-  });
 
   // Event handlers
   const handleChange = (event) => {
@@ -44,6 +40,7 @@ const AssignTable = () => {
     data: assignmentsData,
     error: isAssignmentsError,
     isLoading: isAssignmentsDataLoading,
+    isFetching: isAssignmentsDataFetching,
   } = useGetAssignmentsQuery();
 
   const {
@@ -79,10 +76,12 @@ const AssignTable = () => {
       isAddAssignmentLoading ||
       isRemoveAssignmentLoading ||
       isAssignmentsDataLoading ||
+      isAssignmentsDataFetching ||
       isSurveyorsDataLoading,
     [
       isAddAssignmentLoading,
       isAssignmentsDataLoading,
+      isAssignmentsDataFetching,
       isRemoveAssignmentLoading,
       isSurveyorsDataLoading,
     ]
@@ -287,8 +286,9 @@ const AssignTable = () => {
           disableSelectionOnClick
           autoHeight
           checkboxSelection
-          paginationModel={paginationModel}
-          onPaginationModelChange={setPaginationModel}
+          initialState={{
+            pagination: { paginationModel: { page: 0, pageSize: 25 } },
+          }}
           pageSizeOptions={[25, 50, 100]}
         />
       </Box>
