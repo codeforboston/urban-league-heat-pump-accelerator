@@ -66,6 +66,7 @@ const ListView = () => {
                       ? setOpenAccordion(null)
                       : setOpenAccordion(item.id)
                   }
+                  TransitionProps={{ unmountOnExit: true }}
                 >
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
