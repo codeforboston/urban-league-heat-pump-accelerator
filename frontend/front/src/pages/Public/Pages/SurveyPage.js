@@ -76,11 +76,16 @@ export const SurveyPage = () => {
   );
 
   useEffect(() => {
+    logSurveyPageVisit();
+  }, []);
+
+  useEffect(() => {
     if (isCreateHomeSucccess) {
       setStep(STEP_SURVEY);
     }
     if (isSurveyVisitSucess) {
       setStep(STEP_THANKS);
+      logSurveySubmission();
     }
   }, [isCreateHomeSucccess, isSurveyVisitSucess]);
 
@@ -90,13 +95,6 @@ export const SurveyPage = () => {
       logSurveyPageVisit(language);
     }
   }, [isCreateHomeSucccess]);
-
-  useEffect(() => {
-    if (isSurveyVisitSucess) {
-      const language = localStorage.getItem("langPref");
-      logSurveySubmission(language);
-    }
-  }, [isSurveyVisitSucess]);
 
   const handleAddSurveyVisit = useCallback(
     async (answers, surveyId, homeId, _) => {
