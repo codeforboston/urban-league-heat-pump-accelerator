@@ -128,8 +128,11 @@ jobs:
         with:
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ env.IMAGE_TAGS }}
-          build-args: ${{ inputs.build-args }}
-
+          build-args: |
+            ${{ inputs.build-args }}
+            REACT_APP_NR_ACCOUNT_ID=${{ secrets.REACT_APP_NR_ACCOUNT_ID }}
+            REACT_APP_NR_LICENSE_KEY=${{ secrets.REACT_APP_NR_LICENSE_KEY }}
+            REACT_APP_NR_APP_ID=${{ secrets.REACT_APP_NR_APP_ID }}
           # If you don't have a Dockerfile/Containerfile, refer to https://github.com/redhat-actions/buildah-build#scratch-build-inputs
           # Or, perform a source-to-image build using https://github.com/redhat-actions/s2i-build
           # Otherwise, point this to your Dockerfile/Containerfile relative to the repository root.
