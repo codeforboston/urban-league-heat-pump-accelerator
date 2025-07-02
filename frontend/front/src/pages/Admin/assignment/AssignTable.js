@@ -1,5 +1,6 @@
-import { Box, Button, Chip, MenuItem, Stack } from "@mui/material";
-import React, { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { Box, Button, Chip, Stack } from "@mui/material";
+import { DataGrid, useGridApiRef } from "@mui/x-data-grid";
 import {
   useAddAssignmentsToSurveyorMutation,
   useGetAssignmentsQuery,
@@ -10,14 +11,10 @@ import {
   useGoToBreadcrumb,
   useInitBreadcrumbs,
 } from "../../../hooks/breadcrumbHooks";
-
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
-import { DataGrid } from "@mui/x-data-grid";
+import { ADMIN_ASSIGNMENT, withAdminPrefix } from "../../../routing/routes";
 import CustomSnackbar from "../../../components/CustomSnackbar";
 import Loader from "../../../components/Loader";
-import { ADMIN_ASSIGNMENT, withAdminPrefix } from "../../../routing/routes";
+import SurveyorSelector from "./SurveyorSelect";
 
 const AssignTable = () => {
   const goToBreadcrumb = useGoToBreadcrumb();
@@ -26,23 +23,14 @@ const AssignTable = () => {
     true
   );
 
-  const [selectedSurveyor, setSelectedSurveyor] = useState("");
-  const [selectedAssignments, setSelectedAssignments] = useState([]);
-
-  // Event handlers
-  const handleChange = (event) => {
-    setSelectedSurveyor(event.target.value);
-  };
-
-  const handleSelectionModelChange = (newSelection) => {
-    setSelectedAssignments(newSelection);
-  };
+  const apiRef = useGridApiRef();
 
   // GET hooks
   const {
     data: assignmentsData,
     error: isAssignmentsError,
     isLoading: isAssignmentsDataLoading,
+    isFetching: isAssignmentsDataFetching,
   } = useGetAssignmentsQuery();
 
   const {
@@ -78,34 +66,23 @@ const AssignTable = () => {
       isAddAssignmentLoading ||
       isRemoveAssignmentLoading ||
       isAssignmentsDataLoading ||
+      isAssignmentsDataFetching ||
       isSurveyorsDataLoading,
     [
       isAddAssignmentLoading,
       isAssignmentsDataLoading,
+      isAssignmentsDataFetching,
       isRemoveAssignmentLoading,
       isSurveyorsDataLoading,
     ]
   );
-
-  const handleAddSurveyor = () => {
-    addAssignmentsToSurveyor({
-      surveyorId: selectedSurveyor,
-      assignmentIds: selectedAssignments,
-    });
-  };
-
-  const handleRemoveSurveyor = () => {
-    removeAssignmentsFromSurveyor({
-      surveyorId: selectedSurveyor,
-      assignmentIds: selectedAssignments,
-    });
-  };
 
   const handleUserLink = (user) => goToBreadcrumb("user", user);
 
   const handleAssignmentLink = (assignment) => {
     goToBreadcrumb("assignment", assignment);
   };
+
   // DataGrid columns
   const columns = [
     {
@@ -204,45 +181,16 @@ const AssignTable = () => {
         <CustomSnackbar message="Error removing assignment" severity="error" />
       )}
 
-      <Stack
-        direction={["column", null, null, "row"]}
-        spacing={1}
-        py={3}
-        gap={1}
-      >
-        <Box sx={{ minWidth: 200 }}>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Surveyor</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={selectedSurveyor}
-              label="Surveyor"
-              onChange={handleChange}
-            >
-              {(surveyorsData || []).map((surveyor) => (
-                <MenuItem key={surveyor.id} value={surveyor.id}>
-                  {`${surveyor.firstname} ${surveyor.lastname}`}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Box>
-        <Stack direction="row" gap={1}>
-          <Button size="large" variant="outlined" onClick={handleAddSurveyor}>
-            Add
-          </Button>
-          <Button
-            size="large"
-            variant="outlined"
-            onClick={handleRemoveSurveyor}
-          >
-            Remove
-          </Button>
-        </Stack>
-      </Stack>
+      <SurveyorSelector
+        surveyorsData={surveyorsData}
+        apiRef={apiRef}
+        addAssignmentsToSurveyor={addAssignmentsToSurveyor}
+        removeAssignmentsFromSurveyor={removeAssignmentsFromSurveyor}
+      />
+
       <Box sx={{ height: "100%", width: "100%" }}>
         <DataGrid
+          apiRef={apiRef}
           rows={tableData}
           columns={columns}
           pageSize={20}
@@ -251,8 +199,10 @@ const AssignTable = () => {
           disableSelectionOnClick
           autoHeight
           checkboxSelection
-          onRowSelectionModelChange={handleSelectionModelChange}
-          rowSelectionModel={selectedAssignments}
+          initialState={{
+            pagination: { paginationModel: { page: 0, pageSize: 25 } },
+          }}
+          pageSizeOptions={[25, 50, 100]}
         />
       </Box>
     </Box>
