@@ -94,7 +94,15 @@
       "text2": "Um representante da ULHPA entrará em contato com você com mais informações sobre o processo de instalação.",
       "alert1": "Ocorreu um erro ao enviar seu endereço. Por favor, tente novamente mais tarde.",
       "alert2": "Erro ao enviar a pesquisa.",
-      "text3": "Insira o endereço onde você tem interesse em instalar uma bomba de calor:"
+      "text3": "Insira o endereço onde você tem interesse em instalar uma bomba de calor:",
+      "addressFields": {
+        "streetNumber": "* Número da rua",
+        "streetName": "* Nome da rua",
+        "unitNumber": "Número da unidade",
+        "city": "* Cidade",
+        "state": "* Estado",
+        "zipCode": "* CEP"
+      }
     },
     "benefits-heat-pump": {
       "cardBenefits": {

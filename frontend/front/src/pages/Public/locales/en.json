@@ -94,7 +94,15 @@
       "text2": "An ULHPA representative will contact you with more information about the installation process.",
       "alert1": "There was an error submitting your address. Please try again later.",
       "alert2": "Error submitting survey.",
-      "text3": "Enter the address where you're interested in a heat pump:"
+      "text3": "Enter the address where you're interested in a heat pump:",
+      "addressFields": {
+        "streetNumber": "* Street Number",
+        "streetName": "* Street Name",
+        "unitNumber": "Unit Number",
+        "city": "* City",
+        "state": "* State",
+        "zipCode": "* ZIP Code"
+      }
     },
     "benefits-heat-pump": {
       "cardBenefits": {

@@ -1,6 +1,6 @@
-import React from "react";
 import { Controller, useController } from "react-hook-form";
 import { FormLabel, Grid, TextField, Stack } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 /**
  * Field to collect a user's address
@@ -8,7 +8,7 @@ import { FormLabel, Grid, TextField, Stack } from "@mui/material";
  */
 export const HeatPumpAddressField = ({ control, label, disabled }) => {
   const { formState } = useController({ name: "address", control });
-
+  const { t } = useTranslation();
   return (
     <Stack>
       {label && (
@@ -44,7 +44,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
               <TextField
                 fullWidth
                 variant="standard"
-                label="* Street Number"
+                label={t("public.survey.addressFields.streetNumber")}
                 {...field}
                 error={!!formState.errors.address?.street_number}
                 helperText={
@@ -72,7 +72,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
               <TextField
                 fullWidth
                 variant="standard"
-                label="* Street Name"
+                label={t("public.survey.addressFields.streetName")}
                 {...field}
                 error={!!formState.errors.address?.street_name}
                 helperText={
@@ -100,7 +100,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
               <TextField
                 fullWidth
                 variant="standard"
-                label="Unit Number"
+                label={t("public.survey.addressFields.unitNumber")}
                 {...field}
                 error={!!formState.errors.address?.unit_number}
                 helperText={
@@ -128,7 +128,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
               <TextField
                 fullWidth
                 variant="standard"
-                label="* City"
+                label={t("public.survey.addressFields.city")}
                 {...field}
                 error={!!formState.errors.address?.city}
                 helperText={
@@ -156,7 +156,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
               <TextField
                 fullWidth
                 variant="standard"
-                label="* State"
+                label={t("public.survey.addressFields.state")}
                 {...field}
                 error={!!formState.errors.address?.state}
                 helperText={
@@ -188,7 +188,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
               <TextField
                 fullWidth
                 variant="standard"
-                label="* ZIP Code"
+                label={t("public.survey.addressFields.zipCode")}
                 {...field}
                 error={!!formState.errors.address?.zip_code}
                 helperText={
