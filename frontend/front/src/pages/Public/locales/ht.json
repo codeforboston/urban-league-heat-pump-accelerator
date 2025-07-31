@@ -97,7 +97,15 @@
       "text2": "Yon reprezantan ULHPA ap ​​kontakte ou ak plis enfòmasyon sou pwosesis enstalasyon yon Heat Pump",
       "alert1": "Sytem lan resevwa yon erè lè soumèt adrès la. \nTanpri eseye ankò pita.",
       "alert2": "Sytem lan resevwa yon erè lè soumèt kesyonè la. \nTanpri eseye ankò pita.",
-      "text3": "Ekri adrès kote ou eneterese enstale yon Heat Pump:"
+      "text3": "Ekri adrès kote ou eneterese enstale yon Heat Pump:",
+      "addressFields": {
+        "streetNumber": "* Nimewo Lari",
+        "streetName": "* Non Lari",
+        "unitNumber": "Nimewo Inite",
+        "city": "* Vil",
+        "state": "* Eta",
+        "zipCode": "* Kòd Postal"
+      }
     },
     "benefits-heat-pump": {
       "cardBenefits": {
