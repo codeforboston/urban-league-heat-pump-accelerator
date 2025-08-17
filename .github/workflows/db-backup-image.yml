@@ -1,0 +1,30 @@
+name: Push to Github db backup image
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    name: Build and push image
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout repository
+       uses: actions/checkout@v4
+     - name: Build Image
+       id: build-image
+       uses: redhat-actions/buildah-build@v2
+       with:
+         image: bhpa-dbbackup
+         tags: latest
+         containerfiles: |
+           backend/db_backup.Dockerfile
+     - name: Push to registry
+       id: push-image
+       uses: redhat-actions/push-to-registry@v2
+       with:
+         registry: ghcr.io/codeforboston
+         image: ${{ steps.build-image.outputs.image }}
+         tags: ${{ steps.build-image.outputs.tags}}
+         username: ${{ github.actor }}
+         password: ${{ secrets.GITHUB_TOKEN }}
+
