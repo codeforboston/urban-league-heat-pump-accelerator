@@ -57,6 +57,7 @@ const AssignProfile = () => {
   };
 
   const columns = [
+    { field: "id", headerName: "Id", maxWidth: 100, flex: 1 },
     { field: "visit_order", headerName: "Visit order", maxWidth: 100, flex: 1 },
     {
       field: "address",
