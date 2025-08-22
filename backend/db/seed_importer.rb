@@ -2,6 +2,7 @@
 # rubocop:disable Metrics/CyclomaticComplexity
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Metrics/ModuleLength
 
 # frozen_string_literal: true
 
@@ -127,6 +128,37 @@ module SeedImporter
     end
   end
 
+  def self.normalize_home_addresses(normalized_addresses)
+    options = { downcase_header: true, verbose: true }
+
+    # Normalize home addresses or destroy
+    SmarterCSV.process(File.join(normalized_addresses), options) do |chunk|
+      chunk.each do |data_hash|
+        home = Home.find_by(id: data_hash[:home_id])
+
+        if home.nil?
+          raise StandardError, "Normalized Address Data misaligned: \n" \
+            "Could not find home with id #{data_hash[:home_id]}"
+        end
+
+        # Double check correct home, ids could be misaligned
+        home_original_address = "#{home.street_number} #{home.street_name}, #{home.city}, MA #{home.zip_code}"
+        data_original_address = data_hash[:original_address]
+
+        if home_original_address != data_original_address
+          raise StandardError, "Normalized Address Data misaligned: \n" \
+            "Home id: #{home.id}\nHome address: #{home_original_address}\nCSV address: #{data_original_address}"
+        end
+
+        if data_hash[:error].present?
+          home.destroy!
+        else
+          home.update!(street_name: data_hash[:normalized_street_name], city: data_hash[:normalized_city])
+        end
+      end
+    end
+  end
+
   def self.parse_response_options(response_options_str)
     if response_options_str.nil?
       []
@@ -139,3 +171,5 @@ end
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Metrics/ModuleLength

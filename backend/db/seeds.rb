@@ -18,4 +18,5 @@ include SeedImporter
 unless Rails.env.test?
   SeedImporter.import_seed_data('lib/seeds/',
                                 'lib/seeds/clustered_ordered_parcels.csv')
+  SeedImporter.normalize_home_addresses('lib/seeds/google_maps_normalized_addresses.csv')
 end
