@@ -68,21 +68,23 @@ module SeedImporter
       end
     end
 
-    # Seed users and surveyors
-    SmarterCSV.process(File.join(path, 'test_users.csv'), options) do |chunk|
-      chunk.each do |data_hash|
-        User.create!(data_hash)
+    unless Rails.env.production?
+      # Seed users and surveyors
+      SmarterCSV.process(File.join(path, 'test_users.csv'), options) do |chunk|
+        chunk.each do |data_hash|
+          User.create!(data_hash)
+        end
       end
-    end
 
-    # Prevent SmarterCSV from converting a zipcode like "02110" to "2110"
-    modified_options = options.merge(convert_values_to_numeric: { except: :zipcode })
+      # Prevent SmarterCSV from converting a zipcode like "02110" to "2110"
+      modified_options = options.merge(convert_values_to_numeric: { except: :zipcode })
 
-    SmarterCSV.process(File.join(path, 'test_surveyors.csv'), modified_options) do |chunk|
-      chunk.each do |data_hash|
-        surveyor = Surveyor.new(data_hash)
-        surveyor.user = User.where(email: data_hash[:email]).first
-        surveyor.save!
+      SmarterCSV.process(File.join(path, 'test_surveyors.csv'), modified_options) do |chunk|
+        chunk.each do |data_hash|
+          surveyor = Surveyor.new(data_hash)
+          surveyor.user = User.where(email: data_hash[:email]).first
+          surveyor.save!
+        end
       end
     end
 
