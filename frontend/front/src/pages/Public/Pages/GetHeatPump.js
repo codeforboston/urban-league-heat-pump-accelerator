@@ -61,7 +61,7 @@ const GetHeatPump = () => {
       subtitle: t("public.get-heat-pump.step2.title2"),
       description: [],
       textButton: t("public.get-heat-pump.step2.buttonText"),
-      linkButton: "https://heatsmartalliance.org/request-a-coach-2/",
+      linkButton: "https://heatsmartalliance.org/homeowners/request-coach/",
     },
     {
       step: "3",
