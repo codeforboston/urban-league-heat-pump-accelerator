@@ -24,6 +24,16 @@ export const AssignmentHome = ({
   const navigate = useNavigate();
   const [dialogOpen, setDialogOpen] = useState(false);
   const cacheKey = buildSurveyCacheKey(SURVEYOR_SURVEY_ID, home.id);
+
+  const getFontSize = (number) => {
+    if (!number) return "1.5em";
+    const digitCount = number.toString().length;
+
+    if (digitCount <= 2) return "1.5em";
+    if (digitCount === 3) return "1.2em";
+    return "1em";
+  };
+
   return (
     <>
       <ListItem
@@ -50,12 +60,12 @@ export const AssignmentHome = ({
             <Avatar
               sx={{
                 border: 1,
-                fontSize: "1.5em",
+                fontSize: getFontSize(home.id),
                 bgcolor: "white",
                 color: "black",
               }}
             >
-              {home?.visit_order}
+              {home.id}
             </Avatar>
           </ListItemAvatar>
           <ListItemText
