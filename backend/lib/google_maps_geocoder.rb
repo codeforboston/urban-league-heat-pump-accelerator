@@ -4,7 +4,7 @@ require 'httparty'
 require 'geocoder'
 
 class GoogleMapsGeocoder
-  GEOCODER_API_KEY = "REPLACE_ME"
+  GEOCODER_API_KEY = ENV['GEOCODER_API_KEY']
 
   def self.find_all_homes
     csv_options = {
