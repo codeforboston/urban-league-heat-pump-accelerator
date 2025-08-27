@@ -74,7 +74,7 @@ const ListView = () => {
                     id="panel1a-header"
                   >
                     <Typography variant="h5">
-                      {`${item.completed ? "✅" : ""} Assignment ${i + 1}`}
+                      {`${item.completed ? "✅" : ""} Assignment ${item.id}`}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
