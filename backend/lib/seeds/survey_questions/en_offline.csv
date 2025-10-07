@@ -1,5 +1,5 @@
 display_order,text,response_type,response_options
-1,"Are you the homeowner?",0,"Yes (proceed to next question)/No ->  “Can we leave this info with you, for the homeowner?”/No one answered the door/Door answered, survey declined"
+1,"Are you the homeowner?",0,"Yes (proceed to next question)/No ->  "Can we leave this info with you, for the homeowner?"/No one answered the door/Door answered, survey declined/Surveyor not able to get to the door"
 2,"If you could save money on your utility bills with a state-discounted or free heating & cooling system upgrade, would you like to learn more?",0,"Yes/No"
 3,"If “No” then can you share why you are not interested in moving forward?",1,""
 4,"Have you heard of “heat pumps” for home heating and cooling?",0,"Yes/No"
