@@ -119,30 +119,31 @@ RSpec.describe WeeklySurveyorReportGenerator, type: :service do
       @alice = create(:surveyor, firstname: 'Alice', lastname: 'Johnson')
       @bob = create(:surveyor, firstname: 'Bob', lastname: 'Smith')
 
-      # Alice's visits - Monday
+      # Alice's visits - Monday (times in Eastern)
       monday = start_date + 1.day
-      Timecop.freeze(Time.zone.local(2025, 10, 6, 14, 0, 0)) do # 2:00 PM - on time start
+      eastern = ActiveSupport::TimeZone['Eastern Time (US & Canada)']
+      Timecop.freeze(eastern.local(2025, 10, 6, 14, 0, 0)) do # 2:00 PM Eastern - on time start
         create(:survey_visit, surveyor: @alice, home: @home1)
       end
-      Timecop.freeze(Time.zone.local(2025, 10, 6, 19, 0, 0)) do # 7:00 PM - on time end
+      Timecop.freeze(eastern.local(2025, 10, 6, 19, 0, 0)) do # 7:00 PM Eastern - on time end
         create(:survey_visit, surveyor: @alice, home: @home2)
       end
 
       # Alice's visits - Wednesday (early end, will be incomplete if we add another home to assignment2)
-      Timecop.freeze(Time.zone.local(2025, 10, 8, 15, 0, 0)) do # 3:00 PM - on time start
+      Timecop.freeze(eastern.local(2025, 10, 8, 15, 0, 0)) do # 3:00 PM Eastern - on time start
         create(:survey_visit, surveyor: @alice, home: @home3)
       end
       # Create a second visit for the end time
       home4 = create(:home, assignment: @assignment2, visit_order: 3)
-      Timecop.freeze(Time.zone.local(2025, 10, 8, 17, 30, 0)) do # 5:30 PM - early end
+      Timecop.freeze(eastern.local(2025, 10, 8, 17, 30, 0)) do # 5:30 PM Eastern - early end
         create(:survey_visit, surveyor: @alice, home: home4)
       end
 
-      # Bob's visits - Tuesday
-      Timecop.freeze(Time.zone.local(2025, 10, 7, 17, 0, 0)) do # 5:00 PM - late start
+      # Bob's visits - Tuesday (times in Eastern)
+      Timecop.freeze(eastern.local(2025, 10, 7, 17, 0, 0)) do # 5:00 PM Eastern - late start
         create(:survey_visit, surveyor: @bob, home: @home1)
       end
-      Timecop.freeze(Time.zone.local(2025, 10, 7, 18, 0, 0)) do # 6:00 PM - early end but complete
+      Timecop.freeze(eastern.local(2025, 10, 7, 18, 0, 0)) do # 6:00 PM Eastern - early end but complete
         create(:survey_visit, surveyor: @bob, home: @home2)
       end
       # All homes in assignment1 have been visited (by Alice and Bob combined)
