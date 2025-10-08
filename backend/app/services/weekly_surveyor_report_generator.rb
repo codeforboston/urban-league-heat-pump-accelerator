@@ -4,10 +4,7 @@ require 'csv'
 
 class WeeklySurveyorReportGenerator
   ON_TIME_INDICATOR = '✅'
-  START_TIME_CUTOFF_HOUR = 16  # 4:24 PM Eastern
-  START_TIME_CUTOFF_MIN = 24
-  END_TIME_CUTOFF_HOUR = 18    # 6:40 PM Eastern
-  END_TIME_CUTOFF_MIN = 40
+  TIMEZONE = 'Eastern Time (US & Canada)'
 
   def initialize(start_date: nil, end_date: nil)
     @start_date = start_date || previous_week_start
@@ -94,7 +91,7 @@ class WeeklySurveyorReportGenerator
     earliest_visit = visits.first
     return '' if earliest_visit.nil?
 
-    visit_time = earliest_visit.created_at.in_time_zone('Eastern Time (US & Canada)')
+    visit_time = earliest_visit.created_at.in_time_zone(TIMEZONE)
 
     if on_time_start?(visit_time)
       ON_TIME_INDICATOR
@@ -107,7 +104,7 @@ class WeeklySurveyorReportGenerator
     latest_visit = visits.last
     return '' if latest_visit.nil?
 
-    visit_time = latest_visit.created_at.in_time_zone('Eastern Time (US & Canada)')
+    visit_time = latest_visit.created_at.in_time_zone(TIMEZONE)
 
     if on_time_end?(visit_time) || all_assignment_homes_visited?(visits)
       ON_TIME_INDICATOR
@@ -118,16 +115,14 @@ class WeeklySurveyorReportGenerator
 
   def on_time_start?(time)
     # On time if visit is before 4:24 PM Eastern
-    # time is already in Eastern time zone
-    time.hour < START_TIME_CUTOFF_HOUR ||
-      (time.hour == START_TIME_CUTOFF_HOUR && time.min < START_TIME_CUTOFF_MIN)
+    cutoff = time.change(hour: 16, min: 24, sec: 0)
+    time < cutoff
   end
 
   def on_time_end?(time)
     # On time if visit is after 6:40 PM Eastern
-    # time is already in Eastern time zone
-    time.hour > END_TIME_CUTOFF_HOUR ||
-      (time.hour == END_TIME_CUTOFF_HOUR && time.min > END_TIME_CUTOFF_MIN)
+    cutoff = time.change(hour: 18, min: 40, sec: 0)
+    time > cutoff
   end
 
   def all_assignment_homes_visited?(visits)
