@@ -115,14 +115,14 @@ class WeeklySurveyorReportGenerator
 
   def on_time_start?(time)
     # On time if visit is before 4:24 PM Eastern
-    cutoff = time.change(hour: 16, min: 24, sec: 0)
-    time < cutoff
+    start_cutoff = DateTime.new(time.year, time.month, time.day, 16, 24, 0, time.zone)
+    time < start_cutoff
   end
 
   def on_time_end?(time)
     # On time if visit is after 6:40 PM Eastern
-    cutoff = time.change(hour: 18, min: 40, sec: 0)
-    time > cutoff
+    end_cutoff = DateTime.new(time.year, time.month, time.day, 18, 40, 0, time.zone)
+    time > end_cutoff
   end
 
   def all_assignment_homes_visited?(visits)
