@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h2>Boston Heat Pump Accelerator Weekly Surveyor Report</h2>
+
+  <p>Please find attached the surveyor activity report for the week of <%= @start_date.strftime('%B %d, %Y') %> to <%= @end_date.strftime('%B %d, %Y') %>.</p>
+
+  <p>The report includes start and end times for each surveyor for each day of the week.</p>
+
+  <p>
+    <strong>Legend:</strong><br>
+    ✅ = On time<br>
+    Time shown = Not on time (shows actual visit time)
+  </p>
+</body>
+</html>

@@ -51,6 +51,44 @@ After this you can visit in your regular web browser http://localhost:3000/assig
 * /survey_responses.json
 * /survey_questions.json
 
+## Weekly Surveyor Report
+
+The application can generate and email a weekly surveyor activity report showing start and end times for each surveyor for each day of the week.
+
+### Running the Report Manually
+
+To generate and send the weekly report for the previous week (Sunday-Saturday):
+
+```bash
+cd backend
+bundle exec rake reports:send_weekly_surveyor_report
+```
+
+### Setting Up Automatic Weekly Reports
+
+To automatically send the report every Monday at 9 AM, add the following cron job:
+
+```bash
+0 9 * * 1 cd /path/to/urban-league-heat-pump-accelerator/backend && bundle exec rake reports:send_weekly_surveyor_report
+```
+
+Replace `/path/to/urban-league-heat-pump-accelerator/backend` with the actual path to your backend directory.
+
+To edit your crontab:
+```bash
+crontab -e
+```
+
+### Report Format
+
+The report is sent as a CSV attachment to `help@bostonhpa.org` (configurable in the mailer). It includes:
+- Surveyor names
+- Start and end times for each day (Sunday-Saturday)
+- ✅ indicator for "on time" entries:
+  - Start time: before 4:24 PM
+  - End time: after 6:40 PM, OR all homes in the assignment(s) worked that day have been visited
+- Actual timestamps when not on time
+
 ## Frontend setup
 
 See the README.md at [./frontend/front](./frontend/front) for notes on running the frontend code.
