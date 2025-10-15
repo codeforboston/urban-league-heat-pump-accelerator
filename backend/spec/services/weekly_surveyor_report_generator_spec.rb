@@ -105,7 +105,7 @@ RSpec.describe WeeklySurveyorReportGenerator, type: :service do
       expect(csv_data).not_to include('Charlie Brown')
     end
 
-    def create_test_data
+    def create_test_data # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       # Create assignments
       @assignment1 = create(:assignment)
       @assignment2 = create(:assignment)

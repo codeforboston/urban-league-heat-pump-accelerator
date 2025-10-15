@@ -14,7 +14,7 @@ class WeeklySurveyorReportMailer < ApplicationMailer
 
     mail(
       to: recipients,
-      subject: "Boston Heat Pump Accelerator Report for Week #{start_date.strftime('%m/%d/%Y')} to #{end_date.strftime('%m/%d/%Y')}"
+      subject: "Boston Heat Pump Accelerator Report for Week #{start_date.strftime('%m/%d/%Y')} to #{end_date.strftime('%m/%d/%Y')}" # rubocop:disable Layout/LineLength
     )
   end
 end
