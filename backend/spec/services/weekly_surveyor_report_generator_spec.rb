@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe WeeklySurveyorReportGenerator, type: :service do
   describe '#generate' do
     let(:start_date) { Date.new(2025, 10, 5) } # Sunday
-    let(:end_date) { Date.new(2025, 10, 11) }   # Saturday
+    let(:end_date) { Date.new(2025, 10, 11) } # Saturday
 
     before do
       create_test_data
@@ -120,7 +120,8 @@ RSpec.describe WeeklySurveyorReportGenerator, type: :service do
       @bob = create(:surveyor, firstname: 'Bob', lastname: 'Smith')
 
       # Alice's visits - Monday (times in Eastern)
-      monday = start_date + 1.day
+      start_date
+      1.day
       eastern = ActiveSupport::TimeZone['Eastern Time (US & Canada)']
       Timecop.freeze(eastern.local(2025, 10, 6, 14, 0, 0)) do # 2:00 PM Eastern - on time start
         create(:survey_visit, surveyor: @alice, home: @home1)

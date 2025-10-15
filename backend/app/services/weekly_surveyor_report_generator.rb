@@ -80,11 +80,11 @@ class WeeklySurveyorReportGenerator
     cache_key = "#{surveyor.id}_#{date}"
 
     @visits_cache[cache_key] ||= SurveyVisit
-                                  .includes(home: :assignment)
-                                  .where(surveyor_id: surveyor.id)
-                                  .where(created_at: date.beginning_of_day..date.end_of_day)
-                                  .order(:created_at)
-                                  .to_a
+                                 .includes(home: :assignment)
+                                 .where(surveyor_id: surveyor.id)
+                                 .where(created_at: date.beginning_of_day..date.end_of_day)
+                                 .order(:created_at)
+                                 .to_a
   end
 
   def format_start_time(visits)
@@ -100,7 +100,7 @@ class WeeklySurveyorReportGenerator
     end
   end
 
-  def format_end_time(surveyor, visits, date)
+  def format_end_time(_surveyor, visits, _date)
     latest_visit = visits.last
     return '' if latest_visit.nil?
 
