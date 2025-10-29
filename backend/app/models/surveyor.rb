@@ -14,7 +14,7 @@ class Surveyor < ApplicationRecord
   validates :phone
   validates :street_address
   validates :city
-  validates :zipcode,
+  validates :zipcode
   validates :state
   validates :status, presence: true
 
