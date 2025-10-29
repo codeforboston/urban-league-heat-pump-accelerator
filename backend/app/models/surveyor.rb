@@ -11,11 +11,11 @@ class Surveyor < ApplicationRecord
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :email, presence: true
-  validates :phone, presence: true
-  validates :street_address, presence: true
-  validates :city, presence: true
-  validates :zipcode, presence: true
-  validates :state, presence: true
+  validates :phone
+  validates :street_address
+  validates :city
+  validates :zipcode,
+  validates :state
   validates :status, presence: true
 
   def full_name
