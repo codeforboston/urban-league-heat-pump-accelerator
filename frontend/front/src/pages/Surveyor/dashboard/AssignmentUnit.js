@@ -58,7 +58,7 @@ const AssignmentUnit = ({ data }) => {
   }, []);
 
   const handleGoogleMapBtn = () => {
-    const sortedLocations = checked.map((id) => data.find((d) => d.id === id));
+    const sortedLocations = sortedMaplocation(checked.map((id) => data.find((d) => d.id === id)));
     window.open(generateGoogleMapsLink(sortedLocations), "_blank");
   };
   return (
