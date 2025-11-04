@@ -22,6 +22,7 @@ import { Link, Navigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../api/apiSlice";
 import { selectCurrentUser } from "../../features/login/loginSlice";
 import { ROLE_ADMIN, ROLE_SURVEYOR } from "../../features/login/loginUtils";
+import SupportContact from "../../components/SupportContact";
 
 const Login = () => {
   const currentUser = useSelector(selectCurrentUser);
@@ -163,7 +164,7 @@ const Login = () => {
             Log in
           </LoadingButton>
         </form>
-        <Box sx={{ mt: 2 }}>
+        <Box sx={{ mt: 2 }} textAlign="center">
           <Link
             to="/users/forgot"
             style={{ textDecoration: "none", color: "inherit" }}
@@ -171,6 +172,7 @@ const Login = () => {
             Forgot Password?
           </Link>
         </Box>
+        <SupportContact></SupportContact>
       </Paper>
     </Box>
   );

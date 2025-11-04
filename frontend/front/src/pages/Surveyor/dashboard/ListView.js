@@ -11,6 +11,7 @@ import Loader from "../../../components/Loader";
 import { useAssignmentsForCurrentUser } from "../../../hooks/useDataForSurveyor";
 import AssignmentUnit from "./AssignmentUnit";
 import LocationPermission from "./LocationPermission";
+import SupportContact from "../../../components/SupportContact";
 
 const ListView = () => {
   const {
@@ -51,6 +52,7 @@ const ListView = () => {
           <Stack my={3} alignItems="center">
             <Typography variant="h4">Your Assignments</Typography>
             <LocationPermission />
+            <SupportContact></SupportContact>
             {(!assignmentsData || assignmentsData.length === 0) && (
               <Typography variant="h5">No assignments found.</Typography>
             )}
