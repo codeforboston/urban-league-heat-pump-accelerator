@@ -92,5 +92,5 @@ Rails.application.configure do
     api_key: Rails.application.credentials.sendgrid_key,
     raise_delivery_errors: true
   }
-  config.action_mailer.default_url_options = { host: 'bostonhpa.org' }
+  config.action_mailer.default_url_options = { host: 'www.bostonhpa.org' }
 end
