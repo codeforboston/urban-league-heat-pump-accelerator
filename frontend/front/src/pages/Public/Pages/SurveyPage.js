@@ -1,6 +1,7 @@
 import { Alert, Box, Container, Snackbar, Stack } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 import {
   useCreateHomeMutation,
@@ -76,7 +77,7 @@ export const SurveyPage = () => {
   );
 
   useEffect(() => {
-    logSurveyPageVisit();
+    logSurveyPageVisit(i18next.language);
   }, []);
 
   useEffect(() => {
@@ -85,13 +86,13 @@ export const SurveyPage = () => {
     }
     if (isSurveyVisitSucess) {
       setStep(STEP_THANKS);
-      logSurveySubmission();
+      logSurveySubmission(i18next.language);
     }
   }, [isCreateHomeSucccess, isSurveyVisitSucess]);
 
   useEffect(() => {
     if (isCreateHomeSucccess) {
-      const language = localStorage.getItem("langPref");
+      const language = i18next.language;
       logSurveyPageVisit(language);
     }
   }, [isCreateHomeSucccess]);
