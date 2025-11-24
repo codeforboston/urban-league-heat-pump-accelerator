@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: Git checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -65,7 +65,7 @@ jobs:
         working-directory: frontend/front
     steps:
       - name: Git checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: install dependencies
         run: yarn --immutable
       - name: Run linters
