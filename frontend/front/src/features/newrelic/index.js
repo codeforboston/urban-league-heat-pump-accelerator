@@ -35,14 +35,14 @@ if (isNewRelicEnabled()) {
   newrelic = new BrowserAgent(options);
 }
 
-export const logSurveyPageVisit = () => {
+export const logSurveyPageVisit = (language) => {
   if (!newrelic) return;
-  newrelic.addPageAction("surveyPageVisit");
+  newrelic.addPageAction("surveyPageVisit", { language });
 };
 
-export const logSurveySubmission = () => {
+export const logSurveySubmission = (language) => {
   if (!newrelic) return;
-  newrelic.addPageAction("surveySubmission");
+  newrelic.addPageAction("surveySubmission", { language });
 };
 
 export const logLanguagePref = (language, source) => {
