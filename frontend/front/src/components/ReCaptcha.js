@@ -13,6 +13,20 @@ export const useGetReCAPTCHAToken = (action) => {
     let script = document.getElementById(RECAPTCHA_SCRIPT_ID);
 
     if (!script) {
+      // Based on: https://developers.google.com/recaptcha/docs/loading#loading_recaptcha_asynchronously
+      if (typeof window.grecaptcha === "undefined") {
+        window.grecaptcha = {
+          ready: function (cb) {
+            // window.__grecaptcha_cfg is a global variable that stores reCAPTCHA's
+            // configuration. By default, any functions listed in its 'fns' property
+            // are automatically executed when reCAPTCHA loads.
+            const c = "___grecaptcha_cfg";
+            window[c] = window[c] || {};
+            (window[c]["fns"] = window[c]["fns"] || []).push(cb);
+          },
+        };
+      }
+
       // manually add script element to the page to import the recaptcha api
       script = document.createElement("script");
       script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.REACT_APP_RECAPTCHA_KEY}`;
