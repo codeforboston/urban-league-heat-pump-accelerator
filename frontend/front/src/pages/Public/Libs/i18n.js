@@ -4,8 +4,9 @@ import enTranslations from "../locales/en.json";
 import ptTranslations from "../locales/pt-BR.json";
 import esTranslations from "../locales/es-419.json";
 import htTranslations from "../locales/ht.json";
+import { getUserLanguagePreference } from "../../../utils/languageUtils";
 
-const userLangPref = localStorage.getItem("langPref") || "en";
+const userLangPref = getUserLanguagePreference();
 
 // configuration for i18next library
 i18next
