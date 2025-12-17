@@ -17,6 +17,11 @@ export const apiSlice = createApi({
       if (token) {
         headers.set(AUTHORIZATION_HEADER, token);
       }
+
+      // Set Accept-Language header based on current i18next language
+      const currentLanguage = localStorage.getItem("langPref") || navigator.language.split('-')[0] || "en";
+      headers.set("Accept-Language", currentLanguage);
+
       return headers;
     },
   }),
