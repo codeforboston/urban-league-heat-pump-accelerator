@@ -20,7 +20,7 @@
         },
         "item2": {
           "title": "Sobre nosotros",
-          "paragraph": "El Acelerador de Bombas de Calor de Boston es una iniciativa de la Urban League of Eastern Massachusetts, en asociación con organizaciones locales y nacionales.",
+          "paragraph": "El Boston Heat Pump Accelerator es una iniciativa de la Urban League of Eastern Massachusetts, en asociación con organizaciones locales y nacionales.",
           "button": "Más información"
         }
       },
@@ -54,7 +54,7 @@
       },
       "partners": {
         "heading1": "Nuestros compañeros",
-        "text1": "El Acelerador de Bombas de Calor de Boston es una iniciativa de la Urban League of Eastern Massachusetts, en asociación con organizaciones locales y nacionales.",
+        "text1": "El Boston Heat Pump Accelerator es una iniciativa de la Urban League of Eastern Massachusetts, en asociación con organizaciones locales y nacionales.",
         "link": "Más información"
       }
     },
@@ -93,11 +93,12 @@
       "heading1BlueBgGround": "Realice la encuesta",
       "under-construction": "¡La encuesta pública está actualmente en desarrollo!",
       "work-in-progress": "BAJO CONSTRUCCIÓN",
-      "text1": "Complete este formulario para dejar constancia de su interés en instalar una bomba de calor para su hogar.",
-      "text2": "Un representante de ULHPA se comunicará con usted para brindarle más información sobre el proceso de instalación.",
+      "text1": "Este es el primer paso para completar la Encuesta para propietarios de viviendas de BHPA.",
+      "text2": "Esta encuesta registra información sobre el propietario, su sistema de calefacción y su conocimiento y posible interés en las bombas de calor de fuente de aire, a veces abreviadas como ASHP o denominadas simplemente \"Bombas de calor\".",
       "alert1": "Hubo un error al enviar su dirección. \nInténtelo de nuevo más tarde.",
       "alert2": "Error al enviar la encuesta.",
-      "text3": "Introduce la dirección donde estás interesado en una bomba de calor:",
+      "text3": "Si desea hablar más sobre las bombas de calor, después de completar esta encuesta, puede indicar su interés mediante la pregunta relacionada en la misma. El Boston Heat Pump Accelerator se ha asociado con una organización sin fines de lucro que proporciona información y orientación sobre el proceso de selección e instalación de bombas de calor.",
+      "text4": "Para iniciar la encuesta, por favor ingrese a continuación sus datos y la dirección de la casa que posee:",
       "addressFields": {
         "streetNumber": "* Número de la calle",
         "streetName": "* Nombre de la calle",
@@ -186,8 +187,8 @@
       "pcb": "<0>{{partnerName}}</0> es un programa de empleos verdes que brinda a los adultos jóvenes capacitación, apoyo para su preparación profesional y conexiones con empleadores en la industria verde. \nPCB brindó apoyo al esfuerzo de encuesta de BHPA.",
       "moc": "El <0>{{partnerName}}</0> es un laboratorio para la investigación e innovación en la nube. \nDesde su creación en 2013, con el apoyo de Mass Tech Collaborative, ha proporcionado una nube de producción que ha permitido la innovación por parte de una amplia comunidad de socios industriales y de investigación, utilizada por miles de estudiantes e investigadores, y respaldado decenas de millones de dólares en \nbecas de investigación asociadas que han resultado en contribuciones al software de código abierto y cientos de publicaciones.",
       "bhpa-core-partners": "SOCIOS PRINCIPALES DE BHPA",
-      "headingbg": "Acerca del acelerador de bomba de calor Boston",
-      "bhpa": "El <1>Acelerador de Bombas de Calor de Boston (BHPA)</1> trabaja para respaldar un mayor acceso de los propietarios de viviendas de Boston a bombas de calor y recursos relacionados, ayudando a reducir los costos para los residentes, aumentar la resiliencia de la comunidad y hacer que la región adopte tecnologías bajas en carbono. \n. \nEsta iniciativa no requiere financiación de empresas ni instaladores de bombas de calor; solo apoya el acceso general a las bombas de calor, a través de esfuerzos de educación y concientización.",
+      "headingbg": "Acerca del Boston Heat Pump Accelerator",
+      "bhpa": "El <1>Boston Heat Pump Accelerator (BHPA)</1> trabaja para respaldar un mayor acceso de los propietarios de viviendas de Boston a bombas de calor y recursos relacionados, ayudando a reducir los costos para los residentes, aumentar la resiliencia de la comunidad y hacer que la región adopte tecnologías bajas en carbono. Esta iniciativa no requiere financiación de empresas ni instaladores de bombas de calor; solo apoya el acceso general a las bombas de calor, a través de esfuerzos de educación y concientización.",
       "ulem1": "La <1> <5>Urban League of Eastern Massachusetts (ULEM)</5> </1> es el patrocinador del esfuerzo de BHPA. \nDesde 1919, ULEM ha brindado servicios y programas de desarrollo económico y laboral para aumentar la autosuficiencia de los residentes de la comunidad de Boston y las áreas metropolitanas circundantes. \nULEM es una organización sin fines de lucro 501c3 y una de las afiliadas más antiguas dentro del movimiento de la Liga Urbana Nacional.",
       "ulem2": "El proyecto BHPA está dirigido por Christopher Scranton, miembro de la junta directiva de ULEM, en coordinación con los socios principales, que se enumeran a continuación."
     },

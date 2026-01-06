@@ -41,7 +41,7 @@ export const AddressValidatorComponent = forwardRef(
         <Box mx={{ margin: "1em 0" }}>
           <HeatPumpAddressField
             control={control}
-            label={t("public.survey.text3")}
+            label={t("public.survey.text4")}
           />
         </Box>
         <Stack direction="row" justifyContent="center" spacing={2} mb={5}>

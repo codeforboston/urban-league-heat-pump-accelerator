@@ -93,11 +93,12 @@
       "heading1BlueBgGround": "Pran kesyonè la",
       "under-construction": "Sondaj Piblik la ap Devlopman kounye a!",
       "work-in-progress": "Sou konstriksyon",
-      "text1": "Ranpli fòm sa si ou enterese enstale yon Heat Pump lakay ou.",
-      "text2": "Yon reprezantan ULHPA ap ​​kontakte ou ak plis enfòmasyon sou pwosesis enstalasyon yon Heat Pump",
+      "text1": "Sa a se premye etap pou w ranpli Sondaj Pwopriyetè Kay BHPA a.",
+      "text2": "Sondaj sa a anrejistre kèk enfòmasyon sou pwopriyetè kay la, sistèm chofaj li, ak konesans li ak enterè li posib nan Heat Pump, pafwa abreje kòm ASHP oubyen refere yo kòm jis \"Heat Pump\".",
       "alert1": "Sytem lan resevwa yon erè lè soumèt adrès la. \nTanpri eseye ankò pita.",
       "alert2": "Sytem lan resevwa yon erè lè soumèt kesyonè la. \nTanpri eseye ankò pita.",
-      "text3": "Ekri adrès kote ou eneterese enstale yon Heat Pump:",
+      "text3": "Si ou ta renmen diskite plis sou Heat Pump, apre ou fin ranpli sondaj sa a, ou ka endike enterè ou atravè kesyon ki gen rapò ak sa a nan sondaj la menm. Boston Heat Pump Accelerator asosye avèk yon òganizasyon san bi likratif ki bay enfòmasyon ak konsèy sou kijan pou navige nan pwosesis seleksyon/enstalasyon Heat Pump.",
+      "text4": "Pou kòmanse sondaj la, tanpri antre enfòmasyon ou yo ak adrès kay ou posede a anba a:",
       "addressFields": {
         "streetNumber": "* Nimewo Lari",
         "streetName": "* Non Lari",
@@ -215,34 +216,34 @@
     },
     "for-renters": {
       "headingBg": "Pou Lokatè yo",
-      "heading2": "Malgre efò BHPA a konsantre sou pwopriyetè kay yo, gen anpil resous ki disponib pou lokatè ki enterese nan ponp chalè. Tanpri jwenn anba a yon seleksyon enfòmasyon ak resous sa yo.",
+      "heading2": "Malgre efò BHPA a konsantre sou pwopriyetè kay yo, gen anpil resous ki disponib pou lokatè ki enterese nan Heat Pump. Tanpri jwenn anba a yon seleksyon enfòmasyon ak resous sa yo.",
       "item1": {
         "title": "Lokatè | Depatman Enèji",
         "body": "Aprann plis sou kredi taks federal ak rabè pou lokatè yo. Jwenn fason fasil pou ekonomize enèji epi fè kay ou pi konfòtab.",
         "link": "Ale nan Paj la"
       },
       "item2": {
-        "title": "Plis ponp chalè ak èd pou lokatè yo: Ki sa ki genyen nan nouvo plan Mass Save la",
+        "title": "Plis Heat Pump ak èd pou lokatè yo: Ki sa ki genyen nan nouvo plan Mass Save la",
         "body": "Mass Save gen yon nouvo plan 5 milya dola pou ede rezidan yo. Plan an bay sèvis gratis pou pwoteje kont move tan ak elektrifikasyon pou plis lokatè ak fanmi ki gen revni modere. Li kreye tou yon sant sèvis kliyan pou ede rezidan yo jwenn sipò ak rabè pi vit.",
         "link": "Li Atik la"
       },
       "item3": {
-        "title": "Fè lokatè yo patisipe nan revolisyon ponp chalè a",
-        "body": "Ponp chalè elektrik yo ede lokatè yo respire lè ki pi pwòp epi peye mwens bòdwo enèji. Nouvo pwogram rabè yo fè ponp chalè yo pi abòdab e pi fasil pou jwenn.",
+        "title": "Fè lokatè yo patisipe nan revolisyon Heat Pump",
+        "body": "Heat Pump elektrik yo ede lokatè yo respire lè ki pi pwòp epi peye mwens bòdwo enèji. Nouvo pwogram rabè yo fè Heat Pump yo pi abòdab e pi fasil pou jwenn.",
         "link": "Li Atik la"
       },
       "item4": {
-        "title": "Lokatè, nou menm tou nou ka jwenn yon ponp chalè - omwen yon mikwo.",
-        "body": "Mikwo ponp chalè yo piti epi fasil pou enstale nan inite lokasyon. Moun k ap lwe yo ka itilize yo pou chofe ak refwadi. Yo branche nan priz nòmal epi yo pa bezwen chanjman nan bilding lan.",
+        "title": "Lokatè, nou menm tou nou ka jwenn yon Heat Pump - omwen yon mikwo.",
+        "body": "Mikwo Heat Pump yo piti epi fasil pou enstale nan inite lokasyon. Moun k ap lwe yo ka itilize yo pou chofe ak refwadi. Yo branche nan priz nòmal epi yo pa bezwen chanjman nan bilding lan.",
         "link": "Li Atik la"
       },
       "item5": {
-        "title": "Ponp Chalè Chanm - Refwadisman ak Chofaj nan yon Ti Pakè",
-        "body": "Ponp chalè pou chanm yo fasil pou enstale epi yo pa chè. Yo ka refwadi epi chofe yon chanm. Yo bon pou apatman ak kay lokasyon, sitou nan kote ki gen tanperati modere."
+        "title": "Heat Pump Chanm - Refwadisman ak Chofaj nan yon Ti Pakè",
+        "body": "Heat Pump pou chanm yo fasil pou enstale epi yo pa chè. Yo ka refwadi epi chofe yon chanm. Yo bon pou apatman ak kay lokasyon, sitou nan kote ki gen tanperati modere."
       },
       "item6": {
-        "title": "Poukisa Ponp Chalè Fenèt Sa a Jenyal",
-        "body": "Ponp chalè fenèt yo ka efikas pou lokatè nan apatman. Yo ede chofe ak refwadi chanm yo. Avèk yon adopsyon laj, yo ede vil yo diminye polisyon epi bay popilasyon vilnerab yo mwayen pou yo rete lakay yo."
+        "title": "Poukisa Heat Pump Fenèt Sa a Jenyal",
+        "body": "Heat Pump fenèt yo ka efikas pou lokatè nan apatman. Yo ede chofe ak refwadi chanm yo. Avèk yon adopsyon laj, yo ede vil yo diminye polisyon epi bay popilasyon vilnerab yo mwayen pou yo rete lakay yo."
       }
     },
     "privacy": {

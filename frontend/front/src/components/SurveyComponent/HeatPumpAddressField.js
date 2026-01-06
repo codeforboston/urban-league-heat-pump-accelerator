@@ -21,6 +21,7 @@ export const HeatPumpAddressField = ({ control, label, disabled }) => {
             !!formState.errors.address?.state ||
             !!formState.errors.address?.zip_code
           }
+          sx={{ mb: 4 }}
         >
           {label}
         </FormLabel>
