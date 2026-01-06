@@ -6,10 +6,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useTranslation } from "react-i18next";
 import { logLanguagePref } from "../../../features/newrelic";
 import { useDebouncedCallback } from "use-debounce";
-import {
-  getBrowserLanguageOrDefault,
-  isValidLangPref,
-} from "../../../utils/languageUtils";
+import { getBrowserLanguageOrDefault } from "../../../utils/languageUtils";
 
 const LangPrefDropdown = () => {
   const {
@@ -43,32 +40,22 @@ const LangPrefDropdown = () => {
 
     // Get query params from current URL
     const params = new URLSearchParams(location.search);
-    const urlLangParam = params.get("langPref");
-    const storedLangPref = localStorage.getItem("langPref");
 
-    let selectedLang;
+    const langPref =
+      localStorage.getItem("langPref") || getBrowserLanguageOrDefault();
 
-    // Priority: URL param > localStorage > browser default
-    if (urlLangParam && isValidLangPref(urlLangParam)) {
-      selectedLang = urlLangParam;
-    } else if (storedLangPref) {
-      selectedLang = storedLangPref;
-    } else {
-      selectedLang = getBrowserLanguageOrDefault();
-    }
-
-    if (urlLangParam || !storedLangPref) {
-      localStorage.setItem("langPref", selectedLang);
+    if (!localStorage.getItem("langPref")) {
+      localStorage.setItem("langPref", langPref);
     }
 
     // Update i18n if language changed
-    if (selectedLang !== language) {
-      changeLanguage(selectedLang);
+    if (langPref !== language) {
+      changeLanguage(langPref);
     }
 
     // Update or remove 'langPref' query param based on language
-    if (selectedLang !== "en") {
-      params.set("langPref", selectedLang);
+    if (langPref !== "en") {
+      params.set("langPref", langPref);
     } else {
       params.delete("langPref");
     }
