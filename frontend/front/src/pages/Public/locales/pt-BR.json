@@ -103,7 +103,9 @@
         "city": "* Cidade",
         "state": "* Estado",
         "zipCode": "* CEP"
-      }
+      },
+      "continue-button": "Continuar",
+      "back-button": "Voltar"
     },
     "benefits-heat-pump": {
       "cardBenefits": {

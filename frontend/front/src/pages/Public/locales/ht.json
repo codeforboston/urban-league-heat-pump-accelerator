@@ -106,7 +106,9 @@
         "city": "* Vil",
         "state": "* Eta",
         "zipCode": "* Kòd Postal"
-      }
+      },
+      "continue-button": "Kontinye",
+      "back-button": "Retounen"
     },
     "benefits-heat-pump": {
       "cardBenefits": {

@@ -106,7 +106,9 @@
         "city": "* Ciudad",
         "state": "* Estado",
         "zipCode": "* Código postal"
-      }
+      },
+      "continue-button": "Continuar",
+      "back-button": "Atrás"
     },
     "benefits-heat-pump": {
       "cardBenefits": {
