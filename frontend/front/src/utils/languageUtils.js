@@ -1,12 +1,17 @@
 export const supportedLanguages = ["en", "pt", "es", "ht"];
 
-export const checkUserLangPref = (lang) => supportedLanguages.includes(lang);
+export const isValidLangPref = (lang) => supportedLanguages.includes(lang);
 
 export const getBrowserLanguage = () => navigator.language.split("-")[0];
 
-export const getUserLanguagePreference = () => {
+export const getBrowserLanguageOrDefault = () => {
   const browserLang = getBrowserLanguage();
-  return checkUserLangPref(browserLang)
-    ? browserLang
-    : localStorage.getItem("langPref") || "en";
+  return isValidLangPref(browserLang) ? browserLang : "en";
+};
+
+// Get lang pref for i18n init
+export const getUserLanguagePreference = () => {
+  const storedLangPref = localStorage.getItem("langPref");
+  if (storedLangPref) return storedLangPref;
+  return getBrowserLanguageOrDefault();
 };
