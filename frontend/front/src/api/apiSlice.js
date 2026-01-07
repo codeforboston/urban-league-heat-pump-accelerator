@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { AUTHORIZATION_HEADER } from "../features/login/loginUtils";
 import { transformSurveyorKeys } from "../features/surveyor/surveyorUtils";
 import i18next from "i18next";
-import { supportedLanguages, getBrowserLanguage } from "../utils/languageUtils";
+import { getUserLanguagePreference } from "../utils/languageUtils";
 
 const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
@@ -21,10 +21,7 @@ export const apiSlice = createApi({
       }
 
       // Set Accept-Language header based on current i18next language
-      const browserLang = getBrowserLanguage();
-      const currentLanguage = supportedLanguages.includes(browserLang)
-        ? browserLang
-        : i18next.language || localStorage.getItem("langPref") || "en";
+      const currentLanguage = i18next.language || getUserLanguagePreference();
 
       headers.set("Accept-Language", currentLanguage);
 
