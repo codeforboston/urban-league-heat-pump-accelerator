@@ -134,6 +134,7 @@ export const SurveyPage = () => {
         >
           <p>{t("public.survey.text1")}</p>
           <p>{t("public.survey.text2")}</p>
+          <p>{t("public.survey.text3")}</p>
         </Stack>
         <HeatPumpFade show={step === STEP_ADDRESS}>
           <AddressValidatorComponent
