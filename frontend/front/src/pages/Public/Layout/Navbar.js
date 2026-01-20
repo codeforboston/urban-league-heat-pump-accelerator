@@ -314,7 +314,7 @@ function Navbar(props) {
             <ButtonGetPump />
           </Box>
           <Box sx={{ mt: 4 }}>
-            <LangPrefDropdown />
+            <LangPrefDropdown variant="navbar" />
           </Box>
         </Box>
       </Stack>
@@ -398,7 +398,7 @@ function Navbar(props) {
                 alignItems: "center",
               }}
             >
-              <LangPrefDropdown />
+              <LangPrefDropdown variant="navbar" />
               <Grid item ml={2}>
                 <ButtonGetPump variant="getpump" onClick={handleDrawerToggle} />
               </Grid>

@@ -7,7 +7,7 @@ const TitleContainer = styled(Box)({
   textShadow: "1px 1px 1px var(--color-text-5)",
 });
 
-function Heading1BlueBgGround({ text }) {
+function Heading1BlueBgGround({ text, children }) {
   return (
     <TitleContainer mb={5}>
       <Typography
@@ -26,6 +26,7 @@ function Heading1BlueBgGround({ text }) {
       >
         {text}
       </Typography>
+      {children}
     </TitleContainer>
   );
 }
