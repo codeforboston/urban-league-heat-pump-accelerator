@@ -8,15 +8,13 @@ import { logLanguagePref } from "../../../features/newrelic";
 import { useDebouncedCallback } from "use-debounce";
 import { getBrowserLanguageOrDefault } from "../../../utils/languageUtils";
 
-const LangPrefDropdown = () => {
+const LangPrefDropdown = ({ variant }) => {
   const {
     t,
     i18n: { changeLanguage, language },
   } = useTranslation();
 
   const [anchorMore, setAnchorMore] = useState(null);
-  const [langDisplay, setLangDisplay] = useState("English");
-
   const location = useLocation();
 
   const langMap = {
@@ -34,13 +32,15 @@ const LangPrefDropdown = () => {
   };
 
   useEffect(() => {
+    // Only run for navbar variant
+    if (variant !== "navbar") return;
+
     // Check if current route is a 'public' route
     const isPublicRoute = location.pathname.includes("public");
     if (!isPublicRoute) return;
 
     // Get query params from current URL
     const params = new URLSearchParams(location.search);
-
     const langPref =
       localStorage.getItem("langPref") || getBrowserLanguageOrDefault();
 
@@ -66,7 +66,7 @@ const LangPrefDropdown = () => {
       : location.pathname;
 
     window.history.replaceState({}, "", newUrl);
-  }, [location, language, changeLanguage]);
+  }, [location, language, changeLanguage, variant]);
 
   // Determine if the language menu should be open
   const open = Boolean(anchorMore);
@@ -77,7 +77,9 @@ const LangPrefDropdown = () => {
   };
 
   // Close language menu
-  const handleCloseMore = () => setAnchorMore(null);
+  const handleCloseMore = () => {
+    setAnchorMore(null);
+  };
 
   const debouncedLogLanguagePref = useDebouncedCallback((lang, source) => {
     logLanguagePref(lang, source);
@@ -100,31 +102,96 @@ const LangPrefDropdown = () => {
       window.history.replaceState({}, "", url.toString());
     }
 
-    // Update displayed language
-    setLangDisplay(dropdownLangNames[lang]);
+    handleCloseMore();
   };
 
+  const analyticsSource =
+    variant === "navbar" ? "hamburger_menu" : "public_survey_dropdown";
+
+  if (variant === "navbar") {
+    return (
+      <div className="lang-pref-dropdown">
+        <Button
+          id="fade-button"
+          aria-controls={open ? "fade-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClickMore}
+          startIcon={<LanguageIcon />}
+          endIcon={<KeyboardArrowDownIcon />}
+          sx={{ color: "var(--color-text-1)" }}
+        >
+          <Typography variant="navLinks">
+            {dropdownLangNames[language] || "English"}
+          </Typography>
+        </Button>
+
+        <Menu
+          id="fade-menu"
+          MenuListProps={{
+            "aria-labelledby": "fade-button",
+          }}
+          anchorEl={anchorMore}
+          open={open}
+          onClose={handleCloseMore}
+          TransitionComponent={Fade}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          {Object.keys(langMap).map((lang) => (
+            <MenuItem
+              key={lang}
+              variant="navLinks"
+              onClick={() => {
+                handleChangeLanguage(lang);
+                debouncedLogLanguagePref(lang, analyticsSource);
+              }}
+            >
+              {langMap[lang]}
+            </MenuItem>
+          ))}
+        </Menu>
+      </div>
+    );
+  }
+
   return (
-    <div className="lang-pref-dropdown">
+    <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
       <Button
-        id="fade-button"
-        aria-controls={open ? "fade-menu" : undefined}
+        id="public-survey-lang-dropdown"
+        aria-controls={open ? "public-survey-lang-pref-dropdown" : undefined}
         aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
         onClick={handleClickMore}
         startIcon={<LanguageIcon />}
         endIcon={<KeyboardArrowDownIcon />}
-        sx={{ color: "var(--color-text-1)" }}
+        sx={{
+          textTransform: "none",
+          backgroundColor: "var(--bgColor-1)",
+          color: "var(--color-text-2)",
+          borderRadius: "24px",
+          padding: "8px 16px",
+          minHeight: "44px",
+          fontFamily: "var(--font-family-1)",
+          fontSize: "0.875rem",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "6px",
+          cursor: "pointer",
+          outline: "var(--color-text-2) solid 2px",
+        }}
       >
-        <Typography variant="navLinks">
-          {langDisplay === undefined ? "English" : dropdownLangNames[language]}
-        </Typography>
+        <span>{dropdownLangNames[language] || "English"}</span>
       </Button>
 
       <Menu
-        id="fade-menu"
-        MenuListProps={{
-          "aria-labelledby": "fade-button",
-        }}
+        id="public-survey-lang-pref-dropdown"
         anchorEl={anchorMore}
         open={open}
         onClose={handleCloseMore}
@@ -137,24 +204,33 @@ const LangPrefDropdown = () => {
           vertical: "top",
           horizontal: "center",
         }}
+        slotProps={{
+          paper: {
+            sx: {
+              backgroundColor: "var(--color-text-2)",
+            },
+          },
+        }}
+        sx={{ mt: 1 }}
       >
-        <Box>
-          {Object.keys(langMap).map((lang) => (
-            <MenuItem
-              key={lang}
-              variant="navLinks"
-              onClick={() => {
-                handleChangeLanguage(lang);
-                handleCloseMore();
-                debouncedLogLanguagePref(lang, "user_select");
-              }}
-            >
-              {langMap[lang]}
-            </MenuItem>
-          ))}
-        </Box>
+        {Object.keys(langMap).map((lang) => (
+          <MenuItem
+            key={lang}
+            onClick={() => {
+              handleChangeLanguage(lang);
+              debouncedLogLanguagePref(lang, analyticsSource);
+            }}
+            sx={{
+              color: "var(--color-text-2)",
+              fontFamily: "var(--font-family-1)",
+              fontSize: "0.875rem",
+            }}
+          >
+            {langMap[lang]}
+          </MenuItem>
+        ))}
       </Menu>
-    </div>
+    </Box>
   );
 };
 

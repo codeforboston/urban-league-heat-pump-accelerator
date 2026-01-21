@@ -26,6 +26,7 @@ import { AddressValidatorComponent } from "../Components/AddressValidatorCompone
 import { PublicSurvey } from "../Components/PublicSurvey";
 import { ThanksForSubmission } from "../Components/ThanksForSubmission";
 import Heading1BlueBgGround from "../Components/Typography/Heading1BlueBgGround";
+import LangPrefDropdown from "../Components/LangPrefDropdown";
 
 const STEP_ADDRESS = "PHASE_ADDRESS";
 const STEP_SURVEY = "PHASE_SURVEY";
@@ -184,7 +185,9 @@ export const SurveyPage = () => {
         minHeight: "calc(100vh - 520px)",
       }}
     >
-      <Heading1BlueBgGround text={t("public.survey.heading1BlueBgGround")} />
+      <Heading1BlueBgGround text={t("public.survey.heading1BlueBgGround")}>
+        {step !== STEP_THANKS && <LangPrefDropdown />}
+      </Heading1BlueBgGround>
       <Container>{pageContent()}</Container>
     </Box>
   );
