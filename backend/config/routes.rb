@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :surveyors
   resources :survey_visits
   resources :survey_answers
-  resources :survey_responses, except: [:edit]
-  resources :survey_questions
+  resources :survey_responses, except: %i[edit new]
+  resources :survey_questions, except: %i[edit new]
   resources :surveys
   resource :assignments_surveyors
 
