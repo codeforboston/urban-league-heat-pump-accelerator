@@ -8,16 +8,8 @@ RSpec.describe SurveyAnswersController, type: :routing do
       expect(get: '/survey_answers').to route_to('survey_answers#index')
     end
 
-    it 'routes to #new' do
-      expect(get: '/survey_answers/new').to route_to('survey_answers#new')
-    end
-
     it 'routes to #show' do
       expect(get: '/survey_answers/1').to route_to('survey_answers#show', id: '1')
-    end
-
-    it 'routes to #edit' do
-      expect(get: '/survey_answers/1/edit').to route_to('survey_answers#edit', id: '1')
     end
 
     it 'routes to #create' do

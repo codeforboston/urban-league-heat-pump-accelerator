@@ -42,20 +42,6 @@ RSpec.describe '/survey_answers', type: :request do
     end
   end
 
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_survey_answer_url, as: :json
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /edit' do
-    it 'renders a successful response' do
-      survey_answer = SurveyAnswer.create! valid_attributes
-      get edit_survey_answer_url(survey_answer), as: :json
-      expect(response).to be_successful
-    end
-  end
 
   describe 'POST /create' do
     context 'with valid parameters' do

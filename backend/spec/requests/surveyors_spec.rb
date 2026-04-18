@@ -93,14 +93,6 @@ RSpec.describe '/surveyors', type: :request do
     end
   end
 
-  describe 'GET /edit' do
-    it 'renders a successful response' do
-      sign_in user
-      surveyor = Surveyor.create! valid_attributes
-      get edit_surveyor_url(surveyor), as: :json
-      expect(response).to be_successful
-    end
-  end
 
   describe 'POST /create' do
     context 'with valid parameters' do

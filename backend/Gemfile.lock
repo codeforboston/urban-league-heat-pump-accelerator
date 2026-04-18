@@ -83,7 +83,6 @@ GEM
     bcrypt (3.1.20)
     benchmark (0.4.1)
     bigdecimal (4.0.1)
-    bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     brakeman (6.1.2)
@@ -302,13 +301,6 @@ GEM
     sendgrid-ruby (6.6.2)
       ruby_http_client (~> 3.4)
     smarter_csv (1.12.1)
-    sprockets (4.2.1)
-      concurrent-ruby (~> 1.0)
-      rack (>= 2.2.4, < 4)
-    sprockets-rails (3.5.2)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      sprockets (>= 3.0.0)
     stringio (3.1.7)
     sucker_punch (3.2.0)
       concurrent-ruby (~> 1.0)
@@ -326,11 +318,6 @@ GEM
       dry-configurable (>= 0.13, < 2)
       jwt (~> 2.1)
       warden (~> 1.2)
-    web-console (4.2.1)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
     webrick (1.8.2)
     websocket-driver (0.7.7)
       base64
@@ -374,13 +361,12 @@ DEPENDENCIES
   rubocop-rails
   sendgrid-actionmailer
   smarter_csv
-  sprockets-rails
   sucker_punch (~> 3.0)
   timecop
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.2.7p253
+  ruby 3.2.6p28
 
 BUNDLED WITH
-   2.3.26
+  4.0.9
