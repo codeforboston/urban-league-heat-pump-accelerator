@@ -1,0 +1,10 @@
+---
+ignore:
+  # active_storage engine is not loaded (removed from application.rb as part
+  # of API-only migration), so the proxy-mode DoS vector does not apply.
+  # Fixing requires upgrading Rails to 7.2+.
+  - CVE-2026-33658
+
+  # Devise Confirmable is not enabled in this project (commented out in User
+  # model), so the change-email race condition does not apply.
+  - CVE-2026-32700

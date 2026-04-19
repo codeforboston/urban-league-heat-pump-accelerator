@@ -21,7 +21,7 @@ class SurveyResponsesController < ApplicationController
     if @survey_response.save
       render :show, status: :created, location: @survey_response
     else
-      render json: @survey_response.errors, status: :unprocessable_entity
+      render json: @survey_response.errors, status: :unprocessable_content
     end
   end
 
@@ -30,7 +30,7 @@ class SurveyResponsesController < ApplicationController
     if @survey_response.update(survey_response_params)
       render :show, status: :ok, location: @survey_response
     else
-      render json: @survey_response.errors, status: :unprocessable_entity
+      render json: @survey_response.errors, status: :unprocessable_content
     end
   end
 

@@ -99,7 +99,7 @@ RSpec.describe '/admin/users', type: :request do
 
       it 'renders a response with 422 status' do
         post admin_users_url, params: { user: invalid_attributes }, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
 
         error_message = JSON.parse(response.body)['email'][0]
         expect(error_message).to eq("can't be blank")
