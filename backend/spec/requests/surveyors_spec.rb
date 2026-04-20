@@ -93,7 +93,6 @@ RSpec.describe '/surveyors', type: :request do
     end
   end
 
-
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new Surveyor' do

@@ -42,7 +42,6 @@ RSpec.describe '/survey_answers', type: :request do
     end
   end
 
-
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new SurveyAnswer' do
