@@ -4,7 +4,7 @@
       "hero": {
         "title": "Save money on your ",
         "titleBold": "heating and cooling bills",
-        "text1": "You may be able to get incentives to install a heat pump, a type of heating and cooling system that can  ",
+        "text1": "Home owners may be able to get incentives to install a heat pump, a type of heating and cooling system that can  ",
         "link": "lower your utility bills",
         "text2": ".",
         "button": "Benefits of heat pumps"
@@ -34,7 +34,7 @@
         "link": "Benefits of Heat Pumps",
         "item1": {
           "title": "Lower energy bills",
-          "text1": "Heat pumps are so energy efficient that they can lead to significant savings on monthly utility bills and lower maintenance, repair and replacement costs."
+          "text1": "Heat pumps are so efficient that they can reduce both monthly utility bills and costs for maintenance & repair."
         },
         "item2": {
           "title": "Comfort at home",
@@ -42,11 +42,11 @@
         },
         "item3": {
           "title": "Stronger communities",
-          "text1": "By helping to lower utility bills, heat pumps can lower the cost of living for residents, which in turn can support residents living on fixed- or low-incomes to remain in their homes longer, strengthening communities."
+          "text1": "Heat pumps help residents to lower their utility bills, and by extension, lower the cost of staying their own homes.This can support residents to resist being “priced out” of their neighborhoods, empowering residents and communities to stay together."
         },
         "item4": {
           "title": "Cleaner air",
-          "text1": "Heat pumps use electricity that can be produced by renewable sources. As the grid becomes more green, heat pumps become much more eco-friendly than gas or oil-fueled systems. With a single “green-powered” unit that heats and cools, your home’s carbon footprint is as low as it can go."
+          "text1": "Heat pumps use less energy to create heating or cooling than gas, oil-fueled, or air-conditioning systems. Heat pumps also emit no carbon and the electricity that powers them can be produced by renewable, non polluting sources. While fossil-fueled combustion systems burn away in the home, heat pumps start out cleaner and only become more eco-friendly as our grid gets greener."
         }
       },
       "partners": {
@@ -180,7 +180,7 @@
     },
     "about-us": {
       "headingbg": "About the Boston Heat Pump Accelerator",
-      "bhpa": "The <1>Boston Heat Pump Accelerator (BHPA)</1> works to support increased access for Boston homeowners to heat pumps and related resources, helping to reduce costs for residents, increase community resilience, and shift the region to low-carbon technologies. This initiative takes no funding from companies or heat pump installers - it supports overall access to heat pumps only, via education and awareness efforts.",
+      "bhpa": "<p>The <1>Boston Heat Pump Accelerator (BHPA)</1> works to support increased access for Boston homeowners to heat pumps and related resources.</p><p>The target outcomes from this effort are increased awareness among residents of heat pumps as an HVAC option, helping to reduce utility costs for residents, increase community resilience by empowering residents to reduce costs of living and stay in their homes, and to shift the region to low-carbon technologies.</p><p>This initiative takes no funding from heat pump companies or HVAC installers. It only promotes access to heat pumps overall, via education and awareness efforts.</p>",
       "ulem1": "The <1> <5>Urban League of Eastern Massachusetts (ULEM)</5> </1> is the sponsor of the BHPA effort. Since 1919, ULEM has delivered workforce and economic development services and programs to increase self-reliance of residents of the Boston community and surrounding metropolitan areas. ULEM is a 501c3 nonprofit organization and one of the oldest affiliates within the National Urban League movement.",
       "ulem2": "The BHPA project is directed by ULEM Board Member Christopher Scranton, in coordination with core partners, listed below.",
       "mcec": "The <0>{{partnerName}}</0> is a quasi-public state economic development agency dedicated to accelerating the growth of the clean energy sector across the Commonwealth, to spur job creation, deliver statewide environmental benefits, and to secure long-term economic growth for the people of Massachusetts. MassCEC provided primary funding to the BHPA project via the EmPower grant program.",
