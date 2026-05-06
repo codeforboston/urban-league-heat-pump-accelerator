@@ -101,7 +101,7 @@ const Partners = () => {
             >
               {t("public.home.partners.text1")}{" "}
               <Link
-                href="https://www.masssave.com/residential/programs-and-services/income-based-offers/income-eligible-programs"
+                href="https://www.bostonhpa.org/public/about-us"
                 target="_blank"
                 rel="noopener"
                 sx={{ color: "var(--color-text-3)" }}
