@@ -16,7 +16,7 @@ class AssignmentsSurveyorsController < ApplicationController
       if @surveyor.save
         format.json { head :no_content, status: :created }
       else
-        format.json { render json: @surveyor.errors, status: :unprocessable_entity }
+        format.json { render json: @surveyor.errors, status: :unprocessable_content }
       end
     end
   end
@@ -33,7 +33,7 @@ class AssignmentsSurveyorsController < ApplicationController
       if @surveyor.save
         format.json { head :no_content }
       else
-        format.json { render json: @surveyor.errors, status: :unprocessable_entity }
+        format.json { render json: @surveyor.errors, status: :unprocessable_content }
       end
     end
   end

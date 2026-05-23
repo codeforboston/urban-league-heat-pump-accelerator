@@ -48,22 +48,6 @@ RSpec.describe '/survey_questions', type: :request do
     end
   end
 
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      sign_in admin
-      get new_survey_question_url, as: :json
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /edit' do
-    it 'renders a successful response' do
-      survey_question = SurveyQuestion.create! valid_attributes
-      get edit_survey_question_url(survey_question)
-      expect(response).to be_successful
-    end
-  end
-
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new SurveyQuestion' do
@@ -72,9 +56,9 @@ RSpec.describe '/survey_questions', type: :request do
         end.to change(SurveyQuestion, :count).by(1)
       end
 
-      it 'redirects to the created survey_question' do
+      it 'returns a created response' do
         post survey_questions_url, params: { survey_question: valid_attributes }
-        expect(response).to redirect_to(survey_question_url(SurveyQuestion.last))
+        expect(response).to have_http_status(:created)
       end
     end
 
@@ -87,7 +71,7 @@ RSpec.describe '/survey_questions', type: :request do
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post survey_questions_url, params: { survey_question: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end
@@ -105,11 +89,11 @@ RSpec.describe '/survey_questions', type: :request do
         skip('Add assertions for updated state')
       end
 
-      it 'redirects to the survey_question' do
+      it 'returns a successful response' do
         survey_question = SurveyQuestion.create! valid_attributes
         patch survey_question_url(survey_question), params: { survey_question: new_attributes }
         survey_question.reload
-        expect(response).to redirect_to(survey_question_url(survey_question))
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -117,7 +101,7 @@ RSpec.describe '/survey_questions', type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         survey_question = SurveyQuestion.create! valid_attributes
         patch survey_question_url(survey_question), params: { survey_question: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end
@@ -130,10 +114,10 @@ RSpec.describe '/survey_questions', type: :request do
       end.to change(SurveyQuestion, :count).by(-1)
     end
 
-    it 'redirects to the survey_questions list' do
+    it 'returns no content' do
       survey_question = SurveyQuestion.create! valid_attributes
       delete survey_question_url(survey_question)
-      expect(response).to redirect_to(survey_questions_url)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end

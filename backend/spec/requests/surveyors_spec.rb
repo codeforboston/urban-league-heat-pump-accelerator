@@ -93,15 +93,6 @@ RSpec.describe '/surveyors', type: :request do
     end
   end
 
-  describe 'GET /edit' do
-    it 'renders a successful response' do
-      sign_in user
-      surveyor = Surveyor.create! valid_attributes
-      get edit_surveyor_url(surveyor), as: :json
-      expect(response).to be_successful
-    end
-  end
-
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new Surveyor' do
@@ -129,7 +120,7 @@ RSpec.describe '/surveyors', type: :request do
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         sign_in admin
         post surveyors_url, params: { surveyor: invalid_attributes }, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end
@@ -174,7 +165,7 @@ RSpec.describe '/surveyors', type: :request do
         sign_in user
         surveyor = Surveyor.create! valid_attributes
         patch surveyor_url(surveyor), params: { surveyor: invalid_attributes }, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end

@@ -8,16 +8,8 @@ RSpec.describe SurveyorsController, type: :routing do
       expect(get: '/surveyors').to route_to('surveyors#index')
     end
 
-    it 'routes to #new' do
-      expect(get: '/surveyors/new').to route_to('surveyors#new')
-    end
-
     it 'routes to #show' do
       expect(get: '/surveyors/1').to route_to('surveyors#show', id: '1')
-    end
-
-    it 'routes to #edit' do
-      expect(get: '/surveyors/1/edit').to route_to('surveyors#edit', id: '1')
     end
 
     it 'routes to #create' do

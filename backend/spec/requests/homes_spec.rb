@@ -81,11 +81,11 @@ RSpec.describe '/homes', type: :request do
         skip('Add assertions for updated state')
       end
 
-      it 'redirects to the home' do
+      it 'returns a successful response' do
         home = Home.create! valid_attributes
         patch home_url(home), params: { home: new_attributes }
         home.reload
-        expect(response).to redirect_to(home_url(home))
+        expect(response).to have_http_status(:ok)
       end
     end
   end

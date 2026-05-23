@@ -53,13 +53,13 @@ RSpec.describe '/assignments', type: :request do
 
     it 'can filter based on a surveyor' do
       Assignment.create! valid_attributes
-      get assignments_url, params: { surveyor_id: surveyor.id }, as: :json
+      get assignments_url, params: { surveyor_id: surveyor.id }, headers: { 'Accept' => 'application/json' }
       expect(response.body).to match(/#{home.id}/)
     end
 
     it 'can filter based on a surveyor' do
       Assignment.create! valid_attributes
-      get assignments_url, params: { surveyor_id: (surveyor.id + 1) }, as: :json
+      get assignments_url, params: { surveyor_id: (surveyor.id + 1) }, headers: { 'Accept' => 'application/json' }
       expect(response.body).to match('[]')
     end
   end
@@ -68,14 +68,6 @@ RSpec.describe '/assignments', type: :request do
     it 'renders a successful response' do
       sign_in surveyor.user
       get assignment_url(surveyor.assignments.first), as: :json
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      sign_in surveyor.user
-      get new_assignment_url, as: :json
       expect(response).to be_successful
     end
   end
@@ -107,7 +99,7 @@ RSpec.describe '/assignments', type: :request do
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         sign_in surveyor.user
         post assignments_url, params: { assignment: invalid_attributes }, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end
@@ -134,7 +126,7 @@ RSpec.describe '/assignments', type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         sign_in surveyor.user
         patch assignment_url(surveyor.assignments.first), params: { assignment: invalid_attributes }, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end

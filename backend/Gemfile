@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '~> 3.2.7'
+ruby '~> 3.3'
 
 gem 'bootsnap', require: false
 gem 'devise'
@@ -15,18 +15,17 @@ gem 'httparty'
 gem 'jbuilder'
 gem 'net-imap', '>= 0.5.7'
 gem 'newrelic_rpm'
-gem 'nokogiri', '>= 1.18.8'
+gem 'nokogiri', '>= 1.19.1'
 gem 'pg', '~> 1.1'
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.0'
 gem 'pundit'
-gem 'rack', '>= 2.2.14'
+gem 'rack', '>= 2.2.22'
 gem 'rack-cors', '~> 2.0'
 gem 'rails', '~> 7.1'
 gem 'rails-html-sanitizer', '>= 1.6'
 gem 'rexml', '>= 3.3'
 gem 'sendgrid-actionmailer'
 gem 'smarter_csv'
-gem 'sprockets-rails'
 gem 'sucker_punch', '~> 3.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
@@ -43,5 +42,4 @@ group :development do
   gem 'bundle-audit'
   gem 'rubocop'
   gem 'rubocop-rails'
-  gem 'web-console'
 end

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-# Implement controller for the home route.
 class HomeController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:index]
+  skip_after_action :verify_authorized
+  skip_after_action :verify_policy_scoped
 
   def index
-    redirect_to new_user_session_path unless current_user
+    render json: { status: 'ok' }, status: :ok
   end
 end
