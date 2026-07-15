@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # Lightweight health check for load balancers (e.g. AWS ALB target groups).
+  # Returns 200 if the app boots without exceptions. Public, no auth.
+  get 'up' => 'rails/health#show', as: :rails_health_check
+
   resources :assignments
   resources :homes
   resources :surveyors
