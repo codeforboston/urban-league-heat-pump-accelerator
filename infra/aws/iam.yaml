@@ -1,0 +1,113 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  BHPA IAM - GitHub Actions OIDC provider + CI deploy role, and ECS task
+  execution/task roles. Part of the OpenShift -> AWS migration (codeforboston acct).
+
+Parameters:
+  GithubRepo:
+    Type: String
+    Default: codeforboston/urban-league-heat-pump-accelerator
+  BhpaSecretsWildcard:
+    Type: String
+    Default: arn:aws:secretsmanager:us-east-1:142103676030:secret:bhpa/*
+  RdsMasterSecretArn:
+    Type: String
+    Default: arn:aws:secretsmanager:us-east-1:142103676030:secret:rds!db-a2ed1d56-1edf-48cc-863f-e64b9d695b4b-BKftmv
+
+Resources:
+  GithubOidc:
+    Type: AWS::IAM::OIDCProvider
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList: [sts.amazonaws.com]
+      ThumbprintList: [1c58a3a8518e8759bf075b76b750d4f2df264fca]
+      Tags: [{ Key: Project, Value: bhpa }]
+
+  EcsTaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: bhpa-ecs-task-execution
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Service: ecs-tasks.amazonaws.com }
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+      Policies:
+        - PolicyName: read-secrets
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: secretsmanager:GetSecretValue
+                Resource: [!Ref BhpaSecretsWildcard, !Ref RdsMasterSecretArn]
+      Tags: [{ Key: Project, Value: bhpa }]
+
+  EcsTaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: bhpa-ecs-task
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Service: ecs-tasks.amazonaws.com }
+            Action: sts:AssumeRole
+      Tags: [{ Key: Project, Value: bhpa }]
+
+  GithubDeployRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: bhpa-github-deploy
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Federated: !Ref GithubOidc }
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+              StringLike:
+                token.actions.githubusercontent.com:sub: !Sub repo:${GithubRepo}:*
+      Policies:
+        - PolicyName: deploy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: EcsDeploy
+                Effect: Allow
+                Action:
+                  - ecs:RegisterTaskDefinition
+                  - ecs:DeregisterTaskDefinition
+                  - ecs:DescribeTaskDefinition
+                  - ecs:UpdateService
+                  - ecs:DescribeServices
+                  - ecs:DescribeTasks
+                  - ecs:ListTasks
+                  - ecs:RunTask
+                Resource: '*'
+              - Sid: PassTaskRoles
+                Effect: Allow
+                Action: iam:PassRole
+                Resource: [!GetAtt EcsTaskExecutionRole.Arn, !GetAtt EcsTaskRole.Arn]
+              - Sid: FrontendS3
+                Effect: Allow
+                Action: [s3:PutObject, s3:DeleteObject, s3:ListBucket, s3:GetObject]
+                Resource:
+                  - arn:aws:s3:::bhpa-frontend-prod
+                  - arn:aws:s3:::bhpa-frontend-prod/*
+                  - arn:aws:s3:::bhpa-frontend-staging
+                  - arn:aws:s3:::bhpa-frontend-staging/*
+              - Sid: CloudFrontInvalidate
+                Effect: Allow
+                Action: cloudfront:CreateInvalidation
+                Resource: '*'
+      Tags: [{ Key: Project, Value: bhpa }]
+
+Outputs:
+  DeployRoleArn: { Value: !GetAtt GithubDeployRole.Arn, Export: { Name: bhpa-deploy-role-arn } }
+  TaskExecutionRoleArn: { Value: !GetAtt EcsTaskExecutionRole.Arn, Export: { Name: bhpa-task-exec-role-arn } }
+  TaskRoleArn: { Value: !GetAtt EcsTaskRole.Arn, Export: { Name: bhpa-task-role-arn } }
