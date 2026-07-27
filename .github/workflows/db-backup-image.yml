@@ -20,7 +20,7 @@ jobs:
            backend/db_backup.Dockerfile
      - name: Push to registry
        id: push-image
-       uses: redhat-actions/push-to-registry@v2
+       uses: redhat-actions/push-to-registry@v3
        with:
          registry: ghcr.io/codeforboston
          image: ${{ steps.build-image.outputs.image }}
