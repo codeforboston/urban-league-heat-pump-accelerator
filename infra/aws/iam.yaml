@@ -55,6 +55,18 @@ Resources:
           - Effect: Allow
             Principal: { Service: ecs-tasks.amazonaws.com }
             Action: sts:AssumeRole
+      Policies:
+        - PolicyName: ecs-exec
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ssmmessages:CreateControlChannel
+                  - ssmmessages:CreateDataChannel
+                  - ssmmessages:OpenControlChannel
+                  - ssmmessages:OpenDataChannel
+                Resource: '*'
       Tags: [{ Key: Project, Value: bhpa }]
 
   GithubDeployRole:
@@ -70,8 +82,12 @@ Resources:
             Condition:
               StringEquals:
                 token.actions.githubusercontent.com:aud: sts.amazonaws.com
+              # Only jobs bound to a GitHub environment can deploy. The
+              # environments' branch policies decide which refs get there.
               StringLike:
-                token.actions.githubusercontent.com:sub: !Sub repo:${GithubRepo}:*
+                token.actions.githubusercontent.com:sub:
+                  - !Sub repo:${GithubRepo}:environment:staging
+                  - !Sub repo:${GithubRepo}:environment:production
       Policies:
         - PolicyName: deploy
           PolicyDocument:
@@ -101,6 +117,14 @@ Resources:
                   - arn:aws:s3:::bhpa-frontend-prod/*
                   - arn:aws:s3:::bhpa-frontend-staging
                   - arn:aws:s3:::bhpa-frontend-staging/*
+              - Sid: MigrationLogs
+                Effect: Allow
+                Action: logs:GetLogEvents
+                Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/ecs/bhpa-*
+              - Sid: ReadAppStackOutputs
+                Effect: Allow
+                Action: cloudformation:DescribeStacks
+                Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/bhpa-app/*
               - Sid: CloudFrontInvalidate
                 Effect: Allow
                 Action: cloudfront:CreateInvalidation
