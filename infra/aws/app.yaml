@@ -1,0 +1,361 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  BHPA app tier - shared ALB, ECS Fargate services for the Rails API (prod +
+  staging), and CloudFront distributions for the React SPA. Builds on the
+  bhpa-foundation and bhpa-iam stacks.
+
+  CI owns the running image: aws-deploy.yml registers new task definition
+  revisions. Pass the currently deployed tag as ImageTag when updating this
+  stack, or the services roll back to whatever tag you give it.
+
+Parameters:
+  ImageTag:
+    Type: String
+    Description: ghcr.io/codeforboston/bhpa-backend tag (a git SHA)
+  ProdDesiredCount:
+    Type: Number
+    Default: 1
+  StagingDesiredCount:
+    Type: Number
+    Default: 1
+  AlbCertArn:
+    Type: String
+    Default: ''
+    Description: ACM cert for api + api.staging. Blank serves plain HTTP until it issues.
+  CloudFrontCertArn:
+    Type: String
+    Default: ''
+    Description: ACM cert for apex, www + staging. Blank serves only *.cloudfront.net.
+  GhcrPullSecretArn:
+    Type: String
+    Default: arn:aws:secretsmanager:us-east-1:142103676030:secret:bhpa/ghcr-pull-XJRw9B
+  RailsMasterKeySecretArn:
+    Type: String
+    Default: arn:aws:secretsmanager:us-east-1:142103676030:secret:bhpa/rails-master-key-PGp0kR
+  DbAppSecretArn:
+    Type: String
+    Default: arn:aws:secretsmanager:us-east-1:142103676030:secret:bhpa/db-app-credentials-swnbcZ
+
+Conditions:
+  HasAlbCert: !Not [!Equals [!Ref AlbCertArn, '']]
+  HasCloudFrontCert: !Not [!Equals [!Ref CloudFrontCertArn, '']]
+
+Mappings:
+  Env:
+    prod:
+      RailsEnv: production
+      ApiHost: api.bostonhpa.org
+      WebHost: www.bostonhpa.org
+      Bucket: bhpa-frontend-prod
+      Cpu: '512'
+      Memory: '1024'
+    staging:
+      RailsEnv: staging
+      ApiHost: api.staging.bostonhpa.org
+      WebHost: staging.bostonhpa.org
+      Bucket: bhpa-frontend-staging
+      Cpu: '256'
+      Memory: '512'
+
+Resources:
+  # ---------------- Load balancer ----------------
+  Alb:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: bhpa-alb
+      Scheme: internet-facing
+      Subnets: [!ImportValue bhpa-public-subnet-1, !ImportValue bhpa-public-subnet-2]
+      SecurityGroups: [!ImportValue bhpa-alb-sg]
+      Tags: [{ Key: Project, Value: bhpa }]
+
+  HttpListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref Alb
+      Port: 80
+      Protocol: HTTP
+      DefaultActions:
+        - !If
+          - HasAlbCert
+          - Type: redirect
+            RedirectConfig: { Protocol: HTTPS, Port: '443', StatusCode: HTTP_301 }
+          - Type: fixed-response
+            FixedResponseConfig: { StatusCode: '404', ContentType: text/plain, MessageBody: not found }
+
+  HttpsListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Condition: HasAlbCert
+    Properties:
+      LoadBalancerArn: !Ref Alb
+      Port: 443
+      Protocol: HTTPS
+      SslPolicy: ELBSecurityPolicy-TLS13-1-2-2021-06
+      Certificates: [{ CertificateArn: !Ref AlbCertArn }]
+      DefaultActions:
+        - Type: fixed-response
+          FixedResponseConfig: { StatusCode: '404', ContentType: text/plain, MessageBody: not found }
+
+  ProdTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      Name: bhpa-prod
+      VpcId: !ImportValue bhpa-vpc-id
+      TargetType: ip
+      Protocol: HTTP
+      Port: 3000
+      HealthCheckPath: /up
+      Matcher: { HttpCode: '200' }
+      TargetGroupAttributes: [{ Key: deregistration_delay.timeout_seconds, Value: '30' }]
+      Tags: [{ Key: Project, Value: bhpa }]
+  StagingTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      Name: bhpa-staging
+      VpcId: !ImportValue bhpa-vpc-id
+      TargetType: ip
+      Protocol: HTTP
+      Port: 3000
+      HealthCheckPath: /up
+      Matcher: { HttpCode: '200' }
+      TargetGroupAttributes: [{ Key: deregistration_delay.timeout_seconds, Value: '30' }]
+      Tags: [{ Key: Project, Value: bhpa }]
+
+  # Rules hang off HTTPS once the cert exists, and off HTTP until then.
+  ProdRule:
+    Type: AWS::ElasticLoadBalancingV2::ListenerRule
+    Properties:
+      ListenerArn: !If [HasAlbCert, !Ref HttpsListener, !Ref HttpListener]
+      Priority: 10
+      Conditions: [{ Field: host-header, HostHeaderConfig: { Values: [!FindInMap [Env, prod, ApiHost]] } }]
+      Actions: [{ Type: forward, TargetGroupArn: !Ref ProdTargetGroup }]
+  StagingRule:
+    Type: AWS::ElasticLoadBalancingV2::ListenerRule
+    Properties:
+      ListenerArn: !If [HasAlbCert, !Ref HttpsListener, !Ref HttpListener]
+      Priority: 20
+      Conditions: [{ Field: host-header, HostHeaderConfig: { Values: [!FindInMap [Env, staging, ApiHost]] } }]
+      Actions: [{ Type: forward, TargetGroupArn: !Ref StagingTargetGroup }]
+
+  # ---------------- ECS ----------------
+  ProdLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties: { LogGroupName: /ecs/bhpa-prod, RetentionInDays: 30 }
+  StagingLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties: { LogGroupName: /ecs/bhpa-staging, RetentionInDays: 30 }
+
+  # The image's ENTRYPOINT runs start.sh, which can't be overridden per task.
+  # Setting entryPoint here lets one-off tasks swap the command (db:migrate).
+  ProdTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: bhpa-backend-prod
+      RequiresCompatibilities: [FARGATE]
+      NetworkMode: awsvpc
+      Cpu: !FindInMap [Env, prod, Cpu]
+      Memory: !FindInMap [Env, prod, Memory]
+      ExecutionRoleArn: !ImportValue bhpa-task-exec-role-arn
+      TaskRoleArn: !ImportValue bhpa-task-role-arn
+      ContainerDefinitions:
+        - Name: backend
+          Image: !Sub ghcr.io/codeforboston/bhpa-backend:${ImageTag}
+          RepositoryCredentials: { CredentialsParameter: !Ref GhcrPullSecretArn }
+          EntryPoint: [bundle, exec]
+          Command: [rails, server, -b, 0.0.0.0, -p, '3000']
+          PortMappings: [{ ContainerPort: 3000 }]
+          Environment:
+            - { Name: RAILS_ENV, Value: !FindInMap [Env, prod, RailsEnv] }
+            - { Name: RAILS_LOG_TO_STDOUT, Value: '1' }
+            - { Name: BOSTON_HEAT_PUMP_ACCELERATOR_HOST, Value: !ImportValue bhpa-db-endpoint }
+          Secrets:
+            - { Name: RAILS_MASTER_KEY, ValueFrom: !Ref RailsMasterKeySecretArn }
+            - { Name: BOSTON_HEAT_PUMP_ACCELERATOR_PASSWORD, ValueFrom: !Sub '${DbAppSecretArn}:password::' }
+          LogConfiguration:
+            LogDriver: awslogs
+            Options: { awslogs-group: !Ref ProdLogGroup, awslogs-region: !Ref AWS::Region, awslogs-stream-prefix: backend }
+      Tags: [{ Key: Project, Value: bhpa }]
+  StagingTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: bhpa-backend-staging
+      RequiresCompatibilities: [FARGATE]
+      NetworkMode: awsvpc
+      Cpu: !FindInMap [Env, staging, Cpu]
+      Memory: !FindInMap [Env, staging, Memory]
+      ExecutionRoleArn: !ImportValue bhpa-task-exec-role-arn
+      TaskRoleArn: !ImportValue bhpa-task-role-arn
+      ContainerDefinitions:
+        - Name: backend
+          Image: !Sub ghcr.io/codeforboston/bhpa-backend:${ImageTag}
+          RepositoryCredentials: { CredentialsParameter: !Ref GhcrPullSecretArn }
+          EntryPoint: [bundle, exec]
+          Command: [rails, server, -b, 0.0.0.0, -p, '3000']
+          PortMappings: [{ ContainerPort: 3000 }]
+          Environment:
+            - { Name: RAILS_ENV, Value: !FindInMap [Env, staging, RailsEnv] }
+            - { Name: RAILS_LOG_TO_STDOUT, Value: '1' }
+            - { Name: BOSTON_HEAT_PUMP_ACCELERATOR_HOST, Value: !ImportValue bhpa-db-endpoint }
+          Secrets:
+            - { Name: RAILS_MASTER_KEY, ValueFrom: !Ref RailsMasterKeySecretArn }
+            - { Name: BOSTON_HEAT_PUMP_ACCELERATOR_PASSWORD, ValueFrom: !Sub '${DbAppSecretArn}:password::' }
+          LogConfiguration:
+            LogDriver: awslogs
+            Options: { awslogs-group: !Ref StagingLogGroup, awslogs-region: !Ref AWS::Region, awslogs-stream-prefix: backend }
+      Tags: [{ Key: Project, Value: bhpa }]
+
+  ProdService:
+    Type: AWS::ECS::Service
+    DependsOn: ProdRule
+    Properties:
+      ServiceName: bhpa-backend-prod
+      Cluster: bhpa
+      LaunchType: FARGATE
+      TaskDefinition: !Ref ProdTaskDefinition
+      DesiredCount: !Ref ProdDesiredCount
+      EnableExecuteCommand: true
+      HealthCheckGracePeriodSeconds: 120
+      DeploymentConfiguration:
+        MinimumHealthyPercent: 100
+        MaximumPercent: 200
+        DeploymentCircuitBreaker: { Enable: true, Rollback: true }
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          Subnets: [!ImportValue bhpa-public-subnet-1, !ImportValue bhpa-public-subnet-2]
+          SecurityGroups: [!ImportValue bhpa-app-sg]
+      LoadBalancers: [{ ContainerName: backend, ContainerPort: 3000, TargetGroupArn: !Ref ProdTargetGroup }]
+      Tags: [{ Key: Project, Value: bhpa }]
+  StagingService:
+    Type: AWS::ECS::Service
+    DependsOn: StagingRule
+    Properties:
+      ServiceName: bhpa-backend-staging
+      Cluster: bhpa
+      LaunchType: FARGATE
+      TaskDefinition: !Ref StagingTaskDefinition
+      DesiredCount: !Ref StagingDesiredCount
+      EnableExecuteCommand: true
+      HealthCheckGracePeriodSeconds: 120
+      DeploymentConfiguration:
+        MinimumHealthyPercent: 100
+        MaximumPercent: 200
+        DeploymentCircuitBreaker: { Enable: true, Rollback: true }
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          Subnets: [!ImportValue bhpa-public-subnet-1, !ImportValue bhpa-public-subnet-2]
+          SecurityGroups: [!ImportValue bhpa-app-sg]
+      LoadBalancers: [{ ContainerName: backend, ContainerPort: 3000, TargetGroupArn: !Ref StagingTargetGroup }]
+      Tags: [{ Key: Project, Value: bhpa }]
+
+  # ---------------- CloudFront ----------------
+  FrontendOac:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name: bhpa-frontend
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+
+  # React Router owns every path, so S3 misses fall back to index.html.
+  ProdDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Comment: bhpa frontend prod
+        Enabled: true
+        HttpVersion: http2and3
+        PriceClass: PriceClass_100
+        DefaultRootObject: index.html
+        Aliases: !If [HasCloudFrontCert, [bostonhpa.org, !FindInMap [Env, prod, WebHost]], !Ref AWS::NoValue]
+        ViewerCertificate: !If
+          - HasCloudFrontCert
+          - { AcmCertificateArn: !Ref CloudFrontCertArn, SslSupportMethod: sni-only, MinimumProtocolVersion: TLSv1.2_2021 }
+          - { CloudFrontDefaultCertificate: true }
+        Origins:
+          - Id: s3
+            DomainName: !Sub
+              - '${Bucket}.s3.${AWS::Region}.amazonaws.com'
+              - Bucket: !FindInMap [Env, prod, Bucket]
+            OriginAccessControlId: !GetAtt FrontendOac.Id
+            S3OriginConfig: { OriginAccessIdentity: '' }
+        DefaultCacheBehavior:
+          TargetOriginId: s3
+          ViewerProtocolPolicy: redirect-to-https
+          Compress: true
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6 # Managed-CachingOptimized
+        CustomErrorResponses:
+          - { ErrorCode: 403, ResponseCode: 200, ResponsePagePath: /index.html, ErrorCachingMinTTL: 10 }
+          - { ErrorCode: 404, ResponseCode: 200, ResponsePagePath: /index.html, ErrorCachingMinTTL: 10 }
+      Tags: [{ Key: Project, Value: bhpa }]
+  StagingDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Comment: bhpa frontend staging
+        Enabled: true
+        HttpVersion: http2and3
+        PriceClass: PriceClass_100
+        DefaultRootObject: index.html
+        Aliases: !If [HasCloudFrontCert, [!FindInMap [Env, staging, WebHost]], !Ref AWS::NoValue]
+        ViewerCertificate: !If
+          - HasCloudFrontCert
+          - { AcmCertificateArn: !Ref CloudFrontCertArn, SslSupportMethod: sni-only, MinimumProtocolVersion: TLSv1.2_2021 }
+          - { CloudFrontDefaultCertificate: true }
+        Origins:
+          - Id: s3
+            DomainName: !Sub
+              - '${Bucket}.s3.${AWS::Region}.amazonaws.com'
+              - Bucket: !FindInMap [Env, staging, Bucket]
+            OriginAccessControlId: !GetAtt FrontendOac.Id
+            S3OriginConfig: { OriginAccessIdentity: '' }
+        DefaultCacheBehavior:
+          TargetOriginId: s3
+          ViewerProtocolPolicy: redirect-to-https
+          Compress: true
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6 # Managed-CachingOptimized
+        CustomErrorResponses:
+          - { ErrorCode: 403, ResponseCode: 200, ResponsePagePath: /index.html, ErrorCachingMinTTL: 10 }
+          - { ErrorCode: 404, ResponseCode: 200, ResponsePagePath: /index.html, ErrorCachingMinTTL: 10 }
+      Tags: [{ Key: Project, Value: bhpa }]
+
+  ProdBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !FindInMap [Env, prod, Bucket]
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Service: cloudfront.amazonaws.com }
+            Action: s3:GetObject
+            Resource: !Sub
+              - 'arn:aws:s3:::${Bucket}/*'
+              - Bucket: !FindInMap [Env, prod, Bucket]
+            Condition:
+              StringEquals:
+                AWS:SourceArn: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${ProdDistribution}
+  StagingBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !FindInMap [Env, staging, Bucket]
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Service: cloudfront.amazonaws.com }
+            Action: s3:GetObject
+            Resource: !Sub
+              - 'arn:aws:s3:::${Bucket}/*'
+              - Bucket: !FindInMap [Env, staging, Bucket]
+            Condition:
+              StringEquals:
+                AWS:SourceArn: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${StagingDistribution}
+
+Outputs:
+  AlbDnsName: { Value: !GetAtt Alb.DNSName, Export: { Name: bhpa-alb-dns } }
+  ProdDistributionId: { Value: !Ref ProdDistribution }
+  ProdDistributionDomain: { Value: !GetAtt ProdDistribution.DomainName }
+  StagingDistributionId: { Value: !Ref StagingDistribution }
+  StagingDistributionDomain: { Value: !GetAtt StagingDistribution.DomainName }
