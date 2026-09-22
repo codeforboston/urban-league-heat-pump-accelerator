@@ -1,17 +1,19 @@
 # BHPA AWS infrastructure
 
-Infrastructure for migrating the Boston Heat Pump Accelerator off NERC OpenShift
-(being shut down) to AWS. Account **142103676030** (shared Code for Boston account),
-region **us-east-1**. Full design: `~/.claude/plans/can-you-review-our-clever-bubble.md`.
+The Boston Heat Pump Accelerator is moving to AWS because NERC OpenShift is shutting down.
+It runs in the shared Code for Boston account (**142103676030**) in **us-east-1**.
 
-Target architecture: React SPA on **S3 + CloudFront**, Rails API on **ECS Fargate**
-behind a shared **ALB** (image pulled from **GHCR**), **RDS PostgreSQL** (single-AZ),
-**ACM** for auto-renewing TLS. Estimated ~$65–75/mo when fully running.
+- **Frontend:** the React SPA is served from **S3 + CloudFront**.
+- **Backend:** the Rails API runs on **ECS Fargate** behind one shared **ALB**. Its image comes from **GHCR**.
+- **Database:** **RDS PostgreSQL**, single-AZ.
+- **TLS:** **ACM** certificates, which renew themselves.
 
-## Running the AWS CLI (important)
+Running everything costs about $65–75/mo.
 
-The shell has ambient **TED-account** credentials that override `AWS_PROFILE`. Always
-pin the profile with the flag and strip the ambient creds:
+## Running the AWS CLI
+
+This shell has **TED-account** credentials set in the environment, and they override
+`AWS_PROFILE`. Always clear them and set the profile explicitly:
 
 ```sh
 env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u AWS_SESSION_TOKEN \
@@ -19,50 +21,70 @@ env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u AWS_SESSION_TOKEN \
 # expect Account 142103676030
 ```
 
-## Deployed so far
+In the commands below, `cfb` stands for that prefix up to and including `aws`.
 
-| Stack / resource | Notes |
-|---|---|
-| CFN `bhpa-foundation` (`foundation.yaml`) | VPC `10.0.0.0/16`, 2 public + 2 private subnets (us-east-1a/1b), IGW, SGs `bhpa-alb-sg`/`bhpa-app-sg`/`bhpa-rds-sg`, **RDS `bhpa-postgres`** (PG 18.4, `db.t4g.micro`, private, encrypted, 14-day backups + PITR, deletion protection) |
-| CFN `bhpa-iam` (`iam.yaml`) | GitHub OIDC provider, deploy role `bhpa-github-deploy`, `bhpa-ecs-task-execution`, `bhpa-ecs-task` |
-| Secrets Manager | `bhpa/rails-master-key`, `bhpa/ghcr-pull` (reused OpenShift GHCR token), `bhpa/db-app-credentials` |
-| ECS | cluster `bhpa` |
-| S3 | `bhpa-frontend-prod`, `bhpa-frontend-staging` (public access blocked) |
-| ACM | ALB cert (`api`, `api.staging`) + CloudFront cert (apex, `www`, `staging`) — DNS-validated via Hover (`hover-dns-records.md`) |
+## Stacks
 
-Deploy/update a stack:
+| Stack | Template | Holds |
+|---|---|---|
+| `bhpa-foundation` | `foundation.yaml` | VPC with 2 public and 2 private subnets, the security groups, RDS `bhpa-postgres` (PG 18, `db.t4g.micro`, encrypted, 14-day PITR) |
+| `bhpa-iam` | `iam.yaml` | GitHub OIDC provider, the deploy role `bhpa-github-deploy`, and the ECS execution and task roles |
+| `bhpa-app` | `app.yaml` | ALB with its target groups, ECS task definitions and services (prod + staging), CloudFront distributions and OAC |
+
+**Created by hand, not in a template:**
+- **Secrets Manager:** `bhpa/rails-master-key`, `bhpa/ghcr-pull` (a GHCR read token), `bhpa/db-app-credentials`, and `bhpa/prod-admin-login` (written by `bootstrap-database`).
+- **ECS:** cluster `bhpa`.
+- **S3:** buckets `bhpa-frontend-prod` and `bhpa-frontend-staging`.
+- **ACM:** the ALB cert (`api`, `api.staging`) and the CloudFront cert (apex, `www`, `staging`). Hover DNS validates both. See `hover-dns-records.md`.
+
+## Deploys
+
+`.github/workflows/deploy.yml` handles every code deploy. A push to `main` deploys staging, and a
+published release deploys prod. For each deploy it:
+1. Builds the backend image and pushes it to GHCR.
+2. Registers a task definition revision with the new image.
+3. Runs `rails db:migrate` as a one-off task.
+4. Rolls the ECS service.
+5. Builds the frontend, syncs it to S3, and invalidates CloudFront.
+
+GitHub environment branch rules limit where each environment can deploy from:
+- **`staging`:** only from `main`.
+- **`production`:** only from release tags (`v*` or `[0-9]*`).
+
+The deploy role trusts only those two environments.
+
+**CI owns the image tag.** When you update `bhpa-app`, pass the tag that's running now:
+
 ```sh
-env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u AWS_SESSION_TOKEN \
-  AWS_PROFILE=codeforboston AWS_REGION=us-east-1 \
-  aws cloudformation deploy --stack-name bhpa-foundation \
-  --template-file foundation.yaml --tags Project=bhpa
+tag=$(cfb ecs describe-task-definition --task-definition bhpa-backend-prod \
+  --query 'taskDefinition.containerDefinitions[0].image' --output text | cut -d: -f2)
+cfb cloudformation deploy --stack-name bhpa-app --template-file app.yaml --tags Project=bhpa \
+  --parameter-overrides ImageTag=$tag
 ```
 
-## Remaining steps (each begins/continues ongoing spend — do when ready)
+Otherwise the services roll back to whatever tag the stack had last.
 
-1. **DB restore** (~pennies, one-off). Bastion IAM role `bhpa-restore-bastion` is
-   already created. Launch a short-lived `t3.micro` in `subnet-0ed4844590a3e96a6` with
-   SG `sg-003d8fccf83a71f89` and that instance profile; via SSM `dnf install postgresql15`,
-   pull master creds from the RDS-managed secret + app password from
-   `bhpa/db-app-credentials`, create role `boston_heat_pump_accelerator` + databases
-   `..._production`/`..._staging`, `pg_restore` the latest
-   `s3://bostonhpa.org-database-backup/*.bak` into `_production`, verify counts, then
-   **terminate the instance**. (Never print PII rows.)
-2. **ALB + target groups** (~$18/mo). Shared ALB in the public subnets, HTTPS:443 with
-   the ALB ACM cert, host rules: `api.bostonhpa.org`→prod TG, `api.staging`→staging TG,
-   HTTP:80→443 redirect. Health check path `/up`.
-3. **ECS task defs + services** (~$27/mo). Task defs pull `ghcr.io/codeforboston/bhpa-backend`
-   via `repositoryCredentials` = `bhpa/ghcr-pull`, inject secrets, run in public subnets
-   (`assignPublicIp`), app SG. 1 task each (prod 0.5vCPU/1GB, staging 0.25/0.5).
-4. **CloudFront** (usage-based). Two distributions (prod + staging) over the S3 buckets
-   with the CloudFront cert; SPA fallback = custom error 403/404 → `/index.html` (200).
-5. **Workflow cutover** (repo). Add `aws-deploy.yml`, rewrite `deploy.yml`, delete
-   `openshift.yml` / `delete-certificates.yml` / `db-backup-image.yml`, and drop
-   `rails db:prepare` from `backend/start.sh` (migrations become a pre-deploy ECS task).
-6. **DNS traffic cutover at Hover**. Point `api`/`api.staging` → ALB, `www`/`staging` →
-   CloudFront; keep apex forwarding to `www`.
-7. **Decommission OpenShift** after a soak period.
+**Rails console:** the services have ECS Exec enabled.
 
-## Current burn
-Only **RDS `bhpa-postgres`** is billing (~$15/mo). ALB/Fargate/CloudFront are not yet
-created, so no charges from those until step 2+.
+```sh
+cfb ecs execute-command --cluster bhpa --task <task-id> --container backend --interactive \
+  --command "bundle exec rails console"
+```
+
+## Bring-up checklist
+
+1. **Certificates.** The Hover CNAMEs are in `hover-dns-records.md`, section 1. Wait until both certs show ISSUED:
+   `cfb acm list-certificates --query "CertificateSummaryList[].[DomainName,Status]"`
+2. **Update `bhpa-iam`.** This limits the deploy role's trust, adds ECS Exec, and lets CI read logs and stack outputs:
+   `cfb cloudformation deploy --stack-name bhpa-iam --template-file iam.yaml --capabilities CAPABILITY_NAMED_IAM --tags Project=bhpa`
+3. **Create `bhpa-app` with nothing running.** Services at 0 tasks, HTTP only until the certs are passed in:
+   `cfb cloudformation deploy --stack-name bhpa-app --template-file app.yaml --tags Project=bhpa --parameter-overrides ImageTag=<main sha> ProdDesiredCount=0 StagingDesiredCount=0`
+4. **Load the database.** `ruby infra/aws/bootstrap-database` creates the role and databases, loads the schema and seeds, and replaces the public seed passwords in prod.
+5. **Merge the migration PR.** The staging deploy pushes an image that includes `/up`.
+6. **Start the services and add the certs:**
+   `… --parameter-overrides ImageTag=<that sha> ProdDesiredCount=1 StagingDesiredCount=1 AlbCertArn=<arn> CloudFrontCertArn=<arn>`
+7. **Verify, then move DNS.** See `hover-dns-records.md`, section 2. Move staging first, then prod after a release.
+8. **Decommission OpenShift.** After a soak period:
+   1. Delete `delete-certificates.yml`.
+   2. Remove the `OPENSHIFT_*` secrets and the old `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY` repo secrets.
+   3. Archive `s3://bostonhpa.org-database-backup`.
