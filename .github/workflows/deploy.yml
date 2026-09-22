@@ -1,35 +1,132 @@
 name: Deploy
 
+# Pushes to main deploy staging; published releases deploy prod.
+# Infrastructure lives in infra/aws (CloudFormation stacks bhpa-foundation,
+# bhpa-iam, bhpa-app). This workflow only ships new code onto it.
 on:
-  # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
   release:
     types: [published]
   push:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+  packages: write
+
+concurrency:
+  group: deploy-${{ github.event_name == 'release' && 'prod' || 'staging' }}
+  cancel-in-progress: false
+
+env:
+  AWS_REGION: us-east-1
+  AWS_ROLE_ARN: arn:aws:iam::142103676030:role/bhpa-github-deploy
+  STAGE: ${{ github.event_name == 'release' && 'prod' || 'staging' }}
+  IMAGE: ghcr.io/codeforboston/bhpa-backend:${{ github.sha }}
+
 jobs:
-  deploy-server:
-    uses: ./.github/workflows/openshift.yml
-    secrets: inherit
-    with:
-      environment: ${{ github.event_name == 'release' && 'production' || 'staging' }}
-      app: ${{ github.event_name == 'release' && 'bhpa-backend' || 'bhpa-backend-staging' }}
-      image_name: 'bhpa-backend'
-      context: backend
-      port: 3000
-  deploy-website:
-    uses: ./.github/workflows/openshift.yml
-    secrets: inherit
-    with:
-      environment: ${{ github.event_name == 'release' && 'production' || 'staging' }}
-      app: ${{ github.event_name == 'release' && 'bhpa-frontend' || 'bhpa-frontend-staging' }}
-      image_name: bhpa-frontend
-      context: frontend/front
-      port: 8080
-      build-args: |
-        REACT_APP_GIT_SHA=${{ github.sha }}
-        REACT_APP_GIT_REF=${{ github.ref_name }}
-        REACT_APP_RECAPTCHA_KEY=6LdHAxYmAAAAAHGN0eNzJhGpCrxm7FisXyZoy8cr
-        REACT_APP_PUBLIC_SURVEY_ENABLED='false'
-        REACT_APP_API_URL=${{ github.event_name == 'release' && 'https://api.bostonhpa.org' || 'https://api.staging.bostonhpa.org' }}
+  backend:
+    runs-on: ubuntu-24.04
+    environment: ${{ github.event_name == 'release' && 'production' || 'staging' }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: backend/Dockerfile
+          push: true
+          tags: ${{ env.IMAGE }}
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # Copy the live task definition and swap only the image, so CPU, env,
+      # and secrets stay owned by infra/aws/app.yaml.
+      - name: Register task definition
+        run: |
+          aws ecs describe-task-definition --task-definition "bhpa-backend-$STAGE" --query taskDefinition \
+            | jq --arg image "$IMAGE" '.containerDefinitions[0].image = $image
+                | del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities,
+                      .registeredAt, .registeredBy, .deregisteredAt)' > task-definition.json
+          arn=$(aws ecs register-task-definition --cli-input-json file://task-definition.json \
+            --query taskDefinition.taskDefinitionArn --output text)
+          echo "TASK_DEFINITION=$arn" >> "$GITHUB_ENV"
+
+      - name: Migrate database
+        run: |
+          network=$(aws ecs describe-services --cluster bhpa --services "bhpa-backend-$STAGE" \
+            --query 'services[0].networkConfiguration' --output json)
+          task=$(aws ecs run-task --cluster bhpa --launch-type FARGATE --task-definition "$TASK_DEFINITION" \
+            --network-configuration "$network" \
+            --overrides '{"containerOverrides":[{"name":"backend","command":["rails","db:migrate"]}]}' \
+            --query 'tasks[0].taskArn' --output text)
+          aws ecs wait tasks-stopped --cluster bhpa --tasks "$task"
+          aws logs get-log-events --log-group-name "/ecs/bhpa-$STAGE" \
+            --log-stream-name "backend/backend/${task##*/}" --query 'events[].message' --output text || true
+          status=$(aws ecs describe-tasks --cluster bhpa --tasks "$task" --query 'tasks[0].containers[0].exitCode' --output text)
+          test "$status" = 0
+
+      - name: Deploy service
+        run: |
+          aws ecs update-service --cluster bhpa --service "bhpa-backend-$STAGE" \
+            --task-definition "$TASK_DEFINITION" > /dev/null
+          aws ecs wait services-stable --cluster bhpa --services "bhpa-backend-$STAGE"
+
+  frontend:
+    runs-on: ubuntu-24.04
+    environment: ${{ github.event_name == 'release' && 'production' || 'staging' }}
+    defaults:
+      run:
+        working-directory: frontend/front
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: yarn
+          cache-dependency-path: frontend/front/yarn.lock
+
+      - run: yarn install --frozen-lockfile
+
+      # CI=false keeps react-scripts from failing the build on lint warnings,
+      # matching the old Docker build.
+      - run: yarn build
+        env:
+          CI: false
+          REACT_APP_API_URL: ${{ github.event_name == 'release' && 'https://api.bostonhpa.org' || 'https://api.staging.bostonhpa.org' }}
+          REACT_APP_RECAPTCHA_KEY: 6LdHAxYmAAAAAHGN0eNzJhGpCrxm7FisXyZoy8cr
+          REACT_APP_PUBLIC_SURVEY_ENABLED: 'false'
+          REACT_APP_GIT_SHA: ${{ github.sha }}
+          REACT_APP_GIT_REF: ${{ github.ref_name }}
+          REACT_APP_NR_ACCOUNT_ID: ${{ secrets.REACT_APP_NR_ACCOUNT_ID }}
+          REACT_APP_NR_LICENSE_KEY: ${{ secrets.REACT_APP_NR_LICENSE_KEY }}
+          REACT_APP_NR_APP_ID: ${{ secrets.REACT_APP_NR_APP_ID }}
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # Hashed assets under static/ are cached forever. Everything else,
+      # index.html included, revalidates so a deploy shows up at once.
+      - name: Publish to S3 and CloudFront
+        run: |
+          bucket=bhpa-frontend-$STAGE
+          aws s3 sync build/static "s3://$bucket/static" --delete \
+            --cache-control 'public, max-age=31536000, immutable'
+          aws s3 sync build "s3://$bucket" --delete --exclude 'static/*' --cache-control 'no-cache'
+          output=$([ "$STAGE" = prod ] && echo ProdDistributionId || echo StagingDistributionId)
+          distribution=$(aws cloudformation describe-stacks --stack-name bhpa-app \
+            --query "Stacks[0].Outputs[?OutputKey=='$output'].OutputValue" --output text)
+          aws cloudfront create-invalidation --distribution-id "$distribution" --paths '/*' > /dev/null
