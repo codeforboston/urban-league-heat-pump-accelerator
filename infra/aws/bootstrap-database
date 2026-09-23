@@ -115,7 +115,7 @@ def prepare(stage)
                         containerOverrides: [{ name: "backend", command: %w[rails db:prepare] }] })
 end
 
-SCRUB_SEEDED_PASSWORDS = <<~RUBY
+SCRUB_SEEDED_PASSWORDS = <<~'RUBY'
   require "csv"
   emails = CSV.read("lib/seeds/test_users.csv", headers: true).map { |row| row["email"] }
   User.where(email: emails).find_each do |user|
