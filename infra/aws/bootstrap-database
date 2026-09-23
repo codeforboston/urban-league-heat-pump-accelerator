@@ -1,0 +1,150 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# One-time setup of the empty bhpa-postgres instance, run after the bhpa-app
+# stack exists. Safe to re-run: every step skips work that's already done.
+#
+#   1. Creates the app role and both databases as the RDS master user.
+#   2. Loads schema + seeds into staging and production via `rails db:prepare`.
+#   3. Replaces the seeded production passwords (public in lib/seeds) with
+#      random ones, keeping admin@heat.pump's in bhpa/prod-admin-login.
+#
+# Uses the codeforboston profile and strips the ambient credentials that
+# otherwise win over AWS_PROFILE on this machine.
+
+require "json"
+require "open3"
+require "securerandom"
+
+AWS_ENV = { "AWS_PROFILE" => "codeforboston", "AWS_REGION" => "us-east-1", "AWS_PAGER" => "",
+            "AWS_ACCESS_KEY_ID" => nil, "AWS_SECRET_ACCESS_KEY" => nil, "AWS_SESSION_TOKEN" => nil }.freeze
+CLUSTER = "bhpa"
+ADMIN_SECRET = "bhpa/prod-admin-login"
+
+def aws(*args, allow_failure: false)
+  out, err, status = Open3.capture3(AWS_ENV, "aws", *args, "--output", "json")
+  return if allow_failure && !status.success?
+  abort "aws #{args.first(2).join(' ')} failed: #{err}" unless status.success?
+  out.empty? ? nil : JSON.parse(out)
+end
+
+def export(name)
+  aws("cloudformation", "list-exports")["Exports"].find { |e| e["Name"] == name }&.fetch("Value") or abort "missing export #{name}"
+end
+
+def network
+  { awsvpcConfiguration: { subnets: [export("bhpa-public-subnet-1"), export("bhpa-public-subnet-2")],
+                           securityGroups: [export("bhpa-app-sg")], assignPublicIp: "ENABLED" } }.to_json
+end
+
+# Seeding outlasts the CLI's 10-minute tasks-stopped waiter, so poll instead.
+def wait_until_stopped(task)
+  loop do
+    described = aws("ecs", "describe-tasks", "--cluster", CLUSTER, "--tasks", task)["tasks"].first
+    return described if described["lastStatus"] == "STOPPED"
+
+    sleep 15
+  end
+end
+
+# Runs a one-off Fargate task, prints its log, and aborts unless it exits 0.
+def run_task(task_definition, log_group:, overrides: {})
+  task = aws("ecs", "run-task", "--cluster", CLUSTER, "--launch-type", "FARGATE",
+             "--task-definition", task_definition, "--network-configuration", network,
+             "--overrides", overrides.to_json)["tasks"].first["taskArn"]
+  id = task.split("/").last
+  puts "  task #{id} running…"
+
+  stopped = wait_until_stopped(task)
+  container = stopped["containers"].first
+  stream = "#{container['name']}/#{container['name']}/#{id}" # each awslogs prefix matches its container name
+  aws("logs", "get-log-events", "--log-group-name", log_group, "--log-stream-name", stream, allow_failure: true)
+    &.fetch("events")&.each { |e| puts "    #{e['message']}" }
+  return if container["exitCode"]&.zero?
+
+  abort "  failed (exit #{container['exitCode'].inspect}): #{container['reason'] || stopped['stoppedReason']}"
+end
+
+CREATE_ROLE_AND_DATABASES = <<~SQL
+  SELECT format('CREATE ROLE %I LOGIN', :'app_user')
+    WHERE NOT EXISTS (SELECT FROM pg_roles WHERE rolname = :'app_user') \\gexec
+  ALTER ROLE :"app_user" PASSWORD :'app_password';
+  GRANT :"app_user" TO CURRENT_USER;
+  SELECT format('CREATE DATABASE %I OWNER %I', name, :'app_user')
+    FROM unnest(ARRAY[:'db_production', :'db_staging']) AS name
+    WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = name) \\gexec
+SQL
+
+def create_role_and_databases
+  puts "Creating app role and databases"
+  app_secret = aws("secretsmanager", "describe-secret", "--secret-id", "bhpa/db-app-credentials")["ARN"]
+  master_secret = export("bhpa-db-master-secret-arn")
+  db = JSON.parse(aws("secretsmanager", "get-secret-value", "--secret-id", app_secret)["SecretString"])
+
+  aws("logs", "create-log-group", "--log-group-name", "/ecs/bhpa-bootstrap", allow_failure: true)
+  psql = "printf '%s' \"$SQL\" | psql -v ON_ERROR_STOP=1 -v app_user=\"$APP_USER\" -v app_password=\"$APP_PASSWORD\" " \
+         "-v db_production=#{db['dbname_production']} -v db_staging=#{db['dbname_staging']}"
+  definition = {
+    family: "bhpa-db-bootstrap", requiresCompatibilities: ["FARGATE"], networkMode: "awsvpc",
+    cpu: "256", memory: "512", executionRoleArn: export("bhpa-task-exec-role-arn"),
+    containerDefinitions: [{
+      name: "bootstrap", image: "public.ecr.aws/docker/library/postgres:18-alpine", essential: true,
+      command: ["sh", "-c", psql],
+      environment: [{ name: "PGHOST", value: export("bhpa-db-endpoint") }, { name: "PGDATABASE", value: "postgres" },
+                    { name: "PGSSLMODE", value: "require" }, { name: "SQL", value: CREATE_ROLE_AND_DATABASES }],
+      secrets: [{ name: "PGUSER", valueFrom: "#{master_secret}:username::" },
+                { name: "PGPASSWORD", valueFrom: "#{master_secret}:password::" },
+                { name: "APP_USER", valueFrom: "#{app_secret}:username::" },
+                { name: "APP_PASSWORD", valueFrom: "#{app_secret}:password::" }],
+      logConfiguration: { logDriver: "awslogs", options: { "awslogs-group" => "/ecs/bhpa-bootstrap",
+                                                            "awslogs-region" => "us-east-1",
+                                                            "awslogs-stream-prefix" => "bootstrap" } }
+    }]
+  }
+  arn = aws("ecs", "register-task-definition", "--cli-input-json", definition.to_json)["taskDefinition"]["taskDefinitionArn"]
+  run_task(arn, log_group: "/ecs/bhpa-bootstrap")
+ensure
+  aws("ecs", "deregister-task-definition", "--task-definition", arn, allow_failure: true) if arn
+end
+
+# Seeding ~50k parcels is too slow for the services' small task sizes.
+def prepare(stage)
+  puts "Loading schema and seeds into #{stage}"
+  run_task("bhpa-backend-#{stage}", log_group: "/ecs/bhpa-#{stage}",
+           overrides: { cpu: "1024", memory: "2048",
+                        containerOverrides: [{ name: "backend", command: %w[rails db:prepare] }] })
+end
+
+SCRUB_SEEDED_PASSWORDS = <<~'RUBY'
+  require "csv"
+  emails = CSV.read("lib/seeds/test_users.csv", headers: true).map { |row| row["email"] }
+  User.where(email: emails).find_each do |user|
+    password = user.email == "admin@heat.pump" ? ENV.fetch("ADMIN_PASSWORD") : SecureRandom.base58(32)
+    user.update!(password:)
+  end
+  puts "reset #{emails.size} seeded passwords"
+RUBY
+
+# The seed passwords are in the public repo. The admin's new password is
+# stored before the task runs so a failure can't leave it unrecorded.
+def scrub_production_passwords
+  puts "Replacing seeded production passwords"
+  password = SecureRandom.alphanumeric(24)
+  login = { email: "admin@heat.pump", password: }.to_json
+  if aws("secretsmanager", "list-secrets", "--filters", "Key=name,Values=#{ADMIN_SECRET}")["SecretList"].any?
+    aws("secretsmanager", "put-secret-value", "--secret-id", ADMIN_SECRET, "--secret-string", login)
+  else
+    aws("secretsmanager", "create-secret", "--name", ADMIN_SECRET, "--secret-string", login,
+        "--tags", "Key=Project,Value=bhpa")
+  end
+  run_task("bhpa-backend-prod", log_group: "/ecs/bhpa-prod",
+           overrides: { containerOverrides: [{ name: "backend", command: ["rails", "runner", SCRUB_SEEDED_PASSWORDS],
+                                               environment: [{ name: "ADMIN_PASSWORD", value: password }] }] })
+  puts "  admin login saved in Secrets Manager as #{ADMIN_SECRET}"
+end
+
+create_role_and_databases
+prepare("staging")
+prepare("prod")
+scrub_production_passwords
+puts "Done."
