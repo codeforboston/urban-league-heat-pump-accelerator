@@ -22,7 +22,7 @@ module Users
       if @user
         head :ok
       else
-        head :unprocessable_entity
+        head :unprocessable_content
       end
     end
 

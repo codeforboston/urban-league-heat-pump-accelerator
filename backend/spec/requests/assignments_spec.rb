@@ -107,7 +107,7 @@ RSpec.describe '/assignments', type: :request do
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         sign_in surveyor.user
         post assignments_url, params: { assignment: invalid_attributes }, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end
@@ -134,7 +134,7 @@ RSpec.describe '/assignments', type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         sign_in surveyor.user
         patch assignment_url(surveyor.assignments.first), params: { assignment: invalid_attributes }, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end
