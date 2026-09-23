@@ -129,7 +129,7 @@ RUBY
 # stored before the task runs so a failure can't leave it unrecorded.
 def scrub_production_passwords
   puts "Replacing seeded production passwords"
-  password = SecureRandom.base58(24)
+  password = SecureRandom.alphanumeric(24)
   login = { email: "admin@heat.pump", password: }.to_json
   if aws("secretsmanager", "list-secrets", "--filters", "Key=name,Values=#{ADMIN_SECRET}")["SecretList"].any?
     aws("secretsmanager", "put-secret-value", "--secret-id", ADMIN_SECRET, "--secret-string", login)
