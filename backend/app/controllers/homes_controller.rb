@@ -29,7 +29,7 @@ class HomesController < ApplicationController
       if @home.save
         format.json { render :show, status: :created, location: @home }
       else
-        format.json { render json: @home.errors, status: :unprocessable_entity }
+        format.json { render json: @home.errors, status: :unprocessable_content }
       end
     end
   end
@@ -40,7 +40,7 @@ class HomesController < ApplicationController
       if @home.update(home_params)
         format.json { render :show, status: :ok, location: @home }
       else
-        format.json { render json: @home.errors, status: :unprocessable_entity }
+        format.json { render json: @home.errors, status: :unprocessable_content }
       end
     end
   end

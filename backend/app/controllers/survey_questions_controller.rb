@@ -31,7 +31,7 @@ class SurveyQuestionsController < ApplicationController
         end
         format.json { render :show, status: :created, location: @survey_question }
       else
-        format.json { render json: @survey_question.errors, status: :unprocessable_entity }
+        format.json { render json: @survey_question.errors, status: :unprocessable_content }
       end
     end
   end
@@ -45,7 +45,7 @@ class SurveyQuestionsController < ApplicationController
         end
         format.json { render :show, status: :ok, location: @survey_question }
       else
-        format.json { render json: @survey_question.errors, status: :unprocessable_entity }
+        format.json { render json: @survey_question.errors, status: :unprocessable_content }
       end
     end
   end

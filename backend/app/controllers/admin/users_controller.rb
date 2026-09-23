@@ -12,7 +12,7 @@ module Admin
         if @user.save
           format.json { render json: @user, status: :created }
         else
-          format.json { render json: @user.errors, status: :unprocessable_entity }
+          format.json { render json: @user.errors, status: :unprocessable_content }
         end
       end
     end
