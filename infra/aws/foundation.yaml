@@ -1,0 +1,173 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  BHPA (Boston Heat Pump Accelerator) AWS foundation - networking, security groups,
+  and RDS PostgreSQL. Part of the migration off NERC OpenShift. Deployed via the
+  AWS CLI in the shared codeforboston account (142103676030), us-east-1.
+
+Parameters:
+  ProjectTag:
+    Type: String
+    Default: bhpa
+  DBEngineVersion:
+    Type: String
+    Default: '18.4'
+  DBInstanceClass:
+    Type: String
+    Default: db.t4g.micro
+  DBAllocatedStorage:
+    Type: Number
+    Default: 20
+
+Resources:
+  # ---------------- VPC + networking ----------------
+  Vpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags: [{ Key: Name, Value: bhpa-vpc }, { Key: Project, Value: !Ref ProjectTag }]
+
+  Igw:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags: [{ Key: Name, Value: bhpa-igw }, { Key: Project, Value: !Ref ProjectTag }]
+  IgwAttach:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties: { VpcId: !Ref Vpc, InternetGatewayId: !Ref Igw }
+
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref Vpc
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: us-east-1a
+      MapPublicIpOnLaunch: true
+      Tags: [{ Key: Name, Value: bhpa-public-1a }, { Key: Project, Value: !Ref ProjectTag }]
+  PublicSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref Vpc
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: us-east-1b
+      MapPublicIpOnLaunch: true
+      Tags: [{ Key: Name, Value: bhpa-public-1b }, { Key: Project, Value: !Ref ProjectTag }]
+  PrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref Vpc
+      CidrBlock: 10.0.10.0/24
+      AvailabilityZone: us-east-1a
+      Tags: [{ Key: Name, Value: bhpa-private-1a }, { Key: Project, Value: !Ref ProjectTag }]
+  PrivateSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref Vpc
+      CidrBlock: 10.0.11.0/24
+      AvailabilityZone: us-east-1b
+      Tags: [{ Key: Name, Value: bhpa-private-1b }, { Key: Project, Value: !Ref ProjectTag }]
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref Vpc
+      Tags: [{ Key: Name, Value: bhpa-public-rt }, { Key: Project, Value: !Ref ProjectTag }]
+  PublicDefaultRoute:
+    Type: AWS::EC2::Route
+    DependsOn: IgwAttach
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref Igw
+  PublicAssoc1:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: { RouteTableId: !Ref PublicRouteTable, SubnetId: !Ref PublicSubnet1 }
+  PublicAssoc2:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: { RouteTableId: !Ref PublicRouteTable, SubnetId: !Ref PublicSubnet2 }
+
+  # ---------------- Security groups ----------------
+  AlbSg:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: bhpa ALB - public HTTP/HTTPS
+      VpcId: !Ref Vpc
+      SecurityGroupIngress:
+        - { IpProtocol: tcp, FromPort: 80, ToPort: 80, CidrIp: 0.0.0.0/0 }
+        - { IpProtocol: tcp, FromPort: 443, ToPort: 443, CidrIp: 0.0.0.0/0 }
+      Tags: [{ Key: Name, Value: bhpa-alb-sg }, { Key: Project, Value: !Ref ProjectTag }]
+  AppSg:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: bhpa Fargate app - traffic from ALB only
+      VpcId: !Ref Vpc
+      Tags: [{ Key: Name, Value: bhpa-app-sg }, { Key: Project, Value: !Ref ProjectTag }]
+  AppSgFromAlb:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: !Ref AppSg
+      IpProtocol: tcp
+      FromPort: 3000
+      ToPort: 3000
+      SourceSecurityGroupId: !Ref AlbSg
+  RdsSg:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: bhpa RDS - Postgres from app only
+      VpcId: !Ref Vpc
+      Tags: [{ Key: Name, Value: bhpa-rds-sg }, { Key: Project, Value: !Ref ProjectTag }]
+  RdsSgFromApp:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: !Ref RdsSg
+      IpProtocol: tcp
+      FromPort: 5432
+      ToPort: 5432
+      SourceSecurityGroupId: !Ref AppSg
+
+  # ---------------- RDS PostgreSQL ----------------
+  DbSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: bhpa private DB subnets
+      SubnetIds: [!Ref PrivateSubnet1, !Ref PrivateSubnet2]
+      Tags: [{ Key: Project, Value: !Ref ProjectTag }]
+
+  Database:
+    Type: AWS::RDS::DBInstance
+    DeletionPolicy: Snapshot
+    UpdateReplacePolicy: Snapshot
+    Properties:
+      DBInstanceIdentifier: bhpa-postgres
+      Engine: postgres
+      EngineVersion: !Ref DBEngineVersion
+      DBInstanceClass: !Ref DBInstanceClass
+      AllocatedStorage: !Ref DBAllocatedStorage
+      StorageType: gp3
+      StorageEncrypted: true
+      MasterUsername: bhpa_admin
+      ManageMasterUserPassword: true
+      DBSubnetGroupName: !Ref DbSubnetGroup
+      VPCSecurityGroups: [!Ref RdsSg]
+      MultiAZ: false
+      PubliclyAccessible: false
+      BackupRetentionPeriod: 14
+      DeletionProtection: true
+      EnablePerformanceInsights: false
+      AutoMinorVersionUpgrade: true
+      Tags: [{ Key: Name, Value: bhpa-postgres }, { Key: Project, Value: !Ref ProjectTag }]
+
+Outputs:
+  VpcId: { Value: !Ref Vpc, Export: { Name: bhpa-vpc-id } }
+  PublicSubnet1Id: { Value: !Ref PublicSubnet1, Export: { Name: bhpa-public-subnet-1 } }
+  PublicSubnet2Id: { Value: !Ref PublicSubnet2, Export: { Name: bhpa-public-subnet-2 } }
+  PrivateSubnet1Id: { Value: !Ref PrivateSubnet1, Export: { Name: bhpa-private-subnet-1 } }
+  PrivateSubnet2Id: { Value: !Ref PrivateSubnet2, Export: { Name: bhpa-private-subnet-2 } }
+  AlbSgId: { Value: !Ref AlbSg, Export: { Name: bhpa-alb-sg } }
+  AppSgId: { Value: !Ref AppSg, Export: { Name: bhpa-app-sg } }
+  RdsSgId: { Value: !Ref RdsSg, Export: { Name: bhpa-rds-sg } }
+  DbEndpoint: { Value: !GetAtt Database.Endpoint.Address, Export: { Name: bhpa-db-endpoint } }
+  DbPort: { Value: !GetAtt Database.Endpoint.Port, Export: { Name: bhpa-db-port } }
+  DbMasterSecretArn:
+    Value: !GetAtt Database.MasterUserSecret.SecretArn
+    Export: { Name: bhpa-db-master-secret-arn }
