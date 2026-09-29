@@ -35,7 +35,7 @@ class AssignmentsController < ApplicationController
       if @assignment.save
         format.json { render :show, status: :created, location: @assignment }
       else
-        format.json { render json: @assignment.errors, status: :unprocessable_entity }
+        format.json { render json: @assignment.errors, status: :unprocessable_content }
       end
     end
   end
@@ -46,7 +46,7 @@ class AssignmentsController < ApplicationController
       if @assignment.update(assignment_params)
         format.json { render :show, status: :ok, location: @assignment }
       else
-        format.json { render json: @assignment.errors, status: :unprocessable_entity }
+        format.json { render json: @assignment.errors, status: :unprocessable_content }
       end
     end
   end

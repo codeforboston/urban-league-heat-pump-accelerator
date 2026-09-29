@@ -46,7 +46,7 @@ class SurveyVisitsController < ApplicationController
           end
         end
       else
-        format.json { render json: @survey_visit.errors, status: :unprocessable_entity }
+        format.json { render json: @survey_visit.errors, status: :unprocessable_content }
       end
     end
   end
@@ -57,7 +57,7 @@ class SurveyVisitsController < ApplicationController
       if @survey_visit.update(survey_visit_params)
         format.json { render :show, status: :ok, location: @survey_visit }
       else
-        format.json { render json: @survey_visit.errors, status: :unprocessable_entity }
+        format.json { render json: @survey_visit.errors, status: :unprocessable_content }
       end
     end
   end

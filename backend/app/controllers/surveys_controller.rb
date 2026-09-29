@@ -49,7 +49,7 @@ class SurveysController < ApplicationController
       if @survey.save
         format.json { render :show, status: :created, location: @survey }
       else
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
+        format.json { render json: @survey.errors, status: :unprocessable_content }
       end
     end
   end
@@ -60,7 +60,7 @@ class SurveysController < ApplicationController
       if @survey.update(survey_params)
         format.json { render :show, status: :ok, location: @survey }
       else
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
+        format.json { render json: @survey.errors, status: :unprocessable_content }
       end
     end
   end

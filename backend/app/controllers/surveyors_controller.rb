@@ -30,7 +30,7 @@ class SurveyorsController < ApplicationController
       if @surveyor.save
         format.json { render json: @surveyor, status: :created }
       else
-        format.json { render json: @surveyor.errors, status: :unprocessable_entity }
+        format.json { render json: @surveyor.errors, status: :unprocessable_content }
       end
     end
   end
@@ -41,7 +41,7 @@ class SurveyorsController < ApplicationController
       if @surveyor.update(surveyor_params)
         format.json { render :show, status: :ok, location: @surveyor }
       else
-        format.json { render json: @surveyor.errors, status: :unprocessable_entity }
+        format.json { render json: @surveyor.errors, status: :unprocessable_content }
       end
     end
   end
