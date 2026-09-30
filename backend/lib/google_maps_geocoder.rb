@@ -118,8 +118,8 @@ class GoogleMapsGeocoder
   end
 
   def self.find_address_in_google_api(address, home)
-    url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{GEOCODER_API_KEY}&address=#{address}"
-    response = HTTParty.get(url)
+    url = 'https://maps.googleapis.com/maps/api/geocode/json'
+    response = HTTParty.get(url, query: { key: GEOCODER_API_KEY, address: address })
 
     distances = response['results'].map do |result|
       calculate_distance_between_google_result_and_home(result['navigation_points'], home)
