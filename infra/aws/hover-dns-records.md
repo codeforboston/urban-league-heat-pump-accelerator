@@ -18,15 +18,16 @@ appends the domain automatically (shown here fully-qualified for clarity).
 | `_3ff625582e0a994e5dc8515428e54bd2.staging` | CNAME | `_c362ac1120f7e8bbf98ef79226ee991a.jkddzztszm.acm-validations.aws.` |
 | `_01e65db393e4f06a194650ce985321f6.www` | CNAME | `_cf0370703fadde2668a4ef15c873c609.jkddzztszm.acm-validations.aws.` |
 
-## 2. Traffic cutover records (add LATER, at go-live — NOT yet)
+## 2. Traffic cutover records
 
-Do **not** add these until the ALB + CloudFront exist and the app is verified on AWS.
-Values (ALB DNS name, CloudFront domain) will be filled in then.
+Add each record as its own CNAME. An explicit record overrides the wildcard `*` CNAME to NERC.
 
-| Host | Type | Points to | When |
+| Host | Type | Points to | State |
 |---|---|---|---|
-| `api` | CNAME | `<bhpa ALB DNS name>` | cutover |
-| `api.staging` | CNAME | `<bhpa ALB DNS name>` | cutover |
-| `www` | CNAME | `<CloudFront domain>` | cutover |
-| `staging` | CNAME | `<CloudFront domain>` | cutover |
-| apex `bostonhpa.org` | (keep Hover forward to www, or ALIAS/ANAME → CloudFront) | — | cutover |
+| `staging` | CNAME | `d2n6ie0ose2o82.cloudfront.net` | Done 2026-09-29 |
+| `api.staging` | CNAME | `bhpa-alb-616399999.us-east-1.elb.amazonaws.com` | Done 2026-09-29 |
+| `www` | CNAME | `d1t4ey3k8mttmu.cloudfront.net` | Change at prod cutover |
+| `api` | CNAME | `bhpa-alb-616399999.us-east-1.elb.amazonaws.com` | Change at prod cutover |
+| apex `bostonhpa.org` | Keep the Hover forward to `www`, or ALIAS/ANAME to `d1t4ey3k8mttmu.cloudfront.net` | — | Change at prod cutover |
+
+`www` and `api` already exist and point at NERC. Edit them, don't add duplicates.
