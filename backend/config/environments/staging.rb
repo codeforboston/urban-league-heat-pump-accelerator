@@ -93,5 +93,5 @@ Rails.application.configure do
     api_key: Rails.application.credentials.sendgrid_key,
     raise_delivery_errors: true
   }
-  config.action_mailer.default_url_options = { host: 'staging.bostonhpa.org' }
+  config.action_mailer.default_url_options = { host: 'staging.bostonhpa.org', protocol: 'https' }
 end
