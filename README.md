@@ -64,26 +64,15 @@ cd backend
 bundle exec rake reports:send_weekly_surveyor_report
 ```
 
-### Setting Up Automatic Weekly Reports
+### Automatic Weekly Reports
 
-To automatically send the report every Monday at 9 AM, add the following cron job:
-
-```bash
-0 9 * * 1 cd /path/to/urban-league-heat-pump-accelerator/backend && bundle exec rake reports:send_weekly_surveyor_report
-```
-
-Replace `/path/to/urban-league-heat-pump-accelerator/backend` with the actual path to your backend directory.
-
-To edit your crontab:
-```bash
-crontab -e
-```
+Production sends the report every Sunday at 8 AM Eastern. An EventBridge Scheduler schedule, `bhpa-weekly-surveyor-report`, runs the rake task as a one-off ECS task. See [infra/aws/README.md](infra/aws/README.md#weekly-surveyor-report) to run it on demand or check its logs.
 
 ### Report Format
 
 The report is sent as a CSV attachment to `help@bostonhpa.org` (configurable in the mailer). It includes:
 - Surveyor names
-- Start and end times for each day (Sunday-Saturday)
+- Start and end times for each day (Sunday-Saturday), in Eastern time
 - ✅ indicator for "on time" entries:
   - Start time: before 4:24 PM
   - End time: after 6:40 PM, OR all homes in the assignment(s) worked that day have been visited

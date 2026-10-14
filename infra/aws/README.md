@@ -26,8 +26,8 @@ In the commands below, `cfb` stands for `aws --profile codeforboston --region us
 | Stack | Template | Holds |
 |---|---|---|
 | `bhpa-foundation` | `foundation.yaml` | VPC with 2 public and 2 private subnets, the security groups, RDS `bhpa-postgres` (PG 18, `db.t4g.micro`, encrypted, 14-day PITR) |
-| `bhpa-iam` | `iam.yaml` | GitHub OIDC provider, the deploy role `bhpa-github-deploy`, and the ECS execution and task roles |
-| `bhpa-app` | `app.yaml` | ALB with its target groups, ECS task definitions and services (prod + staging), CloudFront distributions and OAC |
+| `bhpa-iam` | `iam.yaml` | GitHub OIDC provider, the deploy role `bhpa-github-deploy`, the ECS execution and task roles, and the scheduler role `bhpa-scheduler` |
+| `bhpa-app` | `app.yaml` | ALB with its target groups, ECS task definitions and services (prod + staging), the weekly report schedule, CloudFront distributions and OAC |
 
 **Created by hand, not in a template:**
 - **Secrets Manager:** `bhpa/rails-master-key`, `bhpa/ghcr-pull` (a GHCR read token), `bhpa/db-app-credentials`, and `bhpa/prod-admin-login` (written by `bootstrap-database`).
@@ -67,6 +67,22 @@ Otherwise the services roll back to whatever tag the stack had last.
 ```sh
 cfb ecs execute-command --cluster bhpa --task <task-id> --container backend --interactive \
   --command "bundle exec rails console"
+```
+
+## Weekly surveyor report
+
+The schedule `bhpa-weekly-surveyor-report` runs `rake reports:send_weekly_surveyor_report` every Sunday at 8 AM Eastern. It starts a one-off task from the latest `bhpa-backend-prod` revision, so each release picks it up with no stack update. The report goes to `help@bostonhpa.org`.
+
+Nothing alerts on failure. Check the task output in the `/ecs/bhpa-prod` log group.
+
+Deploy `bhpa-iam` before `bhpa-app`. The schedule imports the scheduler role's ARN from it.
+
+To send it now:
+
+```sh
+cfb ecs run-task --cluster bhpa --launch-type FARGATE --task-definition bhpa-backend-prod \
+  --network-configuration "awsvpcConfiguration={subnets=[<public subnet ids>],securityGroups=[<app sg>],assignPublicIp=ENABLED}" \
+  --overrides '{"containerOverrides":[{"name":"backend","command":["rake","reports:send_weekly_surveyor_report"]}]}'
 ```
 
 ## Migration status

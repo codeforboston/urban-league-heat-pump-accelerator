@@ -248,6 +248,29 @@ Resources:
       LoadBalancers: [{ ContainerName: backend, ContainerPort: 3000, TargetGroupArn: !Ref StagingTargetGroup }]
       Tags: [{ Key: Project, Value: bhpa }]
 
+  # Sunday morning, once the Sunday-Saturday week has closed in Boston.
+  # The family ARN without a revision runs whatever CI deployed last.
+  WeeklySurveyorReportSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: bhpa-weekly-surveyor-report
+      Description: Emails last week's surveyor report to help@bostonhpa.org
+      ScheduleExpression: cron(0 8 ? * SUN *)
+      ScheduleExpressionTimezone: America/New_York
+      FlexibleTimeWindow: { Mode: 'OFF' }
+      Target:
+        Arn: !Sub arn:aws:ecs:${AWS::Region}:${AWS::AccountId}:cluster/bhpa
+        RoleArn: !ImportValue bhpa-scheduler-role-arn
+        Input: '{"containerOverrides":[{"name":"backend","command":["rake","reports:send_weekly_surveyor_report"]}]}'
+        EcsParameters:
+          TaskDefinitionArn: !Sub arn:aws:ecs:${AWS::Region}:${AWS::AccountId}:task-definition/bhpa-backend-prod
+          LaunchType: FARGATE
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              Subnets: [!ImportValue bhpa-public-subnet-1, !ImportValue bhpa-public-subnet-2]
+              SecurityGroups: [!ImportValue bhpa-app-sg]
+
   # ---------------- CloudFront ----------------
   FrontendOac:
     Type: AWS::CloudFront::OriginAccessControl

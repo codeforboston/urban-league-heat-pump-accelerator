@@ -69,6 +69,36 @@ Resources:
                 Resource: '*'
       Tags: [{ Key: Project, Value: bhpa }]
 
+  # EventBridge Scheduler assumes this to start one-off tasks such as the
+  # weekly surveyor report.
+  SchedulerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: bhpa-scheduler
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Service: scheduler.amazonaws.com }
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals: { aws:SourceAccount: !Ref AWS::AccountId }
+      Policies:
+        - PolicyName: run-prod-tasks
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              # RunTask authorizes against the latest revision, so allow them all
+              - Effect: Allow
+                Action: ecs:RunTask
+                Resource:
+                  - !Sub arn:aws:ecs:${AWS::Region}:${AWS::AccountId}:task-definition/bhpa-backend-prod
+                  - !Sub arn:aws:ecs:${AWS::Region}:${AWS::AccountId}:task-definition/bhpa-backend-prod:*
+              - Effect: Allow
+                Action: iam:PassRole
+                Resource: [!GetAtt EcsTaskExecutionRole.Arn, !GetAtt EcsTaskRole.Arn]
+      Tags: [{ Key: Project, Value: bhpa }]
+
   GithubDeployRole:
     Type: AWS::IAM::Role
     Properties:
@@ -135,3 +165,4 @@ Outputs:
   DeployRoleArn: { Value: !GetAtt GithubDeployRole.Arn, Export: { Name: bhpa-deploy-role-arn } }
   TaskExecutionRoleArn: { Value: !GetAtt EcsTaskExecutionRole.Arn, Export: { Name: bhpa-task-exec-role-arn } }
   TaskRoleArn: { Value: !GetAtt EcsTaskRole.Arn, Export: { Name: bhpa-task-role-arn } }
+  SchedulerRoleArn: { Value: !GetAtt SchedulerRole.Arn, Export: { Name: bhpa-scheduler-role-arn } }
