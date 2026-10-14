@@ -49,6 +49,22 @@ RSpec.describe 'reports:send_weekly_surveyor_report', type: :task do
     end
   end
 
+  it 'counts Saturday evening visits in Eastern time when run Sunday morning' do
+    surveyor = create(:surveyor)
+    eastern = ActiveSupport::TimeZone['Eastern Time (US & Canada)']
+    # 9 PM Saturday Eastern is already Sunday in UTC
+    create(:survey_visit, surveyor: surveyor, created_at: eastern.local(2025, 10, 11, 21))
+    allow(WeeklySurveyorReportMailer).to receive(:weekly_report).and_call_original
+    allow_any_instance_of(ActionMailer::MessageDelivery).to receive(:deliver_now)
+
+    Timecop.freeze(eastern.local(2025, 10, 12, 8)) { task.invoke }
+
+    expect(WeeklySurveyorReportMailer).to have_received(:weekly_report) do |csv_data:, start_date:, end_date:|
+      expect([start_date, end_date]).to eq([Date.new(2025, 10, 5), Date.new(2025, 10, 11)])
+      expect(CSV.parse(csv_data, headers: true).first['Saturday Start']).to eq('09:00 PM')
+    end
+  end
+
   it 'outputs success message after sending' do
     allow_any_instance_of(WeeklySurveyorReportGenerator).to receive(:generate).and_return('CSV data')
     allow(WeeklySurveyorReportMailer).to receive(:weekly_report).and_call_original
